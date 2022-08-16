@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rmf-89-8Rf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -302,7 +302,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLa-OF-Gtn" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="112" width="414" height="622"/>
+                                <rect key="frame" x="0.0" y="112" width="414" height="470"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2f-dB-wxT">
@@ -314,10 +314,10 @@
                                 <buttonConfiguration key="configuration" style="plain" image="ic_setting"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GSk-Mz-Wn5">
-                                <rect key="frame" x="0.0" y="734" width="414" height="128"/>
+                                <rect key="frame" x="0.0" y="582" width="414" height="280"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="c4l-11-Odr"/>
+                                    <constraint firstAttribute="height" constant="280" id="c4l-11-Odr"/>
                                 </constraints>
                             </tableView>
                         </subviews>
@@ -341,6 +341,399 @@
             <point key="canvasLocation" x="18.840579710144929" y="836.38392857142856"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="pY8-GB-pAi">
+            <objects>
+                <viewController id="fha-3t-Mie" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HQM-Jm-jZa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="quy-TS-aA7">
+                                <rect key="frame" x="188" y="74" width="38" height="28"/>
+                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugk-Vc-svo">
+                                <rect key="frame" x="0.0" y="60" width="56" height="56"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="ic_back"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ibu-D4-fh8">
+                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="aK5-6f-sWG">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aK5-6f-sWG" id="yLR-NV-nV3">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1a-FY-0A7">
+                                                    <rect key="frame" x="35" y="16.5" width="41" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="J1a-FY-0A7" firstAttribute="leading" secondItem="yLR-NV-nV3" secondAttribute="leadingMargin" constant="15" id="9FC-qz-3b6"/>
+                                                <constraint firstItem="J1a-FY-0A7" firstAttribute="centerY" secondItem="yLR-NV-nV3" secondAttribute="centerY" id="GTf-9U-fSH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="V9z-35-uxq">
+                                        <rect key="frame" x="0.0" y="99.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V9z-35-uxq" id="mi7-UF-ey3">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3os-0P-rAY">
+                                                    <rect key="frame" x="35" y="16.5" width="41" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QIn-QN-qsN">
+                                                    <rect key="frame" x="335" y="12" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3os-0P-rAY" firstAttribute="centerY" secondItem="mi7-UF-ey3" secondAttribute="centerY" id="3Si-Xm-COz"/>
+                                                <constraint firstItem="3os-0P-rAY" firstAttribute="leading" secondItem="mi7-UF-ey3" secondAttribute="leadingMargin" constant="15" id="6bC-qu-i1V"/>
+                                                <constraint firstAttribute="trailing" secondItem="QIn-QN-qsN" secondAttribute="trailing" constant="30" id="Mgz-Wc-kYL"/>
+                                                <constraint firstItem="QIn-QN-qsN" firstAttribute="centerY" secondItem="mi7-UF-ey3" secondAttribute="centerY" id="uAe-og-0mf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="qm7-Vy-8mv">
+                                        <rect key="frame" x="0.0" y="154.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qm7-Vy-8mv" id="W0c-Xk-PdO">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tm-6E-dy5">
+                                                    <rect key="frame" x="35" y="16.5" width="41" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="LlL-yF-Ykt">
+                                                    <rect key="frame" x="360" y="15.5" width="24" height="24"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1tm-6E-dy5" firstAttribute="leading" secondItem="W0c-Xk-PdO" secondAttribute="leadingMargin" constant="15" id="CUr-JZ-iDE"/>
+                                                <constraint firstItem="LlL-yF-Ykt" firstAttribute="centerY" secondItem="W0c-Xk-PdO" secondAttribute="centerY" id="e7S-dm-sw4"/>
+                                                <constraint firstItem="1tm-6E-dy5" firstAttribute="centerY" secondItem="W0c-Xk-PdO" secondAttribute="centerY" id="nw4-VG-Tb8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LlL-yF-Ykt" secondAttribute="trailing" constant="10" id="qV4-7t-ZdR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="kl8-LB-70t">
+                                        <rect key="frame" x="0.0" y="209.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kl8-LB-70t" id="GvK-xj-hXa">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBS-tK-HVI">
+                                                    <rect key="frame" x="35" y="16.5" width="41" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrK-90-YbZ">
+                                                    <rect key="frame" x="349" y="16.5" width="35" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_2"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pBS-tK-HVI" firstAttribute="leading" secondItem="GvK-xj-hXa" secondAttribute="leadingMargin" constant="15" id="IcM-Wh-mkv"/>
+                                                <constraint firstItem="TrK-90-YbZ" firstAttribute="centerY" secondItem="GvK-xj-hXa" secondAttribute="centerY" id="Uxt-fZ-ESN"/>
+                                                <constraint firstItem="pBS-tK-HVI" firstAttribute="centerY" secondItem="GvK-xj-hXa" secondAttribute="centerY" id="axL-Rg-zxX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TrK-90-YbZ" secondAttribute="trailing" constant="10" id="hdZ-SN-2fS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JAw-8C-r1A"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="quy-TS-aA7" firstAttribute="top" secondItem="JAw-8C-r1A" secondAttribute="top" constant="30" id="0Hg-jO-Evd"/>
+                            <constraint firstItem="JAw-8C-r1A" firstAttribute="trailing" secondItem="Ibu-D4-fh8" secondAttribute="trailing" id="6Ie-5R-EO7"/>
+                            <constraint firstItem="quy-TS-aA7" firstAttribute="centerY" secondItem="ugk-Vc-svo" secondAttribute="centerY" id="Eqx-BA-IV3"/>
+                            <constraint firstItem="ugk-Vc-svo" firstAttribute="width" secondItem="ugk-Vc-svo" secondAttribute="height" multiplier="1:1" id="TVH-Qn-utF"/>
+                            <constraint firstItem="Ibu-D4-fh8" firstAttribute="leading" secondItem="JAw-8C-r1A" secondAttribute="leading" id="gAM-ky-UQz"/>
+                            <constraint firstAttribute="bottom" secondItem="Ibu-D4-fh8" secondAttribute="bottom" id="j2A-4v-rx6"/>
+                            <constraint firstItem="ugk-Vc-svo" firstAttribute="leading" secondItem="JAw-8C-r1A" secondAttribute="leading" id="kWw-m6-bRU"/>
+                            <constraint firstItem="Ibu-D4-fh8" firstAttribute="top" secondItem="quy-TS-aA7" secondAttribute="bottom" constant="30" id="nVT-Cd-guk"/>
+                            <constraint firstItem="quy-TS-aA7" firstAttribute="centerX" secondItem="HQM-Jm-jZa" secondAttribute="centerX" id="z6d-vk-k1c"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M1I-wQ-9QK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="1556.9196428571429"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JBL-eh-SSg">
+            <objects>
+                <viewController id="nVC-7x-BNk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aig-Rl-5dp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_lock" translatesAutoresizingMaskIntoConstraints="NO" id="Pzj-am-Ob6">
+                                <rect key="frame" x="170.5" y="114" width="73" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="Qaf-S3-VhU"/>
+                                    <constraint firstAttribute="width" secondItem="Pzj-am-Ob6" secondAttribute="height" multiplier="1:1" id="zgv-zR-Is6"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="fB0-Cf-2Oi">
+                                <rect key="frame" x="99.5" y="312" width="215" height="20"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_dot_20" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-PF-TKo">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_dot_20" translatesAutoresizingMaskIntoConstraints="NO" id="AaA-Ha-Bpb">
+                                        <rect key="frame" x="65" y="0.0" width="20" height="20"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_dot_20" translatesAutoresizingMaskIntoConstraints="NO" id="R4X-De-kiA">
+                                        <rect key="frame" x="130" y="0.0" width="20" height="20"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_dot_20" translatesAutoresizingMaskIntoConstraints="NO" id="Izl-6w-GHT">
+                                        <rect key="frame" x="195" y="0.0" width="20" height="20"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Izl-6w-GHT" firstAttribute="width" secondItem="Izl-6w-GHT" secondAttribute="height" multiplier="1:1" id="3cm-6t-lbg"/>
+                                    <constraint firstItem="AaA-Ha-Bpb" firstAttribute="width" secondItem="AaA-Ha-Bpb" secondAttribute="height" multiplier="1:1" id="8Rw-hP-2jw"/>
+                                    <constraint firstItem="R4X-De-kiA" firstAttribute="width" secondItem="R4X-De-kiA" secondAttribute="height" multiplier="1:1" id="TKE-Xi-ne4"/>
+                                    <constraint firstItem="MP0-PF-TKo" firstAttribute="width" secondItem="MP0-PF-TKo" secondAttribute="height" multiplier="1:1" id="jLP-VV-GL3"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정할 비밀번호를 입력해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQR-O4-0M7">
+                                <rect key="frame" x="94.5" y="250" width="225.5" height="22"/>
+                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <color key="textColor" name="grayColor_1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vL-gZ-Bg5">
+                                <rect key="frame" x="169" y="217" width="76" height="28"/>
+                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="22"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-KU-Kn3">
+                                <rect key="frame" x="36.5" y="406" width="341" height="415"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="biC-NF-jyr">
+                                        <rect key="frame" x="0.0" y="0.0" width="341" height="85"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFq-yG-YUL">
+                                                <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="85" id="Dtw-MO-eem"/>
+                                                    <constraint firstAttribute="height" constant="85" id="wSO-F3-OHC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="1">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Rm-Xf-dxT">
+                                                <rect key="frame" x="128" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="85" id="fbL-R7-Urc"/>
+                                                    <constraint firstAttribute="height" constant="85" id="uIQ-sQ-7Gl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="2">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMU-FX-XJ7">
+                                                <rect key="frame" x="256" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="85" id="mmu-C5-zgD"/>
+                                                    <constraint firstAttribute="height" constant="85" id="qad-v4-8t4"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="3">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="edE-cD-lkM">
+                                        <rect key="frame" x="0.0" y="110" width="341" height="85"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwO-z7-SvH">
+                                                <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="85" id="DaK-Gi-Eqx"/>
+                                                    <constraint firstAttribute="width" constant="85" id="wUq-BC-ZwL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="4">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chf-KA-kkd">
+                                                <rect key="frame" x="128" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="85" id="eJE-6n-GZy"/>
+                                                    <constraint firstAttribute="width" constant="85" id="jzX-Tx-dUt"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="5">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsQ-qD-q1W">
+                                                <rect key="frame" x="256" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="85" id="gEZ-qu-Qa6"/>
+                                                    <constraint firstAttribute="width" constant="85" id="sXm-17-UJI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="6">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="P9d-61-QTl">
+                                        <rect key="frame" x="0.0" y="220" width="341" height="85"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTK-cw-KWT">
+                                                <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="85" id="HBD-ru-c4N"/>
+                                                    <constraint firstAttribute="height" constant="85" id="ewv-ZJ-b8y"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="7">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUy-4K-i3J">
+                                                <rect key="frame" x="128" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="85" id="r5i-gc-id0"/>
+                                                    <constraint firstAttribute="width" constant="85" id="xDj-3U-19u"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="8">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDQ-ea-5xs">
+                                                <rect key="frame" x="256" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="85" id="Ia0-H6-iQq"/>
+                                                    <constraint firstAttribute="width" constant="85" id="rAY-WY-4ka"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="9">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="D4h-aK-kmK">
+                                        <rect key="frame" x="0.0" y="330" width="341" height="85"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTP-Uc-BgS">
+                                                <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="85" id="UHk-CH-TY1"/>
+                                                    <constraint firstAttribute="height" constant="85" id="amQ-nl-61s"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="7">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhL-WG-zEw">
+                                                <rect key="frame" x="128" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="85" id="8aw-id-6p4"/>
+                                                    <constraint firstAttribute="height" constant="85" id="DZi-Fg-wbe"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="0">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXd-VP-OWF">
+                                                <rect key="frame" x="256" y="0.0" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="85" id="H5k-OP-0RX"/>
+                                                    <constraint firstAttribute="height" constant="85" id="ect-cm-zWc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="23"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="확인">
+                                                    <color key="titleColor" name="grayColor_1"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pgI-Qs-hfA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qQR-O4-0M7" firstAttribute="centerX" secondItem="aig-Rl-5dp" secondAttribute="centerX" id="1Cg-Fo-aMe"/>
+                            <constraint firstItem="fB0-Cf-2Oi" firstAttribute="top" secondItem="qQR-O4-0M7" secondAttribute="bottom" constant="40" id="8De-zh-C3i"/>
+                            <constraint firstItem="fB0-Cf-2Oi" firstAttribute="centerX" secondItem="aig-Rl-5dp" secondAttribute="centerX" id="AYW-YK-GQD"/>
+                            <constraint firstItem="Pzj-am-Ob6" firstAttribute="top" secondItem="pgI-Qs-hfA" secondAttribute="top" constant="70" id="D9S-wA-Dtr"/>
+                            <constraint firstItem="Pzj-am-Ob6" firstAttribute="centerX" secondItem="aig-Rl-5dp" secondAttribute="centerX" id="Dmb-SS-u70"/>
+                            <constraint firstItem="1vL-gZ-Bg5" firstAttribute="centerX" secondItem="aig-Rl-5dp" secondAttribute="centerX" id="K5h-Li-fhL"/>
+                            <constraint firstItem="1vL-gZ-Bg5" firstAttribute="top" secondItem="Pzj-am-Ob6" secondAttribute="bottom" constant="30" id="Sa8-5W-SH4"/>
+                            <constraint firstItem="qQR-O4-0M7" firstAttribute="top" secondItem="1vL-gZ-Bg5" secondAttribute="bottom" constant="5" id="dyl-HY-etf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X1Q-eF-Jjk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="2242.6339285714284"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="lpK-Wm-E45">
             <objects>
                 <viewController id="gwI-oc-dJW" sceneMemberID="viewController">
@@ -348,34 +741,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기 작성하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIX-Ii-dJd">
-                                <rect key="frame" x="32" y="69" width="147" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022년 8월 14일 감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIX-Ii-dJd">
+                                <rect key="frame" x="32" y="69" width="215" height="26"/>
                                 <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1X2-nd-dAc">
-                                <rect key="frame" x="32" y="114" width="338" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1X2-nd-dAc">
+                                <rect key="frame" x="32" y="115" width="350" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="edP-83-nRy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zlO-TB-7mx">
-                                <rect key="frame" x="32" y="189" width="338" height="506"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zlO-TB-7mx">
+                                <rect key="frame" x="32" y="186" width="350" height="587"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esm-Vg-eFe">
+                                <rect key="frame" x="30" y="793" width="354" height="54"/>
+                                <color key="backgroundColor" name="mainColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="50l-V2-kD3"/>
+                                </constraints>
+                                <color key="tintColor" name="grayColor_1"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="작성 완료">
+                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e0f-nP-37l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="esm-Vg-eFe" firstAttribute="leading" secondItem="e0f-nP-37l" secondAttribute="leading" constant="30" id="4Xj-3n-FML"/>
+                            <constraint firstItem="zlO-TB-7mx" firstAttribute="top" secondItem="1X2-nd-dAc" secondAttribute="bottom" constant="27" id="4x6-7L-Cl2"/>
+                            <constraint firstItem="e0f-nP-37l" firstAttribute="bottom" secondItem="esm-Vg-eFe" secondAttribute="bottom" constant="15" id="9h7-fV-ajs"/>
+                            <constraint firstItem="zlO-TB-7mx" firstAttribute="centerX" secondItem="gSp-oz-nSJ" secondAttribute="centerX" id="NF8-e1-X6O"/>
+                            <constraint firstItem="1X2-nd-dAc" firstAttribute="centerX" secondItem="gSp-oz-nSJ" secondAttribute="centerX" id="cJc-Sg-yL1"/>
+                            <constraint firstItem="1X2-nd-dAc" firstAttribute="leading" secondItem="e0f-nP-37l" secondAttribute="leading" constant="32" id="jgk-dV-HS6"/>
                             <constraint firstItem="JIX-Ii-dJd" firstAttribute="leading" secondItem="e0f-nP-37l" secondAttribute="leading" constant="32" id="kuL-ar-F9Y"/>
+                            <constraint firstItem="esm-Vg-eFe" firstAttribute="top" secondItem="zlO-TB-7mx" secondAttribute="bottom" constant="20" id="l6k-tw-Xl0"/>
+                            <constraint firstItem="1X2-nd-dAc" firstAttribute="top" secondItem="JIX-Ii-dJd" secondAttribute="bottom" constant="20" id="qKw-ZP-Zr0"/>
+                            <constraint firstItem="zlO-TB-7mx" firstAttribute="leading" secondItem="e0f-nP-37l" secondAttribute="leading" constant="32" id="qwy-QF-nvl"/>
+                            <constraint firstItem="esm-Vg-eFe" firstAttribute="centerX" secondItem="gSp-oz-nSJ" secondAttribute="centerX" id="s43-TX-ioi"/>
                             <constraint firstItem="JIX-Ii-dJd" firstAttribute="top" secondItem="e0f-nP-37l" secondAttribute="top" constant="25" id="zr2-NP-WdV"/>
                         </constraints>
                     </view>
@@ -384,13 +797,601 @@
             </objects>
             <point key="canvasLocation" x="740.57971014492762" y="835.71428571428567"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="n4Z-m4-TJj">
+            <objects>
+                <viewController id="7bc-Ie-avc" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i0n-Fe-Voy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022년 8월 14일 감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5e-Y5-hMq">
+                                <rect key="frame" x="32" y="69" width="215" height="26"/>
+                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9jM-D1-pUn">
+                                <rect key="frame" x="32" y="115" width="350" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Wf3-h0-rr2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fT7-dF-Ky1">
+                                <rect key="frame" x="32" y="186" width="350" height="646"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1AS-Kf-khH">
+                                <rect key="frame" x="334" y="59" width="48" height="48"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="ic_trash"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Rnr-fl-S3G"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fT7-dF-Ky1" firstAttribute="leading" secondItem="Rnr-fl-S3G" secondAttribute="leading" constant="32" id="73A-aR-tWB"/>
+                            <constraint firstItem="o5e-Y5-hMq" firstAttribute="top" secondItem="Rnr-fl-S3G" secondAttribute="top" constant="25" id="9wd-Et-Xvd"/>
+                            <constraint firstItem="9jM-D1-pUn" firstAttribute="top" secondItem="o5e-Y5-hMq" secondAttribute="bottom" constant="20" id="Cxi-QL-Obb"/>
+                            <constraint firstItem="1AS-Kf-khH" firstAttribute="width" secondItem="1AS-Kf-khH" secondAttribute="height" multiplier="1:1" id="NzH-Kl-1xq"/>
+                            <constraint firstItem="Rnr-fl-S3G" firstAttribute="bottom" secondItem="fT7-dF-Ky1" secondAttribute="bottom" constant="30" id="R2H-bT-Vu6"/>
+                            <constraint firstItem="fT7-dF-Ky1" firstAttribute="top" secondItem="9jM-D1-pUn" secondAttribute="bottom" constant="27" id="V61-gO-QHm"/>
+                            <constraint firstItem="9jM-D1-pUn" firstAttribute="centerX" secondItem="i0n-Fe-Voy" secondAttribute="centerX" id="VLB-bW-Bwk"/>
+                            <constraint firstItem="fT7-dF-Ky1" firstAttribute="centerX" secondItem="i0n-Fe-Voy" secondAttribute="centerX" id="iP6-n0-r07"/>
+                            <constraint firstItem="o5e-Y5-hMq" firstAttribute="leading" secondItem="Rnr-fl-S3G" secondAttribute="leading" constant="32" id="jXg-ux-a1l"/>
+                            <constraint firstItem="9jM-D1-pUn" firstAttribute="leading" secondItem="Rnr-fl-S3G" secondAttribute="leading" constant="32" id="qmG-Va-gWC"/>
+                            <constraint firstItem="Rnr-fl-S3G" firstAttribute="trailing" secondItem="1AS-Kf-khH" secondAttribute="trailing" constant="32" id="uh6-nA-fGo"/>
+                            <constraint firstItem="1AS-Kf-khH" firstAttribute="top" secondItem="Rnr-fl-S3G" secondAttribute="top" constant="15" id="yTu-aB-4H5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yOt-kw-ULd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1451" y="836"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CTt-v7-UER">
+            <objects>
+                <viewController id="xm3-5g-6CO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tpi-eO-Wy1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mK0-US-7lz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_popup" translatesAutoresizingMaskIntoConstraints="NO" id="neR-El-ron">
+                                        <rect key="frame" x="43.5" y="339.5" width="327" height="217"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="neR-El-ron" secondAttribute="height" multiplier="327:217" id="bNP-Q5-ZgV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8f9-d1-wJu">
+                                        <rect key="frame" x="43.5" y="503.5" width="327" height="53"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cri-Lw-Fcu">
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="53"/>
+                                                <color key="tintColor" name="grayColor_1"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="취소">
+                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSx-nO-8oV">
+                                                <rect key="frame" x="163.5" y="0.0" width="163.5" height="53"/>
+                                                <color key="tintColor" name="grayColor_1"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="삭제">
+                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8f9-d1-wJu" secondAttribute="height" multiplier="327:53" id="5PY-he-Bv2"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="글을 삭제 하시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xI-yn-vj2">
+                                        <rect key="frame" x="108" y="421" width="198" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="neR-El-ron" firstAttribute="centerX" secondItem="mK0-US-7lz" secondAttribute="centerX" id="80h-1s-VLK"/>
+                                    <constraint firstItem="8f9-d1-wJu" firstAttribute="bottom" secondItem="neR-El-ron" secondAttribute="bottom" id="OZs-El-QvF"/>
+                                    <constraint firstItem="8f9-d1-wJu" firstAttribute="width" secondItem="neR-El-ron" secondAttribute="width" id="YJv-cH-Tyf"/>
+                                    <constraint firstItem="8f9-d1-wJu" firstAttribute="leading" secondItem="neR-El-ron" secondAttribute="leading" id="YWQ-bL-bbR"/>
+                                    <constraint firstItem="neR-El-ron" firstAttribute="centerY" secondItem="mK0-US-7lz" secondAttribute="centerY" id="fBB-hr-M4Y"/>
+                                    <constraint firstItem="8f9-d1-wJu" firstAttribute="trailing" secondItem="neR-El-ron" secondAttribute="trailing" id="jt8-j2-Ypi"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FBx-4s-HUS"/>
+                        <constraints>
+                            <constraint firstItem="mK0-US-7lz" firstAttribute="width" secondItem="tpi-eO-Wy1" secondAttribute="width" id="0LR-hr-aKw"/>
+                            <constraint firstItem="mK0-US-7lz" firstAttribute="centerX" secondItem="tpi-eO-Wy1" secondAttribute="centerX" id="8wk-8Y-nOf"/>
+                            <constraint firstItem="mK0-US-7lz" firstAttribute="centerY" secondItem="tpi-eO-Wy1" secondAttribute="centerY" id="JQL-pA-1ap"/>
+                            <constraint firstItem="mK0-US-7lz" firstAttribute="height" secondItem="tpi-eO-Wy1" secondAttribute="height" id="cFa-GB-ChM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Haa-oJ-KcS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2153.6231884057975" y="836.38392857142856"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kKL-NF-WQW">
+            <objects>
+                <viewController id="4u8-jx-b4f" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Dc-Ba-hPz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1q-JI-BkP">
+                                <rect key="frame" x="166" y="74" width="82" height="28"/>
+                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0z3-nz-iDf">
+                                <rect key="frame" x="0.0" y="60" width="56" height="56"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="ic_back"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7Hi-2E-ehV">
+                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="fW3-cF-m72">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fW3-cF-m72" id="GH2-wn-ZpN">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3J9-wJ-DiT">
+                                                    <rect key="frame" x="35" y="16.5" width="41" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGq-N6-b0v">
+                                                    <rect key="frame" x="349" y="16.5" width="35" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_2"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3J9-wJ-DiT" firstAttribute="centerY" secondItem="GH2-wn-ZpN" secondAttribute="centerY" id="549-lS-5uq"/>
+                                                <constraint firstItem="EGq-N6-b0v" firstAttribute="centerY" secondItem="GH2-wn-ZpN" secondAttribute="centerY" id="9V2-wu-gYh"/>
+                                                <constraint firstItem="3J9-wJ-DiT" firstAttribute="leading" secondItem="GH2-wn-ZpN" secondAttribute="leadingMargin" constant="15" id="epS-ff-BNd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="EGq-N6-b0v" secondAttribute="trailing" constant="10" id="xZO-6Z-Rdr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="a6q-MW-ESo">
+                                        <rect key="frame" x="0.0" y="99.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a6q-MW-ESo" id="Pyp-fj-cXX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7q-i5-252">
+                                                    <rect key="frame" x="35" y="16.5" width="41" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="K7q-i5-252" firstAttribute="centerY" secondItem="Pyp-fj-cXX" secondAttribute="centerY" id="sa7-cG-aM8"/>
+                                                <constraint firstItem="K7q-i5-252" firstAttribute="leading" secondItem="Pyp-fj-cXX" secondAttribute="leadingMargin" constant="15" id="wlv-MR-rfE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="U2m-yC-LAC">
+                                        <rect key="frame" x="0.0" y="154.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U2m-yC-LAC" id="qrz-1u-nvs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBP-dX-Kuf">
+                                                    <rect key="frame" x="35" y="16.5" width="41" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="Color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="mainColor"/>
+                                            <constraints>
+                                                <constraint firstItem="LBP-dX-Kuf" firstAttribute="leading" secondItem="qrz-1u-nvs" secondAttribute="leadingMargin" constant="15" id="SIW-Xc-fCv"/>
+                                                <constraint firstItem="LBP-dX-Kuf" firstAttribute="centerY" secondItem="qrz-1u-nvs" secondAttribute="centerY" id="VJc-Na-9Lb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="U7S-f2-zqQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0z3-nz-iDf" firstAttribute="width" secondItem="0z3-nz-iDf" secondAttribute="height" multiplier="1:1" id="7Nq-WO-Eyn"/>
+                            <constraint firstItem="H1q-JI-BkP" firstAttribute="centerX" secondItem="7Dc-Ba-hPz" secondAttribute="centerX" id="PQQ-Y5-NXd"/>
+                            <constraint firstItem="H1q-JI-BkP" firstAttribute="centerY" secondItem="0z3-nz-iDf" secondAttribute="centerY" id="SDv-vv-ApD"/>
+                            <constraint firstItem="0z3-nz-iDf" firstAttribute="leading" secondItem="U7S-f2-zqQ" secondAttribute="leading" id="V3X-jX-M3j"/>
+                            <constraint firstItem="7Hi-2E-ehV" firstAttribute="top" secondItem="H1q-JI-BkP" secondAttribute="bottom" constant="30" id="Ykp-bM-fZr"/>
+                            <constraint firstItem="U7S-f2-zqQ" firstAttribute="trailing" secondItem="7Hi-2E-ehV" secondAttribute="trailing" id="mMe-MH-L4R"/>
+                            <constraint firstAttribute="bottom" secondItem="7Hi-2E-ehV" secondAttribute="bottom" id="obe-Pd-gCc"/>
+                            <constraint firstItem="7Hi-2E-ehV" firstAttribute="leading" secondItem="U7S-f2-zqQ" secondAttribute="leading" id="qx9-fP-bK2"/>
+                            <constraint firstItem="H1q-JI-BkP" firstAttribute="top" secondItem="U7S-f2-zqQ" secondAttribute="top" constant="30" id="ygv-eL-AMw"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3t-gM-EnX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741" y="1557"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="U7T-M0-wxz">
+            <objects>
+                <viewController id="4vY-VY-9Qq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fq4-xI-0eu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiS-oC-yWm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_popup" translatesAutoresizingMaskIntoConstraints="NO" id="JaF-Bf-Rrb">
+                                        <rect key="frame" x="43.5" y="339.5" width="327" height="217"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="JaF-Bf-Rrb" secondAttribute="height" multiplier="327:217" id="uQi-Nn-JVZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G4K-IR-RHc">
+                                        <rect key="frame" x="43.5" y="503.5" width="327" height="53"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpL-as-395">
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="53"/>
+                                                <color key="tintColor" name="grayColor_1"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="취소">
+                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yvm-xO-WMy">
+                                                <rect key="frame" x="163.5" y="0.0" width="163.5" height="53"/>
+                                                <color key="tintColor" name="grayColor_1"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="로그아웃">
+                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="G4K-IR-RHc" secondAttribute="height" multiplier="327:53" id="ZSN-8N-WRW"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="로그아웃 하시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLO-My-AyW">
+                                        <rect key="frame" x="108" y="421" width="193" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="G4K-IR-RHc" firstAttribute="width" secondItem="JaF-Bf-Rrb" secondAttribute="width" id="FyA-D7-jwA"/>
+                                    <constraint firstItem="G4K-IR-RHc" firstAttribute="trailing" secondItem="JaF-Bf-Rrb" secondAttribute="trailing" id="Gf2-ak-NBl"/>
+                                    <constraint firstItem="G4K-IR-RHc" firstAttribute="bottom" secondItem="JaF-Bf-Rrb" secondAttribute="bottom" id="LT2-AD-CKd"/>
+                                    <constraint firstItem="JaF-Bf-Rrb" firstAttribute="centerX" secondItem="CiS-oC-yWm" secondAttribute="centerX" id="ZhL-jK-5V1"/>
+                                    <constraint firstItem="G4K-IR-RHc" firstAttribute="leading" secondItem="JaF-Bf-Rrb" secondAttribute="leading" id="df4-i8-pbE"/>
+                                    <constraint firstItem="JaF-Bf-Rrb" firstAttribute="centerY" secondItem="CiS-oC-yWm" secondAttribute="centerY" id="m2s-w5-I9a"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pb7-J1-fHa"/>
+                        <constraints>
+                            <constraint firstItem="CiS-oC-yWm" firstAttribute="centerX" secondItem="fq4-xI-0eu" secondAttribute="centerX" id="63e-Ns-gVS"/>
+                            <constraint firstItem="CiS-oC-yWm" firstAttribute="centerY" secondItem="fq4-xI-0eu" secondAttribute="centerY" id="e2V-bp-VPf"/>
+                            <constraint firstItem="CiS-oC-yWm" firstAttribute="height" secondItem="fq4-xI-0eu" secondAttribute="height" id="lt3-oS-pD6"/>
+                            <constraint firstItem="CiS-oC-yWm" firstAttribute="width" secondItem="fq4-xI-0eu" secondAttribute="width" id="yGG-pH-swx"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eXr-4K-yXF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1451" y="1557"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="COc-RB-Ud8">
+            <objects>
+                <viewController id="Fns-UB-lyZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o33-m0-tcW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ndl-wP-qRC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_popup" translatesAutoresizingMaskIntoConstraints="NO" id="avj-ZL-RGX">
+                                        <rect key="frame" x="43.5" y="339.5" width="327" height="217"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="avj-ZL-RGX" secondAttribute="height" multiplier="327:217" id="Ee7-GP-TQ0"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wn-C7-RD5">
+                                        <rect key="frame" x="43.5" y="503.5" width="327" height="53"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkH-g9-dgK">
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="53"/>
+                                                <color key="tintColor" name="grayColor_1"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="취소">
+                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCe-mZ-COB">
+                                                <rect key="frame" x="163.5" y="0.0" width="163.5" height="53"/>
+                                                <color key="tintColor" name="grayColor_1"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="로그아웃">
+                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="0wn-C7-RD5" secondAttribute="height" multiplier="327:53" id="WVP-te-U4n"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IOJ-4r-ElI">
+                                        <rect key="frame" x="80" y="419.5" width="254.5" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탈퇴 하시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACb-zn-1kx">
+                                                <rect key="frame" x="49" y="0.0" width="156" height="25.5"/>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탈퇴 시 모든 데이터가 사리지며 복원이 불가능합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlq-Mk-9sl">
+                                                <rect key="frame" x="0.0" y="25.5" width="254.5" height="15.5"/>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="12"/>
+                                                <color key="textColor" name="grayColor_2"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="0wn-C7-RD5" firstAttribute="leading" secondItem="avj-ZL-RGX" secondAttribute="leading" id="3cw-1b-bwj"/>
+                                    <constraint firstItem="0wn-C7-RD5" firstAttribute="bottom" secondItem="avj-ZL-RGX" secondAttribute="bottom" id="D3Q-J2-5pY"/>
+                                    <constraint firstItem="0wn-C7-RD5" firstAttribute="top" secondItem="IOJ-4r-ElI" secondAttribute="bottom" constant="43" id="I2n-Pg-7rL"/>
+                                    <constraint firstItem="avj-ZL-RGX" firstAttribute="centerY" secondItem="Ndl-wP-qRC" secondAttribute="centerY" id="Xnf-CN-lDJ"/>
+                                    <constraint firstItem="0wn-C7-RD5" firstAttribute="width" secondItem="avj-ZL-RGX" secondAttribute="width" id="Zbs-Y9-FRn"/>
+                                    <constraint firstItem="avj-ZL-RGX" firstAttribute="centerX" secondItem="Ndl-wP-qRC" secondAttribute="centerX" id="bXC-0v-UMh"/>
+                                    <constraint firstItem="0wn-C7-RD5" firstAttribute="trailing" secondItem="avj-ZL-RGX" secondAttribute="trailing" id="bcM-Dq-VjA"/>
+                                    <constraint firstItem="IOJ-4r-ElI" firstAttribute="centerX" secondItem="Ndl-wP-qRC" secondAttribute="centerX" id="xNY-Rf-Mcb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Sgq-m5-5Zl"/>
+                        <constraints>
+                            <constraint firstItem="Ndl-wP-qRC" firstAttribute="height" secondItem="o33-m0-tcW" secondAttribute="height" id="BUM-PF-r7d"/>
+                            <constraint firstItem="Ndl-wP-qRC" firstAttribute="centerY" secondItem="o33-m0-tcW" secondAttribute="centerY" id="iao-G3-lED"/>
+                            <constraint firstItem="Ndl-wP-qRC" firstAttribute="centerX" secondItem="o33-m0-tcW" secondAttribute="centerX" id="oOE-LU-hX0"/>
+                            <constraint firstItem="Ndl-wP-qRC" firstAttribute="width" secondItem="o33-m0-tcW" secondAttribute="width" id="s74-QI-nM1"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4vZ-yc-dpS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2154" y="1557"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Pae-le-IZS">
+            <objects>
+                <viewController id="Dkl-S5-kEO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AP0-I4-g1R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRY-mA-5W0">
+                                <rect key="frame" x="165.5" y="74" width="83" height="28"/>
+                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YB-F7-qef">
+                                <rect key="frame" x="0.0" y="60" width="56" height="56"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="ic_back"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QSz-yQ-xt6">
+                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="s4F-tI-j9j">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s4F-tI-j9j" id="l00-Xq-ROi">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgk-Si-zYV">
+                                                    <rect key="frame" x="35" y="27.5" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIa-1v-p4z">
+                                                    <rect key="frame" x="335" y="12" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="yIa-1v-p4z" secondAttribute="trailing" constant="30" id="4gz-kV-vBq"/>
+                                                <constraint firstItem="qgk-Si-zYV" firstAttribute="leading" secondItem="l00-Xq-ROi" secondAttribute="leadingMargin" constant="15" id="g51-RT-xf4"/>
+                                                <constraint firstItem="yIa-1v-p4z" firstAttribute="centerY" secondItem="l00-Xq-ROi" secondAttribute="centerY" id="tVd-Hi-w2x"/>
+                                                <constraint firstItem="qgk-Si-zYV" firstAttribute="centerY" secondItem="l00-Xq-ROi" secondAttribute="centerY" id="tyh-ZU-yN1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="J7e-8p-kJp">
+                                        <rect key="frame" x="0.0" y="99.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J7e-8p-kJp" id="cyD-Lp-tvL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg7-gB-lf1">
+                                                    <rect key="frame" x="35" y="16.5" width="41" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2G-Iz-lhs">
+                                                    <rect key="frame" x="349" y="16.5" width="35" height="22"/>
+                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_2"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="y2G-Iz-lhs" firstAttribute="centerY" secondItem="cyD-Lp-tvL" secondAttribute="centerY" id="lZT-ij-lUG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="y2G-Iz-lhs" secondAttribute="trailing" constant="10" id="ltF-ei-ANf"/>
+                                                <constraint firstItem="pg7-gB-lf1" firstAttribute="centerY" secondItem="cyD-Lp-tvL" secondAttribute="centerY" id="tey-7g-LdI"/>
+                                                <constraint firstItem="pg7-gB-lf1" firstAttribute="leading" secondItem="cyD-Lp-tvL" secondAttribute="leadingMargin" constant="15" id="vtF-9C-CS0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RjV-Jv-4xk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RjV-Jv-4xk" firstAttribute="trailing" secondItem="QSz-yQ-xt6" secondAttribute="trailing" id="3dl-Or-9Oo"/>
+                            <constraint firstItem="QSz-yQ-xt6" firstAttribute="leading" secondItem="RjV-Jv-4xk" secondAttribute="leading" id="LN9-XG-h8k"/>
+                            <constraint firstItem="2YB-F7-qef" firstAttribute="leading" secondItem="RjV-Jv-4xk" secondAttribute="leading" id="bAj-u1-dNR"/>
+                            <constraint firstItem="2YB-F7-qef" firstAttribute="width" secondItem="2YB-F7-qef" secondAttribute="height" multiplier="1:1" id="bhu-I4-r4W"/>
+                            <constraint firstItem="aRY-mA-5W0" firstAttribute="centerY" secondItem="2YB-F7-qef" secondAttribute="centerY" id="g83-ov-J6c"/>
+                            <constraint firstAttribute="bottom" secondItem="QSz-yQ-xt6" secondAttribute="bottom" id="hL9-AF-b4a"/>
+                            <constraint firstItem="QSz-yQ-xt6" firstAttribute="top" secondItem="aRY-mA-5W0" secondAttribute="bottom" constant="30" id="j6z-3u-OYb"/>
+                            <constraint firstItem="aRY-mA-5W0" firstAttribute="centerX" secondItem="AP0-I4-g1R" secondAttribute="centerX" id="u47-Dr-QZY"/>
+                            <constraint firstItem="aRY-mA-5W0" firstAttribute="top" secondItem="RjV-Jv-4xk" secondAttribute="top" constant="30" id="uT1-9Y-Bf7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEk-hg-lgr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19" y="2933"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xsS-zS-VV5">
+            <objects>
+                <viewController id="dIF-FH-ZDI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c0P-wl-e0J">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="So8-Wq-HpS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_popup2" translatesAutoresizingMaskIntoConstraints="NO" id="5Y2-2S-Fkz">
+                                        <rect key="frame" x="43.5" y="339.5" width="327" height="217"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5Y2-2S-Fkz" secondAttribute="height" multiplier="327:217" id="sy6-7w-ggl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Som-is-qdM">
+                                        <rect key="frame" x="43.5" y="503.5" width="327" height="53"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuO-TN-7hK">
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="53"/>
+                                                <color key="tintColor" name="grayColor_1"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="취소">
+                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKH-Lv-xCa">
+                                                <rect key="frame" x="163.5" y="0.0" width="163.5" height="53"/>
+                                                <color key="tintColor" name="grayColor_1"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="확인">
+                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Som-is-qdM" secondAttribute="height" multiplier="327:53" id="puh-Jm-ssk"/>
+                                        </constraints>
+                                    </stackView>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fOv-53-v0B">
+                                        <rect key="frame" x="57" y="348.5" width="300" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="Dam-BP-4Xn"/>
+                                            <constraint firstAttribute="height" constant="150" id="pK1-Kp-BMl"/>
+                                        </constraints>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Som-is-qdM" firstAttribute="trailing" secondItem="5Y2-2S-Fkz" secondAttribute="trailing" id="b4v-Pf-EQn"/>
+                                    <constraint firstItem="fOv-53-v0B" firstAttribute="centerX" secondItem="So8-Wq-HpS" secondAttribute="centerX" id="bcd-bP-iv9"/>
+                                    <constraint firstItem="Som-is-qdM" firstAttribute="width" secondItem="5Y2-2S-Fkz" secondAttribute="width" id="dAI-J5-kih"/>
+                                    <constraint firstItem="Som-is-qdM" firstAttribute="bottom" secondItem="5Y2-2S-Fkz" secondAttribute="bottom" id="fq4-PK-6hz"/>
+                                    <constraint firstItem="5Y2-2S-Fkz" firstAttribute="centerX" secondItem="So8-Wq-HpS" secondAttribute="centerX" id="fvp-Hu-TUG"/>
+                                    <constraint firstItem="5Y2-2S-Fkz" firstAttribute="centerY" secondItem="So8-Wq-HpS" secondAttribute="centerY" id="gAU-zk-FOc"/>
+                                    <constraint firstItem="Som-is-qdM" firstAttribute="top" secondItem="fOv-53-v0B" secondAttribute="bottom" constant="5" id="jPO-3b-Z87"/>
+                                    <constraint firstItem="Som-is-qdM" firstAttribute="leading" secondItem="5Y2-2S-Fkz" secondAttribute="leading" id="woQ-8C-crb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FwZ-hT-xje"/>
+                        <constraints>
+                            <constraint firstItem="So8-Wq-HpS" firstAttribute="centerX" secondItem="c0P-wl-e0J" secondAttribute="centerX" id="CAx-8M-tee"/>
+                            <constraint firstItem="So8-Wq-HpS" firstAttribute="width" secondItem="c0P-wl-e0J" secondAttribute="width" id="JUJ-G5-wmR"/>
+                            <constraint firstItem="So8-Wq-HpS" firstAttribute="height" secondItem="c0P-wl-e0J" secondAttribute="height" id="Qfh-UP-WYm"/>
+                            <constraint firstItem="So8-Wq-HpS" firstAttribute="centerY" secondItem="c0P-wl-e0J" secondAttribute="centerY" id="yku-tM-KYZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F1h-mG-ffq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="698.55072463768124" y="2931.6964285714284"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ic_back" width="32" height="32"/>
         <image name="ic_blue_dot_12" width="12" height="12"/>
         <image name="ic_gray_dot_12" width="12" height="12"/>
+        <image name="ic_gray_dot_20" width="20" height="20"/>
+        <image name="ic_more" width="24" height="24"/>
         <image name="ic_setting" width="24" height="24"/>
+        <image name="ic_trash" width="24" height="24"/>
+        <image name="image_popup2" width="327" height="217"/>
+        <image name="img_lock" width="73" height="73"/>
+        <image name="img_popup" width="327" height="217"/>
+        <namedColor name="Color">
+            <color red="1" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="grayColor_1">
             <color red="0.30980392156862746" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayColor_2">
+            <color red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mainColor">
             <color red="0.88235294117647056" green="0.9137254901960784" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
