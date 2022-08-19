@@ -21,11 +21,7 @@ class SecondStartVC: UIViewController {
     }
     
     func showThirdViewController() {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThirdStartVC") as? ThirdStartVC {
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .fullScreen
-            
-            self.present(vc, animated: true, completion: nil)
-        }
+        guard let vc =  storyboard?.instantiateViewController(identifier: "ThirdStartVC") as? ThirdStartVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

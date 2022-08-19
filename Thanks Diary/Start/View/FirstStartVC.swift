@@ -16,16 +16,12 @@ class FirstStartVC: UIViewController {
         self.nextBtn.layer.cornerRadius = 20
     }
     
-    @IBAction func goNext(_ sender: Any) {
-        self.showSecondViewController()
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
     
-    func showSecondViewController() {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondStartVC") as? SecondStartVC {
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .fullScreen
-            
-            self.present(vc, animated: true, completion: nil)
-        }
+    @IBAction func goNext(_ sender: Any) {
+        guard let vc =  storyboard?.instantiateViewController(identifier: "SecondStartVC") as? SecondStartVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

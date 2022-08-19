@@ -28,11 +28,10 @@ class SplashVC: UIViewController {
     }
     
     func showFirstViewController() {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "FirstStartVC") as? FirstStartVC {
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .fullScreen
-            
-            self.present(vc, animated: true, completion: nil)
-        }
+        let vc = storyboard!.instantiateViewController(withIdentifier: "FirstStartVC") as! FirstStartVC
+        let navi = UINavigationController(rootViewController: vc)
+        navi.modalPresentationStyle = .currentContext
+        present(navi, animated:false, completion: nil)
+        return
     }
 }
