@@ -388,6 +388,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLa-OF-Gtn" customClass="FSCalendar">
                                 <rect key="frame" x="10" y="140" width="370" height="370"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" name="mainColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                        <color key="value" systemColor="systemGray3Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2f-dB-wxT">
                                 <rect key="frame" x="338" y="88" width="52" height="52"/>
@@ -423,10 +431,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CU5-2J-ecA"/>
+                    <connections>
+                        <outlet property="calendar" destination="pLa-OF-Gtn" id="8ng-76-Fmk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Oi-6J-0b1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63" y="836"/>
+            <point key="canvasLocation" x="62" y="778"/>
         </scene>
         <!--SettingPWVC-->
         <scene sceneID="JBL-eh-SSg">
@@ -715,18 +726,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1Q-eF-Jjk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="2242.6339285714284"/>
+            <point key="canvasLocation" x="63" y="2182"/>
         </scene>
-        <!--View Controller-->
+        <!--WriteVC-->
         <scene sceneID="lpK-Wm-E45">
             <objects>
-                <viewController id="gwI-oc-dJW" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteVC" id="gwI-oc-dJW" customClass="WriteVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gSp-oz-nSJ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022년 8월 14일 감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIX-Ii-dJd">
-                                <rect key="frame" x="31.999999999999986" y="69" width="214.66666666666663" height="25.666666666666671"/>
+                                <rect key="frame" x="31.999999999999986" y="69" width="215.66666666666663" height="25.666666666666671"/>
                                 <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -736,7 +747,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="edP-83-nRy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zlO-TB-7mx">
@@ -780,7 +791,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJu-fH-gp5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="835"/>
+            <point key="canvasLocation" x="774" y="777"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="n4Z-m4-TJj">
@@ -791,7 +802,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022년 8월 14일 감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5e-Y5-hMq">
-                                <rect key="frame" x="31.999999999999986" y="69" width="214.66666666666663" height="25.666666666666671"/>
+                                <rect key="frame" x="31.999999999999986" y="69" width="215.66666666666663" height="25.666666666666671"/>
                                 <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -837,7 +848,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOt-kw-ULd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1451" y="836"/>
+            <point key="canvasLocation" x="1477" y="776"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="CTt-v7-UER">
@@ -910,7 +921,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Haa-oJ-KcS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2153.6231884057975" y="836.38392857142856"/>
+            <point key="canvasLocation" x="2188" y="778"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Pae-le-IZS">
@@ -968,13 +979,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg7-gB-lf1">
-                                                    <rect key="frame" x="35" y="16.666666666666668" width="40.666666666666657" height="22.000000000000004"/>
+                                                    <rect key="frame" x="35" y="16.666666666666664" width="40.333333333333343" height="21.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2G-Iz-lhs">
-                                                    <rect key="frame" x="325" y="16.666666666666668" width="35" height="22.000000000000004"/>
+                                                    <rect key="frame" x="325.33333333333331" y="16.666666666666664" width="34.666666666666686" height="21.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_2"/>
                                                     <nil key="highlightedColor"/>
@@ -1008,7 +1019,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEk-hg-lgr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="2933"/>
+            <point key="canvasLocation" x="63" y="2872"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="xsS-zS-VV5">
@@ -1083,7 +1094,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1h-mG-ffq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="698.55072463768124" y="2931.6964285714284"/>
+            <point key="canvasLocation" x="743" y="2871"/>
         </scene>
         <!--SettingVC-->
         <scene sceneID="fKn-Xr-eXy">
@@ -1119,7 +1130,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHB-Ia-fka">
-                                                    <rect key="frame" x="35" y="16.666666666666668" width="40.666666666666657" height="22.000000000000004"/>
+                                                    <rect key="frame" x="35" y="16.666666666666664" width="40.333333333333343" height="21.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
@@ -1151,7 +1162,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XP-ok-G6p">
-                                                    <rect key="frame" x="35" y="16.666666666666668" width="40.666666666666657" height="22.000000000000004"/>
+                                                    <rect key="frame" x="35" y="16.666666666666664" width="40.333333333333343" height="21.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
@@ -1179,13 +1190,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-d9-P7v">
-                                                    <rect key="frame" x="35" y="16.666666666666668" width="40.666666666666657" height="22.000000000000004"/>
+                                                    <rect key="frame" x="35" y="16.666666666666664" width="40.333333333333343" height="21.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su6-oP-aDR">
-                                                    <rect key="frame" x="325" y="16.666666666666668" width="35" height="22.000000000000004"/>
+                                                    <rect key="frame" x="325.33333333333331" y="16.666666666666664" width="34.666666666666686" height="21.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_2"/>
                                                     <nil key="highlightedColor"/>
@@ -1227,12 +1238,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4j-T4-N4u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="17" y="1558"/>
+            <point key="canvasLocation" x="62" y="1497"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Fq-Cs-qeT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rOL-mg-XPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController modalPresentationStyle="fullScreen" id="knB-ak-dA3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QnC-qz-DWV">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -1242,13 +1252,13 @@
                         <segue destination="e29-Tr-U6I" kind="relationship" relationship="rootViewController" id="Xz7-FS-MdF"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rOL-mg-XPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="62" y="97"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gay-DJ-Y8C">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8ba-Ov-SjC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="main" modalPresentationStyle="fullScreen" id="n34-LA-5nJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="edv-BO-oSD">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -1258,8 +1268,9 @@
                         <segue destination="Rmf-89-8Rf" kind="relationship" relationship="rootViewController" id="F4e-Du-ufC"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ba-Ov-SjC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-675" y="835"/>
+            <point key="canvasLocation" x="-675" y="777"/>
         </scene>
     </scenes>
     <resources>
@@ -1299,6 +1310,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
