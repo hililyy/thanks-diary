@@ -12,9 +12,14 @@ import Floaty
 class MainVC: UIViewController {
 
     @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var diaryTableView: UITableView!
+    @IBOutlet weak var emptyView: UIView!
     
+    var tmpData: [String] = ["안뇽"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.diaryTableView.delegate = self
+        self.diaryTableView.dataSource = self
         setFloty()
         setCalender()
     }
@@ -23,12 +28,13 @@ class MainVC: UIViewController {
         let floaty = Floaty()
         floaty.buttonColor = UIColor(named: "mainColor")!
         floaty.plusColor = UIColor(named: "whiteColor")!
+        floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!)
         floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
             guard let vc =  self.storyboard?.instantiateViewController(identifier: "WriteVC") as? WriteVC else { return }
             self.navigationController?.pushViewController(vc, animated: true)
             floaty.close()
         })
-        floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!)
+
         self.view.addSubview(floaty)
     }
     
@@ -45,9 +51,9 @@ class MainVC: UIViewController {
         self.calendar.appearance.subtitleFont = UIFont(name: "KOTRA_GOTHIC", size: 17)
         
         self.calendar.appearance.weekdayTextColor = UIColor(named: "grayColor_1")
-        self.calendar.appearance.calendar.headerHeight = 70
+        self.calendar.appearance.calendar.headerHeight = 50
         self.calendar.weekdayHeight = 30
-        self.calendar.rowHeight = 50
+        self.calendar.rowHeight = 40
 
     }
     
@@ -62,5 +68,25 @@ class MainVC: UIViewController {
 }
 
 extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+    
+}
+
+extension MainVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tmpData.count == 0 {
+            emptyView.isHidden = false
+            diaryTableView.isScrollEnabled = false
+            return 0
+        } else {
+            emptyView.isHidden = true
+            return tmpData.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = diaryTableView.dequeueReusableCell(withIdentifier: "MainDiaryListCell", for: indexPath)
+        return cell
+    }
+    
     
 }
