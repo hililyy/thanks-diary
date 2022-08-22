@@ -16,7 +16,6 @@
 		2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D881328ABB3A000576E56 /* KOTRA_GOTHIC.ttf */; };
 		2A0D881828ABB80900576E56 /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D881728ABB80900576E56 /* wave.json */; };
 		2A0D881A28ABB83A00576E56 /* dot.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D881928ABB83A00576E56 /* dot.json */; };
-		2A7241C728AFCE080040ADE9 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A7241C628AFCE080040ADE9 /* Setting.storyboard */; };
 		2A7241C928B019C00040ADE9 /* SettingAlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241C828B019C00040ADE9 /* SettingAlarmCell.swift */; };
 		2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */; };
 		2A7241CD28B26AAD0040ADE9 /* WriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CC28B26AAD0040ADE9 /* WriteVC.swift */; };
@@ -24,6 +23,8 @@
 		2A7241D128B2A5950040ADE9 /* DeletePopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D028B2A5950040ADE9 /* DeletePopupVC.swift */; };
 		2A7241D328B2C1070040ADE9 /* MainDiaryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D228B2C1070040ADE9 /* MainDiaryListCell.swift */; };
 		2A7241D628B2C64E0040ADE9 /* DiaryCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D428B2C64E0040ADE9 /* DiaryCoreData.xcdatamodeld */; };
+		2A7241D828B3EDE60040ADE9 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D728B3EDE60040ADE9 /* MainModel.swift */; };
+		2A7241DA28B3EDF70040ADE9 /* DiaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */; };
 		2A9F34FD28AC1233006CCF7C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2A9F34FC28AC1233006CCF7C /* Lottie */; };
 		2A9F350228AC20D5006CCF7C /* FirstStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F350128AC20D5006CCF7C /* FirstStartVC.swift */; };
 		2A9F350428AC20FC006CCF7C /* SecondStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F350328AC20FC006CCF7C /* SecondStartVC.swift */; };
@@ -49,7 +50,6 @@
 		2A0D881328ABB3A000576E56 /* KOTRA_GOTHIC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KOTRA_GOTHIC.ttf; sourceTree = "<group>"; };
 		2A0D881728ABB80900576E56 /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
 		2A0D881928ABB83A00576E56 /* dot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dot.json; sourceTree = "<group>"; };
-		2A7241C628AFCE080040ADE9 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		2A7241C828B019C00040ADE9 /* SettingAlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmCell.swift; sourceTree = "<group>"; };
 		2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWVC.swift; sourceTree = "<group>"; };
 		2A7241CC28B26AAD0040ADE9 /* WriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVC.swift; sourceTree = "<group>"; };
@@ -57,6 +57,8 @@
 		2A7241D028B2A5950040ADE9 /* DeletePopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePopupVC.swift; sourceTree = "<group>"; };
 		2A7241D228B2C1070040ADE9 /* MainDiaryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDiaryListCell.swift; sourceTree = "<group>"; };
 		2A7241D528B2C64E0040ADE9 /* DiaryCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DiaryCoreData.xcdatamodel; sourceTree = "<group>"; };
+		2A7241D728B3EDE60040ADE9 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntity.swift; sourceTree = "<group>"; };
 		2A9F350128AC20D5006CCF7C /* FirstStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStartVC.swift; sourceTree = "<group>"; };
 		2A9F350328AC20FC006CCF7C /* SecondStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStartVC.swift; sourceTree = "<group>"; };
 		2A9F350528AC2109006CCF7C /* ThirdStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdStartVC.swift; sourceTree = "<group>"; };
@@ -123,7 +125,6 @@
 				2A0D881528ABB6D900576E56 /* Style */,
 				2A0D880428A540FB00576E56 /* Main.storyboard */,
 				2A7241D428B2C64E0040ADE9 /* DiaryCoreData.xcdatamodeld */,
-				2A7241C628AFCE080040ADE9 /* Setting.storyboard */,
 				2A0D880728A540FE00576E56 /* Assets.xcassets */,
 				2A0D880928A540FE00576E56 /* LaunchScreen.storyboard */,
 				2A0D880C28A540FE00576E56 /* Info.plist */,
@@ -266,6 +267,8 @@
 		2A9F350C28AE1BF9006CCF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2A7241D728B3EDE60040ADE9 /* MainModel.swift */,
+				2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,7 +376,6 @@
 			files = (
 				2A0D880B28A540FE00576E56 /* LaunchScreen.storyboard in Resources */,
 				2A0D880828A540FE00576E56 /* Assets.xcassets in Resources */,
-				2A7241C728AFCE080040ADE9 /* Setting.storyboard in Resources */,
 				2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */,
 				2A0D881828ABB80900576E56 /* wave.json in Resources */,
 				2A0D880628A540FB00576E56 /* Main.storyboard in Resources */,
@@ -438,6 +440,7 @@
 				2A9F351528AE63ED006CCF7C /* SettingSwitchCell.swift in Sources */,
 				2A7241D628B2C64E0040ADE9 /* DiaryCoreData.xcdatamodeld in Sources */,
 				2A7241CD28B26AAD0040ADE9 /* WriteVC.swift in Sources */,
+				2A7241D828B3EDE60040ADE9 /* MainModel.swift in Sources */,
 				2A9F351728AE63FD006CCF7C /* SettingMoreCell.swift in Sources */,
 				2A9F350628AC2109006CCF7C /* ThirdStartVC.swift in Sources */,
 				2A9F350828AC2197006CCF7C /* LoginVC.swift in Sources */,
@@ -446,6 +449,7 @@
 				2A9F350E28AE1C0D006CCF7C /* MainVC.swift in Sources */,
 				2A7241CF28B2A57E0040ADE9 /* ReadVC.swift in Sources */,
 				2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */,
+				2A7241DA28B3EDF70040ADE9 /* DiaryEntity.swift in Sources */,
 				2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */,
 				2A9F351928AE6410006CCF7C /* SettingLabelCell.swift in Sources */,
 				2A7241D128B2A5950040ADE9 /* DeletePopupVC.swift in Sources */,

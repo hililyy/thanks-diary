@@ -8,6 +8,7 @@
 import UIKit
 import FSCalendar
 import Floaty
+import CoreData
 
 class MainVC: UIViewController {
 
@@ -15,15 +16,46 @@ class MainVC: UIViewController {
     @IBOutlet weak var diaryTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     
-    var tmpData: [String] = ["안뇽"]
+    var tmpData: [String] = []
+    var container: NSPersistentContainer!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         setFloty()
         setCalender()
+
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.container = appDelegate.persistentContainer
+        getData()
+    }
+    func getData() {
+        do{
+            let contact = try self.container.viewContext.fetch(DiaryData.fetchRequest()) as! [DiaryData]
+            contact.forEach {
+                print($0.title)
+                print($0.contents)
+                print($0.date)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
+    func setData() {
+        let entity = NSEntityDescription.entity(forEntityName: "DiaryData", in: self.container.viewContext)
+        
+        let diary = NSManagedObject(entity: entity!, insertInto: self.container.viewContext)
+        diary.setValue("저장되랏", forKey: "title")
+        diary.setValue("wowwow", forKey: "contents")
+        diary.setValue("2022-08-23", forKey: "date")
+        
+        do{
+            try self.container.viewContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
     func setFloty() {
         let floaty = Floaty()
         floaty.buttonColor = UIColor(named: "mainColor")!
@@ -74,11 +106,12 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tmpData.count == 0 {
-            emptyView.isHidden = false
+            self.emptyView.isHidden = false
             diaryTableView.isScrollEnabled = false
             return 0
         } else {
-            emptyView.isHidden = true
+            self.emptyView.isHidden = true
+            self.emptyView.frame.size.height = 0
             return tmpData.count
         }
     }
