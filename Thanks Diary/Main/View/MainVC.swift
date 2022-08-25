@@ -27,35 +27,27 @@ class MainVC: UIViewController {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.container = appDelegate.persistentContainer
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         getData()
     }
+
     func getData() {
         do{
             let contact = try self.container.viewContext.fetch(DiaryData.fetchRequest()) as! [DiaryData]
-            contact.forEach {
-                print($0.title)
-                print($0.contents)
-                print($0.date)
+            contact.forEach {count in
+                print(count.title)
+                print(count.contents)
+                print(count.date)
             }
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    func setData() {
-        let entity = NSEntityDescription.entity(forEntityName: "DiaryData", in: self.container.viewContext)
-        
-        let diary = NSManagedObject(entity: entity!, insertInto: self.container.viewContext)
-        diary.setValue("저장되랏", forKey: "title")
-        diary.setValue("wowwow", forKey: "contents")
-        diary.setValue("2022-08-23", forKey: "date")
-        
-        do{
-            try self.container.viewContext.save()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
     func setFloty() {
         let floaty = Floaty()
         floaty.buttonColor = UIColor(named: "mainColor")!
@@ -89,9 +81,6 @@ class MainVC: UIViewController {
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
 
     @IBAction func goSetting(_ sender: Any) {
         guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
