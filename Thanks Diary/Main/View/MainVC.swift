@@ -24,27 +24,71 @@ class MainVC: UIViewController {
         self.diaryTableView.dataSource = self
         setFloty()
         setCalender()
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.container = appDelegate.persistentContainer
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        getData()
+//        getData()
+//        updateData()
+//        getData()
+//        deleteData()
+//        getData()
     }
 
     func getData() {
-        do{
-            let contact = try self.container.viewContext.fetch(DiaryData.fetchRequest()) as! [DiaryData]
-            contact.forEach {count in
-                print(count.title)
-                print(count.contents)
-                print(count.date)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DiaryData")
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "title") as! String)
+                print(data.value(forKey: "contents") as! String)
+                print(data.value(forKey: "date") as! String)
             }
         } catch {
-            print(error.localizedDescription)
+            print("error")
+        }
+    }
+    
+    func updateData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
+        fetchRequest.predicate = NSPredicate(format: "저장되랏")
+        
+        do {
+            let test = try managedContext.fetch(fetchRequest)
+            let objectUpdate = test[0] as! NSManagedObject
+            objectUpdate.setValue("newName", forKey: "title")
+            objectUpdate.setValue("newEmail", forKey: "contents")
+            do {
+                try managedContext.save()
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    func deleteData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
+        fetchRequest.predicate = NSPredicate(format: "username = %@", "name1")
+        
+        do {
+            let test = try managedContext.fetch(fetchRequest)
+            let objectToDelete = test[0] as! NSManagedObject
+            managedContext.delete(objectToDelete)
+            do {
+                try managedContext.save()
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
         }
     }
     

@@ -31,22 +31,22 @@ class WriteVC: UIViewController {
         self.contentsTextView.layer.borderWidth = 1
         self.contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.container = appDelegate.persistentContainer
     }
         
     func setData() {
-        let entity = NSEntityDescription.entity(forEntityName: "DiaryData", in: self.container.viewContext)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let userEntity = NSEntityDescription.entity(forEntityName: "DiaryData", in: managedContext)!
         
-        let diary = NSManagedObject(entity: entity!, insertInto: self.container.viewContext)
-        diary.setValue(self.titleString, forKey: "title")
-        diary.setValue(self.contentsString, forKey: "contents")
-        diary.setValue(self.todayDate, forKey: "date")
+        let user = NSManagedObject(entity: userEntity, insertInto: managedContext)
+        user.setValue(self.titleString, forKeyPath: "title")
+        user.setValue(self.contentsString, forKeyPath: "contents")
+        user.setValue(self.todayDate, forKeyPath: "date")
         
-        do{
-            try self.container.viewContext.save()
-        } catch {
-            print(error.localizedDescription)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("error : \(error)")
         }
     }
     
