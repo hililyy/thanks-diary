@@ -28,11 +28,11 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//        getData()
-//        updateData()
-//        getData()
-//        deleteData()
-//        getData()
+        getData()
+        updateData()
+        getData()
+        deleteData()
+        getData()
     }
 
     func getData() {
@@ -72,6 +72,7 @@ class MainVC: UIViewController {
             print(error)
         }
     }
+    
     func deleteData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
