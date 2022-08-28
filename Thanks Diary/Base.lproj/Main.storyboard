@@ -1280,6 +1280,21 @@
             </objects>
             <point key="canvasLocation" x="-675" y="777"/>
         </scene>
+        <!--Setting SupportVC-->
+        <scene sceneID="kMO-zy-zoj">
+            <objects>
+                <viewController id="1u8-Gx-lQ9" customClass="SettingSupportVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l7j-2n-ESF">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="drl-hX-6xw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nJa-JJ-BBC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="2182"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_back" width="32" height="32"/>
