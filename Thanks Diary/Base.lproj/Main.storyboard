@@ -487,6 +487,9 @@
                                                 <state key="normal" image="ic_one">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="xvz-4z-fPE"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Rm-Xf-dxT">
                                                 <rect key="frame" x="107" y="0.0" width="92" height="92"/>
@@ -499,6 +502,9 @@
                                                 <state key="normal" image="ic_two">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="Rxx-8l-603"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMU-FX-XJ7">
                                                 <rect key="frame" x="214" y="0.0" width="92" height="92"/>
@@ -511,6 +517,9 @@
                                                 <state key="normal" image="ic_three">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="1XW-ts-BlJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -534,6 +543,9 @@
                                                 <state key="normal" image="ic_four">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="ZtN-Db-qPn"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chf-KA-kkd">
                                                 <rect key="frame" x="107" y="0.0" width="92" height="92.333333333333329"/>
@@ -546,6 +558,9 @@
                                                 <state key="normal" image="ic_five">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="Ehf-iS-v1N"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsQ-qD-q1W">
                                                 <rect key="frame" x="214" y="0.0" width="92" height="92.333333333333329"/>
@@ -558,6 +573,9 @@
                                                 <state key="normal" image="ic_six">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="Dik-Sv-dAW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -575,6 +593,9 @@
                                                 <state key="normal" image="ic_seven">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="Gqe-CF-UGP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUy-4K-i3J">
                                                 <rect key="frame" x="107" y="0.0" width="92" height="92"/>
@@ -587,6 +608,9 @@
                                                 <state key="normal" image="ic_eight">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="efy-NB-59N"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDQ-ea-5xs">
                                                 <rect key="frame" x="214" y="0.0" width="92" height="92"/>
@@ -599,6 +623,9 @@
                                                 <state key="normal" image="ic_nine">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="ZZK-AR-bZ7"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -616,6 +643,9 @@
                                                 <state key="normal" image="ic_delete">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchBackBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="kp3-SX-NaY"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhL-WG-zEw">
                                                 <rect key="frame" x="107" y="0.0" width="92" height="92"/>
@@ -628,6 +658,9 @@
                                                 <state key="normal" image="ic_zero">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchNumberBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="KyT-Rq-hzH"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXd-VP-OWF">
                                                 <rect key="frame" x="214" y="0.0" width="92" height="92"/>
@@ -640,6 +673,9 @@
                                                 <state key="normal" image="ic_ok">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="touchEnterBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="SvW-pa-1CE"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -687,13 +723,18 @@
                     <connections>
                         <outlet property="deleteBtn" destination="pTP-Uc-BgS" id="9Sv-ow-VnQ"/>
                         <outlet property="eightBtn" destination="gUy-4K-i3J" id="PYK-tR-gf2"/>
+                        <outlet property="firstImg" destination="MP0-PF-TKo" id="59i-wo-vx3"/>
                         <outlet property="fiveBtn" destination="chf-KA-kkd" id="xRw-VW-etk"/>
                         <outlet property="fourBtn" destination="iwO-z7-SvH" id="CuA-Cg-gqC"/>
+                        <outlet property="fourthImg" destination="Izl-6w-GHT" id="zuV-dt-xwn"/>
+                        <outlet property="message" destination="qQR-O4-0M7" id="te6-GT-Q1R"/>
                         <outlet property="nineBtn" destination="DDQ-ea-5xs" id="ie0-mt-ErW"/>
                         <outlet property="okBtn" destination="EXd-VP-OWF" id="r7w-Y9-ccD"/>
                         <outlet property="oneBtn" destination="LFq-yG-YUL" id="9X0-UL-ZBi"/>
+                        <outlet property="secondImg" destination="AaA-Ha-Bpb" id="KZR-aD-SkP"/>
                         <outlet property="sevenBtn" destination="pTK-cw-KWT" id="fzE-da-Jd9"/>
                         <outlet property="sixBtn" destination="bsQ-qD-q1W" id="qcf-HB-ynX"/>
+                        <outlet property="thirdImg" destination="R4X-De-kiA" id="i6W-F6-CYn"/>
                         <outlet property="threeBtn" destination="mMU-FX-XJ7" id="age-rX-sOc"/>
                         <outlet property="twoBtn" destination="1Rm-Xf-dxT" id="rqB-WM-eMT"/>
                         <outlet property="zeroBtn" destination="bhL-WG-zEw" id="kJO-aZ-tHV"/>

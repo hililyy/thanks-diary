@@ -103,7 +103,6 @@ class MainVC: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
             floaty.close()
         })
-
         self.view.addSubview(floaty)
     }
     
@@ -154,6 +153,4 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         let cell = diaryTableView.dequeueReusableCell(withIdentifier: "MainDiaryListCell", for: indexPath)
         return cell
     }
-    
-    
 }
