@@ -6,17 +6,29 @@
 //
 
 import UIKit
+import Lottie
 
 class ThirdStartVC: UIViewController {
 
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var lottieView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextBtn.layer.cornerRadius = 20
+        
+        let animationView: AnimationView = .init(name: "go")
+        self.view.addSubview(animationView)
+        
+        animationView.frame = self.lottieView.bounds
+        animationView.center = self.lottieView.center
+        animationView.contentMode = .scaleAspectFit
+        animationView.play()
+        animationView.loopMode = .playOnce
     }
     
     @IBAction func goStart(_ sender: Any) {
+        LocalDataStore.localDataStore.setNewUserData(newData: true)
         self.showMainViewController()
     }
     

@@ -23,7 +23,11 @@ class SplashVC: UIViewController {
         animationView.loopMode = .loop
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.showFirstViewController()
+            if LocalDataStore.localDataStore.getNewUserData() == true {
+                self.showFirstViewController()
+            } else {
+                self.showFirstViewController()
+            }
         }
     }
     
@@ -33,5 +37,11 @@ class SplashVC: UIViewController {
         navi.modalPresentationStyle = .currentContext
         present(navi, animated:false, completion: nil)
         return
+    }
+    
+    func showMainViewController() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
 }

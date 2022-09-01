@@ -28,11 +28,11 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        getData()
-        updateData()
-        getData()
-        deleteData()
-        getData()
+//        getData()
+//        updateData()
+//        getData()
+//        deleteData()
+//        getData()
     }
 
     func getData() {

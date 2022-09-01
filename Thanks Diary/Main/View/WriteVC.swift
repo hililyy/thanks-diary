@@ -50,6 +50,10 @@ class WriteVC: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+    }
+
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -64,3 +68,4 @@ class WriteVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
+
