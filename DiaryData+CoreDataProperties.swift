@@ -2,7 +2,7 @@
 //  DiaryData+CoreDataProperties.swift
 //  
 //
-//  Created by 강조은 on 2022/08/23.
+//  Created by 강조은 on 2022/09/03.
 //
 //
 
@@ -16,8 +16,10 @@ extension DiaryData {
         return NSFetchRequest<DiaryData>(entityName: "DiaryData")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var contents: String?
     @NSManaged public var date: String?
+    @NSManaged public var contents: String?
+    @NSManaged public var title: String?
+    @NSManaged public var type: String?
+    @NSManaged public var id: Int32
 
 }

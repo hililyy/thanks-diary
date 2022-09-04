@@ -3,9 +3,11 @@
     <entity name="DiaryData" representedClassName="DiaryData" syncable="YES" codeGenerationType="class">
         <attribute name="contents" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="DiaryData" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="DiaryData" positionX="-54" positionY="-9" width="128" height="104"/>
     </elements>
 </model>

@@ -11,5 +11,6 @@ enum LocalDataKeySet: String {
     case IS_NEW_USER = "is_new_user"
     case IS_PUSH_ALARM = "is_push_alarm"
     case IS_PASSWORD = "is_password"
-    case PASSWORD = "password"
+    case PASSWORD_NUMBER = "password_number"
+    case ALARM_TIME = "alarm_time"
 }

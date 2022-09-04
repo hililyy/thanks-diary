@@ -8,7 +8,9 @@
 import Foundation
 
 struct DiaryEntity {
+    var id: Int?
+    var category: String?
     var title: String?
     var contents: String?
-    var date: Date?
+    var date: String?
 }

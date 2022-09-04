@@ -15,9 +15,9 @@ class WriteVC: UIViewController {
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var completeBtn: UIButton!
     var container: NSPersistentContainer!
-    var titleString: String?
-    var contentsString: String?
-    var todayDate: String?
+    var titleString: String = ""
+    var contentsString: String = ""
+    var todayDate: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,24 +30,45 @@ class WriteVC: UIViewController {
         self.contentsTextView.layer.cornerRadius = 20
         self.contentsTextView.layer.borderWidth = 1
         self.contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
+        setTitle()
         
     }
         
     func setData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let userEntity = NSEntityDescription.entity(forEntityName: "DiaryData", in: managedContext)!
+            let context = appDelegate.persistentContainer.viewContext
         
-        let user = NSManagedObject(entity: userEntity, insertInto: managedContext)
-        user.setValue(self.titleString, forKeyPath: "title")
-        user.setValue(self.contentsString, forKeyPath: "contents")
-        user.setValue(self.todayDate, forKeyPath: "date")
+        let entity = NSEntityDescription.entity(forEntityName: "DiaryData", in: context)
         
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("error : \(error)")
+        if let entity = entity {
+            let managedObject = NSManagedObject(entity: entity, insertInto: context)
+            
+            managedObject.setValue(self.titleString, forKey: "title")
+            managedObject.setValue(self.contentsString, forKey: "contents")
+            managedObject.setValue(self.todayDate, forKey: "date")
+            
+            do {
+                try context.save()
+                return
+            } catch {
+                print(error.localizedDescription)
+                return
+            }
+        } else {
+            return
         }
+}
+    
+    func setTitle() {
+        self.titleString = changeDateToString(date: Date(), formatString: "yyyy년 M월 d일")
+        self.diaryTitle.text = "\(titleString) 감사일기"
+    }
+    
+    func changeDateToString(date: Date, formatString: String) -> String {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = formatString
+        return dateFormatter.string(from: date)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

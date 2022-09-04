@@ -24,7 +24,7 @@ class SplashVC: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             if LocalDataStore.localDataStore.getNewUserData() == true {
-                self.showFirstViewController()
+                self.showMainViewController()
             } else {
                 self.showFirstViewController()
             }

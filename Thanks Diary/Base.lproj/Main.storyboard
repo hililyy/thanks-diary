@@ -404,6 +404,7 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_not_today" translatesAutoresizingMaskIntoConstraints="NO" id="APX-Wg-Za5">
                                             <rect key="frame" x="25" y="0.0" width="340" height="299"/>
+                                            <color key="backgroundColor" red="0.76003870959999997" green="0.67293762109999999" blue="0.87812966110000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>

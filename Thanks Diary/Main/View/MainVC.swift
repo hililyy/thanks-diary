@@ -16,39 +16,54 @@ class MainVC: UIViewController {
     @IBOutlet weak var diaryTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     
-    var tmpData: [String] = []
+    var tmpData: [DiaryEntity] = []
     var container: NSPersistentContainer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         setFloty()
         setCalender()
+        setDiaryData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//        getData()
-//        updateData()
-//        getData()
-//        deleteData()
-//        getData()
+        getData()
+    }
+    
+    func setDiaryData() {
+        
     }
 
     func getData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DiaryData")
-        
+            let managedContext = appDelegate.persistentContainer.viewContext
+            
+            // Entity의 fetchRequest 생성
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DiaryData")
         do {
             let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
+
+            for data in result {
                 print(data.value(forKey: "title") as! String)
                 print(data.value(forKey: "contents") as! String)
                 print(data.value(forKey: "date") as! String)
+                let tmpEntity = DiaryEntity(
+                    id: 1,
+                    category: "long",
+                    title: data.value(forKey: "title") as? String,
+                    contents: data.value(forKey: "contents") as? String,
+                    date: data.value(forKey: "date") as? String
+                )
+                tmpData.append(tmpEntity)
             }
-        } catch {
-            print("error")
+            print(result)
+            print(tmpData)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
@@ -56,13 +71,15 @@ class MainVC: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
-        fetchRequest.predicate = NSPredicate(format: "저장되랏")
+        fetchRequest.predicate = NSPredicate(format: "title = 123")
         
         do {
-            let test = try managedContext.fetch(fetchRequest)
-            let objectUpdate = test[0] as! NSManagedObject
+            let result = try managedContext.fetch(fetchRequest)
+            let objectUpdate = result[0] as! NSManagedObject
+            print(result)
             objectUpdate.setValue("newName", forKey: "title")
-            objectUpdate.setValue("newEmail", forKey: "contents")
+            objectUpdate.setValue("newContents", forKey: "contents")
+            print(result)
             do {
                 try managedContext.save()
             } catch {
@@ -77,12 +94,14 @@ class MainVC: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
-        fetchRequest.predicate = NSPredicate(format: "username = %@", "name1")
+        fetchRequest.predicate = NSPredicate(format: "title = 123")
         
         do {
             let test = try managedContext.fetch(fetchRequest)
+            print(test)
             let objectToDelete = test[0] as! NSManagedObject
             managedContext.delete(objectToDelete)
+            print(test)
             do {
                 try managedContext.save()
             } catch {
@@ -122,7 +141,6 @@ class MainVC: UIViewController {
         self.calendar.appearance.calendar.headerHeight = 50
         self.calendar.weekdayHeight = 30
         self.calendar.rowHeight = 40
-
     }
     
 
