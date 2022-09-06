@@ -17,7 +17,9 @@ class WriteVC: UIViewController {
     var container: NSPersistentContainer!
     var titleString: String = ""
     var contentsString: String = ""
-    var todayDate: String = ""
+    var todayString: String = ""
+    let model = MainModel.model
+    var editFlag: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +32,14 @@ class WriteVC: UIViewController {
         self.contentsTextView.layer.cornerRadius = 20
         self.contentsTextView.layer.borderWidth = 1
         self.contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
+        
         setTitle()
         
+        if editFlag == true {
+            self.titleTextfield.text = titleString
+            self.contentsTextView.text = contentsString
+            self.diaryTitle.text = todayString
+        }
     }
         
     func setData() {
@@ -45,7 +53,8 @@ class WriteVC: UIViewController {
             
             managedObject.setValue(self.titleString, forKey: "title")
             managedObject.setValue(self.contentsString, forKey: "contents")
-            managedObject.setValue(self.todayDate, forKey: "date")
+            managedObject.setValue(self.todayString, forKey: "date")
+            managedObject.setValue("detail", forKey: "type")
             
             do {
                 try context.save()
@@ -60,8 +69,8 @@ class WriteVC: UIViewController {
 }
     
     func setTitle() {
-        self.titleString = changeDateToString(date: Date(), formatString: "yyyy년 M월 d일")
-        self.diaryTitle.text = "\(titleString) 감사일기"
+        self.todayString = changeDateToString(date: Date(), formatString: "yyyy년 M월 d일")
+        self.diaryTitle.text = "\(todayString) 감사일기"
     }
     
     func changeDateToString(date: Date, formatString: String) -> String {
@@ -80,13 +89,33 @@ class WriteVC: UIViewController {
     }
     
     @IBAction func goComplete(_ sender: Any) {
-        self.titleString = titleTextfield.text ?? ""
-        self.contentsString = contentsTextView.text
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        self.todayDate = formatter.string(from: Date())
-        setData()
-        self.navigationController?.popViewController(animated: true)
+        if model.longDiaryFlag == false {
+            model.longDiaryFlag = true
+            LocalDataStore.localDataStore.setTodayDetailData(newData: true)
+            self.titleString = titleTextfield.text ?? ""
+            self.contentsString = contentsTextView.text
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            self.todayString = formatter.string(from: Date())
+            setData()
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            // 오늘 더 작성 못한다고 팝업
+            print("더 못씀")
+        }
+        // update
+        if editFlag == true {
+            LocalDataStore.localDataStore.setTodayDetailData(newData: true)
+            self.titleString = titleTextfield.text ?? ""
+            self.contentsString = contentsTextView.text
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            self.todayString = formatter.string(from: Date())
+            model.updateDetailData(dateString: self.todayString, titleString: self.titleString, contentsString: self.contentsString)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
+            UIApplication.shared.windows.first?.rootViewController = vc
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+        }
     }
 }
 

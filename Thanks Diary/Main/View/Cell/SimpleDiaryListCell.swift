@@ -1,14 +1,15 @@
 //
-//  MainDiaryListCell.swift
+//  SimpleDiaryListCell.swift
 //  Thanks Diary
 //
-//  Created by 강조은 on 2022/08/22.
+//  Created by 강조은 on 2022/09/04.
 //
 
 import UIKit
 
-class MainDiaryListCell: UITableViewCell {
+class SimpleDiaryListCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

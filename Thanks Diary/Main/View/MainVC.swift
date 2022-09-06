@@ -16,107 +16,43 @@ class MainVC: UIViewController {
     @IBOutlet weak var diaryTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     
-    var tmpData: [DiaryEntity] = []
     var container: NSPersistentContainer!
+    
+    let model = MainModel.model
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        model.longDiaryFlag = LocalDataStore.localDataStore.getTodayDetailData()
+        model.getDetailData()
+        model.getSimpleData()
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         setFloty()
         setCalender()
-        setDiaryData()
+
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        getData()
-    }
-    
-    func setDiaryData() {
-        
+        model.getDetailData()
+        model.getSimpleData()
+        diaryTableView.reloadData()
     }
 
-    func getData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            let managedContext = appDelegate.persistentContainer.viewContext
-            
-            // Entity의 fetchRequest 생성
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DiaryData")
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-
-            for data in result {
-                print(data.value(forKey: "title") as! String)
-                print(data.value(forKey: "contents") as! String)
-                print(data.value(forKey: "date") as! String)
-                let tmpEntity = DiaryEntity(
-                    id: 1,
-                    category: "long",
-                    title: data.value(forKey: "title") as? String,
-                    contents: data.value(forKey: "contents") as? String,
-                    date: data.value(forKey: "date") as? String
-                )
-                tmpData.append(tmpEntity)
-            }
-            print(result)
-            print(tmpData)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
-    
-    func updateData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
-        fetchRequest.predicate = NSPredicate(format: "title = 123")
-        
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            let objectUpdate = result[0] as! NSManagedObject
-            print(result)
-            objectUpdate.setValue("newName", forKey: "title")
-            objectUpdate.setValue("newContents", forKey: "contents")
-            print(result)
-            do {
-                try managedContext.save()
-            } catch {
-                print(error)
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
-    func deleteData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
-        fetchRequest.predicate = NSPredicate(format: "title = 123")
-        
-        do {
-            let test = try managedContext.fetch(fetchRequest)
-            print(test)
-            let objectToDelete = test[0] as! NSManagedObject
-            managedContext.delete(objectToDelete)
-            print(test)
-            do {
-                try managedContext.save()
-            } catch {
-                print(error)
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
     func setFloty() {
         let floaty = Floaty()
         floaty.buttonColor = UIColor(named: "mainColor")!
         floaty.plusColor = UIColor(named: "whiteColor")!
-        floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!)
+        floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!, handler: { item in
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.delegate = self
+                self.present(vc, animated: true, completion: nil)
+            }
+                floaty.close()
+        })
         floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
             guard let vc =  self.storyboard?.instantiateViewController(identifier: "WriteVC") as? WriteVC else { return }
             self.navigationController?.pushViewController(vc, animated: true)
@@ -124,6 +60,14 @@ class MainVC: UIViewController {
         })
         self.view.addSubview(floaty)
     }
+
+    @IBAction func goSetting(_ sender: Any) {
+        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     func setCalender() {
         self.calendar.delegate = self
@@ -142,33 +86,66 @@ class MainVC: UIViewController {
         self.calendar.weekdayHeight = 30
         self.calendar.rowHeight = 40
     }
-    
-
-    @IBAction func goSetting(_ sender: Any) {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-    
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tmpData.count == 0 {
+        if model.detailData.count == 0 && model.simpleData.count == 0 {
             self.emptyView.isHidden = false
             diaryTableView.isScrollEnabled = false
             return 0
         } else {
             self.emptyView.isHidden = true
             self.emptyView.frame.size.height = 0
-            return tmpData.count
+            return model.detailData.count + model.simpleData.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = diaryTableView.dequeueReusableCell(withIdentifier: "MainDiaryListCell", for: indexPath)
-        return cell
+        if indexPath.row == 0 && !model.detailData.isEmpty {
+            let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
+            cell.titleLabel.text = model.detailData[indexPath.row].title
+            return cell
+        } else {
+            if model.detailData.isEmpty {
+                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+                cell.titleLabel.text = model.simpleData[indexPath.row].contents
+                return cell
+            } else {
+                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+                cell.titleLabel.text = model.simpleData[indexPath.row-1].contents
+                return cell
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .fullScreen
+            vc.selectedDataDate = model.detailData[0].date ?? ""
+            vc.selectedDataTitle = model.detailData[0].title ?? ""
+            vc.selectedDataContents = model.detailData[0].contents ?? ""
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if model.longDiaryFlag == true {
+            if indexPath.row == 0 {
+                return 55
+            } else {
+                return 42
+            }
+        } else {
+            return 42
+        }
+    }
+}
+
+extension MainVC: reloadDelegate {
+    func sendData() {
+        self.diaryTableView.reloadData()
     }
 }

@@ -2,7 +2,7 @@
 //  DiaryData+CoreDataProperties.swift
 //  
 //
-//  Created by 강조은 on 2022/09/03.
+//  Created by 강조은 on 2022/09/05.
 //
 //
 
@@ -20,6 +20,5 @@ extension DiaryData {
     @NSManaged public var contents: String?
     @NSManaged public var title: String?
     @NSManaged public var type: String?
-    @NSManaged public var id: Int32
 
 }

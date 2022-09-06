@@ -36,4 +36,13 @@ class LocalDataStore {
     func setPasswordData(newData: Bool) {
         UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.IS_PASSWORD.rawValue)
     }
+    
+    func getTodayDetailData() -> Bool {
+        let getData = UserDefaults.standard.bool(forKey: LocalDataKeySet.TODAY_DETAIL_DIARY.rawValue)
+        return getData
+    }
+    
+    func setTodayDetailData(newData: Bool) {
+        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.TODAY_DETAIL_DIARY.rawValue)
+    }
 }
