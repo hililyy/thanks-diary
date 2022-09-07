@@ -436,10 +436,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_detail_box" translatesAutoresizingMaskIntoConstraints="NO" id="six-aC-dFR">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="image_detail_box" translatesAutoresizingMaskIntoConstraints="NO" id="six-aC-dFR">
                                                     <rect key="frame" x="20" y="0.0" width="350" height="60"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자세하게 작성한 감사일기 제목입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqq-sm-aEP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="자세하게 작성한 감사일기 제목입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqq-sm-aEP">
                                                     <rect key="frame" x="40" y="11" width="310" height="38"/>
                                                     <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
@@ -468,14 +468,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="간단하게 작성한 감사일기 제목입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lq-3m-riT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="간단하게 작성한 감사일기 제목입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lq-3m-riT">
                                                     <rect key="frame" x="40" y="11" width="317" height="38"/>
                                                     <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_blue_dot_12" translatesAutoresizingMaskIntoConstraints="NO" id="V1F-l2-dhQ">
-                                                    <rect key="frame" x="20" y="26.666666666666668" width="7" height="7.0000000000000036"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ic_blue_dot_12" translatesAutoresizingMaskIntoConstraints="NO" id="V1F-l2-dhQ">
+                                                    <rect key="frame" x="20" y="26.666666666666671" width="7" height="7"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="7" id="CR6-F7-wcH"/>
                                                         <constraint firstAttribute="width" constant="7" id="mLp-R1-9hS"/>
@@ -532,6 +532,7 @@
                         <outlet property="calendar" destination="pLa-OF-Gtn" id="8ng-76-Fmk"/>
                         <outlet property="diaryTableView" destination="GSk-Mz-Wn5" id="BpI-TG-Fmc"/>
                         <outlet property="emptyView" destination="vPC-Co-KWb" id="2Ag-Us-TIm"/>
+                        <outlet property="todayDate" destination="P0R-sM-KPW" id="eGK-jM-5S1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Oi-6J-0b1" sceneMemberID="firstResponder"/>
@@ -1496,7 +1497,6 @@
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="knB-ak-dA3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QnC-qz-DWV">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1512,7 +1512,6 @@
             <objects>
                 <navigationController storyboardIdentifier="main" modalPresentationStyle="fullScreen" id="n34-LA-5nJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="edv-BO-oSD">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1591,42 +1590,75 @@
                                                     <constraint firstAttribute="height" constant="275" id="AP0-yC-8na"/>
                                                 </constraints>
                                             </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ICT-L8-0QI">
+                                                <rect key="frame" x="35" y="205" width="320" height="43"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAL-y9-RvO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="156" height="43"/>
+                                                        <color key="backgroundColor" name="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="156" id="aj9-xv-bKp"/>
+                                                            <constraint firstAttribute="height" constant="43" id="k4M-Kq-hGL"/>
+                                                        </constraints>
+                                                        <color key="tintColor" name="grayColor_1"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="취소">
+                                                            <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="15"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="goBack:" destination="hhR-22-JNe" eventType="touchUpInside" id="975-nL-y94"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cC8-MK-KrE">
+                                                        <rect key="frame" x="164" y="0.0" width="156" height="43"/>
+                                                        <color key="backgroundColor" name="mainColor"/>
+                                                        <color key="tintColor" name="grayColor_1"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="작성 완료">
+                                                            <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="15"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="goEnter:" destination="hhR-22-JNe" eventType="touchUpInside" id="Tcx-Mh-Oar"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="cC8-MK-KrE" firstAttribute="height" secondItem="RAL-y9-RvO" secondAttribute="height" id="6Bg-AS-VH8"/>
+                                                    <constraint firstItem="cC8-MK-KrE" firstAttribute="width" secondItem="RAL-y9-RvO" secondAttribute="width" id="q32-N2-Yxc"/>
+                                                </constraints>
+                                            </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-gI-xKX">
-                                                <rect key="frame" x="30" y="30" width="330" height="141"/>
+                                                <rect key="frame" x="33" y="55" width="324" height="130"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="130" id="3bN-IX-X4L"/>
+                                                    <constraint firstAttribute="width" constant="324" id="E9t-H7-C98"/>
+                                                </constraints>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cC8-MK-KrE">
-                                                <rect key="frame" x="30" y="191" width="330" height="54"/>
-                                                <color key="backgroundColor" name="mainColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="54" id="wy2-JN-dlE"/>
-                                                </constraints>
-                                                <color key="tintColor" name="grayColor_1"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-nY-FHf">
+                                                <rect key="frame" x="313" y="5" width="52" height="52"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="작성 완료">
-                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
-                                                </buttonConfiguration>
+                                                <buttonConfiguration key="configuration" style="plain" image="ic_trash" title=" "/>
                                                 <connections>
-                                                    <action selector="goEnter:" destination="hhR-22-JNe" eventType="touchUpInside" id="Tcx-Mh-Oar"/>
-                                                    <action selector="goStart:" destination="WCw-3Y-DeG" eventType="touchUpInside" id="i0K-FF-bUT"/>
+                                                    <action selector="goDelete:" destination="hhR-22-JNe" eventType="touchUpInside" id="1iA-Aa-kBv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="NUS-wD-6b4" firstAttribute="leading" secondItem="Psz-Q3-aj1" secondAttribute="leading" constant="15" id="167-mc-Dqy"/>
-                                            <constraint firstItem="XgO-gI-xKX" firstAttribute="top" secondItem="Psz-Q3-aj1" secondAttribute="top" constant="30" id="5iW-YA-DGB"/>
-                                            <constraint firstItem="cC8-MK-KrE" firstAttribute="leading" secondItem="Psz-Q3-aj1" secondAttribute="leading" constant="30" id="6lR-Jc-4u9"/>
+                                            <constraint firstAttribute="bottom" secondItem="ICT-L8-0QI" secondAttribute="bottom" constant="27" id="869-3d-Tzb"/>
                                             <constraint firstAttribute="height" constant="275" id="9Qd-Xp-XmL"/>
-                                            <constraint firstItem="cC8-MK-KrE" firstAttribute="centerX" secondItem="Psz-Q3-aj1" secondAttribute="centerX" id="Ab8-QX-d4v"/>
-                                            <constraint firstItem="cC8-MK-KrE" firstAttribute="top" secondItem="XgO-gI-xKX" secondAttribute="bottom" constant="20" id="BwK-V8-0Ov"/>
+                                            <constraint firstItem="ICT-L8-0QI" firstAttribute="top" secondItem="XgO-gI-xKX" secondAttribute="bottom" constant="20" id="DLi-V7-iOH"/>
                                             <constraint firstItem="NUS-wD-6b4" firstAttribute="centerY" secondItem="Psz-Q3-aj1" secondAttribute="centerY" id="Gpz-gf-b6X"/>
+                                            <constraint firstItem="sVT-nY-FHf" firstAttribute="top" secondItem="Psz-Q3-aj1" secondAttribute="top" constant="5" id="Ics-9k-Fm6"/>
                                             <constraint firstItem="XgO-gI-xKX" firstAttribute="centerX" secondItem="Psz-Q3-aj1" secondAttribute="centerX" id="MvB-Ns-iK1"/>
-                                            <constraint firstItem="XgO-gI-xKX" firstAttribute="leading" secondItem="Psz-Q3-aj1" secondAttribute="leading" constant="30" id="UHt-68-qOU"/>
                                             <constraint firstAttribute="trailing" secondItem="NUS-wD-6b4" secondAttribute="trailing" constant="15" id="UnQ-Ca-Qk3"/>
-                                            <constraint firstAttribute="bottom" secondItem="cC8-MK-KrE" secondAttribute="bottom" constant="30" id="gE3-5s-KAw"/>
+                                            <constraint firstItem="sVT-nY-FHf" firstAttribute="width" secondItem="sVT-nY-FHf" secondAttribute="height" multiplier="1:1" id="aei-DE-LRR"/>
+                                            <constraint firstAttribute="trailing" secondItem="sVT-nY-FHf" secondAttribute="trailing" constant="25" id="fic-4I-rZu"/>
+                                            <constraint firstItem="ICT-L8-0QI" firstAttribute="centerX" secondItem="Psz-Q3-aj1" secondAttribute="centerX" id="miz-tF-sJt"/>
                                             <constraint firstItem="NUS-wD-6b4" firstAttribute="centerX" secondItem="Psz-Q3-aj1" secondAttribute="centerX" id="rlc-v9-Bk6"/>
                                         </constraints>
                                     </view>
@@ -1655,6 +1687,7 @@
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="5jQ-iG-6o1" id="n9o-kn-u3X"/>
+                        <outlet property="cancelBtn" destination="RAL-y9-RvO" id="yN9-TW-TOm"/>
                         <outlet property="okBtn" destination="cC8-MK-KrE" id="CQg-0b-VB4"/>
                         <outlet property="simpleTextField" destination="XgO-gI-xKX" id="2x4-xe-OLc"/>
                     </connections>
@@ -1667,9 +1700,6 @@
     <designables>
         <designable name="6MI-aR-JAp">
             <size key="intrinsicContentSize" width="46.333333333333329" height="31.666666666666668"/>
-        </designable>
-        <designable name="zZu-d0-Jke">
-            <size key="intrinsicContentSize" width="44.666666666666664" height="21.666666666666668"/>
         </designable>
     </designables>
     <resources>
@@ -1694,7 +1724,7 @@
         <image name="ic_zero" width="85" height="85"/>
         <image name="image_detail_box" width="344" height="44"/>
         <image name="image_popup2" width="327" height="217"/>
-        <image name="img_bottom" width="358" height="248"/>
+        <image name="img_bottom" width="358" height="260"/>
         <image name="img_gray_line" width="390" height="1"/>
         <image name="img_lock" width="73" height="73"/>
         <image name="img_not_today" width="329" height="161"/>
@@ -1707,6 +1737,9 @@
         </namedColor>
         <namedColor name="mainColor">
             <color red="0.88200002908706665" green="0.91399997472763062" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="whiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

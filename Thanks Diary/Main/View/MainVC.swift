@@ -12,6 +12,7 @@ import CoreData
 
 class MainVC: UIViewController {
 
+    @IBOutlet weak var todayDate: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var diaryTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
@@ -29,8 +30,7 @@ class MainVC: UIViewController {
         self.diaryTableView.dataSource = self
         setFloty()
         setCalender()
-
-        
+        setTodayDate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +59,12 @@ class MainVC: UIViewController {
             floaty.close()
         })
         self.view.addSubview(floaty)
+    }
+    
+    func setTodayDate() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        self.todayDate.text = formatter.string(from: Date())
     }
 
     @IBAction func goSetting(_ sender: Any) {
@@ -92,6 +98,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if model.detailData.count == 0 && model.simpleData.count == 0 {
             self.emptyView.isHidden = false
+            self.emptyView.frame.size.height = 299
             diaryTableView.isScrollEnabled = false
             return 0
         } else {
@@ -120,14 +127,36 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .fullScreen
-            vc.selectedDataDate = model.detailData[0].date ?? ""
-            vc.selectedDataTitle = model.detailData[0].title ?? ""
-            vc.selectedDataContents = model.detailData[0].contents ?? ""
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+        print("index : \(indexPath.row)")
+        if model.longDiaryFlag == true {
+            if indexPath.row == 0 {
+                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.selectedDataDate = model.detailData[0].date ?? ""
+                    vc.selectedDataTitle = model.detailData[0].title ?? ""
+                    vc.selectedDataContents = model.detailData[0].contents ?? ""
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            } else {
+                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.modalPresentationStyle = .overCurrentContext
+                    vc.updateFlag = true
+                    vc.contentsString = model.simpleData[indexPath.row-1].contents ?? ""
+                    vc.delegate = self
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
+        } else {
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.updateFlag = true
+                vc.contentsString = model.simpleData[indexPath.row].contents ?? ""
+                vc.delegate = self
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
     
@@ -145,7 +174,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MainVC: reloadDelegate {
-    func sendData() {
-        self.diaryTableView.reloadData()
+    func reloadData() {
+        diaryTableView.reloadData()
     }
 }

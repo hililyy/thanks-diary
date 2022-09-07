@@ -41,7 +41,11 @@ class WriteVC: UIViewController {
             self.diaryTitle.text = todayString
         }
     }
-        
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     func setData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let context = appDelegate.persistentContainer.viewContext

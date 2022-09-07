@@ -43,6 +43,7 @@ class ReadVC: UIViewController {
             self.present(vc, animated: true, completion: nil)
         }
     }
+    
     @IBAction func goEdit(_ sender: Any) {
         guard let vc =  self.storyboard?.instantiateViewController(identifier: "WriteVC") as? WriteVC else { return }
         vc.editFlag = true

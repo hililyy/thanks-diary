@@ -13,18 +13,29 @@ class SimpleWriteVC: UIViewController {
     @IBOutlet weak var simpleTextField: UITextView!
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    var afterContentsString: String = ""
     var contentsString: String = ""
     var todayString: String = ""
     weak var delegate: reloadDelegate?
     let model = MainModel.model
+    var updateFlag: Bool = false
+    var selectedIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.simpleTextField.layer.cornerRadius = 20
+        self.simpleTextField.layer.cornerRadius = 15
         self.simpleTextField.layer.borderWidth = 1
         self.simpleTextField.layer.borderColor = UIColor(named: "mainColor")?.cgColor
+        self.cancelBtn.layer.borderWidth = 1.5
+        self.cancelBtn.layer.borderColor = UIColor(named: "mainColor")?.cgColor
+        self.cancelBtn.layer.cornerRadius = 10
         
-        self.okBtn.layer.cornerRadius = 20
+        self.okBtn.layer.cornerRadius = 10
+        
+        if updateFlag == true {
+            simpleTextField.text = self.contentsString
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +66,14 @@ class SimpleWriteVC: UIViewController {
     }
     
     @IBAction func goEnter(_ sender: Any) {
+        if updateFlag == true {
+            self.afterContentsString = self.simpleTextField.text
+            model.updateSimpleData(contentsString: self.contentsString, afterContentsString: self.afterContentsString)
             
+            self.dismiss(animated: true, completion: {
+                self.delegate?.reloadData()
+            })
+        } else {
             self.contentsString = simpleTextField.text ?? ""
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
@@ -69,15 +87,23 @@ class SimpleWriteVC: UIViewController {
             model.simpleData.insert(tmpEntity, at: 0)
 //            model.simpleData.append(tmpEntity)
             self.dismiss(animated: true, completion: {
-                self.delegate?.sendData()
+                self.delegate?.reloadData()
             })
-
+        }
     }
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
+    @IBAction func goDelete(_ sender: Any) {
+        model.deleteSimpleData(contentsString: self.contentsString)
+        
+        self.dismiss(animated: true, completion: {
+            self.delegate?.reloadData()
+        })
+    }
 }
 
 protocol reloadDelegate: AnyObject {
-    func sendData()
+    func reloadData()
 }
