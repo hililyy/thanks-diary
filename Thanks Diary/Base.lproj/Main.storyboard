@@ -1497,6 +1497,7 @@
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="knB-ak-dA3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QnC-qz-DWV">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1512,6 +1513,7 @@
             <objects>
                 <navigationController storyboardIdentifier="main" modalPresentationStyle="fullScreen" id="n34-LA-5nJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="edv-BO-oSD">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

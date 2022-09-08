@@ -18,8 +18,8 @@ class MainVC: UIViewController {
     @IBOutlet weak var emptyView: UIView!
     
     var container: NSPersistentContainer!
-    
     let model = MainModel.model
+    var selectedDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +67,15 @@ class MainVC: UIViewController {
         self.todayDate.text = formatter.string(from: Date())
     }
 
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("선택")
+        print(date)
+//        self.selectedDate = date
+//        model.getSimpleData()
+//        model.getDetailData()
+//        self.diaryTableView.reloadData()
+        }
+    
     @IBAction func goSetting(_ sender: Any) {
         guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
         self.navigationController?.pushViewController(vc, animated: true)
