@@ -14,8 +14,9 @@ class MainModel {
     var detailData: [DiaryEntity] = []
     var simpleData: [SimpleDiaryEntity] = []
     var longDiaryFlag: Bool = false
+    var selectedDate: String = ""
     
-    func getDetailData() {
+    func getDetailData(selectedDate: String) {
         detailData = []
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let managedContext = appDelegate.persistentContainer.viewContext
@@ -23,17 +24,16 @@ class MainModel {
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DiaryData")
         do {
             let result = try managedContext.fetch(fetchRequest)
-
             for data in result {
-                print(data.value(forKey: "contents") as! String)
-                print(data.value(forKey: "date") as! String)
-                let tmpEntity = DiaryEntity(
-                    type: data.value(forKey: "type") as? String,
-                    title: data.value(forKey: "title") as? String,
-                    contents: data.value(forKey: "contents") as? String,
-                    date: data.value(forKey: "date") as? String
-                )
+                if data.value(forKey: "date") as! String == selectedDate {
+                    let tmpEntity = DiaryEntity(
+                        type: data.value(forKey: "type") as? String,
+                        title: data.value(forKey: "title") as? String,
+                        contents: data.value(forKey: "contents") as? String,
+                        date: data.value(forKey: "date") as? String
+                    )
                 detailData.append(tmpEntity)
+                }
             }
             print(detailData)
         } catch let error as NSError {
@@ -41,7 +41,7 @@ class MainModel {
         }
     }
     
-    func getSimpleData() {
+    func getSimpleData(selectedDate: String) {
         simpleData = []
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let managedContext = appDelegate.persistentContainer.viewContext
@@ -51,15 +51,15 @@ class MainModel {
             let result = try managedContext.fetch(fetchRequest)
 
             for data in result {
-                print(data.value(forKey: "contents") as! String)
-                print(data.value(forKey: "date") as! String)
-
-                let tmpEntity = SimpleDiaryEntity(
-                    type: data.value(forKey: "type") as? String,
-                    contents: data.value(forKey: "contents") as? String,
-                    date: data.value(forKey: "date") as? String
-                )
-                simpleData.append(tmpEntity)
+                if data.value(forKey: "date") as! String == selectedDate {
+                    
+                    let tmpEntity = SimpleDiaryEntity(
+                        type: data.value(forKey: "type") as? String,
+                        contents: data.value(forKey: "contents") as? String,
+                        date: data.value(forKey: "date") as? String
+                    )
+                    simpleData.append(tmpEntity)
+                }
             }
             print(simpleData)
         } catch let error as NSError {
@@ -110,7 +110,7 @@ class MainModel {
         } catch {
             print(error)
         }
-        self.getSimpleData()
+        self.getSimpleData(selectedDate: self.selectedDate)
     }
     
     func deleteDetailData(dateString: String) {
@@ -157,7 +157,7 @@ class MainModel {
             print(error)
         }
         
-        self.getSimpleData()
+        self.getSimpleData(selectedDate: self.selectedDate)
     }
 }
 

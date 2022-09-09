@@ -19,13 +19,17 @@ class MainVC: UIViewController {
     
     var container: NSPersistentContainer!
     let model = MainModel.model
-    var selectedDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         model.longDiaryFlag = LocalDataStore.localDataStore.getTodayDetailData()
-        model.getDetailData()
-        model.getSimpleData()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        model.selectedDate = formatter.string(from: Date())
+        
+        model.getDetailData(selectedDate: model.selectedDate)
+        model.getSimpleData(selectedDate: model.selectedDate)
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         setFloty()
@@ -35,8 +39,8 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        model.getDetailData()
-        model.getSimpleData()
+        model.getDetailData(selectedDate: model.selectedDate)
+        model.getSimpleData(selectedDate: model.selectedDate)
         diaryTableView.reloadData()
     }
 
@@ -70,10 +74,13 @@ class MainVC: UIViewController {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("선택")
         print(date)
-//        self.selectedDate = date
-//        model.getSimpleData()
-//        model.getDetailData()
-//        self.diaryTableView.reloadData()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        model.selectedDate = formatter.string(from: date)
+        
+        model.getSimpleData(selectedDate: model.selectedDate)
+        model.getDetailData(selectedDate: model.selectedDate)
+        self.diaryTableView.reloadData()
         }
     
     @IBAction func goSetting(_ sender: Any) {
