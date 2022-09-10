@@ -34,7 +34,7 @@ class MainVC: UIViewController {
         self.diaryTableView.dataSource = self
         setFloty()
         setCalender()
-        setTodayDate()
+        setTodayDate(selectedData: Date())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,10 +65,12 @@ class MainVC: UIViewController {
         self.view.addSubview(floaty)
     }
     
-    func setTodayDate() {
+    func setTodayDate(selectedData: Date) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        self.todayDate.text = formatter.string(from: Date())
+        let loc = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "dd'일' (E)"
+        formatter.locale = loc
+        self.todayDate.text = formatter.string(from: selectedData)
     }
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -76,10 +78,12 @@ class MainVC: UIViewController {
         print(date)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
+        setTodayDate(selectedData: date)
         model.selectedDate = formatter.string(from: date)
         
         model.getSimpleData(selectedDate: model.selectedDate)
         model.getDetailData(selectedDate: model.selectedDate)
+        
         self.diaryTableView.reloadData()
         }
     

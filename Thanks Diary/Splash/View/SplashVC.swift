@@ -24,7 +24,11 @@ class SplashVC: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             if LocalDataStore.localDataStore.getNewUserData() == true {
-                self.showMainViewController()
+                if LocalDataStore.localDataStore.getPasswordData() == true {
+                    self.showPasswordViewController()
+                } else {
+                    self.showMainViewController()
+                }
             } else {
                 self.showFirstViewController()
             }
@@ -36,12 +40,19 @@ class SplashVC: UIViewController {
         let navi = UINavigationController(rootViewController: vc)
         navi.modalPresentationStyle = .currentContext
         present(navi, animated:false, completion: nil)
-        return
     }
     
     func showMainViewController() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
+    
+    func showPasswordViewController() {
+        let vc = storyboard!.instantiateViewController(withIdentifier: "SettingPWVC") as! SettingPWVC
+        vc.homeFlag = true
+        let navi = UINavigationController(rootViewController: vc)
+        navi.modalPresentationStyle = .currentContext
+        present(navi, animated:false, completion: nil)
     }
 }

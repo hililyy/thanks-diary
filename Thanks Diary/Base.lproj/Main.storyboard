@@ -849,11 +849,21 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="eightBtn" destination="gUy-4K-i3J" id="PWF-jN-r7V"/>
                         <outlet property="firstImg" destination="MP0-PF-TKo" id="59i-wo-vx3"/>
+                        <outlet property="fiveBtn" destination="chf-KA-kkd" id="o4h-zX-hAh"/>
+                        <outlet property="fourBtn" destination="iwO-z7-SvH" id="BFZ-dd-zsn"/>
                         <outlet property="fourthImg" destination="Izl-6w-GHT" id="zuV-dt-xwn"/>
                         <outlet property="message" destination="qQR-O4-0M7" id="te6-GT-Q1R"/>
+                        <outlet property="nineBtn" destination="DDQ-ea-5xs" id="ae8-C3-8Vj"/>
+                        <outlet property="oneBtn" destination="LFq-yG-YUL" id="IPE-Vb-yP6"/>
                         <outlet property="secondImg" destination="AaA-Ha-Bpb" id="KZR-aD-SkP"/>
+                        <outlet property="sevenBtn" destination="gUy-4K-i3J" id="bnk-Oo-znP"/>
+                        <outlet property="sixBtn" destination="bsQ-qD-q1W" id="YY1-CP-a7E"/>
                         <outlet property="thirdImg" destination="R4X-De-kiA" id="i6W-F6-CYn"/>
+                        <outlet property="threeBtn" destination="mMU-FX-XJ7" id="WZl-Vv-5iP"/>
+                        <outlet property="twoBtn" destination="1Rm-Xf-dxT" id="Kn3-Pu-GO0"/>
+                        <outlet property="zeroBtn" destination="bhL-WG-zEw" id="FN7-Uw-QyJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1Q-eF-Jjk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
