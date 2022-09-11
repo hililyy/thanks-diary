@@ -248,8 +248,8 @@
 		2A81234728C0B72C000A250E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				2A81233628C00138000A250E /* AlarmTimeCell.swift */,
 				2A81233828C0014D000A250E /* AlarmSettingCell.swift */,
+				2A81233628C00138000A250E /* AlarmTimeCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

@@ -14,4 +14,5 @@ enum LocalDataKeySet: String {
     case PASSWORD_NUMBER = "password_number"
     case ALARM_TIME = "alarm_time"
     case TODAY_DETAIL_DIARY = "today_detail_diary"
+    case IS_PUSH_ALARM_AGREE = "is_push_alarm_agree"
 }

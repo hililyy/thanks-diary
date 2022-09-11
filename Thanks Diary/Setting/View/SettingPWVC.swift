@@ -34,6 +34,7 @@ class SettingPWVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if homeFlag == true {
             message.text = "비밀번호를 입력해주세요"
         }
@@ -161,6 +162,7 @@ class SettingPWVC: UIViewController {
     
     @IBAction func touchBackBtn(_ sender: Any) {
         count = count - 1
+        firstPW.popLast()
         if count < 0 {
             count = 0
         }

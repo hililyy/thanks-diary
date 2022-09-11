@@ -7,9 +7,11 @@
 
 import UIKit
 import Lottie
+import UserNotifications
 
 class SplashVC: UIViewController {
     @IBOutlet weak var lottieView: UIView!
+    let userNotificationCenter = UNUserNotificationCenter.current()
     override func viewDidLoad() {
         super.viewDidLoad()
         let animationView: AnimationView = .init(name: "dot")
@@ -23,6 +25,7 @@ class SplashVC: UIViewController {
         animationView.loopMode = .loop
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            self.requestNotificationAuthorization()
             if LocalDataStore.localDataStore.getNewUserData() == true {
                 if LocalDataStore.localDataStore.getPasswordData() == true {
                     self.showPasswordViewController()
@@ -54,5 +57,23 @@ class SplashVC: UIViewController {
         let navi = UINavigationController(rootViewController: vc)
         navi.modalPresentationStyle = .currentContext
         present(navi, animated:false, completion: nil)
+    }
+    
+    func requestNotificationAuthorization() {
+        let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .badge, .sound)
+        
+        userNotificationCenter.requestAuthorization(options: authOptions) { success, error in
+            print("success: \(success)")
+            LocalDataStore.localDataStore.setPushAlarmAgree(newData: success)
+            if let error = error {
+                print("Error: \(error)")
+            }
+//            if self.agreeFlag == true {
+//                self.switchFlag = !self.switchFlag
+//                LocalDataStore.localDataStore.setPushAlarmData(newData: self.switchFlag)
+//            } else {
+//                self.alarmTableView.reloadData()
+//            }
+        }
     }
 }

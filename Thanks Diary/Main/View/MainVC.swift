@@ -74,8 +74,6 @@ class MainVC: UIViewController {
     }
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("선택")
-        print(date)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         setTodayDate(selectedData: date)

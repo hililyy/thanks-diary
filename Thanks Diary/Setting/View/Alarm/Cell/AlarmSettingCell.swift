@@ -9,6 +9,7 @@ import UIKit
 
 class AlarmSettingCell: UITableViewCell {
 
+    @IBOutlet weak var alarmSwitchBtn: UISwitch!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

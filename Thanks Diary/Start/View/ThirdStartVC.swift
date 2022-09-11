@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 
+
 class ThirdStartVC: UIViewController {
 
     @IBOutlet weak var nextBtn: UIButton!
