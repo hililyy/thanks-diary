@@ -15,6 +15,8 @@ class SettingAlarmVC: UIViewController {
     var selectedStringDate: String = ""
     var switchFlag: Bool = false
     var agreeFlag: Bool = false
+    var selectedTimeHour: Int = -1
+    var selectedTimeMinute: Int = -1
     let userNotificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
@@ -23,6 +25,12 @@ class SettingAlarmVC: UIViewController {
         alarmTableView.delegate = self
         self.switchFlag = LocalDataStore.localDataStore.getPushAlarmData()
         self.agreeFlag = LocalDataStore.localDataStore.getPushAlarmAgree()
+        
+//        self.selectedDate = LocalDataStore.localDataStore.getPushAlarmTime()
+        self.selectedTimeHour = LocalDataStore.localDataStore.getPushAlarmTime().hour ?? -1
+        self.selectedTimeMinute = LocalDataStore.localDataStore.getPushAlarmTime().minute ?? -1
+        
+        self.selectedStringDate = "\(self.selectedTimeHour)시 \(self.selectedTimeMinute)분"
        // userNotificationCenter.delegate = self
     }
     
@@ -32,17 +40,26 @@ class SettingAlarmVC: UIViewController {
     
     @IBAction func switchAlarm(_ sender: Any) {
         switchFlag = !switchFlag
+        if switchFlag == false {
+            self.selectedTimeHour = -1
+            self.selectedTimeMinute = -1
+        } else {
+            self.selectedTimeHour = LocalDataStore.localDataStore.getPushAlarmTime().hour ?? -1
+            self.selectedTimeMinute = LocalDataStore.localDataStore.getPushAlarmTime().minute ?? -1
+        }
         LocalDataStore.localDataStore.setPushAlarmData(newData: switchFlag)
-       // sendNotification(seconds: 10)
+        sendNotification()
     }
     
-    func sendNotification(seconds: Double) {
+    func sendNotification() {
         let notificationContent = UNMutableNotificationContent()
 
-        notificationContent.title = "알림 테스트"
-        notificationContent.body = "이것은 알림을 테스트 하는 것이다"
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
+        notificationContent.title = "💙감사일기를 작성할 시간이예요💙"
+        notificationContent.body = "오늘의 일기를 작성해볼까요?💌"
+        var date = DateComponents()
+        date.hour = Int(self.selectedTimeHour)
+        date.minute = self.selectedTimeMinute
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
         let request = UNNotificationRequest(identifier: "testNotification",
                                             content: notificationContent,
                                             trigger: trigger)
@@ -57,7 +74,7 @@ class SettingAlarmVC: UIViewController {
     func changeDateToString(date: Date, formatString: String) -> String {
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "a hh시 mm분"
+        dateFormatter.dateFormat = formatString
         return dateFormatter.string(from: date)
     }
 }
@@ -122,8 +139,15 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
 extension SettingAlarmVC: SendDataDelegate {
     func sendData(_ date: Date) {
         self.selectedDate = date
+
+        self.selectedTimeHour = Int(changeDateToString(date: self.selectedDate ?? Date(), formatString: "hh")) ?? -1
+        self.selectedTimeMinute = Int(changeDateToString(date: self.selectedDate ?? Date(), formatString: "mm")) ?? -1
+        LocalDataStore.localDataStore.setPushAlarmTime(newData: AlarmTimeEntity(hour: self.selectedTimeHour, minute: self.selectedTimeMinute))
+        
         selectedStringDate = changeDateToString(date: self.selectedDate ?? Date(), formatString: "a hh시 mm분")
+        sendNotification()
         self.alarmTableView.reloadData()
+        
     }
     
 }

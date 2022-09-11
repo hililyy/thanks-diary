@@ -63,4 +63,16 @@ class LocalDataStore {
     func setPushAlarmAgree(newData: Bool) {
         UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.IS_PUSH_ALARM_AGREE.rawValue)
     }
+    
+    func getPushAlarmTime() -> AlarmTimeEntity {
+        guard let getData = UserDefaults.standard.value(forKey: LocalDataKeySet.ALARM_TIME.rawValue) as? Data else { return AlarmTimeEntity(hour: -1, minute: -1) }
+        let diaryData = try? PropertyListDecoder().decode (
+            AlarmTimeEntity.self, from: getData
+            )
+        return diaryData ?? AlarmTimeEntity(hour: -1, minute: -1)
+    }
+    
+    func setPushAlarmTime(newData: AlarmTimeEntity) {
+        UserDefaults.standard.setValue(try? PropertyListEncoder().encode(newData), forKey: LocalDataKeySet.ALARM_TIME.rawValue)
+    }
 }

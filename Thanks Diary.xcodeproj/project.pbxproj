@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */; };
 		2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D87FE28A540FB00576E56 /* AppDelegate.swift */; };
 		2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D880028A540FB00576E56 /* SceneDelegate.swift */; };
 		2A0D880328A540FB00576E56 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D880228A540FB00576E56 /* SplashVC.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimeEntity.swift; sourceTree = "<group>"; };
 		2A0D87FB28A540FB00576E56 /* Thanks Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thanks Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A0D87FE28A540FB00576E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A0D880028A540FB00576E56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				2A81233128BFFA0C000A250E /* SettingAlarmVC.swift */,
 				2A81233A28C0067B000A250E /* SettingAlarmDetailVC.swift */,
 				2A81234728C0B72C000A250E /* Cell */,
+				2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				2A7241D828B3EDE60040ADE9 /* MainModel.swift in Sources */,
 				2A81234E28C4E22C000A250E /* SimpleDiaryListCell.swift in Sources */,
 				2A9F351728AE63FD006CCF7C /* SettingMoreCell.swift in Sources */,
+				2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */,
 				2A81233B28C0067B000A250E /* SettingAlarmDetailVC.swift in Sources */,
 				2A81234A28C2A208000A250E /* DiaryData.xcdatamodeld in Sources */,
 				2A72420B28B4264F0040ADE9 /* StartModel.swift in Sources */,
