@@ -9,6 +9,7 @@ import UIKit
 import FSCalendar
 import Floaty
 import CoreData
+import Toast_Swift
 
 class MainVC: UIViewController {
 
@@ -60,8 +61,12 @@ class MainVC: UIViewController {
                 floaty.close()
         })
         floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
-            guard let vc =  self.storyboard?.instantiateViewController(identifier: "WriteVC") as? WriteVC else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
+            if self.model.longDiaryFlag == false {
+                guard let vc =  self.storyboard?.instantiateViewController(identifier: "WriteVC") as? WriteVC else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
+            }
             floaty.close()
         })
         self.view.addSubview(floaty)
