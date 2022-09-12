@@ -54,6 +54,7 @@ class SimpleWriteVC: UIViewController, UITextViewDelegate {
         
         if let entity = entity {
             let managedObject = NSManagedObject(entity: entity, insertInto: context)
+            
             managedObject.setValue(self.contentsString, forKey: "contents")
             managedObject.setValue(self.todayString, forKey: "date")
             managedObject.setValue("simple", forKey: "type")

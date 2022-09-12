@@ -19,6 +19,7 @@ class MainModel {
     
     func getDetailData(selectedDate: String) {
         detailData = []
+        dateList = []
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let managedContext = appDelegate.persistentContainer.viewContext
             

@@ -45,6 +45,7 @@ class MainVC: UIViewController {
         model.getDetailData(selectedDate: model.selectedDate)
         model.getSimpleData(selectedDate: model.selectedDate)
         self.datesWithCat = model.dateList
+        calendar.reloadData()
         diaryTableView.reloadData()
     }
 
@@ -220,6 +221,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
 
 extension MainVC: reloadDelegate {
     func reloadData() {
+        model.getDetailData(selectedDate: model.selectedDate)
+        model.getSimpleData(selectedDate: model.selectedDate)
+        self.datesWithCat = model.dateList
+        calendar.reloadData()
         diaryTableView.reloadData()
     }
 }
