@@ -19,17 +19,19 @@ class MainVC: UIViewController {
     
     var container: NSPersistentContainer!
     let model = MainModel.model
+    fileprivate var datesWithCat: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         model.longDiaryFlag = LocalDataStore.localDataStore.getTodayDetailData()
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy-M-d"
         model.selectedDate = formatter.string(from: Date())
         
         model.getDetailData(selectedDate: model.selectedDate)
         model.getSimpleData(selectedDate: model.selectedDate)
+        self.datesWithCat = model.dateList
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         setFloty()
@@ -75,7 +77,7 @@ class MainVC: UIViewController {
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy-M-d"
         setTodayDate(selectedData: date)
         model.selectedDate = formatter.string(from: date)
         
@@ -83,7 +85,7 @@ class MainVC: UIViewController {
         model.getDetailData(selectedDate: model.selectedDate)
         
         self.diaryTableView.reloadData()
-        }
+    }
     
     @IBAction func goSetting(_ sender: Any) {
         guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
@@ -109,8 +111,24 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
         self.calendar.appearance.calendar.headerHeight = 50
         self.calendar.weekdayHeight = 30
         self.calendar.rowHeight = 40
+        
+    }
+        
+    // 특정 날짜에 이미지 세팅
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+        let imageDateFormatter = DateFormatter()
+        imageDateFormatter.dateFormat = "yyyy-M-d"
+        var dateStr = imageDateFormatter.string(from: date)
+        print("date : \(dateStr)")
+        return datesWithCat.contains(dateStr) ? UIImage(named: "ic_circle") : nil
+        
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
+        return CGPoint(x: 0, y: -5)
     }
 }
+
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

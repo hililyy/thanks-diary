@@ -26,13 +26,14 @@ class WriteVC: UIViewController {
         self.completeBtn.layer.cornerRadius = 20
         
         self.titleTextfield.layer.cornerRadius = 20
-        self.titleTextfield.layer.borderWidth = 1
+        self.titleTextfield.layer.borderWidth = 2
         self.titleTextfield.layer.borderColor = UIColor(named: "mainColor")?.cgColor
         
         self.contentsTextView.layer.cornerRadius = 20
-        self.contentsTextView.layer.borderWidth = 1
+        self.contentsTextView.layer.borderWidth = 2
         self.contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
-        
+        titleTextfield.addLeftPadding()
+        contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0);
         setTitle()
         
         if editFlag == true {
@@ -73,8 +74,10 @@ class WriteVC: UIViewController {
 }
     
     func setTitle() {
-        self.todayString = changeDateToString(date: Date(), formatString: "yyyy년 M월 d일")
-        self.diaryTitle.text = "\(todayString) 감사일기"
+        if editFlag == false {
+            self.todayString = changeDateToString(date: Date(), formatString: "yyyy년 M월 d일")
+            self.diaryTitle.text = "\(todayString) 감사일기"
+        }
     }
     
     func changeDateToString(date: Date, formatString: String) -> String {
@@ -99,7 +102,7 @@ class WriteVC: UIViewController {
             self.titleString = titleTextfield.text ?? ""
             self.contentsString = contentsTextView.text
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.dateFormat = "yyyy-M-d"
             self.todayString = formatter.string(from: Date())
             setData()
             self.navigationController?.popViewController(animated: true)
@@ -113,7 +116,7 @@ class WriteVC: UIViewController {
             self.titleString = titleTextfield.text ?? ""
             self.contentsString = contentsTextView.text
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.dateFormat = "yyyy-M-d"
             self.todayString = formatter.string(from: Date())
             model.updateDetailData(dateString: self.todayString, titleString: self.titleString, contentsString: self.contentsString)
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
@@ -121,5 +124,13 @@ class WriteVC: UIViewController {
             UIApplication.shared.windows.first?.makeKeyAndVisible()
         }
     }
+}
+
+extension UITextField {
+  func addLeftPadding() {
+    let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+    self.leftView = paddingView
+    self.leftViewMode = ViewMode.always
+  }
 }
 

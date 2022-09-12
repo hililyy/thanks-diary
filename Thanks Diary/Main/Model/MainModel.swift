@@ -15,6 +15,7 @@ class MainModel {
     var simpleData: [SimpleDiaryEntity] = []
     var longDiaryFlag: Bool = false
     var selectedDate: String = ""
+    var dateList: [String] = []
     
     func getDetailData(selectedDate: String) {
         detailData = []
@@ -25,6 +26,7 @@ class MainModel {
         do {
             let result = try managedContext.fetch(fetchRequest)
             for data in result {
+                
                 if data.value(forKey: "date") as! String == selectedDate {
                     let tmpEntity = DiaryEntity(
                         type: data.value(forKey: "type") as? String,

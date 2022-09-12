@@ -8,12 +8,13 @@
 import UIKit
 import CoreData
 
-class SimpleWriteVC: UIViewController {
-
+class SimpleWriteVC: UIViewController, UITextViewDelegate {
+//20자까지 작성
     @IBOutlet weak var simpleTextField: UITextView!
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var textLengthLabel: UILabel!
     var afterContentsString: String = ""
     var contentsString: String = ""
     var todayString: String = ""
@@ -21,6 +22,7 @@ class SimpleWriteVC: UIViewController {
     let model = MainModel.model
     var updateFlag: Bool = false
     var selectedIndex: Int = 0
+    let maxCount: Int = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +35,11 @@ class SimpleWriteVC: UIViewController {
         
         self.okBtn.layer.cornerRadius = 10
         
+        self.simpleTextField.delegate = self
         if updateFlag == true {
             simpleTextField.text = self.contentsString
         }
+        self.textLengthLabel.text = "\(simpleTextField.text.count)/\(maxCount)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +80,7 @@ class SimpleWriteVC: UIViewController {
         } else {
             self.contentsString = simpleTextField.text ?? ""
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.dateFormat = "yyyy-M-d"
             self.todayString = formatter.string(from: Date())
             setData()
             let tmpEntity = SimpleDiaryEntity(
@@ -101,6 +105,38 @@ class SimpleWriteVC: UIViewController {
         self.dismiss(animated: true, completion: {
             self.delegate?.reloadData()
         })
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        //이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
+        print(textView.text.count)
+        self.textLengthLabel.text = "\(textView.text.count+1)/\(maxCount)"
+        let newLength = textView.text.count - range.length + text.count
+        let koreanMaxCount = maxCount + 1
+        //글자수가 초과 된 경우 or 초과되지 않은 경우
+        if newLength > koreanMaxCount { //11글자
+            let overflow = newLength - koreanMaxCount //초과된 글자수
+            if text.count < overflow {
+                return true
+            }
+            let index = text.index(text.endIndex, offsetBy: -overflow)
+            let newText = text[..<index]
+            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: range.location) else { return false }
+            guard let endPosition = textView.position(from: textView.beginningOfDocument, offset: NSMaxRange(range)) else { return false }
+            guard let textRange = textView.textRange(from: startPosition, to: endPosition) else { return false }
+                
+            textView.replace(textRange, withText: String(newText))
+            
+            return false
+        }
+        return true
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.count > maxCount {
+        //글자수 제한에 걸리면 마지막 글자를 삭제함.
+            textView.text.removeLast()
+        }
     }
 }
 
