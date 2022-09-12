@@ -26,7 +26,7 @@ class MainModel {
         do {
             let result = try managedContext.fetch(fetchRequest)
             for data in result {
-                
+                self.dateList.append(data.value(forKey: "date") as? String ?? "")
                 if data.value(forKey: "date") as! String == selectedDate {
                     let tmpEntity = DiaryEntity(
                         type: data.value(forKey: "type") as? String,
@@ -53,6 +53,7 @@ class MainModel {
             let result = try managedContext.fetch(fetchRequest)
 
             for data in result {
+                self.dateList.append(data.value(forKey: "date") as? String ?? "")
                 if data.value(forKey: "date") as! String == selectedDate {
                     
                     let tmpEntity = SimpleDiaryEntity(

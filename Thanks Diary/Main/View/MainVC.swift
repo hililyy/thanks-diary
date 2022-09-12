@@ -87,6 +87,9 @@ class MainVC: UIViewController {
         self.diaryTableView.reloadData()
     }
     
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date()
+    }
     @IBAction func goSetting(_ sender: Any) {
         guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
         self.navigationController?.pushViewController(vc, animated: true)
