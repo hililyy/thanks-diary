@@ -30,9 +30,9 @@ class MainVC: UIViewController {
         formatter.dateFormat = "yyyy-M-d"
         model.selectedDate = formatter.string(from: Date())
         
-        model.getDetailData(selectedDate: model.selectedDate)
-        model.getSimpleData(selectedDate: model.selectedDate)
-        self.datesWithCat = model.dateList
+//        model.getDetailData(selectedDate: model.selectedDate)
+//        model.getSimpleData(selectedDate: model.selectedDate)
+        
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         setFloty()
@@ -44,6 +44,7 @@ class MainVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         model.getDetailData(selectedDate: model.selectedDate)
         model.getSimpleData(selectedDate: model.selectedDate)
+        self.datesWithCat = model.dateList
         diaryTableView.reloadData()
     }
 

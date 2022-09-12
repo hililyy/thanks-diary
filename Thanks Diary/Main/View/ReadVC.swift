@@ -18,6 +18,8 @@ class ReadVC: UIViewController {
     var selectedDataTitle: String?
     var selectedDataContents: String?
     
+    var selectedDataDateString: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitle()
@@ -31,13 +33,13 @@ class ReadVC: UIViewController {
         contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0);
         titleLabel.text = self.selectedDataTitle
         contentsTextView.text = self.selectedDataContents
-        dateLabel.text = self.selectedDataDate
+        dateLabel.text = self.selectedDataDateString
         
     }
     
     func setTitle() {
         var tmpString = selectedDataDate?.split(separator: "-")
-        self.selectedDataDate = ("\(tmpString![0])년 \(tmpString![1])월 \(tmpString![2])일 감사일기")
+        self.selectedDataDateString = ("\(tmpString![0])년 \(tmpString![1])월 \(tmpString![2])일 감사일기")
     }
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
