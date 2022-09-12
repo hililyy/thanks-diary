@@ -118,6 +118,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                     vc.modalTransitionStyle = .crossDissolve
                     vc.modalPresentationStyle = .overCurrentContext
                     vc.delegate = self
+                    vc.selectedTime = self.selectedDate ?? Date()
                     if let date = selectedDate {
                         vc.selectedTime = date
                     }

@@ -10,12 +10,12 @@ import UIKit
 class SettingAlarmDetailVC: UIViewController {
 
     @IBOutlet weak var timeDatePicker: UIDatePicker!
-    var selectedTime: Date = Date()
+    var selectedTime: Date?
     weak var delegate: SendDataDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.timeDatePicker.date = self.selectedTime
+        self.timeDatePicker.date = self.selectedTime ?? Date()
         let loc = Locale(identifier: "ko_KR")
         self.timeDatePicker.locale = loc
     }
@@ -28,7 +28,7 @@ class SettingAlarmDetailVC: UIViewController {
     }
     @IBAction func enter(_ sender: Any) {
         self.dismiss(animated: true, completion: {
-            self.delegate?.sendData(self.selectedTime)
+            self.delegate?.sendData(self.selectedTime ?? Date())
         })
     }
 }
