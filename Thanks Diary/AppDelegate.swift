@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
+        loadLocationsFromCSV()
         return true
     }
 
@@ -74,7 +75,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    private func parseCSVAt(url:URL) {
+           do {
+               let data = try Data(contentsOf: url)
+               let dataEncoded = String(data: data, encoding: .utf8)
+               
+               let dataArr = dataEncoded?.components(separatedBy: "\n")
+                print(dataArr)
+           } catch  {
+               print("Error reading CSV file")
+           }
+       }
+    private func loadLocationsFromCSV() {
+           let path = Bundle.main.path(forResource: "TextData", ofType: "csv")!
+           parseCSVAt(url: URL(fileURLWithPath: path))
+       }
 }
 
 
