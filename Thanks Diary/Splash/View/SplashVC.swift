@@ -68,12 +68,6 @@ class SplashVC: UIViewController {
             if let error = error {
                 print("Error: \(error)")
             }
-//            if self.agreeFlag == true {
-//                self.switchFlag = !self.switchFlag
-//                LocalDataStore.localDataStore.setPushAlarmData(newData: self.switchFlag)
-//            } else {
-//                self.alarmTableView.reloadData()
-//            }
         }
     }
 }

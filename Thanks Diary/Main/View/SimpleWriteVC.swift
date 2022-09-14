@@ -90,12 +90,12 @@ class SimpleWriteVC: UIViewController, UITextViewDelegate {
                 date: self.todayString
             )
             model.simpleData.insert(tmpEntity, at: 0)
-//            model.simpleData.append(tmpEntity)
             self.dismiss(animated: true, completion: {
                 self.delegate?.reloadData()
             })
         }
     }
+    
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true)
     }

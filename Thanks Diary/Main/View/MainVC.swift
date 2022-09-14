@@ -129,7 +129,6 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
         let imageDateFormatter = DateFormatter()
         imageDateFormatter.dateFormat = "yyyy-M-d"
         var dateStr = imageDateFormatter.string(from: date)
-        print("date : \(dateStr)")
         return datesWithCat.contains(dateStr) ? UIImage(named: "ic_circle") : nil
         
     }

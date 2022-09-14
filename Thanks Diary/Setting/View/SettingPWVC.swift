@@ -34,7 +34,6 @@ class SettingPWVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if homeFlag == true {
             message.text = "비밀번호를 입력해주세요"
         }
@@ -66,9 +65,8 @@ class SettingPWVC: UIViewController {
         } else if sender == self.zeroBtn {
             firstPW.append(contentsOf: "0")
         }
-        print("firstPW: \(firstPW)")
-        print("secondPW: \(secondPW)")
         count = count + 1
+        
         switch count {
         case 1:
             firstImg.image =

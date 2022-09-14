@@ -41,9 +41,11 @@ class ReadVC: UIViewController {
         var tmpString = selectedDataDate?.split(separator: "-")
         self.selectedDataDateString = ("\(tmpString![0])년 \(tmpString![1])월 \(tmpString![2])일 감사일기")
     }
+    
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func goDelete(_ sender: Any) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DeletePopupVC") as? DeletePopupVC {
             vc.selectedDataDate = self.selectedDataDate

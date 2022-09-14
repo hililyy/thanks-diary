@@ -97,7 +97,6 @@ class WriteVC: UIViewController {
     }
     
     @IBAction func goComplete(_ sender: Any) {
-//        if model.longDiaryFlag == false {
             model.longDiaryFlag = true
             LocalDataStore.localDataStore.setTodayDetailData(newData: true)
             self.titleString = titleTextfield.text ?? ""
@@ -107,11 +106,7 @@ class WriteVC: UIViewController {
             self.todayString = formatter.string(from: Date())
             setData()
             self.navigationController?.popViewController(animated: true)
-//        } else {
-//            // 오늘 더 작성 못한다고 팝업
-//            self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
-//            print("더 못씀")
-//        }
+
         // update
         if editFlag == true {
             LocalDataStore.localDataStore.setTodayDetailData(newData: true)

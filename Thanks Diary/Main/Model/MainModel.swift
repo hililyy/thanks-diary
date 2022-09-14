@@ -38,7 +38,6 @@ class MainModel {
                 detailData.append(tmpEntity)
                 }
             }
-            print(detailData)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -65,7 +64,6 @@ class MainModel {
                     simpleData.append(tmpEntity)
                 }
             }
-            print(simpleData)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -80,10 +78,8 @@ class MainModel {
         do {
             let result = try managedContext.fetch(fetchRequest)
             let objectUpdate = result[0] as! NSManagedObject
-            print("update1 = \(result)")
             objectUpdate.setValue(titleString, forKey: "title")
             objectUpdate.setValue(contentsString, forKey: "contents")
-            print("update2 = \(result)")
             do {
                 try managedContext.save()
             } catch {
@@ -103,9 +99,7 @@ class MainModel {
         do {
             let result = try managedContext.fetch(fetchRequest)
             let objectUpdate = result[0] as! NSManagedObject
-            print("update1 = \(result)")
             objectUpdate.setValue(afterContentsString, forKey: "contents")
-            print("update2 = \(result)")
             do {
                 try managedContext.save()
             } catch {
@@ -125,10 +119,8 @@ class MainModel {
         
         do {
             let test = try managedContext.fetch(fetchRequest)
-            print(test)
             let objectToDelete = test[0] as! NSManagedObject
             managedContext.delete(objectToDelete)
-            print(test)
             do {
                 try managedContext.save()
             } catch {
@@ -148,10 +140,8 @@ class MainModel {
         
         do {
             let test = try managedContext.fetch(fetchRequest)
-            print(test)
             let objectToDelete = test[0] as! NSManagedObject
             managedContext.delete(objectToDelete)
-            print(test)
             do {
                 try managedContext.save()
             } catch {

@@ -25,13 +25,10 @@ class SettingAlarmVC: UIViewController {
         alarmTableView.delegate = self
         self.switchFlag = LocalDataStore.localDataStore.getPushAlarmData()
         self.agreeFlag = LocalDataStore.localDataStore.getPushAlarmAgree()
-        
-//        self.selectedDate = LocalDataStore.localDataStore.getPushAlarmTime()
         self.selectedTimeHour = LocalDataStore.localDataStore.getPushAlarmTime().hour ?? -1
         self.selectedTimeMinute = LocalDataStore.localDataStore.getPushAlarmTime().minute ?? -1
         
         self.selectedStringDate = "\(self.selectedTimeHour)시 \(self.selectedTimeMinute)분"
-       // userNotificationCenter.delegate = self
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -94,6 +91,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                 cell.alarmSwitchBtn.isOn = switchFlag
             }
             return cell
+            
         case 1:
             let cell = self.alarmTableView.dequeueReusableCell(withIdentifier: "AlarmTimeCell", for: indexPath) as! AlarmTimeCell
             cell.selectionStyle = .none
@@ -103,6 +101,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                 cell.selectedTimeLabel.text = self.selectedStringDate
             }
             return cell
+            
         default:
             return UITableViewCell.init()
         }
@@ -112,6 +111,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             break
+            
         case 1:
             if agreeFlag == true {
                 if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingAlarmDetailVC") as? SettingAlarmDetailVC {
