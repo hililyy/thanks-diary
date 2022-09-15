@@ -98,7 +98,11 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             if agreeFlag == false {
                 cell.selectedTimeLabel.text = "설정에서 알림을 허용해 주세요."
             } else {
-                cell.selectedTimeLabel.text = self.selectedStringDate
+                if LocalDataStore.localDataStore.getPushAlarmTime().hour == -1 {
+                    cell.selectedTimeLabel.text = ""
+                } else {
+                    cell.selectedTimeLabel.text = self.selectedStringDate
+                }
             }
             return cell
             

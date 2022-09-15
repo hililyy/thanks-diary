@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AcknowList
 
 class SettingVC: UIViewController, UIGestureRecognizerDelegate {
 
@@ -97,8 +98,8 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             break
             
         case 2: // 오픈소스 라이선스
-            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingOpenSourceVC") as? SettingOpenSourceVC else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
+            let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
+                    navigationController?.pushViewController(acknowList, animated: true)
             break
             
         case 3: // 후원

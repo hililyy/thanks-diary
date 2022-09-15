@@ -30,6 +30,7 @@ class ThirdStartVC: UIViewController {
     
     @IBAction func goStart(_ sender: Any) {
         LocalDataStore.localDataStore.setNewUserData(newData: true)
+        LocalDataStore.localDataStore.setPushAlarmTime(newData: AlarmTimeEntity(hour: -1, minute: -1))
         self.showMainViewController()
     }
     

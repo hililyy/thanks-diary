@@ -37,11 +37,7 @@ class WriteVC: UIViewController {
         contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0);
         setTitle()
         
-        if editFlag == true {
-            self.titleTextfield.text = titleString
-            self.contentsTextView.text = contentsString
-            self.diaryTitle.text = todayString
-        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +74,12 @@ class WriteVC: UIViewController {
         if editFlag == false {
             self.todayString = changeDateToString(date: Date(), formatString: "yyyy년 M월 d일")
             self.diaryTitle.text = "\(todayString) 감사일기"
+        } else {
+            var tmpString = todayString.split(separator: "-")
+            self.diaryTitle.text = ("\(tmpString[0])년 \(tmpString[1])월 \(tmpString[2])일 감사일기")
+            
+                self.titleTextfield.text = titleString
+                self.contentsTextView.text = contentsString
         }
     }
     
