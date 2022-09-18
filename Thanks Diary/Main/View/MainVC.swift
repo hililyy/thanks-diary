@@ -172,21 +172,37 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print(indexPath.row)
-        if indexPath.row == 0 && !model.detailData.isEmpty {
+        if indexPath.row == 0 && model.longDiaryFlag == true {
             let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-            cell.titleLabel.text = model.detailData[indexPath.row].title
+            cell.titleLabel.text = model.detailData[0].title
             return cell
         } else {
-            if model.detailData.isEmpty {
-                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-                cell.titleLabel.text = model.simpleData[indexPath.row].contents
-                return cell
-            } else {
+            if model.longDiaryFlag == true {
                 let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
                 cell.titleLabel.text = model.simpleData[indexPath.row-1].contents
                 return cell
+            } else {
+                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+                cell.titleLabel.text = model.simpleData[indexPath.row].contents
+                return cell
             }
+            
         }
+//        if indexPath.row == 0 && !model.detailData.isEmpty {
+//            let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
+//            cell.titleLabel.text = model.detailData[indexPath.row].title
+//            return cell
+//        } else {
+//            if model.detailData.isEmpty {
+//                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+//                cell.titleLabel.text = model.simpleData[indexPath.row].contents
+//                return cell
+//            } else {
+//                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+//                cell.titleLabel.text = model.simpleData[indexPath.row-1].contents
+//                return cell
+//            }
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

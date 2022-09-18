@@ -99,16 +99,6 @@ class WriteVC: UIViewController {
     }
     
     @IBAction func goComplete(_ sender: Any) {
-            model.longDiaryFlag = true
-            LocalDataStore.localDataStore.setTodayDetailData(newData: true)
-            self.titleString = titleTextfield.text ?? ""
-            self.contentsString = contentsTextView.text
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-M-d"
-            self.todayString = formatter.string(from: Date())
-            setData()
-            self.navigationController?.popViewController(animated: true)
-
         // update
         if editFlag == true {
             LocalDataStore.localDataStore.setTodayDetailData(newData: true)
@@ -121,6 +111,16 @@ class WriteVC: UIViewController {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
             UIApplication.shared.windows.first?.rootViewController = vc
             UIApplication.shared.windows.first?.makeKeyAndVisible()
+        } else {
+            model.longDiaryFlag = true
+            LocalDataStore.localDataStore.setTodayDetailData(newData: true)
+            self.titleString = titleTextfield.text ?? ""
+            self.contentsString = contentsTextView.text
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-M-d"
+            self.todayString = formatter.string(from: Date())
+            setData()
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
