@@ -61,13 +61,14 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
             cell.settingLabel.text = "알림 설정"
             cell.selectionStyle = .none
-
             return cell
+            
         case 2:
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
             cell.settingLabel.text = "오픈소스 라이선스"
             cell.selectionStyle = .none
             return cell
+            
 //        case 3:
 //            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
 //            cell.settingLabel.text = "후원하기"

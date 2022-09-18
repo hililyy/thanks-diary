@@ -21,6 +21,7 @@ class MainVC: UIViewController {
     var container: NSPersistentContainer!
     let model = MainModel.model
     fileprivate var datesWithCat: [String] = []
+    var todayDateString: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +30,13 @@ class MainVC: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-M-d"
         model.selectedDate = formatter.string(from: Date())
-        
+        isTodayDateString()
 //        model.getDetailData(selectedDate: model.selectedDate)
 //        model.getSimpleData(selectedDate: model.selectedDate)
         
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
+        
         setFloty()
         setCalender()
         setTodayDate(selectedData: Date())
@@ -54,24 +56,38 @@ class MainVC: UIViewController {
         floaty.buttonColor = UIColor(named: "mainColor")!
         floaty.plusColor = UIColor(named: "whiteColor")!
         floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!, handler: { item in
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .overCurrentContext
-                vc.delegate = self
-                self.present(vc, animated: true, completion: nil)
+            if self.todayDateString == self.model.selectedDate {
+                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.modalPresentationStyle = .overCurrentContext
+                    vc.delegate = self
+                    self.present(vc, animated: true, completion: nil)
+                }
+            } else {
+                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
             }
                 floaty.close()
         })
         floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
-            if self.model.longDiaryFlag == false {
-                guard let vc =  self.storyboard?.instantiateViewController(identifier: "WriteVC") as? WriteVC else { return }
-                self.navigationController?.pushViewController(vc, animated: true)
+            if self.todayDateString == self.model.selectedDate {
+                if self.model.longDiaryFlag == false {
+                    guard let vc =  self.storyboard?.instantiateViewController(identifier: "WriteVC") as? WriteVC else { return }
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
+                }
             } else {
-                self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
+                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
             }
             floaty.close()
         })
         self.view.addSubview(floaty)
+    }
+    
+    func isTodayDateString() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-M-d"
+        self.todayDateString = formatter.string(from: Date())
     }
     
     func setTodayDate(selectedData: Date) {
@@ -97,6 +113,7 @@ class MainVC: UIViewController {
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }
+    
     @IBAction func goSetting(_ sender: Any) {
         guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
         self.navigationController?.pushViewController(vc, animated: true)
