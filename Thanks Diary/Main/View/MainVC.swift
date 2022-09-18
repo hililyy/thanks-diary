@@ -112,10 +112,10 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
         self.calendar.appearance.headerDateFormat = "YYYY년 M월"
         
         self.calendar.appearance.headerTitleColor = UIColor(named: "grayColor_1")
-        self.calendar.appearance.headerTitleFont = UIFont(name: "KOTRA_GOTHIC", size: 19)
-        self.calendar.appearance.titleFont = UIFont(name: "KOTRA_GOTHIC", size: 17)
-        self.calendar.appearance.weekdayFont = UIFont(name: "KOTRA_GOTHIC", size: 17)
-        self.calendar.appearance.subtitleFont = UIFont(name: "KOTRA_GOTHIC", size: 17)
+        self.calendar.appearance.headerTitleFont = UIFont(name: "NanumBarunGothicUltraLight", size: 19)
+        self.calendar.appearance.titleFont = UIFont(name: "NanumBarunGothicUltraLight", size: 17)
+        self.calendar.appearance.weekdayFont = UIFont(name: "NanumBarunGothicUltraLight", size: 17)
+        self.calendar.appearance.subtitleFont = UIFont(name: "NanumBarunGothicUltraLight", size: 17)
         
         self.calendar.appearance.weekdayTextColor = UIColor(named: "grayColor_1")
         self.calendar.appearance.calendar.headerHeight = 50

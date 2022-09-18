@@ -42,7 +42,7 @@ class SettingVC: UIViewController, UIGestureRecognizerDelegate {
 }
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,13 +68,13 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             cell.settingLabel.text = "오픈소스 라이선스"
             cell.selectionStyle = .none
             return cell
-        case 3:
-            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
-            cell.settingLabel.text = "후원하기"
-            cell.selectionStyle = .none
-            return cell
+//        case 3:
+//            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
+//            cell.settingLabel.text = "후원하기"
+//            cell.selectionStyle = .none
+//            return cell
         
-        case 4:
+        case 3:
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
             cell.settingLabel.text = "앱 버전"
             cell.settingDetailLabel.text = "1.0.0"
@@ -102,10 +102,10 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
                     navigationController?.pushViewController(acknowList, animated: true)
             break
             
-        case 3: // 후원
-            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingSupportVC") as? SettingSupportVC else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
-            break
+//        case 3: // 후원
+//            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingSupportVC") as? SettingSupportVC else { return }
+//            self.navigationController?.pushViewController(vc, animated: true)
+//            break
             
         case 4: // 앱 버전
             break

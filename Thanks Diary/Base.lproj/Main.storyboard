@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +11,9 @@
     <customFonts key="customFonts">
         <array key="KOTRA_GOTHIC.ttf">
             <string>KOTRA_GOTHIC</string>
+        </array>
+        <array key="NanumBarunGothicUltraLight.ttf">
+            <string>NanumBarunGothicUltraLight</string>
         </array>
     </customFonts>
     <scenes>
@@ -26,22 +30,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L5A-QO-icg">
-                                <rect key="frame" x="125" y="369.66666666666669" width="140" height="104.66666666666669"/>
+                                <rect key="frame" x="123.66666666666669" y="373.66666666666669" width="143" height="97"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-EV-vze">
-                                        <rect key="frame" x="43.333333333333343" y="0.0" width="53.333333333333343" height="25.666666666666668"/>
-                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                        <rect key="frame" x="44.666666666666671" y="0.0" width="53.666666666666671" height="23"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9O-8S-ihf">
-                                        <rect key="frame" x="0.0" y="25.666666666666629" width="140" height="51"/>
-                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="40"/>
+                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-nz-jS3">
-                                        <rect key="frame" x="45" y="76.666666666666629" width="50" height="28"/>
+                                        <rect key="frame" x="46.333333333333329" y="69" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="892-pQ-MyA"/>
                                         </constraints>
@@ -97,14 +101,14 @@
                                 <color key="tintColor" name="grayColor_1"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="다음">
-                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goNext:" destination="e29-Tr-U6I" eventType="touchUpInside" id="rdt-iN-lZC"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e3f-Fv-CIK">
-                                <rect key="frame" x="169" y="138" width="52" height="12"/>
+                                <rect key="frame" x="169" y="141" width="52" height="12"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_blue_dot_12" translatesAutoresizingMaskIntoConstraints="NO" id="oVu-fl-u0K">
                                         <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
@@ -137,15 +141,15 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1P-pu-2Lr">
-                                <rect key="frame" x="75" y="175" width="240" height="150"/>
+                                <rect key="frame" x="75" y="178" width="240" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="m7K-ip-uKY"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단순히 일기를 작성하는건  부정적인 감정에 집중하기 쉬워요.  감사일기를 작성하면  긍정적인 감정에 집중할 수 있어요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFg-0w-hb6">
-                                <rect key="frame" x="72" y="345" width="246" height="186"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="18"/>
+                                <rect key="frame" x="0.0" y="348" width="390" height="183"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -160,7 +164,9 @@
                             <constraint firstItem="TqO-sS-MTy" firstAttribute="top" secondItem="mFg-0w-hb6" secondAttribute="bottom" constant="20" id="MXC-Gi-zhq"/>
                             <constraint firstItem="3H5-4m-f2m" firstAttribute="top" secondItem="6yd-Jn-RuB" secondAttribute="bottom" constant="15" id="OHG-Ku-RCN"/>
                             <constraint firstItem="q1P-pu-2Lr" firstAttribute="centerX" secondItem="k6Y-pH-vjU" secondAttribute="centerX" id="WaN-dR-Uxe"/>
+                            <constraint firstAttribute="trailing" secondItem="mFg-0w-hb6" secondAttribute="trailing" id="Y2o-SC-48u"/>
                             <constraint firstItem="q1P-pu-2Lr" firstAttribute="top" secondItem="e3f-Fv-CIK" secondAttribute="bottom" constant="25" id="cWQ-2c-bow"/>
+                            <constraint firstItem="mFg-0w-hb6" firstAttribute="leading" secondItem="k6Y-pH-vjU" secondAttribute="leading" id="cht-Tm-pTF"/>
                             <constraint firstItem="q1P-pu-2Lr" firstAttribute="leading" secondItem="k6Y-pH-vjU" secondAttribute="leading" constant="75" id="mYy-5r-Rhz"/>
                             <constraint firstItem="6yd-Jn-RuB" firstAttribute="top" secondItem="TqO-sS-MTy" secondAttribute="bottom" constant="40" id="nS2-96-NlJ"/>
                             <constraint firstItem="6yd-Jn-RuB" firstAttribute="leading" secondItem="k6Y-pH-vjU" secondAttribute="leading" constant="30" id="pmb-22-exG"/>
@@ -200,14 +206,14 @@
                                 <color key="tintColor" name="grayColor_1"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="다음">
-                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goNext:" destination="JzU-Jp-Bbb" eventType="touchUpInside" id="umZ-hs-24Q"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BXJ-N0-csA">
-                                <rect key="frame" x="169" y="94" width="52" height="12"/>
+                                <rect key="frame" x="169" y="97" width="52" height="12"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_dot_12" translatesAutoresizingMaskIntoConstraints="NO" id="IAy-Rm-cdg">
                                         <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
@@ -240,14 +246,14 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기 작성 방법" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HI-Tb-E9B">
-                                <rect key="frame" x="100.33333333333333" y="156" width="189.66666666666669" height="32"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="25"/>
+                                <rect key="frame" x="100.33333333333333" y="159" width="189.66666666666669" height="29"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- 긍정문으로 작성해요  - 작은 일에도 감사한일을 찾아보아요  - 매일매일 작성해요  - 감사한 것을 항상 생각해요" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B49-RE-B3q">
-                                <rect key="frame" x="61.333333333333343" y="258" width="267.66666666666663" height="160"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="18"/>
+                                <rect key="frame" x="61.333333333333343" y="258" width="267.66666666666663" height="145"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -299,14 +305,14 @@
                                 <color key="tintColor" name="grayColor_1"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="시작하기">
-                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goStart:" destination="WCw-3Y-DeG" eventType="touchUpInside" id="ePc-go-WIP"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p6Q-3t-XFW">
-                                <rect key="frame" x="169" y="94" width="52" height="12"/>
+                                <rect key="frame" x="169" y="97" width="52" height="12"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_dot_12" translatesAutoresizingMaskIntoConstraints="NO" id="AaL-9l-cO3">
                                         <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
@@ -339,11 +345,11 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기를 작성하고  나다운 하루를 만들어 보세요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tR1-Lc-2Tg">
-                                <rect key="frame" x="65.666666666666686" y="281" width="259" height="80"/>
+                                <rect key="frame" x="65" y="281" width="260.33333333333331" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="9aE-o1-AAz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -385,7 +391,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLa-OF-Gtn" customClass="FSCalendar">
-                                <rect key="frame" x="10" y="140" width="370" height="320"/>
+                                <rect key="frame" x="10" y="143" width="370" height="320"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="gmT-vW-2CE"/>
@@ -400,7 +406,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2f-dB-wxT">
-                                <rect key="frame" x="338" y="88" width="52" height="52"/>
+                                <rect key="frame" x="338" y="91" width="52" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="P2f-dB-wxT" secondAttribute="height" multiplier="1:1" id="5Hn-1I-fGY"/>
                                 </constraints>
@@ -411,7 +417,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GSk-Mz-Wn5">
-                                <rect key="frame" x="0.0" y="531.66666666666663" width="390" height="278.33333333333337"/>
+                                <rect key="frame" x="0.0" y="532" width="390" height="278"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="vPC-Co-KWb">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="299"/>
@@ -430,18 +436,18 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailDiaryListCell" rowHeight="60" id="V8k-OM-Wit" customClass="DetailDiaryListCell" customModule="Thanks_Diary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="343.66666603088379" width="390" height="60"/>
+                                        <rect key="frame" x="0.0" y="349" width="390" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V8k-OM-Wit" id="iAe-5J-zLv">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="image_detail_box" translatesAutoresizingMaskIntoConstraints="NO" id="six-aC-dFR">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_detail_box" translatesAutoresizingMaskIntoConstraints="NO" id="six-aC-dFR">
                                                     <rect key="frame" x="20" y="0.0" width="350" height="60"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="자세하게 작성한 감사일기 제목입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqq-sm-aEP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자세하게 작성한 감사일기 제목입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqq-sm-aEP">
                                                     <rect key="frame" x="40" y="11" width="310" height="38"/>
-                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -462,20 +468,20 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimpleDiaryListCell" rowHeight="60" id="Xb2-vu-oam" customClass="SimpleDiaryListCell" customModule="Thanks_Diary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="403.66666603088379" width="390" height="60"/>
+                                        <rect key="frame" x="0.0" y="409" width="390" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xb2-vu-oam" id="Cql-RA-nEF">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="간단하게 작성한 감사일기 제목입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lq-3m-riT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="간단하게 작성한 감사일기 제목입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lq-3m-riT">
                                                     <rect key="frame" x="40" y="11" width="317" height="38"/>
-                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ic_blue_dot_12" translatesAutoresizingMaskIntoConstraints="NO" id="V1F-l2-dhQ">
-                                                    <rect key="frame" x="20" y="26.666666666666671" width="7" height="7"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_blue_dot_12" translatesAutoresizingMaskIntoConstraints="NO" id="V1F-l2-dhQ">
+                                                    <rect key="frame" x="20" y="26.666666666666668" width="7" height="7.0000000000000036"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="7" id="CR6-F7-wcH"/>
                                                         <constraint firstAttribute="width" constant="7" id="mLp-R1-9hS"/>
@@ -499,11 +505,11 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_gray_line" translatesAutoresizingMaskIntoConstraints="NO" id="wcv-ue-ryN">
-                                <rect key="frame" x="0.0" y="479" width="390" height="1"/>
+                                <rect key="frame" x="0.0" y="482" width="390" height="1"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14일 (일)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0R-sM-KPW">
-                                <rect key="frame" x="25" y="493" width="165" height="25.666666666666629"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                <rect key="frame" x="25" y="496" width="165" height="23"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -552,14 +558,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_lock" translatesAutoresizingMaskIntoConstraints="NO" id="Pzj-am-Ob6">
-                                <rect key="frame" x="158.66666666666666" y="114" width="73" height="73"/>
+                                <rect key="frame" x="158.66666666666666" y="117" width="73" height="73"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="73" id="Qaf-S3-VhU"/>
                                     <constraint firstAttribute="width" secondItem="Pzj-am-Ob6" secondAttribute="height" multiplier="1:1" id="zgv-zR-Is6"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="fB0-Cf-2Oi">
-                                <rect key="frame" x="90" y="302" width="210" height="18.666666666666686"/>
+                                <rect key="frame" x="90" y="305" width="210" height="18.666666666666686"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_dot_20" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-PF-TKo">
                                         <rect key="frame" x="0.0" y="0.0" width="18.666666666666668" height="18.666666666666668"/>
@@ -582,31 +588,31 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vL-gZ-Bg5">
-                                <rect key="frame" x="157.33333333333334" y="217" width="75.666666666666657" height="28"/>
+                                <rect key="frame" x="155.66666666666666" y="220" width="78.666666666666657" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Zet-bh-8Zs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="22"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정할 비밀번호를 입력해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQR-O4-0M7">
-                                <rect key="frame" x="82.333333333333329" y="250" width="225.33333333333337" height="22"/>
+                                <rect key="frame" x="80.666666666666686" y="253" width="229" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="uXq-5f-oNY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-KU-Kn3">
-                                <rect key="frame" x="57" y="370.66666666666674" width="276" height="403.33333333333326"/>
+                                <rect key="frame" x="58" y="373.66666666666674" width="274" height="400.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="biC-NF-jyr">
-                                        <rect key="frame" x="0.0" y="0.0" width="276" height="82"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="274" height="81.333333333333329"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFq-yG-YUL">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="81.333333333333329" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="LFq-yG-YUL" secondAttribute="height" multiplier="1:1" id="c93-ax-Ada"/>
                                                 </constraints>
@@ -621,7 +627,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Rm-Xf-dxT">
-                                                <rect key="frame" x="97" y="0.0" width="82" height="82"/>
+                                                <rect key="frame" x="96.333333333333343" y="0.0" width="81.333333333333343" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="1Rm-Xf-dxT" secondAttribute="height" multiplier="1:1" id="zaY-w2-ANJ"/>
                                                 </constraints>
@@ -636,7 +642,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMU-FX-XJ7">
-                                                <rect key="frame" x="194" y="0.0" width="82" height="82"/>
+                                                <rect key="frame" x="192.66666666666666" y="0.0" width="81.333333333333343" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="mMU-FX-XJ7" secondAttribute="height" multiplier="1:1" id="QBP-jf-985"/>
                                                 </constraints>
@@ -659,10 +665,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="edE-cD-lkM">
-                                        <rect key="frame" x="0.0" y="107" width="276" height="82.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="106.33333333333331" width="274" height="81.333333333333314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwO-z7-SvH">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="82.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="81.333333333333329" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="iwO-z7-SvH" secondAttribute="height" multiplier="1:1" id="BXy-Is-KOl"/>
                                                 </constraints>
@@ -677,7 +683,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chf-KA-kkd">
-                                                <rect key="frame" x="97" y="0.0" width="82" height="82.333333333333329"/>
+                                                <rect key="frame" x="96.333333333333343" y="0.0" width="81.333333333333343" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="chf-KA-kkd" secondAttribute="height" multiplier="1:1" id="9IO-27-0Id"/>
                                                 </constraints>
@@ -692,7 +698,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsQ-qD-q1W">
-                                                <rect key="frame" x="194" y="0.0" width="82" height="82.333333333333329"/>
+                                                <rect key="frame" x="192.66666666666666" y="0.0" width="81.333333333333343" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="bsQ-qD-q1W" secondAttribute="height" multiplier="1:1" id="gpb-p9-ttC"/>
                                                 </constraints>
@@ -709,10 +715,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="P9d-61-QTl">
-                                        <rect key="frame" x="0.0" y="214.33333333333331" width="276" height="82"/>
+                                        <rect key="frame" x="0.0" y="212.66666666666669" width="274" height="81.333333333333314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTK-cw-KWT">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="81.333333333333329" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pTK-cw-KWT" secondAttribute="height" multiplier="1:1" id="Hjo-sh-ro5"/>
                                                 </constraints>
@@ -727,7 +733,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUy-4K-i3J">
-                                                <rect key="frame" x="97" y="0.0" width="82" height="82"/>
+                                                <rect key="frame" x="96.333333333333343" y="0.0" width="81.333333333333343" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="gUy-4K-i3J" secondAttribute="height" multiplier="1:1" id="2Vf-bj-eQd"/>
                                                 </constraints>
@@ -742,7 +748,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDQ-ea-5xs">
-                                                <rect key="frame" x="194" y="0.0" width="82" height="82"/>
+                                                <rect key="frame" x="192.66666666666666" y="0.0" width="81.333333333333343" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="DDQ-ea-5xs" secondAttribute="height" multiplier="1:1" id="pu4-f1-TKd"/>
                                                 </constraints>
@@ -759,10 +765,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="D4h-aK-kmK">
-                                        <rect key="frame" x="0.0" y="321.33333333333331" width="276" height="82"/>
+                                        <rect key="frame" x="0.0" y="318.99999999999994" width="274" height="81.333333333333314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXd-VP-OWF">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="81.333333333333329" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="EXd-VP-OWF" secondAttribute="height" multiplier="1:1" id="Hai-Xc-bmQ"/>
                                                 </constraints>
@@ -777,7 +783,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhL-WG-zEw">
-                                                <rect key="frame" x="97" y="0.0" width="82" height="82"/>
+                                                <rect key="frame" x="96.333333333333343" y="0.0" width="81.333333333333343" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="bhL-WG-zEw" secondAttribute="height" multiplier="1:1" id="sq0-qa-LH6"/>
                                                 </constraints>
@@ -792,7 +798,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTP-Uc-BgS">
-                                                <rect key="frame" x="194" y="0.0" width="82" height="82"/>
+                                                <rect key="frame" x="192.66666666666666" y="0.0" width="81.333333333333343" height="81.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pTP-Uc-BgS" secondAttribute="height" multiplier="1:1" id="PWN-8G-PZN"/>
                                                 </constraints>
@@ -883,30 +889,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022년 8월 14일 감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIX-Ii-dJd">
-                                <rect key="frame" x="59.999999999999986" y="70" width="215.66666666666663" height="25.666666666666671"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                <rect key="frame" x="60" y="73" width="220" height="23"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRl-Qz-nbz">
-                                <rect key="frame" x="40" y="115.66666666666667" width="30.333333333333329" height="21.666666666666671"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <rect key="frame" x="40" y="116" width="70" height="19.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="QzJ-bC-TNZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1X2-nd-dAc">
-                                <rect key="frame" x="32" y="140.33333333333334" width="326" height="44"/>
+                                <rect key="frame" x="32" y="138.66666666666666" width="326" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="edP-83-nRy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zlO-TB-7mx">
-                                <rect key="frame" x="32" y="225" width="326" height="496"/>
+                                <rect key="frame" x="32" y="221.66666666666666" width="326" height="499.33333333333337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esm-Vg-eFe">
@@ -918,14 +927,14 @@
                                 <color key="tintColor" name="grayColor_1"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="작성 완료">
-                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goComplete:" destination="gwI-oc-dJW" eventType="touchUpInside" id="0bD-iu-8j8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxU-Cb-Jom">
-                                <rect key="frame" x="0.0" y="53" width="60" height="60"/>
+                                <rect key="frame" x="0.0" y="54.666666666666657" width="60" height="60"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="ic_back" title=" "/>
                                 <connections>
@@ -934,8 +943,11 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuY-Cq-TrK">
-                                <rect key="frame" x="40" y="200.33333333333334" width="29.666666666666671" height="21.666666666666657"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <rect key="frame" x="40" y="198.66666666666666" width="70" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="hdZ-vG-uvQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -988,29 +1000,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="2022년 8월 14일 감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5e-Y5-hMq">
-                                <rect key="frame" x="59.999999999999986" y="69" width="215.66666666666663" height="25.666666666666671"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                <rect key="frame" x="60" y="72" width="220" height="23"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MI-aR-JAp" customClass="PaddingLabel" customModule="Thanks_Diary" customModuleProvider="target">
-                                <rect key="frame" x="32" y="139.33333333333334" width="326" height="44"/>
+                                <rect key="frame" x="32" y="137.66666666666666" width="326" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="z20-eA-H4D"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ps2-mi-f92">
-                                <rect key="frame" x="32" y="224.33333333333334" width="326" height="496.66666666666663"/>
+                                <rect key="frame" x="32" y="220.33333333333334" width="326" height="500.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" name="grayColor_1"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1AS-Kf-khH">
-                                <rect key="frame" x="306" y="59" width="52" height="52"/>
+                                <rect key="frame" x="306" y="62" width="52" height="52"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="ic_trash" title=" "/>
                                 <connections>
@@ -1018,7 +1030,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfc-7C-lwf">
-                                <rect key="frame" x="0.0" y="52" width="60" height="60"/>
+                                <rect key="frame" x="0.0" y="53.666666666666657" width="60" height="60"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="ic_back" title=" "/>
                                 <connections>
@@ -1027,14 +1039,20 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opu-MJ-S91">
-                                <rect key="frame" x="40" y="114.66666666666667" width="30.333333333333329" height="21.666666666666671"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <rect key="frame" x="40" y="115" width="60" height="19.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="mSs-yb-yDf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osN-TA-TPk">
-                                <rect key="frame" x="40" y="199.33333333333334" width="30.333333333333329" height="22"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                <rect key="frame" x="40" y="197.66666666666666" width="60" height="19.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="lwh-Lt-UuP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1047,7 +1065,7 @@
                                 <color key="tintColor" name="grayColor_1"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="수정하기">
-                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goEdit:" destination="7bc-Ie-avc" eventType="touchUpInside" id="zhb-xr-gZ0"/>
@@ -1121,7 +1139,7 @@
                                                 <color key="tintColor" name="grayColor_1"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="취소">
-                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="goCancel:" destination="xm3-5g-6CO" eventType="touchUpInside" id="ljv-Ff-zl7"/>
@@ -1132,7 +1150,7 @@
                                                 <color key="tintColor" name="grayColor_1"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="삭제">
-                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="goDelete:" destination="xm3-5g-6CO" eventType="touchUpInside" id="AGy-yP-oDt"/>
@@ -1144,8 +1162,8 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글을 삭제 하시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xI-yn-vj2">
-                                        <rect key="frame" x="96.333333333333329" y="409.33333333333331" width="197.66666666666669" height="25.666666666666686"/>
-                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="20"/>
+                                        <rect key="frame" x="94.666666666666686" y="410.66666666666669" width="201" height="23"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1187,14 +1205,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRY-mA-5W0">
-                                <rect key="frame" x="153.66666666666666" y="74" width="83" height="28"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 설정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRY-mA-5W0">
+                                <rect key="frame" x="153.33333333333334" y="77" width="83.666666666666657" height="25"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YB-F7-qef">
-                                <rect key="frame" x="0.0" y="60" width="56" height="56"/>
+                                <rect key="frame" x="0.0" y="61.666666666666657" width="56" height="56"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="ic_back"/>
                                 <connections>
@@ -1206,15 +1224,15 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlarmSettingCell" rowHeight="55" id="s4F-tI-j9j" customClass="AlarmSettingCell" customModule="Thanks_Diary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="55"/>
+                                        <rect key="frame" x="0.0" y="50" width="390" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s4F-tI-j9j" id="l00-Xq-ROi">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgk-Si-zYV">
-                                                    <rect key="frame" x="35" y="16.666666666666664" width="64" height="21.666666666666664"/>
-                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <rect key="frame" x="35.000000000000007" y="17.666666666666668" width="64.666666666666686" height="20.000000000000004"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1237,21 +1255,21 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlarmTimeCell" rowHeight="55" id="J7e-8p-kJp" customClass="AlarmTimeCell" customModule="Thanks_Diary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.666666030883789" width="390" height="55"/>
+                                        <rect key="frame" x="0.0" y="105" width="390" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J7e-8p-kJp" id="cyD-Lp-tvL">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg7-gB-lf1">
-                                                    <rect key="frame" x="35" y="16.666666666666664" width="64" height="21.666666666666664"/>
-                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <rect key="frame" x="35.000000000000007" y="17.666666666666668" width="64.666666666666686" height="20.000000000000004"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 13시 30분" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2G-Iz-lhs">
-                                                    <rect key="frame" x="260.33333333333331" y="17.333333333333336" width="99.666666666666686" height="20.333333333333336"/>
-                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="16"/>
+                                                    <rect key="frame" x="258.33333333333331" y="18.333333333333329" width="101.66666666666669" height="18.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="16"/>
                                                     <color key="textColor" name="grayColor_2"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1279,7 +1297,7 @@
                             <constraint firstItem="aRY-mA-5W0" firstAttribute="centerY" secondItem="2YB-F7-qef" secondAttribute="centerY" id="g83-ov-J6c"/>
                             <constraint firstAttribute="bottom" secondItem="QSz-yQ-xt6" secondAttribute="bottom" id="hL9-AF-b4a"/>
                             <constraint firstItem="QSz-yQ-xt6" firstAttribute="top" secondItem="aRY-mA-5W0" secondAttribute="bottom" constant="30" id="j6z-3u-OYb"/>
-                            <constraint firstItem="aRY-mA-5W0" firstAttribute="centerX" secondItem="AP0-I4-g1R" secondAttribute="centerX" id="u47-Dr-QZY"/>
+                            <constraint firstItem="aRY-mA-5W0" firstAttribute="centerX" secondItem="AP0-I4-g1R" secondAttribute="centerX" id="rgv-St-2hk"/>
                             <constraint firstItem="aRY-mA-5W0" firstAttribute="top" secondItem="vOF-Qc-Rqr" secondAttribute="bottom" constant="30" id="uT1-9Y-Bf7"/>
                         </constraints>
                     </view>
@@ -1289,7 +1307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEk-hg-lgr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63" y="2872"/>
+            <point key="canvasLocation" x="61.538461538461533" y="2871.3270142180095"/>
         </scene>
         <!--Setting Alarm DetailVC-->
         <scene sceneID="xsS-zS-VV5">
@@ -1320,7 +1338,7 @@
                                                 <color key="tintColor" name="grayColor_1"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="취소">
-                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="cancel:" destination="bU1-OG-k81" eventType="touchUpInside" id="Qmq-Ak-nDC"/>
@@ -1332,7 +1350,7 @@
                                                 <color key="tintColor" name="grayColor_1"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="확인">
-                                                    <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="enter:" destination="bU1-OG-k81" eventType="touchUpInside" id="g07-HY-ENn"/>
@@ -1398,13 +1416,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFi-O9-7c9">
-                                <rect key="frame" x="176" y="69" width="38" height="28"/>
-                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="22"/>
+                                <rect key="frame" x="175.33333333333334" y="72" width="39.333333333333343" height="25.333333333333329"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qb-Hy-9Ua">
-                                <rect key="frame" x="0.0" y="53" width="60" height="60"/>
+                                <rect key="frame" x="0.0" y="54.666666666666657" width="60" height="60"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="ic_back" title=" "/>
                                 <connections>
@@ -1412,19 +1430,19 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uxN-SC-06u">
-                                <rect key="frame" x="0.0" y="113" width="390" height="731"/>
+                                <rect key="frame" x="0.0" y="114.66666666666669" width="390" height="729.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingSwitchCell" rowHeight="55" id="FCe-rS-P0E" customClass="SettingSwitchCell" customModule="Thanks_Diary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="55"/>
+                                        <rect key="frame" x="0.0" y="50" width="390" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FCe-rS-P0E" id="kgt-YB-i9A">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHB-Ia-fka">
-                                                    <rect key="frame" x="35" y="16.666666666666664" width="40.333333333333343" height="21.666666666666664"/>
-                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <rect key="frame" x="35" y="17.666666666666664" width="42" height="19.666666666666664"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1448,15 +1466,15 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingMoreCell" rowHeight="55" id="7bD-VR-523" customClass="SettingMoreCell" customModule="Thanks_Diary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.666666030883789" width="390" height="55"/>
+                                        <rect key="frame" x="0.0" y="105" width="390" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7bD-VR-523" id="B6t-VF-fRF">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XP-ok-G6p">
-                                                    <rect key="frame" x="35" y="16.666666666666664" width="40.333333333333343" height="21.666666666666664"/>
-                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <rect key="frame" x="35" y="17.666666666666664" width="42" height="19.666666666666664"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1476,21 +1494,21 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingLabelCell" rowHeight="55" id="lgk-vB-xEi" customClass="SettingLabelCell" customModule="Thanks_Diary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="154.66666603088379" width="390" height="55"/>
+                                        <rect key="frame" x="0.0" y="160" width="390" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lgk-vB-xEi" id="3ex-Tg-Qqp">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-d9-P7v">
-                                                    <rect key="frame" x="35" y="16.666666666666664" width="40.333333333333343" height="21.666666666666664"/>
-                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <rect key="frame" x="35" y="17.666666666666664" width="42" height="19.666666666666664"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su6-oP-aDR">
-                                                    <rect key="frame" x="325.33333333333331" y="16.666666666666664" width="34.666666666666686" height="21.666666666666664"/>
-                                                    <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="17"/>
+                                                    <rect key="frame" x="320" y="17.666666666666664" width="40" height="19.666666666666664"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                     <color key="textColor" name="grayColor_2"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1537,7 +1555,7 @@
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="knB-ak-dA3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QnC-qz-DWV">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1553,7 +1571,7 @@
             <objects>
                 <navigationController storyboardIdentifier="main" modalPresentationStyle="fullScreen" id="n34-LA-5nJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="edv-BO-oSD">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1645,7 +1663,7 @@
                                                         <color key="tintColor" name="grayColor_1"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="취소">
-                                                            <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="15"/>
+                                                            <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="goBack:" destination="hhR-22-JNe" eventType="touchUpInside" id="975-nL-y94"/>
@@ -1657,7 +1675,7 @@
                                                         <color key="tintColor" name="grayColor_1"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="작성 완료">
-                                                            <fontDescription key="titleFontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="15"/>
+                                                            <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="goEnter:" destination="hhR-22-JNe" eventType="touchUpInside" id="Tcx-Mh-Oar"/>
@@ -1670,7 +1688,7 @@
                                                 </constraints>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-gI-xKX">
-                                                <rect key="frame" x="33" y="58.666666666666686" width="324" height="68"/>
+                                                <rect key="frame" x="33" y="60.666666666666686" width="324" height="68"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="68" id="3bN-IX-X4L"/>
@@ -1681,7 +1699,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-nY-FHf">
-                                                <rect key="frame" x="323" y="0.0" width="52" height="52"/>
+                                                <rect key="frame" x="322.33333333333331" y="0.0" width="52.666666666666686" height="52.666666666666664"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="ic_trash" title=" "/>
                                                 <connections>
@@ -1689,8 +1707,8 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글자 수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cg-nS-uiu">
-                                                <rect key="frame" x="312.66666666666669" y="131.66666666666669" width="44.333333333333314" height="19.333333333333343"/>
-                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="15"/>
+                                                <rect key="frame" x="313.33333333333331" y="133.66666666666669" width="43.666666666666686" height="17.333333333333343"/>
+                                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1750,7 +1768,7 @@
     </scenes>
     <designables>
         <designable name="6MI-aR-JAp">
-            <size key="intrinsicContentSize" width="30.333333333333332" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="46.333333333333329" height="29.666666666666668"/>
         </designable>
     </designables>
     <resources>
@@ -1792,7 +1810,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
