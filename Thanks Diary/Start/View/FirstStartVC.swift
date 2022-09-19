@@ -9,15 +9,30 @@ import UIKit
 import Lottie
 
 class FirstStartVC: UIViewController {
-
     @IBOutlet weak var lottieView: UIView!
     @IBOutlet weak var lottieView2: UIView!
     @IBOutlet weak var nextBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
+        setLottie()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    @IBAction func goNext(_ sender: Any) {
+        guard let vc =  storyboard?.instantiateViewController(identifier: "SecondStartVC") as? SecondStartVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func setView() {
         self.nextBtn.layer.cornerRadius = 20
-        
+    }
+    
+    func setLottie() {
         let animationView: AnimationView = .init(name: "sun")
         self.view.addSubview(animationView)
 
@@ -35,14 +50,5 @@ class FirstStartVC: UIViewController {
         animationView2.contentMode = .scaleAspectFit
         animationView2.play()
         animationView2.loopMode = .playOnce
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
-    }
-    
-    @IBAction func goNext(_ sender: Any) {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SecondStartVC") as? SecondStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

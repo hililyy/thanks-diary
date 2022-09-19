@@ -10,14 +10,26 @@ import Lottie
 
 
 class ThirdStartVC: UIViewController {
-
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var lottieView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
+        setLottie()
+    }
+    
+    @IBAction func goStart(_ sender: Any) {
+        LocalDataStore.localDataStore.setNewUserData(newData: true)
+        LocalDataStore.localDataStore.setPushAlarmTime(newData: AlarmTimeEntity(hour: -1, minute: -1))
+        self.showMainViewController()
+    }
+    
+    func setView() {
         self.nextBtn.layer.cornerRadius = 20
-        
+    }
+    
+    func setLottie() {
         let animationView: AnimationView = .init(name: "go")
         self.view.addSubview(animationView)
         
@@ -26,12 +38,6 @@ class ThirdStartVC: UIViewController {
         animationView.contentMode = .scaleAspectFit
         animationView.play()
         animationView.loopMode = .playOnce
-    }
-    
-    @IBAction func goStart(_ sender: Any) {
-        LocalDataStore.localDataStore.setNewUserData(newData: true)
-        LocalDataStore.localDataStore.setPushAlarmTime(newData: AlarmTimeEntity(hour: -1, minute: -1))
-        self.showMainViewController()
     }
     
     func showMainViewController() {

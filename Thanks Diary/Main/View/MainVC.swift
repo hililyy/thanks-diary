@@ -17,6 +17,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var diaryTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var emptyImage: UIImageView!
     
     var container: NSPersistentContainer!
     let model = MainModel.model
@@ -31,8 +32,6 @@ class MainVC: UIViewController {
         formatter.dateFormat = "yyyy-M-d"
         model.selectedDate = formatter.string(from: Date())
         isTodayDateString()
-//        model.getDetailData(selectedDate: model.selectedDate)
-//        model.getSimpleData(selectedDate: model.selectedDate)
         
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
@@ -159,10 +158,19 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if model.detailData.count == 0 && model.simpleData.count == 0 {
-            self.emptyView.isHidden = false
-            self.emptyView.frame.size.height = 299
-            diaryTableView.isScrollEnabled = false
-            return 0
+            if self.todayDateString == self.model.selectedDate {
+                self.emptyView.isHidden = false
+                self.emptyView.frame.size.height = 299
+                self.emptyImage.image = UIImage(named: "img_not_today")
+                diaryTableView.isScrollEnabled = false
+                return 0
+            } else {
+                self.emptyView.isHidden = false
+                self.emptyView.frame.size.height = 299
+                self.emptyImage.image = UIImage(named: "img_not_before")
+                diaryTableView.isScrollEnabled = false
+                return 0
+            }
         } else {
             self.emptyView.isHidden = true
             self.emptyView.frame.size.height = 0
@@ -188,21 +196,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             }
             
         }
-//        if indexPath.row == 0 && !model.detailData.isEmpty {
-//            let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-//            cell.titleLabel.text = model.detailData[indexPath.row].title
-//            return cell
-//        } else {
-//            if model.detailData.isEmpty {
-//                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-//                cell.titleLabel.text = model.simpleData[indexPath.row].contents
-//                return cell
-//            } else {
-//                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-//                cell.titleLabel.text = model.simpleData[indexPath.row-1].contents
-//                return cell
-//            }
-//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

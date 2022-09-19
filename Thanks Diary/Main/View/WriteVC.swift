@@ -24,6 +24,15 @@ class WriteVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
+        setTitle()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    func setView() {
         self.completeBtn.layer.cornerRadius = 20
         
         self.titleTextfield.layer.cornerRadius = 20
@@ -34,16 +43,8 @@ class WriteVC: UIViewController {
         self.contentsTextView.layer.borderWidth = 2
         self.contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
         titleTextfield.addLeftPadding()
-        contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0);
-        setTitle()
-        
-        
+        contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
     func setData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let context = appDelegate.persistentContainer.viewContext

@@ -537,6 +537,7 @@
                     <connections>
                         <outlet property="calendar" destination="pLa-OF-Gtn" id="8ng-76-Fmk"/>
                         <outlet property="diaryTableView" destination="GSk-Mz-Wn5" id="BpI-TG-Fmc"/>
+                        <outlet property="emptyImage" destination="APX-Wg-Za5" id="BHu-OB-1iO"/>
                         <outlet property="emptyView" destination="vPC-Co-KWb" id="2Ag-Us-TIm"/>
                         <outlet property="todayDate" destination="P0R-sM-KPW" id="eGK-jM-5S1"/>
                     </connections>
@@ -1006,7 +1007,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MI-aR-JAp" customClass="PaddingLabel" customModule="Thanks_Diary" customModuleProvider="target">
-                                <rect key="frame" x="32" y="137.66666666666666" width="326" height="44"/>
+                                <rect key="frame" x="32" y="138" width="326" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="z20-eA-H4D"/>
                                 </constraints>
@@ -1015,7 +1016,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ps2-mi-f92">
-                                <rect key="frame" x="32" y="220.33333333333334" width="326" height="500.66666666666663"/>
+                                <rect key="frame" x="32" y="221" width="326" height="500"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
@@ -1039,7 +1040,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opu-MJ-S91">
-                                <rect key="frame" x="40" y="115" width="60" height="19.666666666666657"/>
+                                <rect key="frame" x="40" y="115" width="60" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="mSs-yb-yDf"/>
                                 </constraints>
@@ -1048,7 +1049,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osN-TA-TPk">
-                                <rect key="frame" x="40" y="197.66666666666666" width="60" height="19.666666666666657"/>
+                                <rect key="frame" x="40" y="198" width="60" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="lwh-Lt-UuP"/>
                                 </constraints>
