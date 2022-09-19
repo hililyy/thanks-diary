@@ -877,10 +877,10 @@
             </objects>
             <point key="canvasLocation" x="63" y="2182"/>
         </scene>
-        <!--WriteVC-->
+        <!--Detail WriteVC-->
         <scene sceneID="lpK-Wm-E45">
             <objects>
-                <viewController storyboardIdentifier="WriteVC" id="gwI-oc-dJW" customClass="WriteVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailWriteVC" id="gwI-oc-dJW" customClass="DetailWriteVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="177-1i-Znb"/>
                         <viewControllerLayoutGuide type="bottom" id="M93-fE-Onx"/>

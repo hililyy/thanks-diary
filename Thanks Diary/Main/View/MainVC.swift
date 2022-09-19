@@ -21,8 +21,8 @@ class MainVC: UIViewController {
     
     var container: NSPersistentContainer!
     let model = MainModel.model
-    fileprivate var datesWithCat: [String] = []
-    var todayDateString: String = ""
+    fileprivate var datesWithCircle: [String] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,47 +31,49 @@ class MainVC: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-M-d"
         model.selectedDate = formatter.string(from: Date())
-        isTodayDateString()
+        model.isTodayDateString()
         
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         
         setFloty()
         setCalender()
-        setTodayDate(selectedData: Date())
+        model.setTodayDate(selectedData: Date())
+        initialize()
+    }
+    func initialize() {
+        self.todayDate.text = model.todayDateDayWeek
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         model.getDetailData(selectedDate: model.selectedDate)
         model.getSimpleData(selectedDate: model.selectedDate)
-        self.datesWithCat = model.dateList
+        self.datesWithCircle = model.dateList
         calendar.reloadData()
         diaryTableView.reloadData()
     }
-
+    
+    @IBAction func goSetting(_ sender: Any) {
+        self.goSettingVC()
+    }
+    
     func setFloty() {
         let floaty = Floaty()
         floaty.buttonColor = UIColor(named: "mainColor")!
         floaty.plusColor = UIColor(named: "whiteColor")!
         floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!, handler: { item in
-            if self.todayDateString == self.model.selectedDate {
-                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
-                    vc.modalTransitionStyle = .crossDissolve
-                    vc.modalPresentationStyle = .overCurrentContext
-                    vc.delegate = self
-                    self.present(vc, animated: true, completion: nil)
-                }
+            if self.model.todayDate == self.model.selectedDate {
+                self.goSimpleWriteVC()
             } else {
                 self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
             }
                 floaty.close()
         })
         floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
-            if self.todayDateString == self.model.selectedDate {
+            if self.model.todayDate == self.model.selectedDate {
                 if self.model.longDiaryFlag == false {
-                    guard let vc =  self.storyboard?.instantiateViewController(identifier: "WriteVC") as? WriteVC else { return }
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.goDetailWriteVC()
                 } else {
                     self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
                 }
@@ -83,44 +85,29 @@ class MainVC: UIViewController {
         self.view.addSubview(floaty)
     }
     
-    func isTodayDateString() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-M-d"
-        self.todayDateString = formatter.string(from: Date())
-    }
-    
-    func setTodayDate(selectedData: Date) {
-        let formatter = DateFormatter()
-        let loc = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "dd'일' (E)"
-        formatter.locale = loc
-        self.todayDate.text = formatter.string(from: selectedData)
-    }
 
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-M-d"
-        setTodayDate(selectedData: date)
-        model.selectedDate = formatter.string(from: date)
-        
-        model.getSimpleData(selectedDate: model.selectedDate)
-        model.getDetailData(selectedDate: model.selectedDate)
-        
-        self.diaryTableView.reloadData()
+    
+    func goSimpleWriteVC() {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.delegate = self
+            self.present(vc, animated: true, completion: nil)
     }
     
-    func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date()
+    func goDetailWriteVC() {
+        guard let vc =  self.storyboard?.instantiateViewController(identifier: "DetailWriteVC") as? DetailWriteVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func goSetting(_ sender: Any) {
+    func goSettingVC() {
         guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-    
+    // 캘린더 기본 UI 셋팅
     func setCalender() {
         self.calendar.delegate = self
         self.calendar.dataSource = self
@@ -139,18 +126,35 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
         self.calendar.rowHeight = 40
         
     }
+    
+    // 캘린더 날짜 선택시 동작
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-M-d"
+        model.setTodayDate(selectedData: date)
+        model.selectedDate = formatter.string(from: date)
+        
+        model.getSimpleData(selectedDate: model.selectedDate)
+        model.getDetailData(selectedDate: model.selectedDate)
+        
+        self.diaryTableView.reloadData()
+    }
         
     // 특정 날짜에 이미지 세팅
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let imageDateFormatter = DateFormatter()
         imageDateFormatter.dateFormat = "yyyy-M-d"
         var dateStr = imageDateFormatter.string(from: date)
-        return datesWithCat.contains(dateStr) ? UIImage(named: "ic_circle") : nil
+        return datesWithCircle.contains(dateStr) ? UIImage(named: "ic_circle") : nil
         
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
         return CGPoint(x: 0, y: -5)
+    }
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date()
     }
 }
 
@@ -158,7 +162,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if model.detailData.count == 0 && model.simpleData.count == 0 {
-            if self.todayDateString == self.model.selectedDate {
+            if self.model.todayDate == self.model.selectedDate {
                 self.emptyView.isHidden = false
                 self.emptyView.frame.size.height = 299
                 self.emptyImage.image = UIImage(named: "img_not_today")
@@ -199,7 +203,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("index : \(indexPath.row)")
         if model.longDiaryFlag == true {
             if indexPath.row == 0 {
                 if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
@@ -249,7 +252,7 @@ extension MainVC: reloadDelegate {
     func reloadData() {
         model.getDetailData(selectedDate: model.selectedDate)
         model.getSimpleData(selectedDate: model.selectedDate)
-        self.datesWithCat = model.dateList
+        self.datesWithCircle = model.dateList
         calendar.reloadData()
         diaryTableView.reloadData()
     }

@@ -22,7 +22,7 @@ class SimpleWriteVC: UIViewController, UITextViewDelegate {
     let model = MainModel.model
     var updateFlag: Bool = false
     var selectedIndex: Int = 0
-    let maxCount: Int = 20
+    let maxCount: Int = 18
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class SimpleWriteVC: UIViewController, UITextViewDelegate {
         if updateFlag == true {
             simpleTextField.text = self.contentsString
         }
-        self.textLengthLabel.text = "\(simpleTextField.text.count)/\(maxCount)"
+        self.textLengthLabel.text = "\(simpleTextField.text.count)/20"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +111,7 @@ class SimpleWriteVC: UIViewController, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         //이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
         print(textView.text.count)
-        self.textLengthLabel.text = "\(textView.text.count+1)/\(maxCount)"
+        self.textLengthLabel.text = "\(textView.text.count+1)/20"
         let newLength = textView.text.count - range.length + text.count
         let koreanMaxCount = maxCount + 1
         //글자수가 초과 된 경우 or 초과되지 않은 경우

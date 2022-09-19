@@ -1,5 +1,5 @@
 //
-//  WriteVC.swift
+//  DetailWriteVC.swift
 //  Thanks Diary
 //
 //  Created by 강조은 on 2022/08/21.
@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import Toast_Swift
 
-class WriteVC: UIViewController {
+class DetailWriteVC: UIViewController {
 
     @IBOutlet weak var diaryTitle: UILabel!
     @IBOutlet weak var titleTextfield: UITextField!

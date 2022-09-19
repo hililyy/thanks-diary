@@ -8,7 +8,6 @@
 import UIKit
 import Lottie
 
-
 class ThirdStartVC: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var lottieView: UIView!
@@ -22,7 +21,7 @@ class ThirdStartVC: UIViewController {
     @IBAction func goStart(_ sender: Any) {
         LocalDataStore.localDataStore.setNewUserData(newData: true)
         LocalDataStore.localDataStore.setPushAlarmTime(newData: AlarmTimeEntity(hour: -1, minute: -1))
-        self.showMainViewController()
+        self.goMainVC()
     }
     
     func setView() {
@@ -40,7 +39,7 @@ class ThirdStartVC: UIViewController {
         animationView.loopMode = .playOnce
     }
     
-    func showMainViewController() {
+    func goMainVC() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()

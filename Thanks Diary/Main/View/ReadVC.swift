@@ -56,7 +56,7 @@ class ReadVC: UIViewController {
     }
     
     @IBAction func goEdit(_ sender: Any) {
-        guard let vc =  self.storyboard?.instantiateViewController(identifier: "WriteVC") as? WriteVC else { return }
+        guard let vc =  self.storyboard?.instantiateViewController(identifier: "DetailWriteVC") as? DetailWriteVC else { return }
         vc.editFlag = true
         vc.titleString = self.selectedDataTitle ?? ""
         vc.contentsString = self.selectedDataContents ?? ""

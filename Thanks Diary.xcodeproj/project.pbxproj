@@ -28,7 +28,6 @@
 		2A7241DA28B3EDF70040ADE9 /* DiaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */; };
 		2A72420328B425E90040ADE9 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A72420228B425E90040ADE9 /* SplashViewModel.swift */; };
 		2A72420528B425F30040ADE9 /* SplashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A72420428B425F30040ADE9 /* SplashModel.swift */; };
-		2A72420B28B4264F0040ADE9 /* StartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A72420A28B4264F0040ADE9 /* StartModel.swift */; };
 		2A72421128B426730040ADE9 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A72421028B426730040ADE9 /* SettingModel.swift */; };
 		2A72421728BBB5C20040ADE9 /* SettingSupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A72421628BBB5C20040ADE9 /* SettingSupportVC.swift */; };
 		2A774D4E28D3076500AECF9D /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A774D4D28D3076500AECF9D /* Pods-Thanks Diary-acknowledgements.plist */; };
@@ -98,7 +97,6 @@
 		2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntity.swift; sourceTree = "<group>"; };
 		2A72420228B425E90040ADE9 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		2A72420428B425F30040ADE9 /* SplashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashModel.swift; sourceTree = "<group>"; };
-		2A72420A28B4264F0040ADE9 /* StartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartModel.swift; sourceTree = "<group>"; };
 		2A72421028B426730040ADE9 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		2A72421628BBB5C20040ADE9 /* SettingSupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSupportVC.swift; sourceTree = "<group>"; };
 		2A774D4D28D3076500AECF9D /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -327,7 +325,6 @@
 		2A9F34F828ABC28A006CCF7C /* Start */ = {
 			isa = PBXGroup;
 			children = (
-				2A9F34FE28AC2056006CCF7C /* Model */,
 				2A9F34FF28AC205B006CCF7C /* View */,
 			);
 			path = Start;
@@ -349,14 +346,6 @@
 				2A9F351028AE574D006CCF7C /* View */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		2A9F34FE28AC2056006CCF7C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2A72420A28B4264F0040ADE9 /* StartModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		2A9F34FF28AC205B006CCF7C /* View */ = {
@@ -570,7 +559,6 @@
 				2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */,
 				2A81233B28C0067B000A250E /* SettingAlarmDetailVC.swift in Sources */,
 				2A81234A28C2A208000A250E /* DiaryData.xcdatamodeld in Sources */,
-				2A72420B28B4264F0040ADE9 /* StartModel.swift in Sources */,
 				2A9F350628AC2109006CCF7C /* ThirdStartVC.swift in Sources */,
 				2A81233728C00138000A250E /* AlarmTimeCell.swift in Sources */,
 				2A0D880328A540FB00576E56 /* SplashVC.swift in Sources */,
