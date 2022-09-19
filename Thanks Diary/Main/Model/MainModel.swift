@@ -16,7 +16,6 @@ class MainModel {
     var longDiaryFlag: Bool = false
     var selectedDate: String = ""
     var todayDate: String = ""
-    var todayDateDayWeek: String = ""
     var dateList: [String] = []
     
     func getDetailData(selectedDate: String) {
@@ -156,20 +155,18 @@ class MainModel {
         self.getSimpleData(selectedDate: self.selectedDate)
     }
     
-    func isTodayDateString() {
+    func isTodayDateString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-M-d"
-        self.todayDate = formatter.string(from: Date())
+        return formatter.string(from: Date())
     }
     
-    func setTodayDate(selectedData: Date) {
+    func setTodayDate(selectedData: Date) -> String {
         let formatter = DateFormatter()
         let loc = Locale(identifier: "ko_KR")
         formatter.dateFormat = "dd'일' (E)"
         formatter.locale = loc
-        self.todayDateDayWeek = formatter.string(from: selectedData)
-        
-        
+        return formatter.string(from: selectedData)
     }
 }
 

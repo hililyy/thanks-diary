@@ -19,7 +19,6 @@ class MainVC: UIViewController {
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var emptyImage: UIImageView!
     
-    var container: NSPersistentContainer!
     let model = MainModel.model
     fileprivate var datesWithCircle: [String] = []
     
@@ -27,11 +26,8 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         model.longDiaryFlag = LocalDataStore.localDataStore.getTodayDetailData()
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-M-d"
-        model.selectedDate = formatter.string(from: Date())
-        model.isTodayDateString()
+        model.selectedDate = model.isTodayDateString()
+        model.todayDate = model.isTodayDateString()
         
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
@@ -40,9 +36,6 @@ class MainVC: UIViewController {
         setCalender()
         model.setTodayDate(selectedData: Date())
         initialize()
-    }
-    func initialize() {
-        self.todayDate.text = model.todayDateDayWeek
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +46,12 @@ class MainVC: UIViewController {
         calendar.reloadData()
         diaryTableView.reloadData()
     }
+    
+    func initialize() {
+        self.todayDate.text = model.setTodayDate(selectedData: Date())
+    }
+    
+
     
     @IBAction func goSetting(_ sender: Any) {
         self.goSettingVC()
@@ -105,59 +104,6 @@ class MainVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-    // 캘린더 기본 UI 셋팅
-    func setCalender() {
-        self.calendar.delegate = self
-        self.calendar.dataSource = self
-        self.calendar.locale = Locale(identifier: "ko_KR")
-        self.calendar.appearance.headerDateFormat = "YYYY년 M월"
-        
-        self.calendar.appearance.headerTitleColor = UIColor(named: "grayColor_1")
-        self.calendar.appearance.headerTitleFont = UIFont(name: "NanumBarunGothicUltraLight", size: 19)
-        self.calendar.appearance.titleFont = UIFont(name: "NanumBarunGothicUltraLight", size: 17)
-        self.calendar.appearance.weekdayFont = UIFont(name: "NanumBarunGothicUltraLight", size: 17)
-        self.calendar.appearance.subtitleFont = UIFont(name: "NanumBarunGothicUltraLight", size: 17)
-        
-        self.calendar.appearance.weekdayTextColor = UIColor(named: "grayColor_1")
-        self.calendar.appearance.calendar.headerHeight = 50
-        self.calendar.weekdayHeight = 30
-        self.calendar.rowHeight = 40
-        
-    }
-    
-    // 캘린더 날짜 선택시 동작
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-M-d"
-        model.setTodayDate(selectedData: date)
-        model.selectedDate = formatter.string(from: date)
-        
-        model.getSimpleData(selectedDate: model.selectedDate)
-        model.getDetailData(selectedDate: model.selectedDate)
-        
-        self.diaryTableView.reloadData()
-    }
-        
-    // 특정 날짜에 이미지 세팅
-    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        let imageDateFormatter = DateFormatter()
-        imageDateFormatter.dateFormat = "yyyy-M-d"
-        var dateStr = imageDateFormatter.string(from: date)
-        return datesWithCircle.contains(dateStr) ? UIImage(named: "ic_circle") : nil
-        
-    }
-    
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
-        return CGPoint(x: 0, y: -5)
-    }
-    
-    func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date()
-    }
-}
-
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -245,6 +191,58 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             return 42
         }
+    }
+}
+
+extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+    // 캘린더 기본 UI 셋팅
+    func setCalender() {
+        self.calendar.delegate = self
+        self.calendar.dataSource = self
+        self.calendar.locale = Locale(identifier: "ko_KR")
+        self.calendar.appearance.headerDateFormat = "YYYY년 M월"
+        
+        self.calendar.appearance.headerTitleColor = UIColor(named: "grayColor_1")
+        self.calendar.appearance.headerTitleFont = UIFont(name: "NanumBarunGothicUltraLight", size: 19)
+        self.calendar.appearance.titleFont = UIFont(name: "NanumBarunGothicUltraLight", size: 17)
+        self.calendar.appearance.weekdayFont = UIFont(name: "NanumBarunGothicUltraLight", size: 17)
+        self.calendar.appearance.subtitleFont = UIFont(name: "NanumBarunGothicUltraLight", size: 17)
+        
+        self.calendar.appearance.weekdayTextColor = UIColor(named: "grayColor_1")
+        self.calendar.appearance.calendar.headerHeight = 50
+        self.calendar.weekdayHeight = 30
+        self.calendar.rowHeight = 40
+        
+    }
+    
+    // 캘린더 날짜 선택시 동작
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-M-d"
+        self.todayDate.text = model.setTodayDate(selectedData: date)
+        model.selectedDate = formatter.string(from: date)
+        
+        model.getSimpleData(selectedDate: model.selectedDate)
+        model.getDetailData(selectedDate: model.selectedDate)
+        
+        self.diaryTableView.reloadData()
+    }
+        
+    // 특정 날짜에 이미지 세팅
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+        let imageDateFormatter = DateFormatter()
+        imageDateFormatter.dateFormat = "yyyy-M-d"
+        var dateStr = imageDateFormatter.string(from: date)
+        return datesWithCircle.contains(dateStr) ? UIImage(named: "ic_circle") : nil
+        
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
+        return CGPoint(x: 0, y: -5)
+    }
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date()
     }
 }
 
