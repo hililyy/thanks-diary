@@ -17,7 +17,6 @@ class ReadVC: UIViewController {
     var selectedDataDate: String?
     var selectedDataTitle: String?
     var selectedDataContents: String?
-    
     var selectedDataDateString: String?
     
     override func viewDidLoad() {

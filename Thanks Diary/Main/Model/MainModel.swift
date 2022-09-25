@@ -169,4 +169,3 @@ class MainModel {
         return formatter.string(from: selectedData)
     }
 }
-

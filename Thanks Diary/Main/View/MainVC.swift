@@ -34,7 +34,6 @@ class MainVC: UIViewController {
         
         setFloty()
         setCalender()
-        model.setTodayDate(selectedData: Date())
         initialize()
     }
     
@@ -50,8 +49,6 @@ class MainVC: UIViewController {
     func initialize() {
         self.todayDate.text = model.setTodayDate(selectedData: Date())
     }
-    
-
     
     @IBAction func goSetting(_ sender: Any) {
         self.goSettingVC()
@@ -84,8 +81,6 @@ class MainVC: UIViewController {
         self.view.addSubview(floaty)
     }
     
-
-    
     func goSimpleWriteVC() {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }
             vc.modalTransitionStyle = .crossDissolve
@@ -103,6 +98,28 @@ class MainVC: UIViewController {
         guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func goReadVC() {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .fullScreen
+            vc.selectedDataDate = model.detailData[0].date ?? ""
+            vc.selectedDataTitle = model.detailData[0].title ?? ""
+            vc.selectedDataContents = model.detailData[0].contents ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func goSimpleWriteVC(index: Int) {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.updateFlag = true
+            vc.contentsString = model.simpleData[index].contents ?? ""
+            vc.delegate = self
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
@@ -112,13 +129,11 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 self.emptyView.isHidden = false
                 self.emptyView.frame.size.height = 299
                 self.emptyImage.image = UIImage(named: "img_not_today")
-                diaryTableView.isScrollEnabled = false
                 return 0
             } else {
                 self.emptyView.isHidden = false
                 self.emptyView.frame.size.height = 299
                 self.emptyImage.image = UIImage(named: "img_not_before")
-                diaryTableView.isScrollEnabled = false
                 return 0
             }
         } else {
@@ -129,55 +144,35 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(indexPath.row)
         if indexPath.row == 0 && model.longDiaryFlag == true {
             let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
             cell.titleLabel.text = model.detailData[0].title
+            cell.selectionStyle = .none
             return cell
         } else {
             if model.longDiaryFlag == true {
                 let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
                 cell.titleLabel.text = model.simpleData[indexPath.row-1].contents
+                cell.selectionStyle = .none
                 return cell
             } else {
                 let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
                 cell.titleLabel.text = model.simpleData[indexPath.row].contents
+                cell.selectionStyle = .none
                 return cell
             }
-            
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if model.longDiaryFlag == true {
             if indexPath.row == 0 {
-                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
-                    vc.modalTransitionStyle = .crossDissolve
-                    vc.modalPresentationStyle = .fullScreen
-                    vc.selectedDataDate = model.detailData[0].date ?? ""
-                    vc.selectedDataTitle = model.detailData[0].title ?? ""
-                    vc.selectedDataContents = model.detailData[0].contents ?? ""
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
+                goReadVC()
             } else {
-                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
-                    vc.modalTransitionStyle = .crossDissolve
-                    vc.modalPresentationStyle = .overCurrentContext
-                    vc.updateFlag = true
-                    vc.contentsString = model.simpleData[indexPath.row-1].contents ?? ""
-                    vc.delegate = self
-                    self.present(vc, animated: true, completion: nil)
-                }
+                goSimpleWriteVC(index: indexPath.row-1)
             }
         } else {
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .overCurrentContext
-                vc.updateFlag = true
-                vc.contentsString = model.simpleData[indexPath.row].contents ?? ""
-                vc.delegate = self
-                self.present(vc, animated: true, completion: nil)
-            }
+            goSimpleWriteVC(index: indexPath.row)
         }
     }
     

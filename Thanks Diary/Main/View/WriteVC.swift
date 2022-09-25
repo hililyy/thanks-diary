@@ -45,6 +45,7 @@ class DetailWriteVC: UIViewController {
         titleTextfield.addLeftPadding()
         contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
     }
+    
     func setData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let context = appDelegate.persistentContainer.viewContext
