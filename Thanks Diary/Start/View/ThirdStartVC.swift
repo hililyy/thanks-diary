@@ -15,7 +15,7 @@ class ThirdStartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        setLottie()
+//        setLottie()
     }
     
     @IBAction func goStart(_ sender: Any) {

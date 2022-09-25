@@ -15,7 +15,7 @@ class SecondStartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        setLottie()
+//        setLottie()
     }
     
     @IBAction func goNext(_ sender: Any) {
