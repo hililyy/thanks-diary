@@ -40,6 +40,7 @@ class MainModel {
                 }
             }
         } catch let error as NSError {
+            print(ErrorCase.NOT_SAVE_DATA)
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
@@ -66,6 +67,7 @@ class MainModel {
                 }
             }
         } catch let error as NSError {
+            print(ErrorCase.NOT_SAVE_DATA)
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
@@ -84,9 +86,11 @@ class MainModel {
             do {
                 try managedContext.save()
             } catch {
+                print(ErrorCase.NOT_SAVE_DATA)
                 print(error)
             }
         } catch {
+            print(ErrorCase.NOT_SAVE_DATA)
             print(error)
         }
     }
@@ -104,9 +108,11 @@ class MainModel {
             do {
                 try managedContext.save()
             } catch {
+                print(ErrorCase.NOT_SAVE_DATA)
                 print(error)
             }
         } catch {
+            print(ErrorCase.NOT_SAVE_DATA)
             print(error)
         }
         self.getSimpleData(selectedDate: self.selectedDate)
@@ -125,9 +131,11 @@ class MainModel {
             do {
                 try managedContext.save()
             } catch {
+                print(ErrorCase.NOT_SAVE_DATA)
                 print(error)
             }
         } catch {
+            print(ErrorCase.NOT_SAVE_DATA)
             print(error)
         }
         detailData = []
@@ -146,9 +154,11 @@ class MainModel {
             do {
                 try managedContext.save()
             } catch {
+                print(ErrorCase.NOT_SAVE_DATA)
                 print(error)
             }
         } catch {
+            print(ErrorCase.NOT_SAVE_DATA)
             print(error)
         }
         

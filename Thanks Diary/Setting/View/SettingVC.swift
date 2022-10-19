@@ -78,7 +78,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case 3:
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
             cell.settingLabel.text = "앱 버전"
-            cell.settingDetailLabel.text = "1.0.0"
+            cell.settingDetailLabel.text = "1.1.0"
             return cell
         default:
             return UITableViewCell.init()

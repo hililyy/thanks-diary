@@ -33,7 +33,7 @@ class DetailWriteVC: UIViewController {
     }
     
     func setView() {
-        self.completeBtn.layer.cornerRadius = 20
+        self.completeBtn.layer.cornerRadius = 10
         
         self.titleTextfield.layer.cornerRadius = 20
         self.titleTextfield.layer.borderWidth = 2
@@ -42,6 +42,7 @@ class DetailWriteVC: UIViewController {
         self.contentsTextView.layer.cornerRadius = 20
         self.contentsTextView.layer.borderWidth = 2
         self.contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
+        
         titleTextfield.addLeftPadding()
         contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
     }
@@ -64,7 +65,7 @@ class DetailWriteVC: UIViewController {
                 try context.save()
                 return
             } catch {
-                print(error.localizedDescription)
+                print(ErrorCase.NOT_SAVE_DATA)
                 return
             }
         } else {
@@ -79,9 +80,8 @@ class DetailWriteVC: UIViewController {
         } else {
             var tmpString = todayString.split(separator: "-")
             self.diaryTitle.text = ("\(tmpString[0])년 \(tmpString[1])월 \(tmpString[2])일 감사일기")
-            
-                self.titleTextfield.text = titleString
-                self.contentsTextView.text = contentsString
+            self.titleTextfield.text = titleString
+            self.contentsTextView.text = contentsString
         }
     }
     
@@ -101,31 +101,41 @@ class DetailWriteVC: UIViewController {
     }
     
     @IBAction func goComplete(_ sender: Any) {
-        // update
-        if editFlag == true {
-            LocalDataStore.localDataStore.setTodayDetailData(newData: true)
-            self.titleString = titleTextfield.text ?? ""
-            self.contentsString = contentsTextView.text
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-M-d"
-            self.todayString = formatter.string(from: Date())
-            model.updateDetailData(dateString: self.todayString, titleString: self.titleString, contentsString: self.contentsString)
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-            UIApplication.shared.windows.first?.rootViewController = vc
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
-        } else {
-            model.longDiaryFlag = true
-            LocalDataStore.localDataStore.setTodayDetailData(newData: true)
-            self.titleString = titleTextfield.text ?? ""
-            self.contentsString = contentsTextView.text
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-M-d"
-            self.todayString = formatter.string(from: Date())
-            setData()
-            self.navigationController?.popViewController(animated: true)
+        do{
+            // update
+            if editFlag == true {
+                setString()
+                model.updateDetailData(dateString: self.todayString, titleString: self.titleString, contentsString: self.contentsString)
+                goMainVC()
+            } else {
+                model.longDiaryFlag = true
+                setString()
+                setData()
+                self.navigationController?.popViewController(animated: true)
+            }
+        } catch {
+            print(ErrorCase.NOT_SAVE_DATA)
         }
+        
+    }
+    
+    func setString() {
+        LocalDataStore.localDataStore.setTodayDetailData(newData: true)
+        self.titleString = titleTextfield.text ?? ""
+        self.contentsString = contentsTextView.text
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-M-d"
+        self.todayString = formatter.string(from: Date())
+    }
+    
+    func goMainVC() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
 }
+
+
 
 extension UITextField {
   func addLeftPadding() {

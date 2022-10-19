@@ -16,7 +16,7 @@ class FirstStartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-//        setLottie()
+        setLottie()
     }
     
     override func viewWillAppear(_ animated: Bool) {

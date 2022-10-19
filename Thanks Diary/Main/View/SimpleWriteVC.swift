@@ -62,7 +62,7 @@ class SimpleWriteVC: UIViewController, UITextViewDelegate {
                 try context.save()
                 return
             } catch {
-                print(error.localizedDescription)
+                print(ErrorCase.NOT_SAVE_DATA)
                 return
             }
         } else {

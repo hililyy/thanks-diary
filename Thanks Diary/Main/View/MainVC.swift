@@ -129,6 +129,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 self.emptyView.isHidden = false
                 self.emptyView.frame.size.height = 299
                 self.emptyImage.image = UIImage(named: "img_not_today")
+                LocalDataStore.localDataStore.setTodayDetailData(newData: false)
                 return 0
             } else {
                 self.emptyView.isHidden = false
@@ -144,24 +145,29 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 && model.longDiaryFlag == true {
-            let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-            cell.titleLabel.text = model.detailData[0].title
-            cell.selectionStyle = .none
-            return cell
-        } else {
-            if model.longDiaryFlag == true {
-                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-                cell.titleLabel.text = model.simpleData[indexPath.row-1].contents
+        do {
+            if indexPath.row == 0 && model.longDiaryFlag == true {
+                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
+                cell.titleLabel.text = model.detailData[0].title
                 cell.selectionStyle = .none
                 return cell
             } else {
-                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-                cell.titleLabel.text = model.simpleData[indexPath.row].contents
-                cell.selectionStyle = .none
-                return cell
+                if model.longDiaryFlag == true {
+                    let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+                    cell.titleLabel.text = model.simpleData[indexPath.row-1].contents
+                    cell.selectionStyle = .none
+                    return cell
+                } else {
+                    let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+                    cell.titleLabel.text = model.simpleData[indexPath.row].contents
+                    cell.selectionStyle = .none
+                    return cell
+                }
             }
+        } catch {
+            print(ErrorCase.NOT_EXIST_INDEX)
         }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
