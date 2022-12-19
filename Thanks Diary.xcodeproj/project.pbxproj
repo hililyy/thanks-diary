@@ -56,6 +56,7 @@
 		2A9F351528AE63ED006CCF7C /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351428AE63ED006CCF7C /* SettingSwitchCell.swift */; };
 		2A9F351728AE63FD006CCF7C /* SettingMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351628AE63FD006CCF7C /* SettingMoreCell.swift */; };
 		2A9F351928AE6410006CCF7C /* SettingLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351828AE6410006CCF7C /* SettingLabelCell.swift */; };
+		2AEE20C52950AD3D00A17F5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AEE20C42950AD3D00A17F5B /* GoogleService-Info.plist */; };
 		ACEFCD4F27BC9557CACB1E3B /* Pods_Thanks_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429B7040896DFDAC458EFC4D /* Pods_Thanks_Diary.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +128,7 @@
 		2A9F351428AE63ED006CCF7C /* SettingSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
 		2A9F351628AE63FD006CCF7C /* SettingMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMoreCell.swift; sourceTree = "<group>"; };
 		2A9F351828AE6410006CCF7C /* SettingLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLabelCell.swift; sourceTree = "<group>"; };
+		2AEE20C42950AD3D00A17F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		429B7040896DFDAC458EFC4D /* Pods_Thanks_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thanks_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFFB6B127945F0159B1A30E4 /* Pods-Thanks Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thanks Diary.debug.xcconfig"; path = "Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA50272BCD4BD5CA6312F82 /* Pods-Thanks Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thanks Diary.release.xcconfig"; path = "Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				2A0D880728A540FE00576E56 /* Assets.xcassets */,
 				2A0D880928A540FE00576E56 /* LaunchScreen.storyboard */,
 				2A0D880C28A540FE00576E56 /* Info.plist */,
+				2AEE20C42950AD3D00A17F5B /* GoogleService-Info.plist */,
 			);
 			path = "Thanks Diary";
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				2A0D880628A540FB00576E56 /* Main.storyboard in Resources */,
 				2A81233028BFBF4D000A250E /* sun.json in Resources */,
 				2A0D881A28ABB83A00576E56 /* dot.json in Resources */,
+				2AEE20C52950AD3D00A17F5B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
