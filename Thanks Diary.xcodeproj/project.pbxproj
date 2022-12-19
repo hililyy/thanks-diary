@@ -432,14 +432,13 @@
 				2A0D87F928A540FB00576E56 /* Resources */,
 				EC4AA72DE5D3E95A351FE85E /* [CP] Embed Pods Frameworks */,
 				2A0962D728CF275F00063DF3 /* Embed App Extensions */,
+				39C61FA43E2C4ECAB073B584 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Thanks Diary";
-			packageProductDependencies = (
-			);
 			productName = "Thanks Diary";
 			productReference = 2A0D87FB28A540FB00576E56 /* Thanks Diary.app */;
 			productType = "com.apple.product-type.application";
@@ -504,6 +503,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		39C61FA43E2C4ECAB073B584 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E387B386A2CD6266A217C430 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -735,6 +751,7 @@
 				DEVELOPMENT_TEAM = 68P2WV4DR3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Thanks Diary/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "감사일기";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -769,6 +786,7 @@
 				DEVELOPMENT_TEAM = 68P2WV4DR3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Thanks Diary/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "감사일기";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

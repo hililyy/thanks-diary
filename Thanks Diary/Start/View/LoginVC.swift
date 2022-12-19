@@ -10,31 +10,33 @@ import Lottie
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
+import FirebaseCore
+import GoogleSignIn
 
 class LoginVC: UIViewController {
     @IBOutlet var lottieView: UIView!
     fileprivate var currentNonce: String?
+    var googleSignInButton: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setLottie()
-        setAppleLoginButton()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        GIDSignIn.sharedInstance()?.presentingViewController = self
     }
 
-    // 버튼 클릭시 액션
-    @objc func handleAuthorizationAppleIDButtonPress() {
-        let request = createAppleIDRequest()
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
+    func goFirstVC() {
+        guard let vc =  storyboard?.instantiateViewController(identifier: "FirstStartVC") as? FirstStartVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setLottie() {
         let animationView: AnimationView = .init(name: "dot")
         self.view.addSubview(animationView)
-        
         animationView.frame = self.lottieView.bounds
         animationView.center = self.lottieView.center
         animationView.contentMode = .scaleAspectFit
@@ -43,32 +45,37 @@ class LoginVC: UIViewController {
         animationView.loopMode = .loop
     }
     
-    func goSecondVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "FirstStartVC") as? FirstStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+    @IBAction func goAppleLogin(_ sender: Any) {
+        let request = createAppleIDRequest()
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
     
+    @IBAction func goGoogleLogin(_ sender: Any) {
+        GIDSignIn.sharedInstance().signIn()
+    }
 }
+
+extension LoginVC: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        if let error = error {
+            print ("Error Google sign In: \(error.localizedDescription)")
+            return
+        }
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            
+            Auth.auth().signIn(with: credential) {[weak self] _, _ in
+                self?.goFirstVC()
+            }
+    }
+}
+
+
 @available(iOS 13.0, *)
 extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    
-    // 애플 로그인 버튼 세팅
-    func setAppleLoginButton() {
-        let authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .whiteOutline)
-        authorizationButton.cornerRadius = 15
-        authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-        self.view.addSubview(authorizationButton)
-        
-        // AutoLayout
-        authorizationButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            authorizationButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
-            authorizationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            authorizationButton.widthAnchor.constraint(equalToConstant: 300),
-            authorizationButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
@@ -90,7 +97,7 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
             FirebaseAuth.Auth.auth().signIn(with: credential) { (authDataResult, error) in
                 if let user = authDataResult?.user {
                     print("Success Apple Login", user.uid, user.email ?? "-")
-                    self.goSecondVC()
+                    self.goFirstVC()
                 }
                 if error != nil {
                     print(error?.localizedDescription ?? "error" as Any)
@@ -120,7 +127,6 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
         print("Sign in with Apple errored: \(error)")
     }
     
-    
     // 로그인 진행하는 화면 표출
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
@@ -129,8 +135,7 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
     // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
-        let charset: [Character] =
-        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        let charset: [Character] = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         var result = ""
         var remainingLength = length
         
@@ -139,25 +144,20 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
                 var random: UInt8 = 0
                 let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
                 if errorCode != errSecSuccess {
-                    fatalError(
-                        "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
-                    )
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
                 }
                 return random
             }
-            
             randoms.forEach { random in
                 if remainingLength == 0 {
                     return
                 }
-                
                 if random < charset.count {
                     result.append(charset[Int(random)])
                     remainingLength -= 1
                 }
             }
         }
-        
         return result
     }
     

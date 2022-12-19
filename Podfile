@@ -11,4 +11,5 @@ target 'Thanks Diary' do
   pod 'Toast-Swift', '~> 5.0.1'
   pod 'AcknowList'
   pod 'lottie-ios'
+  pod 'GoogleSignIn', '~> 5.0.2'
 end
