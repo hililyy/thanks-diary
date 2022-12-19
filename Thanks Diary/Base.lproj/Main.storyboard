@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L5A-QO-icg">
-                                <rect key="frame" x="123.66666666666669" y="373.66666666666669" width="143" height="97"/>
+                                <rect key="frame" x="125.66666666666667" y="373" width="138.66666666666663" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-EV-vze">
-                                        <rect key="frame" x="44.666666666666671" y="0.0" width="53.666666666666671" height="23"/>
+                                        <rect key="frame" x="43.333333333333329" y="0.0" width="52" height="23.333333333333332"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9O-8S-ihf">
-                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                        <rect key="frame" x="0.0" y="23.333333333333311" width="138.66666666666666" height="46.666666666666657"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-nz-jS3">
-                                        <rect key="frame" x="46.333333333333329" y="69" width="50" height="28"/>
+                                        <rect key="frame" x="44.333333333333329" y="70" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="892-pQ-MyA"/>
                                         </constraints>
@@ -92,17 +92,16 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="UK8-F3-X8S"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="tintColor" name="grayColor_1"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="다음">
-                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="다음"/>
                                 <connections>
                                     <action selector="goNext:" destination="e29-Tr-U6I" eventType="touchUpInside" id="rdt-iN-lZC"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e3f-Fv-CIK">
-                                <rect key="frame" x="169" y="141" width="52" height="12"/>
+                                <rect key="frame" x="169" y="97" width="52" height="12"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_blue_dot_12" translatesAutoresizingMaskIntoConstraints="NO" id="oVu-fl-u0K">
                                         <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
@@ -134,7 +133,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d28-c7-1r2">
-                                <rect key="frame" x="75" y="183" width="240" height="138.66666666666663"/>
+                                <rect key="frame" x="75" y="139" width="240" height="182.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sl5-wH-2jn">
@@ -172,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1w-wp-999" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.84615384615381" y="96.682464454976298"/>
+            <point key="canvasLocation" x="1485" y="97"/>
         </scene>
         <!--Second StartVC-->
         <scene sceneID="7hr-7s-lF6">
@@ -188,11 +187,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="LT9-84-bQL"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="tintColor" name="grayColor_1"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="다음">
-                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="다음"/>
                                 <connections>
                                     <action selector="goNext:" destination="JzU-Jp-Bbb" eventType="touchUpInside" id="umZ-hs-24Q"/>
                                 </connections>
@@ -349,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPX-dc-ksf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1473.8461538461538" y="95.260663507109001"/>
+            <point key="canvasLocation" x="2185" y="95"/>
         </scene>
         <!--Third StartVC-->
         <scene sceneID="SJZ-g8-xHw">
@@ -365,11 +363,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="f0f-af-e83"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="tintColor" name="grayColor_1"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="시작하기">
-                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="시작하기"/>
                                 <connections>
                                     <action selector="goStart:" destination="WCw-3Y-DeG" eventType="touchUpInside" id="ePc-go-WIP"/>
                                 </connections>
@@ -438,7 +435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IR9-eq-jlC" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2187.6923076923076" y="96.682464454976298"/>
+            <point key="canvasLocation" x="2900" y="97"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="fgk-Uu-ZcX">
@@ -463,13 +460,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2f-dB-wxT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2f-dB-wxT">
                                 <rect key="frame" x="338" y="91" width="52" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="P2f-dB-wxT" secondAttribute="height" multiplier="1:1" id="5Hn-1I-fGY"/>
+                                    <constraint firstAttribute="width" constant="52" id="sMS-0Y-62m"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_setting" title=" "/>
+                                <color key="tintColor" name="grayColor_2"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="ic_setting"/>
                                 <connections>
                                     <action selector="goSetting:" destination="Rmf-89-8Rf" eventType="touchUpInside" id="FPU-Dp-G21"/>
                                 </connections>
@@ -979,19 +978,21 @@
                                     <constraint firstAttribute="width" constant="52" id="Uvl-T7-eId"/>
                                     <constraint firstAttribute="height" constant="40" id="Z8X-JB-DfS"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
                                 <color key="tintColor" name="grayColor_1"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="완료">
-                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="완료"/>
                                 <connections>
                                     <action selector="goComplete:" destination="gwI-oc-dJW" eventType="touchUpInside" id="0bD-iu-8j8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxU-Cb-Jom">
                                 <rect key="frame" x="0.0" y="54.666666666666657" width="60" height="60"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_back" title=" "/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="w6j-On-C2b"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" " image="ic_back"/>
                                 <connections>
                                     <action selector="goBack:" destination="StF-55-qHF" eventType="touchUpInside" id="bcp-Tz-EaA"/>
                                     <action selector="goBack:" destination="gwI-oc-dJW" eventType="touchUpInside" id="wug-Bt-Ra2"/>
@@ -1093,18 +1094,25 @@
                                 <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1AS-Kf-khH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1AS-Kf-khH">
                                 <rect key="frame" x="306" y="62" width="52" height="52"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_trash" title=" "/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="52" id="EZq-o1-ujj"/>
+                                </constraints>
+                                <color key="tintColor" name="grayColor_2"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="ic_trash"/>
                                 <connections>
                                     <action selector="goDelete:" destination="7bc-Ie-avc" eventType="touchUpInside" id="M8D-Cb-6bU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfc-7C-lwf">
                                 <rect key="frame" x="0.0" y="53.666666666666657" width="60" height="60"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_back" title=" "/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="lNW-12-C0O"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" " image="ic_back"/>
                                 <connections>
                                     <action selector="goBack:" destination="StF-55-qHF" eventType="touchUpInside" id="pum-Eu-USd"/>
                                     <action selector="goBack:" destination="7bc-Ie-avc" eventType="touchUpInside" id="vaB-Sz-snY"/>
@@ -1136,11 +1144,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="20h-G1-39W"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="tintColor" name="grayColor_1"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="수정하기">
-                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="수정하기"/>
                                 <connections>
                                     <action selector="goEdit:" destination="7bc-Ie-avc" eventType="touchUpInside" id="zhb-xr-gZ0"/>
                                 </connections>
@@ -1227,22 +1234,20 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cri-Lw-Fcu">
                                                 <rect key="frame" x="0.0" y="0.0" width="163.33333333333334" height="53"/>
+                                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                 <color key="tintColor" name="grayColor_1"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="취소">
-                                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소"/>
                                                 <connections>
                                                     <action selector="goCancel:" destination="xm3-5g-6CO" eventType="touchUpInside" id="ljv-Ff-zl7"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSx-nO-8oV">
                                                 <rect key="frame" x="163.33333333333337" y="0.0" width="163.66666666666663" height="53"/>
+                                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                 <color key="tintColor" name="grayColor_1"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="삭제">
-                                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="삭제"/>
                                                 <connections>
                                                     <action selector="goDelete:" destination="xm3-5g-6CO" eventType="touchUpInside" id="AGy-yP-oDt"/>
                                                 </connections>
@@ -1250,6 +1255,8 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8f9-d1-wJu" secondAttribute="height" multiplier="327:53" id="5PY-he-Bv2"/>
+                                            <constraint firstItem="kSx-nO-8oV" firstAttribute="width" secondItem="cri-Lw-Fcu" secondAttribute="width" id="jmN-tJ-dwM"/>
+                                            <constraint firstItem="kSx-nO-8oV" firstAttribute="height" secondItem="cri-Lw-Fcu" secondAttribute="height" id="mCA-3n-WA3"/>
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글을 삭제 하시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xI-yn-vj2">
@@ -1299,10 +1306,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YB-F7-qef">
-                                <rect key="frame" x="0.0" y="59.333333333333343" width="60.666666666666664" height="60.666666666666657"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_back" title=" "/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YB-F7-qef">
+                                <rect key="frame" x="0.0" y="59.666666666666657" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="hHh-Nb-Jwf"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" " image="ic_back"/>
                                 <connections>
                                     <action selector="goBack:" destination="Dkl-S5-kEO" eventType="touchUpInside" id="nuN-NL-wDe"/>
                                 </connections>
@@ -1420,11 +1430,10 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuO-TN-7hK">
                                                 <rect key="frame" x="0.0" y="0.0" width="163.33333333333334" height="53"/>
+                                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                 <color key="tintColor" name="grayColor_1"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="취소">
-                                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소"/>
                                                 <connections>
                                                     <action selector="cancel:" destination="bU1-OG-k81" eventType="touchUpInside" id="Qmq-Ak-nDC"/>
                                                     <action selector="cancel:" destination="dIF-FH-ZDI" eventType="touchUpInside" id="Vrd-tC-IMB"/>
@@ -1432,11 +1441,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKH-Lv-xCa">
                                                 <rect key="frame" x="163.33333333333337" y="0.0" width="163.66666666666663" height="53"/>
+                                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
                                                 <color key="tintColor" name="grayColor_1"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="확인">
-                                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="확인"/>
                                                 <connections>
                                                     <action selector="enter:" destination="bU1-OG-k81" eventType="touchUpInside" id="g07-HY-ENn"/>
                                                     <action selector="enter:" destination="dIF-FH-ZDI" eventType="touchUpInside" id="rxS-zR-c4y"/>
@@ -1444,7 +1452,9 @@
                                             </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="BKH-Lv-xCa" firstAttribute="height" secondItem="iuO-TN-7hK" secondAttribute="height" id="8dD-sY-rGd"/>
                                             <constraint firstAttribute="width" secondItem="Som-is-qdM" secondAttribute="height" multiplier="327:53" id="puh-Jm-ssk"/>
+                                            <constraint firstItem="BKH-Lv-xCa" firstAttribute="width" secondItem="iuO-TN-7hK" secondAttribute="width" id="yn2-C8-H2h"/>
                                         </constraints>
                                     </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="fOv-53-v0B">
@@ -1497,22 +1507,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFi-O9-7c9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WFi-O9-7c9">
                                 <rect key="frame" x="175.66666666666666" y="72" width="39" height="25.666666666666671"/>
                                 <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qb-Hy-9Ua">
-                                <rect key="frame" x="0.0" y="54.666666666666671" width="60.666666666666664" height="60.666666666666671"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_back" title=" "/>
+                                <rect key="frame" x="0.0" y="55" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="GvS-PV-X4z"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" " image="ic_back"/>
                                 <connections>
                                     <action selector="goBack:" destination="StF-55-qHF" eventType="touchUpInside" id="I5C-VD-brg"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uxN-SC-06u">
-                                <rect key="frame" x="0.0" y="115.33333333333331" width="390" height="728.66666666666674"/>
+                                <rect key="frame" x="0.0" y="115" width="390" height="729"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingSwitchCell" rowHeight="55" id="FCe-rS-P0E" customClass="SettingSwitchCell" customModule="Thanks_Diary" customModuleProvider="target">
@@ -1633,6 +1646,64 @@
             </objects>
             <point key="canvasLocation" x="62" y="1497"/>
         </scene>
+        <!--LoginVC-->
+        <scene sceneID="L88-QO-hEe">
+            <objects>
+                <viewController storyboardIdentifier="LoginVC" id="cHy-L7-eqv" customClass="LoginVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tkz-Uf-9NC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DnU-Cp-5ad">
+                                <rect key="frame" x="123.66666666666669" y="341" width="143" height="97"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2x-QR-hBl">
+                                        <rect key="frame" x="44.666666666666671" y="0.0" width="53.666666666666671" height="23"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fho-FB-4JZ">
+                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50w-11-8b0">
+                                        <rect key="frame" x="46.333333333333329" y="69" width="50" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="YKG-JS-pTy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4of-dP-nL0">
+                                <rect key="frame" x="-10" y="190.99999999999997" width="410" height="342.33333333333326"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FTq-2i-gPx"/>
+                        <color key="backgroundColor" name="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4of-dP-nL0" firstAttribute="top" secondItem="FTq-2i-gPx" secondAttribute="top" constant="100" id="0r4-oK-vaC"/>
+                            <constraint firstItem="DnU-Cp-5ad" firstAttribute="centerX" secondItem="tkz-Uf-9NC" secondAttribute="centerX" id="DmZ-BR-JG8"/>
+                            <constraint firstItem="DnU-Cp-5ad" firstAttribute="top" secondItem="FTq-2i-gPx" secondAttribute="top" constant="250" id="Eeh-2X-mYz"/>
+                            <constraint firstItem="FTq-2i-gPx" firstAttribute="bottom" secondItem="4of-dP-nL0" secondAttribute="bottom" constant="276.66666666666674" id="VCO-Et-0nv"/>
+                            <constraint firstItem="4of-dP-nL0" firstAttribute="width" secondItem="4of-dP-nL0" secondAttribute="height" multiplier="91:76" id="b76-Zl-4sa"/>
+                            <constraint firstItem="4of-dP-nL0" firstAttribute="centerX" secondItem="tkz-Uf-9NC" secondAttribute="centerX" id="hmM-Q1-uuj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9Bh-mE-K2u"/>
+                    <connections>
+                        <outlet property="lottieView" destination="4of-dP-nL0" id="GKr-5n-sQ8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5oq-ok-BOH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="95"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Fq-Cs-qeT">
             <objects>
@@ -1642,12 +1713,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="e29-Tr-U6I" kind="relationship" relationship="rootViewController" id="Xz7-FS-MdF"/>
+                        <segue destination="cHy-L7-eqv" kind="relationship" relationship="rootViewController" id="z3F-mn-gkh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOL-mg-XPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="97"/>
+            <point key="canvasLocation" x="60" y="97"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gay-DJ-Y8C">
@@ -1708,8 +1779,8 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jQ-iG-6o1">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title=""/>
                                         <connections>
                                             <action selector="goBack:" destination="hhR-22-JNe" eventType="touchUpInside" id="0Gj-bt-0fB"/>
                                         </connections>
@@ -1733,11 +1804,10 @@
                                                             <constraint firstAttribute="width" constant="156" id="aj9-xv-bKp"/>
                                                             <constraint firstAttribute="height" constant="43" id="k4M-Kq-hGL"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
                                                         <color key="tintColor" name="grayColor_1"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="취소">
-                                                            <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
-                                                        </buttonConfiguration>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="취소"/>
                                                         <connections>
                                                             <action selector="goBack:" destination="hhR-22-JNe" eventType="touchUpInside" id="975-nL-y94"/>
                                                         </connections>
@@ -1745,11 +1815,10 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cC8-MK-KrE">
                                                         <rect key="frame" x="164" y="0.0" width="156" height="43"/>
                                                         <color key="backgroundColor" name="mainColor"/>
+                                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
                                                         <color key="tintColor" name="grayColor_1"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="작성 완료">
-                                                            <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
-                                                        </buttonConfiguration>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="작성 완료"/>
                                                         <connections>
                                                             <action selector="goEnter:" destination="hhR-22-JNe" eventType="touchUpInside" id="Tcx-Mh-Oar"/>
                                                         </connections>
@@ -1772,9 +1841,13 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-nY-FHf">
-                                                <rect key="frame" x="322.33333333333331" y="0.0" width="52.666666666666686" height="52.666666666666664"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="ic_trash" title=" "/>
+                                                <rect key="frame" x="322" y="0.0" width="53" height="53"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="53" id="oze-QB-1Cf"/>
+                                                </constraints>
+                                                <color key="tintColor" name="grayColor_2"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="ic_trash"/>
                                                 <connections>
                                                     <action selector="goDelete:" destination="hhR-22-JNe" eventType="touchUpInside" id="1iA-Aa-kBv"/>
                                                 </connections>
@@ -1842,7 +1915,7 @@
     </scenes>
     <designables>
         <designable name="6MI-aR-JAp">
-            <size key="intrinsicContentSize" width="46.333333333333329" height="29.666666666666668"/>
+            <size key="intrinsicContentSize" width="30.333333333333332" height="19.666666666666668"/>
         </designable>
     </designables>
     <resources>

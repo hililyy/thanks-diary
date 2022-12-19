@@ -1,0 +1,171 @@
+
+/* Class = "UILabel"; text = "간단하게 작성한 감사일기 제목입니다."; ObjectID = "1Lq-3m-riT"; */
+"1Lq-3m-riT.text" = "간단하게 작성한 감사일기 제목입니다.";
+
+/* Class = "UILabel"; text = "비밀번호"; ObjectID = "1vL-gZ-Bg5"; */
+"1vL-gZ-Bg5.text" = "비밀번호";
+
+/* Class = "UIButton"; normalTitle = " "; ObjectID = "2YB-F7-qef"; */
+"2YB-F7-qef.normalTitle" = "";
+
+/* Class = "UILabel"; text = "글자 수"; ObjectID = "3cg-nS-uiu"; */
+"3cg-nS-uiu.text" = "글자 수";
+
+/* Class = "UIButton"; normalTitle = " "; ObjectID = "5Qb-Hy-9Ua"; */
+"5Qb-Hy-9Ua.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "5jQ-iG-6o1"; */
+"5jQ-iG-6o1.normalTitle" = "";
+
+/* Class = "UILabel"; text = "제목"; ObjectID = "6MI-aR-JAp"; */
+"6MI-aR-JAp.text" = "제목";
+
+/* Class = "UIButton"; configuration.title = "다음"; ObjectID = "6yd-Jn-RuB"; */
+"6yd-Jn-RuB.configuration.title" = "다음";
+
+/* Class = "UIButton"; normalTitle = "다음"; ObjectID = "6yd-Jn-RuB"; */
+"6yd-Jn-RuB.normalTitle" = "다음";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7XP-ok-G6p"; */
+"7XP-ok-G6p.text" = "Label";
+
+/* Class = "UILabel"; text = "글을 삭제 하시겠습니까?"; ObjectID = "8xI-yn-vj2"; */
+"8xI-yn-vj2.text" = "글을 삭제 하시겠습니까?";
+
+/* Class = "UILabel"; text = "감사일기 작성 방법"; ObjectID = "9HI-Tb-E9B"; */
+"9HI-Tb-E9B.text" = "감사일기 작성 방법";
+
+/* Class = "UILabel"; text = "긍정문으로 작성해요"; ObjectID = "B49-RE-B3q"; */
+"B49-RE-B3q.text" = "긍정문으로 작성해요";
+
+/* Class = "UIButton"; normalTitle = "확인"; ObjectID = "BKH-Lv-xCa"; */
+"BKH-Lv-xCa.normalTitle" = "확인";
+
+/* Class = "UILabel"; text = "오늘도"; ObjectID = "F2b-EV-vze"; */
+"F2b-EV-vze.text" = "오늘도";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "GKk-d9-P7v"; */
+"GKk-d9-P7v.text" = "";
+
+/* Class = "UILabel"; text = "2022년 8월 14일 감사일기"; ObjectID = "JIX-Ii-dJd"; */
+"JIX-Ii-dJd.text" = "2022년 8월 14일 감사일기";
+
+/* Class = "UIButton"; normalTitle = " "; ObjectID = "Kfc-7C-lwf"; */
+"Kfc-7C-lwf.normalTitle" = "";
+
+/* Class = "UILabel"; text = "작은 일에도 감사한일을 찾아보아요"; ObjectID = "LYK-ew-Y7z"; */
+"LYK-ew-Y7z.text" = "작은 일에도 감사한일을 찾아보아요";
+
+/* Class = "UILabel"; text = "매일매일 작성해요"; ObjectID = "Lnh-2c-cJH"; */
+"Lnh-2c-cJH.text" = "매일매일 작성해요";
+
+/* Class = "UILabel"; text = "제목"; ObjectID = "MRl-Qz-nbz"; */
+"MRl-Qz-nbz.text" = "제목";
+
+/* Class = "UIButton"; configuration.title = "다음"; ObjectID = "Oy6-w5-tcj"; */
+"Oy6-w5-tcj.configuration.title" = "다음";
+
+/* Class = "UIButton"; normalTitle = "다음"; ObjectID = "Oy6-w5-tcj"; */
+"Oy6-w5-tcj.normalTitle" = "다음";
+
+/* Class = "UILabel"; text = "14일 (일)"; ObjectID = "P0R-sM-KPW"; */
+"P0R-sM-KPW.text" = "14일 (일)";
+
+/* Class = "UIButton"; normalTitle = "취소"; ObjectID = "RAL-y9-RvO"; */
+"RAL-y9-RvO.normalTitle" = "취소";
+
+/* Class = "UILabel"; text = "1.0.0"; ObjectID = "Su6-oP-aDR"; */
+"Su6-oP-aDR.text" = "1.0.0";
+
+/* Class = "UILabel"; text = "감사한 것을 항상 생각해요"; ObjectID = "Ueo-R1-GEs"; */
+"Ueo-R1-GEs.text" = "감사한 것을 항상 생각해요";
+
+/* Class = "UILabel"; text = "내용"; ObjectID = "VuY-Cq-TrK"; */
+"VuY-Cq-TrK.text" = "내용";
+
+/* Class = "UILabel"; text = "설정"; ObjectID = "WFi-O9-7c9"; */
+"WFi-O9-7c9.text" = "설정";
+
+/* Class = "UILabel"; text = "알림 설정"; ObjectID = "aRY-mA-5W0"; */
+"aRY-mA-5W0.text" = "알림 설정";
+
+/* Class = "UILabel"; text = "감사일기"; ObjectID = "c9O-8S-ihf"; */
+"c9O-8S-ihf.text" = "감사일기";
+
+/* Class = "UIButton"; configuration.title = "작성 완료"; ObjectID = "cC8-MK-KrE"; */
+"cC8-MK-KrE.configuration.title" = "작성 완료";
+
+/* Class = "UIButton"; normalTitle = "작성 완료"; ObjectID = "cC8-MK-KrE"; */
+"cC8-MK-KrE.normalTitle" = "작성 완료";
+
+/* Class = "UIButton"; configuration.title = "취소"; ObjectID = "cri-Lw-Fcu"; */
+"cri-Lw-Fcu.configuration.title" = "취소";
+
+/* Class = "UIButton"; normalTitle = "취소"; ObjectID = "cri-Lw-Fcu"; */
+"cri-Lw-Fcu.normalTitle" = "취소";
+
+/* Class = "UIButton"; normalTitle = "수정하기"; ObjectID = "diS-oz-why"; */
+"diS-oz-why.normalTitle" = "수정하기";
+
+/* Class = "UIButton"; normalTitle = " "; ObjectID = "dxU-Cb-Jom"; */
+"dxU-Cb-Jom.normalTitle" = "";
+
+/* Class = "UILabel"; text = "자세하게 작성한 감사일기 제목입니다."; ObjectID = "eqq-sm-aEP"; */
+"eqq-sm-aEP.text" = "자세하게 작성한 감사일기 제목입니다.";
+
+/* Class = "UIButton"; configuration.title = "완료"; ObjectID = "esm-Vg-eFe"; */
+"esm-Vg-eFe.configuration.title" = "완료";
+
+/* Class = "UIButton"; normalTitle = "완료"; ObjectID = "esm-Vg-eFe"; */
+"esm-Vg-eFe.normalTitle" = "완료";
+
+/* Class = "UILabel"; text = "감사일기"; ObjectID = "fho-FB-4JZ"; */
+"fho-FB-4JZ.text" = "감사일기";
+
+/* Class = "UIButton"; normalTitle = "취소"; ObjectID = "iuO-TN-7hK"; */
+"iuO-TN-7hK.normalTitle" = "취소";
+
+/* Class = "UIButton"; configuration.title = "삭제"; ObjectID = "kSx-nO-8oV"; */
+"kSx-nO-8oV.configuration.title" = "삭제";
+
+/* Class = "UIButton"; normalTitle = "삭제"; ObjectID = "kSx-nO-8oV"; */
+"kSx-nO-8oV.normalTitle" = "삭제";
+
+/* Class = "UILabel"; text = "단순히 일기를 작성하는건  부정적인 감정에 집중하기 쉬워요.  감사일기를 작성하면  긍정적인 감정에 집중할 수 있어요!"; ObjectID = "mFg-0w-hb6"; */
+"mFg-0w-hb6.text" = "단순히 일기를 작성하는건  부정적인 감정에 집중하기 쉬워요.  감사일기를 작성하면  긍정적인 감정에 집중할 수 있어요!";
+
+/* Class = "UILabel"; text = "2022년 8월 14일 감사일기"; ObjectID = "o5e-Y5-hMq"; */
+"o5e-Y5-hMq.text" = "2022년 8월 14일 감사일기";
+
+/* Class = "UILabel"; text = "제목"; ObjectID = "opu-MJ-S91"; */
+"opu-MJ-S91.text" = "제목";
+
+/* Class = "UILabel"; text = "내용"; ObjectID = "osN-TA-TPk"; */
+"osN-TA-TPk.text" = "내용";
+
+/* Class = "UILabel"; text = "시간 설정"; ObjectID = "pg7-gB-lf1"; */
+"pg7-gB-lf1.text" = "시간 설정";
+
+/* Class = "UILabel"; text = "설정할 비밀번호를 입력해 주세요."; ObjectID = "qQR-O4-0M7"; */
+"qQR-O4-0M7.text" = "설정할 비밀번호를 입력해 주세요.";
+
+/* Class = "UILabel"; text = "알림 설정"; ObjectID = "qgk-Si-zYV"; */
+"qgk-Si-zYV.text" = "알림 설정";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "tHB-Ia-fka"; */
+"tHB-Ia-fka.text" = "";
+
+/* Class = "UILabel"; text = "감사일기를 작성하고  나다운 하루를 만들어 보세요!"; ObjectID = "tR1-Lc-2Tg"; */
+"tR1-Lc-2Tg.text" = "감사일기를 작성하고  나다운 하루를 만들어 보세요!";
+
+/* Class = "UILabel"; text = "오늘도"; ObjectID = "v2x-QR-hBl"; */
+"v2x-QR-hBl.text" = "오늘도";
+
+/* Class = "UILabel"; text = "오후 13시 30분"; ObjectID = "y2G-Iz-lhs"; */
+"y2G-Iz-lhs.text" = "오후 13시 30분";
+
+/* Class = "UIButton"; configuration.title = "시작하기"; ObjectID = "z40-2d-T49"; */
+"z40-2d-T49.configuration.title" = "시작하기";
+
+/* Class = "UIButton"; normalTitle = "시작하기"; ObjectID = "z40-2d-T49"; */
+"z40-2d-T49.normalTitle" = "시작하기";
