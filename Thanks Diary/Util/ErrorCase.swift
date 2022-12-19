@@ -9,4 +9,5 @@ import Foundation
 enum ErrorCase: Error {
     case NOT_SAVE_DATA
     case NOT_EXIST_INDEX
+    case EMPTY_CONTENTS
 }

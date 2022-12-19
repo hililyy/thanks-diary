@@ -66,6 +66,7 @@ class DetailWriteVC: UIViewController {
                 return
             } catch {
                 print(ErrorCase.NOT_SAVE_DATA)
+                self.view.makeToast("일기 저장에 실패했습니다.")
                 return
             }
         } else {
@@ -104,25 +105,30 @@ class DetailWriteVC: UIViewController {
         do{
             // update
             if editFlag == true {
-                setString()
+                try setString()
                 model.updateDetailData(dateString: self.todayString, titleString: self.titleString, contentsString: self.contentsString)
                 goMainVC()
+            // create
             } else {
                 model.longDiaryFlag = true
-                setString()
+                try setString()
                 setData()
                 self.navigationController?.popViewController(animated: true)
             }
         } catch {
             print(ErrorCase.NOT_SAVE_DATA)
         }
-        
     }
     
-    func setString() {
+    func setString() throws {
         LocalDataStore.localDataStore.setTodayDetailData(newData: true)
         self.titleString = titleTextfield.text ?? ""
         self.contentsString = contentsTextView.text
+        
+        guard self.titleString == "" || self.contentsString == "" else {
+            throw ErrorCase.EMPTY_CONTENTS
+        }
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-M-d"
         self.todayString = formatter.string(from: Date())
