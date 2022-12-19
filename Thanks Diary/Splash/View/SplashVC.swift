@@ -33,13 +33,13 @@ class SplashVC: UIViewController {
                     self.showMainViewController()
                 }
             } else {
-                self.showFirstViewController()
+                self.showLoginViewController()
             }
         }
     }
     
-    func showFirstViewController() {
-        let vc = storyboard!.instantiateViewController(withIdentifier: "FirstStartVC") as! FirstStartVC
+    func showLoginViewController() {
+        let vc = storyboard!.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         let navi = UINavigationController(rootViewController: vc)
         navi.modalPresentationStyle = .currentContext
         present(navi, animated:false, completion: nil)
