@@ -15,4 +15,6 @@ enum LocalDataKeySet: String {
     case ALARM_TIME = "alarm_time"
     case TODAY_DETAIL_DIARY = "today_detail_diary"
     case IS_PUSH_ALARM_AGREE = "is_push_alarm_agree"
+    case APPLE_LOGIN_TOKEN = "apple_login_token"
+    case GOOGLE_LOGIN_TOKEN = "google_login_token"
 }

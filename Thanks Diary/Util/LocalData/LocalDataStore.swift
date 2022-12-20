@@ -76,4 +76,21 @@ class LocalDataStore {
         UserDefaults.standard.setValue(try? PropertyListEncoder().encode(newData), forKey: LocalDataKeySet.ALARM_TIME.rawValue)
     }
     
+    func getAppleLoginToken() -> String {
+        let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.APPLE_LOGIN_TOKEN.rawValue)
+        return getData ?? ""
+    }
+    
+    func setAppleLoginToken(newData: String) {
+        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.APPLE_LOGIN_TOKEN.rawValue)
+    }
+    
+    func getGoogleLoginToken() -> String {
+        let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.GOOGLE_LOGIN_TOKEN.rawValue)
+        return getData ?? ""
+    }
+    
+    func setGoogleLoginToken(newData: String) {
+        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.GOOGLE_LOGIN_TOKEN.rawValue)
+    }
 }
