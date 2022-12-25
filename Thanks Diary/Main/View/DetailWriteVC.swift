@@ -125,7 +125,7 @@ class DetailWriteVC: UIViewController {
         self.titleString = titleTextfield.text ?? ""
         self.contentsString = contentsTextView.text
         
-        guard self.titleString == "" || self.contentsString == "" else {
+        guard self.titleString != "" || self.contentsString != "" else {
             throw ErrorCase.EMPTY_CONTENTS
         }
         
