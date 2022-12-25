@@ -14,8 +14,6 @@ class SettingUserInfoVC: UIViewController {
         super.viewDidLoad()
         self.userInfoTableView.dataSource = self
         self.userInfoTableView.delegate = self
-        
-        
     }
 }
 

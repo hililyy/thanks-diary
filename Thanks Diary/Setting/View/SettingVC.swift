@@ -44,10 +44,27 @@ class SettingVC: UIViewController, UIGestureRecognizerDelegate, MFMailComposeVie
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
+    
+    func loadAppStoreVersion() -> String {
+        let bundleID = "com.lily.Thanks-Diary"
+        let appStoreUrl = "http://itunes.apple.com/lookup?bundleId=\(bundleID)"
+        guard let url = URL(string: appStoreUrl),
+              let data = try? Data(contentsOf: url),
+              let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+              let results = json["results"] as? [[String: Any]] else {
+            return ""
+        }
+                
+        guard let appStoreVersion = results[0]["version"] as? String else {
+            return ""
+        }
+                        
+        return appStoreVersion
+    }
 }
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,22 +101,18 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             cell.settingLabel.text = "오픈소스 라이선스"
             cell.selectionStyle = .none
             return cell
-            
-//        case 3:
-//            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
-//            cell.settingLabel.text = "후원하기"
-//            cell.selectionStyle = .none
-//            return cell
-        
+
         case 5:
+            let appVersion = loadAppStoreVersion()
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
             cell.settingLabel.text = "앱 버전"
-            cell.settingDetailLabel.text = "1.1.0"
+            cell.settingDetailLabel.text = "\(appVersion)"
             return cell
         default:
             return UITableViewCell.init()
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }
@@ -133,11 +146,6 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
                     navigationController?.pushViewController(acknowList, animated: true)
             break
             
-//        case 5: // 후원
-//            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingSupportVC") as? SettingSupportVC else { return }
-//            self.navigationController?.pushViewController(vc, animated: true)
-//            break
-            
         case 5: // 앱 버전
             break
             
@@ -145,3 +153,5 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+
