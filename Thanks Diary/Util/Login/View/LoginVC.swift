@@ -17,6 +17,8 @@ class LoginVC: UIViewController {
     @IBOutlet var lottieView: UIView!
     fileprivate var currentNonce: String?
     var googleSignInButton: GIDSignInButton!
+    let model = LoginModel.model
+    let viewModel = LoginViewModel.model
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +58,13 @@ class LoginVC: UIViewController {
     @IBAction func goGoogleLogin(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn()
     }
+    
+    @IBAction func goEmailLogin(_ sender: Any) {
+        guard let vc =  storyboard?.instantiateViewController(identifier: "EmailLoginVC") as? EmailLoginVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 }
 
 extension LoginVC: GIDSignInDelegate {
@@ -68,6 +77,8 @@ extension LoginVC: GIDSignInDelegate {
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
             
             Auth.auth().signIn(with: credential) {[weak self] _, _ in
+                LocalDataStore.localDataStore.setGoogleLoginToken(newData: authentication.idToken)
+                
                 self?.goFirstVC()
             }
     }
@@ -97,6 +108,8 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
             FirebaseAuth.Auth.auth().signIn(with: credential) { (authDataResult, error) in
                 if let user = authDataResult?.user {
                     print("Success Apple Login", user.uid, user.email ?? "-")
+                    
+                    LocalDataStore.localDataStore.setAppleLoginToken(newData: credential.idToken ?? "")
                     self.goFirstVC()
                 }
                 if error != nil {
@@ -111,9 +124,9 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
     func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        // 애플로그인은 사용자에게서 2가지 정보를 요구함
+        
         request.requestedScopes = [.fullName, .email]
-
+        
         let nonce = randomNonceString()
         request.nonce = sha256(nonce)
         currentNonce = nonce
@@ -121,13 +134,10 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
         return request
     }
     
-    // Apple ID 연동 실패 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
         print("Sign in with Apple errored: \(error)")
     }
     
-    // 로그인 진행하는 화면 표출
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
