@@ -18,10 +18,10 @@ class MainVC: UIViewController {
     @IBOutlet weak var diaryTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var emptyImage: UIImageView!
+    @IBOutlet var todayBtn: UIButton!
     
     let model = MainModel.model
     fileprivate var datesWithCircle: [String] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,7 @@ class MainVC: UIViewController {
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         
+        self.todayBtn.layer.cornerRadius = 10
         setFloty()
         setCalender()
         initialize()
@@ -52,6 +53,10 @@ class MainVC: UIViewController {
     
     @IBAction func goSetting(_ sender: Any) {
         self.goSettingVC()
+    }
+    
+    @IBAction func moveTodayFocus(_ sender: Any) {
+        setEmptyTableViewImage(date: Date())
     }
     
     func setFloty() {
@@ -119,6 +124,18 @@ class MainVC: UIViewController {
             vc.delegate = self
             self.present(vc, animated: true, completion: nil)
         }
+    }
+    
+    func setEmptyTableViewImage(date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-M-d"
+        self.todayDate.text = model.setTodayDate(selectedData: date)
+        model.selectedDate = formatter.string(from: date)
+        
+        model.getSimpleData(selectedDate: model.selectedDate)
+        model.getDetailData(selectedDate: model.selectedDate)
+        
+        self.diaryTableView.reloadData()
     }
 }
 
@@ -218,15 +235,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     
     // 캘린더 날짜 선택시 동작
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-M-d"
-        self.todayDate.text = model.setTodayDate(selectedData: date)
-        model.selectedDate = formatter.string(from: date)
-        
-        model.getSimpleData(selectedDate: model.selectedDate)
-        model.getDetailData(selectedDate: model.selectedDate)
-        
-        self.diaryTableView.reloadData()
+        setEmptyTableViewImage(date: date)
     }
         
     // 특정 날짜에 이미지 세팅
