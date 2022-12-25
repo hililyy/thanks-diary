@@ -12,4 +12,5 @@ target 'Thanks Diary' do
   pod 'AcknowList'
   pod 'lottie-ios'
   pod 'GoogleSignIn', '~> 5.0.2'
+  pod 'FirebaseAuth'
 end
