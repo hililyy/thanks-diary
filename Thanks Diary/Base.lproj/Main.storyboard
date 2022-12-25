@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L5A-QO-icg">
-                                <rect key="frame" x="125.66666666666667" y="373" width="138.66666666666663" height="98"/>
+                                <rect key="frame" x="123.66666666666669" y="373.66666666666669" width="143" height="97"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-EV-vze">
-                                        <rect key="frame" x="43.333333333333329" y="0.0" width="52" height="23.333333333333332"/>
+                                        <rect key="frame" x="44.666666666666671" y="0.0" width="53.666666666666671" height="23"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9O-8S-ihf">
-                                        <rect key="frame" x="0.0" y="23.333333333333311" width="138.66666666666666" height="46.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-nz-jS3">
-                                        <rect key="frame" x="44.333333333333329" y="70" width="50" height="28"/>
+                                        <rect key="frame" x="46.333333333333329" y="69" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="892-pQ-MyA"/>
                                         </constraints>
@@ -2118,7 +2118,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정 설정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFg-hS-bDg">
-                                <rect key="frame" x="153" y="77" width="84" height="26"/>
+                                <rect key="frame" x="153.33333333333334" y="77" width="83.666666666666657" height="26"/>
                                 <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2134,6 +2134,68 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yB6-j4-pEd">
                                 <rect key="frame" x="0.0" y="133" width="390" height="711"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingMoreCell" rowHeight="55" id="gu7-W5-eHi" customClass="SettingMoreCell" customModule="Thanks_Diary" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="390" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gu7-W5-eHi" id="aQP-Dy-ASV">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-c4-vhG">
+                                                    <rect key="frame" x="35" y="17.666666666666668" width="42" height="20.000000000000004"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="IpV-uc-WCo">
+                                                    <rect key="frame" x="336" y="15.666666666666664" width="24" height="24"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Be1-c4-vhG" firstAttribute="leading" secondItem="aQP-Dy-ASV" secondAttribute="leadingMargin" constant="15" id="4tm-CU-GQ4"/>
+                                                <constraint firstItem="IpV-uc-WCo" firstAttribute="centerY" secondItem="aQP-Dy-ASV" secondAttribute="centerY" id="9Vn-m7-Noj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IpV-uc-WCo" secondAttribute="trailing" constant="10" id="jj5-NX-5pr"/>
+                                                <constraint firstItem="Be1-c4-vhG" firstAttribute="centerY" secondItem="aQP-Dy-ASV" secondAttribute="centerY" id="sOZ-Oe-fPB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="settingLabel" destination="Be1-c4-vhG" id="geW-Uf-AJH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingLabelCell" rowHeight="55" id="YoW-U1-hGy" customClass="SettingLabelCell" customModule="Thanks_Diary" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="105" width="390" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YoW-U1-hGy" id="LIG-9k-AGb">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYi-FN-Tn7">
+                                                    <rect key="frame" x="35" y="17.666666666666668" width="42" height="20.000000000000004"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2c-dl-tNX">
+                                                    <rect key="frame" x="320" y="17.666666666666668" width="40" height="20.000000000000004"/>
+                                                    <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="17"/>
+                                                    <color key="textColor" name="grayColor_2"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kYi-FN-Tn7" firstAttribute="leading" secondItem="LIG-9k-AGb" secondAttribute="leadingMargin" constant="15" id="27U-mz-iC6"/>
+                                                <constraint firstItem="kYi-FN-Tn7" firstAttribute="centerY" secondItem="LIG-9k-AGb" secondAttribute="centerY" id="EGH-A9-12g"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="S2c-dl-tNX" secondAttribute="trailing" constant="10" id="ss4-9i-X9e"/>
+                                                <constraint firstItem="S2c-dl-tNX" firstAttribute="centerY" secondItem="LIG-9k-AGb" secondAttribute="centerY" id="wJv-VI-t8V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="settingDetailLabel" destination="S2c-dl-tNX" id="z0N-VN-8Wd"/>
+                                            <outlet property="settingLabel" destination="kYi-FN-Tn7" id="GVe-zg-k2g"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ea2-pN-Cvr"/>
