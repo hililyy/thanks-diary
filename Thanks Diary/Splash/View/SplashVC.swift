@@ -14,15 +14,7 @@ class SplashVC: UIViewController {
     let userNotificationCenter = UNUserNotificationCenter.current()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let animationView: AnimationView = .init(name: "dot")
-        self.view.addSubview(animationView)
-        
-        animationView.frame = self.lottieView.bounds
-        animationView.center = self.lottieView.center
-        animationView.contentMode = .scaleAspectFit
-        animationView.animationSpeed = 3
-        animationView.play()
-        animationView.loopMode = .loop
+        setLottie()
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.requestNotificationAuthorization()
@@ -38,6 +30,17 @@ class SplashVC: UIViewController {
         }
     }
     
+    func setLottie() {
+        let animationView: AnimationView = .init(name: "dot")
+        self.view.addSubview(animationView)
+        
+        animationView.frame = self.lottieView.bounds
+        animationView.center = self.lottieView.center
+        animationView.contentMode = .scaleAspectFit
+        animationView.animationSpeed = 3
+        animationView.play()
+        animationView.loopMode = .loop
+    }
     func showLoginViewController() {
         let vc = storyboard!.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         let navi = UINavigationController(rootViewController: vc)
