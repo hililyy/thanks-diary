@@ -56,6 +56,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func moveTodayFocus(_ sender: Any) {
+        self.calendar.select(Date())
         setEmptyTableViewImage(date: Date())
     }
     

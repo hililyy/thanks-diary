@@ -1827,7 +1827,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d65-7H-cn1">
-                                <rect key="frame" x="45" y="510" width="300" height="224"/>
+                                <rect key="frame" x="45" y="568" width="300" height="166"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Der-5k-WHX">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -1841,29 +1841,8 @@
                                             <action selector="goAppleLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="eaF-Wm-OOv"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecQ-1f-re5">
-                                        <rect key="frame" x="0.0" y="58" width="300" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="Iv3-UQ-ky8"/>
-                                            <constraint firstAttribute="height" constant="50" id="mQz-y9-ZyD"/>
-                                        </constraints>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="img_emailLogin"/>
-                                        <connections>
-                                            <action selector="goEmailLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="zia-ZS-Iti"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgU-0P-3ey">
-                                        <rect key="frame" x="0.0" y="116" width="300" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="3bD-2P-vNr"/>
-                                            <constraint firstAttribute="height" constant="50" id="sUH-Jq-hg3"/>
-                                        </constraints>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="img_kakaoLogin"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHn-cX-Jgx">
-                                        <rect key="frame" x="0.0" y="174" width="300" height="50"/>
+                                        <rect key="frame" x="0.0" y="58" width="300" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="P0P-9M-MgF"/>
                                             <constraint firstAttribute="width" constant="300" id="zBT-7P-skc"/>
@@ -1874,10 +1853,22 @@
                                             <action selector="goGoogleLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="C66-NO-Thb"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecQ-1f-re5">
+                                        <rect key="frame" x="0.0" y="116" width="300" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="Iv3-UQ-ky8"/>
+                                            <constraint firstAttribute="height" constant="50" id="mQz-y9-ZyD"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="img_emailLogin"/>
+                                        <connections>
+                                            <action selector="goEmailLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="zia-ZS-Iti"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4of-dP-nL0">
-                                <rect key="frame" x="19" y="141" width="355" height="319"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4of-dP-nL0">
+                                <rect key="frame" x="16" y="141" width="358" height="327"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FTq-2i-gPx"/>
@@ -1887,8 +1878,9 @@
                             <constraint firstItem="DnU-Cp-5ad" firstAttribute="top" secondItem="FTq-2i-gPx" secondAttribute="top" constant="200" id="Eeh-2X-mYz"/>
                             <constraint firstAttribute="bottom" secondItem="d65-7H-cn1" secondAttribute="bottom" constant="110" id="Efb-dj-mWI"/>
                             <constraint firstItem="4of-dP-nL0" firstAttribute="top" secondItem="FTq-2i-gPx" secondAttribute="top" constant="50" id="Oe2-Gv-M43"/>
+                            <constraint firstItem="4of-dP-nL0" firstAttribute="trailing" secondItem="tkz-Uf-9NC" secondAttribute="trailingMargin" id="Qae-OM-V9Q"/>
                             <constraint firstItem="d65-7H-cn1" firstAttribute="centerX" secondItem="tkz-Uf-9NC" secondAttribute="centerX" id="U9x-mV-8nl"/>
-                            <constraint firstItem="d65-7H-cn1" firstAttribute="top" secondItem="4of-dP-nL0" secondAttribute="bottom" constant="50" id="eqB-oO-Hw1"/>
+                            <constraint firstItem="d65-7H-cn1" firstAttribute="top" secondItem="4of-dP-nL0" secondAttribute="bottom" constant="100" id="eqB-oO-Hw1"/>
                             <constraint firstItem="4of-dP-nL0" firstAttribute="centerX" secondItem="tkz-Uf-9NC" secondAttribute="centerX" id="hmM-Q1-uuj"/>
                         </constraints>
                     </view>
@@ -2394,7 +2386,6 @@
         <image name="img_googleLogin" width="297" height="50"/>
         <image name="img_gray_line" width="390" height="1"/>
         <image name="img_heart" width="199" height="193"/>
-        <image name="img_kakaoLogin" width="297" height="50"/>
         <image name="img_lock" width="73" height="73"/>
         <image name="img_not_today" width="329" height="161"/>
         <image name="img_popup" width="327" height="217"/>
