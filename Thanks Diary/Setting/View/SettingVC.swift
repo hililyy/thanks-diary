@@ -7,8 +7,9 @@
 
 import UIKit
 import AcknowList
+import MessageUI
 
-class SettingVC: UIViewController, UIGestureRecognizerDelegate {
+class SettingVC: UIViewController, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var settingTableView: UITableView!
     var alarmFlag: Bool = false
@@ -39,15 +40,24 @@ class SettingVC: UIViewController, UIGestureRecognizerDelegate {
     func setPWSwitch() {
         self.alarmFlag = LocalDataStore.localDataStore.getPasswordData()
     }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
+            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
+            cell.settingLabel.text = "계정 설정"
+            cell.selectionStyle = .none
+            return cell
+        case 1:
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell", for: indexPath) as! SettingSwitchCell
             cell.settingLabel.text = "암호 설정"
             if LocalDataStore.localDataStore.getPasswordData() == false {
@@ -57,13 +67,19 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-        case 1:
+        case 2:
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
             cell.settingLabel.text = "알림 설정"
             cell.selectionStyle = .none
             return cell
             
-        case 2:
+        case 3:
+            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
+            cell.settingLabel.text = "고객 센터"
+            cell.selectionStyle = .none
+            return cell
+            
+        case 4:
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
             cell.settingLabel.text = "오픈소스 라이선스"
             cell.selectionStyle = .none
@@ -75,7 +91,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
 //            cell.selectionStyle = .none
 //            return cell
         
-        case 3:
+        case 5:
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
             cell.settingLabel.text = "앱 버전"
             cell.settingDetailLabel.text = "1.1.0"
@@ -90,25 +106,39 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0: // 암호
+        case 0: // 계정 설정
+            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingUserInfoVC") as? SettingUserInfoVC else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
             break
             
-        case 1: // 알림
+        case 1: // 암호
+            break
+            
+        case 2: // 알림
             guard let vc =  storyboard?.instantiateViewController(identifier: "SettingAlarmVC") as? SettingAlarmVC else { return }
             self.navigationController?.pushViewController(vc, animated: true)
             break
             
-        case 2: // 오픈소스 라이선스
+        case 3: // 고객센터
+            if MFMailComposeViewController.canSendMail() {
+                let compseVC = MFMailComposeViewController()
+                compseVC.mailComposeDelegate = self
+                compseVC.setToRecipients(["joun406@gmail.com"])
+                self.present(compseVC, animated: true, completion: nil)
+            }
+            break
+            
+        case 4: // 오픈소스 라이선스
             let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
                     navigationController?.pushViewController(acknowList, animated: true)
             break
             
-//        case 3: // 후원
+//        case 5: // 후원
 //            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingSupportVC") as? SettingSupportVC else { return }
 //            self.navigationController?.pushViewController(vc, animated: true)
 //            break
             
-        case 4: // 앱 버전
+        case 5: // 앱 버전
             break
             
         default: break

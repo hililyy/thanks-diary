@@ -66,6 +66,7 @@
 		2AFF11852957504C00EC85EA /* KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFF11842957504C00EC85EA /* KakaoLogin.swift */; };
 		2AFF1189295753ED00EC85EA /* EmailSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFF1188295753ED00EC85EA /* EmailSignUpVC.swift */; };
 		2AFF118A295753ED00EC85EA /* EmailLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFF1187295753EC00EC85EA /* EmailLoginVC.swift */; };
+		2AFF118C2958A8B200EC85EA /* EmailLoginErrorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFF118B2958A8B200EC85EA /* EmailLoginErrorList.swift */; };
 		ACEFCD4F27BC9557CACB1E3B /* Pods_Thanks_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429B7040896DFDAC458EFC4D /* Pods_Thanks_Diary.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +149,7 @@
 		2AFF11842957504C00EC85EA /* KakaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLogin.swift; sourceTree = "<group>"; };
 		2AFF1187295753EC00EC85EA /* EmailLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmailLoginVC.swift; path = "/Users/lily/iOS/Projects/Thanks Diary/Thanks Diary/Util/Login/View/EmailLoginVC.swift"; sourceTree = "<absolute>"; };
 		2AFF1188295753ED00EC85EA /* EmailSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmailSignUpVC.swift; path = "/Users/lily/iOS/Projects/Thanks Diary/Thanks Diary/Util/Login/View/EmailSignUpVC.swift"; sourceTree = "<absolute>"; };
+		2AFF118B2958A8B200EC85EA /* EmailLoginErrorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginErrorList.swift; sourceTree = "<group>"; };
 		429B7040896DFDAC458EFC4D /* Pods_Thanks_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thanks_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFFB6B127945F0159B1A30E4 /* Pods-Thanks Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thanks Diary.debug.xcconfig"; path = "Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA50272BCD4BD5CA6312F82 /* Pods-Thanks Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thanks Diary.release.xcconfig"; path = "Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary.release.xcconfig"; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				2AEE20CB2950B12400A17F5B /* LoginVC.swift */,
 				2AFF1187295753EC00EC85EA /* EmailLoginVC.swift */,
 				2AFF1188295753ED00EC85EA /* EmailSignUpVC.swift */,
+				2AFF118B2958A8B200EC85EA /* EmailLoginErrorList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				2A7241C928B019C00040ADE9 /* SettingAlarmCell.swift in Sources */,
 				2A81235A28C547A6000A250E /* SimpleDiaryEntity.swift in Sources */,
 				2A9F351328AE5763006CCF7C /* SettingVC.swift in Sources */,
+				2AFF118C2958A8B200EC85EA /* EmailLoginErrorList.swift in Sources */,
 				2A9F351528AE63ED006CCF7C /* SettingSwitchCell.swift in Sources */,
 				2AFF11832957504500EC85EA /* EmailLogin.swift in Sources */,
 				2A81234028C096BC000A250E /* LocalDataStore.swift in Sources */,
