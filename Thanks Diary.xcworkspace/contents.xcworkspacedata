@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/lily/iOS/Projects/Thanks Diary/Thanks Diary/Util/Login/View/EmailLoginVC.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/lily/iOS/Projects/Thanks Diary/Thanks Diary/Util/Login/View/EmailSignUpVC.swift">
-   </FileRef>
-   <FileRef
       location = "group:DiaryData+CoreDataClass.swift">
    </FileRef>
    <FileRef

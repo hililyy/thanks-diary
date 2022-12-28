@@ -1,5 +1,6 @@
 PODS:
   - AcknowList (2.1.1)
+  - Alamofire (5.6.4)
   - AppAuth (1.6.0):
     - AppAuth/Core (= 1.6.0)
     - AppAuth/ExternalUserAgent (= 1.6.0)
@@ -52,6 +53,17 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (1.7.2)
+  - KakaoSDKAuth (2.13.0):
+    - KakaoSDKCommon (= 2.13.0)
+  - KakaoSDKCommon (2.13.0):
+    - KakaoSDKCommon/Common (= 2.13.0)
+    - KakaoSDKCommon/Network (= 2.13.0)
+  - KakaoSDKCommon/Common (2.13.0)
+  - KakaoSDKCommon/Network (2.13.0):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.13.0)
+  - KakaoSDKUser (2.13.0):
+    - KakaoSDKAuth (= 2.13.0)
   - lottie-ios (3.4.3)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
@@ -67,12 +79,16 @@ DEPENDENCIES:
   - Floaty (~> 4.2.0)
   - FSCalendar
   - GoogleSignIn (~> 5.0.2)
+  - KakaoSDKAuth
+  - KakaoSDKCommon
+  - KakaoSDKUser
   - lottie-ios
   - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
     - AcknowList
+    - Alamofire
     - AppAuth
     - FirebaseAuth
     - FirebaseCore
@@ -85,6 +101,9 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKUser
     - lottie-ios
     - nanopb
     - PromisesObjC
@@ -92,6 +111,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AcknowList: 206119961f03cfd1e15817129f6f51537707f169
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
   FirebaseAuth: e4a5d3c36e778e41141b91cc861103a441d80bcc
   FirebaseCore: 2082fffcd855f95f883c0a1641133eb9bbe76d40
@@ -104,11 +124,14 @@ SPEC CHECKSUMS:
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
+  KakaoSDKAuth: 59b694eb81dda10a971beba64bb5842dcb985c81
+  KakaoSDKCommon: 74c422d32200032e4e57f70e065e221296bced71
+  KakaoSDKUser: 7c2d98fc54f744da4784b554a383ada548fed0e5
   lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: e2b99b2887ac473d3c3e2f93ebaf6208a26f3256
+PODFILE CHECKSUM: b5b78f3a2dc35e221b014b2b53fc68c6d6725e4f
 
 COCOAPODS: 1.11.3

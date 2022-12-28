@@ -13,4 +13,7 @@ target 'Thanks Diary' do
   pod 'lottie-ios'
   pod 'GoogleSignIn', '~> 5.0.2'
   pod 'FirebaseAuth'
+  pod 'KakaoSDKCommon'
+  pod 'KakaoSDKAuth'
+  pod 'KakaoSDKUser'
 end

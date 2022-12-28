@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L5A-QO-icg">
-                                <rect key="frame" x="123.66666666666669" y="373.66666666666669" width="143" height="97"/>
+                                <rect key="frame" x="125.66666666666667" y="373" width="138.66666666666663" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-EV-vze">
-                                        <rect key="frame" x="44.666666666666671" y="0.0" width="53.666666666666671" height="23"/>
+                                        <rect key="frame" x="43.333333333333329" y="0.0" width="52" height="23.333333333333332"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9O-8S-ihf">
-                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                        <rect key="frame" x="0.0" y="23.333333333333311" width="138.66666666666666" height="46.666666666666657"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-nz-jS3">
-                                        <rect key="frame" x="46.333333333333329" y="69" width="50" height="28"/>
+                                        <rect key="frame" x="44.333333333333329" y="70" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="892-pQ-MyA"/>
                                         </constraints>
@@ -1827,7 +1827,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d65-7H-cn1">
-                                <rect key="frame" x="45" y="568" width="300" height="166"/>
+                                <rect key="frame" x="45" y="510" width="300" height="224"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Der-5k-WHX">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -1848,13 +1848,25 @@
                                             <constraint firstAttribute="width" constant="300" id="zBT-7P-skc"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="img_kakaoLogin"/>
+                                        <connections>
+                                            <action selector="goKakaoLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="4YB-p2-Hoe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWN-9g-2Jr">
+                                        <rect key="frame" x="0.0" y="116" width="300" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="FNR-gU-Gxn"/>
+                                            <constraint firstAttribute="height" constant="50" id="Rbu-xc-lix"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="img_googleLogin"/>
                                         <connections>
-                                            <action selector="goGoogleLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="C66-NO-Thb"/>
+                                            <action selector="goGoogleLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="CWw-En-ddQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecQ-1f-re5">
-                                        <rect key="frame" x="0.0" y="116" width="300" height="50"/>
+                                        <rect key="frame" x="0.0" y="174" width="300" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="Iv3-UQ-ky8"/>
                                             <constraint firstAttribute="height" constant="50" id="mQz-y9-ZyD"/>
@@ -1868,7 +1880,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4of-dP-nL0">
-                                <rect key="frame" x="16" y="141" width="358" height="327"/>
+                                <rect key="frame" x="16" y="141" width="358" height="269"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FTq-2i-gPx"/>
@@ -2386,6 +2398,7 @@
         <image name="img_googleLogin" width="297" height="50"/>
         <image name="img_gray_line" width="390" height="1"/>
         <image name="img_heart" width="199" height="193"/>
+        <image name="img_kakaoLogin" width="297" height="50"/>
         <image name="img_lock" width="73" height="73"/>
         <image name="img_not_today" width="329" height="161"/>
         <image name="img_popup" width="327" height="217"/>
