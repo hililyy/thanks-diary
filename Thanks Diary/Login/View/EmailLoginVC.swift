@@ -1,6 +1,6 @@
 //
 //  EmailLoginVC.swift
-//  
+//
 //
 //  Created by 강조은 on 2022/12/25.
 //
@@ -17,7 +17,6 @@ class EmailLoginVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         emailTextField.delegate = self
         emailPasswordField.delegate = self
-
     }
     
     @IBAction func goSignUp(_ sender: Any) {

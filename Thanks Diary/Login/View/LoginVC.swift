@@ -7,18 +7,11 @@
 
 import UIKit
 import Lottie
-import AuthenticationServices
-import CryptoKit
-import FirebaseAuth
-import FirebaseCore
 import GoogleSignIn
-import KakaoSDKCommon
-import KakaoSDKAuth
-import KakaoSDKUser
 
 class LoginVC: UIViewController {
     @IBOutlet var lottieView: UIView!
-    fileprivate var currentNonce: String?
+    var currentNonce: String?
     var googleSignInButton: GIDSignInButton!
     let model = LoginModel.model
     let viewModel = LoginViewModel.model
@@ -26,12 +19,10 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLottie()
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+        setGoogleLogin()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        GIDSignIn.sharedInstance()?.presentingViewController = self
     }
 
     func goFirstVC() {
@@ -51,204 +42,18 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func goAppleLogin(_ sender: Any) {
-        let request = createAppleIDRequest()
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
+        startAppleLogin()
     }
     
     @IBAction func goGoogleLogin(_ sender: Any) {
-        GIDSignIn.sharedInstance().signIn()
+        startGoogleLogin()
     }
     
     @IBAction func goEmailLogin(_ sender: Any) {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "EmailLoginVC") as? EmailLoginVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+        startEmailLogin()
     }
     
     @IBAction func goKakaoLogin(_ sender: Any) {
         startKakaoLogin()
-        self.goFirstVC()
-    }
-        
-    private func startKakaoLogin() {
-            //카카오톡 설치된 경우 카톡 실행
-            if (UserApi.isKakaoTalkLoginAvailable()) {
-                UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        print("success")
-                        onKakaoLoginCompleted(oauthToken?.accessToken)
-                        self.loginInFirebase()
-                    }
-                }
-            }
-            //카카오톡 설치되지 않은 경우 카카오 로그인 웹뷰를 띄운다.
-            else{
-                UserApi.shared.loginWithKakaoAccount {(oauthToken, error)  in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        print("success!")
-                        onKakaoLoginCompleted(oauthToken?.accessToken)
-                    }
-                }
-            }
-            
-        func onKakaoLoginCompleted(_ accessToken : String?){
-            getKakaoUserInfo(accessToken)
-        }
-        
-        func getKakaoUserInfo(_ accessToken : String?){
-            UserApi.shared.me() { [weak self] user, error in
-                
-                if error == nil {
-                    let userEmail = String(describing: user?.kakaoAccount?.email)
-                    print("userEmail: ",userEmail)
-                }
-                
-            }
-        }
-    }
-    private func loginInFirebase() {
-
-        UserApi.shared.me() { user, error in
-            if let error = error {
-                print("DEBUG: 카카오톡 사용자 정보가져오기 에러 \(error.localizedDescription)")
-            } else {
-                print("DEBUG: 카카오톡 사용자 정보가져오기 success.")
-
-                // 파이어베이스 유저 생성 (이메일로 회원가입)
-                Auth.auth().createUser(withEmail: (user?.kakaoAccount?.email)!,
-                                       password: "\(String(describing: user?.id))") { result, error in
-                    if let error = error {
-                        print("로그인 완료")
-                        Auth.auth().signIn(withEmail: (user?.kakaoAccount?.email)!,
-                                           password: "\(String(describing: user?.id))")
-                    } else {
-                        print("회원가입 완료")
-                        
-                    }
-                }
-            }
-        }
-    }
-}
-
-extension LoginVC: GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        if let error = error {
-            print ("Error Google sign In: \(error.localizedDescription)")
-            return
-        }
-            guard let authentication = user.authentication else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-            
-            Auth.auth().signIn(with: credential) {[weak self] _, _ in
-                LocalDataStore.localDataStore.setGoogleLoginToken(newData: authentication.idToken)
-                
-                self?.goFirstVC()
-            }
-    }
-}
-
-
-@available(iOS 13.0, *)
-extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    @available(iOS 13.0, *)
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            guard let nonce = currentNonce else {
-                fatalError("Invalid state: A login callback was received, but no login request was sent.")
-            }
-            guard let appleIDtoken = appleIDCredential.identityToken else {
-                print("Unable to fetch identity token")
-                return
-            }
-            guard let idTokenString = String(data: appleIDtoken, encoding: .utf8) else {
-                print("Unable to serialize token string from data: \(appleIDtoken.debugDescription)")
-                return
-            }
-            let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                      idToken: idTokenString,
-                                                      rawNonce: nonce)
-            // firebase 로그인
-            FirebaseAuth.Auth.auth().signIn(with: credential) { (authDataResult, error) in
-                if let user = authDataResult?.user {
-                    print("Success Apple Login", user.uid, user.email ?? "-")
-                    
-                    LocalDataStore.localDataStore.setAppleLoginToken(newData: credential.idToken ?? "")
-                    self.goFirstVC()
-                }
-                if error != nil {
-                    print(error?.localizedDescription ?? "error" as Any)
-                    return
-                }
-            }
-        }
-    }
-    
-    @available(iOS 13, *)
-    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        
-        request.requestedScopes = [.fullName, .email]
-        
-        let nonce = randomNonceString()
-        request.nonce = sha256(nonce)
-        currentNonce = nonce
-        
-        return request
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("Sign in with Apple errored: \(error)")
-    }
-    
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
-    }
-    
-    // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
-    private func randomNonceString(length: Int = 32) -> String {
-        precondition(length > 0)
-        let charset: [Character] = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-        var result = ""
-        var remainingLength = length
-        
-        while remainingLength > 0 {
-            let randoms: [UInt8] = (0 ..< 16).map { _ in
-                var random: UInt8 = 0
-                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-                if errorCode != errSecSuccess {
-                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
-                }
-                return random
-            }
-            randoms.forEach { random in
-                if remainingLength == 0 {
-                    return
-                }
-                if random < charset.count {
-                    result.append(charset[Int(random)])
-                    remainingLength -= 1
-                }
-            }
-        }
-        return result
-    }
-    
-    @available(iOS 13, *)
-    private func sha256(_ input: String) -> String {
-        let inputData = Data(input.utf8)
-        let hashedData = SHA256.hash(data: inputData)
-        let hashString = hashedData.compactMap {
-            String(format: "%02x", $0)
-        }.joined()
-        
-        return hashString
     }
 }

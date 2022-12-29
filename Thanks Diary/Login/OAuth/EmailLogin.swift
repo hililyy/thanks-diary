@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+extension LoginVC {
+    func startEmailLogin() {
+        guard let vc =  storyboard?.instantiateViewController(identifier: "EmailLoginVC") as? EmailLoginVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
