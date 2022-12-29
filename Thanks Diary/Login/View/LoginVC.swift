@@ -56,4 +56,9 @@ class LoginVC: UIViewController {
     @IBAction func goKakaoLogin(_ sender: Any) {
         startKakaoLogin()
     }
+    
+    @IBAction func goStart(_ sender: Any) {
+        self.goFirstVC()
+        LocalDataStore.localDataStore.setOAuthType(newData: "none")
+    }
 }

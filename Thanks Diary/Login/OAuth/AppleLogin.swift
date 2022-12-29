@@ -36,7 +36,8 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
                 if let user = authDataResult?.user {
                     print("Success Apple Login", user.uid, user.email ?? "-")
                     
-                    LocalDataStore.localDataStore.setAppleLoginToken(newData: credential.idToken ?? "")
+                    LocalDataStore.localDataStore.setOAuthToken(newData: credential.idToken ?? "")
+                    LocalDataStore.localDataStore.setOAuthType(newData: "apple")
                     self.goFirstVC()
                 }
                 if error != nil {

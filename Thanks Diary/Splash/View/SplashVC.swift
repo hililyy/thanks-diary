@@ -15,17 +15,16 @@ class SplashVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLottie()
-        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.requestNotificationAuthorization()
-            if LocalDataStore.localDataStore.getNewUserData() == true {
-                if LocalDataStore.localDataStore.getPasswordData() == true {
-                    self.showPasswordViewController()
+            if LocalDataStore.localDataStore.getOAuthType() != "" {
+                if LocalDataStore.localDataStore.getPasswordData() {
+                    self.showPasswordVC()
                 } else {
-                    self.showMainViewController()
+                    self.showMainVC()
                 }
             } else {
-                self.showLoginViewController()
+                self.showLoginVC()
             }
         }
     }
@@ -41,20 +40,20 @@ class SplashVC: UIViewController {
         animationView.play()
         animationView.loopMode = .loop
     }
-    func showLoginViewController() {
+    func showLoginVC() {
         let vc = storyboard!.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         let navi = UINavigationController(rootViewController: vc)
         navi.modalPresentationStyle = .currentContext
         present(navi, animated:false, completion: nil)
     }
     
-    func showMainViewController() {
+    func showMainVC() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
-    func showPasswordViewController() {
+    func showPasswordVC() {
         let vc = storyboard!.instantiateViewController(withIdentifier: "SettingPWVC") as! SettingPWVC
         vc.homeFlag = true
         let navi = UINavigationController(rootViewController: vc)

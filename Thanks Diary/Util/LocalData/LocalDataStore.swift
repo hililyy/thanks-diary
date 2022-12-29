@@ -10,15 +10,6 @@ import Foundation
 class LocalDataStore {
     static let localDataStore = LocalDataStore()
     
-    func getNewUserData() -> Bool {
-        let getData = UserDefaults.standard.bool(forKey: LocalDataKeySet.IS_NEW_USER.rawValue)
-        return getData
-    }
-    
-    func setNewUserData(newData: Bool) {
-        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.IS_NEW_USER.rawValue)
-    }
-    
     func getPushAlarmData() -> Bool {
         let getData = UserDefaults.standard.bool(forKey: LocalDataKeySet.IS_PUSH_ALARM.rawValue)
         return getData
@@ -65,32 +56,32 @@ class LocalDataStore {
     }
     
     func getPushAlarmTime() -> AlarmTimeEntity {
-        guard let getData = UserDefaults.standard.value(forKey: LocalDataKeySet.ALARM_TIME.rawValue) as? Data else { return AlarmTimeEntity(hour: -1, minute: -1) }
+        guard let getData = UserDefaults.standard.value(forKey: LocalDataKeySet.ALARM_TIME.rawValue) as? Data else { return AlarmTimeEntity(hour: 0, minute: 0) }
         let diaryData = try? PropertyListDecoder().decode (
             AlarmTimeEntity.self, from: getData
             )
-        return diaryData ?? AlarmTimeEntity(hour: -1, minute: -1)
+        return diaryData ?? AlarmTimeEntity(hour: 0, minute: 0)
     }
     
     func setPushAlarmTime(newData: AlarmTimeEntity) {
         UserDefaults.standard.setValue(try? PropertyListEncoder().encode(newData), forKey: LocalDataKeySet.ALARM_TIME.rawValue)
     }
     
-    func getAppleLoginToken() -> String {
-        let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.APPLE_LOGIN_TOKEN.rawValue)
+    func getOAuthToken() -> String {
+        let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.OAUTH_TOKEN.rawValue)
         return getData ?? ""
     }
     
-    func setAppleLoginToken(newData: String) {
-        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.APPLE_LOGIN_TOKEN.rawValue)
+    func setOAuthToken(newData: String) {
+        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.OAUTH_TOKEN.rawValue)
     }
     
-    func getGoogleLoginToken() -> String {
-        let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.GOOGLE_LOGIN_TOKEN.rawValue)
+    func getOAuthType() -> String {
+        let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.OAUTH_TYPE.rawValue)
         return getData ?? ""
     }
     
-    func setGoogleLoginToken(newData: String) {
-        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.GOOGLE_LOGIN_TOKEN.rawValue)
+    func setOAuthType(newData: String) {
+        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.OAUTH_TYPE.rawValue)
     }
 }

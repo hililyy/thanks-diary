@@ -41,6 +41,8 @@ class EmailSignUpVC: UIViewController {
                     }
                     print(error)
                 } else {
+                    LocalDataStore.localDataStore.setOAuthToken(newData: password)
+                    LocalDataStore.localDataStore.setOAuthType(newData: "Email")
                     self.goFirstVC()
                 }
             }

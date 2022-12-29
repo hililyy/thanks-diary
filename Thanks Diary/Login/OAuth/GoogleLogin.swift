@@ -16,6 +16,7 @@ extension LoginVC: GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
     }
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if let error = error {
             print ("Error Google sign In: \(error.localizedDescription)")
@@ -25,11 +26,12 @@ extension LoginVC: GIDSignInDelegate {
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
             
             Auth.auth().signIn(with: credential) {[weak self] _, _ in
-                LocalDataStore.localDataStore.setGoogleLoginToken(newData: authentication.idToken)
-                
+                LocalDataStore.localDataStore.setOAuthToken(newData: authentication.idToken)
+                LocalDataStore.localDataStore.setOAuthType(newData: "Google")
                 self?.goFirstVC()
             }
     }
+    
     func startGoogleLogin() {
         GIDSignIn.sharedInstance().signIn()
     }

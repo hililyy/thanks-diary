@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L5A-QO-icg">
-                                <rect key="frame" x="125.66666666666667" y="373" width="138.66666666666663" height="98"/>
+                                <rect key="frame" x="123.66666666666669" y="373.66666666666669" width="143" height="97"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-EV-vze">
-                                        <rect key="frame" x="43.333333333333329" y="0.0" width="52" height="23.333333333333332"/>
+                                        <rect key="frame" x="44.666666666666671" y="0.0" width="53.666666666666671" height="23"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9O-8S-ihf">
-                                        <rect key="frame" x="0.0" y="23.333333333333311" width="138.66666666666666" height="46.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-nz-jS3">
-                                        <rect key="frame" x="44.333333333333329" y="70" width="50" height="28"/>
+                                        <rect key="frame" x="46.333333333333329" y="69" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="892-pQ-MyA"/>
                                         </constraints>
@@ -1827,7 +1827,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d65-7H-cn1">
-                                <rect key="frame" x="45" y="510" width="300" height="224"/>
+                                <rect key="frame" x="45" y="472" width="300" height="262"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Der-5k-WHX">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -1877,10 +1877,21 @@
                                             <action selector="goEmailLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="zia-ZS-Iti"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE5-3Z-g8O">
+                                        <rect key="frame" x="0.0" y="232" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="로그인 없이 시작하기">
+                                            <color key="titleColor" name="grayColor_1"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goStart:" destination="cHy-L7-eqv" eventType="touchUpInside" id="FIy-WQ-Lcs"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4of-dP-nL0">
-                                <rect key="frame" x="16" y="141" width="358" height="269"/>
+                                <rect key="frame" x="16" y="141" width="358" height="231"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FTq-2i-gPx"/>
@@ -2247,7 +2258,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일을 입력해 주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJa-wa-ub3">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="example@email.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJa-wa-ub3">
                                         <rect key="frame" x="0.0" y="25.333333333333314" width="310" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="35e-DE-bXG"/>
@@ -2275,7 +2286,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력해 주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-yi-En3">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6자 이상 입력해 주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-yi-En3">
                                         <rect key="frame" x="0.0" y="25.333333333333343" width="310" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="nR2-5R-dMA"/>
