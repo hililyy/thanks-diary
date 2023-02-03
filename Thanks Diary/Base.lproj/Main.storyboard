@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L5A-QO-icg">
-                                <rect key="frame" x="123.66666666666669" y="373.66666666666669" width="143" height="97"/>
+                                <rect key="frame" x="125.66666666666667" y="373" width="138.66666666666663" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-EV-vze">
-                                        <rect key="frame" x="44.666666666666671" y="0.0" width="53.666666666666671" height="23"/>
+                                        <rect key="frame" x="43.333333333333329" y="0.0" width="52" height="23.333333333333332"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9O-8S-ihf">
-                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                        <rect key="frame" x="0.0" y="23.333333333333311" width="138.66666666666666" height="46.666666666666657"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-nz-jS3">
-                                        <rect key="frame" x="46.333333333333329" y="69" width="50" height="28"/>
+                                        <rect key="frame" x="44.333333333333329" y="70" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="892-pQ-MyA"/>
                                         </constraints>
@@ -979,9 +979,6 @@
                                                 <state key="normal">
                                                     <color key="titleColor" name="grayColor_1"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="touchEnterBtn:" destination="nVC-7x-BNk" eventType="touchUpInside" id="SvW-pa-1CE"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhL-WG-zEw">
                                                 <rect key="frame" x="96.333333333333343" y="0.0" width="81.333333333333343" height="81.333333333333329"/>
@@ -1219,7 +1216,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="2022년 8월 14일 감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5e-Y5-hMq">
-                                <rect key="frame" x="60" y="72" width="220" height="23"/>
+                                <rect key="frame" x="59.999999999999986" y="72" width="215.66666666666663" height="23"/>
                                 <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
@@ -1919,7 +1916,7 @@
         <!--Navigation Controller-->
         <scene sceneID="9Fq-Cs-qeT">
             <objects>
-                <navigationController modalPresentationStyle="fullScreen" id="knB-ak-dA3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="login" modalPresentationStyle="fullScreen" id="knB-ak-dA3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QnC-qz-DWV">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2145,6 +2142,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title=" " image="ic_back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="ckT-hT-j4S" eventType="touchUpInside" id="dsp-RU-92s"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yB6-j4-pEd">
                                 <rect key="frame" x="0.0" y="133" width="390" height="711"/>
@@ -2379,7 +2379,7 @@
     </scenes>
     <designables>
         <designable name="6MI-aR-JAp">
-            <size key="intrinsicContentSize" width="46.333333333333329" height="29.666666666666668"/>
+            <size key="intrinsicContentSize" width="45.666666666666671" height="30"/>
         </designable>
     </designables>
     <resources>
