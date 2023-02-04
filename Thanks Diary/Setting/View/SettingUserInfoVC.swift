@@ -15,6 +15,32 @@ class SettingUserInfoVC: UIViewController {
         self.userInfoTableView.dataSource = self
         self.userInfoTableView.delegate = self
     }
+    @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setAlert(message: String) {
+        let alert = UIAlertController(title: "알림", message: "\(message) 완료되었습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { action in
+            self.showLoginVC()
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setConfirm(message: String) {
+        let alert = UIAlertController(title: "알림", message: "\(message)하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .default))
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { action in
+            self.setAlert(message: message)
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showLoginVC() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
 }
 
 extension SettingUserInfoVC: UITableViewDelegate, UITableViewDataSource {
@@ -31,7 +57,7 @@ extension SettingUserInfoVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = self.userInfoTableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
             cell.settingLabel.text = "이메일"
-            cell.settingDetailLabel.text = Auth.auth().currentUser?.email ?? "고객"
+            cell.settingDetailLabel.text = Auth.auth().currentUser?.email ?? "로그인 하러가기"
             return cell
             
         case 1:
@@ -48,6 +74,25 @@ extension SettingUserInfoVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         default:
             return UITableViewCell.init()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0: // 이메일
+            if Auth.auth().currentUser?.email == "" {
+                guard let vc =  storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            }
+        case 1: // 로그아웃
+            setConfirm(message: "로그아웃")
+            
+        case 2: // 계정탈퇴
+            setConfirm(message: "계정탈퇴")
+            
+        default:
+            break
         }
     }
     
