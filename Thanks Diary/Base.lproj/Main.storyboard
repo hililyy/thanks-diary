@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1960,21 +1960,6 @@
             </objects>
             <point key="canvasLocation" x="742" y="2182"/>
         </scene>
-        <!--Setting Open SourceVC-->
-        <scene sceneID="Ecq-Mf-tkS">
-            <objects>
-                <viewController storyboardIdentifier="SettingOpenSourceVC" id="zis-po-0CC" customClass="SettingOpenSourceVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="epa-ST-EXH">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="8Wd-ji-3qQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="97P-K5-2BH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1395" y="2182"/>
-        </scene>
         <!--Simple WriteVC-->
         <scene sceneID="hW2-2T-wSe">
             <objects>
@@ -2379,7 +2364,7 @@
     </scenes>
     <designables>
         <designable name="6MI-aR-JAp">
-            <size key="intrinsicContentSize" width="45.666666666666671" height="30"/>
+            <size key="intrinsicContentSize" width="29.666666666666668" height="20"/>
         </designable>
     </designables>
     <resources>

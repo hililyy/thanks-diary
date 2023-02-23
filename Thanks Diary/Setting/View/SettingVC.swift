@@ -10,10 +10,10 @@ import AcknowList
 import MessageUI
 
 class SettingVC: UIViewController, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate {
-
+    
     @IBOutlet weak var settingTableView: UITableView!
     var alarmFlag: Bool = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTableView.dataSource = self
@@ -54,11 +54,11 @@ class SettingVC: UIViewController, UIGestureRecognizerDelegate, MFMailComposeVie
               let results = json["results"] as? [[String: Any]] else {
             return ""
         }
-                
+        
         guard let appStoreVersion = results[0]["version"] as? String else {
             return ""
         }
-                        
+        
         return appStoreVersion
     }
 }
@@ -101,7 +101,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             cell.settingLabel.text = "오픈소스 라이선스"
             cell.selectionStyle = .none
             return cell
-
+            
         case 5:
             let appVersion = loadAppStoreVersion()
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
@@ -143,7 +143,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             
         case 4: // 오픈소스 라이선스
             let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
-                    navigationController?.pushViewController(acknowList, animated: true)
+            navigationController?.pushViewController(acknowList, animated: true)
             break
             
         case 5: // 앱 버전

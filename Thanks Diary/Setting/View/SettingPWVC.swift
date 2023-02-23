@@ -208,7 +208,4 @@ class SettingPWVC: UIViewController {
             break
         }
     }
-    
-    @IBAction func touchEnterBtn(_ sender: Any) {
-    }
 }
