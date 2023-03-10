@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Lottie
 
 class FirstStartVC: UIViewController {
     @IBOutlet weak var lottieView: UIView!
@@ -15,8 +14,9 @@ class FirstStartVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
-        setLottie()
+        self.nextBtn.layer.cornerRadius = 20
+        LottieManager().setLottie(self, lottieView: lottieView, name: "sun", mode: .loop)
+        LottieManager().setLottie(self, lottieView: lottieView, name: "plant", mode: .playOnce)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,29 +25,5 @@ class FirstStartVC: UIViewController {
     
     @IBAction func goNext(_ sender: Any) {
         self.showSecondVC()
-    }
-    
-    func setView() {
-        self.nextBtn.layer.cornerRadius = 20
-    }
-    
-    func setLottie() {
-        let animationView: AnimationView = .init(name: "sun")
-        self.view.addSubview(animationView)
-
-        animationView.frame = self.lottieView.bounds
-        animationView.center = self.lottieView.center
-        animationView.contentMode = .scaleAspectFit
-        animationView.play()
-        animationView.loopMode = .loop
-        
-        let animationView2: AnimationView = .init(name: "plant")
-        self.view.addSubview(animationView2)
-        
-        animationView2.frame = self.lottieView2.bounds
-        animationView2.center = self.lottieView2.center
-        animationView2.contentMode = .scaleAspectFit
-        animationView2.play()
-        animationView2.loopMode = .playOnce
     }
 }

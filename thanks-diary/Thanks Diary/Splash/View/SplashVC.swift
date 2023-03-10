@@ -6,17 +6,15 @@
 //
 
 import UIKit
-import Lottie
-import UserNotifications
 
 class SplashVC: UIViewController {
     @IBOutlet weak var lottieView: UIView!
-    let userNotificationCenter = UNUserNotificationCenter.current()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLottie()
+        LottieManager().setLottie(self, lottieView: lottieView, name: "dot", mode: .loop)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.requestNotificationAuthorization()
+            AlarmAuth().requestNotificationAuthorization()
             if LocalDataStore.localDataStore.getOAuthType() != "" {
                 if LocalDataStore.localDataStore.getPasswordData() {
                     self.showPasswordVC()
@@ -25,30 +23,6 @@ class SplashVC: UIViewController {
                 }
             } else {
                 self.showLoginVC()
-            }
-        }
-    }
-    
-    func setLottie() {
-        let animationView: AnimationView = .init(name: "dot")
-        self.view.addSubview(animationView)
-        
-        animationView.frame = self.lottieView.bounds
-        animationView.center = self.lottieView.center
-        animationView.contentMode = .scaleAspectFit
-        animationView.animationSpeed = 3
-        animationView.play()
-        animationView.loopMode = .loop
-    }
-    
-    func requestNotificationAuthorization() {
-        let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .badge, .sound)
-        
-        userNotificationCenter.requestAuthorization(options: authOptions) { success, error in
-            print("success: \(success)")
-            LocalDataStore.localDataStore.setPushAlarmAgree(newData: success)
-            if let error = error {
-                print("Error: \(error)")
             }
         }
     }

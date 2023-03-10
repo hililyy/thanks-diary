@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Lottie
 import GoogleSignIn
 
 class LoginVC: UIViewController {
@@ -18,22 +17,11 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLottie()
+        LottieManager().setLottie(self, lottieView: lottieView, name: "dot", mode: .loop)
         setGoogleLogin()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-    }
-    
-    func setLottie() {
-        let animationView: AnimationView = .init(name: "dot")
-        self.view.addSubview(animationView)
-        animationView.frame = self.lottieView.bounds
-        animationView.center = self.lottieView.center
-        animationView.contentMode = .scaleAspectFit
-        animationView.animationSpeed = 3
-        animationView.play()
-        animationView.loopMode = .loop
     }
     
     @IBAction func goAppleLogin(_ sender: Any) {
