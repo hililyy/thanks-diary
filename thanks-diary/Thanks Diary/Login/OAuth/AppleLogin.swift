@@ -38,7 +38,7 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
                     
                     LocalDataStore.localDataStore.setOAuthToken(newData: credential.idToken ?? "")
                     LocalDataStore.localDataStore.setOAuthType(newData: "apple")
-                    self.goFirstVC()
+                    self.showFirstVC()
                 }
                 if error != nil {
                     print(error?.localizedDescription ?? "error" as Any)

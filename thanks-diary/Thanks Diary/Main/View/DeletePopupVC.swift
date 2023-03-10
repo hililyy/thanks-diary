@@ -8,7 +8,6 @@
 import UIKit
 
 class DeletePopupVC: UIViewController {
-
     let model = MainModel.model
     var selectedDataDate: String?
     
@@ -25,8 +24,6 @@ class DeletePopupVC: UIViewController {
         model.deleteDetailData(dateString: self.selectedDataDate ?? "")
         model.longDiaryFlag = false
         LocalDataStore.localDataStore.setTodayDetailData(newData: false)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        showDeleteVC()
     }
 }

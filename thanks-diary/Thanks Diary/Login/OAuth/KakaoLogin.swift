@@ -74,7 +74,7 @@ extension LoginVC {
                         print("회원가입 완료")
                         
                     }
-                    self.goFirstVC()
+                    self.showFirstVC()
                 }
             }
         }

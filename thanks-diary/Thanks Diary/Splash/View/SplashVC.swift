@@ -40,26 +40,6 @@ class SplashVC: UIViewController {
         animationView.play()
         animationView.loopMode = .loop
     }
-    func showLoginVC() {
-        let vc = storyboard!.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        let navi = UINavigationController(rootViewController: vc)
-        navi.modalPresentationStyle = .currentContext
-        present(navi, animated:false, completion: nil)
-    }
-    
-    func showMainVC() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-    }
-    
-    func showPasswordVC() {
-        let vc = storyboard!.instantiateViewController(withIdentifier: "SettingPWVC") as! SettingPWVC
-        vc.homeFlag = true
-        let navi = UINavigationController(rootViewController: vc)
-        navi.modalPresentationStyle = .currentContext
-        present(navi, animated:false, completion: nil)
-    }
     
     func requestNotificationAuthorization() {
         let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .badge, .sound)

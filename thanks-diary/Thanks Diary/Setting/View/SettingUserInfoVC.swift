@@ -22,7 +22,7 @@ class SettingUserInfoVC: UIViewController {
     func setAlert(message: String) {
         let alert = UIAlertController(title: "알림", message: "\(message) 완료되었습니다.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default) { action in
-            self.showLoginVC()
+            self.showRootLoginVC()
         })
         self.present(alert, animated: true, completion: nil)
     }
@@ -34,12 +34,6 @@ class SettingUserInfoVC: UIViewController {
             self.setAlert(message: message)
         })
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func showLoginVC() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
 }
 

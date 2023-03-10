@@ -24,11 +24,6 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
-
-    func goFirstVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "FirstStartVC") as? FirstStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
     
     func setLottie() {
         let animationView: AnimationView = .init(name: "dot")
@@ -58,7 +53,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func goStart(_ sender: Any) {
-        self.goFirstVC()
+        self.showFirstVC()
         LocalDataStore.localDataStore.setOAuthType(newData: "none")
     }
 }

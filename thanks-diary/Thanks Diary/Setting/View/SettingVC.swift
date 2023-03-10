@@ -32,8 +32,7 @@ class SettingVC: UIViewController, UIGestureRecognizerDelegate, MFMailComposeVie
         alarmFlag = !alarmFlag
         LocalDataStore.localDataStore.setPasswordData(newData: alarmFlag)
         if LocalDataStore.localDataStore.getPasswordData() == true {
-            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingPWVC") as? SettingPWVC else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
+            showSettingPWVC()
         }
     }
     
@@ -120,16 +119,14 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: // 계정 설정
-            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingUserInfoVC") as? SettingUserInfoVC else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
+            showSettingUserInfoVC()
             break
             
         case 1: // 암호
             break
             
         case 2: // 알림
-            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingAlarmVC") as? SettingAlarmVC else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
+            showSettingAlarmVC()
             break
             
         case 3: // 고객센터
@@ -142,8 +139,8 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             break
             
         case 4: // 오픈소스 라이선스
-            let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
-            navigationController?.pushViewController(acknowList, animated: true)
+//            let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
+//            navigationController?.pushViewController(acknowList, animated: true)
             break
             
         case 5: // 앱 버전

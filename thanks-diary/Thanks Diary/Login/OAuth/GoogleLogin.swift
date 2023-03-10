@@ -28,7 +28,7 @@ extension LoginVC: GIDSignInDelegate {
             Auth.auth().signIn(with: credential) {[weak self] _, _ in
                 LocalDataStore.localDataStore.setOAuthToken(newData: authentication.idToken)
                 LocalDataStore.localDataStore.setOAuthType(newData: "Google")
-                self?.goFirstVC()
+                self?.showFirstVC()
             }
     }
     

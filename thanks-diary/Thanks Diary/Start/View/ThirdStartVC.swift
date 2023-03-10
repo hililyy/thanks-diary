@@ -19,7 +19,7 @@ class ThirdStartVC: UIViewController {
     }
     
     @IBAction func goStart(_ sender: Any) {
-        self.goMainVC()
+        self.showMainVC()
     }
     
     func setView() {
@@ -35,11 +35,5 @@ class ThirdStartVC: UIViewController {
         animationView.contentMode = .scaleAspectFit
         animationView.play()
         animationView.loopMode = .playOnce
-    }
-    
-    func goMainVC() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
 }

@@ -19,7 +19,7 @@ class SecondStartVC: UIViewController {
     }
     
     @IBAction func goNext(_ sender: Any) {
-        self.goThirdVC()
+        self.showThirdVC()
     }
     
     func setView() {
@@ -37,8 +37,5 @@ class SecondStartVC: UIViewController {
         animationView.loopMode = .playOnce
     }
     
-    func goThirdVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "ThirdStartVC") as? ThirdStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+
 }

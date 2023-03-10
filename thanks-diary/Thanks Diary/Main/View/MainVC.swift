@@ -52,7 +52,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func goSetting(_ sender: Any) {
-        self.goSettingVC()
+        self.showSettingVC()
     }
     
     @IBAction func moveTodayFocus(_ sender: Any) {
@@ -66,7 +66,7 @@ class MainVC: UIViewController {
         floaty.plusColor = UIColor(named: "whiteColor")!
         floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!, handler: { item in
             if self.model.todayDate == self.model.selectedDate {
-                self.goSimpleWriteVC()
+                self.showSimpleWriteVC()
             } else {
                 self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
             }
@@ -75,7 +75,7 @@ class MainVC: UIViewController {
         floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
             if self.model.todayDate == self.model.selectedDate {
                 if self.model.longDiaryFlag == false {
-                    self.goDetailWriteVC()
+                    self.showDetailWriteVC()
                 } else {
                     self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
                 }
@@ -85,46 +85,6 @@ class MainVC: UIViewController {
             floaty.close()
         })
         self.view.addSubview(floaty)
-    }
-    
-    func goSimpleWriteVC() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.delegate = self
-            self.present(vc, animated: true, completion: nil)
-    }
-    
-    func goDetailWriteVC() {
-        guard let vc =  self.storyboard?.instantiateViewController(identifier: "DetailWriteVC") as? DetailWriteVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func goSettingVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func goReadVC() {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .fullScreen
-            vc.selectedDataDate = model.detailData[0].date ?? ""
-            vc.selectedDataTitle = model.detailData[0].title ?? ""
-            vc.selectedDataContents = model.detailData[0].contents ?? ""
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    func goSimpleWriteVC(index: Int) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC {
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.updateFlag = true
-            vc.contentsString = model.simpleData[index].contents ?? ""
-            vc.delegate = self
-            self.present(vc, animated: true, completion: nil)
-        }
     }
     
     func setEmptyTableViewImage(date: Date) {
@@ -191,12 +151,12 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if model.longDiaryFlag == true {
             if indexPath.row == 0 {
-                goReadVC()
+                showReadVC(date: model.detailData[0].date ?? "", title: model.detailData[0].title ?? "", contents: model.detailData[0].contents ?? "")
             } else {
-                goSimpleWriteVC(index: indexPath.row-1)
+                showSimpleWriteVC(contents: model.simpleData[indexPath.row-1].contents ?? "")
             }
         } else {
-            goSimpleWriteVC(index: indexPath.row)
+            showSimpleWriteVC(contents: model.simpleData[indexPath.row].contents ?? "")
         }
     }
     
@@ -243,7 +203,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let imageDateFormatter = DateFormatter()
         imageDateFormatter.dateFormat = "yyyy-M-d"
-        var dateStr = imageDateFormatter.string(from: date)
+        let dateStr = imageDateFormatter.string(from: date)
         return datesWithCircle.contains(dateStr) ? UIImage(named: "ic_circle") : nil
         
     }

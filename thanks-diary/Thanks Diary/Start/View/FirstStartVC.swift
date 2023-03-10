@@ -24,7 +24,7 @@ class FirstStartVC: UIViewController {
     }
     
     @IBAction func goNext(_ sender: Any) {
-        self.goSecondVC()
+        self.showSecondVC()
     }
     
     func setView() {
@@ -49,10 +49,5 @@ class FirstStartVC: UIViewController {
         animationView2.contentMode = .scaleAspectFit
         animationView2.play()
         animationView2.loopMode = .playOnce
-    }
-    
-    func goSecondVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SecondStartVC") as? SecondStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

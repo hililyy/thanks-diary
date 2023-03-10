@@ -43,7 +43,7 @@ class EmailSignUpVC: UIViewController {
                 } else {
                     LocalDataStore.localDataStore.setOAuthToken(newData: password)
                     LocalDataStore.localDataStore.setOAuthType(newData: "Email")
-                    self.goFirstVC()
+                    self.showFirstVC()
                 }
             }
         } else {
@@ -53,12 +53,6 @@ class EmailSignUpVC: UIViewController {
     
     func checkMatchPassword() -> Bool {
         return self.passwordTextField.text == self.rePasswordTextfield.text
-    }
-    
-    private func goFirstVC() {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let vc =  storyboard.instantiateViewController(identifier: "FirstStartVC") as? FirstStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

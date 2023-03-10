@@ -20,20 +20,7 @@ class EmailLoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func goSignUp(_ sender: Any) {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "EmailSignUpVC") as? EmailSignUpVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func goFirstVC() {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let vc =  storyboard.instantiateViewController(identifier: "FirstStartVC") as? FirstStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func goMainVC() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        self.showSignupVC()
     }
     
     private func loginUser(withEmail email: String, password: String) {
@@ -56,7 +43,7 @@ class EmailLoginVC: UIViewController, UITextFieldDelegate {
                 }
                 print(error)
             } else {
-                self.goMainVC()
+                self.showMainVC()
             }
         }
     }
