@@ -56,6 +56,10 @@
 		2AC2B5FA29BB8B1300C4A985 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B5F929BB8B1300C4A985 /* PaddingLabel.swift */; };
 		2AC2B5FE29BB8DF800C4A985 /* AlarmAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B5FD29BB8DF800C4A985 /* AlarmAuth.swift */; };
 		2AC2B60129BB8EAD00C4A985 /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60029BB8EAD00C4A985 /* LottieManager.swift */; };
+		2AC2B60529BBA3E800C4A985 /* DiaryDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60429BBA3E800C4A985 /* DiaryDataEntity.swift */; };
+		2AC2B60729BBAD7300C4A985 /* DiaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60629BBAD7300C4A985 /* DiaryType.swift */; };
+		2AC2B60929BBAF4400C4A985 /* WriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60829BBAF4400C4A985 /* WriteModel.swift */; };
+		2AC2B60B29BBEC8500C4A985 /* DiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60A29BBEC8500C4A985 /* DiaryModel.swift */; };
 		2AEE20C52950AD3D00A17F5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AEE20C42950AD3D00A17F5B /* GoogleService-Info.plist */; };
 		2AEE20CC2950B12400A17F5B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE20CB2950B12400A17F5B /* LoginVC.swift */; };
 		2AEE20DF295199C500A17F5B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE20DE295199C500A17F5B /* LoginModel.swift */; };
@@ -139,6 +143,10 @@
 		2AC2B5F929BB8B1300C4A985 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		2AC2B5FD29BB8DF800C4A985 /* AlarmAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAuth.swift; sourceTree = "<group>"; };
 		2AC2B60029BB8EAD00C4A985 /* LottieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieManager.swift; sourceTree = "<group>"; };
+		2AC2B60429BBA3E800C4A985 /* DiaryDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDataEntity.swift; sourceTree = "<group>"; };
+		2AC2B60629BBAD7300C4A985 /* DiaryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryType.swift; sourceTree = "<group>"; };
+		2AC2B60829BBAF4400C4A985 /* WriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteModel.swift; sourceTree = "<group>"; };
+		2AC2B60A29BBEC8500C4A985 /* DiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryModel.swift; sourceTree = "<group>"; };
 		2AEE20C42950AD3D00A17F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AEE20CB2950B12400A17F5B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		2AEE20D42950E76400A17F5B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -340,9 +348,7 @@
 		2A9F34F828ABC28A006CCF7C /* Start */ = {
 			isa = PBXGroup;
 			children = (
-				2AEE20DC2951998300A17F5B /* Model */,
 				2A9F34FF28AC205B006CCF7C /* View */,
-				2AEE20DD2951999400A17F5B /* ViewModel */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 				2A81235328C5277D000A250E /* SimpleWriteVC.swift */,
 				2A7241CE28B2A57E0040ADE9 /* ReadVC.swift */,
 				2A7241D028B2A5950040ADE9 /* DeletePopupVC.swift */,
+				2AC2B60629BBAD7300C4A985 /* DiaryType.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -391,9 +398,12 @@
 		2A9F350C28AE1BF9006CCF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2AC2B60329BB979200C4A985 /* Entity */,
 				2A7241D728B3EDE60040ADE9 /* MainModel.swift */,
 				2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */,
 				2A81235928C547A6000A250E /* SimpleDiaryEntity.swift */,
+				2AC2B60829BBAF4400C4A985 /* WriteModel.swift */,
+				2AC2B60A29BBEC8500C4A985 /* DiaryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -451,18 +461,12 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
-		2AEE20DC2951998300A17F5B /* Model */ = {
+		2AC2B60329BB979200C4A985 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				2AC2B60429BBA3E800C4A985 /* DiaryDataEntity.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2AEE20DD2951999400A17F5B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		2AFF117A29574FF800EC85EA /* Login */ = {
@@ -680,6 +684,7 @@
 				2AFF118C2958A8B200EC85EA /* EmailLoginErrorList.swift in Sources */,
 				2AFF11922958CD6000EC85EA /* EmailSignUpVC.swift in Sources */,
 				2A9F351528AE63ED006CCF7C /* SettingSwitchCell.swift in Sources */,
+				2AC2B60B29BBEC8500C4A985 /* DiaryModel.swift in Sources */,
 				2AFF11832957504500EC85EA /* EmailLogin.swift in Sources */,
 				2A81234028C096BC000A250E /* LocalDataStore.swift in Sources */,
 				2AEE20E129519A9C00A17F5B /* LoginViewModel.swift in Sources */,
@@ -690,6 +695,7 @@
 				2A7241D828B3EDE60040ADE9 /* MainModel.swift in Sources */,
 				2A81234E28C4E22C000A250E /* SimpleDiaryListCell.swift in Sources */,
 				2A9F351728AE63FD006CCF7C /* SettingMoreCell.swift in Sources */,
+				2AC2B60929BBAF4400C4A985 /* WriteModel.swift in Sources */,
 				2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */,
 				2A81233B28C0067B000A250E /* SettingAlarmDetailVC.swift in Sources */,
 				2A81234A28C2A208000A250E /* DiaryData.xcdatamodeld in Sources */,
@@ -702,6 +708,7 @@
 				2A9F350E28AE1C0D006CCF7C /* MainVC.swift in Sources */,
 				2AEE20CC2950B12400A17F5B /* LoginVC.swift in Sources */,
 				2AC2B5FE29BB8DF800C4A985 /* AlarmAuth.swift in Sources */,
+				2AC2B60729BBAD7300C4A985 /* DiaryType.swift in Sources */,
 				2AC2B5F829BB86CD00C4A985 /* UIViewController.swift in Sources */,
 				2A81235428C5277D000A250E /* SimpleWriteVC.swift in Sources */,
 				2AFF11792956E52600EC85EA /* SettingUserInfoVC.swift in Sources */,
@@ -717,6 +724,7 @@
 				2AFF11812957503C00EC85EA /* GoogleLogin.swift in Sources */,
 				2A9F351928AE6410006CCF7C /* SettingLabelCell.swift in Sources */,
 				2A7241D128B2A5950040ADE9 /* DeletePopupVC.swift in Sources */,
+				2AC2B60529BBA3E800C4A985 /* DiaryDataEntity.swift in Sources */,
 				2A72421728BBB5C20040ADE9 /* SettingSupportVC.swift in Sources */,
 				2AFF11902958CD3F00EC85EA /* EmailLoginVC.swift in Sources */,
 			);

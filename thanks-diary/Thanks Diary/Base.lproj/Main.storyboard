@@ -263,9 +263,13 @@
                                 <rect key="frame" x="75" y="139" width="240" height="182.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sl5-wH-2jn">
-                                <rect key="frame" x="75" y="544.66666666666663" width="240" height="146.33333333333337"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sl5-wH-2jn">
+                                <rect key="frame" x="75" y="544.66666666666652" width="240" height="146.33333333333337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="4o2-tn-PXb"/>
+                                    <constraint firstAttribute="height" constant="147" id="pPt-Ry-GaR"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sf4-0S-pkO"/>
@@ -279,7 +283,6 @@
                             <constraint firstItem="d28-c7-1r2" firstAttribute="leading" secondItem="sf4-0S-pkO" secondAttribute="leading" constant="75" id="JsL-rB-680"/>
                             <constraint firstItem="sf4-0S-pkO" firstAttribute="bottom" secondItem="6yd-Jn-RuB" secondAttribute="bottom" constant="15" id="VgR-Mt-1Ut"/>
                             <constraint firstItem="mFg-0w-hb6" firstAttribute="top" secondItem="d28-c7-1r2" secondAttribute="bottom" constant="28" id="cGb-U6-4jn"/>
-                            <constraint firstItem="Sl5-wH-2jn" firstAttribute="top" secondItem="mFg-0w-hb6" secondAttribute="bottom" constant="50" id="giv-M7-sMF"/>
                             <constraint firstItem="mFg-0w-hb6" firstAttribute="centerX" secondItem="k6Y-pH-vjU" secondAttribute="centerX" id="hWT-tB-ndf"/>
                             <constraint firstItem="mFg-0w-hb6" firstAttribute="centerY" secondItem="k6Y-pH-vjU" secondAttribute="centerY" id="iqI-Oe-Bzz"/>
                             <constraint firstItem="Sl5-wH-2jn" firstAttribute="centerX" secondItem="k6Y-pH-vjU" secondAttribute="centerX" id="jBP-oy-NhV"/>

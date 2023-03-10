@@ -10,6 +10,7 @@ import FSCalendar
 import Floaty
 import CoreData
 import Toast_Swift
+import Firebase
 
 class MainVC: UIViewController {
 
@@ -21,7 +22,10 @@ class MainVC: UIViewController {
     @IBOutlet var todayBtn: UIButton!
     
     let model = MainModel.model
+    let diaryModel = DiaryModel.model
+    let writeModel = WriteModel.writeModel
     fileprivate var datesWithCircle: [String] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +40,9 @@ class MainVC: UIViewController {
         setFloty()
         setCalender()
         initialize()
+        diaryModel.uid = Auth.auth().currentUser?.uid ?? ""
+        diaryModel.getDiaryData()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

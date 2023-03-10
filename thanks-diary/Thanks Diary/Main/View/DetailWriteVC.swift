@@ -16,6 +16,7 @@ class DetailWriteVC: UIViewController {
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var completeBtn: UIButton!
     var container: NSPersistentContainer!
+    let writeModel = WriteModel.writeModel
     var titleString: String = ""
     var contentsString: String = ""
     var todayString: String = ""
@@ -79,7 +80,7 @@ class DetailWriteVC: UIViewController {
             self.todayString = changeDateToString(date: Date(), formatString: "yyyy년 M월 d일")
             self.diaryTitle.text = "\(todayString) 감사일기"
         } else {
-            var tmpString = todayString.split(separator: "-")
+            let tmpString = todayString.split(separator: "-")
             self.diaryTitle.text = ("\(tmpString[0])년 \(tmpString[1])월 \(tmpString[2])일 감사일기")
             self.titleTextfield.text = titleString
             self.contentsTextView.text = contentsString
@@ -102,22 +103,28 @@ class DetailWriteVC: UIViewController {
     }
     
     @IBAction func goComplete(_ sender: Any) {
-        do{
-            // update
-            if editFlag == true {
-                try setString()
-                model.updateDetailData(dateString: self.todayString, titleString: self.titleString, contentsString: self.contentsString)
-                goMainVC()
-            // create
-            } else {
-                model.longDiaryFlag = true
-                try setString()
-                setData()
-                self.navigationController?.popViewController(animated: true)
-            }
-        } catch {
-            print(ErrorCase.NOT_SAVE_DATA)
+        writeModel.diaryData = DiaryDataEntity(title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text, date: self.todayString)
+        writeModel.setDiaryData(type: .long) {
+            self.goMainVC()
         }
+//        do{
+//            // update
+//            if editFlag == true {
+//                try setString()
+//                model.updateDetailData(dateString: self.todayString, titleString: self.titleString, contentsString: self.contentsString)
+//                goMainVC()
+//            // create
+//            } else {
+//                model.longDiaryFlag = true
+//                try setString()
+//                setData()
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//        } catch {
+//            print(ErrorCase.NOT_SAVE_DATA)
+//        }
+        
+        
     }
     
     func setString() throws {
