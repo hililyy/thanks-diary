@@ -14,7 +14,7 @@ class ReadVC: UIViewController {
     @IBOutlet weak var editBtn: UIButton!
     
     var selectedIndex: Int?
-    let model = MainModel.model
+    let mainModel = MainModel.model
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +35,9 @@ class ReadVC: UIViewController {
     
     func setText() {
         guard let index = selectedIndex else { return }
-        titleLabel.text = model.longData[index].title
-        contentsTextView.text = model.longData[index].contents
-        dateLabel.text = "\(model.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
+        titleLabel.text = mainModel.longData[index].title
+        contentsTextView.text = mainModel.longData[index].contents
+        dateLabel.text = "\(mainModel.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
     }
     
     @IBAction func goBack(_ sender: Any) {

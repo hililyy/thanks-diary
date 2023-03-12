@@ -14,9 +14,8 @@ class DetailWriteVC: UIViewController {
     @IBOutlet weak var titleTextfield: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var completeBtn: UIButton!
-    let writeModel = WriteModel.writeModel
     var writeDate: Date = Date()
-    let model = MainModel.model
+    let mainModel = MainModel.model
     var editFlag: Bool?
     var selectedIndex: Int?
     
@@ -37,13 +36,13 @@ class DetailWriteVC: UIViewController {
     @IBAction func goComplete(_ sender: Any) {
         if editFlag == true {
             guard let index = selectedIndex else { return }
-            model.updateDetailData(
+            mainModel.updateDetailData(
                 selectedIndex: index,
                 afterTitle: titleTextfield.text ?? "",
                 afterContents: contentsTextView.text ?? "")
             showMainVC()
         } else {
-            model.setDetailData(title: self.titleTextfield.text ?? "",
+            mainModel.setDetailData(title: self.titleTextfield.text ?? "",
                           contents: self.contentsTextView.text)
             self.navigationController?.popViewController(animated: true)
         }
@@ -62,11 +61,11 @@ class DetailWriteVC: UIViewController {
     }
     
     func setTitle() {
-        self.diaryTitle.text = "\(model.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
+        self.diaryTitle.text = "\(mainModel.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
         if editFlag == true {
             guard let index = selectedIndex else { return }
-            self.titleTextfield.text = model.longData[index].title
-            self.contentsTextView.text = model.longData[index].contents
+            self.titleTextfield.text = mainModel.longData[index].title
+            self.contentsTextView.text = mainModel.longData[index].contents
         }
     }
     

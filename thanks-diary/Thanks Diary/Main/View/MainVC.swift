@@ -9,11 +9,9 @@ import UIKit
 import FSCalendar
 import Floaty
 import CoreData
-import Toast_Swift
 import Firebase
 
 class MainVC: UIViewController {
-
     @IBOutlet weak var todayDate: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var diaryTableView: UITableView!
@@ -21,7 +19,8 @@ class MainVC: UIViewController {
     @IBOutlet weak var emptyImage: UIImageView!
     @IBOutlet var todayBtn: UIButton!
     
-    let model = MainModel.model
+    let mainModel = MainModel.model
+    let diaryModel = DiaryModel.model
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +43,7 @@ class MainVC: UIViewController {
     
     @IBAction func moveTodayFocus(_ sender: Any) {
         self.calendar.select(Date())
-        model.selectedDate = Date()
+        mainModel.selectedDate = Date()
         self.todayDate.text = Date().convertString(format: "dd'일' (E)")
         changeDatabyDate()
     }
@@ -65,8 +64,8 @@ class MainVC: UIViewController {
     }
     
     func changeDatabyDate() {
-        model.getDetailData() {
-            self.model.getSimpleData() {
+        mainModel.getDetailData() {
+            self.mainModel.getSimpleData() {
                 self.diaryTableView.reloadData()
             }
         }
@@ -75,8 +74,8 @@ class MainVC: UIViewController {
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if model.longData.count == 0 && model.shortData.count == 0 {
-            if  self.model.selectedDate.convertString() == Date().convertString() {
+        if mainModel.longData.count == 0 && mainModel.shortData.count == 0 {
+            if  self.mainModel.selectedDate.convertString() == Date().convertString() {
                 self.emptyView.isHidden = false
                 self.emptyView.frame.size.height = 300
                 self.emptyImage.image = UIImage(named: "img_not_today")
@@ -90,21 +89,21 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             self.emptyView.isHidden = true
             self.emptyView.frame.size.height = 0
-            return model.longData.count + model.shortData.count
+            return mainModel.longData.count + mainModel.shortData.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case ..<model.longData.count:
+        case ..<mainModel.longData.count:
             let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-            cell.titleLabel.text = model.longData[indexPath.row].title
+            cell.titleLabel.text = mainModel.longData[indexPath.row].title
             cell.selectionStyle = .none
             return cell
-        case model.longData.count...:
+        case mainModel.longData.count...:
             let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
             cell.titleLabel.text =
-            model.shortData[indexPath.row-model.longData.count].contents
+            mainModel.shortData[indexPath.row-mainModel.longData.count].contents
             cell.selectionStyle = .none
             return cell
         default:
@@ -115,10 +114,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case ..<model.longData.count:
+        case ..<mainModel.longData.count:
             showReadVC(index: indexPath.row)
-        case model.longData.count...:
-            showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - model.longData.count)
+        case mainModel.longData.count...:
+            showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longData.count)
         default:
             break
         }
@@ -151,14 +150,14 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     
     // 캘린더 날짜 선택시 동작
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        model.selectedDate = date
+        mainModel.selectedDate = date
         self.todayDate.text = date.convertString(format: "dd'일' (E)")
         changeDatabyDate()
     }
         
     // 특정 날짜에 이미지 세팅
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        return model.dateWithCircle.contains(date.convertString()) ? UIImage(named: "ic_circle") : nil
+        return mainModel.dateWithCircle.contains(date.convertString()) ? UIImage(named: "ic_circle") : nil
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
@@ -172,8 +171,8 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
 
 extension MainVC: reloadDelegate {
     func reloadData() {
-        model.getDetailData() {
-            self.model.getSimpleData() {
+        mainModel.getDetailData() {
+            self.mainModel.getSimpleData() {
                 self.calendar.reloadData()
                 self.diaryTableView.reloadData()
             }

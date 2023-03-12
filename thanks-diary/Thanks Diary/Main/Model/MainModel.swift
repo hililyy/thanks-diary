@@ -71,7 +71,6 @@ class MainModel {
     }
     
     func setDetailData(title: String, contents: String) {
-        print(self.selectedDate.convertString())
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "DiaryData", in: context)

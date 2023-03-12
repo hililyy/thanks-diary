@@ -16,7 +16,7 @@ class SimpleWriteVC: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var textLengthLabel: UILabel!
     weak var delegate: reloadDelegate?
-    let model = MainModel.model
+    let mainModel = MainModel.model
     var editFlag: Bool?
     var selectedIndex: Int?
     let maxCount: Int = 23
@@ -35,7 +35,7 @@ class SimpleWriteVC: UIViewController {
         self.simpleTextField.delegate = self
         if editFlag == true {
             guard let index = selectedIndex else { return }
-            simpleTextField.text = model.shortData[index].contents
+            simpleTextField.text = mainModel.shortData[index].contents
         }
         self.textLengthLabel.text = "\(simpleTextField.text.count)/25"
     }
@@ -54,12 +54,12 @@ class SimpleWriteVC: UIViewController {
         if editFlag == true {
             guard let index = selectedIndex,
                   let contents = self.simpleTextField.text else { return }
-            model.updateSimpleData(selectedIndex: index, afterContents: contents)
+            mainModel.updateSimpleData(selectedIndex: index, afterContents: contents)
             self.dismiss(animated: true) {
                 self.delegate?.reloadData()
             }
         } else {
-            model.setSimpleData(contents: self.simpleTextField.text)
+            mainModel.setSimpleData(contents: self.simpleTextField.text)
             self.dismiss(animated: true) {
                 self.delegate?.reloadData()
             }
@@ -72,7 +72,7 @@ class SimpleWriteVC: UIViewController {
     
     @IBAction func goDelete(_ sender: Any) {
         guard let index = selectedIndex else { return }
-        model.deleteSimpleData(selectedIndex: index)
+        mainModel.deleteSimpleData(selectedIndex: index)
         self.dismiss(animated: true) {
             self.delegate?.reloadData()
         }

@@ -8,7 +8,7 @@
 import UIKit
 
 class DeletePopupVC: UIViewController {
-    let model = MainModel.model
+    let mainModel = MainModel.model
     var selectedIndex: Int?
     
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class DeletePopupVC: UIViewController {
     
     @IBAction func goDelete(_ sender: Any) {
         guard let selectedIndex = selectedIndex else { return }
-        model.deleteDetailData(selectedIndex: selectedIndex)
+        mainModel.deleteDetailData(selectedIndex: selectedIndex)
         showDeleteVC()
     }
 }
