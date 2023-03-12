@@ -91,7 +91,6 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                 cell.alarmSwitchBtn.isOn = switchFlag
             }
             return cell
-            
         case 1:
             let cell = self.alarmTableView.dequeueReusableCell(withIdentifier: "AlarmTimeCell", for: indexPath) as! AlarmTimeCell
             cell.selectionStyle = .none
@@ -105,9 +104,8 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             return cell
-            
         default:
-            return UITableViewCell.init()
+            return UITableViewCell()
         }
     }
     
@@ -115,22 +113,11 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             break
-            
         case 1:
             if agreeFlag == true {
-                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingAlarmDetailVC") as? SettingAlarmDetailVC {
-                    vc.modalTransitionStyle = .crossDissolve
-                    vc.modalPresentationStyle = .overCurrentContext
-                    vc.delegate = self
-                    vc.selectedTime = self.selectedDate ?? Date()
-                    if let date = selectedDate {
-                        vc.selectedTime = date
-                    }
-                    self.present(vc, animated: true, completion: nil)
-                }
-            } else {
-                break
-            }
+                guard let date = self.selectedDate else { return }
+                presentSettingAlarmDetailVC(selectedDate: date)
+            } else { break }
         default:
             break
         }
@@ -152,7 +139,5 @@ extension SettingAlarmVC: SendDataDelegate {
         selectedStringDate = changeDateToString(date: self.selectedDate ?? Date(), formatString: "a hh시 mm분")
         sendNotification()
         self.alarmTableView.reloadData()
-        
     }
-    
 }

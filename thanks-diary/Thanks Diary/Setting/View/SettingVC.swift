@@ -53,11 +53,7 @@ class SettingVC: UIViewController, UIGestureRecognizerDelegate, MFMailComposeVie
               let results = json["results"] as? [[String: Any]] else {
             return ""
         }
-        
-        guard let appStoreVersion = results[0]["version"] as? String else {
-            return ""
-        }
-        
+        guard let appStoreVersion = results[0]["version"] as? String else { return "" }
         return appStoreVersion
     }
 }

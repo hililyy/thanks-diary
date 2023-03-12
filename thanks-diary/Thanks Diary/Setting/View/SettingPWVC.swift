@@ -161,7 +161,6 @@ class SettingPWVC: UIViewController {
     
     @IBAction func touchBackBtn(_ sender: Any) {
         count = count - 1
-        firstPW.popLast()
         if count < 0 {
             count = 0
         }

@@ -22,7 +22,7 @@ class SplashVC: UIViewController {
                     self.showMainVC()
                 }
             } else {
-                self.showLoginVC()
+                self.presentLoginVC()
             }
         }
     }

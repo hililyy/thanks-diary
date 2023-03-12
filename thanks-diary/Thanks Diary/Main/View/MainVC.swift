@@ -22,40 +22,20 @@ class MainVC: UIViewController {
     @IBOutlet var todayBtn: UIButton!
     
     let model = MainModel.model
-    let diaryModel = DiaryModel.model
-    let writeModel = WriteModel.writeModel
-    fileprivate var datesWithCircle: [String] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.longDiaryFlag = LocalDataStore.localDataStore.getTodayDetailData()
-        model.selectedDate = model.isTodayDateString()
-        model.todayDate = model.isTodayDateString()
-        
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
-        
         self.todayBtn.layer.cornerRadius = 10
+        self.todayDate.text = Date().convertString(format: "dd'일' (E)")
         setFloty()
         setCalender()
-        initialize()
-        diaryModel.uid = Auth.auth().currentUser?.uid ?? ""
-        diaryModel.getDiaryData()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        model.getDetailData(selectedDate: model.selectedDate)
-        model.getSimpleData(selectedDate: model.selectedDate)
-        self.datesWithCircle = model.dateList
-        calendar.reloadData()
-        diaryTableView.reloadData()
-    }
-    
-    func initialize() {
-        self.todayDate.text = model.setTodayDate(selectedData: Date())
+        reloadData()
     }
     
     @IBAction func goSetting(_ sender: Any) {
@@ -64,7 +44,9 @@ class MainVC: UIViewController {
     
     @IBAction func moveTodayFocus(_ sender: Any) {
         self.calendar.select(Date())
-        setEmptyTableViewImage(date: Date())
+        model.selectedDate = Date()
+        self.todayDate.text = Date().convertString(format: "dd'일' (E)")
+        changeDatabyDate()
     }
     
     func setFloty() {
@@ -72,111 +54,78 @@ class MainVC: UIViewController {
         floaty.buttonColor = UIColor(named: "mainColor")!
         floaty.plusColor = UIColor(named: "whiteColor")!
         floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!, handler: { item in
-            if self.model.todayDate == self.model.selectedDate {
-                self.showSimpleWriteVC()
-            } else {
-                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
-            }
-                floaty.close()
+            self.showSimpleWriteVC()
+            floaty.close()
         })
         floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
-            if self.model.todayDate == self.model.selectedDate {
-                if self.model.longDiaryFlag == false {
-                    self.showDetailWriteVC()
-                } else {
-                    self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
-                }
-            } else {
-                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
-            }
+            self.showDetailWriteVC()
             floaty.close()
         })
         self.view.addSubview(floaty)
     }
     
-    func setEmptyTableViewImage(date: Date) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-M-d"
-        self.todayDate.text = model.setTodayDate(selectedData: date)
-        model.selectedDate = formatter.string(from: date)
-        
-        model.getSimpleData(selectedDate: model.selectedDate)
-        model.getDetailData(selectedDate: model.selectedDate)
-        
-        self.diaryTableView.reloadData()
+    func changeDatabyDate() {
+        model.getDetailData() {
+            self.model.getSimpleData() {
+                self.diaryTableView.reloadData()
+            }
+        }
     }
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if model.detailData.count == 0 && model.simpleData.count == 0 {
-            if self.model.todayDate == self.model.selectedDate {
+        if model.longData.count == 0 && model.shortData.count == 0 {
+            if  self.model.selectedDate.convertString() == Date().convertString() {
                 self.emptyView.isHidden = false
-                self.emptyView.frame.size.height = 299
+                self.emptyView.frame.size.height = 300
                 self.emptyImage.image = UIImage(named: "img_not_today")
-                LocalDataStore.localDataStore.setTodayDetailData(newData: false)
                 return 0
             } else {
                 self.emptyView.isHidden = false
-                self.emptyView.frame.size.height = 299
+                self.emptyView.frame.size.height = 300
                 self.emptyImage.image = UIImage(named: "img_not_before")
                 return 0
             }
         } else {
             self.emptyView.isHidden = true
             self.emptyView.frame.size.height = 0
-            return model.detailData.count + model.simpleData.count
+            return model.longData.count + model.shortData.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        do {
-            if indexPath.row == 0 && model.longDiaryFlag == true {
-                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-                cell.titleLabel.text = model.detailData[0].title
-                cell.selectionStyle = .none
-                return cell
-            } else {
-                if model.longDiaryFlag == true {
-                    let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-                    cell.titleLabel.text = model.simpleData[indexPath.row-1].contents
-                    cell.selectionStyle = .none
-                    return cell
-                } else {
-                    let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-                    cell.titleLabel.text = model.simpleData[indexPath.row].contents
-                    cell.selectionStyle = .none
-                    return cell
-                }
-            }
-        } catch {
-            print(ErrorCase.NOT_EXIST_INDEX)
+        switch indexPath.row {
+        case ..<model.longData.count:
+            let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
+            cell.titleLabel.text = model.longData[indexPath.row].title
+            cell.selectionStyle = .none
+            return cell
+        case model.longData.count...:
+            let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+            cell.titleLabel.text =
+            model.shortData[indexPath.row-model.longData.count].contents
+            cell.selectionStyle = .none
+            return cell
+        default:
+            break
         }
-        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if model.longDiaryFlag == true {
-            if indexPath.row == 0 {
-                showReadVC(date: model.detailData[0].date ?? "", title: model.detailData[0].title ?? "", contents: model.detailData[0].contents ?? "")
-            } else {
-                showSimpleWriteVC(contents: model.simpleData[indexPath.row-1].contents ?? "")
-            }
-        } else {
-            showSimpleWriteVC(contents: model.simpleData[indexPath.row].contents ?? "")
+        switch indexPath.row {
+        case ..<model.longData.count:
+            showReadVC(index: indexPath.row)
+        case model.longData.count...:
+            showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - model.longData.count)
+        default:
+            break
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if model.longDiaryFlag == true {
-            if indexPath.row == 0 {
-                return 55
-            } else {
-                return 42
-            }
-        } else {
-            return 42
-        }
+        return 60
     }
 }
 
@@ -198,21 +147,18 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
         self.calendar.appearance.calendar.headerHeight = 50
         self.calendar.weekdayHeight = 30
         self.calendar.rowHeight = 40
-        
     }
     
     // 캘린더 날짜 선택시 동작
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        setEmptyTableViewImage(date: date)
+        model.selectedDate = date
+        self.todayDate.text = date.convertString(format: "dd'일' (E)")
+        changeDatabyDate()
     }
         
     // 특정 날짜에 이미지 세팅
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        let imageDateFormatter = DateFormatter()
-        imageDateFormatter.dateFormat = "yyyy-M-d"
-        let dateStr = imageDateFormatter.string(from: date)
-        return datesWithCircle.contains(dateStr) ? UIImage(named: "ic_circle") : nil
-        
+        return model.dateWithCircle.contains(date.convertString()) ? UIImage(named: "ic_circle") : nil
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
@@ -226,10 +172,11 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
 
 extension MainVC: reloadDelegate {
     func reloadData() {
-        model.getDetailData(selectedDate: model.selectedDate)
-        model.getSimpleData(selectedDate: model.selectedDate)
-        self.datesWithCircle = model.dateList
-        calendar.reloadData()
-        diaryTableView.reloadData()
+        model.getDetailData() {
+            self.model.getSimpleData() {
+                self.calendar.reloadData()
+                self.diaryTableView.reloadData()
+            }
+        }
     }
 }

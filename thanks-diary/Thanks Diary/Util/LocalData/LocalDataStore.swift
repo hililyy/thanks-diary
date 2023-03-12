@@ -37,15 +37,6 @@ class LocalDataStore {
         UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.PASSWORD_NUMBER.rawValue)
     }
     
-    func getTodayDetailData() -> Bool {
-        let getData = UserDefaults.standard.bool(forKey: LocalDataKeySet.TODAY_DETAIL_DIARY.rawValue)
-        return getData
-    }
-    
-    func setTodayDetailData(newData: Bool) {
-        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.TODAY_DETAIL_DIARY.rawValue)
-    }
-    
     func getPushAlarmAgree() -> Bool {
         let getData = UserDefaults.standard.bool(forKey: LocalDataKeySet.IS_PUSH_ALARM_AGREE.rawValue)
         return getData

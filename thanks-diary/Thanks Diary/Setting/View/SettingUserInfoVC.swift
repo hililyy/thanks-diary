@@ -15,6 +15,7 @@ class SettingUserInfoVC: UIViewController {
         self.userInfoTableView.dataSource = self
         self.userInfoTableView.delegate = self
     }
+    
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -75,8 +76,7 @@ extension SettingUserInfoVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0: // 이메일
             if Auth.auth().currentUser?.email == "" {
-                guard let vc =  storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC else { return }
-                self.navigationController?.pushViewController(vc, animated: true)
+                showLoginVC()
                 break
             }
         case 1: // 로그아웃
@@ -84,7 +84,6 @@ extension SettingUserInfoVC: UITableViewDelegate, UITableViewDataSource {
             
         case 2: // 계정탈퇴
             setConfirm(message: "계정탈퇴")
-            
         default:
             break
         }

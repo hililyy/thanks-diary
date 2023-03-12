@@ -9,11 +9,10 @@ import UIKit
 
 class DeletePopupVC: UIViewController {
     let model = MainModel.model
-    var selectedDataDate: String?
+    var selectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func goCancel(_ sender: Any) {
@@ -21,9 +20,8 @@ class DeletePopupVC: UIViewController {
     }
     
     @IBAction func goDelete(_ sender: Any) {
-        model.deleteDetailData(dateString: self.selectedDataDate ?? "")
-        model.longDiaryFlag = false
-        LocalDataStore.localDataStore.setTodayDetailData(newData: false)
+        guard let selectedIndex = selectedIndex else { return }
+        model.deleteDetailData(selectedIndex: selectedIndex)
         showDeleteVC()
     }
 }

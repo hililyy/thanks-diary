@@ -8,20 +8,21 @@
 import UIKit
 
 class ReadVC: UIViewController {
-
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: PaddingLabel!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var editBtn: UIButton!
     
-    var selectedDataDate: String?
-    var selectedDataTitle: String?
-    var selectedDataContents: String?
-    var selectedDataDateString: String?
+    var selectedIndex: Int?
+    let model = MainModel.model
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTitle()
+        setView()
+        setText()
+    }
+    
+    func setView() {
         editBtn.layer.cornerRadius = 20
         titleLabel.layer.borderWidth = 2
         titleLabel.layer.borderColor = UIColor(named: "mainColor")?.cgColor
@@ -30,15 +31,13 @@ class ReadVC: UIViewController {
         contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
         contentsTextView.layer.cornerRadius = 10
         contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0);
-        titleLabel.text = self.selectedDataTitle
-        contentsTextView.text = self.selectedDataContents
-        dateLabel.text = self.selectedDataDateString
-        
     }
     
-    func setTitle() {
-        var tmpString = selectedDataDate?.split(separator: "-")
-        self.selectedDataDateString = ("\(tmpString![0])년 \(tmpString![1])월 \(tmpString![2])일 감사일기")
+    func setText() {
+        guard let index = selectedIndex else { return }
+        titleLabel.text = model.longData[index].title
+        contentsTextView.text = model.longData[index].contents
+        dateLabel.text = "\(model.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -46,11 +45,11 @@ class ReadVC: UIViewController {
     }
     
     @IBAction func goDelete(_ sender: Any) {
-        showDeletePopupVC(date: self.selectedDataDate ?? "")
+        guard let index = selectedIndex else { return }
+        showDeletePopupVC(selectedIndex: index)
     }
     
     @IBAction func goEdit(_ sender: Any) {
-        showDetailWriteVC(isEdit: true, title: self.selectedDataTitle ?? "", contents: self.selectedDataContents ?? "", today: self.selectedDataDate ?? "")
+        showDetailWriteVC(isEdit: true, selectedIndex: self.selectedIndex)
     }
 }
-

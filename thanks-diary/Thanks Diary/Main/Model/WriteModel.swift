@@ -15,6 +15,7 @@ class WriteModel {
     var simpleDiaryData = SimpleDiaryDataEntity()
     
     func setDiaryData(type: DiaryType, completion: @escaping () -> ()) {
+        self.uid = Auth.auth().currentUser?.uid ?? ""
         switch type {
         case .long :
             let longData: [String:Any] = [
