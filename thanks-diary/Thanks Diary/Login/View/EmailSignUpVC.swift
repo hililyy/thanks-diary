@@ -12,9 +12,11 @@ class EmailSignUpVC: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var rePasswordTextfield: UITextField!
+    @IBOutlet weak var signupBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.signupBtn.layer.cornerRadius = 10
     }
     
     @IBAction func goSignUp(_ sender: Any) {
@@ -49,6 +51,10 @@ class EmailSignUpVC: UIViewController {
         } else {
             self.setAlert(message: "비밀번호가 일치하지 않습니다.\n비밀번호를 동일하게 입력해주세요.")
         }
+    }
+    
+    @IBAction func goBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func checkMatchPassword() -> Bool {

@@ -459,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				2A4F9301290071C200ECFE88 /* ErrorCase.swift */,
+				2AFF118B2958A8B200EC85EA /* EmailLoginErrorList.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -505,7 +506,6 @@
 				2AEE20CB2950B12400A17F5B /* LoginVC.swift */,
 				2AFF118F2958CD3F00EC85EA /* EmailLoginVC.swift */,
 				2AFF11912958CD6000EC85EA /* EmailSignUpVC.swift */,
-				2AFF118B2958A8B200EC85EA /* EmailLoginErrorList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

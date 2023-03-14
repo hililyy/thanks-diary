@@ -9,18 +9,23 @@ import UIKit
 import FirebaseAuth
 
 class EmailLoginVC: UIViewController, UITextFieldDelegate {
-
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var emailPasswordField: UITextField!
+    @IBOutlet weak var loginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         emailPasswordField.delegate = self
+        self.loginBtn.layer.cornerRadius = 10
     }
     
     @IBAction func goSignUp(_ sender: Any) {
         self.showSignupVC()
+    }
+    
+    @IBAction func goBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func loginUser(withEmail email: String, password: String) {
