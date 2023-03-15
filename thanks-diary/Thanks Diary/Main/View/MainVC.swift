@@ -21,6 +21,7 @@ class MainVC: UIViewController {
     
     let mainModel = MainModel.model
     let diaryModel = DiaryModel.model
+    let authType = LocalDataStore.localDataStore.getOAuthType()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,11 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        reloadData()
+        if authType == "none" {
+            reloadData()
+        } else {
+            
+        }
     }
     
     @IBAction func goSetting(_ sender: Any) {
@@ -42,10 +47,13 @@ class MainVC: UIViewController {
     }
     
     @IBAction func moveTodayFocus(_ sender: Any) {
+        if authType == "none" {
+            mainModel.selectedDate = Date()
+            changeDatabyDate()
+        }
         self.calendar.select(Date())
-        mainModel.selectedDate = Date()
         self.todayDate.text = Date().convertString(format: "dd'일' (E)")
-        changeDatabyDate()
+        
     }
     
     func setFloty() {
@@ -74,52 +82,58 @@ class MainVC: UIViewController {
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if mainModel.longData.count == 0 && mainModel.shortData.count == 0 {
-            if  self.mainModel.selectedDate.convertString() == Date().convertString() {
-                self.emptyView.isHidden = false
-                self.emptyView.frame.size.height = 300
-                self.emptyImage.image = UIImage(named: "img_not_today")
-                return 0
+        if authType == "none" {
+            if mainModel.longData.count == 0 && mainModel.shortData.count == 0 {
+                if  self.mainModel.selectedDate.convertString() == Date().convertString() {
+                    self.emptyView.isHidden = false
+                    self.emptyView.frame.size.height = 300
+                    self.emptyImage.image = UIImage(named: "img_not_today")
+                    return 0
+                } else {
+                    self.emptyView.isHidden = false
+                    self.emptyView.frame.size.height = 300
+                    self.emptyImage.image = UIImage(named: "img_not_before")
+                    return 0
+                }
             } else {
-                self.emptyView.isHidden = false
-                self.emptyView.frame.size.height = 300
-                self.emptyImage.image = UIImage(named: "img_not_before")
-                return 0
+                self.emptyView.isHidden = true
+                self.emptyView.frame.size.height = 0
+                return mainModel.longData.count + mainModel.shortData.count
             }
-        } else {
-            self.emptyView.isHidden = true
-            self.emptyView.frame.size.height = 0
-            return mainModel.longData.count + mainModel.shortData.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case ..<mainModel.longData.count:
-            let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-            cell.titleLabel.text = mainModel.longData[indexPath.row].title
-            cell.selectionStyle = .none
-            return cell
-        case mainModel.longData.count...:
-            let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-            cell.titleLabel.text =
-            mainModel.shortData[indexPath.row-mainModel.longData.count].contents
-            cell.selectionStyle = .none
-            return cell
-        default:
-            break
+        if authType == "none" {
+            switch indexPath.row {
+            case ..<mainModel.longData.count:
+                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
+                cell.titleLabel.text = mainModel.longData[indexPath.row].title
+                cell.selectionStyle = .none
+                return cell
+            case mainModel.longData.count...:
+                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+                cell.titleLabel.text =
+                mainModel.shortData[indexPath.row-mainModel.longData.count].contents
+                cell.selectionStyle = .none
+                return cell
+            default:
+                break
+            }
+            return UITableViewCell()
         }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case ..<mainModel.longData.count:
-            showReadVC(index: indexPath.row)
-        case mainModel.longData.count...:
-            showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longData.count)
-        default:
-            break
+        if authType == "none" {
+            switch indexPath.row {
+            case ..<mainModel.longData.count:
+                showReadVC(index: indexPath.row)
+            case mainModel.longData.count...:
+                showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longData.count)
+            default:
+                break
+            }
         }
     }
     
@@ -150,14 +164,18 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     
     // 캘린더 날짜 선택시 동작
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        mainModel.selectedDate = date
         self.todayDate.text = date.convertString(format: "dd'일' (E)")
-        changeDatabyDate()
+        if authType == "none" {
+            mainModel.selectedDate = date
+            changeDatabyDate()
+        }
     }
         
     // 특정 날짜에 이미지 세팅
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        return mainModel.dateWithCircle.contains(date.convertString()) ? UIImage(named: "ic_circle") : nil
+        if authType == "none" {
+            return mainModel.dateWithCircle.contains(date.convertString()) ? UIImage(named: "ic_circle") : nil
+        }
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
