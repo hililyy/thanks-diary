@@ -6,10 +6,12 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class SettingUserInfoVC: UIViewController {
     @IBOutlet var userInfoTableView: UITableView!
+    let model = SettingModel.model
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userInfoTableView.dataSource = self
@@ -44,7 +46,11 @@ extension SettingUserInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if model.authType == "none" {
+            return 1
+        } else {
+            return 3
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,7 +58,12 @@ extension SettingUserInfoVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = self.userInfoTableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
             cell.settingLabel.text = "이메일"
-            cell.settingDetailLabel.text = Auth.auth().currentUser?.email ?? "로그인 하러가기"
+            if model.authType == "none" {
+                cell.settingDetailLabel.text = "로그인 하러가기"
+                cell.settingDetailLabel.textColor = .black
+            } else {
+                cell.settingDetailLabel.text = Auth.auth().currentUser?.email
+            }
             return cell
             
         case 1:
@@ -75,9 +86,8 @@ extension SettingUserInfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: // 이메일
-            if Auth.auth().currentUser?.email == "" {
+            if model.authType == "none" {
                 showLoginVC()
-                break
             }
         case 1: // 로그아웃
             setConfirm(message: "로그아웃")
