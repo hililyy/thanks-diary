@@ -87,6 +87,30 @@ class MainVC: UIViewController {
             }
         }
     }
+    
+    func setDataByDate() {
+        mainModel.longDiaryDatabyDate.removeAll()
+        mainModel.shortDiaryDatabyDate.removeAll()
+        mainModel.longKeybyDate.removeAll()
+        mainModel.shortKeybyDate.removeAll()
+        var count = 0
+        for diary in mainModel.longDiaryData {
+            if mainModel.selectedDate.convertString() == diary.date {
+                mainModel.longDiaryDatabyDate.append(diary)
+                mainModel.longKeybyDate.append(mainModel.longKey[count])
+            }
+            count+=1
+        }
+        count = 0
+        for diary in mainModel.shortDiaryData {
+            if mainModel.selectedDate.convertString() == diary.date {
+                mainModel.shortDiaryDatabyDate.append(diary)
+                mainModel.shortKeybyDate.append(mainModel.shortKey[count])
+            }
+            count+=1
+        }
+        self.diaryTableView.reloadData()
+    }
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
@@ -110,7 +134,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 return mainModel.longData.count + mainModel.shortData.count
             }
         } else {
-            if mainModel.longDiaryData.count == 0 && mainModel.shortDiaryData.count == 0 {
+            if mainModel.longDiaryDatabyDate.count == 0 && mainModel.shortDiaryDatabyDate.count == 0 {
                 if  self.mainModel.selectedDate.convertString() == Date().convertString() {
                     self.emptyView.isHidden = false
                     self.emptyView.frame.size.height = 300
@@ -125,7 +149,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             } else {
                 self.emptyView.isHidden = true
                 self.emptyView.frame.size.height = 0
-                return mainModel.longDiaryData.count + mainModel.shortDiaryData.count
+                return mainModel.longDiaryDatabyDate.count + mainModel.shortDiaryDatabyDate.count
             }
         }
     }
@@ -149,15 +173,15 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             switch indexPath.row {
-            case ..<mainModel.longDiaryData.count:
+            case ..<mainModel.longDiaryDatabyDate.count:
                 let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-                cell.titleLabel.text = mainModel.longDiaryData[indexPath.row].title
+                cell.titleLabel.text = mainModel.longDiaryDatabyDate[indexPath.row].title
                 cell.selectionStyle = .none
                 return cell
-            case mainModel.longDiaryData.count...:
+            case mainModel.longDiaryDatabyDate.count...:
                 let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
                 cell.titleLabel.text =
-                mainModel.shortDiaryData[indexPath.row - mainModel.longDiaryData.count].contents
+                mainModel.shortDiaryDatabyDate[indexPath.row - mainModel.longDiaryDatabyDate.count].contents
                 cell.selectionStyle = .none
                 return cell
             default:
@@ -179,10 +203,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             switch indexPath.row {
-            case ..<mainModel.longDiaryData.count:
+            case ..<mainModel.longDiaryDatabyDate.count:
                 showReadVC(index: indexPath.row)
-            case mainModel.longDiaryData.count...:
-                showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longDiaryData.count)
+            case mainModel.longDiaryDatabyDate.count...:
+                showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longDiaryDatabyDate.count)
             default:
                 break
             }
@@ -221,7 +245,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
         if mainModel.authType == "none" {
             reloadDataAndTableView()
         } else {
-            reloadFirebaseAndTableView()
+            setDataByDate()
         }
     }
         
@@ -254,6 +278,7 @@ extension MainVC: reloadFirebaseDelegate {
     func reloadFirebaseData() {
         mainModel.getDetailFirebaseData {
             self.mainModel.getSimpleFirebaseData {
+                self.setDataByDate()
                 self.calendar.reloadData()
                 self.diaryTableView.reloadData()
             }

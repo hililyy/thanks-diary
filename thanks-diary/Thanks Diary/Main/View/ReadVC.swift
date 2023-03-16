@@ -35,9 +35,14 @@ class ReadVC: UIViewController {
     
     func setText() {
         guard let index = selectedIndex else { return }
-        titleLabel.text = mainModel.longData[index].title
-        contentsTextView.text = mainModel.longData[index].contents
         dateLabel.text = "\(mainModel.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
+        if mainModel.authType == "none" {
+            titleLabel.text = mainModel.longData[index].title
+            contentsTextView.text = mainModel.longData[index].contents
+        } else {
+            titleLabel.text = mainModel.longDiaryDatabyDate[index].title
+            contentsTextView.text = mainModel.longDiaryDatabyDate[index].contents
+        }
     }
     
     @IBAction func goBack(_ sender: Any) {

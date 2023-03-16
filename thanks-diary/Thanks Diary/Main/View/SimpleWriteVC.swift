@@ -36,7 +36,11 @@ class SimpleWriteVC: UIViewController {
         self.simpleTextField.delegate = self
         if editFlag == true {
             guard let index = selectedIndex else { return }
-            simpleTextField.text = mainModel.shortData[index].contents
+            if mainModel.authType == "none" {
+                simpleTextField.text = mainModel.shortData[index].contents
+            } else {
+                simpleTextField.text = mainModel.shortDiaryDatabyDate[index].contents
+            }
         }
         self.textLengthLabel.text = "\(simpleTextField.text.count)/25"
     }
@@ -55,9 +59,17 @@ class SimpleWriteVC: UIViewController {
         if editFlag == true {
             guard let index = selectedIndex,
                   let contents = self.simpleTextField.text else { return }
-            mainModel.updateSimpleData(selectedIndex: index, afterContents: contents)
-            self.dismiss(animated: true) {
-                self.noneReloadDelegate?.reloadData()
+            if mainModel.authType == "none" {
+                mainModel.updateSimpleData(selectedIndex: index, afterContents: contents)
+                self.dismiss(animated: true) {
+                    self.noneReloadDelegate?.reloadData()
+                }
+            } else {
+                mainModel.updateSimpleFirebaseData(selectedIndex: index, afterContents: contents) {
+                    self.dismiss(animated: true) {
+                        self.firebaseReloadDelegate?.reloadFirebaseData()
+                    }
+                }
             }
         } else {
             if mainModel.authType == "none" {

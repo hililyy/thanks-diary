@@ -56,9 +56,7 @@ class AllDiaryData: Mappable {
         public var title: String?
         public var contents: String?
         public var date: String?
-        public required init?(map: Map) {
-            
-        }
+        public required init?(map: Map) {}
         public func mapping(map: Map) {
             title <- map["title"]
             contents <- map["contents"]
@@ -69,9 +67,7 @@ class AllDiaryData: Mappable {
     public class Short: Mappable {
         public var contents: String?
         public var date: String?
-        public required init?(map: Map) {
-            
-        }
+        public required init?(map: Map) {}
         public func mapping(map: Map) {
             contents <- map["contents"]
             date <- map["date"]

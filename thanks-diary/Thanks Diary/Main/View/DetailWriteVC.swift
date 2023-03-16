@@ -36,15 +36,20 @@ class DetailWriteVC: UIViewController {
     @IBAction func goComplete(_ sender: Any) {
         if editFlag == true {
             guard let index = selectedIndex else { return }
-            mainModel.updateDetailData(
-                selectedIndex: index,
-                afterTitle: titleTextfield.text ?? "",
-                afterContents: contentsTextView.text ?? "")
-            showMainVC()
+            if mainModel.authType == "none" {
+                mainModel.updateDetailData(
+                    selectedIndex: index,
+                    afterTitle: titleTextfield.text ?? "",
+                    afterContents: contentsTextView.text ?? "")
+                showMainVC()
+            } else {
+                mainModel.updateDetailFirebaseData(selectedIndex: index, afterTitle: titleTextfield.text ?? "", afterContents: contentsTextView.text ?? "") {
+                    self.showMainVC()
+                }
+            }
         } else {
             if mainModel.authType == "none" {
-                mainModel.setDetailData(title: self.titleTextfield.text ?? "",
-                              contents: self.contentsTextView.text)
+                mainModel.setDetailData(title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
             } else {
                 mainModel.setFirebaseData(type: .long, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
             }
@@ -68,8 +73,13 @@ class DetailWriteVC: UIViewController {
         self.diaryTitle.text = "\(mainModel.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
         if editFlag == true {
             guard let index = selectedIndex else { return }
-            self.titleTextfield.text = mainModel.longData[index].title
-            self.contentsTextView.text = mainModel.longData[index].contents
+            if mainModel.authType == "none" {
+                self.titleTextfield.text = mainModel.longData[index].title
+                self.contentsTextView.text = mainModel.longData[index].contents
+            } else {
+                self.titleTextfield.text = mainModel.longDiaryDatabyDate[index].title
+                self.contentsTextView.text = mainModel.longDiaryDatabyDate[index].contents
+            }
         }
     }
     

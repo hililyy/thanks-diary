@@ -20,9 +20,12 @@ class MainModel {
     var uid: String?
     var longDiaryData: [AllDiaryData.Long] = []
     var shortDiaryData: [AllDiaryData.Short] = []
-    //    var diaryData = DiaryDataEntity()
-    //    var simpleDiaryData = SimpleDiaryDataEntity()
-    
+    var longDiaryDatabyDate: [AllDiaryData.Long] = []
+    var shortDiaryDatabyDate: [AllDiaryData.Short] = []
+    var longKey: [String] = []
+    var shortKey: [String] = []
+    var longKeybyDate: [String] = []
+    var shortKeybyDate: [String] = []
     var authType: String?
     
     func getDetailData(completion: @escaping () -> ()) {
@@ -218,34 +221,31 @@ class MainModel {
     func getDetailFirebaseData(completion: @escaping () -> ()) {
         guard let saveUid = uid else { return }
         longDiaryData.removeAll()
+        longKey.removeAll()
         dateWithCircle.removeAll()
         
         Database.database().reference().child(saveUid).child("long").observeSingleEvent(of: .value) { snapshot in
             for snap in snapshot.children.allObjects as! [DataSnapshot] {
                 guard let data = AllDiaryData.Long(JSON: snap.value as! [String:AnyObject]) else { return }
-                if data.date == self.selectedDate.convertString() {
-                    self.longDiaryData.append(data)
-                    self.dateWithCircle.append(data.date ?? "")
-                    print("reload detail data")
-                }
+                self.dateWithCircle.append(data.date ?? "")
+                self.longKey.append(snap.key)
+                self.longDiaryData.append(data)
             }
-            print("detail completion start")
             completion()
-            print("detail completion end")
         }
     }
     
     func getSimpleFirebaseData(completion: @escaping () -> ()) {
-        guard let saveUid = uid else { return }
+        guard let uid = uid else { return }
         shortDiaryData.removeAll()
+        shortKey.removeAll()
         
-        Database.database().reference().child(saveUid).child("short").observeSingleEvent(of: .value) { snapshot in
+        Database.database().reference().child(uid).child("short").observeSingleEvent(of: .value) { snapshot in
             for snap in snapshot.children.allObjects as! [DataSnapshot] {
                 guard let data = AllDiaryData.Short(JSON: snap.value as! [String:AnyObject]) else { return }
-                if data.date == self.selectedDate.convertString() {
-                    self.shortDiaryData.append(data)
-                    self.dateWithCircle.append(data.date ?? "")
-                }
+                self.dateWithCircle.append(data.date ?? "")
+                self.shortKey.append(snap.key)
+                self.shortDiaryData.append(data)
             }
             completion()
         }
@@ -268,5 +268,28 @@ class MainModel {
             ]
             Database.database().reference().child(uid).child("short").childByAutoId().setValue(shortData)
         }
+    }
+    
+    func updateDetailFirebaseData(selectedIndex: Int, afterTitle: String, afterContents: String, completion: @escaping () -> ()) {
+        guard let uid = uid else { return }
+        Database.database().reference().child(uid).child("long")
+        let diary: [String:Any] = [
+            "title": afterTitle,
+            "contents": afterContents,
+            "date": self.selectedDate.convertString()
+        ]
+        Database.database().reference().child(uid).child("long").child(longKeybyDate[selectedIndex]).updateChildValues(diary)
+        completion()
+    }
+    
+    func updateSimpleFirebaseData(selectedIndex: Int, afterContents: String, completion: @escaping () -> ()) {
+        guard let uid = uid else { return }
+        Database.database().reference().child(uid).child("short")
+        let diary: [String:Any] = [
+            "contents": afterContents,
+            "date": self.selectedDate.convertString()
+        ]
+        Database.database().reference().child(uid).child("short").child(shortKeybyDate[selectedIndex]).updateChildValues(diary)
+        completion()
     }
 }
