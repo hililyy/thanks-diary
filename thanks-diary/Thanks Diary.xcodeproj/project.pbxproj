@@ -58,7 +58,6 @@
 		2AC2B60129BB8EAD00C4A985 /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60029BB8EAD00C4A985 /* LottieManager.swift */; };
 		2AC2B60529BBA3E800C4A985 /* DiaryDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60429BBA3E800C4A985 /* DiaryDataEntity.swift */; };
 		2AC2B60729BBAD7300C4A985 /* DiaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60629BBAD7300C4A985 /* DiaryType.swift */; };
-		2AC2B60B29BBEC8500C4A985 /* DiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60A29BBEC8500C4A985 /* DiaryModel.swift */; };
 		2AC2B61329BD177D00C4A985 /* CoredataDiaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B61229BD177D00C4A985 /* CoredataDiaryEntity.swift */; };
 		2AC2B61529BD2A5200C4A985 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B61429BD2A5200C4A985 /* String.swift */; };
 		2AEE20C52950AD3D00A17F5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AEE20C42950AD3D00A17F5B /* GoogleService-Info.plist */; };
@@ -146,7 +145,6 @@
 		2AC2B60029BB8EAD00C4A985 /* LottieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieManager.swift; sourceTree = "<group>"; };
 		2AC2B60429BBA3E800C4A985 /* DiaryDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDataEntity.swift; sourceTree = "<group>"; };
 		2AC2B60629BBAD7300C4A985 /* DiaryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryType.swift; sourceTree = "<group>"; };
-		2AC2B60A29BBEC8500C4A985 /* DiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryModel.swift; sourceTree = "<group>"; };
 		2AC2B61229BD177D00C4A985 /* CoredataDiaryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataDiaryEntity.swift; sourceTree = "<group>"; };
 		2AC2B61429BD2A5200C4A985 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2AEE20C42950AD3D00A17F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -419,7 +417,6 @@
 			children = (
 				2AC2B60329BB979200C4A985 /* Entity */,
 				2A7241D728B3EDE60040ADE9 /* MainModel.swift */,
-				2AC2B60A29BBEC8500C4A985 /* DiaryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -702,7 +699,6 @@
 				2AFF118C2958A8B200EC85EA /* EmailLoginErrorList.swift in Sources */,
 				2AFF11922958CD6000EC85EA /* EmailSignUpVC.swift in Sources */,
 				2A9F351528AE63ED006CCF7C /* SettingSwitchCell.swift in Sources */,
-				2AC2B60B29BBEC8500C4A985 /* DiaryModel.swift in Sources */,
 				2AFF11832957504500EC85EA /* EmailLogin.swift in Sources */,
 				2A81234028C096BC000A250E /* LocalDataStore.swift in Sources */,
 				2AEE20E129519A9C00A17F5B /* LoginViewModel.swift in Sources */,

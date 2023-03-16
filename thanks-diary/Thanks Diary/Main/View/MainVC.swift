@@ -20,25 +20,25 @@ class MainVC: UIViewController {
     @IBOutlet var todayBtn: UIButton!
     
     let mainModel = MainModel.model
-    let diaryModel = DiaryModel.model
-    let authType = LocalDataStore.localDataStore.getOAuthType()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.diaryTableView.delegate = self
-        self.diaryTableView.dataSource = self
         self.todayBtn.layer.cornerRadius = 10
         self.todayDate.text = Date().convertString(format: "dd'일' (E)")
         setFloty()
         setCalender()
+        mainModel.authType = LocalDataStore.localDataStore.getOAuthType()
+        if mainModel.authType != "none" {
+            mainModel.uid = Auth.auth().currentUser?.uid ?? ""
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        if authType == "none" {
+        if mainModel.authType == "none" {
             reloadData()
         } else {
-            
+            reloadFirebaseData()
         }
     }
     
@@ -47,13 +47,14 @@ class MainVC: UIViewController {
     }
     
     @IBAction func moveTodayFocus(_ sender: Any) {
-        if authType == "none" {
-            mainModel.selectedDate = Date()
-            changeDatabyDate()
-        }
         self.calendar.select(Date())
         self.todayDate.text = Date().convertString(format: "dd'일' (E)")
-        
+        mainModel.selectedDate = Date()
+        if mainModel.authType == "none" {
+            reloadDataAndTableView()
+        } else {
+            reloadFirebaseAndTableView()
+        }
     }
     
     func setFloty() {
@@ -71,9 +72,17 @@ class MainVC: UIViewController {
         self.view.addSubview(floaty)
     }
     
-    func changeDatabyDate() {
+    func reloadDataAndTableView() {
         mainModel.getDetailData() {
             self.mainModel.getSimpleData() {
+                self.diaryTableView.reloadData()
+            }
+        }
+    }
+    
+    func reloadFirebaseAndTableView() {
+        mainModel.getDetailFirebaseData {
+            self.mainModel.getSimpleFirebaseData {
                 self.diaryTableView.reloadData()
             }
         }
@@ -82,7 +91,7 @@ class MainVC: UIViewController {
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if authType == "none" {
+        if mainModel.authType == "none" {
             if mainModel.longData.count == 0 && mainModel.shortData.count == 0 {
                 if  self.mainModel.selectedDate.convertString() == Date().convertString() {
                     self.emptyView.isHidden = false
@@ -100,11 +109,29 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 self.emptyView.frame.size.height = 0
                 return mainModel.longData.count + mainModel.shortData.count
             }
+        } else {
+            if mainModel.longDiaryData.count == 0 && mainModel.shortDiaryData.count == 0 {
+                if  self.mainModel.selectedDate.convertString() == Date().convertString() {
+                    self.emptyView.isHidden = false
+                    self.emptyView.frame.size.height = 300
+                    self.emptyImage.image = UIImage(named: "img_not_today")
+                    return 0
+                } else {
+                    self.emptyView.isHidden = false
+                    self.emptyView.frame.size.height = 300
+                    self.emptyImage.image = UIImage(named: "img_not_before")
+                    return 0
+                }
+            } else {
+                self.emptyView.isHidden = true
+                self.emptyView.frame.size.height = 0
+                return mainModel.longDiaryData.count + mainModel.shortDiaryData.count
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if authType == "none" {
+        if mainModel.authType == "none" {
             switch indexPath.row {
             case ..<mainModel.longData.count:
                 let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
@@ -114,23 +141,48 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             case mainModel.longData.count...:
                 let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
                 cell.titleLabel.text =
-                mainModel.shortData[indexPath.row-mainModel.longData.count].contents
+                mainModel.shortData[indexPath.row - mainModel.longData.count].contents
                 cell.selectionStyle = .none
                 return cell
             default:
                 break
             }
-            return UITableViewCell()
+        } else {
+            switch indexPath.row {
+            case ..<mainModel.longDiaryData.count:
+                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
+                cell.titleLabel.text = mainModel.longDiaryData[indexPath.row].title
+                cell.selectionStyle = .none
+                return cell
+            case mainModel.longDiaryData.count...:
+                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
+                cell.titleLabel.text =
+                mainModel.shortDiaryData[indexPath.row - mainModel.longDiaryData.count].contents
+                cell.selectionStyle = .none
+                return cell
+            default:
+                break
+            }
         }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if authType == "none" {
+        if mainModel.authType == "none" {
             switch indexPath.row {
             case ..<mainModel.longData.count:
                 showReadVC(index: indexPath.row)
             case mainModel.longData.count...:
                 showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longData.count)
+            default:
+                break
+            }
+        } else {
+            switch indexPath.row {
+            case ..<mainModel.longDiaryData.count:
+                showReadVC(index: indexPath.row)
+            case mainModel.longDiaryData.count...:
+                showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longDiaryData.count)
             default:
                 break
             }
@@ -165,17 +217,17 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     // 캘린더 날짜 선택시 동작
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.todayDate.text = date.convertString(format: "dd'일' (E)")
-        if authType == "none" {
-            mainModel.selectedDate = date
-            changeDatabyDate()
+        mainModel.selectedDate = date
+        if mainModel.authType == "none" {
+            reloadDataAndTableView()
+        } else {
+            reloadFirebaseAndTableView()
         }
     }
         
     // 특정 날짜에 이미지 세팅
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        if authType == "none" {
-            return mainModel.dateWithCircle.contains(date.convertString()) ? UIImage(named: "ic_circle") : nil
-        }
+        return mainModel.dateWithCircle.contains(date.convertString()) ? UIImage(named: "ic_circle") : nil
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
@@ -191,6 +243,17 @@ extension MainVC: reloadDelegate {
     func reloadData() {
         mainModel.getDetailData() {
             self.mainModel.getSimpleData() {
+                self.calendar.reloadData()
+                self.diaryTableView.reloadData()
+            }
+        }
+    }
+}
+
+extension MainVC: reloadFirebaseDelegate {
+    func reloadFirebaseData() {
+        mainModel.getDetailFirebaseData {
+            self.mainModel.getSimpleFirebaseData {
                 self.calendar.reloadData()
                 self.diaryTableView.reloadData()
             }

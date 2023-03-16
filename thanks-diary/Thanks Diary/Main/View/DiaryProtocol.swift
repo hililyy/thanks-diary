@@ -10,3 +10,7 @@ import Foundation
 protocol reloadDelegate: AnyObject {
     func reloadData()
 }
+
+protocol reloadFirebaseDelegate: AnyObject {
+    func reloadFirebaseData()
+}

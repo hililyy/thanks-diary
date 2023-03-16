@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import CoreData
+import Firebase
 
 class MainModel {
     static let model = MainModel()
@@ -16,9 +17,18 @@ class MainModel {
     var selectedDate: Date = Date()
     var dateWithCircle: [String] = []
     
+    var uid: String?
+    var longDiaryData: [AllDiaryData.Long] = []
+    var shortDiaryData: [AllDiaryData.Short] = []
+    //    var diaryData = DiaryDataEntity()
+    //    var simpleDiaryData = SimpleDiaryDataEntity()
+    
+    var authType: String?
+    
     func getDetailData(completion: @escaping () -> ()) {
-        longData = []
-        dateWithCircle = []
+        longData.removeAll()
+        dateWithCircle.removeAll()
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DiaryData")
@@ -45,7 +55,8 @@ class MainModel {
     }
     
     func getSimpleData(completion: @escaping () -> ()) {
-        shortData = []
+        shortData.removeAll()
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SimpleDiaryData")
@@ -200,6 +211,62 @@ class MainModel {
         } catch {
             print(ErrorCase.NOT_SAVE_DATA)
             print(error)
+        }
+    }
+    
+    // MARK: Firebase Code
+    func getDetailFirebaseData(completion: @escaping () -> ()) {
+        guard let saveUid = uid else { return }
+        longDiaryData.removeAll()
+        dateWithCircle.removeAll()
+        
+        Database.database().reference().child(saveUid).child("long").observeSingleEvent(of: .value) { snapshot in
+            for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                guard let data = AllDiaryData.Long(JSON: snap.value as! [String:AnyObject]) else { return }
+                if data.date == self.selectedDate.convertString() {
+                    self.longDiaryData.append(data)
+                    self.dateWithCircle.append(data.date ?? "")
+                    print("reload detail data")
+                }
+            }
+            print("detail completion start")
+            completion()
+            print("detail completion end")
+        }
+    }
+    
+    func getSimpleFirebaseData(completion: @escaping () -> ()) {
+        guard let saveUid = uid else { return }
+        shortDiaryData.removeAll()
+        
+        Database.database().reference().child(saveUid).child("short").observeSingleEvent(of: .value) { snapshot in
+            for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                guard let data = AllDiaryData.Short(JSON: snap.value as! [String:AnyObject]) else { return }
+                if data.date == self.selectedDate.convertString() {
+                    self.shortDiaryData.append(data)
+                    self.dateWithCircle.append(data.date ?? "")
+                }
+            }
+            completion()
+        }
+    }
+    
+    func setFirebaseData(type: DiaryType, title: String? = nil, contents: String) {
+        guard let uid = uid else { return }
+        switch type {
+        case .long :
+            let longData: [String:Any] = [
+                "title": title ?? "",
+                "contents": contents,
+                "date": self.selectedDate.convertString()
+            ]
+            Database.database().reference().child(uid).child("long").childByAutoId().setValue(longData)
+        case .short :
+            let shortData: [String:Any] = [
+                "contents": contents,
+                "date": self.selectedDate.convertString()
+            ]
+            Database.database().reference().child(uid).child("short").childByAutoId().setValue(shortData)
         }
     }
 }

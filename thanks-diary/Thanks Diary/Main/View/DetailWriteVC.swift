@@ -42,8 +42,12 @@ class DetailWriteVC: UIViewController {
                 afterContents: contentsTextView.text ?? "")
             showMainVC()
         } else {
-            mainModel.setDetailData(title: self.titleTextfield.text ?? "",
-                          contents: self.contentsTextView.text)
+            if mainModel.authType == "none" {
+                mainModel.setDetailData(title: self.titleTextfield.text ?? "",
+                              contents: self.contentsTextView.text)
+            } else {
+                mainModel.setFirebaseData(type: .long, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
+            }
             self.navigationController?.popViewController(animated: true)
         }
     }

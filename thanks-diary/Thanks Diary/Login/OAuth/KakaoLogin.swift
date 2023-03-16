@@ -67,6 +67,9 @@ extension LoginVC {
                         print("로그인 완료")
                         Auth.auth().signIn(withEmail: (user?.kakaoAccount?.email)!,
                                            password: "\(String(describing: user?.id))")
+                        guard let id = user?.id else { return }
+                        LocalDataStore.localDataStore.setOAuthToken(newData: String(id))
+                        LocalDataStore.localDataStore.setOAuthType(newData: "kakao")
                     } else {
                         guard let id = user?.id else { return }
                         LocalDataStore.localDataStore.setOAuthToken(newData: String(id))
