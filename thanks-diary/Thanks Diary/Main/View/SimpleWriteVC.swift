@@ -15,7 +15,8 @@ class SimpleWriteVC: UIViewController {
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var textLengthLabel: UILabel!
-    weak var delegate: reloadDelegate?
+    weak var noneReloadDelegate: reloadDelegate?
+    weak var firebaseReloadDelegate: reloadFirebaseDelegate?
     let mainModel = MainModel.model
     var editFlag: Bool?
     var selectedIndex: Int?
@@ -56,12 +57,19 @@ class SimpleWriteVC: UIViewController {
                   let contents = self.simpleTextField.text else { return }
             mainModel.updateSimpleData(selectedIndex: index, afterContents: contents)
             self.dismiss(animated: true) {
-                self.delegate?.reloadData()
+                self.noneReloadDelegate?.reloadData()
             }
         } else {
-            mainModel.setSimpleData(contents: self.simpleTextField.text)
-            self.dismiss(animated: true) {
-                self.delegate?.reloadData()
+            if mainModel.authType == "none" {
+                mainModel.setSimpleData(contents: self.simpleTextField.text)
+                self.dismiss(animated: true) {
+                    self.noneReloadDelegate?.reloadData()
+                }
+            } else {
+                mainModel.setFirebaseData(type: .short, contents: self.simpleTextField.text)
+                self.dismiss(animated: true) {
+                    self.firebaseReloadDelegate?.reloadFirebaseData()
+                }
             }
         }
     }
@@ -74,7 +82,7 @@ class SimpleWriteVC: UIViewController {
         guard let index = selectedIndex else { return }
         mainModel.deleteSimpleData(selectedIndex: index)
         self.dismiss(animated: true) {
-            self.delegate?.reloadData()
+            self.noneReloadDelegate?.reloadData()
         }
     }
 }

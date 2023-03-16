@@ -66,7 +66,8 @@ extension UIViewController {
         vc.modalPresentationStyle = .overCurrentContext
         vc.editFlag = isEdit
         vc.selectedIndex = selectedIndex
-        vc.delegate = self as? any reloadDelegate
+        vc.noneReloadDelegate = self as? any reloadDelegate
+        vc.firebaseReloadDelegate = self as? any reloadFirebaseDelegate
         self.present(vc, animated: true, completion: nil)
     }
     
