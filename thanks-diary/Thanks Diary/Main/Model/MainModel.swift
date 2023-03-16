@@ -272,7 +272,6 @@ class MainModel {
     
     func updateDetailFirebaseData(selectedIndex: Int, afterTitle: String, afterContents: String, completion: @escaping () -> ()) {
         guard let uid = uid else { return }
-        Database.database().reference().child(uid).child("long")
         let diary: [String:Any] = [
             "title": afterTitle,
             "contents": afterContents,
@@ -284,12 +283,23 @@ class MainModel {
     
     func updateSimpleFirebaseData(selectedIndex: Int, afterContents: String, completion: @escaping () -> ()) {
         guard let uid = uid else { return }
-        Database.database().reference().child(uid).child("short")
         let diary: [String:Any] = [
             "contents": afterContents,
             "date": self.selectedDate.convertString()
         ]
         Database.database().reference().child(uid).child("short").child(shortKeybyDate[selectedIndex]).updateChildValues(diary)
+        completion()
+    }
+    
+    func deleteDetailFirebaseData(selectedIndex: Int, completion: @escaping () -> ()) {
+        guard let uid = uid else { return }
+        Database.database().reference().child(uid).child("long").child(longKeybyDate[selectedIndex]).removeValue()
+        completion()
+    }
+    
+    func deleteSimpleFirebaseData(selectedIndex: Int, completion: @escaping () -> ()) {
+        guard let uid = uid else { return }
+        Database.database().reference().child(uid).child("short").child(shortKeybyDate[selectedIndex]).removeValue()
         completion()
     }
 }

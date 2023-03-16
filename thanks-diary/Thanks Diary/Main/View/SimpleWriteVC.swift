@@ -92,9 +92,17 @@ class SimpleWriteVC: UIViewController {
     
     @IBAction func goDelete(_ sender: Any) {
         guard let index = selectedIndex else { return }
-        mainModel.deleteSimpleData(selectedIndex: index)
-        self.dismiss(animated: true) {
-            self.noneReloadDelegate?.reloadData()
+        if mainModel.authType == "none" {
+            mainModel.deleteSimpleData(selectedIndex: index)
+            self.dismiss(animated: true) {
+                self.noneReloadDelegate?.reloadData()
+            }
+        } else {
+            mainModel.deleteSimpleFirebaseData(selectedIndex: index) {
+                self.dismiss(animated: true) {
+                    self.firebaseReloadDelegate?.reloadFirebaseData()
+                }
+            }
         }
     }
 }
