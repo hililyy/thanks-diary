@@ -28,7 +28,7 @@ class MainModel {
     var shortKeybyDate: [String] = []
     var authType: String?
     
-    func getDetailData(completion: @escaping () -> ()) {
+    func getDetailData(type: String? = "none", completion: @escaping () -> ()) {
         longData.removeAll()
         dateWithCircle.removeAll()
         
@@ -39,14 +39,26 @@ class MainModel {
             let result = try managedContext.fetch(fetchRequest)
             for data in result {
                 guard let date = (data.value(forKey: "date") as? String ?? "").convertDate() else { return }
-                self.dateWithCircle.append(date.convertString())
-                if data.value(forKey: "date") as! String == self.selectedDate.convertString() {
+                if type == "none" {
+                    self.dateWithCircle.append(date.convertString())
+                    if data.value(forKey: "date") as! String == self.selectedDate.convertString() {
+                        let tmpEntity = DiaryEntity(
+                            type: data.value(forKey: "type") as? String,
+                            title: data.value(forKey: "title") as? String,
+                            contents: data.value(forKey: "contents") as? String,
+                            date: data.value(forKey: "date") as? String
+                        )
+                        print("담긴다")
+                        longData.append(tmpEntity)
+                    }
+                } else {
                     let tmpEntity = DiaryEntity(
                         type: data.value(forKey: "type") as? String,
                         title: data.value(forKey: "title") as? String,
                         contents: data.value(forKey: "contents") as? String,
                         date: data.value(forKey: "date") as? String
                     )
+                    print("담긴다")
                     longData.append(tmpEntity)
                 }
             }
@@ -57,7 +69,7 @@ class MainModel {
         }
     }
     
-    func getSimpleData(completion: @escaping () -> ()) {
+    func getSimpleData(type: String? = "none", completion: @escaping () -> ()) {
         shortData.removeAll()
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -67,8 +79,17 @@ class MainModel {
             let result = try managedContext.fetch(fetchRequest)
             for data in result {
                 guard let date = (data.value(forKey: "date") as? String ?? "").convertDate() else { return }
-                self.dateWithCircle.append(date.convertString())
-                if data.value(forKey: "date") as! String == self.selectedDate.convertString() {
+                if type == "none" {
+                    self.dateWithCircle.append(date.convertString())
+                    if data.value(forKey: "date") as! String == self.selectedDate.convertString() {
+                        let tmpEntity = SimpleDiaryEntity(
+                            type: data.value(forKey: "type") as? String,
+                            contents: data.value(forKey: "contents") as? String,
+                            date: data.value(forKey: "date") as? String
+                        )
+                        shortData.append(tmpEntity)
+                    }
+                } else {
                     let tmpEntity = SimpleDiaryEntity(
                         type: data.value(forKey: "type") as? String,
                         contents: data.value(forKey: "contents") as? String,
@@ -217,6 +238,31 @@ class MainModel {
         }
     }
     
+    func deleteAllData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DiaryData")
+
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
+        
+        let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "SimpleDiaryData")
+
+        let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+        do {
+            try managedContext.execute(deleteRequest2)
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
+    }
+    
+    
     // MARK: Firebase Code
     func getDetailFirebaseData(completion: @escaping () -> ()) {
         guard let saveUid = uid else { return }
@@ -251,20 +297,26 @@ class MainModel {
         }
     }
     
-    func setFirebaseData(type: DiaryType, title: String? = nil, contents: String) {
+    func setFirebaseData(type: DiaryType, title: String? = nil, contents: String, date: String? = "none") {
         guard let uid = uid else { return }
+        var newDate: String?
+        if date == "none" {
+            newDate = self.selectedDate.convertString()
+        } else {
+            newDate = date
+        }
         switch type {
         case .long :
             let longData: [String:Any] = [
                 "title": title ?? "",
                 "contents": contents,
-                "date": self.selectedDate.convertString()
+                "date": newDate ?? ""
             ]
             Database.database().reference().child(uid).child("long").childByAutoId().setValue(longData)
         case .short :
             let shortData: [String:Any] = [
                 "contents": contents,
-                "date": self.selectedDate.convertString()
+                "date": newDate ?? ""
             ]
             Database.database().reference().child(uid).child("short").childByAutoId().setValue(shortData)
         }

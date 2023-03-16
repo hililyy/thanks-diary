@@ -17,7 +17,8 @@ class MainVC: UIViewController {
     @IBOutlet weak var diaryTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var emptyImage: UIImageView!
-    @IBOutlet var todayBtn: UIButton!
+    @IBOutlet weak var todayBtn: UIButton!
+    @IBOutlet weak var uploadBtn: UIButton!
     
     let mainModel = MainModel.model
     
@@ -42,11 +43,11 @@ class MainVC: UIViewController {
         }
     }
     
-    @IBAction func goSetting(_ sender: Any) {
+    @IBAction func goSetting(_ sender: UIButton) {
         self.showSettingVC()
     }
     
-    @IBAction func moveTodayFocus(_ sender: Any) {
+    @IBAction func moveTodayFocus(_ sender: UIButton) {
         self.calendar.select(Date())
         self.todayDate.text = Date().convertString(format: "dd'일' (E)")
         mainModel.selectedDate = Date()
@@ -55,6 +56,35 @@ class MainVC: UIViewController {
         } else {
             reloadFirebaseAndTableView()
         }
+    }
+    
+    @IBAction func uploadData(_ sender: UIButton) {
+        setConfirm()
+    }
+    
+    func setConfirm() {
+        let alert = UIAlertController(title: "알림", message: "백업되지 않은 데이터가 있으면 백업합니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .default))
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { action in
+            self.mainModel.getDetailData(type: "all") {
+                self.mainModel.getSimpleData(type: "all") {
+                    for data in self.mainModel.longData {
+                        self.mainModel.setFirebaseData(type: .long, title: data.title, contents: data.contents ?? "", date: data.date)
+                    }
+                    for data in self.mainModel.shortData {
+                        self.mainModel.setFirebaseData(type: .short, contents: data.contents ?? "", date: data.date)
+                    }
+                }
+            }
+            self.reloadFirebaseData()
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setAlert() {
+        let alert = UIAlertController(title: "알림", message: "완료되었습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func setFloty() {
