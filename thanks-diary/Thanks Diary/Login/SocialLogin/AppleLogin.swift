@@ -11,11 +11,20 @@ import CryptoKit
 import FirebaseAuth
 import FirebaseCore
 
-@available(iOS 13.0, *)
-
-extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+final class AppleLogin: NSObject,  ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    // TODO: 추후 리팩토링
+    private let firebaseManager = FirebaseManager()
+    private var currentNonce: String?
+    var view: PLoginViewModel
+    var vc: UIViewController
+    
+    init(_ view: PLoginViewModel, _ vc: UIViewController) {
+        self.view = view
+        self.vc = vc
+    }
+    
     @available(iOS 13.0, *)
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    internal func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
@@ -24,32 +33,30 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
                 print("Unable to fetch identity token")
                 return
             }
+            
             guard let idTokenString = String(data: appleIDtoken, encoding: .utf8) else {
                 print("Unable to serialize token string from data: \(appleIDtoken.debugDescription)")
                 return
             }
-            let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                      idToken: idTokenString,
-                                                      rawNonce: nonce)
+            
+            let credential = OAuthProvider.credential(
+                withProviderID: "apple.com",
+                idToken: idTokenString,
+                rawNonce: nonce
+            )
             // firebase 로그인
-            FirebaseAuth.Auth.auth().signIn(with: credential) { (authDataResult, error) in
-                if let user = authDataResult?.user {
-                    print("Success Apple Login", user.uid, user.email ?? "-")
-                    
-                    LocalDataStore.localDataStore.setOAuthToken(newData: credential.idToken ?? "")
-                    LocalDataStore.localDataStore.setOAuthType(newData: "apple")
-                    self.showFirstVC()
-                }
-                if error != nil {
-                    print(error?.localizedDescription ?? "error" as Any)
-                    return
+            firebaseManager.appleLogin(credential: credential, token: idTokenString) { result in
+                if result {
+                    self.view.success(type: .apple)
+                } else {
+                    self.view.fail(type: .apple, errorMessage: "로그인을 실패하였습니다.")
                 }
             }
         }
     }
     
     @available(iOS 13, *)
-    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
+    private func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         
@@ -62,15 +69,14 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
         return request
     }
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    internal func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         print("Sign in with Apple errored: \(error)")
     }
     
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
+    internal func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return vc.view.window!
     }
     
-    // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: [Character] = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")

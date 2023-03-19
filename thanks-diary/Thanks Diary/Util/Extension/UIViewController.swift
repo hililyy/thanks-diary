@@ -137,4 +137,9 @@ extension UIViewController {
             self.present(vc, animated: true, completion: nil)
         }
     }
+    
+    func showEmailLogin() {
+        guard let vc =  storyboard?.instantiateViewController(identifier: "EmailLoginVC") as? EmailLoginVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

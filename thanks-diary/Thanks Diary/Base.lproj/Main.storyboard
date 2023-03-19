@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L5A-QO-icg">
-                                <rect key="frame" x="123.66666666666669" y="373.66666666666669" width="143" height="97"/>
+                                <rect key="frame" x="125.66666666666667" y="373" width="138.66666666666663" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-EV-vze">
-                                        <rect key="frame" x="44.666666666666671" y="0.0" width="53.666666666666671" height="23"/>
+                                        <rect key="frame" x="43.333333333333329" y="0.0" width="52" height="23.333333333333332"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9O-8S-ihf">
-                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                        <rect key="frame" x="0.0" y="23.333333333333311" width="138.66666666666666" height="46.666666666666657"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-nz-jS3">
-                                        <rect key="frame" x="46.333333333333329" y="69" width="50" height="28"/>
+                                        <rect key="frame" x="44.333333333333329" y="70" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="892-pQ-MyA"/>
                                         </constraints>
@@ -108,6 +108,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ZOu-AI-RuG" id="CJk-3i-ElT"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -136,6 +139,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ZOu-AI-RuG" id="gNV-Hw-SBG"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -1872,10 +1878,10 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="img_appleLogin"/>
                                         <connections>
-                                            <action selector="goAppleLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="eaF-Wm-OOv"/>
+                                            <action selector="login:" destination="cHy-L7-eqv" eventType="touchUpInside" id="K2n-GV-xfc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHn-cX-Jgx">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHn-cX-Jgx">
                                         <rect key="frame" x="0.0" y="58" width="300" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="P0P-9M-MgF"/>
@@ -1884,10 +1890,10 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="img_kakaoLogin"/>
                                         <connections>
-                                            <action selector="goKakaoLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="4YB-p2-Hoe"/>
+                                            <action selector="login:" destination="cHy-L7-eqv" eventType="touchUpInside" id="KB0-Qq-Wh1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWN-9g-2Jr">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWN-9g-2Jr">
                                         <rect key="frame" x="0.0" y="116" width="300" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="FNR-gU-Gxn"/>
@@ -1896,10 +1902,10 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="img_googleLogin"/>
                                         <connections>
-                                            <action selector="goGoogleLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="CWw-En-ddQ"/>
+                                            <action selector="login:" destination="cHy-L7-eqv" eventType="touchUpInside" id="6dh-i2-Ky2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecQ-1f-re5">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecQ-1f-re5">
                                         <rect key="frame" x="0.0" y="174" width="300" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="Iv3-UQ-ky8"/>
@@ -1908,10 +1914,10 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="img_emailLogin"/>
                                         <connections>
-                                            <action selector="goEmailLogin:" destination="cHy-L7-eqv" eventType="touchUpInside" id="zia-ZS-Iti"/>
+                                            <action selector="login:" destination="cHy-L7-eqv" eventType="touchUpInside" id="GaW-cc-am3"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE5-3Z-g8O">
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE5-3Z-g8O">
                                         <rect key="frame" x="0.0" y="232" width="300" height="30"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1919,7 +1925,7 @@
                                             <color key="titleColor" name="grayColor_1"/>
                                         </state>
                                         <connections>
-                                            <action selector="goStart:" destination="cHy-L7-eqv" eventType="touchUpInside" id="FIy-WQ-Lcs"/>
+                                            <action selector="login:" destination="cHy-L7-eqv" eventType="touchUpInside" id="F60-1M-yER"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2416,7 +2422,7 @@
     </scenes>
     <designables>
         <designable name="6MI-aR-JAp">
-            <size key="intrinsicContentSize" width="46.333333333333329" height="29.666666666666668"/>
+            <size key="intrinsicContentSize" width="30.333333333333332" height="19.666666666666668"/>
         </designable>
     </designables>
     <resources>

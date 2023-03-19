@@ -10,11 +10,21 @@ import GoogleSignIn
 import FirebaseAuth
 import FirebaseCore
 
-extension LoginVC: GIDSignInDelegate {
+class GoogleLogin: NSObject ,GIDSignInDelegate {
+    // TODO: 추후 리팩토링
+    private let firebaseManager = FirebaseManager()
+    var view: PLoginViewModel
+    var vc: UIViewController
+    
+    init(_ view: PLoginViewModel, _ vc: UIViewController) {
+        self.view = view
+        self.vc = vc
+    }
+    
     func setGoogleLogin() {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.presentingViewController = vc
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
@@ -24,15 +34,20 @@ extension LoginVC: GIDSignInDelegate {
         }
             guard let authentication = user.authentication else { return }
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-            
-            Auth.auth().signIn(with: credential) {[weak self] _, _ in
-                LocalDataStore.localDataStore.setOAuthToken(newData: authentication.idToken)
-                LocalDataStore.localDataStore.setOAuthType(newData: "Google")
-                self?.showFirstVC()
+        
+        
+        firebaseManager.googleLogin(credential: credential, token: authentication.idToken) {
+            result in
+            if result {
+                self.view.success(type: .google)
+            } else {
+                self.view.fail(type: .google, errorMessage: "로그인을 실패하였습니다.")
             }
+        }
     }
     
     func startGoogleLogin() {
+        setGoogleLogin()
         GIDSignIn.sharedInstance().signIn()
     }
 }
