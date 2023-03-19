@@ -1,5 +1,5 @@
 //
-//  FirebaseManager.swift
+//  FirebaseLoginManager.swift
 //  Thanks Diary
 //
 //  Created by 강조은 on 2023/03/20.
@@ -8,7 +8,8 @@
 import FirebaseAuth
 import FirebaseCore
 
-final class FirebaseManager {
+final class FirebaseLoginManager {
+    static let shared = FirebaseLoginManager()
     // MARK: - apple
     func appleLogin(credential: AuthCredential, token: String, completion: @escaping (Bool) -> ()) {
         Auth.auth().signIn(with: credential) { (authDataResult, error) in

@@ -14,7 +14,6 @@ import FirebaseCore
 
 final class KakaoLogin {
     
-    private let firebaseManager = FirebaseManager()
     func startKakaoLogin() {
         // 카카오톡 설치된 경우
         if (UserApi.isKakaoTalkLoginAvailable()) {
@@ -58,7 +57,7 @@ final class KakaoLogin {
                 guard let email = user?.kakaoAccount?.email,
                       let id = user?.id else { return }
                 
-                self.firebaseManager.kakaoSignup(
+                FirebaseLoginManager.shared.kakaoSignup(
                     email: email,
                     pw: String(id))
             }

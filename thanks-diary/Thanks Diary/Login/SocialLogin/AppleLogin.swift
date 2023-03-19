@@ -13,7 +13,6 @@ import FirebaseCore
 
 final class AppleLogin: NSObject,  ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     // TODO: 추후 리팩토링
-    private let firebaseManager = FirebaseManager()
     private var currentNonce: String?
     var view: PLoginViewModel
     var vc: UIViewController
@@ -45,7 +44,7 @@ final class AppleLogin: NSObject,  ASAuthorizationControllerDelegate, ASAuthoriz
                 rawNonce: nonce
             )
             // firebase 로그인
-            firebaseManager.appleLogin(credential: credential, token: idTokenString) { result in
+            FirebaseLoginManager.shared.appleLogin(credential: credential, token: idTokenString) { result in
                 if result {
                     self.view.success(type: .apple)
                 } else {

@@ -12,7 +12,6 @@ import FirebaseCore
 
 class GoogleLogin: NSObject ,GIDSignInDelegate {
     // TODO: 추후 리팩토링
-    private let firebaseManager = FirebaseManager()
     var view: PLoginViewModel
     var vc: UIViewController
     
@@ -36,7 +35,7 @@ class GoogleLogin: NSObject ,GIDSignInDelegate {
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
         
-        firebaseManager.googleLogin(credential: credential, token: authentication.idToken) {
+        FirebaseLoginManager.shared.googleLogin(credential: credential, token: authentication.idToken) {
             result in
             if result {
                 self.view.success(type: .google)
