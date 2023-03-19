@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class SettingUserInfoVC: UIViewController {
     @IBOutlet var userInfoTableView: UITableView!
@@ -34,9 +35,27 @@ class SettingUserInfoVC: UIViewController {
         let alert = UIAlertController(title: "알림", message: "\(message)하시겠습니까?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .default))
         alert.addAction(UIAlertAction(title: "확인", style: .default) { action in
-            self.setAlert(message: message)
+            if message == "계정탈퇴" {
+                self.signOut {
+                    self.setAlert(message: message)
+                }
+            } else {
+                // 로그아웃, 데이터 초기화
+                self.setAlert(message: message)
+            }
         })
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func signOut(completion: @escaping () -> ()) {
+        let user = Auth.auth().currentUser
+        user?.delete { error in
+            if let error = error {
+                print(error)
+            } else {
+                completion()
+            }
+        }
     }
 }
 
