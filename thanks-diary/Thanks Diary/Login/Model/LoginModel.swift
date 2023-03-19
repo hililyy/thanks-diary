@@ -1,5 +1,5 @@
 //
-//  LoginViewModel.swift
+//  LoginModel.swift
 //  Thanks Diary
 //
 //  Created by 강조은 on 2022/12/20.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-class LoginViewModel {
+class LoginModel {
     
     private var kakao = KakaoLogin()
     private var apple: AppleLogin?
     private var google: GoogleLogin?
     
-    var view: PLoginViewModel
+    var view: PLoginModel
     var vc: UIViewController
     
-    init(_ view: PLoginViewModel, _ vc: UIViewController) {
+    init(_ view: PLoginModel, _ vc: UIViewController) {
         self.view = view
         self.vc = vc
         apple = AppleLogin(view, vc)

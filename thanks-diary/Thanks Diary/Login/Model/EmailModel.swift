@@ -1,5 +1,5 @@
 //
-//  EmailViewModel.swift
+//  EmailModel.swift
 //  Thanks Diary
 //
 //  Created by 강조은 on 2023/03/20.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-class EmailViewModel {
+class EmailModel {
     private var email = EmailLogin()
-    var view: PLoginViewModel
+    var view: PLoginModel
     
-    init(_ view: PLoginViewModel) {
+    init(_ view: PLoginModel) {
         self.view = view
     }
     

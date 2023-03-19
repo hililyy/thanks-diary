@@ -14,10 +14,10 @@ import FirebaseCore
 final class AppleLogin: NSObject,  ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     // TODO: 추후 리팩토링
     private var currentNonce: String?
-    var view: PLoginViewModel
+    var view: PLoginModel
     var vc: UIViewController
     
-    init(_ view: PLoginViewModel, _ vc: UIViewController) {
+    init(_ view: PLoginModel, _ vc: UIViewController) {
         self.view = view
         self.vc = vc
     }

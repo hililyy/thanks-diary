@@ -10,12 +10,12 @@ import GoogleSignIn
 
 class LoginVC: UIViewController {
     @IBOutlet var lottieView: UIView!
-    var viewModel: LoginViewModel?
+    var model: LoginModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = LoginViewModel(self, self)
-        viewModel?.setLottie(self, lottieView: lottieView)
+        model = LoginModel(self, self)
+        model?.setLottie(self, lottieView: lottieView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,22 +25,22 @@ class LoginVC: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            viewModel?.login(type: .apple)
+            model?.login(type: .apple)
         case 1:
-            viewModel?.login(type: .kakao)
+            model?.login(type: .kakao)
         case 2:
-            viewModel?.login(type: .google)
+            model?.login(type: .google)
         case 3:
             self.showEmailLogin()
         case 4:
-            viewModel?.login(type: .none)
+            model?.login(type: .none)
         default:
             return
         }
     }
 }
     
-extension LoginVC: PLoginViewModel {
+extension LoginVC: PLoginModel {
     func success(type: LoginType) {
         LocalDataStore.localDataStore.setOAuthType(newData: type.rawValue)
         if type == .none {

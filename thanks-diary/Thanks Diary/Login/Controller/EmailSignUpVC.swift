@@ -14,17 +14,17 @@ class EmailSignUpVC: UIViewController {
     @IBOutlet var rePasswordTextfield: UITextField!
     @IBOutlet weak var signupBtn: UIButton!
     
-    var viewModel: EmailViewModel?
+    var model: EmailModel?
     private var alertManager = AlertManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = EmailViewModel(self)
+        model = EmailModel(self)
         self.signupBtn.layer.cornerRadius = 10
     }
     
     @IBAction func goSignUp(_ sender: Any) {
-        viewModel?.signup(email: emailTextField.text ?? "",
+        model?.signup(email: emailTextField.text ?? "",
                           pw: passwordTextField.text ?? "",
                           repw: rePasswordTextfield.text ?? "")
     }
@@ -38,7 +38,7 @@ class EmailSignUpVC: UIViewController {
     }
 }
 
-extension EmailSignUpVC: PLoginViewModel {
+extension EmailSignUpVC: PLoginModel {
     func success(type: LoginType) {
         print("이메일 회원가입 성공")
         self.showFirstVC()

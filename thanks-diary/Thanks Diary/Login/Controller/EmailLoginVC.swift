@@ -14,12 +14,12 @@ class EmailLoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet var emailPasswordField: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
     
-    var viewModel: EmailViewModel?
+    var model: EmailModel?
     private var alertManager = AlertManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = EmailViewModel(self)
+        model = EmailModel(self)
         self.loginBtn.layer.cornerRadius = 10
     }
     
@@ -34,7 +34,7 @@ class EmailLoginVC: UIViewController, UITextFieldDelegate {
     @IBAction func goLogin(_ sender: Any) {
         let email = emailTextField.text ?? ""
         let password = emailPasswordField.text ?? ""
-        viewModel?.login(email: email, pw: password)
+        model?.login(email: email, pw: password)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -42,7 +42,7 @@ class EmailLoginVC: UIViewController, UITextFieldDelegate {
     }
 }
 
-extension EmailLoginVC: PLoginViewModel {
+extension EmailLoginVC: PLoginModel {
     func success(type: LoginType) {
         self.showMainVC()
     }
