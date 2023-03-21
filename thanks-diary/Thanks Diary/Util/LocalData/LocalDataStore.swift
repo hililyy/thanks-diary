@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LocalDataStore {
+final class LocalDataStore {
     static let localDataStore = LocalDataStore()
     
     func getPushAlarmData() -> Bool {

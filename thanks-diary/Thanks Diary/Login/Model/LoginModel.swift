@@ -7,14 +7,14 @@
 
 import UIKit
 
-class LoginModel {
+final class LoginModel {
     
     private var kakao = KakaoLogin()
     private var apple: AppleLogin?
     private var google: GoogleLogin?
     
-    var view: PLoginModel
-    var vc: UIViewController
+    private var view: PLoginModel
+    private var vc: UIViewController
     
     init(_ view: PLoginModel, _ vc: UIViewController) {
         self.view = view

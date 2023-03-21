@@ -9,7 +9,7 @@ import Foundation
 
 class EmailModel {
     private var email = EmailLogin()
-    var view: PLoginModel
+    private var view: PLoginModel
     
     init(_ view: PLoginModel) {
         self.view = view

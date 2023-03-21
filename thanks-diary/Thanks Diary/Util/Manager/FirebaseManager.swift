@@ -48,7 +48,7 @@ final class FirebaseLoginManager {
         }
     }
     
-    func kakaoLogin(email: String, pw: String) {
+    private func kakaoLogin(email: String, pw: String) {
         Auth.auth().signIn(withEmail: email,
                            password: pw)
     }
@@ -96,7 +96,7 @@ final class FirebaseLoginManager {
         }
     }
     
-    func saveUserInfo(token: String, authType: String) {
+    private func saveUserInfo(token: String, authType: String) {
         LocalDataStore.localDataStore.setOAuthToken(newData: token)
         LocalDataStore.localDataStore.setOAuthType(newData: authType)
     }

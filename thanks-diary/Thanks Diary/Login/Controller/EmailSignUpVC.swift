@@ -8,13 +8,13 @@
 import UIKit
 import FirebaseAuth
 
-class EmailSignUpVC: UIViewController {
+final class EmailSignUpVC: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var rePasswordTextfield: UITextField!
     @IBOutlet weak var signupBtn: UIButton!
     
-    var model: EmailModel?
+    private var model: EmailModel?
     private var alertManager = AlertManager()
     
     override func viewDidLoad() {

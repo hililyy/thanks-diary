@@ -21,7 +21,7 @@ final class KakaoLogin {
                 if let error = error {
                     print(error)
                 } else {
-                    getKakaoUserInfo(oauthToken?.accessToken)
+                    self.getKakaoUserInfo(oauthToken?.accessToken)
                     self.loginFirebase()
                 }
             }
@@ -32,19 +32,19 @@ final class KakaoLogin {
                 if let error = error {
                     print(error)
                 } else {
-                    getKakaoUserInfo(oauthToken?.accessToken)
+                    self.getKakaoUserInfo(oauthToken?.accessToken)
                     self.loginFirebase()
                 }
             }
         }
-        
-        func getKakaoUserInfo(_ accessToken : String?){
-            UserApi.shared.me() {
-                user, error in
-                if error == nil {
-                    let userEmail = String(describing: user?.kakaoAccount?.email)
-                    print("userEmail: ",userEmail)
-                }
+    }
+    
+    private func getKakaoUserInfo(_ accessToken : String?) {
+        UserApi.shared.me() {
+            user, error in
+            if error == nil {
+                let userEmail = String(describing: user?.kakaoAccount?.email)
+                print("userEmail: ",userEmail)
             }
         }
     }

@@ -8,9 +8,10 @@
 import UIKit
 import GoogleSignIn
 
-class LoginVC: UIViewController {
+final class LoginVC: UIViewController {
+    
     @IBOutlet var lottieView: UIView!
-    var model: LoginModel?
+    private var model: LoginModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,7 +7,8 @@
 
 import UIKit
 
-class SplashVC: UIViewController {
+final class SplashVC: UIViewController {
+    
     @IBOutlet weak var lottieView: UIView!
     
     override func viewDidLoad() {

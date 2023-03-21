@@ -10,7 +10,7 @@ import GoogleSignIn
 import FirebaseAuth
 import FirebaseCore
 
-class GoogleLogin: NSObject ,GIDSignInDelegate {
+final class GoogleLogin: NSObject ,GIDSignInDelegate {
     // TODO: 추후 리팩토링
     var view: PLoginModel
     var vc: UIViewController

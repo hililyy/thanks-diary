@@ -7,14 +7,14 @@
 
 import UIKit
 
-class SecondStartVC: UIViewController {
+final class SecondStartVC: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var lottieView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextBtn.layer.cornerRadius = 20
-        LottieManager().setLottie(self, lottieView: lottieView, name: "writing", mode: .playOnce)
+        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "writing", mode: .playOnce)
     }
     
     @IBAction func goNext(_ sender: Any) {

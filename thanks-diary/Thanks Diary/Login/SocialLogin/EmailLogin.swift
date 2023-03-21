@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmailLogin {
+final class EmailLogin {
     
     func startEmailLogin(email: String, pw: String, completion: @escaping  (String?) -> ()) {
         FirebaseLoginManager.shared.emailLogin(email: email, pw: pw) { result in

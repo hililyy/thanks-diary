@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstStartVC: UIViewController {
+final class FirstStartVC: UIViewController {
     @IBOutlet weak var lottieView: UIView!
     @IBOutlet weak var lottieView2: UIView!
     @IBOutlet weak var nextBtn: UIButton!
@@ -15,8 +15,8 @@ class FirstStartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextBtn.layer.cornerRadius = 20
-        LottieManager().setLottie(self, lottieView: lottieView, name: "sun", mode: .loop)
-        LottieManager().setLottie(self, lottieView: lottieView, name: "plant", mode: .playOnce)
+        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "sun", mode: .loop)
+        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "plant", mode: .playOnce)
     }
     
     override func viewWillAppear(_ animated: Bool) {

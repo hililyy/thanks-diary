@@ -7,7 +7,7 @@
 
 import UserNotifications
 
-class AlarmAuth {
+final class AlarmAuth {
     let userNotificationCenter = UNUserNotificationCenter.current()
     
     func requestNotificationAuthorization() {
@@ -21,5 +21,4 @@ class AlarmAuth {
             }
         }
     }
-
 }
