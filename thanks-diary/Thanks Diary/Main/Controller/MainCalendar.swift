@@ -57,9 +57,10 @@ extension MainCalendar: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDele
         mainVC.todayDate.text = date.convertString(format: "dd'일' (E)")
         mainModel.selectedDate = date
         if mainModel.loginType == LoginType.none {
-            mainVC.reloadDataAndTableView()
+            //dddd
+            mainVC.getDataReloadTableView(type: "coredata")
         } else {
-            mainVC.setDataByDate()
+            mainVC.getDataReloadTableView(type: "databydate")
         }
     }
     
@@ -74,5 +75,16 @@ extension MainCalendar: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDele
     
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
+    }
+    
+    func moveToday() {
+        mainVC.calendar.select(Date())
+        mainVC.todayDate.text = Date().convertString(format: "dd'일' (E)")
+        mainModel.selectedDate = Date()
+        if mainModel.loginType == LoginType.none {
+            mainVC.getDataReloadTableView(type: "coredata")
+        } else {
+            mainVC.getDataReloadTableView(type: "firebase")
+        }
     }
 }

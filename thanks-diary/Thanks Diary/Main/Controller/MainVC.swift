@@ -26,6 +26,34 @@ final class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initalize()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        if mainModel.loginType == LoginType.none {
+            reloadData()
+        } else {
+            reloadFirebaseData()
+        }
+    }
+    
+    @IBAction func goSetting(_ sender: UIButton) {
+        self.showSettingVC()
+    }
+    
+    @IBAction func moveTodayFocus(_ sender: UIButton) {
+        mainCalendar?.moveToday()
+    }
+    
+    @IBAction func uploadData(_ sender: UIButton) {
+        AlertManager.shared.setAlert(self, title: "알림", message: "백업되지 않은 데이터가 있으면 백업합니다.") {
+            self.mainModel.uploadData()
+            self.reloadFirebaseData()
+        }
+    }
+    
+    func initalize() {
         mainTableView = MainTableView(self)
         mainCalendar = MainCalendar(self)
         diaryTableView.delegate = mainTableView
@@ -40,38 +68,6 @@ final class MainVC: UIViewController {
         setuploadBtn()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-        if mainModel.loginType == LoginType.none {
-            reloadData()
-        } else {
-            reloadFirebaseData()
-        }
-    }
-    
-    @IBAction func goSetting(_ sender: UIButton) {
-        self.showSettingVC()
-    }
-    
-    @IBAction func moveTodayFocus(_ sender: UIButton) {
-        self.calendar.select(Date())
-        self.todayDate.text = Date().convertString(format: "dd'일' (E)")
-        mainModel.selectedDate = Date()
-        if mainModel.loginType == LoginType.none {
-            reloadDataAndTableView()
-        } else {
-            reloadFirebaseAndTableView()
-        }
-    }
-    
-    @IBAction func uploadData(_ sender: UIButton) {
-        AlertManager.shared.setAlert(self, title: "알림", message: "백업되지 않은 데이터가 있으면 백업합니다.") {
-            self.mainModel.uploadData()
-            self.reloadFirebaseData()
-        }
-    }
-    
     func setuploadBtn() {
         if mainModel.loginType != LoginType.none {
             self.uploadBtn.isHidden = false
@@ -80,21 +76,22 @@ final class MainVC: UIViewController {
         }
     }
     
-    func reloadDataAndTableView() {
-        mainModel.getData() {
+    func getDataReloadTableView(type: String) {
+        switch type {
+        case "coredata":
+            mainModel.getData() {
+                self.diaryTableView.reloadData()
+            }
+        case "firebase":
+            mainModel.getFirebaseData {
+                self.diaryTableView.reloadData()
+            }
+        case "databydate":
+            mainModel.setDataByDate()
             self.diaryTableView.reloadData()
+        default:
+            break
         }
-    }
-    
-    func reloadFirebaseAndTableView() {
-        mainModel.getFirebaseData {
-            self.diaryTableView.reloadData()
-        }
-    }
-    
-    func setDataByDate() {
-        mainModel.setDataByDate()
-        self.diaryTableView.reloadData()
     }
 }
 
@@ -108,7 +105,7 @@ extension MainVC: reloadDelegate, reloadFirebaseDelegate {
     
     func reloadFirebaseData() {
         mainModel.getFirebaseData {
-            self.setDataByDate()
+            self.getDataReloadTableView(type: "databydate")
             self.calendar.reloadData()
             self.diaryTableView.reloadData()
         }

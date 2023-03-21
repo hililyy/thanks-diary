@@ -10,40 +10,23 @@ import Firebase
 
 final class MainModel {
     static let model = MainModel()
-    var longData: [DiaryEntity]
-    var shortData: [SimpleDiaryEntity]
+    var longData: [DiaryEntity] = []
+    var shortData: [SimpleDiaryEntity] = []
     
-    var dateWithCircle: [String]
-    var selectedDate: Date
+    var dateWithCircle: [String] = []
+    var selectedDate: Date = Date()
     
-    var longDiaryData: [AllDiaryData.Long]
-    var shortDiaryData: [AllDiaryData.Short]
-    var longDiaryDatabyDate: [AllDiaryData.Long]
-    var shortDiaryDatabyDate: [AllDiaryData.Short]
-    var longKey: [String]
-    var shortKey: [String]
-    var longKeybyDate: [String]
-    var shortKeybyDate: [String]
-    var loginType: LoginType?
-    
-    init() {
-        self.longData = []
-        self.shortData = []
-        self.dateWithCircle = []
-        self.selectedDate = Date()
-        self.longDiaryData = []
-        self.shortDiaryData = []
-        self.longDiaryDatabyDate = []
-        self.shortDiaryDatabyDate = []
-        self.longKey = []
-        self.shortKey = []
-        self.longKeybyDate = []
-        self.shortKeybyDate = []
-        self.loginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType()) ?? nil
-    }
+    var longDiaryData: [AllDiaryData.Long] = []
+    var shortDiaryData: [AllDiaryData.Short] = []
+    var longDiaryDatabyDate: [AllDiaryData.Long] = []
+    var shortDiaryDatabyDate: [AllDiaryData.Short] = []
+    var longKey: [String] = []
+    var shortKey: [String] = []
+    var longKeybyDate: [String] = []
+    var shortKeybyDate: [String] = []
+    var loginType: LoginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType())!
     
     func getData(completion: @escaping () -> ()) {
-        guard let loginType = loginType else { return }
         DiaryCoreDataManager.shared.getData(
             loginType: loginType,
             selectedDate: selectedDate) {
