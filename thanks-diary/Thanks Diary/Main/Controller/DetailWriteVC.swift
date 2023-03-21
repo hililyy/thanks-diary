@@ -37,7 +37,8 @@ class DetailWriteVC: UIViewController {
         if editFlag == true {
             guard let index = selectedIndex else { return }
             if mainModel.authType == "none" {
-                mainModel.updateDetailData(
+                mainModel.updateData(
+                    type: .detail,
                     selectedIndex: index,
                     afterTitle: titleTextfield.text ?? "",
                     afterContents: contentsTextView.text ?? "")
@@ -49,9 +50,9 @@ class DetailWriteVC: UIViewController {
             }
         } else {
             if mainModel.authType == "none" {
-                mainModel.setDetailData(title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
+                mainModel.setData(type: .detail, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
             } else {
-                mainModel.setFirebaseData(type: .long, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
+                mainModel.setFirebaseData(type: .detail, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
             }
             self.navigationController?.popViewController(animated: true)
         }

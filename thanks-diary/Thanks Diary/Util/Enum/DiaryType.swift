@@ -8,6 +8,6 @@
 import Foundation
 
 enum DiaryType {
-    case short
-    case long
+    case detail
+    case simple
 }

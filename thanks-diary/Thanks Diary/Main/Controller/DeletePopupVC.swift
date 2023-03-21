@@ -22,7 +22,7 @@ class DeletePopupVC: UIViewController {
     @IBAction func goDelete(_ sender: Any) {
         guard let selectedIndex = selectedIndex else { return }
         if mainModel.authType == "none" {
-            mainModel.deleteDetailData(selectedIndex: selectedIndex)
+            mainModel.deleteData(type: .detail, selectedIndex: selectedIndex)
             showDeleteVC()
         } else {
             mainModel.deleteDetailFirebaseData(selectedIndex: selectedIndex) {

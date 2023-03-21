@@ -29,12 +29,7 @@ final class MainVC: UIViewController {
         setFloty()
         setCalender()
         mainModel.authType = LocalDataStore.localDataStore.getOAuthType()
-        if mainModel.authType != "none" {
-            mainModel.uid = Auth.auth().currentUser?.uid ?? ""
-            self.uploadBtn.isHidden = false
-        } else {
-            self.uploadBtn.isHidden = true
-        }
+        setuploadBtn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +38,15 @@ final class MainVC: UIViewController {
             reloadData()
         } else {
             reloadFirebaseData()
+        }
+    }
+    
+    func setuploadBtn() {
+        if mainModel.authType != "none" {
+            mainModel.uid = Auth.auth().currentUser?.uid ?? ""
+            self.uploadBtn.isHidden = false
+        } else {
+            self.uploadBtn.isHidden = true
         }
     }
     
@@ -69,15 +73,14 @@ final class MainVC: UIViewController {
         let alert = UIAlertController(title: "알림", message: "백업되지 않은 데이터가 있으면 백업합니다.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .default))
         alert.addAction(UIAlertAction(title: "확인", style: .default) { action in
-            self.mainModel.getDetailData(type: "all") {
-                self.mainModel.getSimpleData(type: "all") {
-                    for data in self.mainModel.longData {
-                        self.mainModel.setFirebaseData(type: .long, title: data.title, contents: data.contents ?? "", date: data.date)
-                    }
-                    for data in self.mainModel.shortData {
-                        self.mainModel.setFirebaseData(type: .short, contents: data.contents ?? "", date: data.date)
-                    }
+            self.mainModel.getData() {
+                for data in self.mainModel.longData {
+                    self.mainModel.setFirebaseData(type: .detail, title: data.title, contents: data.contents ?? "", date: data.date)
                 }
+                for data in self.mainModel.shortData {
+                    self.mainModel.setFirebaseData(type: .simple, contents: data.contents ?? "", date: data.date)
+                }
+                
             }
             self.reloadFirebaseData()
         })
@@ -106,10 +109,8 @@ final class MainVC: UIViewController {
     }
     
     func reloadDataAndTableView() {
-        mainModel.getDetailData() {
-            self.mainModel.getSimpleData() {
-                self.diaryTableView.reloadData()
-            }
+        mainModel.getData() {
+            self.diaryTableView.reloadData()
         }
     }
     
@@ -281,7 +282,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
             setDataByDate()
         }
     }
-        
+    
     // 특정 날짜에 이미지 세팅
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         return mainModel.dateWithCircle.contains(date.convertString()) ? UIImage(named: "ic_circle") : nil
@@ -298,11 +299,9 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
 
 extension MainVC: reloadDelegate {
     func reloadData() {
-        mainModel.getDetailData() {
-            self.mainModel.getSimpleData() {
-                self.calendar.reloadData()
-                self.diaryTableView.reloadData()
-            }
+        mainModel.getData() {
+            self.calendar.reloadData()
+            self.diaryTableView.reloadData()
         }
     }
 }

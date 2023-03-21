@@ -385,7 +385,6 @@
 			children = (
 				2ABFABF329C9E99E00273F0D /* Protocol */,
 				2ABFABF229C9E97700273F0D /* Controller */,
-				2AA8094629C6ECFF003170C4 /* Cell */,
 				2A9F350C28AE1BF9006CCF7C /* Model */,
 			);
 			path = Main;
@@ -439,13 +438,6 @@
 				2AFF11912958CD6000EC85EA /* EmailSignupVC.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		2AA8094629C6ECFF003170C4 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		2AA8094D29C79330003170C4 /* Manager */ = {

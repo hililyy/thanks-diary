@@ -60,7 +60,7 @@ class SimpleWriteVC: UIViewController {
             guard let index = selectedIndex,
                   let contents = self.simpleTextField.text else { return }
             if mainModel.authType == "none" {
-                mainModel.updateSimpleData(selectedIndex: index, afterContents: contents)
+                mainModel.updateData(type: .simple, selectedIndex: index, afterContents: contents)
                 self.dismiss(animated: true) {
                     self.noneReloadDelegate?.reloadData()
                 }
@@ -73,12 +73,12 @@ class SimpleWriteVC: UIViewController {
             }
         } else {
             if mainModel.authType == "none" {
-                mainModel.setSimpleData(contents: self.simpleTextField.text)
+                mainModel.setData(type: .simple, contents: self.simpleTextField.text)
                 self.dismiss(animated: true) {
                     self.noneReloadDelegate?.reloadData()
                 }
             } else {
-                mainModel.setFirebaseData(type: .short, contents: self.simpleTextField.text)
+                mainModel.setFirebaseData(type: .simple, contents: self.simpleTextField.text)
                 self.dismiss(animated: true) {
                     self.firebaseReloadDelegate?.reloadFirebaseData()
                 }
@@ -93,7 +93,7 @@ class SimpleWriteVC: UIViewController {
     @IBAction func goDelete(_ sender: Any) {
         guard let index = selectedIndex else { return }
         if mainModel.authType == "none" {
-            mainModel.deleteSimpleData(selectedIndex: index)
+            mainModel.deleteData(type: .simple, selectedIndex: index)
             self.dismiss(animated: true) {
                 self.noneReloadDelegate?.reloadData()
             }
