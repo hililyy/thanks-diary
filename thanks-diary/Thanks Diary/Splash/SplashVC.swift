@@ -16,7 +16,7 @@ final class SplashVC: UIViewController {
         LottieManager().setLottie(self, lottieView: lottieView, name: "dot", mode: .loop)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             AlarmAuth().requestNotificationAuthorization()
-            if LocalDataStore.localDataStore.getOAuthType() != "" {
+            if LocalDataStore.localDataStore.getLoginType() != "" {
                 if LocalDataStore.localDataStore.getPasswordData() {
                     self.showPasswordVC()
                 } else {

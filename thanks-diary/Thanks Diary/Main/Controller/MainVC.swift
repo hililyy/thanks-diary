@@ -28,13 +28,15 @@ final class MainVC: UIViewController {
         self.todayDate.text = Date().convertString(format: "dd'일' (E)")
         setFloty()
         setCalender()
-        mainModel.authType = LocalDataStore.localDataStore.getOAuthType()
+        
+        mainModel.loginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType())
+        
         setuploadBtn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        if mainModel.authType == "none" {
+        if mainModel.loginType == LoginType.none {
             reloadData()
         } else {
             reloadFirebaseData()
@@ -42,7 +44,7 @@ final class MainVC: UIViewController {
     }
     
     func setuploadBtn() {
-        if mainModel.authType != "none" {
+        if mainModel.loginType != LoginType.none {
             mainModel.uid = Auth.auth().currentUser?.uid ?? ""
             self.uploadBtn.isHidden = false
         } else {
@@ -58,7 +60,7 @@ final class MainVC: UIViewController {
         self.calendar.select(Date())
         self.todayDate.text = Date().convertString(format: "dd'일' (E)")
         mainModel.selectedDate = Date()
-        if mainModel.authType == "none" {
+        if mainModel.loginType == LoginType.none {
             reloadDataAndTableView()
         } else {
             reloadFirebaseAndTableView()
@@ -149,7 +151,7 @@ final class MainVC: UIViewController {
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if mainModel.authType == "none" {
+        if mainModel.loginType == LoginType.none {
             if mainModel.longData.count == 0 && mainModel.shortData.count == 0 {
                 if  self.mainModel.selectedDate.convertString() == Date().convertString() {
                     self.emptyView.isHidden = false
@@ -189,7 +191,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if mainModel.authType == "none" {
+        if mainModel.loginType == LoginType.none {
             switch indexPath.row {
             case ..<mainModel.longData.count:
                 let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
@@ -226,7 +228,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if mainModel.authType == "none" {
+        if mainModel.loginType == LoginType.none {
             switch indexPath.row {
             case ..<mainModel.longData.count:
                 showReadVC(index: indexPath.row)
@@ -276,7 +278,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.todayDate.text = date.convertString(format: "dd'일' (E)")
         mainModel.selectedDate = date
-        if mainModel.authType == "none" {
+        if mainModel.loginType == LoginType.none {
             reloadDataAndTableView()
         } else {
             setDataByDate()

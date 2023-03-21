@@ -13,13 +13,13 @@ class SettingVC: UIViewController, UIGestureRecognizerDelegate, MFMailComposeVie
     
     @IBOutlet weak var settingTableView: UITableView!
     var alarmFlag: Bool = false
-    let model = SettingModel.model
+    let settingModel = SettingModel.model
     
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTableView.dataSource = self
         settingTableView.delegate = self
-        model.authType = LocalDataStore.localDataStore.getOAuthType()
+        settingModel.loginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType())
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         setPWSwitch()
     }

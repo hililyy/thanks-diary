@@ -15,5 +15,5 @@ enum LocalDataKeySet: String {
     case TODAY_DETAIL_DIARY = "today_detail_diary"
     case IS_PUSH_ALARM_AGREE = "is_push_alarm_agree"
     case OAUTH_TOKEN = "oauth_token"
-    case OAUTH_TYPE = "oauth_type"
+    case LOGIN_TYPE = "login_type"
 }

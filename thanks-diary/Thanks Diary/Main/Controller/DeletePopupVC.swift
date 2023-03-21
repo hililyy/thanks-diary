@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DeletePopupVC: UIViewController {
+final class DeletePopupVC: UIViewController {
     let mainModel = MainModel.model
     var selectedIndex: Int?
     
@@ -21,8 +21,8 @@ class DeletePopupVC: UIViewController {
     
     @IBAction func goDelete(_ sender: Any) {
         guard let selectedIndex = selectedIndex else { return }
-        if mainModel.authType == "none" {
-            mainModel.deleteData(type: .detail, selectedIndex: selectedIndex)
+        if mainModel.loginType == LoginType.none {
+            mainModel.deleteData(diaryType: .detail, selectedIndex: selectedIndex)
             showDeleteVC()
         } else {
             mainModel.deleteDetailFirebaseData(selectedIndex: selectedIndex) {

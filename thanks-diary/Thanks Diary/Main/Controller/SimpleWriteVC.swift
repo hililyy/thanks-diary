@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class SimpleWriteVC: UIViewController {
+final class SimpleWriteVC: UIViewController {
     //20자까지 작성
     @IBOutlet weak var simpleTextField: UITextView!
     @IBOutlet weak var okBtn: UIButton!
@@ -36,7 +36,7 @@ class SimpleWriteVC: UIViewController {
         self.simpleTextField.delegate = self
         if editFlag == true {
             guard let index = selectedIndex else { return }
-            if mainModel.authType == "none" {
+            if mainModel.loginType == LoginType.none {
                 simpleTextField.text = mainModel.shortData[index].contents
             } else {
                 simpleTextField.text = mainModel.shortDiaryDatabyDate[index].contents
@@ -59,8 +59,8 @@ class SimpleWriteVC: UIViewController {
         if editFlag == true {
             guard let index = selectedIndex,
                   let contents = self.simpleTextField.text else { return }
-            if mainModel.authType == "none" {
-                mainModel.updateData(type: .simple, selectedIndex: index, afterContents: contents)
+            if mainModel.loginType == LoginType.none {
+                mainModel.updateData(diaryType: .simple, selectedIndex: index, afterContents: contents)
                 self.dismiss(animated: true) {
                     self.noneReloadDelegate?.reloadData()
                 }
@@ -72,8 +72,8 @@ class SimpleWriteVC: UIViewController {
                 }
             }
         } else {
-            if mainModel.authType == "none" {
-                mainModel.setData(type: .simple, contents: self.simpleTextField.text)
+            if mainModel.loginType == LoginType.none {
+                mainModel.setData(diaryType: .simple, contents: self.simpleTextField.text)
                 self.dismiss(animated: true) {
                     self.noneReloadDelegate?.reloadData()
                 }
@@ -92,8 +92,8 @@ class SimpleWriteVC: UIViewController {
     
     @IBAction func goDelete(_ sender: Any) {
         guard let index = selectedIndex else { return }
-        if mainModel.authType == "none" {
-            mainModel.deleteData(type: .simple, selectedIndex: index)
+        if mainModel.loginType == LoginType.none {
+            mainModel.deleteData(diaryType: .simple, selectedIndex: index)
             self.dismiss(animated: true) {
                 self.noneReloadDelegate?.reloadData()
             }

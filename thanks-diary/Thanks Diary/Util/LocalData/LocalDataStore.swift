@@ -67,12 +67,12 @@ final class LocalDataStore {
         UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.OAUTH_TOKEN.rawValue)
     }
     
-    func getOAuthType() -> String {
-        let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.OAUTH_TYPE.rawValue)
+    func getLoginType() -> String {
+        let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.LOGIN_TYPE.rawValue)
         return getData ?? ""
     }
     
-    func setOAuthType(newData: String) {
-        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.OAUTH_TYPE.rawValue)
+    func setLoginType(newData: String) {
+        UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.LOGIN_TYPE.rawValue)
     }
 }

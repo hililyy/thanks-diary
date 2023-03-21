@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class DetailWriteVC: UIViewController {
+final class DetailWriteVC: UIViewController {
     
     @IBOutlet weak var diaryTitle: UILabel!
     @IBOutlet weak var titleTextfield: UITextField!
@@ -36,9 +36,9 @@ class DetailWriteVC: UIViewController {
     @IBAction func goComplete(_ sender: Any) {
         if editFlag == true {
             guard let index = selectedIndex else { return }
-            if mainModel.authType == "none" {
+            if mainModel.loginType == LoginType.none {
                 mainModel.updateData(
-                    type: .detail,
+                    diaryType: .detail,
                     selectedIndex: index,
                     afterTitle: titleTextfield.text ?? "",
                     afterContents: contentsTextView.text ?? "")
@@ -49,8 +49,8 @@ class DetailWriteVC: UIViewController {
                 }
             }
         } else {
-            if mainModel.authType == "none" {
-                mainModel.setData(type: .detail, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
+            if mainModel.loginType == LoginType.none {
+                mainModel.setData(diaryType: .detail, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
             } else {
                 mainModel.setFirebaseData(type: .detail, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
             }
@@ -74,7 +74,7 @@ class DetailWriteVC: UIViewController {
         self.diaryTitle.text = "\(mainModel.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
         if editFlag == true {
             guard let index = selectedIndex else { return }
-            if mainModel.authType == "none" {
+            if mainModel.loginType == LoginType.none {
                 self.titleTextfield.text = mainModel.longData[index].title
                 self.contentsTextView.text = mainModel.longData[index].contents
             } else {

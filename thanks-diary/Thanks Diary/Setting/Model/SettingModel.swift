@@ -9,5 +9,5 @@ import Foundation
 
 class SettingModel {
     static var model = SettingModel()
-    var authType: String?
+    var loginType: LoginType?
 }

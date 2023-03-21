@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReadVC: UIViewController {
+final class ReadVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: PaddingLabel!
     @IBOutlet weak var contentsTextView: UITextView!
@@ -36,7 +36,7 @@ class ReadVC: UIViewController {
     func setText() {
         guard let index = selectedIndex else { return }
         dateLabel.text = "\(mainModel.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
-        if mainModel.authType == "none" {
+        if mainModel.loginType == LoginType.none {
             titleLabel.text = mainModel.longData[index].title
             contentsTextView.text = mainModel.longData[index].contents
         } else {
