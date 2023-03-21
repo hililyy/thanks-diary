@@ -65,7 +65,7 @@ final class SimpleWriteVC: UIViewController {
                     self.noneReloadDelegate?.reloadData()
                 }
             } else {
-                mainModel.updateSimpleFirebaseData(selectedIndex: index, afterContents: contents) {
+                mainModel.updateFirebaseData(diaryType: .simple, selectedIndex: index, afterContents: contents) {
                     self.dismiss(animated: true) {
                         self.firebaseReloadDelegate?.reloadFirebaseData()
                     }
@@ -98,7 +98,7 @@ final class SimpleWriteVC: UIViewController {
                 self.noneReloadDelegate?.reloadData()
             }
         } else {
-            mainModel.deleteSimpleFirebaseData(selectedIndex: index) {
+            mainModel.deleteFirebaseData(diaryType: .simple, selectedIndex: index) {
                 self.dismiss(animated: true) {
                     self.firebaseReloadDelegate?.reloadFirebaseData()
                 }

@@ -25,7 +25,7 @@ final class DeletePopupVC: UIViewController {
             mainModel.deleteData(diaryType: .detail, selectedIndex: selectedIndex)
             showDeleteVC()
         } else {
-            mainModel.deleteDetailFirebaseData(selectedIndex: selectedIndex) {
+            mainModel.deleteFirebaseData(diaryType: .detail, selectedIndex: selectedIndex) {
                 self.showDeleteVC()
             }
         }

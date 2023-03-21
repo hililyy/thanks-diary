@@ -9,14 +9,12 @@ import UIKit
 import CoreData
 
 final class DiaryCoreDataManager {
-    var longData: [DiaryEntity] = []
-    var shortData: [SimpleDiaryEntity] = []
 
     static let shared = DiaryCoreDataManager()
     
     func getData(loginType: LoginType, selectedDate: Date, completion: @escaping () -> ()) {
-        longData.removeAll()
-        shortData.removeAll()
+        MainModel.model.longData.removeAll()
+        MainModel.model.shortData.removeAll()
         MainModel.model.dateWithCircle.removeAll()
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -72,14 +70,14 @@ final class DiaryCoreDataManager {
                 contents: contents,
                 date: date
             )
-            longData.append(longEntity)
+            MainModel.model.longData.append(longEntity)
         case .simple:
             let shortEntity = SimpleDiaryEntity(
                 type: "simple",
                 contents: contents,
                 date: date
             )
-            shortData.append(shortEntity)
+            MainModel.model.shortData.append(shortEntity)
         }
     }
     
@@ -128,8 +126,8 @@ final class DiaryCoreDataManager {
         
         switch type {
         case .detail:
-            guard let title = self.longData[selectedIndex].title,
-                  let contents = self.longData[selectedIndex].contents else { return }
+            guard let title = MainModel.model.longData[selectedIndex].title,
+                  let contents = MainModel.model.longData[selectedIndex].contents else { return }
             
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
             fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", selectedDate.convertString(), title, contents)
@@ -149,7 +147,7 @@ final class DiaryCoreDataManager {
                 print(error)
             }
         case .simple:
-            guard let contents = self.shortData[selectedIndex].contents else { return }
+            guard let contents = MainModel.model.shortData[selectedIndex].contents else { return }
             
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
             fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", selectedDate.convertString(), contents)
@@ -176,8 +174,8 @@ final class DiaryCoreDataManager {
         switch type {
         case .detail:
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-                  let title = self.longData[selectedIndex].title,
-                  let contents = self.longData[selectedIndex].contents
+                  let title = MainModel.model.longData[selectedIndex].title,
+                  let contents = MainModel.model.longData[selectedIndex].contents
             else { return }
             let managedContext = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
@@ -197,7 +195,7 @@ final class DiaryCoreDataManager {
                 print(error)
             }
         case .simple:
-            guard let contents = self.shortData[selectedIndex].contents else { return }
+            guard let contents = MainModel.model.shortData[selectedIndex].contents else { return }
             let managedContext = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
             fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", selectedDate.convertString(), contents)

@@ -44,7 +44,7 @@ final class DetailWriteVC: UIViewController {
                     afterContents: contentsTextView.text ?? "")
                 showMainVC()
             } else {
-                mainModel.updateDetailFirebaseData(selectedIndex: index, afterTitle: titleTextfield.text ?? "", afterContents: contentsTextView.text ?? "") {
+                mainModel.updateFirebaseData(diaryType: .detail, selectedIndex: index, afterTitle: titleTextfield.text ?? "", afterContents: contentsTextView.text ?? "") {
                     self.showMainVC()
                 }
             }

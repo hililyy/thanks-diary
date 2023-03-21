@@ -25,7 +25,7 @@ final class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.todayBtn.layer.cornerRadius = 10
-        self.todayDate.text = Date().convertString(format: "dd'일' (E)")
+        self.todayDate.text = mainModel.selectedDate.convertString(format: "dd'일' (E)")
         setFloty()
         setCalender()
         
@@ -39,13 +39,13 @@ final class MainVC: UIViewController {
         if mainModel.loginType == LoginType.none {
             reloadData()
         } else {
+            mainModel.uid = Auth.auth().currentUser?.uid
             reloadFirebaseData()
         }
     }
     
     func setuploadBtn() {
         if mainModel.loginType != LoginType.none {
-            mainModel.uid = Auth.auth().currentUser?.uid ?? ""
             self.uploadBtn.isHidden = false
         } else {
             self.uploadBtn.isHidden = true
@@ -117,10 +117,8 @@ final class MainVC: UIViewController {
     }
     
     func reloadFirebaseAndTableView() {
-        mainModel.getDetailFirebaseData {
-            self.mainModel.getSimpleFirebaseData {
-                self.diaryTableView.reloadData()
-            }
+        mainModel.getFirebaseData {
+            self.diaryTableView.reloadData()
         }
     }
     
@@ -310,12 +308,10 @@ extension MainVC: reloadDelegate {
 
 extension MainVC: reloadFirebaseDelegate {
     func reloadFirebaseData() {
-        mainModel.getDetailFirebaseData {
-            self.mainModel.getSimpleFirebaseData {
-                self.setDataByDate()
-                self.calendar.reloadData()
-                self.diaryTableView.reloadData()
-            }
+        mainModel.getFirebaseData {
+            self.setDataByDate()
+            self.calendar.reloadData()
+            self.diaryTableView.reloadData()
         }
     }
 }
