@@ -28,27 +28,16 @@ final class MainVC: UIViewController {
         self.todayDate.text = mainModel.selectedDate.convertString(format: "dd'일' (E)")
         setFloty()
         setCalender()
-        
-        mainModel.loginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType())
-        
         setuploadBtn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
         if mainModel.loginType == LoginType.none {
             reloadData()
         } else {
-            mainModel.uid = Auth.auth().currentUser?.uid
             reloadFirebaseData()
-        }
-    }
-    
-    func setuploadBtn() {
-        if mainModel.loginType != LoginType.none {
-            self.uploadBtn.isHidden = false
-        } else {
-            self.uploadBtn.isHidden = true
         }
     }
     
@@ -68,38 +57,18 @@ final class MainVC: UIViewController {
     }
     
     @IBAction func uploadData(_ sender: UIButton) {
-        setConfirm()
-    }
-    
-    func setConfirm() {
-        let alert = UIAlertController(title: "알림", message: "백업되지 않은 데이터가 있으면 백업합니다.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "취소", style: .default))
-        alert.addAction(UIAlertAction(title: "확인", style: .default) { action in
-            self.mainModel.getData() {
-                for data in self.mainModel.longData {
-                    self.mainModel.setFirebaseData(
-                        diaryType: .detail,
-                        title: data.title ?? "",
-                        contents: data.contents ?? "",
-                        date: data.date ?? "")
-                }
-                for data in self.mainModel.shortData {
-                    self.mainModel.setFirebaseData(
-                        diaryType: .simple,
-                        contents: data.contents ?? "",
-                        date: data.date ?? "")
-                }
-                
-            }
+        AlertManager.shared.setAlert(self, title: "알림", message: "백업되지 않은 데이터가 있으면 백업합니다.") {
+            self.mainModel.uploadData()
             self.reloadFirebaseData()
-        })
-        self.present(alert, animated: true, completion: nil)
+        }
     }
     
-    func setAlert() {
-        let alert = UIAlertController(title: "알림", message: "완료되었습니다.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default))
-        self.present(alert, animated: true, completion: nil)
+    func setuploadBtn() {
+        if mainModel.loginType != LoginType.none {
+            self.uploadBtn.isHidden = false
+        } else {
+            self.uploadBtn.isHidden = true
+        }
     }
     
     func setFloty() {
@@ -130,26 +99,7 @@ final class MainVC: UIViewController {
     }
     
     func setDataByDate() {
-        mainModel.longDiaryDatabyDate.removeAll()
-        mainModel.shortDiaryDatabyDate.removeAll()
-        mainModel.longKeybyDate.removeAll()
-        mainModel.shortKeybyDate.removeAll()
-        var count = 0
-        for diary in mainModel.longDiaryData {
-            if mainModel.selectedDate.convertString() == diary.date {
-                mainModel.longDiaryDatabyDate.append(diary)
-                mainModel.longKeybyDate.append(mainModel.longKey[count])
-            }
-            count+=1
-        }
-        count = 0
-        for diary in mainModel.shortDiaryData {
-            if mainModel.selectedDate.convertString() == diary.date {
-                mainModel.shortDiaryDatabyDate.append(diary)
-                mainModel.shortKeybyDate.append(mainModel.shortKey[count])
-            }
-            count+=1
-        }
+        mainModel.setDataByDate()
         self.diaryTableView.reloadData()
     }
 }
@@ -304,16 +254,14 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     }
 }
 
-extension MainVC: reloadDelegate {
+extension MainVC: reloadDelegate, reloadFirebaseDelegate {
     func reloadData() {
         mainModel.getData() {
             self.calendar.reloadData()
             self.diaryTableView.reloadData()
         }
     }
-}
-
-extension MainVC: reloadFirebaseDelegate {
+    
     func reloadFirebaseData() {
         mainModel.getFirebaseData {
             self.setDataByDate()

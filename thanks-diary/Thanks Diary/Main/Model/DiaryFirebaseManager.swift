@@ -10,10 +10,12 @@ import Firebase
 
 final class DiaryFirebaseManager {
     var uid: String?
+    var loginType: LoginType?
     static let shared = DiaryFirebaseManager()
     
     init() {
         self.uid = Auth.auth().currentUser?.uid
+        self.loginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType())
     }
     
     func getData(completion: @escaping () -> ()) {

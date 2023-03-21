@@ -10,23 +10,37 @@ import Firebase
 
 final class MainModel {
     static let model = MainModel()
-    var longData: [DiaryEntity] = []
-    var shortData: [SimpleDiaryEntity] = []
+    var longData: [DiaryEntity]
+    var shortData: [SimpleDiaryEntity]
     
-    var dateWithCircle: [String] = []
-    var selectedDate: Date = Date()
+    var dateWithCircle: [String]
+    var selectedDate: Date
     
-    var uid: String?
-    var longDiaryData: [AllDiaryData.Long] = []
-    var shortDiaryData: [AllDiaryData.Short] = []
-    var longDiaryDatabyDate: [AllDiaryData.Long] = []
-    var shortDiaryDatabyDate: [AllDiaryData.Short] = []
-    var longKey: [String] = []
-    var shortKey: [String] = []
-    var longKeybyDate: [String] = []
-    var shortKeybyDate: [String] = []
+    var longDiaryData: [AllDiaryData.Long]
+    var shortDiaryData: [AllDiaryData.Short]
+    var longDiaryDatabyDate: [AllDiaryData.Long]
+    var shortDiaryDatabyDate: [AllDiaryData.Short]
+    var longKey: [String]
+    var shortKey: [String]
+    var longKeybyDate: [String]
+    var shortKeybyDate: [String]
     var loginType: LoginType?
     
+    init() {
+        self.longData = []
+        self.shortData = []
+        self.dateWithCircle = []
+        self.selectedDate = Date()
+        self.longDiaryData = []
+        self.shortDiaryData = []
+        self.longDiaryDatabyDate = []
+        self.shortDiaryDatabyDate = []
+        self.longKey = []
+        self.shortKey = []
+        self.longKeybyDate = []
+        self.shortKeybyDate = []
+        self.loginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType()) ?? nil
+    }
     
     func getData(completion: @escaping () -> ()) {
         guard let loginType = loginType else { return }
@@ -103,5 +117,46 @@ final class MainModel {
             selectedIndex: selectedIndex) {
                 completion()
             }
+    }
+    
+    func uploadData() {
+        self.getData() {
+            for data in self.longData {
+                self.setFirebaseData(
+                    diaryType: .detail,
+                    title: data.title ?? "",
+                    contents: data.contents ?? "",
+                    date: data.date ?? "")
+            }
+            for data in self.shortData {
+                self.setFirebaseData(
+                    diaryType: .simple,
+                    contents: data.contents ?? "",
+                    date: data.date ?? "")
+            }
+        }
+    }
+    
+    func setDataByDate() {
+        longDiaryDatabyDate.removeAll()
+        shortDiaryDatabyDate.removeAll()
+        longKeybyDate.removeAll()
+        shortKeybyDate.removeAll()
+        var count = 0
+        for diary in longDiaryData {
+            if selectedDate.convertString() == diary.date {
+                longDiaryDatabyDate.append(diary)
+                longKeybyDate.append(longKey[count])
+            }
+            count+=1
+        }
+        count = 0
+        for diary in shortDiaryData {
+            if selectedDate.convertString() == diary.date {
+                shortDiaryDatabyDate.append(diary)
+                shortKeybyDate.append(shortKey[count])
+            }
+            count+=1
+        }
     }
 }

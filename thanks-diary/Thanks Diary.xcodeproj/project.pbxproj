@@ -60,6 +60,7 @@
 		2AA8095429C79BBE003170C4 /* EmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8095329C79BBE003170C4 /* EmailModel.swift */; };
 		2ABFABEF29C9E7F100273F0D /* DiaryCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFABEE29C9E7F100273F0D /* DiaryCoreDataManager.swift */; };
 		2ABFABF129C9E7FC00273F0D /* DiaryFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFABF029C9E7FC00273F0D /* DiaryFirebaseManager.swift */; };
+		2ABFAC0029CA615800273F0D /* DiaryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFABFF29CA615800273F0D /* DiaryDataSource.swift */; };
 		2AC2B5F829BB86CD00C4A985 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B5F729BB86CD00C4A985 /* UIViewController.swift */; };
 		2AC2B5FA29BB8B1300C4A985 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B5F929BB8B1300C4A985 /* PaddingLabel.swift */; };
 		2AC2B5FE29BB8DF800C4A985 /* AlarmAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B5FD29BB8DF800C4A985 /* AlarmAuth.swift */; };
@@ -154,6 +155,7 @@
 		2AA8095329C79BBE003170C4 /* EmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailModel.swift; sourceTree = "<group>"; };
 		2ABFABEE29C9E7F100273F0D /* DiaryCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCoreDataManager.swift; sourceTree = "<group>"; };
 		2ABFABF029C9E7FC00273F0D /* DiaryFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryFirebaseManager.swift; sourceTree = "<group>"; };
+		2ABFABFF29CA615800273F0D /* DiaryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDataSource.swift; sourceTree = "<group>"; };
 		2AC2B5F729BB86CD00C4A985 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2AC2B5F929BB8B1300C4A985 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		2AC2B5FD29BB8DF800C4A985 /* AlarmAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAuth.swift; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 			children = (
 				2A81235628C53143000A250E /* Cell */,
 				2A9F350D28AE1C0D006CCF7C /* MainVC.swift */,
+				2ABFABFF29CA615800273F0D /* DiaryDataSource.swift */,
 				2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */,
 				2A81235328C5277D000A250E /* SimpleWriteVC.swift */,
 				2A7241CE28B2A57E0040ADE9 /* ReadVC.swift */,
@@ -744,6 +747,7 @@
 				2A40AAB629BE280000B259B5 /* UITextField.swift in Sources */,
 				2A0D880328A540FB00576E56 /* SplashVC.swift in Sources */,
 				2A9F350428AC20FC006CCF7C /* SecondStartVC.swift in Sources */,
+				2ABFAC0029CA615800273F0D /* DiaryDataSource.swift in Sources */,
 				2A81233928C0014D000A250E /* AlarmSettingCell.swift in Sources */,
 				2A9F350E28AE1C0D006CCF7C /* MainVC.swift in Sources */,
 				2AEE20CC2950B12400A17F5B /* LoginVC.swift in Sources */,
