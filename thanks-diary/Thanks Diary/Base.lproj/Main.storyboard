@@ -711,10 +711,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Rmf-89-8Rf" id="Bka-fZ-Aw3"/>
-                                    <outlet property="delegate" destination="Rmf-89-8Rf" id="MtE-FR-FdW"/>
-                                </connections>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_gray_line" translatesAutoresizingMaskIntoConstraints="NO" id="wcv-ue-ryN">
                                 <rect key="frame" x="0.0" y="482" width="390" height="1"/>

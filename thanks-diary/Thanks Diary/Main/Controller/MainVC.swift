@@ -21,9 +21,13 @@ final class MainVC: UIViewController {
     @IBOutlet weak var uploadBtn: UIButton!
     
     let mainModel = MainModel.model
+    var diaryTableViewModel: DiaryTableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        diaryTableViewModel = DiaryTableView(self)
+        diaryTableView.delegate = diaryTableViewModel
+        diaryTableView.dataSource = diaryTableViewModel
         self.todayBtn.layer.cornerRadius = 10
         self.todayDate.text = mainModel.selectedDate.convertString(format: "dd'일' (E)")
         setFloty()
@@ -101,111 +105,6 @@ final class MainVC: UIViewController {
     func setDataByDate() {
         mainModel.setDataByDate()
         self.diaryTableView.reloadData()
-    }
-}
-
-extension MainVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if mainModel.loginType == LoginType.none {
-            if mainModel.longData.count == 0 && mainModel.shortData.count == 0 {
-                if  self.mainModel.selectedDate.convertString() == Date().convertString() {
-                    self.emptyView.isHidden = false
-                    self.emptyView.frame.size.height = 300
-                    self.emptyImage.image = UIImage(named: "img_not_today")
-                    return 0
-                } else {
-                    self.emptyView.isHidden = false
-                    self.emptyView.frame.size.height = 300
-                    self.emptyImage.image = UIImage(named: "img_not_before")
-                    return 0
-                }
-            } else {
-                self.emptyView.isHidden = true
-                self.emptyView.frame.size.height = 0
-                return mainModel.longData.count + mainModel.shortData.count
-            }
-        } else {
-            if mainModel.longDiaryDatabyDate.count == 0 && mainModel.shortDiaryDatabyDate.count == 0 {
-                if  self.mainModel.selectedDate.convertString() == Date().convertString() {
-                    self.emptyView.isHidden = false
-                    self.emptyView.frame.size.height = 300
-                    self.emptyImage.image = UIImage(named: "img_not_today")
-                    return 0
-                } else {
-                    self.emptyView.isHidden = false
-                    self.emptyView.frame.size.height = 300
-                    self.emptyImage.image = UIImage(named: "img_not_before")
-                    return 0
-                }
-            } else {
-                self.emptyView.isHidden = true
-                self.emptyView.frame.size.height = 0
-                return mainModel.longDiaryDatabyDate.count + mainModel.shortDiaryDatabyDate.count
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if mainModel.loginType == LoginType.none {
-            switch indexPath.row {
-            case ..<mainModel.longData.count:
-                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-                cell.titleLabel.text = mainModel.longData[indexPath.row].title
-                cell.selectionStyle = .none
-                return cell
-            case mainModel.longData.count...:
-                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-                cell.titleLabel.text =
-                mainModel.shortData[indexPath.row - mainModel.longData.count].contents
-                cell.selectionStyle = .none
-                return cell
-            default:
-                break
-            }
-        } else {
-            switch indexPath.row {
-            case ..<mainModel.longDiaryDatabyDate.count:
-                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-                cell.titleLabel.text = mainModel.longDiaryDatabyDate[indexPath.row].title
-                cell.selectionStyle = .none
-                return cell
-            case mainModel.longDiaryDatabyDate.count...:
-                let cell = diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
-                cell.titleLabel.text =
-                mainModel.shortDiaryDatabyDate[indexPath.row - mainModel.longDiaryDatabyDate.count].contents
-                cell.selectionStyle = .none
-                return cell
-            default:
-                break
-            }
-        }
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if mainModel.loginType == LoginType.none {
-            switch indexPath.row {
-            case ..<mainModel.longData.count:
-                showReadVC(index: indexPath.row)
-            case mainModel.longData.count...:
-                showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longData.count)
-            default:
-                break
-            }
-        } else {
-            switch indexPath.row {
-            case ..<mainModel.longDiaryDatabyDate.count:
-                showReadVC(index: indexPath.row)
-            case mainModel.longDiaryDatabyDate.count...:
-                showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longDiaryDatabyDate.count)
-            default:
-                break
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
     }
 }
 
