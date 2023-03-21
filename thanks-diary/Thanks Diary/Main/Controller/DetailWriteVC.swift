@@ -44,15 +44,26 @@ final class DetailWriteVC: UIViewController {
                     afterContents: contentsTextView.text ?? "")
                 showMainVC()
             } else {
-                mainModel.updateFirebaseData(diaryType: .detail, selectedIndex: index, afterTitle: titleTextfield.text ?? "", afterContents: contentsTextView.text ?? "") {
-                    self.showMainVC()
-                }
+                mainModel.updateFirebaseData(
+                    diaryType: .detail,
+                    selectedIndex: index,
+                    afterTitle: titleTextfield.text ?? "",
+                    afterContents: contentsTextView.text ?? "") {
+                        self.showMainVC()
+                    }
             }
         } else {
             if mainModel.loginType == LoginType.none {
-                mainModel.setData(diaryType: .detail, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
+                mainModel.setData(
+                    diaryType: .detail,
+                    title: self.titleTextfield.text ?? "",
+                    contents: self.contentsTextView.text
+                )
             } else {
-                mainModel.setFirebaseData(type: .detail, title: self.titleTextfield.text ?? "", contents: self.contentsTextView.text)
+                mainModel.setFirebaseData(
+                    diaryType: .detail,
+                    title: self.titleTextfield.text ?? "",
+                    contents: self.contentsTextView.text)
             }
             self.navigationController?.popViewController(animated: true)
         }

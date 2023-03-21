@@ -30,9 +30,11 @@ final class MainModel {
     
     func getData(completion: @escaping () -> ()) {
         guard let loginType = loginType else { return }
-        DiaryCoreDataManager.shared.getData(loginType: loginType, selectedDate: selectedDate) {
-            completion()
-        }
+        DiaryCoreDataManager.shared.getData(
+            loginType: loginType,
+            selectedDate: selectedDate) {
+                completion()
+            }
     }
     
     func setData(diaryType: DiaryType, title: String = "", contents: String) {
@@ -48,6 +50,7 @@ final class MainModel {
             type: diaryType,
             selectedDate: selectedDate,
             selectedIndex: selectedIndex,
+            afterTitle: afterTitle,
             afterContents: afterContents
         )
     }
@@ -61,90 +64,44 @@ final class MainModel {
     }
     
     // MARK: Firebase Code
+    
     func getFirebaseData(completion: @escaping () -> ()) {
-        longDiaryData.removeAll()
-        shortDiaryData.removeAll()
-        longKey.removeAll()
-        shortKey.removeAll()
-        dateWithCircle.removeAll()
-        guard let uid = uid else { return }
-        
-        Database.database().reference().child(uid).child("detail").observeSingleEvent(of: .value) { snapshot in
-            for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                guard let data = AllDiaryData.Long(JSON: snap.value as! [String:AnyObject]) else { return }
-                self.dateWithCircle.append(data.date ?? "")
-                self.longKey.append(snap.key)
-                self.longDiaryData.append(data)
-            }
-        }
-        Database.database().reference().child(uid).child("simple").observeSingleEvent(of: .value) { snapshot in
-            for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                guard let data = AllDiaryData.Short(JSON: snap.value as! [String:AnyObject]) else { return }
-                self.dateWithCircle.append(data.date ?? "")
-                self.shortKey.append(snap.key)
-                self.shortDiaryData.append(data)
-            }
+        DiaryFirebaseManager.shared.getData {
             completion()
         }
     }
     
-    func setFirebaseData(type: DiaryType, title: String? = nil, contents: String, date: String? = "none") {
-        guard let uid = uid else { return }
+    func setFirebaseData(diaryType: DiaryType, title: String = "", contents: String, date: String = "") {
         var newDate: String?
-        if date == "none" {
+        if date == "" {
             newDate = self.selectedDate.convertString()
         } else {
             newDate = date
         }
-        switch type {
-        case .detail :
-            let longData: [String:Any] = [
-                "title": title ?? "",
-                "contents": contents,
-                "date": newDate ?? ""
-            ]
-            Database.database().reference().child(uid).child("detail").childByAutoId().setValue(longData)
-        case .simple :
-            let shortData: [String:Any] = [
-                "contents": contents,
-                "date": newDate ?? ""
-            ]
-            Database.database().reference().child(uid).child("simple").childByAutoId().setValue(shortData)
-        }
+        DiaryFirebaseManager.shared.setData(
+            type: diaryType,
+            title: title,
+            contents: contents,
+            date: newDate ?? ""
+        )
     }
     
     func updateFirebaseData(diaryType: DiaryType, selectedIndex: Int, afterTitle: String = "", afterContents: String, completion: @escaping () -> ()) {
-        guard let uid = uid else { return }
-        
-        switch diaryType {
-        case .detail:
-            let diary: [String:Any] = [
-                "title": afterTitle,
-                "contents": afterContents,
-                "date": self.selectedDate.convertString()
-            ]
-            Database.database().reference().child(uid).child("detail").child(longKeybyDate[selectedIndex]).updateChildValues(diary)
-            completion()
-        case .simple:
-            let diary: [String:Any] = [
-                "contents": afterContents,
-                "date": self.selectedDate.convertString()
-            ]
-            Database.database().reference().child(uid).child("simple").child(shortKeybyDate[selectedIndex]).updateChildValues(diary)
-            completion()
-        }
+        DiaryFirebaseManager.shared.updateData(
+            diaryType: diaryType,
+            selectedDate: selectedDate,
+            selectedIndex: selectedIndex,
+            afterTitle: afterTitle,
+            afterContents: afterContents) {
+                completion()
+            }
     }
     
     func deleteFirebaseData(diaryType: DiaryType, selectedIndex: Int, completion: @escaping () -> ()) {
-        guard let uid = uid else { return }
-        
-        switch diaryType {
-        case .detail:
-            Database.database().reference().child(uid).child("detail").child(longKeybyDate[selectedIndex]).removeValue()
-            completion()
-        case .simple:
-            Database.database().reference().child(uid).child("simple").child(shortKeybyDate[selectedIndex]).removeValue()
-            completion()
-        }
+        DiaryFirebaseManager.shared.deleteData(
+            diaryType: diaryType,
+            selectedIndex: selectedIndex) {
+                completion()
+            }
     }
 }

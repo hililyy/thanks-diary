@@ -73,12 +73,18 @@ final class SimpleWriteVC: UIViewController {
             }
         } else {
             if mainModel.loginType == LoginType.none {
-                mainModel.setData(diaryType: .simple, contents: self.simpleTextField.text)
+                mainModel.setData(
+                    diaryType: .simple,
+                    contents: self.simpleTextField.text
+                )
                 self.dismiss(animated: true) {
                     self.noneReloadDelegate?.reloadData()
                 }
             } else {
-                mainModel.setFirebaseData(type: .simple, contents: self.simpleTextField.text)
+                mainModel.setFirebaseData(
+                    diaryType: .simple,
+                    contents: self.simpleTextField.text
+                )
                 self.dismiss(animated: true) {
                     self.firebaseReloadDelegate?.reloadFirebaseData()
                 }

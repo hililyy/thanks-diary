@@ -81,7 +81,7 @@ final class DiaryCoreDataManager {
         }
     }
     
-    func setData(type: DiaryType, selectedDate: Date, title: String = "", contents: String) {
+    func setData(type: DiaryType, selectedDate: Date, title: String, contents: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         
@@ -120,7 +120,7 @@ final class DiaryCoreDataManager {
         }
     }
     
-    func updateData(type: DiaryType, selectedDate: Date, selectedIndex: Int, afterTitle: String = "", afterContents: String) {
+    func updateData(type: DiaryType, selectedDate: Date, selectedIndex: Int, afterTitle: String, afterContents: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         
@@ -219,8 +219,8 @@ final class DiaryCoreDataManager {
     func deleteAllData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DiaryData")
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DiaryData")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try managedContext.execute(deleteRequest)
@@ -230,7 +230,6 @@ final class DiaryCoreDataManager {
         }
         
         let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "SimpleDiaryData")
-        
         let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
         do {
             try managedContext.execute(deleteRequest2)

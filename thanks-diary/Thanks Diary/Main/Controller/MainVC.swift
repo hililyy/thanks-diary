@@ -77,10 +77,17 @@ final class MainVC: UIViewController {
         alert.addAction(UIAlertAction(title: "확인", style: .default) { action in
             self.mainModel.getData() {
                 for data in self.mainModel.longData {
-                    self.mainModel.setFirebaseData(type: .detail, title: data.title, contents: data.contents ?? "", date: data.date)
+                    self.mainModel.setFirebaseData(
+                        diaryType: .detail,
+                        title: data.title ?? "",
+                        contents: data.contents ?? "",
+                        date: data.date ?? "")
                 }
                 for data in self.mainModel.shortData {
-                    self.mainModel.setFirebaseData(type: .simple, contents: data.contents ?? "", date: data.date)
+                    self.mainModel.setFirebaseData(
+                        diaryType: .simple,
+                        contents: data.contents ?? "",
+                        date: data.date ?? "")
                 }
                 
             }
