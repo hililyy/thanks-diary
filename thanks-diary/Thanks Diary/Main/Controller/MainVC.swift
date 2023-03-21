@@ -11,7 +11,7 @@ import Floaty
 import CoreData
 import Firebase
 
-class MainVC: UIViewController {
+final class MainVC: UIViewController {
     @IBOutlet weak var todayDate: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var diaryTableView: UITableView!
@@ -31,6 +31,9 @@ class MainVC: UIViewController {
         mainModel.authType = LocalDataStore.localDataStore.getOAuthType()
         if mainModel.authType != "none" {
             mainModel.uid = Auth.auth().currentUser?.uid ?? ""
+            self.uploadBtn.isHidden = false
+        } else {
+            self.uploadBtn.isHidden = true
         }
     }
     

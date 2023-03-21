@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L5A-QO-icg">
-                                <rect key="frame" x="125.66666666666667" y="373" width="138.66666666666663" height="98"/>
+                                <rect key="frame" x="123.66666666666669" y="373.66666666666669" width="143" height="97"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-EV-vze">
-                                        <rect key="frame" x="43.333333333333329" y="0.0" width="52" height="23.333333333333332"/>
+                                        <rect key="frame" x="44.666666666666671" y="0.0" width="53.666666666666671" height="23"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9O-8S-ihf">
-                                        <rect key="frame" x="0.0" y="23.333333333333311" width="138.66666666666666" height="46.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-nz-jS3">
-                                        <rect key="frame" x="44.333333333333329" y="70" width="50" height="28"/>
+                                        <rect key="frame" x="46.333333333333329" y="69" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="892-pQ-MyA"/>
                                         </constraints>
@@ -2263,10 +2263,10 @@
             </objects>
             <point key="canvasLocation" x="60" y="3566"/>
         </scene>
-        <!--Email Sign UpVC-->
+        <!--Email SignupVC-->
         <scene sceneID="Kw4-N1-W0S">
             <objects>
-                <viewController storyboardIdentifier="EmailSignUpVC" id="Iyo-Bv-i1I" customClass="EmailSignUpVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmailSignupVC" id="Iyo-Bv-i1I" customClass="EmailSignupVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H5K-K8-9EZ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

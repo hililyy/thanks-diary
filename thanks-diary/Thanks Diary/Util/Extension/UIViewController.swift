@@ -24,7 +24,7 @@ extension UIViewController {
     }
     
     func showSignupVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "EmailSignUpVC") as? EmailSignUpVC else { return }
+        guard let vc =  storyboard?.instantiateViewController(identifier: "EmailSignupVC") as? EmailSignupVC else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -48,7 +48,6 @@ class MainModel {
                             contents: data.value(forKey: "contents") as? String,
                             date: data.value(forKey: "date") as? String
                         )
-                        print("담긴다")
                         longData.append(tmpEntity)
                     }
                 } else {
@@ -58,7 +57,6 @@ class MainModel {
                         contents: data.value(forKey: "contents") as? String,
                         date: data.value(forKey: "date") as? String
                     )
-                    print("담긴다")
                     longData.append(tmpEntity)
                 }
             }

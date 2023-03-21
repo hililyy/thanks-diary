@@ -1,5 +1,5 @@
 //
-//  EmailSignUpVC.swift
+//  EmailSignupVC.swift
 //  
 //
 //  Created by 강조은 on 2022/12/25.
@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-final class EmailSignUpVC: UIViewController {
+final class EmailSignupVC: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var rePasswordTextfield: UITextField!
@@ -38,7 +38,7 @@ final class EmailSignUpVC: UIViewController {
     }
 }
 
-extension EmailSignUpVC: PLoginModel {
+extension EmailSignupVC: PLoginModel {
     func success(type: LoginType) {
         print("이메일 회원가입 성공")
         self.showFirstVC()
