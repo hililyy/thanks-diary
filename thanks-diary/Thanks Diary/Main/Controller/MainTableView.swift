@@ -1,5 +1,5 @@
 //
-//  DiaryTableView.swift
+//  MainTableView.swift
 //  Thanks Diary
 //
 //  Created by 강조은 on 2023/03/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DiaryTableView: NSObject {
+class MainTableView: NSObject {
     var mainVC: MainVC
     let mainModel = MainModel.model
     
@@ -16,7 +16,7 @@ class DiaryTableView: NSObject {
     }
 }
 
-extension DiaryTableView: UITableViewDataSource, UITableViewDelegate {
+extension MainTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let mainModel = MainModel.model
            
