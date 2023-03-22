@@ -14,19 +14,24 @@ final class DetailWriteVC: UIViewController {
     @IBOutlet weak var titleTextfield: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var completeBtn: UIButton!
-    var writeDate: Date = Date()
     let mainModel = MainModel.model
+    var detailWriteView: DetailWriteView?
     var editFlag: Bool?
     var selectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
-        setTitle()
+        initalize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    func initalize() {
+        detailWriteView = DetailWriteView(self)
+        detailWriteView?.setView()
+        detailWriteView?.setTitle()
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -66,32 +71,6 @@ final class DetailWriteVC: UIViewController {
                     contents: self.contentsTextView.text)
             }
             self.navigationController?.popViewController(animated: true)
-        }
-    }
-    
-    func setView() {
-        self.completeBtn.layer.cornerRadius = 10
-        self.titleTextfield.layer.cornerRadius = 20
-        self.titleTextfield.layer.borderWidth = 2
-        self.titleTextfield.layer.borderColor = UIColor(named: "mainColor")?.cgColor
-        self.contentsTextView.layer.cornerRadius = 20
-        self.contentsTextView.layer.borderWidth = 2
-        self.contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
-        titleTextfield.addLeftPadding()
-        contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
-    }
-    
-    func setTitle() {
-        self.diaryTitle.text = "\(mainModel.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
-        if editFlag == true {
-            guard let index = selectedIndex else { return }
-            if mainModel.loginType == LoginType.none {
-                self.titleTextfield.text = mainModel.longData[index].title
-                self.contentsTextView.text = mainModel.longData[index].contents
-            } else {
-                self.titleTextfield.text = mainModel.longDiaryDatabyDate[index].title
-                self.contentsTextView.text = mainModel.longDiaryDatabyDate[index].contents
-            }
         }
     }
     

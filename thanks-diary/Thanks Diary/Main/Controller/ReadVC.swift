@@ -15,34 +15,17 @@ final class ReadVC: UIViewController {
     
     var selectedIndex: Int?
     let mainModel = MainModel.model
+    var readView : ReadView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
-        setText()
+        initalize()
     }
     
-    func setView() {
-        editBtn.layer.cornerRadius = 20
-        titleLabel.layer.borderWidth = 2
-        titleLabel.layer.borderColor = UIColor(named: "mainColor")?.cgColor
-        titleLabel.layer.cornerRadius = 10
-        contentsTextView.layer.borderWidth = 2
-        contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
-        contentsTextView.layer.cornerRadius = 10
-        contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0);
-    }
-    
-    func setText() {
-        guard let index = selectedIndex else { return }
-        dateLabel.text = "\(mainModel.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
-        if mainModel.loginType == LoginType.none {
-            titleLabel.text = mainModel.longData[index].title
-            contentsTextView.text = mainModel.longData[index].contents
-        } else {
-            titleLabel.text = mainModel.longDiaryDatabyDate[index].title
-            contentsTextView.text = mainModel.longDiaryDatabyDate[index].contents
-        }
+    func initalize() {
+        readView = ReadView(self)
+        readView?.setView()
+        readView?.setText()
     }
     
     @IBAction func goBack(_ sender: Any) {

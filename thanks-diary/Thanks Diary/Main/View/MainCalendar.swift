@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 import Floaty
 
-class MainCalendar: NSObject {
+final class MainCalendar: NSObject {
     var mainVC: MainVC
     let mainModel = MainModel.model
     

@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 final class SimpleWriteVC: UIViewController {
-    //20자까지 작성
+    
     @IBOutlet weak var simpleTextField: UITextView!
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
@@ -17,42 +17,27 @@ final class SimpleWriteVC: UIViewController {
     @IBOutlet weak var textLengthLabel: UILabel!
     weak var noneReloadDelegate: reloadDelegate?
     weak var firebaseReloadDelegate: reloadFirebaseDelegate?
+    
     let mainModel = MainModel.model
+    var simpleWriteView: SimpleWriteView?
     var editFlag: Bool?
     var selectedIndex: Int?
-    let maxCount: Int = 23
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
-        setTextView()
+        initalize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.simpleTextField.becomeFirstResponder()
     }
     
-    func setTextView() {
-        self.simpleTextField.delegate = self
-        if editFlag == true {
-            guard let index = selectedIndex else { return }
-            if mainModel.loginType == LoginType.none {
-                simpleTextField.text = mainModel.shortData[index].contents
-            } else {
-                simpleTextField.text = mainModel.shortDiaryDatabyDate[index].contents
-            }
-        }
-        self.textLengthLabel.text = "\(simpleTextField.text.count)/25"
-    }
-    
-    func setUI() {
-        self.simpleTextField.layer.cornerRadius = 15
-        self.simpleTextField.layer.borderWidth = 1
-        self.simpleTextField.layer.borderColor = UIColor(named: "mainColor")?.cgColor
-        self.cancelBtn.layer.borderWidth = 1.5
-        self.cancelBtn.layer.borderColor = UIColor(named: "mainColor")?.cgColor
-        self.cancelBtn.layer.cornerRadius = 10
-        self.okBtn.layer.cornerRadius = 10
+    func initalize() {
+        simpleWriteView = SimpleWriteView(self)
+        simpleWriteView?.setUI()
+        simpleWriteView?.setTextView()
+        self.simpleTextField.delegate = simpleWriteView
     }
     
     @IBAction func goEnter(_ sender: Any) {
@@ -109,32 +94,6 @@ final class SimpleWriteVC: UIViewController {
                     self.firebaseReloadDelegate?.reloadFirebaseData()
                 }
             }
-        }
-    }
-}
-
-extension SimpleWriteVC: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        self.textLengthLabel.text = "\(textView.text.count+1)/25"
-        let newLength = textView.text.count - range.length + text.count
-        let koreanMaxCount = maxCount + 1
-        if newLength > koreanMaxCount {
-            let overflow = newLength - koreanMaxCount
-            if text.count < overflow { return true }
-            let index = text.index(text.endIndex, offsetBy: -overflow)
-            let newText = text[..<index]
-            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: range.location) else { return false }
-            guard let endPosition = textView.position(from: textView.beginningOfDocument, offset: NSMaxRange(range)) else { return false }
-            guard let textRange = textView.textRange(from: startPosition, to: endPosition) else { return false }
-            textView.replace(textRange, withText: String(newText))
-            return false
-        }
-        return true
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.count > maxCount {
-            textView.text.removeLast()
         }
     }
 }

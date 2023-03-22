@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTableView: NSObject {
+final class MainTableView: NSObject {
     var mainVC: MainVC
     let mainModel = MainModel.model
     
