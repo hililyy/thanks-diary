@@ -10,6 +10,8 @@ import Firebase
 
 final class MainModel {
     static let model = MainModel()
+    private init() { }
+    
     var longData: [DiaryEntity] = []
     var shortData: [SimpleDiaryEntity] = []
     

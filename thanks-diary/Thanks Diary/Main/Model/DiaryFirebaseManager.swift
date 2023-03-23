@@ -13,7 +13,7 @@ final class DiaryFirebaseManager {
     var loginType: LoginType?
     static let shared = DiaryFirebaseManager()
     
-    init() {
+    private init() {
         self.uid = Auth.auth().currentUser?.uid
         self.loginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType())
     }

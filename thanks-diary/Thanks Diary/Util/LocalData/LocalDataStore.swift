@@ -8,7 +8,9 @@
 import Foundation
 
 final class LocalDataStore {
+    
     static let localDataStore = LocalDataStore()
+    private init() { }
     
     func getPushAlarmData() -> Bool {
         let getData = UserDefaults.standard.bool(forKey: LocalDataKeySet.IS_PUSH_ALARM.rawValue)

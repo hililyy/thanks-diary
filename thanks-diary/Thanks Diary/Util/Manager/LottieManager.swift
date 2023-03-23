@@ -8,7 +8,9 @@
 import Lottie
 
 final class LottieManager {
+    
     static let shared = LottieManager()
+    private init() { }
     
     func setLottie(_ vc: UIViewController, lottieView: UIView, name: String, mode: LottieLoopMode) {
         let animationView: AnimationView = .init(name: name)

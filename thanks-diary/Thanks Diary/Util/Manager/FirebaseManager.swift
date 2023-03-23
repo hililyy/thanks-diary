@@ -11,6 +11,7 @@ import FirebaseCore
 final class FirebaseLoginManager {
     
     static let shared = FirebaseLoginManager()
+    private init() { }
     
     // MARK: - apple
     func appleLogin(credential: AuthCredential, token: String, completion: @escaping (Bool) -> ()) {

@@ -10,6 +10,7 @@ import UIKit
 final class AlertManager {
     
     static let shared = AlertManager()
+    private init() { }
     
     func okAlert(_ vc: UIViewController, title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)

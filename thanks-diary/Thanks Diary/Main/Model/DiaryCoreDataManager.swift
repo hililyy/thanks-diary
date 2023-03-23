@@ -11,6 +11,7 @@ import CoreData
 final class DiaryCoreDataManager {
 
     static let shared = DiaryCoreDataManager()
+    private init() { }
     
     func getData(loginType: LoginType, selectedDate: Date, completion: @escaping () -> ()) {
         MainModel.model.longData.removeAll()
