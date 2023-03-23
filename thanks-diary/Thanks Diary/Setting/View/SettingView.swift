@@ -10,8 +10,8 @@ import MessageUI
 import AcknowList
 
 final class SettingView: NSObject {
-    var settingVC: SettingVC
-    let settingModel = SettingModel.model
+    private var settingVC: SettingVC
+    private let settingModel = SettingModel.model
     
     init(_ settingVC: SettingVC) {
         self.settingVC = settingVC
@@ -29,10 +29,6 @@ final class SettingView: NSObject {
         guard let appStoreVersion = results[0]["version"] as? String else { return "" }
         return appStoreVersion
     }
-    
-//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-//        controller.dismiss(animated: true, completion: nil)
-//    }
 }
 
 extension SettingView: UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
@@ -123,5 +119,4 @@ extension SettingView: UITableViewDelegate, UITableViewDataSource, MFMailCompose
         default: break
         }
     }
-    //}
 }

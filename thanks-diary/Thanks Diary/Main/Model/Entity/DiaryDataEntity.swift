@@ -7,7 +7,7 @@
 
 import ObjectMapper
 
-class DiaryDataEntity {
+final class DiaryDataEntity {
     var title: String
     var contents: String
     var date: String
@@ -26,7 +26,7 @@ class DiaryDataEntity {
     
 }
 
-class SimpleDiaryDataEntity {
+final class SimpleDiaryDataEntity {
     var contents: String
     var date: String
     
@@ -41,7 +41,7 @@ class SimpleDiaryDataEntity {
     }
 }
 
-class AllDiaryData: Mappable {
+final class AllDiaryData: Mappable {
     public var long: [String:Long] = [:]
     public var short: [String:Short] = [:]
     

@@ -7,12 +7,12 @@
 
 import UIKit
 
-class SettingVC: UIViewController, UIGestureRecognizerDelegate {
+final class SettingVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var settingTableView: UITableView!
     
-    let settingModel = SettingModel.model
-    var settingView: SettingView?
+    private let settingModel = SettingModel.model
+    private var settingView: SettingView?
     
     override func viewDidLoad() {
         super.viewDidLoad()

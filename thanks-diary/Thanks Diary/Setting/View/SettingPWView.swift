@@ -7,13 +7,11 @@
 
 import UIKit
 
-class SettingPWView: NSObject {
-    var settingPWVC: SettingPWVC
-    let settingModel = SettingModel.model
+final class SettingPWView: NSObject {
+    private var settingPWVC: SettingPWVC
+    private let settingModel = SettingModel.model
     
     init(_ settingPWVC: SettingPWVC) {
         self.settingPWVC = settingPWVC
     }
-    
-    
 }

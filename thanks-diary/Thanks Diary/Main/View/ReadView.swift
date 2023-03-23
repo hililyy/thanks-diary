@@ -8,8 +8,8 @@
 import UIKit
 
 final class ReadView: NSObject {
-    var readVC: ReadVC
-    let mainModel = MainModel.model
+    private let readVC: ReadVC
+    private let mainModel = MainModel.model
     
     init(_ readVC: ReadVC) {
         self.readVC = readVC

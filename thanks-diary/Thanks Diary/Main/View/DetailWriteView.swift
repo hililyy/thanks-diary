@@ -8,8 +8,8 @@
 import UIKit
 
 final class DetailWriteView: NSObject {
-    var detailWriteVC: DetailWriteVC
-    let mainModel = MainModel.model
+    private var detailWriteVC: DetailWriteVC
+    private let mainModel = MainModel.model
     
     init(_ detailWriteVC: DetailWriteVC) {
         self.detailWriteVC = detailWriteVC

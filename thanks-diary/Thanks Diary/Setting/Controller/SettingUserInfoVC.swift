@@ -9,10 +9,10 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SettingUserInfoVC: UIViewController {
+final class SettingUserInfoVC: UIViewController {
     @IBOutlet var userInfoTableView: UITableView!
-    let settingModel = SettingModel.model
-    var settingUserinfoView: SettingUserInfoView?
+    private let settingModel = SettingModel.model
+    private var settingUserinfoView: SettingUserInfoView?
     
     override func viewDidLoad() {
         super.viewDidLoad()

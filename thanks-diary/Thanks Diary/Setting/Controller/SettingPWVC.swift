@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingPWVC: UIViewController {
+final class SettingPWVC: UIViewController {
     
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var firstImg: UIImageView!
@@ -15,11 +15,11 @@ class SettingPWVC: UIViewController {
     @IBOutlet weak var thirdImg: UIImageView!
     @IBOutlet weak var fourthImg: UIImageView!
     
-    var count: Int = 0
-    var reEnterFlag: Bool = false
+    private var count: Int = 0
+    private var reEnterFlag: Bool = false
     var homeFlag: Bool = false
-    var firstPW: String = ""
-    var secondPW: String = ""
+    private var firstPW: String = ""
+    private var secondPW: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

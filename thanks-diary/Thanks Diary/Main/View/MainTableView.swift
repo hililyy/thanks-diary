@@ -8,8 +8,8 @@
 import UIKit
 
 final class MainTableView: NSObject {
-    var mainVC: MainVC
-    let mainModel = MainModel.model
+    private var mainVC: MainVC
+    private let mainModel = MainModel.model
     
     init(_ mainVC: MainVC) {
         self.mainVC = mainVC

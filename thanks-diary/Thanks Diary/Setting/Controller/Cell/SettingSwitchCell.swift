@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingSwitchCell: UITableViewCell {
+final class SettingSwitchCell: UITableViewCell {
 
     @IBOutlet weak var settingSwitch: UISwitch!
     @IBOutlet weak var settingLabel: UILabel!

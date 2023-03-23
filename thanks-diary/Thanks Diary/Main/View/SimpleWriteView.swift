@@ -8,9 +8,9 @@
 import UIKit
 
 final class SimpleWriteView: NSObject {
-    var simpleWriteVC: SimpleWriteVC
-    let mainModel = MainModel.model
-    let maxCount: Int = 23
+    private var simpleWriteVC: SimpleWriteVC
+    private let mainModel = MainModel.model
+    private let maxCount: Int = 23
     
     init(_ simpleWriteVC: SimpleWriteVC) {
         self.simpleWriteVC = simpleWriteVC

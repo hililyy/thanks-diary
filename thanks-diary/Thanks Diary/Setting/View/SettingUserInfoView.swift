@@ -7,10 +7,10 @@
 
 import UIKit
 
-class SettingUserInfoView: NSObject {
+final class SettingUserInfoView: NSObject {
     
-    var settingUserInfoVC: SettingUserInfoVC
-    let settingModel = SettingModel.model
+    private var settingUserInfoVC: SettingUserInfoVC
+    private let settingModel = SettingModel.model
     
     init(_ vc: SettingUserInfoVC) {
         self.settingUserInfoVC = vc

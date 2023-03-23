@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SettingModel {
+final class SettingModel {
     static var model = SettingModel()
     var loginType: LoginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType())!
     var alarmFlag: Bool = LocalDataStore.localDataStore.getPasswordData()
@@ -19,5 +19,4 @@ class SettingModel {
             completion()
         }
     }
-    
 }
