@@ -15,7 +15,6 @@ final class EmailLoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginBtn: UIButton!
     
     private var model: EmailModel?
-    private var alertManager = AlertManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +47,6 @@ extension EmailLoginVC: PLoginModel {
     }
     
     func fail(type: LoginType, errorMessage: String) {
-        alertManager.setAlert(self, title: "로그인 실패", message: errorMessage)
+        AlertManager.shared.okAlert(self, title: "로그인 실패", message: errorMessage)
     }
 }

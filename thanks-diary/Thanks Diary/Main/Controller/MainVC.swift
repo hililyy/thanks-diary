@@ -47,7 +47,7 @@ final class MainVC: UIViewController {
     }
     
     @IBAction func uploadData(_ sender: UIButton) {
-        AlertManager.shared.setAlert(self, title: "알림", message: "백업되지 않은 데이터가 있으면 백업합니다.") {
+        AlertManager.shared.okCancelAlert(self, title: "알림", message: "백업되지 않은 데이터가 있으면 백업합니다.") {
             self.mainModel.uploadData()
             self.reloadFirebaseData()
         }

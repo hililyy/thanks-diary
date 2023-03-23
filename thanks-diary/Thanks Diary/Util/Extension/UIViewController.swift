@@ -52,12 +52,17 @@ extension UIViewController {
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
-    func showPasswordVC() {
+    func presentSettingPWVC() {
         let vc = storyboard!.instantiateViewController(withIdentifier: "SettingPWVC") as! SettingPWVC
         vc.homeFlag = true
         let navi = UINavigationController(rootViewController: vc)
         navi.modalPresentationStyle = .currentContext
         present(navi, animated:false, completion: nil)
+    }
+    
+    func showSettingPWVC() {
+        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingPWVC") as? SettingPWVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func showSimpleWriteVC(isEdit: Bool = false, selectedIndex: Int? = nil) {
@@ -110,11 +115,6 @@ extension UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
-    }
-    
-    func showSettingPWVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingPWVC") as? SettingPWVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func showSettingUserInfoVC() {

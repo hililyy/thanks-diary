@@ -9,7 +9,9 @@ import FirebaseAuth
 import FirebaseCore
 
 final class FirebaseLoginManager {
+    
     static let shared = FirebaseLoginManager()
+    
     // MARK: - apple
     func appleLogin(credential: AuthCredential, token: String, completion: @escaping (Bool) -> ()) {
         Auth.auth().signIn(with: credential) { (authDataResult, error) in
@@ -99,5 +101,20 @@ final class FirebaseLoginManager {
     private func saveUserInfo(token: String, loginType: String) {
         LocalDataStore.localDataStore.setOAuthToken(newData: token)
         LocalDataStore.localDataStore.setLoginType(newData: loginType)
+    }
+    
+    func signOut(completion: @escaping () -> ()) {
+        let user = Auth.auth().currentUser
+        user?.delete { error in
+            if let error = error {
+                print(error)
+            } else {
+                completion()
+            }
+        }
+    }
+    
+    func getCurrentUserEmail() -> String {
+        return Auth.auth().currentUser?.email ?? "로그인한 이메일이 없습니다."
     }
 }

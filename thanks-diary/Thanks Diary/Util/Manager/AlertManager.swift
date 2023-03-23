@@ -11,13 +11,21 @@ final class AlertManager {
     
     static let shared = AlertManager()
     
-    func setAlert(_ vc: UIViewController, title: String, message: String) {
+    func okAlert(_ vc: UIViewController, title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
         vc.present(alert, animated: false, completion: nil)
     }
     
-    func setAlert(_ vc: UIViewController, title: String, message: String, completion: @escaping () -> ()) {
+    func okAlert(_ vc: UIViewController, title: String, message: String, completion: @escaping () -> ()) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default){ _ in
+            completion()
+        })
+        vc.present(alert, animated: false, completion: nil)
+    }
+    
+    func okCancelAlert(_ vc: UIViewController, title: String, message: String, completion: @escaping () -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "취소", style: .default))
         alert.addAction(UIAlertAction(title: "확인", style: .default){ _ in

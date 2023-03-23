@@ -18,7 +18,7 @@ final class SplashVC: UIViewController {
             AlarmAuth().requestNotificationAuthorization()
             if LocalDataStore.localDataStore.getLoginType() != "" {
                 if LocalDataStore.localDataStore.getPasswordData() {
-                    self.showPasswordVC()
+                    self.presentSettingPWVC()
                 } else {
                     self.showMainVC()
                 }

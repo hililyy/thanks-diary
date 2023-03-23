@@ -1,6 +1,6 @@
 //
 //  EmailSignupVC.swift
-//  
+//
 //
 //  Created by 강조은 on 2022/12/25.
 //
@@ -15,7 +15,6 @@ final class EmailSignupVC: UIViewController {
     @IBOutlet weak var signupBtn: UIButton!
     
     private var model: EmailModel?
-    private var alertManager = AlertManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +45,6 @@ extension EmailSignupVC: PLoginModel {
     
     func fail(type: LoginType, errorMessage: String) {
         print("이메일 회원가입 실패")
-        alertManager.setAlert(self, title: "회원가입 실패", message: errorMessage)
+        AlertManager.shared.okAlert(self, title: "회원가입 실패", message: errorMessage)
     }
 }
