@@ -13,7 +13,7 @@ final class SplashVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LottieManager().setLottie(self, lottieView: lottieView, name: "dot", mode: .loop)
+        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "dot", mode: .loop)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             AlarmAuth().requestNotificationAuthorization()
             if LocalDataStore.localDataStore.getLoginType() != "" {

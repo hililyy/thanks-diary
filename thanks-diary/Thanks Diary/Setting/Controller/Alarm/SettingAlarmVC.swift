@@ -14,7 +14,7 @@ class SettingAlarmVC: UIViewController {
     var selectedDate: Date? = nil
     var selectedStringDate: String = ""
     var switchFlag: Bool = false
-    var agreeFlag: Bool = false
+    var agreeFlag: Bool?
     var selectedTimeHour: Int = -1
     var selectedTimeMinute: Int = -1
     let userNotificationCenter = UNUserNotificationCenter.current()
@@ -25,8 +25,8 @@ class SettingAlarmVC: UIViewController {
         alarmTableView.delegate = self
         self.switchFlag = LocalDataStore.localDataStore.getPushAlarmData()
         self.agreeFlag = LocalDataStore.localDataStore.getPushAlarmAgree()
-        self.selectedTimeHour = LocalDataStore.localDataStore.getPushAlarmTime().hour ?? -1
-        self.selectedTimeMinute = LocalDataStore.localDataStore.getPushAlarmTime().minute ?? -1
+        self.selectedTimeHour = LocalDataStore.localDataStore.getPushAlarmTime()?.hour ?? -1
+        self.selectedTimeMinute = LocalDataStore.localDataStore.getPushAlarmTime()?.minute ?? -1
         
         self.selectedStringDate = "\(self.selectedTimeHour)시 \(self.selectedTimeMinute)분"
     }
@@ -41,8 +41,8 @@ class SettingAlarmVC: UIViewController {
             self.selectedTimeHour = -1
             self.selectedTimeMinute = -1
         } else {
-            self.selectedTimeHour = LocalDataStore.localDataStore.getPushAlarmTime().hour ?? -1
-            self.selectedTimeMinute = LocalDataStore.localDataStore.getPushAlarmTime().minute ?? -1
+            self.selectedTimeHour = LocalDataStore.localDataStore.getPushAlarmTime()?.hour ?? -1
+            self.selectedTimeMinute = LocalDataStore.localDataStore.getPushAlarmTime()?.minute ?? -1
         }
         LocalDataStore.localDataStore.setPushAlarmData(newData: switchFlag)
         sendNotification()
@@ -97,7 +97,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             if agreeFlag == false {
                 cell.selectedTimeLabel.text = "설정에서 알림을 허용해 주세요."
             } else {
-                if LocalDataStore.localDataStore.getPushAlarmTime().hour == -1 {
+                if LocalDataStore.localDataStore.getPushAlarmTime()?.hour == -1 {
                     cell.selectedTimeLabel.text = ""
                 } else {
                     cell.selectedTimeLabel.text = self.selectedStringDate
@@ -131,7 +131,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
 extension SettingAlarmVC: SendDataDelegate {
     func sendData(_ date: Date) {
         self.selectedDate = date
-
+        
         self.selectedTimeHour = Int(changeDateToString(date: self.selectedDate ?? Date(), formatString: "hh")) ?? -1
         self.selectedTimeMinute = Int(changeDateToString(date: self.selectedDate ?? Date(), formatString: "mm")) ?? -1
         LocalDataStore.localDataStore.setPushAlarmTime(newData: AlarmTimeEntity(hour: self.selectedTimeHour, minute: self.selectedTimeMinute))

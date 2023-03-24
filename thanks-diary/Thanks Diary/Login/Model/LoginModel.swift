@@ -24,7 +24,7 @@ final class LoginModel {
     }
     
     func setLottie(_ view: UIViewController, lottieView: UIView) {
-        LottieManager().setLottie(view, lottieView: lottieView, name: "dot", mode: .loop)
+        LottieManager.shared.setLottie(view, lottieView: lottieView, name: "dot", mode: .loop)
     }
     
     func login(type: LoginType) {

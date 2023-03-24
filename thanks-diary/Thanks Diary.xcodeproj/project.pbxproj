@@ -22,6 +22,7 @@
 		2A40AAB629BE280000B259B5 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40AAB529BE280000B259B5 /* UITextField.swift */; };
 		2A40AAB829BE4EE400B259B5 /* DiaryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40AAB729BE4EE400B259B5 /* DiaryProtocol.swift */; };
 		2A4F9302290071C200ECFE88 /* ErrorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F9301290071C200ECFE88 /* ErrorCase.swift */; };
+		2A6A3ED129CDCDEE00AA163F /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A3ED029CDCDEE00AA163F /* Pods-Thanks Diary-acknowledgements.plist */; };
 		2A7241C928B019C00040ADE9 /* SettingAlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241C828B019C00040ADE9 /* SettingAlarmCell.swift */; };
 		2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */; };
 		2A7241CD28B26AAD0040ADE9 /* DetailWriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */; };
@@ -51,7 +52,6 @@
 		2A9F351528AE63ED006CCF7C /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351428AE63ED006CCF7C /* SettingSwitchCell.swift */; };
 		2A9F351728AE63FD006CCF7C /* SettingMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351628AE63FD006CCF7C /* SettingMoreCell.swift */; };
 		2A9F351928AE6410006CCF7C /* SettingLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351828AE6410006CCF7C /* SettingLabelCell.swift */; };
-		2AA1F63F29A3D22000EDA925 /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AA1F63E29A3D22000EDA925 /* Pods-Thanks Diary-acknowledgements.plist */; };
 		2AA8094829C7787E003170C4 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8094729C7787E003170C4 /* FirebaseManager.swift */; };
 		2AA8094A29C7802D003170C4 /* PLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8094929C7802D003170C4 /* PLoginModel.swift */; };
 		2AA8094C29C78F48003170C4 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8094B29C78F48003170C4 /* LoginType.swift */; };
@@ -123,6 +123,7 @@
 		2A40AAB529BE280000B259B5 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		2A40AAB729BE4EE400B259B5 /* DiaryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryProtocol.swift; sourceTree = "<group>"; };
 		2A4F9301290071C200ECFE88 /* ErrorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCase.swift; sourceTree = "<group>"; };
+		2A6A3ED029CDCDEE00AA163F /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
 		2A7241C828B019C00040ADE9 /* SettingAlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmCell.swift; sourceTree = "<group>"; };
 		2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWVC.swift; sourceTree = "<group>"; };
 		2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteVC.swift; sourceTree = "<group>"; };
@@ -153,7 +154,6 @@
 		2A9F351428AE63ED006CCF7C /* SettingSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
 		2A9F351628AE63FD006CCF7C /* SettingMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMoreCell.swift; sourceTree = "<group>"; };
 		2A9F351828AE6410006CCF7C /* SettingLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLabelCell.swift; sourceTree = "<group>"; };
-		2AA1F63E29A3D22000EDA925 /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
 		2AA8094729C7787E003170C4 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2AA8094929C7802D003170C4 /* PLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLoginModel.swift; sourceTree = "<group>"; };
 		2AA8094B29C78F48003170C4 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 		2A0D87F228A540FB00576E56 = {
 			isa = PBXGroup;
 			children = (
-				2AA1F63E29A3D22000EDA925 /* Pods-Thanks Diary-acknowledgements.plist */,
+				2A6A3ED029CDCDEE00AA163F /* Pods-Thanks Diary-acknowledgements.plist */,
 				2A0D87FD28A540FB00576E56 /* Thanks Diary */,
 				2A0D87FC28A540FB00576E56 /* Products */,
 				097BDEFB190D1496A285C00F /* Pods */,
@@ -682,7 +682,7 @@
 				2A81233028BFBF4D000A250E /* sun.json in Resources */,
 				2A0D881A28ABB83A00576E56 /* dot.json in Resources */,
 				2AEE20C52950AD3D00A17F5B /* GoogleService-Info.plist in Resources */,
-				2AA1F63F29A3D22000EDA925 /* Pods-Thanks Diary-acknowledgements.plist in Resources */,
+				2A6A3ED129CDCDEE00AA163F /* Pods-Thanks Diary-acknowledgements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,7 +889,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "감사일기";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -945,7 +945,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "감사일기";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -974,7 +974,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1010,7 +1010,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

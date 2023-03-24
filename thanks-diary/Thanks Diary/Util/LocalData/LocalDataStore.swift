@@ -10,7 +10,7 @@ import Foundation
 final class LocalDataStore {
     
     static let localDataStore = LocalDataStore()
-    private init() { }
+    private init() { clearValues() }
     
     func getPushAlarmData() -> Bool {
         let getData = UserDefaults.standard.bool(forKey: LocalDataKeySet.IS_PUSH_ALARM.rawValue)
@@ -30,25 +30,25 @@ final class LocalDataStore {
         UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.IS_PASSWORD.rawValue)
     }
     
-    func getPasswordNumber() -> String {
+    func getPasswordNumber() -> String? {
         let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.PASSWORD_NUMBER.rawValue)
         return getData ?? ""
     }
     
-    func setPasswordNumber(newData: String) {
+    func setPasswordNumber(newData: String?) {
         UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.PASSWORD_NUMBER.rawValue)
     }
     
-    func getPushAlarmAgree() -> Bool {
+    func getPushAlarmAgree() -> Bool? {
         let getData = UserDefaults.standard.bool(forKey: LocalDataKeySet.IS_PUSH_ALARM_AGREE.rawValue)
         return getData
     }
     
-    func setPushAlarmAgree(newData: Bool) {
+    func setPushAlarmAgree(newData: Bool?) {
         UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.IS_PUSH_ALARM_AGREE.rawValue)
     }
     
-    func getPushAlarmTime() -> AlarmTimeEntity {
+    func getPushAlarmTime() -> AlarmTimeEntity? {
         guard let getData = UserDefaults.standard.value(forKey: LocalDataKeySet.ALARM_TIME.rawValue) as? Data else { return AlarmTimeEntity(hour: 0, minute: 0) }
         let diaryData = try? PropertyListDecoder().decode (
             AlarmTimeEntity.self, from: getData
@@ -56,25 +56,35 @@ final class LocalDataStore {
         return diaryData ?? AlarmTimeEntity(hour: 0, minute: 0)
     }
     
-    func setPushAlarmTime(newData: AlarmTimeEntity) {
+    func setPushAlarmTime(newData: AlarmTimeEntity?) {
         UserDefaults.standard.setValue(try? PropertyListEncoder().encode(newData), forKey: LocalDataKeySet.ALARM_TIME.rawValue)
     }
     
-    func getOAuthToken() -> String {
+    func getOAuthToken() -> String? {
         let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.OAUTH_TOKEN.rawValue)
         return getData ?? ""
     }
     
-    func setOAuthToken(newData: String) {
+    func setOAuthToken(newData: String?) {
         UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.OAUTH_TOKEN.rawValue)
     }
     
-    func getLoginType() -> String {
+    func getLoginType() -> String? {
         let getData = UserDefaults.standard.string(forKey: LocalDataKeySet.LOGIN_TYPE.rawValue)
         return getData ?? ""
     }
     
-    func setLoginType(newData: String) {
+    func setLoginType(newData: String?) {
         UserDefaults.standard.setValue(newData, forKey: LocalDataKeySet.LOGIN_TYPE.rawValue)
+    }
+    
+    func clearValues() {
+        setLoginType(newData: nil)
+        setPasswordData(newData: false)
+        setOAuthToken(newData: nil)
+        setPasswordNumber(newData: nil)
+        setPushAlarmData(newData: false)
+        setPushAlarmTime(newData: nil)
+        setPushAlarmAgree(newData: nil)
     }
 }

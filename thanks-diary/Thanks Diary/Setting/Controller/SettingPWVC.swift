@@ -36,7 +36,7 @@ final class SettingPWVC: UIViewController {
         setImageByCount()
         if count == 4 {
             if homeFlag == true {
-                if comparePW(LocalDataStore.localDataStore.getPasswordNumber(), firstPW) {
+                if comparePW(LocalDataStore.localDataStore.getPasswordNumber()!, firstPW) {
                     showMainVC()
                 } else {
                     notMatch()

@@ -15,7 +15,7 @@ final class DiaryFirebaseManager {
     
     private init() {
         self.uid = Auth.auth().currentUser?.uid
-        self.loginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType())
+        self.loginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType()!)
     }
     
     func getData(completion: @escaping () -> ()) {

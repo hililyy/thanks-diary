@@ -109,8 +109,8 @@ extension SettingView: UITableViewDelegate, UITableViewDataSource, MFMailCompose
             break
             
         case 4: // 오픈소스 라이선스
-            //            let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
-            //            navigationController?.pushViewController(acknowList, animated: true)
+            let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
+            settingVC.navigationController?.pushViewController(acknowList, animated: true)
             break
             
         case 5: // 앱 버전
