@@ -11,4 +11,7 @@ enum ErrorCase: Error {
     case NOT_SAVE_DATA
     case NOT_EXIST_INDEX
     case EMPTY_CONTENTS
+    case ERROR_NETWORK
+    case AUTHENTICATION
+    case APP_UPDATE_REQUIRED
 }
