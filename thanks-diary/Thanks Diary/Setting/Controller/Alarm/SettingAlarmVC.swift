@@ -19,10 +19,12 @@ class SettingAlarmVC: UIViewController {
     var selectedTimeMinute: Int = -1
     let userNotificationCenter = UNUserNotificationCenter.current()
     
+    private let settingModel = SettingModel.model
+    private var settingAlarmView: SettingAlarmView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        alarmTableView.dataSource = self
-        alarmTableView.delegate = self
+        initalize()
         self.switchFlag = LocalDataStore.localDataStore.getPushAlarmData()
         self.agreeFlag = LocalDataStore.localDataStore.getPushAlarmAgree()
         self.selectedTimeHour = LocalDataStore.localDataStore.getPushAlarmTime()?.hour ?? -1
@@ -48,6 +50,12 @@ class SettingAlarmVC: UIViewController {
         sendNotification()
     }
     
+    func initalize() {
+        settingAlarmView = SettingAlarmView(self)
+        alarmTableView.dataSource = settingAlarmView
+        alarmTableView.delegate = settingAlarmView
+    }
+    
     func sendNotification() {
         let notificationContent = UNMutableNotificationContent()
 
@@ -66,78 +74,5 @@ class SettingAlarmVC: UIViewController {
                 print("Notification Error: ", error)
             }
         }
-    }
-    
-    func changeDateToString(date: Date, formatString: String) -> String {
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = formatString
-        return dateFormatter.string(from: date)
-    }
-}
-
-extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = self.alarmTableView.dequeueReusableCell(withIdentifier: "AlarmSettingCell", for: indexPath) as! AlarmSettingCell
-            if agreeFlag == false {
-                cell.alarmSwitchBtn.isEnabled = false
-            } else {
-                cell.alarmSwitchBtn.isOn = switchFlag
-            }
-            return cell
-        case 1:
-            let cell = self.alarmTableView.dequeueReusableCell(withIdentifier: "AlarmTimeCell", for: indexPath) as! AlarmTimeCell
-            cell.selectionStyle = .none
-            if agreeFlag == false {
-                cell.selectedTimeLabel.text = "설정에서 알림을 허용해 주세요."
-            } else {
-                if LocalDataStore.localDataStore.getPushAlarmTime()?.hour == -1 {
-                    cell.selectedTimeLabel.text = ""
-                } else {
-                    cell.selectedTimeLabel.text = self.selectedStringDate
-                }
-            }
-            return cell
-        default:
-            return UITableViewCell()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            break
-        case 1:
-            if agreeFlag == true {
-                guard let date = self.selectedDate else { return }
-                presentSettingAlarmDetailVC(selectedDate: date)
-            } else { break }
-        default:
-            break
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
-    }
-}
-
-extension SettingAlarmVC: SendDataDelegate {
-    func sendData(_ date: Date) {
-        self.selectedDate = date
-        
-        self.selectedTimeHour = Int(changeDateToString(date: self.selectedDate ?? Date(), formatString: "hh")) ?? -1
-        self.selectedTimeMinute = Int(changeDateToString(date: self.selectedDate ?? Date(), formatString: "mm")) ?? -1
-        LocalDataStore.localDataStore.setPushAlarmTime(newData: AlarmTimeEntity(hour: self.selectedTimeHour, minute: self.selectedTimeMinute))
-        
-        selectedStringDate = changeDateToString(date: self.selectedDate ?? Date(), formatString: "a hh시 mm분")
-        sendNotification()
-        self.alarmTableView.reloadData()
     }
 }

@@ -23,6 +23,7 @@
 		2A40AAB829BE4EE400B259B5 /* DiaryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40AAB729BE4EE400B259B5 /* DiaryProtocol.swift */; };
 		2A4F9302290071C200ECFE88 /* ErrorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F9301290071C200ECFE88 /* ErrorCase.swift */; };
 		2A6A3ED129CDCDEE00AA163F /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A3ED029CDCDEE00AA163F /* Pods-Thanks Diary-acknowledgements.plist */; };
+		2A6A3EF329D05B9F00AA163F /* SettingAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A3EF229D05B9F00AA163F /* SettingAlarmView.swift */; };
 		2A7241C928B019C00040ADE9 /* SettingAlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241C828B019C00040ADE9 /* SettingAlarmCell.swift */; };
 		2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */; };
 		2A7241CD28B26AAD0040ADE9 /* DetailWriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */; };
@@ -124,6 +125,7 @@
 		2A40AAB729BE4EE400B259B5 /* DiaryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryProtocol.swift; sourceTree = "<group>"; };
 		2A4F9301290071C200ECFE88 /* ErrorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCase.swift; sourceTree = "<group>"; };
 		2A6A3ED029CDCDEE00AA163F /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
+		2A6A3EF229D05B9F00AA163F /* SettingAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmView.swift; sourceTree = "<group>"; };
 		2A7241C828B019C00040ADE9 /* SettingAlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmCell.swift; sourceTree = "<group>"; };
 		2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWVC.swift; sourceTree = "<group>"; };
 		2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteVC.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				2ABFAC0E29CA890700273F0D /* SettingView.swift */,
 				2AD81F9029CC28B80032829F /* SettingPWView.swift */,
 				2AD81F9229CC28C50032829F /* SettingUserInfoView.swift */,
+				2A6A3EF229D05B9F00AA163F /* SettingAlarmView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				2ABFAC0529CA790E00273F0D /* DetailWriteView.swift in Sources */,
 				2A40AAB429BDFD4500B259B5 /* Date.swift in Sources */,
 				2AA8094C29C78F48003170C4 /* LoginType.swift in Sources */,
+				2A6A3EF329D05B9F00AA163F /* SettingAlarmView.swift in Sources */,
 				2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */,
 				2A81233B28C0067B000A250E /* SettingAlarmDetailVC.swift in Sources */,
 				2A81234A28C2A208000A250E /* DiaryData.xcdatamodeld in Sources */,
