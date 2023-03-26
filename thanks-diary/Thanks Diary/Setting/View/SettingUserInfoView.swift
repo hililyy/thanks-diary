@@ -69,6 +69,7 @@ extension SettingUserInfoView: UITableViewDelegate, UITableViewDataSource {
         case 1: // 로그아웃
             AlertManager.shared.okCancelAlert(settingUserInfoVC, title: "로그아웃", message: "로그아웃 하시겠습니까?") {
                 AlertManager.shared.okAlert(self.settingUserInfoVC, title: "알림", message: "로그아웃이 완료되었습니다.") {
+                    LocalDataStore.localDataStore.clearValues()
                     self.settingUserInfoVC.showRootLoginVC()
                 }
             }
@@ -76,6 +77,7 @@ extension SettingUserInfoView: UITableViewDelegate, UITableViewDataSource {
             AlertManager.shared.okCancelAlert(settingUserInfoVC, title: "계정탈퇴", message: "계정탈퇴 하시겠습니까?") {
                 FirebaseLoginManager.shared.signOut {
                     AlertManager.shared.okAlert(self.settingUserInfoVC, title: "알림", message: "계정탈퇴가 완료되었습니다.") {
+                        LocalDataStore.localDataStore.clearValues()
                         self.settingUserInfoVC.showRootLoginVC()
                     }
                 }

@@ -43,7 +43,6 @@ final class LoginVC: UIViewController {
     
 extension LoginVC: PLoginModel {
     func success(type: LoginType) {
-        LocalDataStore.localDataStore.setLoginType(newData: type.rawValue)
         if type == .none {
             self.showFirstVC()
         } else {
