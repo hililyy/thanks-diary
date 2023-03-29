@@ -19,28 +19,28 @@ final class DiaryFirebaseManager {
     }
     
     func getData(completion: @escaping () -> ()) {
-        MainModel.model.longDiaryData.removeAll()
-        MainModel.model.shortDiaryData.removeAll()
-        MainModel.model.longKey.removeAll()
-        MainModel.model.shortKey.removeAll()
+        MainModel.model.detailDiaryData.removeAll()
+        MainModel.model.simpleDiaryData.removeAll()
+        MainModel.model.detailKey.removeAll()
+        MainModel.model.simpleKey.removeAll()
         MainModel.model.dateWithCircle.removeAll()
         guard let uid = uid else { return }
         
         Database.database().reference().child(uid).child("detail").observeSingleEvent(of: .value) { snapshot in
             for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                guard let data = AllDiaryData.Long(JSON: snap.value as! [String:AnyObject]) else { return }
+                guard let data = AllDiaryData.Detail(JSON: snap.value as! [String:AnyObject]) else { return }
                 MainModel.model.dateWithCircle.append(data.date ?? "")
-                MainModel.model.longKey.append(snap.key)
-                MainModel.model.longDiaryData.append(data)
+                MainModel.model.detailKey.append(snap.key)
+                MainModel.model.detailDiaryData.append(data)
             }
         }
         
         Database.database().reference().child(uid).child("simple").observeSingleEvent(of: .value) { snapshot in
             for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                guard let data = AllDiaryData.Short(JSON: snap.value as! [String:AnyObject]) else { return }
+                guard let data = AllDiaryData.Simple(JSON: snap.value as! [String:AnyObject]) else { return }
                 MainModel.model.dateWithCircle.append(data.date ?? "")
-                MainModel.model.shortKey.append(snap.key)
-                MainModel.model.shortDiaryData.append(data)
+                MainModel.model.simpleKey.append(snap.key)
+                MainModel.model.simpleDiaryData.append(data)
             }
             completion()
         }
@@ -51,18 +51,18 @@ final class DiaryFirebaseManager {
 
         switch type {
         case .detail :
-            let longData: [String:Any] = [
+            let detailData: [String:Any] = [
                 "title": title,
                 "contents": contents,
                 "date": date
             ]
-            Database.database().reference().child(uid).child("detail").childByAutoId().setValue(longData)
+            Database.database().reference().child(uid).child("detail").childByAutoId().setValue(detailData)
         case .simple :
-            let shortData: [String:Any] = [
+            let simpleData: [String:Any] = [
                 "contents": contents,
                 "date": date
             ]
-            Database.database().reference().child(uid).child("simple").childByAutoId().setValue(shortData)
+            Database.database().reference().child(uid).child("simple").childByAutoId().setValue(simpleData)
         }
     }
     
@@ -76,14 +76,14 @@ final class DiaryFirebaseManager {
                 "contents": afterContents,
                 "date": selectedDate.convertString()
             ]
-            Database.database().reference().child(uid).child("detail").child(MainModel.model.longKeybyDate[selectedIndex]).updateChildValues(diary)
+            Database.database().reference().child(uid).child("detail").child(MainModel.model.detailKeybyDate[selectedIndex]).updateChildValues(diary)
             completion()
         case .simple:
             let diary: [String:Any] = [
                 "contents": afterContents,
                 "date": selectedDate.convertString()
             ]
-            Database.database().reference().child(uid).child("simple").child(MainModel.model.shortKeybyDate[selectedIndex]).updateChildValues(diary)
+            Database.database().reference().child(uid).child("simple").child(MainModel.model.simpleKeybyDate[selectedIndex]).updateChildValues(diary)
             completion()
         }
     }
@@ -93,10 +93,10 @@ final class DiaryFirebaseManager {
         
         switch diaryType {
         case .detail:
-            Database.database().reference().child(uid).child("detail").child(MainModel.model.longKeybyDate[selectedIndex]).removeValue()
+            Database.database().reference().child(uid).child("detail").child(MainModel.model.detailKeybyDate[selectedIndex]).removeValue()
             completion()
         case .simple:
-            Database.database().reference().child(uid).child("simple").child(MainModel.model.shortKeybyDate[selectedIndex]).removeValue()
+            Database.database().reference().child(uid).child("simple").child(MainModel.model.simpleKeybyDate[selectedIndex]).removeValue()
             completion()
         }
     }

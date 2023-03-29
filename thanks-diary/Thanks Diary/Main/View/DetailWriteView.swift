@@ -32,11 +32,11 @@ final class DetailWriteView: NSObject {
         if detailWriteVC.editFlag == true {
             guard let index = detailWriteVC.selectedIndex else { return }
             if mainModel.loginType == LoginType.none {
-                detailWriteVC.titleTextfield.text = mainModel.longData[index].title
-                detailWriteVC.contentsTextView.text = mainModel.longData[index].contents
+                detailWriteVC.titleTextfield.text = mainModel.detailData[index].title
+                detailWriteVC.contentsTextView.text = mainModel.detailData[index].contents
             } else {
-                detailWriteVC.titleTextfield.text = mainModel.longDiaryDatabyDate[index].title
-                detailWriteVC.contentsTextView.text = mainModel.longDiaryDatabyDate[index].contents
+                detailWriteVC.titleTextfield.text = mainModel.detailDiaryDatabyDate[index].title
+                detailWriteVC.contentsTextView.text = mainModel.detailDiaryDatabyDate[index].contents
             }
         }
     }

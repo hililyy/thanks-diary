@@ -20,9 +20,9 @@ final class SimpleWriteView: NSObject {
         if simpleWriteVC.editFlag == true {
             guard let index = simpleWriteVC.selectedIndex else { return }
             if mainModel.loginType == LoginType.none {
-                simpleWriteVC.simpleTextField.text = mainModel.shortData[index].contents
+                simpleWriteVC.simpleTextField.text = mainModel.simpleData[index].contents
             } else {
-                simpleWriteVC.simpleTextField.text = mainModel.shortDiaryDatabyDate[index].contents
+                simpleWriteVC.simpleTextField.text = mainModel.simpleDiaryDatabyDate[index].contents
             }
         }
         simpleWriteVC.textLengthLabel.text = "\(simpleWriteVC.simpleTextField.text.count)/25"

@@ -42,17 +42,17 @@ final class SimpleDiaryDataEntity {
 }
 
 final class AllDiaryData: Mappable {
-    public var long: [String:Long] = [:]
-    public var short: [String:Short] = [:]
+    public var detail: [String:Detail] = [:]
+    public var simple: [String:Simple] = [:]
     
     required init?(map: Map) {}
     
     func mapping(map: Map) {
-        long <- map["long"]
-        short <- map["short"]
+        detail <- map["detail"]
+        simple <- map["simple"]
     }
     
-    public class Long: Mappable {
+    public class Detail: Mappable {
         public var title: String?
         public var contents: String?
         public var date: String?
@@ -64,7 +64,7 @@ final class AllDiaryData: Mappable {
         }
     }
     
-    public class Short: Mappable {
+    public class Simple: Mappable {
         public var contents: String?
         public var date: String?
         public required init?(map: Map) {}

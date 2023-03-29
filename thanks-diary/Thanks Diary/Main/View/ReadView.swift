@@ -30,11 +30,11 @@ final class ReadView: NSObject {
         guard let index = readVC.selectedIndex else { return }
         readVC.dateLabel.text = "\(mainModel.selectedDate.convertString(format: "yyyy년 M월 d일")) 감사일기"
         if mainModel.loginType == LoginType.none {
-            readVC.titleLabel.text = mainModel.longData[index].title
-            readVC.contentsTextView.text = mainModel.longData[index].contents
+            readVC.titleLabel.text = mainModel.detailData[index].title
+            readVC.contentsTextView.text = mainModel.detailData[index].contents
         } else {
-            readVC.titleLabel.text = mainModel.longDiaryDatabyDate[index].title
-            readVC.contentsTextView.text = mainModel.longDiaryDatabyDate[index].contents
+            readVC.titleLabel.text = mainModel.detailDiaryDatabyDate[index].title
+            readVC.contentsTextView.text = mainModel.detailDiaryDatabyDate[index].contents
         }
     }
 }

@@ -14,8 +14,8 @@ final class DiaryCoreDataManager {
     private init() { }
     
     func getData(loginType: LoginType, selectedDate: Date, completion: @escaping () -> ()) {
-        MainModel.model.longData.removeAll()
-        MainModel.model.shortData.removeAll()
+        MainModel.model.detailData.removeAll()
+        MainModel.model.simpleData.removeAll()
         MainModel.model.dateWithCircle.removeAll()
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -65,20 +65,20 @@ final class DiaryCoreDataManager {
     func addArray(type: DiaryType, title: String = "", contents: String, date: String) {
         switch type {
         case .detail:
-            let longEntity = DiaryEntity(
+            let detailEntity = DiaryEntity(
                 type: "detail",
                 title: title,
                 contents: contents,
                 date: date
             )
-            MainModel.model.longData.append(longEntity)
+            MainModel.model.detailData.append(detailEntity)
         case .simple:
-            let shortEntity = SimpleDiaryEntity(
+            let simpleEntity = SimpleDiaryEntity(
                 type: "simple",
                 contents: contents,
                 date: date
             )
-            MainModel.model.shortData.append(shortEntity)
+            MainModel.model.simpleData.append(simpleEntity)
         }
     }
     
@@ -127,8 +127,8 @@ final class DiaryCoreDataManager {
         
         switch type {
         case .detail:
-            guard let title = MainModel.model.longData[selectedIndex].title,
-                  let contents = MainModel.model.longData[selectedIndex].contents else { return }
+            guard let title = MainModel.model.detailData[selectedIndex].title,
+                  let contents = MainModel.model.detailData[selectedIndex].contents else { return }
             
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
             fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", selectedDate.convertString(), title, contents)
@@ -148,7 +148,7 @@ final class DiaryCoreDataManager {
                 print(error)
             }
         case .simple:
-            guard let contents = MainModel.model.shortData[selectedIndex].contents else { return }
+            guard let contents = MainModel.model.simpleData[selectedIndex].contents else { return }
             
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
             fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", selectedDate.convertString(), contents)
@@ -175,8 +175,8 @@ final class DiaryCoreDataManager {
         switch type {
         case .detail:
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-                  let title = MainModel.model.longData[selectedIndex].title,
-                  let contents = MainModel.model.longData[selectedIndex].contents
+                  let title = MainModel.model.detailData[selectedIndex].title,
+                  let contents = MainModel.model.detailData[selectedIndex].contents
             else { return }
             let managedContext = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
@@ -196,7 +196,7 @@ final class DiaryCoreDataManager {
                 print(error)
             }
         case .simple:
-            guard let contents = MainModel.model.shortData[selectedIndex].contents else { return }
+            guard let contents = MainModel.model.simpleData[selectedIndex].contents else { return }
             let managedContext = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
             fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", selectedDate.convertString(), contents)

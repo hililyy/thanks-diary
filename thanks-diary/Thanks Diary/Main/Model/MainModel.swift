@@ -12,20 +12,20 @@ final class MainModel {
     static let model = MainModel()
     private init() { }
     
-    var longData: [DiaryEntity] = []
-    var shortData: [SimpleDiaryEntity] = []
+    var detailData: [DiaryEntity] = []
+    var simpleData: [SimpleDiaryEntity] = []
     
     var dateWithCircle: [String] = []
     var selectedDate: Date = Date()
     
-    var longDiaryData: [AllDiaryData.Long] = []
-    var shortDiaryData: [AllDiaryData.Short] = []
-    var longDiaryDatabyDate: [AllDiaryData.Long] = []
-    var shortDiaryDatabyDate: [AllDiaryData.Short] = []
-    var longKey: [String] = []
-    var shortKey: [String] = []
-    var longKeybyDate: [String] = []
-    var shortKeybyDate: [String] = []
+    var detailDiaryData: [AllDiaryData.Detail] = []
+    var simpleDiaryData: [AllDiaryData.Simple] = []
+    var detailDiaryDatabyDate: [AllDiaryData.Detail] = []
+    var simpleDiaryDatabyDate: [AllDiaryData.Simple] = []
+    var detailKey: [String] = []
+    var simpleKey: [String] = []
+    var detailKeybyDate: [String] = []
+    var simpleKeybyDate: [String] = []
     var loginType: LoginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType()!)!
     
     func getData(completion: @escaping () -> ()) {
@@ -106,14 +106,14 @@ final class MainModel {
     
     func uploadData() {
         self.getData() {
-            for data in self.longData {
+            for data in self.detailData {
                 self.setFirebaseData(
                     diaryType: .detail,
                     title: data.title ?? "",
                     contents: data.contents ?? "",
                     date: data.date ?? "")
             }
-            for data in self.shortData {
+            for data in self.simpleData {
                 self.setFirebaseData(
                     diaryType: .simple,
                     contents: data.contents ?? "",
@@ -123,23 +123,23 @@ final class MainModel {
     }
     
     func setDataByDate() {
-        longDiaryDatabyDate.removeAll()
-        shortDiaryDatabyDate.removeAll()
-        longKeybyDate.removeAll()
-        shortKeybyDate.removeAll()
+        detailDiaryDatabyDate.removeAll()
+        simpleDiaryDatabyDate.removeAll()
+        detailKeybyDate.removeAll()
+        simpleKeybyDate.removeAll()
         var count = 0
-        for diary in longDiaryData {
+        for diary in detailDiaryData {
             if selectedDate.convertString() == diary.date {
-                longDiaryDatabyDate.append(diary)
-                longKeybyDate.append(longKey[count])
+                detailDiaryDatabyDate.append(diary)
+                detailKeybyDate.append(detailKey[count])
             }
             count+=1
         }
         count = 0
-        for diary in shortDiaryData {
+        for diary in simpleDiaryData {
             if selectedDate.convertString() == diary.date {
-                shortDiaryDatabyDate.append(diary)
-                shortKeybyDate.append(shortKey[count])
+                simpleDiaryDatabyDate.append(diary)
+                simpleKeybyDate.append(simpleKey[count])
             }
             count+=1
         }

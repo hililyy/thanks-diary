@@ -21,7 +21,7 @@ extension MainTableView: UITableViewDataSource, UITableViewDelegate {
         let mainModel = MainModel.model
            
         if mainModel.loginType == LoginType.none {
-            if mainModel.longData.count == 0 && mainModel.shortData.count == 0 {
+            if mainModel.detailData.count == 0 && mainModel.simpleData.count == 0 {
                 if  mainModel.selectedDate.convertString() == Date().convertString() {
                     mainVC.emptyView.isHidden = false
                     mainVC.emptyView.frame.size.height = 300
@@ -36,10 +36,10 @@ extension MainTableView: UITableViewDataSource, UITableViewDelegate {
             } else {
                 mainVC.emptyView.isHidden = true
                 mainVC.emptyView.frame.size.height = 0
-                return mainModel.longData.count + mainModel.shortData.count
+                return mainModel.detailData.count + mainModel.simpleData.count
             }
         } else {
-            if mainModel.longDiaryDatabyDate.count == 0 && mainModel.shortDiaryDatabyDate.count == 0 {
+            if mainModel.detailDiaryDatabyDate.count == 0 && mainModel.simpleDiaryDatabyDate.count == 0 {
                 if  mainModel.selectedDate.convertString() == Date().convertString() {
                     mainVC.emptyView.isHidden = false
                     mainVC.emptyView.frame.size.height = 300
@@ -54,7 +54,7 @@ extension MainTableView: UITableViewDataSource, UITableViewDelegate {
             } else {
                 mainVC.emptyView.isHidden = true
                 mainVC.emptyView.frame.size.height = 0
-                return mainModel.longDiaryDatabyDate.count + mainModel.shortDiaryDatabyDate.count
+                return mainModel.detailDiaryDatabyDate.count + mainModel.simpleDiaryDatabyDate.count
             }
         }
     }
@@ -62,15 +62,15 @@ extension MainTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if mainModel.loginType == LoginType.none {
             switch indexPath.row {
-            case ..<mainModel.longData.count:
+            case ..<mainModel.detailData.count:
                 let cell = mainVC.diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-                cell.titleLabel.text = mainModel.longData[indexPath.row].title
+                cell.titleLabel.text = mainModel.detailData[indexPath.row].title
                 cell.selectionStyle = .none
                 return cell
-            case mainModel.longData.count...:
+            case mainModel.detailData.count...:
                 let cell = mainVC.diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
                 cell.titleLabel.text =
-                mainModel.shortData[indexPath.row - mainModel.longData.count].contents
+                mainModel.simpleData[indexPath.row - mainModel.detailData.count].contents
                 cell.selectionStyle = .none
                 return cell
             default:
@@ -78,15 +78,15 @@ extension MainTableView: UITableViewDataSource, UITableViewDelegate {
             }
         } else {
             switch indexPath.row {
-            case ..<mainModel.longDiaryDatabyDate.count:
+            case ..<mainModel.detailDiaryDatabyDate.count:
                 let cell = mainVC.diaryTableView.dequeueReusableCell(withIdentifier: "DetailDiaryListCell", for: indexPath) as! DetailDiaryListCell
-                cell.titleLabel.text = mainModel.longDiaryDatabyDate[indexPath.row].title
+                cell.titleLabel.text = mainModel.detailDiaryDatabyDate[indexPath.row].title
                 cell.selectionStyle = .none
                 return cell
-            case mainModel.longDiaryDatabyDate.count...:
+            case mainModel.detailDiaryDatabyDate.count...:
                 let cell = mainVC.diaryTableView.dequeueReusableCell(withIdentifier: "SimpleDiaryListCell", for: indexPath) as! SimpleDiaryListCell
                 cell.titleLabel.text =
-                mainModel.shortDiaryDatabyDate[indexPath.row - mainModel.longDiaryDatabyDate.count].contents
+                mainModel.simpleDiaryDatabyDate[indexPath.row - mainModel.detailDiaryDatabyDate.count].contents
                 cell.selectionStyle = .none
                 return cell
             default:
@@ -99,19 +99,19 @@ extension MainTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if mainModel.loginType == LoginType.none {
             switch indexPath.row {
-            case ..<mainModel.longData.count:
+            case ..<mainModel.detailData.count:
                 mainVC.showReadVC(index: indexPath.row)
-            case mainModel.longData.count...:
-                mainVC.showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longData.count)
+            case mainModel.detailData.count...:
+                mainVC.showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.detailData.count)
             default:
                 break
             }
         } else {
             switch indexPath.row {
-            case ..<mainModel.longDiaryDatabyDate.count:
+            case ..<mainModel.detailDiaryDatabyDate.count:
                 mainVC.showReadVC(index: indexPath.row)
-            case mainModel.longDiaryDatabyDate.count...:
-                mainVC.showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.longDiaryDatabyDate.count)
+            case mainModel.detailDiaryDatabyDate.count...:
+                mainVC.showSimpleWriteVC(isEdit: true,selectedIndex: indexPath.row - mainModel.detailDiaryDatabyDate.count)
             default:
                 break
             }
