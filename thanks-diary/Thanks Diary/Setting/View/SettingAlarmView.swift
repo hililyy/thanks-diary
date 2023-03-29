@@ -83,7 +83,7 @@ extension SettingAlarmView: SendDataDelegate {
         settingAlarmVC.selectedTimeMinute = Int(changeDateToString(date: settingAlarmVC.selectedDate ?? Date(), formatString: "mm")) ?? -1
         LocalDataStore.localDataStore.setPushAlarmTime(newData: AlarmTimeEntity(hour: settingAlarmVC.selectedTimeHour, minute: settingAlarmVC.selectedTimeMinute))
         
-        settingAlarmVC.selectedStringDate = changeDateToString(date: self.selectedDate ?? Date(), formatString: "a hh시 mm분")
+        settingAlarmVC.selectedStringDate = changeDateToString(date: settingAlarmVC.selectedDate ?? Date(), formatString: "a hh시 mm분")
         settingAlarmVC.sendNotification()
         settingAlarmVC.alarmTableView.reloadData()
     }

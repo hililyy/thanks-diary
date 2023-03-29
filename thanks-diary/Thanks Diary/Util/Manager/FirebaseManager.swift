@@ -18,7 +18,6 @@ final class FirebaseLoginManager {
         Auth.auth().signIn(with: credential) { (authDataResult, error) in
             if let user = authDataResult?.user {
                 print("Success Apple Login", user.uid, user.email ?? "-")
-                self.saveUserInfo(token: token, loginType: "apple")
                 completion(true)
             }
             if error != nil {
@@ -35,7 +34,6 @@ final class FirebaseLoginManager {
                 print(error?.localizedDescription ?? "error" as Any)
                 completion(false)
             }
-            self.saveUserInfo(token: token, loginType: "google")
             completion(true)
         }
     }
@@ -47,7 +45,6 @@ final class FirebaseLoginManager {
             if error != nil {
                 self.kakaoLogin(email: email, pw: pw)
             }
-            self.saveUserInfo(token: pw, loginType: "kakao")
         }
     }
     
@@ -72,7 +69,6 @@ final class FirebaseLoginManager {
                     print(error.localizedDescription)
                 }
             } else {
-                self.saveUserInfo(token: pw, loginType: "email")
                 completion(nil)
             }
         }
@@ -97,11 +93,6 @@ final class FirebaseLoginManager {
                 completion(nil)
             }
         }
-    }
-    
-    private func saveUserInfo(token: String, loginType: String) {
-        LocalDataStore.localDataStore.setOAuthToken(newData: token)
-        LocalDataStore.localDataStore.setLoginType(newData: loginType)
     }
     
     func signOut(completion: @escaping () -> ()) {

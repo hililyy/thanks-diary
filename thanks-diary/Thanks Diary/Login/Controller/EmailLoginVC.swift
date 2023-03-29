@@ -20,6 +20,7 @@ final class EmailLoginVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         model = EmailModel(self)
         self.loginBtn.layer.cornerRadius = 10
+        self.emailPasswordField.isSecureTextEntry = true
     }
     
     @IBAction func goSignUp(_ sender: Any) {
@@ -43,6 +44,7 @@ final class EmailLoginVC: UIViewController, UITextFieldDelegate {
 
 extension EmailLoginVC: PLoginModel {
     func success(type: LoginType) {
+        LocalDataStore.localDataStore.setLoginType(newData: type.rawValue)
         self.showMainVC()
     }
     

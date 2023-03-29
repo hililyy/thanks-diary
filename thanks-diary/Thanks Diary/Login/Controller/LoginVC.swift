@@ -43,14 +43,11 @@ final class LoginVC: UIViewController {
     
 extension LoginVC: PLoginModel {
     func success(type: LoginType) {
-        if type == .none {
-            self.showFirstVC()
-        } else {
-            self.showMainVC()
-        }
+        LocalDataStore.localDataStore.setLoginType(newData: type.rawValue)
+        self.showFirstVC()
     }
     
     func fail(type: LoginType, errorMessage: String) {
-        print("로그인 실패")
+        AlertManager.shared.okAlert(self, title: "로그인 실패", message: "로그인을 실패하였습니다.")
     }
 }
