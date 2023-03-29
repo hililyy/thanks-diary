@@ -20,6 +20,8 @@ final class EmailSignupVC: UIViewController {
         super.viewDidLoad()
         model = EmailModel(self)
         self.signupBtn.layer.cornerRadius = 10
+        self.passwordTextField.isSecureTextEntry = true
+        self.rePasswordTextfield.isSecureTextEntry = true
     }
     
     @IBAction func goSignUp(_ sender: Any) {
@@ -40,6 +42,7 @@ final class EmailSignupVC: UIViewController {
 extension EmailSignupVC: PLoginModel {
     func success(type: LoginType) {
         print("이메일 회원가입 성공")
+        LocalDataStore.localDataStore.setLoginType(newData: type.rawValue)
         self.showFirstVC()
     }
     
