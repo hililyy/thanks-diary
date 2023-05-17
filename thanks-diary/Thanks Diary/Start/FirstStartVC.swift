@@ -12,6 +12,8 @@ final class FirstStartVC: UIViewController {
     @IBOutlet weak var lottieView2: UIView!
     @IBOutlet weak var nextBtn: UIButton!
     
+    var parentVC: PageVC?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextBtn.layer.cornerRadius = 20
@@ -24,6 +26,7 @@ final class FirstStartVC: UIViewController {
     }
     
     @IBAction func goNext(_ sender: Any) {
+        parentVC?.nextPage()
         self.showSecondVC()
     }
 }

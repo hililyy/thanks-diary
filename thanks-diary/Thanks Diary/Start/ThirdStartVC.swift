@@ -11,6 +11,8 @@ final class ThirdStartVC: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var lottieView: UIView!
     
+    var parentVC: PageVC?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextBtn.layer.cornerRadius = 20
@@ -18,6 +20,7 @@ final class ThirdStartVC: UIViewController {
     }
     
     @IBAction func goStart(_ sender: Any) {
+        parentVC?.nextPage()
         self.showMainVC()
     }
 }

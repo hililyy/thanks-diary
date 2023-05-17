@@ -357,7 +357,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="2022년 8월 14일 감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5e-Y5-hMq">
-                                <rect key="frame" x="60" y="72" width="220" height="23"/>
+                                <rect key="frame" x="59.999999999999986" y="72" width="215.66666666666663" height="23"/>
                                 <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
@@ -740,7 +740,7 @@
     </scenes>
     <designables>
         <designable name="6MI-aR-JAp">
-            <size key="intrinsicContentSize" width="30.333333333333332" height="19.666666666666668"/>
+            <size key="intrinsicContentSize" width="45.666666666666671" height="30"/>
         </designable>
     </designables>
     <resources>

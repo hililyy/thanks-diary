@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginVC: UIViewController {
+final class LoginVC: BaseVC {
     
     @IBOutlet var lottieView: UIView!
     private var model: LoginModel?
@@ -37,7 +37,7 @@ final class LoginVC: UIViewController {
 extension LoginVC: PLoginModel {
     func success(type: LoginType) {
         LocalDataStore.localDataStore.setLoginType(newData: type.rawValue)
-        self.showFirstVC()
+        pushVC(name: "Start", identifier: "PageVC")
     }
     
     func fail(type: LoginType, errorMessage: String) {
