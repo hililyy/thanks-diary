@@ -597,13 +597,6 @@ PODS:
     - abseil/base/config
     - abseil/meta/type_traits
   - AcknowList (2.1.1)
-  - Alamofire (5.6.4)
-  - AppAuth (1.6.0):
-    - AppAuth/Core (= 1.6.0)
-    - AppAuth/ExternalUserAgent (= 1.6.0)
-  - AppAuth/Core (1.6.0)
-  - AppAuth/ExternalUserAgent (1.6.0):
-    - AppAuth/Core
   - BoringSSL-GRPC (0.0.24):
     - BoringSSL-GRPC/Implementation (= 0.0.24)
     - BoringSSL-GRPC/Interface (= 0.0.24)
@@ -711,10 +704,6 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleSignIn (5.0.2):
-    - AppAuth (~> 1.2)
-    - GTMAppAuth (~> 1.0)
-    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleUtilities/AppDelegateSwizzler (7.10.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -785,21 +774,7 @@ PODS:
     - gRPC-Core/Interface (= 1.44.0)
     - Libuv-gRPC (= 0.0.10)
   - gRPC-Core/Interface (1.44.0)
-  - GTMAppAuth (1.3.1):
-    - AppAuth/Core (~> 1.6)
-    - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (1.7.2)
-  - KakaoSDKAuth (2.13.0):
-    - KakaoSDKCommon (= 2.13.0)
-  - KakaoSDKCommon (2.13.0):
-    - KakaoSDKCommon/Common (= 2.13.0)
-    - KakaoSDKCommon/Network (= 2.13.0)
-  - KakaoSDKCommon/Common (2.13.0)
-  - KakaoSDKCommon/Network (2.13.0):
-    - Alamofire (~> 5.1)
-    - KakaoSDKCommon/Common (= 2.13.0)
-  - KakaoSDKUser (2.13.0):
-    - KakaoSDKAuth (= 2.13.0)
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
@@ -827,10 +802,6 @@ DEPENDENCIES:
   - FirebaseFirestore
   - Floaty (~> 4.2.0)
   - FSCalendar
-  - GoogleSignIn (~> 5.0.2)
-  - KakaoSDKAuth
-  - KakaoSDKCommon
-  - KakaoSDKUser
   - lottie-ios
   - ObjectMapper (~> 3.5)
   - Toast-Swift (~> 5.0.1)
@@ -839,8 +810,6 @@ SPEC REPOS:
   trunk:
     - abseil
     - AcknowList
-    - Alamofire
-    - AppAuth
     - BoringSSL-GRPC
     - Firebase
     - FirebaseABTesting
@@ -857,15 +826,10 @@ SPEC REPOS:
     - FSCalendar
     - GoogleAppMeasurement
     - GoogleDataTransport
-    - GoogleSignIn
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
-    - GTMAppAuth
     - GTMSessionFetcher
-    - KakaoSDKAuth
-    - KakaoSDKCommon
-    - KakaoSDKUser
     - leveldb-library
     - Libuv-gRPC
     - lottie-ios
@@ -877,8 +841,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
   AcknowList: 206119961f03cfd1e15817129f6f51537707f169
-  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
-  AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
   FirebaseABTesting: 61826730ce9eee8781ba99a2b3420e9bce148dc9
@@ -895,15 +857,10 @@ SPEC CHECKSUMS:
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   GoogleAppMeasurement: 6de2b1a69e4326eb82ee05d138f6a5cb7311bcb1
   GoogleDataTransport: ea169759df570f4e37bdee1623ec32a7e64e67c4
-  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
-  GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
-  KakaoSDKAuth: 59b694eb81dda10a971beba64bb5842dcb985c81
-  KakaoSDKCommon: 74c422d32200032e4e57f70e065e221296bced71
-  KakaoSDKUser: 7c2d98fc54f744da4784b554a383ada548fed0e5
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
@@ -912,6 +869,6 @@ SPEC CHECKSUMS:
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 79455e764962a8dd1188b163a65b9d25c855b78b
+PODFILE CHECKSUM: 9c8f207501eecb13f92ac77876d5b0321383f529
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0

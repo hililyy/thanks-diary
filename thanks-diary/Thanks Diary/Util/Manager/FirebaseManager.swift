@@ -12,47 +12,7 @@ final class FirebaseLoginManager {
     
     static let shared = FirebaseLoginManager()
     private init() { }
-    
-    // MARK: - apple
-    func appleLogin(credential: AuthCredential, token: String, completion: @escaping (Bool) -> ()) {
-        Auth.auth().signIn(with: credential) { (authDataResult, error) in
-            if let user = authDataResult?.user {
-                print("Success Apple Login", user.uid, user.email ?? "-")
-                completion(true)
-            }
-            if error != nil {
-                print(error?.localizedDescription ?? "error" as Any)
-                completion(false)
-            }
-        }
-    }
-    
-    // MARK: - google
-    func googleLogin(credential: AuthCredential, token: String, completion: @escaping (Bool) -> ()) {
-        Auth.auth().signIn(with: credential) { _, error in
-            if error != nil {
-                print(error?.localizedDescription ?? "error" as Any)
-                completion(false)
-            }
-            completion(true)
-        }
-    }
-    
-    // MARK: - kakao
-    func kakaoSignup(email: String, pw: String){
-        Auth.auth().createUser(withEmail: email,
-                               password: pw) { result, error in
-            if error != nil {
-                self.kakaoLogin(email: email, pw: pw)
-            }
-        }
-    }
-    
-    private func kakaoLogin(email: String, pw: String) {
-        Auth.auth().signIn(withEmail: email,
-                           password: pw)
-    }
-    
+
     // MARK: - email
     func emailSignup(email: String, pw: String, completion: @escaping (String?) -> ()) {
         Auth.auth().createUser(withEmail: email, password: pw) { _, error in

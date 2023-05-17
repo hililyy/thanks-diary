@@ -9,18 +9,12 @@ import UIKit
 
 final class LoginModel {
     
-    private var kakao = KakaoLogin()
-    private var apple: AppleLogin?
-    private var google: GoogleLogin?
-    
     private var view: PLoginModel
     private var vc: UIViewController
     
     init(_ view: PLoginModel, _ vc: UIViewController) {
         self.view = view
         self.vc = vc
-        apple = AppleLogin(view, vc)
-        google = GoogleLogin(view, vc)
     }
     
     func setLottie(_ view: UIViewController, lottieView: UIView) {
@@ -29,16 +23,6 @@ final class LoginModel {
     
     func login(type: LoginType) {
         switch type {
-        case .apple:
-            print("apple")
-            apple?.startAppleLogin()
-        case .kakao:
-            print("kakao")
-            kakao.startKakaoLogin()
-            self.view.success(type: .kakao)
-        case .google:
-            print("google")
-            google?.startGoogleLogin()
         case .email:
             print("email")
         case .none:

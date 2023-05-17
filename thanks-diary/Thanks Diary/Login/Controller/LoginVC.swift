@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import GoogleSignIn
 
 final class LoginVC: UIViewController {
     
@@ -25,12 +24,6 @@ final class LoginVC: UIViewController {
     
     @IBAction func login(_ sender: UIButton) {
         switch sender.tag {
-        case 0:
-            model?.login(type: .apple)
-        case 1:
-            model?.login(type: .kakao)
-        case 2:
-            model?.login(type: .google)
         case 3:
             self.showEmailLogin()
         case 4:

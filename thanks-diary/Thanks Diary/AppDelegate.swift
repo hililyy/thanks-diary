@@ -8,9 +8,6 @@
 import UIKit
 import CoreData
 import FirebaseCore
-import GoogleSignIn
-import KakaoSDKCommon
-import KakaoSDKAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
         FirebaseApp.configure()
-        KakaoSDK.initSDK(appKey: "917219658a0cdb26b395a76cb82bf433")
         return true
     }
 
