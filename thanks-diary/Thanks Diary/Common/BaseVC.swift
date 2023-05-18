@@ -41,6 +41,8 @@ class BaseVC: UIViewController {
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        
+        pushVC(name: name, identifier: identifier)
     }
 }
 

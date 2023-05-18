@@ -23,7 +23,6 @@ final class SplashVC: BaseVC {
                     self.showMainVC()
                 }
             } else {
-                self.pushVC(name: "Login", identifier: "LoginVC")
                 self.setRootVC(name: "Login", identifier: "LoginVC")
             }
         }

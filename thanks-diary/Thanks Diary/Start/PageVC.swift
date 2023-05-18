@@ -47,8 +47,12 @@ final class PageVC: BaseVC {
     }
     
     func setTarget() {
-        nextButton.addTarget { [weak self ]_ in
+        nextButton.addTarget { [weak self ] _ in
             guard let self = self else { return }
+            if self.currentIndex == self.pageList.count - 1 {
+                self.setRootVC(name: "Main", identifier: "MainVC")
+                return
+            }
             self.nextPage()
         }
     }
@@ -94,13 +98,13 @@ final class PageVC: BaseVC {
 
 extension PageVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
-    // 페이지 이동할때마다 호출
+    // 페이지 이동할때 마다 호출
     func pageViewController(_ pageViewController: UIPageViewController,didFinishAnimating finished: Bool,previousViewControllers: [UIViewController],transitionCompleted completed: Bool){
         guard completed else { return }
         currentIndex = pageViewController.viewControllers!.first!.view.tag
     }
     
-    // 페이지 이동 전 호출
+    // 페이지 왼쪽 스와이프
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = pageList.firstIndex(of: viewController),
               index - 1 >= 0
@@ -109,7 +113,7 @@ extension PageVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
         return pageList[index - 1]
     }
     
-    // 페이지 이동 후 호출
+    // 페이지 오른쪽 스와이프
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = pageList.firstIndex(of: viewController),
               index + 1 != pageList.count
