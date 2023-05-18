@@ -9,28 +9,38 @@ import UIKit
 
 final class LoginVC: BaseVC {
     
-    @IBOutlet var lottieView: UIView!
+    @IBOutlet weak var emailView: UIView!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var pwView: UIView!
+    @IBOutlet weak var pwTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signupBtn: UIButton!
+    @IBOutlet weak var noneLoginButton: UIButton!
+    
+    
+    //    @IBOutlet var lottieView: UIView!
     private var model: LoginModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         model = LoginModel(self, self)
-        model?.setLottie(self, lottieView: lottieView)
+        setUI()
+//        model?.setLottie(self, lottieView: lottieView)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
-    @IBAction func login(_ sender: UIButton) {
-        switch sender.tag {
-        case 3:
-            self.showEmailLogin()
-        case 4:
-            model?.login(type: .none)
-        default:
-            return
-        }
+    func setUI() {
+        emailView.layer.cornerRadius = 20
+        emailView.layer.borderColor = Color.COLOR_GRAY3?.cgColor
+        emailView.layer.borderWidth = 1
+        
+        pwView.layer.cornerRadius = 20
+        pwView.layer.borderColor = Color.COLOR_GRAY3?.cgColor
+        pwView.layer.borderWidth = 1
+        
+        loginButton.setTitle("로그인", for: .normal)
+        loginButton.backgroundColor = Color.COLOR_GRAYBLUE
+        loginButton.tintColor = .white
+        loginButton.layer.cornerRadius = 20
     }
 }
     

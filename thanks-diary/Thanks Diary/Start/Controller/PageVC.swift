@@ -58,9 +58,9 @@ final class PageVC: BaseVC {
     }
     
     func changeDotViewColor() {
-        firstDotView.backgroundColor = currentIndex == 0 ? Color.COLOR_MAIN : .lightGray
-        secondDotView.backgroundColor = currentIndex == 1 ? Color.COLOR_MAIN : .lightGray
-        thirdDotView.backgroundColor = currentIndex == 2 ? Color.COLOR_MAIN : .lightGray
+        firstDotView.backgroundColor = currentIndex == 0 ? Color.COLOR_LIGHTGRAYBLUE : .lightGray
+        secondDotView.backgroundColor = currentIndex == 1 ? Color.COLOR_LIGHTGRAYBLUE : .lightGray
+        thirdDotView.backgroundColor = currentIndex == 2 ? Color.COLOR_LIGHTGRAYBLUE : .lightGray
     }
     
     private func setPageVC() {

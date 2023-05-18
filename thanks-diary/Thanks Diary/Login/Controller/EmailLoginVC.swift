@@ -36,10 +36,6 @@ final class EmailLoginVC: UIViewController, UITextFieldDelegate {
         let password = emailPasswordField.text ?? ""
         model?.login(email: email, pw: password)
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
 }
 
 extension EmailLoginVC: PLoginModel {

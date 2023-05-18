@@ -44,6 +44,10 @@ class BaseVC: UIViewController {
         
         pushVC(name: name, identifier: identifier)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
 extension BaseVC: UIGestureRecognizerDelegate {
