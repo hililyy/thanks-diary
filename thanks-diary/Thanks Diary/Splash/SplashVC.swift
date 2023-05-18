@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SplashVC: UIViewController {
+final class SplashVC: BaseVC {
     
     @IBOutlet weak var lottieView: UIView!
     
@@ -23,7 +23,8 @@ final class SplashVC: UIViewController {
                     self.showMainVC()
                 }
             } else {
-                self.presentLoginVC()
+                self.pushVC(name: "Login", identifier: "LoginVC")
+                self.setRootVC(name: "Login", identifier: "LoginVC")
             }
         }
     }

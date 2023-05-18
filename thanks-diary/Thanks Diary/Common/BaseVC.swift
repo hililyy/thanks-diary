@@ -24,10 +24,22 @@ class BaseVC: UIViewController {
         }
     }
     
-    public func pushVC(name: String, identifier: String, callback: ((UIViewController)->())? = nil) {
+    func pushVC(name: String, identifier: String, callback: ((UIViewController)->())? = nil) {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: identifier)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func setRootVC(name: String, identifier: String, callback: ((UIViewController)->())? = nil) {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else { return }
+        
+        let storyboard = UIStoryboard(name: name, bundle: nil)
+        let rootViewController = storyboard.instantiateViewController(withIdentifier: identifier)
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     }
 }
 

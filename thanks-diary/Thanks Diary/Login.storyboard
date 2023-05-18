@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bih-Rl-oJn">
-                                <rect key="frame" x="125" y="377.66666666666669" width="143" height="97"/>
+                                <rect key="frame" x="127.33333333333333" y="377" width="138.66666666666669" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6g7-yb-YKi">
-                                        <rect key="frame" x="44.666666666666657" y="0.0" width="53.666666666666657" height="23"/>
+                                        <rect key="frame" x="43.333333333333329" y="0.0" width="52" height="23.333333333333332"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6P-4G-H7R">
-                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                        <rect key="frame" x="0.0" y="23.333333333333311" width="138.66666666666666" height="46.666666666666657"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzD-ZD-5KA">
-                                        <rect key="frame" x="46.666666666666657" y="69" width="50" height="28"/>
+                                        <rect key="frame" x="44.333333333333329" y="70" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="Nlp-dx-D22"/>
                                         </constraints>
@@ -224,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5uM-ir-0G7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1484.6153846153845" y="-572.2748815165877"/>
+            <point key="canvasLocation" x="1451" y="96"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="UDF-7G-DZD">
@@ -235,7 +235,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6nc-xf-Cby">
-                                <rect key="frame" x="125" y="303" width="143" height="97"/>
+                                <rect key="frame" x="125" y="259" width="143" height="97"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLE-ZT-aN9">
                                         <rect key="frame" x="44.666666666666657" y="0.0" width="53.666666666666657" height="23"/>
@@ -288,45 +288,32 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDp-eh-zEN">
-                                <rect key="frame" x="16" y="193" width="361" height="401"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xho-6B-fE4"/>
                         <color key="backgroundColor" name="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="VDp-eh-zEN" firstAttribute="trailing" secondItem="9BA-c2-XAz" secondAttribute="trailingMargin" id="2ye-bh-qK7"/>
                             <constraint firstItem="6nc-xf-Cby" firstAttribute="centerX" secondItem="9BA-c2-XAz" secondAttribute="centerX" id="DcA-20-YSA"/>
                             <constraint firstAttribute="bottom" secondItem="W3z-Th-nJA" secondAttribute="bottom" constant="110" id="Gtg-Fz-m2u"/>
-                            <constraint firstItem="VDp-eh-zEN" firstAttribute="centerX" secondItem="9BA-c2-XAz" secondAttribute="centerX" id="Y4P-kt-TDA"/>
-                            <constraint firstItem="VDp-eh-zEN" firstAttribute="top" secondItem="xho-6B-fE4" secondAttribute="top" constant="90" id="d4b-W2-9dT"/>
                             <constraint firstItem="6nc-xf-Cby" firstAttribute="top" secondItem="xho-6B-fE4" secondAttribute="top" constant="200" id="jIc-bH-a7K"/>
                             <constraint firstItem="W3z-Th-nJA" firstAttribute="centerX" secondItem="9BA-c2-XAz" secondAttribute="centerX" id="rFJ-J2-QIm"/>
-                            <constraint firstItem="W3z-Th-nJA" firstAttribute="top" secondItem="VDp-eh-zEN" secondAttribute="bottom" constant="60" id="xEn-gY-KfW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rcL-Xz-8sq"/>
-                    <connections>
-                        <outlet property="lottieView" destination="VDp-eh-zEN" id="6cZ-4p-urO"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RWG-T8-ugJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.84615384615381" y="94.549763033175353"/>
+            <point key="canvasLocation" x="752" y="96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fNw-gO-2MU">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LsW-lx-bRX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="login" modalPresentationStyle="fullScreen" id="w2Q-p3-L79" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eNO-gf-fsC">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="2Wd-Ue-HBj" kind="relationship" relationship="rootViewController" id="pZj-Eb-GBv"/>
-                    </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LsW-lx-bRX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="60" y="97"/>
         </scene>
@@ -484,7 +471,95 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JyA-xC-bT3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2185" y="-572"/>
+            <point key="canvasLocation" x="2152" y="96"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Vvq-xv-lH9">
+            <objects>
+                <viewController id="uOE-Ch-hM8" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="our-xp-IIz">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ate-3f-9z6">
+                                <rect key="frame" x="125" y="259" width="143" height="97"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMz-86-7HK">
+                                        <rect key="frame" x="44.666666666666657" y="0.0" width="53.666666666666657" height="23"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I10-9Z-N2e">
+                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C49-53-Reb">
+                                        <rect key="frame" x="46.666666666666657" y="69" width="50" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="067-t8-XYD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Njs-dd-d1g">
+                                <rect key="frame" x="46.666666666666657" y="654" width="300" height="88"/>
+                                <subviews>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqy-ja-qlf">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="Spz-Zg-3hp"/>
+                                            <constraint firstAttribute="height" constant="50" id="c9f-22-Ala"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="img_emailLogin"/>
+                                        <connections>
+                                            <action selector="login:" destination="uOE-Ch-hM8" eventType="touchUpInside" id="Wih-ZC-cnH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpF-Je-chZ">
+                                        <rect key="frame" x="0.0" y="58" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="로그인 없이 시작하기">
+                                            <color key="titleColor" name="grayColor_1"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="login:" destination="uOE-Ch-hM8" eventType="touchUpInside" id="WuG-FP-9cZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7r-aQ-UXb">
+                                <rect key="frame" x="16" y="149" width="361" height="445"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9FF-cV-TWU"/>
+                        <color key="backgroundColor" name="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Njs-dd-d1g" secondAttribute="bottom" constant="110" id="AWB-WU-OTP"/>
+                            <constraint firstItem="Njs-dd-d1g" firstAttribute="top" secondItem="c7r-aQ-UXb" secondAttribute="bottom" constant="60" id="Cgh-oT-UPW"/>
+                            <constraint firstItem="c7r-aQ-UXb" firstAttribute="trailing" secondItem="our-xp-IIz" secondAttribute="trailingMargin" id="Fbv-L1-oUc"/>
+                            <constraint firstItem="Njs-dd-d1g" firstAttribute="centerX" secondItem="our-xp-IIz" secondAttribute="centerX" id="Ff7-6o-b4W"/>
+                            <constraint firstItem="c7r-aQ-UXb" firstAttribute="top" secondItem="9FF-cV-TWU" secondAttribute="top" constant="90" id="PG9-1r-TcK"/>
+                            <constraint firstItem="ate-3f-9z6" firstAttribute="top" secondItem="9FF-cV-TWU" secondAttribute="top" constant="200" id="cRe-Wq-MOn"/>
+                            <constraint firstItem="ate-3f-9z6" firstAttribute="centerX" secondItem="our-xp-IIz" secondAttribute="centerX" id="gzu-fx-RLP"/>
+                            <constraint firstItem="c7r-aQ-UXb" firstAttribute="centerX" secondItem="our-xp-IIz" secondAttribute="centerX" id="lx2-5Q-4zR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tjh-xK-OeV"/>
+                    <connections>
+                        <outlet property="lottieView" destination="c7r-aQ-UXb" id="UNa-oU-Cy0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F0h-uS-oXS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1813" y="1254"/>
         </scene>
     </scenes>
     <resources>
