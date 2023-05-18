@@ -11,6 +11,7 @@ class BaseVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func back(animated: Bool, completion: (() -> ())? = nil) {
@@ -28,4 +29,10 @@ class BaseVC: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: identifier)
         self.navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+extension BaseVC: UIGestureRecognizerDelegate {
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true 
+  }
 }

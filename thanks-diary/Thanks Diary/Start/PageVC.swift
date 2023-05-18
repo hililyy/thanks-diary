@@ -14,10 +14,6 @@ class PageVC: BaseVC {
     var pageContainer: UIPageViewController!
     var currentIndex: Int = 0
     var pageList = [UIViewController]()
-    
-    var page1: FirstStartVC!
-    var page2: SecondStartVC!
-    var page3: ThirdStartVC!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +23,17 @@ class PageVC: BaseVC {
     func setPageVC() {
         let storyBoard = UIStoryboard(name: "Start", bundle: nil)
         
-        page1 = storyBoard.instantiateViewController(withIdentifier: "FirstStartVC") as? FirstStartVC
-        page2 = storyBoard.instantiateViewController(withIdentifier: "SecondStartVC") as? SecondStartVC
-        page3 = storyBoard.instantiateViewController(withIdentifier: "ThirdStartVC") as? ThirdStartVC
+        var page1: FirstStartVC? = storyBoard.instantiateViewController(withIdentifier: "FirstStartVC") as? FirstStartVC
+        var page2: SecondStartVC? = storyBoard.instantiateViewController(withIdentifier: "SecondStartVC") as? SecondStartVC
+        var page3: ThirdStartVC? = storyBoard.instantiateViewController(withIdentifier: "ThirdStartVC") as? ThirdStartVC
+        
+        guard let page1 = page1, let page2 = page2, let page3 = page3 else { return }
         
         page1.parentVC = self
         page2.parentVC = self
         page3.parentVC = self
         
-        pageList.append(page1)
-        pageList.append(page2)
-        pageList.append(page3)
+        pageList = [page1, page2, page3]
         
         pageContainer = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
@@ -47,8 +43,9 @@ class PageVC: BaseVC {
         if let firstVC = pageList.first {
             pageContainer.setViewControllers([firstVC], direction: .forward, animated: true)
         }
-        pageContainer.view.frame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
-        containerView.addSubview(pageContainer.view ?? UIView())
+        
+        pageContainer.view.frame = containerView.bounds
+        containerView.addSubview(pageContainer.view)
         pageContainer.view.setAutoLayout(to: containerView)
     }
     
@@ -61,15 +58,25 @@ class PageVC: BaseVC {
 }
 
 extension PageVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+    // 현재 페이지
+    func pageViewController(_ pageViewController: UIPageViewController,didFinishAnimating finished: Bool,previousViewControllers: [UIViewController],transitionCompleted completed: Bool){
+        guard completed else { return }
+        currentIndex = pageViewController.viewControllers!.first!.view.tag
+    }
+    
+    // 이전 페이지 이동
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = pageList.firstIndex(of: viewController) else {return nil}
         if index - 1 < 0 { return nil}
+        
         return pageList[index - 1]
     }
     
+    // 다음 페이지 이동
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = pageList.firstIndex(of: viewController) else {return nil}
-        if index + 1 == pageList.count { return nil}
+        if currentIndex + 1 == pageList.count { return nil}
+        
         return pageList[index + 1]
     }
 }
