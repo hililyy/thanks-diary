@@ -7,20 +7,59 @@
 
 import UIKit
 
-class PageVC: BaseVC {
+final class PageVC: BaseVC {
     
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var nextButton: UIButton!
+    
+    @IBOutlet weak var firstDotView: UIView!
+    @IBOutlet weak var secondDotView: UIView!
+    @IBOutlet weak var thirdDotView: UIView!
     
     var pageContainer: UIPageViewController!
-    var currentIndex: Int = 0
     var pageList = [UIViewController]()
+    var currentIndex: Int = 0 {
+        didSet {
+            changeDotViewColor()
+            if currentIndex == pageList.count - 1 {
+                nextButton.setTitle("시작하기", for: .normal)
+            } else {
+                nextButton.setTitle("다음", for: .normal)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
+        setTarget()
         setPageVC()
     }
     
-    func setPageVC() {
+    private func setUI() {
+        changeDotViewColor()
+        nextButton.layer.cornerRadius = 20
+        
+        for dot in [firstDotView, secondDotView, thirdDotView] {
+            guard let dot = dot else { return }
+            dot.layer.cornerRadius = dot.frame.size.width / 2
+        }
+    }
+    
+    func setTarget() {
+        nextButton.addTarget { [weak self ]_ in
+            guard let self = self else { return }
+            self.nextPage()
+        }
+    }
+    
+    func changeDotViewColor() {
+        firstDotView.backgroundColor = currentIndex == 0 ? Color.COLOR_MAIN : .lightGray
+        secondDotView.backgroundColor = currentIndex == 1 ? Color.COLOR_MAIN : .lightGray
+        thirdDotView.backgroundColor = currentIndex == 2 ? Color.COLOR_MAIN : .lightGray
+    }
+    
+    private func setPageVC() {
         let storyBoard = UIStoryboard(name: "Start", bundle: nil)
         
         let page1: FirstStartVC? = storyBoard.instantiateViewController(withIdentifier: "FirstStartVC") as? FirstStartVC
@@ -28,10 +67,6 @@ class PageVC: BaseVC {
         let page3: ThirdStartVC? = storyBoard.instantiateViewController(withIdentifier: "ThirdStartVC") as? ThirdStartVC
         
         guard let page1 = page1, let page2 = page2, let page3 = page3 else { return }
-        
-        page1.parentVC = self
-        page2.parentVC = self
-        page3.parentVC = self
         
         pageList = [page1, page2, page3]
         
@@ -58,24 +93,27 @@ class PageVC: BaseVC {
 }
 
 extension PageVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-    // 현재 페이지
+    
+    // 페이지 이동할때마다 호출
     func pageViewController(_ pageViewController: UIPageViewController,didFinishAnimating finished: Bool,previousViewControllers: [UIViewController],transitionCompleted completed: Bool){
         guard completed else { return }
         currentIndex = pageViewController.viewControllers!.first!.view.tag
     }
     
-    // 이전 페이지 이동
+    // 페이지 이동 전 호출
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let index = pageList.firstIndex(of: viewController) else {return nil}
-        if index - 1 < 0 { return nil}
+        guard let index = pageList.firstIndex(of: viewController),
+              index - 1 >= 0
+        else { return nil }
         
         return pageList[index - 1]
     }
     
-    // 다음 페이지 이동
+    // 페이지 이동 후 호출
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = pageList.firstIndex(of: viewController) else {return nil}
-        if currentIndex + 1 == pageList.count { return nil}
+        guard let index = pageList.firstIndex(of: viewController),
+              index + 1 != pageList.count
+        else { return nil }
         
         return pageList[index + 1]
     }

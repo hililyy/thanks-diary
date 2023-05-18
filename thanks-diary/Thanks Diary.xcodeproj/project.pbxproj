@@ -15,6 +15,8 @@
 		023ACEBD2A14C92E0022A9A3 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023ACEBC2A14C92E0022A9A3 /* BaseVC.swift */; };
 		023ACEBF2A14DCDD0022A9A3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023ACEBE2A14DCDD0022A9A3 /* UIView.swift */; };
 		023ACEC12A14E1760022A9A3 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023ACEC02A14E1760022A9A3 /* Start.storyboard */; };
+		02AFB9EF2A15C9FC00B56A24 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB9EE2A15C9FC00B56A24 /* Color.swift */; };
+		02AFB9F12A15F23600B56A24 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB9F02A15F23600B56A24 /* UIButton.swift */; };
 		2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */; };
 		2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */; };
 		2A0962DA28CF484300063DF3 /* TextData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2A0962D928CF484300063DF3 /* TextData.csv */; };
@@ -114,6 +116,8 @@
 		023ACEBC2A14C92E0022A9A3 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		023ACEBE2A14DCDD0022A9A3 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		023ACEC02A14E1760022A9A3 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		02AFB9EE2A15C9FC00B56A24 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		02AFB9F02A15F23600B56A24 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicUltraLight.ttf; sourceTree = "<group>"; };
 		2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimeEntity.swift; sourceTree = "<group>"; };
 		2A0962C428CF275D00063DF3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -295,6 +299,7 @@
 				2ABFABEC29C9E68300273F0D /* Assets */,
 				2A0D881628ABB6E700576E56 /* Lottie */,
 				2A0D881228ABB38900576E56 /* Font */,
+				02AFB9EE2A15C9FC00B56A24 /* Color.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 				2A40AAB329BDFD4500B259B5 /* Date.swift */,
 				2A40AAB529BE280000B259B5 /* UITextField.swift */,
 				023ACEBE2A14DCDD0022A9A3 /* UIView.swift */,
+				02AFB9F02A15F23600B56A24 /* UIButton.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -745,6 +751,7 @@
 				2A9F351328AE5763006CCF7C /* SettingVC.swift in Sources */,
 				2AFF118C2958A8B200EC85EA /* EmailLoginErrorList.swift in Sources */,
 				2A9F351528AE63ED006CCF7C /* SettingSwitchCell.swift in Sources */,
+				02AFB9EF2A15C9FC00B56A24 /* Color.swift in Sources */,
 				2A81234028C096BC000A250E /* LocalDataStore.swift in Sources */,
 				2AA8095429C79BBE003170C4 /* EmailModel.swift in Sources */,
 				2AEE20E129519A9C00A17F5B /* LoginModel.swift in Sources */,
@@ -785,6 +792,7 @@
 				2A7241CF28B2A57E0040ADE9 /* ReadVC.swift in Sources */,
 				2AD81F9329CC28C50032829F /* SettingUserInfoView.swift in Sources */,
 				023ACEBA2A14C1D90022A9A3 /* PageVC.swift in Sources */,
+				02AFB9F12A15F23600B56A24 /* UIButton.swift in Sources */,
 				2AA8095229C797EE003170C4 /* AlertManager.swift in Sources */,
 				2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */,
 				2AC2B5FA29BB8B1300C4A985 /* PaddingLabel.swift in Sources */,
