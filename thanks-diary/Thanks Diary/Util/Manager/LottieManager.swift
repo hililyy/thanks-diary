@@ -18,8 +18,8 @@ final class LottieManager {
         
         animationView.frame = lottieView.bounds
         animationView.center = lottieView.center
-        animationView.contentMode = .scaleAspectFit
-        animationView.play()
+        animationView.contentMode = .scaleAspectFill
+        animationView.play(fromProgress: 0.0, toProgress: 0.45, loopMode: .loop) {_ in }
         animationView.loopMode = mode
     }
 }
