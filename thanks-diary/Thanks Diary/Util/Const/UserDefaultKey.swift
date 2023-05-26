@@ -16,4 +16,5 @@ enum UserDefaultKey: String {
     case IS_PUSH_ALARM_AGREE = "is_push_alarm_agree"
     case OAUTH_TOKEN = "oauth_token"
     case IS_LOGIN = "IS_LOGIN"
+    case LOGIN_TYPE = "LOGIN_TYPE"
 }
