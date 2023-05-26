@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PLoginModel {
-    func success(type: LoginType)
-    func fail(type: LoginType, errorMessage: String)
+protocol PLoginValidity {
+    func success()
+    func fail(errorMessage: String)
 }

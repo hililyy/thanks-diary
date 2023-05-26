@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bih-Rl-oJn">
-                                <rect key="frame" x="127.33333333333333" y="377" width="138.66666666666669" height="98"/>
+                                <rect key="frame" x="125" y="377.66666666666669" width="143" height="97"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6g7-yb-YKi">
-                                        <rect key="frame" x="43.333333333333329" y="0.0" width="52" height="23.333333333333332"/>
+                                        <rect key="frame" x="44.666666666666657" y="0.0" width="53.666666666666657" height="23"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6P-4G-H7R">
-                                        <rect key="frame" x="0.0" y="23.333333333333311" width="138.66666666666666" height="46.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzD-ZD-5KA">
-                                        <rect key="frame" x="44.333333333333329" y="70" width="50" height="28"/>
+                                        <rect key="frame" x="46.666666666666657" y="69" width="50" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="Nlp-dx-D22"/>
                                         </constraints>
@@ -149,7 +149,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6nc-xf-Cby">
-                                <rect key="frame" x="125" y="259" width="143" height="97"/>
+                                <rect key="frame" x="125" y="259" width="143" height="69"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLE-ZT-aN9">
                                         <rect key="frame" x="44.666666666666657" y="0.0" width="53.666666666666657" height="23"/>
@@ -160,15 +160,6 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0Q-ye-fcT">
                                         <rect key="frame" x="0.0" y="23" width="143" height="46"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5s-LB-C9b">
-                                        <rect key="frame" x="46.666666666666657" y="69" width="50" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="sM4-du-Kh4"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="10"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -188,7 +179,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="IQH-mH-Dkw"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="oV5-CD-4Xq" id="BFe-fu-s9k"/>
@@ -211,7 +202,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="hWj-7n-5N9"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="oV5-CD-4Xq" id="G4Y-4C-u4f"/>
@@ -228,15 +219,14 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pu8-Ke-WLZ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pu8-Ke-WLZ">
                                         <rect key="frame" x="0.0" y="120" width="293" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="CE4-If-yWg"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
-                                        </buttonConfiguration>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKm-Wu-gs7">
                                         <rect key="frame" x="0.0" y="180" width="293" height="41"/>
@@ -282,6 +272,14 @@
                                     <constraint firstItem="pu8-Ke-WLZ" firstAttribute="leading" secondItem="kOr-SS-qzm" secondAttribute="leading" id="s78-cj-vuJ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glz-Lp-Pfb">
+                                <rect key="frame" x="76.666666666666686" y="194" width="239.99999999999994" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="QZo-HB-5Yk"/>
+                                    <constraint firstAttribute="height" constant="50" id="jt6-yC-zWK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xho-6B-fE4"/>
                         <color key="backgroundColor" name="whiteColor"/>
@@ -291,6 +289,8 @@
                             <constraint firstItem="6nc-xf-Cby" firstAttribute="centerX" secondItem="9BA-c2-XAz" secondAttribute="centerX" id="DcA-20-YSA"/>
                             <constraint firstItem="6nc-xf-Cby" firstAttribute="top" secondItem="xho-6B-fE4" secondAttribute="top" constant="200" id="jIc-bH-a7K"/>
                             <constraint firstItem="kOr-SS-qzm" firstAttribute="leading" secondItem="xho-6B-fE4" secondAttribute="leading" constant="50" id="kWf-Wc-G4S"/>
+                            <constraint firstItem="glz-Lp-Pfb" firstAttribute="centerX" secondItem="9BA-c2-XAz" secondAttribute="centerX" id="mmZ-JS-O2Q"/>
+                            <constraint firstItem="6nc-xf-Cby" firstAttribute="top" secondItem="glz-Lp-Pfb" secondAttribute="bottom" constant="15" id="odT-Vw-s1Y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rcL-Xz-8sq"/>
@@ -298,7 +298,8 @@
                         <outlet property="emailTextField" destination="ax8-2q-dST" id="Z6G-cq-gMd"/>
                         <outlet property="emailView" destination="zlR-eC-xcx" id="STd-py-JoY"/>
                         <outlet property="loginButton" destination="pu8-Ke-WLZ" id="Ce4-yC-PEr"/>
-                        <outlet property="noneLoginButton" destination="qOH-SC-bmc" id="2NI-gb-9US"/>
+                        <outlet property="lottieView" destination="glz-Lp-Pfb" id="wYH-7i-q4G"/>
+                        <outlet property="noneLoginBtn" destination="qOH-SC-bmc" id="oSS-KT-vf6"/>
                         <outlet property="pwTextField" destination="8Bq-bc-kcY" id="kN8-ve-dEk"/>
                         <outlet property="pwView" destination="2na-BV-nQv" id="ZRG-ap-Qpf"/>
                         <outlet property="signupBtn" destination="CXt-Bi-gdn" id="N3Q-5E-f52"/>
@@ -306,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RWG-T8-ugJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="752" y="96"/>
+            <point key="canvasLocation" x="751.90839694656484" y="95.774647887323951"/>
         </scene>
         <!--Email SignupVC-->
         <scene sceneID="IsR-tG-LPP">
