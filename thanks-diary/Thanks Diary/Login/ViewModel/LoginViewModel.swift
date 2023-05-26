@@ -26,4 +26,14 @@ final class LoginViewModel {
             }
         }
     }
+    
+    func signup(email: String, password: String) {
+        FirebaseLoginManager.shared.emailSignup(email: email, pw: password) { message in
+            if let message = message {
+                self.view.fail(errorMessage: message)
+            } else {
+                self.view.success()
+            }
+        }
+    }
 }

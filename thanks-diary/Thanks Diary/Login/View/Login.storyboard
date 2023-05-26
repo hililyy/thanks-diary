@@ -78,68 +78,6 @@
             </objects>
             <point key="canvasLocation" x="-675" y="97"/>
         </scene>
-        <!--Email LoginVC-->
-        <scene sceneID="K4n-Lv-T3o">
-            <objects>
-                <viewController storyboardIdentifier="EmailLoginVC" id="oV5-CD-4Xq" customClass="EmailLoginVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H3J-54-bd6">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS0-o6-BG9">
-                                <rect key="frame" x="167" y="99" width="59" height="25.333333333333329"/>
-                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDd-QL-ijm">
-                                <rect key="frame" x="30" y="738" width="333" height="50"/>
-                                <color key="backgroundColor" name="mainColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="bAs-EB-VUN"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="로그인">
-                                    <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="18"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="goLogin:" destination="oV5-CD-4Xq" eventType="touchUpInside" id="WBu-cI-iP1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqu-qf-Y3B">
-                                <rect key="frame" x="13" y="81.666666666666671" width="60" height="60.000000000000014"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="t8d-UL-D8Q"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title=" " image="ic_back"/>
-                                <connections>
-                                    <action selector="goBack:" destination="oV5-CD-4Xq" eventType="touchUpInside" id="RlI-jz-2VU"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="lVx-rx-cVD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="lVx-rx-cVD" firstAttribute="bottom" secondItem="XDd-QL-ijm" secondAttribute="bottom" constant="30" id="4wc-xZ-GcJ"/>
-                            <constraint firstItem="hS0-o6-BG9" firstAttribute="centerY" secondItem="uqu-qf-Y3B" secondAttribute="centerY" id="6jB-b0-l40"/>
-                            <constraint firstItem="uqu-qf-Y3B" firstAttribute="leading" secondItem="lVx-rx-cVD" secondAttribute="leading" constant="13" id="6sf-hW-oQU"/>
-                            <constraint firstItem="uqu-qf-Y3B" firstAttribute="width" secondItem="uqu-qf-Y3B" secondAttribute="height" multiplier="1:1" id="R60-Yy-NeM"/>
-                            <constraint firstItem="hS0-o6-BG9" firstAttribute="top" secondItem="lVx-rx-cVD" secondAttribute="top" constant="40" id="YJb-nq-LOt"/>
-                            <constraint firstItem="lVx-rx-cVD" firstAttribute="trailing" secondItem="XDd-QL-ijm" secondAttribute="trailing" constant="30" id="fLB-0c-YEP"/>
-                            <constraint firstItem="hS0-o6-BG9" firstAttribute="centerX" secondItem="H3J-54-bd6" secondAttribute="centerX" id="mBy-X4-5Vt"/>
-                            <constraint firstItem="XDd-QL-ijm" firstAttribute="leading" secondItem="lVx-rx-cVD" secondAttribute="leading" constant="30" id="z8P-3b-A9Z"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="loginBtn" destination="XDd-QL-ijm" id="azq-6z-JYI"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5uM-ir-0G7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1451" y="96"/>
-        </scene>
         <!--LoginVC-->
         <scene sceneID="UDF-7G-DZD">
             <objects>
@@ -181,9 +119,6 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="oV5-CD-4Xq" id="BFe-fu-s9k"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -204,9 +139,6 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="oV5-CD-4Xq" id="G4Y-4C-u4f"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -273,7 +205,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glz-Lp-Pfb">
-                                <rect key="frame" x="76.666666666666686" y="194" width="239.99999999999994" height="50"/>
+                                <rect key="frame" x="76.666666666666686" y="194" width="240" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="QZo-HB-5Yk"/>
@@ -300,8 +232,8 @@
                         <outlet property="loginButton" destination="pu8-Ke-WLZ" id="Ce4-yC-PEr"/>
                         <outlet property="lottieView" destination="glz-Lp-Pfb" id="wYH-7i-q4G"/>
                         <outlet property="noneLoginBtn" destination="qOH-SC-bmc" id="oSS-KT-vf6"/>
-                        <outlet property="pwTextField" destination="8Bq-bc-kcY" id="kN8-ve-dEk"/>
-                        <outlet property="pwView" destination="2na-BV-nQv" id="ZRG-ap-Qpf"/>
+                        <outlet property="passwordTextField" destination="8Bq-bc-kcY" id="bIR-fd-7RE"/>
+                        <outlet property="passwordView" destination="2na-BV-nQv" id="s1z-M0-RN6"/>
                         <outlet property="signupBtn" destination="CXt-Bi-gdn" id="N3Q-5E-f52"/>
                     </connections>
                 </viewController>
@@ -337,7 +269,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="X90-vv-W3E"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -365,7 +297,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="cXN-Em-fvd"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -389,9 +321,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="가입하기">
                                     <fontDescription key="titleFontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="18"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="goSignUp:" destination="VKu-T2-e0v" eventType="touchUpInside" id="JTl-4h-Qr6"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GIN-i1-5Vk">
                                 <rect key="frame" x="40" y="351" width="313" height="65.333333333333314"/>
@@ -407,7 +336,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="vV7-kE-2R9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -427,9 +356,6 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title=" " image="ic_back"/>
-                                <connections>
-                                    <action selector="goBack:" destination="VKu-T2-e0v" eventType="touchUpInside" id="LJZ-iK-162"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="F4c-Xm-bbc"/>
@@ -455,6 +381,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="htP-kQ-7Gq" id="Rk4-tf-wSC"/>
                         <outlet property="emailTextField" destination="1Y3-lw-xPD" id="HEs-aN-7pn"/>
                         <outlet property="passwordTextField" destination="beg-Ah-bRQ" id="Kar-d9-Gh5"/>
                         <outlet property="rePasswordTextfield" destination="5jw-yV-PWU" id="9Vb-Dl-rah"/>
@@ -463,100 +390,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JyA-xC-bT3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2152" y="96"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Vvq-xv-lH9">
-            <objects>
-                <viewController id="uOE-Ch-hM8" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="our-xp-IIz">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ate-3f-9z6">
-                                <rect key="frame" x="125" y="259" width="143" height="97"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMz-86-7HK">
-                                        <rect key="frame" x="44.666666666666657" y="0.0" width="53.666666666666657" height="23"/>
-                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I10-9Z-N2e">
-                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
-                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C49-53-Reb">
-                                        <rect key="frame" x="46.666666666666657" y="69" width="50" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="067-t8-XYD"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="10"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Njs-dd-d1g">
-                                <rect key="frame" x="46.666666666666657" y="654" width="300" height="88"/>
-                                <subviews>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqy-ja-qlf">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="Spz-Zg-3hp"/>
-                                            <constraint firstAttribute="height" constant="50" id="c9f-22-Ala"/>
-                                        </constraints>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="img_emailLogin"/>
-                                        <connections>
-                                            <action selector="login:" destination="uOE-Ch-hM8" eventType="touchUpInside" id="Wih-ZC-cnH"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpF-Je-chZ">
-                                        <rect key="frame" x="0.0" y="58" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="15"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="로그인 없이 시작하기">
-                                            <color key="titleColor" name="grayColor_1"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="login:" destination="uOE-Ch-hM8" eventType="touchUpInside" id="WuG-FP-9cZ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7r-aQ-UXb">
-                                <rect key="frame" x="16" y="149" width="361" height="445"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="9FF-cV-TWU"/>
-                        <color key="backgroundColor" name="whiteColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Njs-dd-d1g" secondAttribute="bottom" constant="110" id="AWB-WU-OTP"/>
-                            <constraint firstItem="Njs-dd-d1g" firstAttribute="top" secondItem="c7r-aQ-UXb" secondAttribute="bottom" constant="60" id="Cgh-oT-UPW"/>
-                            <constraint firstItem="c7r-aQ-UXb" firstAttribute="trailing" secondItem="our-xp-IIz" secondAttribute="trailingMargin" id="Fbv-L1-oUc"/>
-                            <constraint firstItem="Njs-dd-d1g" firstAttribute="centerX" secondItem="our-xp-IIz" secondAttribute="centerX" id="Ff7-6o-b4W"/>
-                            <constraint firstItem="c7r-aQ-UXb" firstAttribute="top" secondItem="9FF-cV-TWU" secondAttribute="top" constant="90" id="PG9-1r-TcK"/>
-                            <constraint firstItem="ate-3f-9z6" firstAttribute="top" secondItem="9FF-cV-TWU" secondAttribute="top" constant="200" id="cRe-Wq-MOn"/>
-                            <constraint firstItem="ate-3f-9z6" firstAttribute="centerX" secondItem="our-xp-IIz" secondAttribute="centerX" id="gzu-fx-RLP"/>
-                            <constraint firstItem="c7r-aQ-UXb" firstAttribute="centerX" secondItem="our-xp-IIz" secondAttribute="centerX" id="lx2-5Q-4zR"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Tjh-xK-OeV"/>
-                    <connections>
-                        <outlet property="lottieView" destination="c7r-aQ-UXb" id="UNa-oU-Cy0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F0h-uS-oXS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1813" y="1254"/>
+            <point key="canvasLocation" x="1415" y="96"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic_back" width="32" height="32"/>
-        <image name="img_emailLogin" width="297" height="50"/>
         <namedColor name="grayColor_1">
             <color red="0.31000000238418579" green="0.29399999976158142" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

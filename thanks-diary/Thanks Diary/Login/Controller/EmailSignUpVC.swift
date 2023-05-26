@@ -1,6 +1,6 @@
 //
 //  EmailSignupVC.swift
-//
+//  Thanks Diary
 //
 //  Created by 강조은 on 2022/12/25.
 //
@@ -8,46 +8,52 @@
 import UIKit
 import FirebaseAuth
 
-final class EmailSignupVC: UIViewController {
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var rePasswordTextfield: UITextField!
+final class EmailSignupVC: BaseVC {
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var rePasswordTextfield: UITextField!
     @IBOutlet weak var signupBtn: UIButton!
+    @IBOutlet weak var backBtn: UIButton!
     
-    private var model: EmailModel?
+    private var viewModel: LoginViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        model = EmailModel(self)
+        viewModel = LoginViewModel(self, self)
+        setUI()
+        setTarget()
+    }
+    
+    private func setUI() {
         self.signupBtn.layer.cornerRadius = 10
         self.passwordTextField.isSecureTextEntry = true
         self.rePasswordTextfield.isSecureTextEntry = true
     }
     
-    @IBAction func goSignUp(_ sender: Any) {
-        model?.signup(email: emailTextField.text ?? "",
-                          pw: passwordTextField.text ?? "",
-                          repw: rePasswordTextfield.text ?? "")
-    }
-    
-    @IBAction func goBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    private func setTarget() {
+        signupBtn.addTarget { [weak self] _ in
+            guard let self = self,
+                  let email = self.emailTextField.text,
+                  let password = self.passwordTextField.text
+            else { return }
+            
+            self.viewModel?.signup(email: email, password: password)
+        }
+        
+        backBtn.addTarget { [weak self] _ in
+            guard let self = self else { return }
+            self.back(animated: true)
+        }
     }
 }
 
-extension EmailSignupVC: PLoginModel {
-    func success(type: LoginType) {
-        print("이메일 회원가입 성공")
-        LocalDataStore.localDataStore.setLoginType(newData: type.rawValue)
-        self.showFirstVC()
+extension EmailSignupVC: PLoginValidity {
+    func success() {
+        AlertManager.shared.okAlert(self, title: "회원가입 완료", message: "회원가입이 완료되었습니다.")
+        self.back(animated: true)
     }
     
-    func fail(type: LoginType, errorMessage: String) {
-        print("이메일 회원가입 실패")
+    func fail(errorMessage: String) {
         AlertManager.shared.okAlert(self, title: "회원가입 실패", message: errorMessage)
     }
 }
