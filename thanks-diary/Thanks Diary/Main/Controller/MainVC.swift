@@ -7,7 +7,7 @@
 
 import UIKit
 import FSCalendar
-import Floaty
+//import Floaty
 import CoreData
 import Firebase
 

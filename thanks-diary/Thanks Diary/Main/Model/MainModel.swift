@@ -26,7 +26,7 @@ final class MainModel {
     var simpleKey: [String] = []
     var detailKeybyDate: [String] = []
     var simpleKeybyDate: [String] = []
-    var loginType: LoginType = LoginType(rawValue: LocalDataStore.localDataStore.getLoginType()!)!
+    var loginType: LoginType = .email
     
     func getData(completion: @escaping () -> ()) {
         DiaryCoreDataManager.shared.getData(

@@ -7,7 +7,7 @@
 
 import UIKit
 import FSCalendar
-import Floaty
+//import Floaty
 
 final class MainCalendar: NSObject {
     private var mainVC: MainVC
