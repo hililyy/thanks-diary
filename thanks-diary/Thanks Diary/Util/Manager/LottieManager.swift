@@ -13,7 +13,7 @@ final class LottieManager {
     private init() { }
     
     func setLottie(_ vc: UIViewController, lottieView: UIView, name: String, mode: LottieLoopMode) {
-        let animationView: AnimationView = .init(name: name)
+        let animationView: LottieAnimationView = .init(name: name)
         vc.view.addSubview(animationView)
         
         animationView.frame = lottieView.bounds
