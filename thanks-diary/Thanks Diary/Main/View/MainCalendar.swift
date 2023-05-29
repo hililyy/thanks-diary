@@ -7,7 +7,6 @@
 
 import UIKit
 import FSCalendar
-//import Floaty
 
 final class MainCalendar: NSObject {
     private var mainVC: MainVC
@@ -15,21 +14,6 @@ final class MainCalendar: NSObject {
     
     init(_ mainVC: MainVC) {
         self.mainVC = mainVC
-    }
-    
-    func setFloty() {
-        let floaty = Floaty()
-        floaty.buttonColor = UIColor(named: "mainColor")!
-        floaty.plusColor = UIColor(named: "whiteColor")!
-        floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!, handler: { item in
-            self.mainVC.showSimpleWriteVC()
-            floaty.close()
-        })
-        floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
-            self.mainVC.showDetailWriteVC()
-            floaty.close()
-        })
-        mainVC.view.addSubview(floaty)
     }
 }
 

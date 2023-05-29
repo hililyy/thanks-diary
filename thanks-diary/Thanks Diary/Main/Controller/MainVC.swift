@@ -11,7 +11,7 @@ import FSCalendar
 import CoreData
 import Firebase
 
-final class MainVC: UIViewController {
+final class MainVC: BaseVC {
     @IBOutlet weak var todayDate: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var diaryTableView: UITableView!
@@ -27,6 +27,27 @@ final class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initalize()
+        floatingConstraints()
+    }
+    
+    func floatingConstraints() {
+        let floatingButton = FloatingButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        floatingButton.setButtonImage(UIImage(named: "add_icon_green"))
+        floatingButton.button.addTarget { [weak self] _ in
+            guard let self = self else { return }
+            let vc = FloatingButtonVC()
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: false)
+        }
+        view.addSubview(floatingButton)
+        
+        floatingButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            floatingButton.widthAnchor.constraint(equalToConstant: 40),
+            floatingButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +84,7 @@ final class MainVC: UIViewController {
         
         self.todayBtn.layer.cornerRadius = 10
         self.todayDate.text = mainModel.selectedDate.convertString(format: "dd'일' (E)")
-        mainCalendar?.setFloty()
+//        mainCalendar?.setFloty()
         mainCalendar?.setCalender()
         setuploadBtn()
     }
