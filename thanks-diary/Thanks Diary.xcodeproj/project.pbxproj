@@ -19,6 +19,10 @@
 		02C6A59D2A20ADA1005F0970 /* FloatingButtonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C6A59C2A20ADA1005F0970 /* FloatingButtonVC.swift */; };
 		02C6A5A02A20AE8C005F0970 /* FloatingButtonCloseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C6A59F2A20AE8C005F0970 /* FloatingButtonCloseView.swift */; };
 		02C6A5A22A20AED0005F0970 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C6A5A12A20AED0005F0970 /* FloatingButton.swift */; };
+		02C6A5A82A25DB6E005F0970 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C6A5A72A25DB6E005F0970 /* Font.swift */; };
+		02C6A5AC2A25F9C0005F0970 /* NanumBarunGothicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02C6A5AA2A25F8EC005F0970 /* NanumBarunGothicLight.ttf */; };
+		02C6A5AD2A25F9C3005F0970 /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02C6A5A92A25F8EC005F0970 /* NanumBarunGothicBold.ttf */; };
+		02C6A5AE2A25F9C5005F0970 /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02C6A5AB2A25F8EC005F0970 /* NanumBarunGothic.ttf */; };
 		02FF90592A20928B00772BFB /* heart.json in Resources */ = {isa = PBXBuildFile; fileRef = 02FF90582A20928B00772BFB /* heart.json */; };
 		02FF905B2A2093D100772BFB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF905A2A2093D100772BFB /* LoginViewModel.swift */; };
 		02FF905D2A209AF500772BFB /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF905C2A209AF500772BFB /* UserDefaultManager.swift */; };
@@ -123,6 +127,10 @@
 		02C6A59C2A20ADA1005F0970 /* FloatingButtonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonVC.swift; sourceTree = "<group>"; };
 		02C6A59F2A20AE8C005F0970 /* FloatingButtonCloseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonCloseView.swift; sourceTree = "<group>"; };
 		02C6A5A12A20AED0005F0970 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		02C6A5A72A25DB6E005F0970 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		02C6A5A92A25F8EC005F0970 /* NanumBarunGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicBold.ttf; sourceTree = "<group>"; };
+		02C6A5AA2A25F8EC005F0970 /* NanumBarunGothicLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicLight.ttf; sourceTree = "<group>"; };
+		02C6A5AB2A25F8EC005F0970 /* NanumBarunGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothic.ttf; sourceTree = "<group>"; };
 		02FF90582A20928B00772BFB /* heart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heart.json; sourceTree = "<group>"; };
 		02FF905A2A2093D100772BFB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		02FF905C2A209AF500772BFB /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
@@ -293,6 +301,7 @@
 			children = (
 				023ACEB12A14AB610022A9A3 /* Enum.swift */,
 				02AFB9EE2A15C9FC00B56A24 /* Color.swift */,
+				02C6A5A72A25DB6E005F0970 /* Font.swift */,
 				2A81234128C09CF6000A250E /* UserDefaultKey.swift */,
 			);
 			path = Const;
@@ -361,6 +370,9 @@
 		2A0D881228ABB38900576E56 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				02C6A5AB2A25F8EC005F0970 /* NanumBarunGothic.ttf */,
+				02C6A5A92A25F8EC005F0970 /* NanumBarunGothicBold.ttf */,
+				02C6A5AA2A25F8EC005F0970 /* NanumBarunGothicLight.ttf */,
 				2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */,
 				2A0D881328ABB3A000576E56 /* KOTRA_GOTHIC.ttf */,
 			);
@@ -750,15 +762,18 @@
 				2A0D880828A540FE00576E56 /* Assets.xcassets in Resources */,
 				023ACEB82A14C0A30022A9A3 /* Setting.storyboard in Resources */,
 				023ACEB62A14C0930022A9A3 /* Login.storyboard in Resources */,
+				02C6A5AC2A25F9C0005F0970 /* NanumBarunGothicLight.ttf in Resources */,
 				2A81232628BFB2BD000A250E /* writing.json in Resources */,
 				023ACEC12A14E1760022A9A3 /* Start.storyboard in Resources */,
 				2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */,
 				2A0962DA28CF484300063DF3 /* TextData.csv in Resources */,
+				02C6A5AE2A25F9C5005F0970 /* NanumBarunGothic.ttf in Resources */,
 				2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */,
 				2A81232828BFB83B000A250E /* go.json in Resources */,
 				2A0D881828ABB80900576E56 /* wave.json in Resources */,
 				2A0D880628A540FB00576E56 /* Main.storyboard in Resources */,
 				02FF90592A20928B00772BFB /* heart.json in Resources */,
+				02C6A5AD2A25F9C3005F0970 /* NanumBarunGothicBold.ttf in Resources */,
 				2A81233028BFBF4D000A250E /* sun.json in Resources */,
 				2A0D881A28ABB83A00576E56 /* dot.json in Resources */,
 				2AEE20C52950AD3D00A17F5B /* GoogleService-Info.plist in Resources */,
@@ -825,6 +840,7 @@
 				2AFF118C2958A8B200EC85EA /* EmailLoginErrorList.swift in Sources */,
 				2A9F351528AE63ED006CCF7C /* SettingSwitchCell.swift in Sources */,
 				02AFB9EF2A15C9FC00B56A24 /* Color.swift in Sources */,
+				02C6A5A82A25DB6E005F0970 /* Font.swift in Sources */,
 				2A81234028C096BC000A250E /* LocalDataStore.swift in Sources */,
 				2AEE20E129519A9C00A17F5B /* LoginModel.swift in Sources */,
 				2A4F9302290071C200ECFE88 /* ErrorCase.swift in Sources */,
