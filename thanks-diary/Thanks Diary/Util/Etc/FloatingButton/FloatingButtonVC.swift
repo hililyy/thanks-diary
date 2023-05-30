@@ -19,6 +19,20 @@ class FloatingButtonVC: BaseVC {
     
     private func setupViews() {
         view.addSubview(floatingButtonCloseView)
+        
+        floatingButtonCloseView.setDetailLabel(label: "자세하게")
+        floatingButtonCloseView.setSimpleLabel(label: "간단하게")
+        
+        floatingButtonCloseView.backgroundButton.addTarget { [weak self] _ in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
+        floatingButtonCloseView.plusButton.button.addTarget { [weak self] _ in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
         floatingButtonCloseView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

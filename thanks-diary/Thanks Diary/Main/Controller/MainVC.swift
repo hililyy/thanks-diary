@@ -32,12 +32,15 @@ final class MainVC: BaseVC {
     
     func floatingConstraints() {
         let floatingButton = FloatingButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        floatingButton.setButtonImage(UIImage(named: "add_icon_green"))
+        floatingButton.setButtonImage(UIImage(named: "ic_pencil"))
+        floatingButton.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
+        
         floatingButton.button.addTarget { [weak self] _ in
             guard let self = self else { return }
             let vc = FloatingButtonVC()
             vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: false)
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: true)
         }
         view.addSubview(floatingButton)
         
@@ -45,9 +48,11 @@ final class MainVC: BaseVC {
         NSLayoutConstraint.activate([
             floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            floatingButton.widthAnchor.constraint(equalToConstant: 40),
-            floatingButton.heightAnchor.constraint(equalToConstant: 40)
+            floatingButton.widthAnchor.constraint(equalToConstant: 52),
+            floatingButton.heightAnchor.constraint(equalToConstant: 52)
         ])
+        
+        floatingButton.setView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

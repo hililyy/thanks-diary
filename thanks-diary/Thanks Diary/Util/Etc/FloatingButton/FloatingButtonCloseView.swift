@@ -9,28 +9,54 @@ import UIKit
 
 class FloatingButtonCloseView: UIView {
     
-    private lazy var backgroundView: UIView = {
+    lazy var backgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         return view
+    }()
+    
+    lazy var backgroundButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .clear
+        return button
     }()
     
     var plusButton: FloatingButton = {
         let button = FloatingButton()
-        button.setButtonImage(UIImage(named: "add_icon_green") ?? .add)
+        button.setButtonImage(UIImage(named: "ic_pencil") ?? .add)
+        button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
+        button.setView()
         return button
     }()
     
-    var button1: FloatingButton = {
+    var detailButton: FloatingButton = {
         let button = FloatingButton()
-        button.setButtonImage(UIImage(named: "food1") ?? .remove)
+        button.setButtonImage(UIImage(named: "ic_detail_write") ?? .remove)
+        button.setButtonBackgroundColor(.white)
+        button.setView()
         return button
     }()
     
-    var button2: FloatingButton = {
+    var simpleButton: FloatingButton = {
         let button = FloatingButton()
-        button.setButtonImage(UIImage(named: "food2") ?? .actions)
+        button.setButtonImage(UIImage(named: "ic_simple_write") ?? .actions)
+        button.setButtonBackgroundColor(.white)
+        button.setView()
         return button
+    }()
+    
+    var detailLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.NANUM_13
+        label.textAlignment = .right
+        return label
+    }()
+    
+    var simpleLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.NANUM_13
+        label.textAlignment = .right
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -42,34 +68,61 @@ class FloatingButtonCloseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setDetailLabel(label: String) {
+        detailLabel.text = label
+    }
+    
+    func setSimpleLabel(label: String) {
+        simpleLabel.text = label
+    }
+    
     func setConstraints() {
         addSubview(backgroundView)
+        addSubview(backgroundButton)
         addSubview(plusButton)
-        addSubview(button1)
-        addSubview(button2)
+        addSubview(detailButton)
+        addSubview(simpleButton)
+        addSubview(detailLabel)
+        addSubview(simpleLabel)
         
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundButton.translatesAutoresizingMaskIntoConstraints = false
         plusButton.translatesAutoresizingMaskIntoConstraints = false
-        button1.translatesAutoresizingMaskIntoConstraints = false
-        button2.translatesAutoresizingMaskIntoConstraints = false
+        detailButton.translatesAutoresizingMaskIntoConstraints = false
+        simpleButton.translatesAutoresizingMaskIntoConstraints = false
+        detailLabel.translatesAutoresizingMaskIntoConstraints = false
+        simpleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
             backgroundView.topAnchor.constraint(equalTo: topAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            backgroundButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundButton.topAnchor.constraint(equalTo: topAnchor),
+            backgroundButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
             plusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
             plusButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40),
-            plusButton.widthAnchor.constraint(equalToConstant: 40),
-            plusButton.heightAnchor.constraint(equalToConstant: 40),
-            button1.centerXAnchor.constraint(equalTo: plusButton.centerXAnchor),
-            button1.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor, constant: -80),
-            button1.widthAnchor.constraint(equalToConstant: 40),
-            button1.heightAnchor.constraint(equalToConstant: 40),
-            button2.centerXAnchor.constraint(equalTo: plusButton.centerXAnchor),
-            button2.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor, constant: -160),
-            button2.widthAnchor.constraint(equalToConstant: 40),
-            button2.heightAnchor.constraint(equalToConstant: 40)
+            plusButton.widthAnchor.constraint(equalToConstant: 52),
+            plusButton.heightAnchor.constraint(equalToConstant: 52),
+            
+            detailButton.centerXAnchor.constraint(equalTo: plusButton.centerXAnchor),
+            detailButton.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor, constant: -80),
+            detailButton.widthAnchor.constraint(equalToConstant: 52),
+            detailButton.heightAnchor.constraint(equalToConstant: 52),
+            
+            simpleButton.centerXAnchor.constraint(equalTo: plusButton.centerXAnchor),
+            simpleButton.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor, constant: -160),
+            simpleButton.widthAnchor.constraint(equalToConstant: 52),
+            simpleButton.heightAnchor.constraint(equalToConstant: 52),
+            
+            detailLabel.centerYAnchor.constraint(equalTo: detailButton.centerYAnchor),
+            detailLabel.rightAnchor.constraint(equalTo: detailButton.leftAnchor, constant: -10),
+            simpleLabel.centerYAnchor.constraint(equalTo: simpleButton.centerYAnchor),
+            simpleLabel.rightAnchor.constraint(equalTo: simpleButton.leftAnchor, constant: -10)
         ])
     }
 }
