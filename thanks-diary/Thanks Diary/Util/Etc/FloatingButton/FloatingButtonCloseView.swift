@@ -59,6 +59,9 @@ class FloatingButtonCloseView: UIView {
         return label
     }()
     
+    var detailButtonCenterY: NSLayoutConstraint!
+    var simpleButtonCenterY: NSLayoutConstraint!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setConstraints()
@@ -74,6 +77,16 @@ class FloatingButtonCloseView: UIView {
     
     func setSimpleLabel(label: String) {
         simpleLabel.text = label
+    }
+    
+    func setOpenConstraints() {
+        detailButtonCenterY.constant = -80
+        simpleButtonCenterY.constant = -160
+    }
+    
+    func setCloseConstraints() {
+        detailButtonCenterY.constant = 0
+        simpleButtonCenterY.constant = 0
     }
     
     func setConstraints() {
@@ -93,6 +106,12 @@ class FloatingButtonCloseView: UIView {
         detailLabel.translatesAutoresizingMaskIntoConstraints = false
         simpleLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        detailButtonCenterY = detailButton.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor)
+        detailButtonCenterY.isActive = true
+        
+        simpleButtonCenterY = simpleButton.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor)
+        simpleButtonCenterY.isActive = true
+        
         NSLayoutConstraint.activate([
             backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -110,12 +129,10 @@ class FloatingButtonCloseView: UIView {
             plusButton.heightAnchor.constraint(equalToConstant: 52),
             
             detailButton.centerXAnchor.constraint(equalTo: plusButton.centerXAnchor),
-            detailButton.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor, constant: -80),
             detailButton.widthAnchor.constraint(equalToConstant: 52),
             detailButton.heightAnchor.constraint(equalToConstant: 52),
             
             simpleButton.centerXAnchor.constraint(equalTo: plusButton.centerXAnchor),
-            simpleButton.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor, constant: -160),
             simpleButton.widthAnchor.constraint(equalToConstant: 52),
             simpleButton.heightAnchor.constraint(equalToConstant: 52),
             

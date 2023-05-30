@@ -13,8 +13,29 @@ class FloatingButtonVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setOpenConstraints()
+    }
+    
+    func setOpenConstraints() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
+            self.floatingButtonCloseView.setOpenConstraints()
+            self.view.layoutIfNeeded() // 화면 갱신
+        }
+    }
+    
+    func setCloseConstraints() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
+            self.floatingButtonCloseView.setCloseConstraints()
+            self.view.layoutIfNeeded() // 화면 갱신
+        } completion: { completion in
+            // 애니메이션이 끝나는 시점
+            self.dismiss(animated: false)
+        }
     }
     
     private func setupViews() {

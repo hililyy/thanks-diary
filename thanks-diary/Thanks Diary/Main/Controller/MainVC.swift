@@ -29,32 +29,7 @@ final class MainVC: BaseVC {
         initalize()
         floatingConstraints()
     }
-    
-    func floatingConstraints() {
-        let floatingButton = FloatingButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        floatingButton.setButtonImage(UIImage(named: "ic_pencil"))
-        floatingButton.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
-        
-        floatingButton.button.addTarget { [weak self] _ in
-            guard let self = self else { return }
-            let vc = FloatingButtonVC()
-            vc.modalPresentationStyle = .overFullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true)
-        }
-        view.addSubview(floatingButton)
-        
-        floatingButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            floatingButton.widthAnchor.constraint(equalToConstant: 52),
-            floatingButton.heightAnchor.constraint(equalToConstant: 52)
-        ])
-        
-        floatingButton.setView()
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         if mainModel.loginType == LoginType.none {
@@ -89,7 +64,6 @@ final class MainVC: BaseVC {
         
         self.todayBtn.layer.cornerRadius = 10
         self.todayDate.text = mainModel.selectedDate.convertString(format: "dd'일' (E)")
-//        mainCalendar?.setFloty()
         mainCalendar?.setCalender()
         setuploadBtn()
     }
@@ -100,6 +74,31 @@ final class MainVC: BaseVC {
         } else {
             self.uploadBtn.isHidden = true
         }
+    }
+    
+    func floatingConstraints() {
+        let floatingButton = FloatingButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        floatingButton.setButtonImage(UIImage(named: "ic_pencil"))
+        floatingButton.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
+        
+        floatingButton.button.addTarget { [weak self] _ in
+            guard let self = self else { return }
+            let vc = FloatingButtonVC()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: true)
+        }
+        view.addSubview(floatingButton)
+        
+        floatingButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            floatingButton.widthAnchor.constraint(equalToConstant: 52),
+            floatingButton.heightAnchor.constraint(equalToConstant: 52)
+        ])
+        
+        floatingButton.setView()
     }
     
     func getDataReloadTableView(type: String) {
