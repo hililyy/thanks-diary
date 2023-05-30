@@ -15,6 +15,9 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>NanumBarunGothic.ttf</string>
+		<string>NanumBarunGothicBold.ttf</string>
+		<string>NanumBarunGothicLight.ttf</string>
 		<string>NanumBarunGothicUltraLight.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
