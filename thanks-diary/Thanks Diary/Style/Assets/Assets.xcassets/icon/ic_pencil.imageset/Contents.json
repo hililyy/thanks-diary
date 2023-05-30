@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "appleid_button@1x.png",
+      "filename" : "ic_baseline-create.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "appleid_button@2x.png",
+      "filename" : "ic_baseline-create@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "appleid_button@3x.png",
+      "filename" : "ic_baseline-create@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
