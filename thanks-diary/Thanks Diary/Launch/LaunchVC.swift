@@ -23,7 +23,7 @@ final class LaunchVC: BaseVC {
                     self.showMainVC()
                 }
             } else {
-                self.setRootVC(name: "Main", identifier: "MainVC")
+                self.setRootVC(name: "Login", identifier: "LoginVC")
             }
         }
     }

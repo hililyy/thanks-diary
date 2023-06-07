@@ -23,6 +23,9 @@
 		02C6A5AC2A25F9C0005F0970 /* NanumBarunGothicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02C6A5AA2A25F8EC005F0970 /* NanumBarunGothicLight.ttf */; };
 		02C6A5AD2A25F9C3005F0970 /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02C6A5A92A25F8EC005F0970 /* NanumBarunGothicBold.ttf */; };
 		02C6A5AE2A25F9C5005F0970 /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02C6A5AB2A25F8EC005F0970 /* NanumBarunGothic.ttf */; };
+		02DAB3E12A30608400BAF9B3 /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DAB3E02A30608400BAF9B3 /* LaunchVC.swift */; };
+		02DAB3E32A3060C300BAF9B3 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DAB3E22A3060C300BAF9B3 /* PageView.swift */; };
+		02DAB3E52A30621A00BAF9B3 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DAB3E42A30621A00BAF9B3 /* Launch.storyboard */; };
 		02FF90592A20928B00772BFB /* heart.json in Resources */ = {isa = PBXBuildFile; fileRef = 02FF90582A20928B00772BFB /* heart.json */; };
 		02FF905B2A2093D100772BFB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF905A2A2093D100772BFB /* LoginViewModel.swift */; };
 		02FF905D2A209AF500772BFB /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF905C2A209AF500772BFB /* UserDefaultManager.swift */; };
@@ -31,7 +34,6 @@
 		2A0962DA28CF484300063DF3 /* TextData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2A0962D928CF484300063DF3 /* TextData.csv */; };
 		2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D87FE28A540FB00576E56 /* AppDelegate.swift */; };
 		2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D880028A540FB00576E56 /* SceneDelegate.swift */; };
-		2A0D880328A540FB00576E56 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D880228A540FB00576E56 /* SplashVC.swift */; };
 		2A0D880628A540FB00576E56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D880428A540FB00576E56 /* Main.storyboard */; };
 		2A0D880828A540FE00576E56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D880728A540FE00576E56 /* Assets.xcassets */; };
 		2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D881328ABB3A000576E56 /* KOTRA_GOTHIC.ttf */; };
@@ -131,6 +133,9 @@
 		02C6A5A92A25F8EC005F0970 /* NanumBarunGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicBold.ttf; sourceTree = "<group>"; };
 		02C6A5AA2A25F8EC005F0970 /* NanumBarunGothicLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicLight.ttf; sourceTree = "<group>"; };
 		02C6A5AB2A25F8EC005F0970 /* NanumBarunGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothic.ttf; sourceTree = "<group>"; };
+		02DAB3E02A30608400BAF9B3 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
+		02DAB3E22A3060C300BAF9B3 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		02DAB3E42A30621A00BAF9B3 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		02FF90582A20928B00772BFB /* heart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heart.json; sourceTree = "<group>"; };
 		02FF905A2A2093D100772BFB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		02FF905C2A209AF500772BFB /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
@@ -142,7 +147,6 @@
 		2A0D87FB28A540FB00576E56 /* Thanks Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thanks Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A0D87FE28A540FB00576E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A0D880028A540FB00576E56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2A0D880228A540FB00576E56 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		2A0D880528A540FB00576E56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A0D880728A540FE00576E56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A0D880C28A540FE00576E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				023ACEC02A14E1760022A9A3 /* Start.storyboard */,
+				02DAB3E22A3060C300BAF9B3 /* PageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -349,7 +354,7 @@
 				2A81234328C0AD47000A250E /* Thanks Diary.entitlements */,
 				023ACEBB2A14C9090022A9A3 /* Common */,
 				2A81233D28C095B7000A250E /* Util */,
-				2A9F34F728ABC27D006CCF7C /* Splash */,
+				2A9F34F728ABC27D006CCF7C /* Launch */,
 				2AFF117A29574FF800EC85EA /* Login */,
 				2A9F34F828ABC28A006CCF7C /* Start */,
 				2A9F34F928AC10D3006CCF7C /* Main */,
@@ -474,12 +479,13 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		2A9F34F728ABC27D006CCF7C /* Splash */ = {
+		2A9F34F728ABC27D006CCF7C /* Launch */ = {
 			isa = PBXGroup;
 			children = (
-				2A0D880228A540FB00576E56 /* SplashVC.swift */,
+				02DAB3E02A30608400BAF9B3 /* LaunchVC.swift */,
+				02DAB3E42A30621A00BAF9B3 /* Launch.storyboard */,
 			);
-			path = Splash;
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		2A9F34F828ABC28A006CCF7C /* Start */ = {
@@ -769,6 +775,7 @@
 				2A0962DA28CF484300063DF3 /* TextData.csv in Resources */,
 				02C6A5AE2A25F9C5005F0970 /* NanumBarunGothic.ttf in Resources */,
 				2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */,
+				02DAB3E52A30621A00BAF9B3 /* Launch.storyboard in Resources */,
 				2A81232828BFB83B000A250E /* go.json in Resources */,
 				2A0D881828ABB80900576E56 /* wave.json in Resources */,
 				2A0D880628A540FB00576E56 /* Main.storyboard in Resources */,
@@ -855,6 +862,7 @@
 				02FF905B2A2093D100772BFB /* LoginViewModel.swift in Sources */,
 				2A9F351728AE63FD006CCF7C /* SettingMoreCell.swift in Sources */,
 				2ABFAC0529CA790E00273F0D /* DetailWriteView.swift in Sources */,
+				02DAB3E32A3060C300BAF9B3 /* PageView.swift in Sources */,
 				2A40AAB429BDFD4500B259B5 /* Date.swift in Sources */,
 				2A6A3EF329D05B9F00AA163F /* SettingAlarmView.swift in Sources */,
 				2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */,
@@ -864,10 +872,10 @@
 				2AC2B61329BD177D00C4A985 /* CoredataDiaryEntity.swift in Sources */,
 				2A81233728C00138000A250E /* AlarmTimeCell.swift in Sources */,
 				02C6A5A22A20AED0005F0970 /* FloatingButton.swift in Sources */,
+				02DAB3E12A30608400BAF9B3 /* LaunchVC.swift in Sources */,
 				02FF905D2A209AF500772BFB /* UserDefaultManager.swift in Sources */,
 				02C6A5A02A20AE8C005F0970 /* FloatingButtonCloseView.swift in Sources */,
 				2A40AAB629BE280000B259B5 /* UITextField.swift in Sources */,
-				2A0D880328A540FB00576E56 /* SplashVC.swift in Sources */,
 				02C6A59D2A20ADA1005F0970 /* FloatingButtonVC.swift in Sources */,
 				2A9F350428AC20FC006CCF7C /* SecondStartVC.swift in Sources */,
 				2ABFAC0029CA615800273F0D /* MainTableView.swift in Sources */,

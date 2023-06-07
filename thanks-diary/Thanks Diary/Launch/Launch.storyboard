@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="KOTRA_GOTHIC.ttf">
+            <string>KOTRA_GOTHIC</string>
+        </array>
+        <array key="NanumBarunGothicUltraLight.ttf">
+            <string>NanumBarunGothicUltraLight</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--LaunchVC-->
+        <scene sceneID="Qgj-Ow-GBK">
+            <objects>
+                <viewController storyboardIdentifier="LaunchVC" modalPresentationStyle="fullScreen" id="pFt-sT-tzu" customClass="LaunchVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IYm-fS-1xu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C6f-hb-sxh">
+                                <rect key="frame" x="125" y="377.66666666666669" width="143" height="97"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nY-Rg-rJY">
+                                        <rect key="frame" x="44.666666666666657" y="0.0" width="53.666666666666657" height="23"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AE-vO-SLN">
+                                        <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-m6-ZaN">
+                                        <rect key="frame" x="46.666666666666657" y="69" width="50" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="BKs-cw-tBQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Q3-Lk-IjR">
+                                <rect key="frame" x="10" y="270.33333333333337" width="373" height="311.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8Q3-Lk-IjR" secondAttribute="height" multiplier="91:76" id="kPR-pX-JSG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nYm-uc-pHg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="C6f-hb-sxh" firstAttribute="centerY" secondItem="8Q3-Lk-IjR" secondAttribute="centerY" id="8bg-e1-JQT"/>
+                            <constraint firstItem="8Q3-Lk-IjR" firstAttribute="centerY" secondItem="IYm-fS-1xu" secondAttribute="centerY" id="N3u-Dz-hvw"/>
+                            <constraint firstItem="C6f-hb-sxh" firstAttribute="centerX" secondItem="nYm-uc-pHg" secondAttribute="centerX" id="SUi-rq-47B"/>
+                            <constraint firstItem="8Q3-Lk-IjR" firstAttribute="centerX" secondItem="nYm-uc-pHg" secondAttribute="centerX" id="TaV-kg-VJP"/>
+                            <constraint firstItem="8Q3-Lk-IjR" firstAttribute="leading" secondItem="nYm-uc-pHg" secondAttribute="leading" constant="10" id="Vej-VN-Zdg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Lux-K3-orn"/>
+                    <connections>
+                        <outlet property="lottieView" destination="8Q3-Lk-IjR" id="FEl-dB-cbF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="def-T6-08J" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="83" y="15"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
