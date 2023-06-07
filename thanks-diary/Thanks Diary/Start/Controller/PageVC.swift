@@ -16,6 +16,7 @@ final class PageVC: BaseVC {
     @IBOutlet weak var secondDotView: UIView!
     @IBOutlet weak var thirdDotView: UIView!
     
+    private let pageView = PageView()
     var pageContainer: UIPageViewController!
     var pageList = [UIViewController]()
     var currentIndex: Int = 0 {
@@ -29,6 +30,10 @@ final class PageVC: BaseVC {
         }
     }
 
+    override func loadView() {
+        view = pageView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
