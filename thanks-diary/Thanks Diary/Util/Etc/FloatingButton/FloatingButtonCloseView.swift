@@ -124,7 +124,7 @@ class FloatingButtonCloseView: UIView {
             backgroundButton.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             plusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            plusButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            plusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40),
             plusButton.widthAnchor.constraint(equalToConstant: 52),
             plusButton.heightAnchor.constraint(equalToConstant: 52),
             

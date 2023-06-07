@@ -11,6 +11,10 @@ class FloatingButtonVC: BaseVC {
     
     private let floatingButtonCloseView = FloatingButtonCloseView()
     
+    override func loadView() {
+        view = floatingButtonCloseView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -22,14 +26,14 @@ class FloatingButtonVC: BaseVC {
     }
     
     func setOpenConstraints() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
             self.floatingButtonCloseView.setOpenConstraints()
             self.view.layoutIfNeeded() // 화면 갱신
         }
     }
     
     func setCloseConstraints() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
             self.floatingButtonCloseView.setCloseConstraints()
             self.view.layoutIfNeeded() // 화면 갱신
         } completion: { completion in
@@ -39,8 +43,6 @@ class FloatingButtonVC: BaseVC {
     }
     
     private func setupViews() {
-        view.addSubview(floatingButtonCloseView)
-        
         floatingButtonCloseView.setDetailLabel(label: "자세하게")
         floatingButtonCloseView.setSimpleLabel(label: "간단하게")
         
@@ -53,15 +55,5 @@ class FloatingButtonVC: BaseVC {
             guard let self = self else { return }
             self.dismiss(animated: true)
         }
-        
-        floatingButtonCloseView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            floatingButtonCloseView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            floatingButtonCloseView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            floatingButtonCloseView.topAnchor.constraint(equalTo: view.topAnchor),
-            floatingButtonCloseView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            floatingButtonCloseView.plusButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
-        ])
     }
 }
