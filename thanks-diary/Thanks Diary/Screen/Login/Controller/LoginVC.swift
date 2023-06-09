@@ -16,7 +16,7 @@ final class LoginVC: BaseVC {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupBtn: UIButton!
     @IBOutlet weak var noneLoginBtn: UIButton!
-    @IBOutlet weak var lottieView: UIView!
+//    @IBOutlet weak var lottieView: UIView!
     
     private var viewModel: LoginViewModel?
     
@@ -43,7 +43,7 @@ final class LoginVC: BaseVC {
         loginButton.tintColor = .white
         loginButton.layer.cornerRadius = 20
         
-        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "heart", mode: .loop)
+//        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "heart", toProgress: 0.45, mode: .loop)
     }
     
     private func setTarget() {
