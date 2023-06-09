@@ -13,8 +13,8 @@ final class LaunchVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "dot", mode: .loop)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "launch", toProgress: 0.75, speed: 1.65, mode: .autoReverse)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             AlarmAuth().requestNotificationAuthorization()
             if LocalDataStore.localDataStore.getLoginType() != "" {
                 if LocalDataStore.localDataStore.getPasswordData() {
