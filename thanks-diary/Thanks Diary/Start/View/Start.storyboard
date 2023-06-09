@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -251,102 +250,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DYo-yg-gRH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73" y="96"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="NF8-L1-Zz4">
-            <objects>
-                <viewController id="qPA-rj-EFm" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" restorationIdentifier="PageViewController" id="XFB-xi-CGt">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jU-Nl-uEe">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1r-ts-xeb">
-                                <rect key="frame" x="30" y="749" width="333" height="54"/>
-                                <color key="backgroundColor" name="mainColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="nku-vM-jcN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
-                                <color key="tintColor" name="grayColor_1"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="다음"/>
-                                <connections>
-                                    <action selector="goNext:" destination="AuR-Rd-nWC" eventType="touchUpInside" id="Od4-Yr-QW5"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ShT-Aa-gCm">
-                                <rect key="frame" x="170.66666666666666" y="109" width="52" height="12"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcS-ix-uSS">
-                                        <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
-                                        <color key="backgroundColor" name="mainColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="12" id="d5L-nP-YS0"/>
-                                            <constraint firstAttribute="width" constant="12" id="xDM-Hc-OUS"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ti2-fg-w1R">
-                                        <rect key="frame" x="20" y="0.0" width="12" height="12"/>
-                                        <color key="backgroundColor" name="mainColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="QlJ-RB-K5d"/>
-                                            <constraint firstAttribute="height" constant="12" id="l1H-Xy-dmX"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylM-Kl-2eY">
-                                        <rect key="frame" x="40" y="0.0" width="12" height="12"/>
-                                        <color key="backgroundColor" name="mainColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="of2-P2-BAB"/>
-                                            <constraint firstAttribute="height" constant="12" id="to4-Gj-Qfj"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="ga8-uK-6Jp"/>
-                        <color key="backgroundColor" name="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="r1r-ts-xeb" firstAttribute="centerX" secondItem="XFB-xi-CGt" secondAttribute="centerX" id="HLr-qZ-Vf6"/>
-                            <constraint firstItem="ga8-uK-6Jp" firstAttribute="bottom" secondItem="4jU-Nl-uEe" secondAttribute="bottom" id="L5a-BZ-4P3"/>
-                            <constraint firstItem="4jU-Nl-uEe" firstAttribute="leading" secondItem="ga8-uK-6Jp" secondAttribute="leading" id="NcG-vD-QIu"/>
-                            <constraint firstItem="ShT-Aa-gCm" firstAttribute="top" secondItem="ga8-uK-6Jp" secondAttribute="top" constant="50" id="Yov-IV-UYa"/>
-                            <constraint firstItem="ga8-uK-6Jp" firstAttribute="trailing" secondItem="4jU-Nl-uEe" secondAttribute="trailing" id="ZFA-YH-YAw"/>
-                            <constraint firstItem="ga8-uK-6Jp" firstAttribute="bottom" secondItem="r1r-ts-xeb" secondAttribute="bottom" constant="15" id="g2N-kt-l2h"/>
-                            <constraint firstItem="ShT-Aa-gCm" firstAttribute="centerX" secondItem="XFB-xi-CGt" secondAttribute="centerX" id="klf-E0-F8l"/>
-                            <constraint firstItem="r1r-ts-xeb" firstAttribute="leading" secondItem="ga8-uK-6Jp" secondAttribute="leading" constant="30" id="qql-dE-W9n"/>
-                            <constraint firstItem="4jU-Nl-uEe" firstAttribute="top" secondItem="ga8-uK-6Jp" secondAttribute="top" id="wBE-5R-HBj"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="containerView" destination="4jU-Nl-uEe" id="qAe-9I-NnU"/>
-                        <outlet property="firstDotView" destination="dcS-ix-uSS" id="oBj-4c-5ms"/>
-                        <outlet property="nextButton" destination="r1r-ts-xeb" id="3wQ-cb-Ntp"/>
-                        <outlet property="secondDotView" destination="ti2-fg-w1R" id="eZK-y4-iAE"/>
-                        <outlet property="thirdDotView" destination="ylM-Kl-2eY" id="Wy4-oZ-F0g"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sQI-Xu-O8W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="741" y="96"/>
+            <point key="canvasLocation" x="747" y="96"/>
         </scene>
     </scenes>
     <resources>
         <image name="img_heart" width="199" height="193"/>
-        <namedColor name="grayColor_1">
-            <color red="0.31000000238418579" green="0.29399999976158142" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="mainColor">
-            <color red="0.88235294117647056" green="0.9137254901960784" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="whiteColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

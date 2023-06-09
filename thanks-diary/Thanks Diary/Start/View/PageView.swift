@@ -9,18 +9,9 @@ import UIKit
 
 class PageView: UIView {
     
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
-        scrollView.addSubview(containerView)
-        return scrollView
-    }()
-    
-    private lazy var containerView: UIView = {
+    lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.addSubview(progressStackView)
-        view.addSubview(nextButton)
         return view
     }()
     
@@ -33,25 +24,30 @@ class PageView: UIView {
         return stackView
     }()
     
-    private var firstDotView: UIView = {
+    var firstDotView: UIView = {
         let dot = UIView()
+        dot.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         return dot
     }()
     
-    private var secondDotView: UIView = {
+    var secondDotView: UIView = {
         let dot = UIView()
+        dot.backgroundColor = Color.COLOR_GRAY3
         return dot
     }()
     
-    private var thirdDotView: UIView = {
+    var thirdDotView: UIView = {
         let dot = UIView()
+        dot.backgroundColor = Color.COLOR_GRAY3
         return dot
     }()
     
-    private var nextButton: UIButton = {
+    var nextButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 20
         button.backgroundColor = Color.COLOR_GRAYBLUE
+        button.titleLabel?.font = Font.NANUM_LIGHT_20
+        button.setTitle("다음", for: .normal)
         return button
     }()
     
@@ -59,7 +55,16 @@ class PageView: UIView {
         super.init(frame: frame)
         
         setup()
+        addSubView()
+        setDot()
         setConstraints()
+        
+    }
+    
+    func setDot() {
+        firstDotView.layer.cornerRadius = 6
+        secondDotView.layer.cornerRadius = 6
+        thirdDotView.layer.cornerRadius = 6
     }
     
     required init?(coder: NSCoder) {
@@ -68,31 +73,44 @@ class PageView: UIView {
     
     private func setup() {
         backgroundColor = .white
+    }
+    
+    private func addSubView() {
         addSubview(containerView)
+        addSubview(progressStackView)
+        addSubview(nextButton)
     }
     
     private func setConstraints() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
         progressStackView.translatesAutoresizingMaskIntoConstraints = false
         nextButton.translatesAutoresizingMaskIntoConstraints = false
+        firstDotView.translatesAutoresizingMaskIntoConstraints = false
+        secondDotView.translatesAutoresizingMaskIntoConstraints = false
+        thirdDotView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
         NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerView.widthAnchor.constraint(equalTo: widthAnchor),
             
-            containerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            containerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            progressStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            progressStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            progressStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 50),
-            progressStackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            nextButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            nextButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            nextButton.heightAnchor.constraint(equalToConstant: 54),
             
-            nextButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
-            nextButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            nextButton.heightAnchor.constraint(equalToConstant: 54)
+            firstDotView.widthAnchor.constraint(equalToConstant: 12),
+            firstDotView.heightAnchor.constraint(equalToConstant: 12),
+            secondDotView.widthAnchor.constraint(equalToConstant: 12),
+            secondDotView.heightAnchor.constraint(equalToConstant: 12),
+            thirdDotView.widthAnchor.constraint(equalToConstant: 12),
+            thirdDotView.heightAnchor.constraint(equalToConstant: 12)
         ])
     }
 }
