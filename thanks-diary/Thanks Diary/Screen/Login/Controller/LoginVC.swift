@@ -16,7 +16,6 @@ final class LoginVC: BaseVC {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupBtn: UIButton!
     @IBOutlet weak var noneLoginBtn: UIButton!
-//    @IBOutlet weak var lottieView: UIView!
     
     private var viewModel: LoginViewModel?
     
@@ -39,11 +38,10 @@ final class LoginVC: BaseVC {
         passwordTextField.isSecureTextEntry = true
         
         loginButton.setTitle("로그인", for: .normal)
-        loginButton.backgroundColor = Color.COLOR_GRAYBLUE
-        loginButton.tintColor = .white
+        loginButton.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        loginButton.tintColor = Color.COLOR_GRAY2
+        loginButton.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         loginButton.layer.cornerRadius = 20
-        
-//        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "heart", toProgress: 0.45, mode: .loop)
     }
     
     private func setTarget() {
@@ -59,7 +57,7 @@ final class LoginVC: BaseVC {
         signupBtn.addTarget { [weak self] _ in
             guard let self = self else { return }
             
-            self.pushVC(name: "Login", identifier: "EmailSignupVC")
+            self.pushVC(name: "Login", identifier: "SignupVC")
         }
         
         noneLoginBtn.addTarget { [weak self] _ in

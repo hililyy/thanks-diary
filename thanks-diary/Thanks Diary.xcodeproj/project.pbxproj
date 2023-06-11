@@ -93,9 +93,10 @@
 		2AC2B60529BBA3E800C4A985 /* DiaryDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B60429BBA3E800C4A985 /* DiaryDataEntity.swift */; };
 		2AC2B61329BD177D00C4A985 /* CoredataDiaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B61229BD177D00C4A985 /* CoredataDiaryEntity.swift */; };
 		2AC2B61529BD2A5200C4A985 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B61429BD2A5200C4A985 /* String.swift */; };
+		2AD4C8AA2A345DDC00DC38B7 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD4C8A92A345DDC00DC38B7 /* StartVC.swift */; };
 		2AD81F9129CC28B80032829F /* SettingPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD81F9029CC28B80032829F /* SettingPWView.swift */; };
 		2AD81F9329CC28C50032829F /* SettingUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD81F9229CC28C50032829F /* SettingUserInfoView.swift */; };
-		2AD81F9529CC3FD00032829F /* EmailSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD81F9429CC3FD00032829F /* EmailSignupVC.swift */; };
+		2AD81F9529CC3FD00032829F /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD81F9429CC3FD00032829F /* SignupVC.swift */; };
 		2AEE20C52950AD3D00A17F5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AEE20C42950AD3D00A17F5B /* GoogleService-Info.plist */; };
 		2AEE20CC2950B12400A17F5B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE20CB2950B12400A17F5B /* LoginVC.swift */; };
 		2AEE20E129519A9C00A17F5B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE20E029519A9C00A17F5B /* LoginModel.swift */; };
@@ -209,9 +210,10 @@
 		2AC2B60429BBA3E800C4A985 /* DiaryDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDataEntity.swift; sourceTree = "<group>"; };
 		2AC2B61229BD177D00C4A985 /* CoredataDiaryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataDiaryEntity.swift; sourceTree = "<group>"; };
 		2AC2B61429BD2A5200C4A985 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		2AD4C8A92A345DDC00DC38B7 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		2AD81F9029CC28B80032829F /* SettingPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWView.swift; sourceTree = "<group>"; };
 		2AD81F9229CC28C50032829F /* SettingUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserInfoView.swift; sourceTree = "<group>"; };
-		2AD81F9429CC3FD00032829F /* EmailSignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignupVC.swift; sourceTree = "<group>"; };
+		2AD81F9429CC3FD00032829F /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		2AEE20C42950AD3D00A17F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AEE20CB2950B12400A17F5B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		2AEE20E029519A9C00A17F5B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -547,7 +549,8 @@
 			isa = PBXGroup;
 			children = (
 				2AEE20CB2950B12400A17F5B /* LoginVC.swift */,
-				2AD81F9429CC3FD00032829F /* EmailSignupVC.swift */,
+				2AD4C8A92A345DDC00DC38B7 /* StartVC.swift */,
+				2AD81F9429CC3FD00032829F /* SignupVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				023ACEBD2A14C92E0022A9A3 /* BaseVC.swift in Sources */,
 				2ABFAC0929CA82FE00273F0D /* ReadView.swift in Sources */,
 				2A81234228C09CF6000A250E /* UserDefaultKey.swift in Sources */,
+				2AD4C8AA2A345DDC00DC38B7 /* StartVC.swift in Sources */,
 				2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */,
 				2A7241C928B019C00040ADE9 /* SettingAlarmCell.swift in Sources */,
 				2A9F351328AE5763006CCF7C /* SettingVC.swift in Sources */,
@@ -849,7 +853,7 @@
 				2AC2B61529BD2A5200C4A985 /* String.swift in Sources */,
 				2A7241CD28B26AAD0040ADE9 /* DetailWriteVC.swift in Sources */,
 				2A72421128B426730040ADE9 /* SettingModel.swift in Sources */,
-				2AD81F9529CC3FD00032829F /* EmailSignupVC.swift in Sources */,
+				2AD81F9529CC3FD00032829F /* SignupVC.swift in Sources */,
 				2A7241D828B3EDE60040ADE9 /* MainModel.swift in Sources */,
 				2AD81F9129CC28B80032829F /* SettingPWView.swift in Sources */,
 				2A81234E28C4E22C000A250E /* SimpleDiaryListCell.swift in Sources */,
