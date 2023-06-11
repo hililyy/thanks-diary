@@ -18,7 +18,7 @@ final class StartView: UIView {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
-        button.setTitleColor(Color.COLOR_GRAY2, for: .normal)
+        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.setTitle("로그인", for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_18
         return button

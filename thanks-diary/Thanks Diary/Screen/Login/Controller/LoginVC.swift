@@ -9,60 +9,43 @@ import UIKit
 
 final class LoginVC: BaseVC {
     
-    @IBOutlet weak var emailView: UIView!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordView: UIView!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signupBtn: UIButton!
-    @IBOutlet weak var noneLoginBtn: UIButton!
-    
+    private let loginView = LoginView()
     private var viewModel: LoginViewModel?
+    
+    override func loadView() {
+        view = loginView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = LoginViewModel(self, self)
-        setUI()
         setTarget()
     }
     
-    private func setUI() {
-        emailView.layer.cornerRadius = 20
-        emailView.layer.borderColor = Color.COLOR_GRAY3?.cgColor
-        emailView.layer.borderWidth = 1
-        
-        passwordView.layer.cornerRadius = 20
-        passwordView.layer.borderColor = Color.COLOR_GRAY3?.cgColor
-        passwordView.layer.borderWidth = 1
-        
-        passwordTextField.isSecureTextEntry = true
-        
-        loginButton.setTitle("로그인", for: .normal)
-        loginButton.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
-        loginButton.tintColor = Color.COLOR_GRAY2
-        loginButton.setTitleColor(Color.COLOR_GRAY1, for: .normal)
-        loginButton.layer.cornerRadius = 20
-    }
-    
     private func setTarget() {
-        loginButton.addTarget { [weak self] _ in
+        loginView.loginButton.addTarget { [weak self] _ in
             guard let self = self,
-                  let email = self.emailTextField.text,
-                  let password = self.passwordTextField.text
+                  let email = self.loginView.emailTextField.text,
+                  let password = self.loginView.passwordTextField.text
             else { return }
-            
+
             self.viewModel?.login(email: email, password: password)
         }
-        
-        signupBtn.addTarget { [weak self] _ in
-            guard let self = self else { return }
-            
-            self.pushVC(name: "Login", identifier: "SignupVC")
+
+        loginView.findIdButton.addTarget { [weak self] _ in
+            guard self != nil else { return }
+            print("아이디 찾기 버튼 클릭")
         }
         
-        noneLoginBtn.addTarget { [weak self] _ in
+
+        loginView.findPasswordButton.addTarget { [weak self] _ in
+            guard self != nil else { return }
+            print("비밀번호 찾기 버튼 클릭")
+        }
+        
+        loginView.backButton.addTarget { [weak self] _ in
             guard let self = self else { return }
-            self.pushVC(name: "Start", identifier: "PageVC")
+            self.back(animated: true)
         }
     }
 }
