@@ -7,30 +7,31 @@
 
 import UIKit
 
-class StartVC: BaseVC {
-
+final class StartVC: BaseVC {
+    private let startView = StartView()
     
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signupButton: UIButton!
-    @IBOutlet weak var noneLoginButton: UIButton!
-    @IBOutlet weak var lottieView: UIView!
+    override func loadView() {
+        view = startView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTarget()
-        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "heart", toProgress: 0.45, mode: .loop)
     }
     
-    func setTarget() {
-        loginButton.addTarget { _ in
+    private func setTarget() {
+        startView.loginButton.addTarget { [weak self ] _ in
+            guard let self = self else { return }
             self.pushVC(name: "Login", identifier: "LoginVC")
         }
         
-        signupButton.addTarget { _ in
+        startView.signupButton.addTarget { [weak self ] _ in
+            guard let self = self else { return }
             self.pushVC(name: "Login", identifier: "SignupVC")
         }
         
-        noneLoginButton.addTarget { _ in
+        startView.noneLoginButton.addTarget { [weak self ] _ in
+            guard let self = self else { return }
             self.pushVC(name: "Start", identifier: "PageVC")
         }
     }

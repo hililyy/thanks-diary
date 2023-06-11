@@ -94,6 +94,7 @@
 		2AC2B61329BD177D00C4A985 /* CoredataDiaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B61229BD177D00C4A985 /* CoredataDiaryEntity.swift */; };
 		2AC2B61529BD2A5200C4A985 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B61429BD2A5200C4A985 /* String.swift */; };
 		2AD4C8AA2A345DDC00DC38B7 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD4C8A92A345DDC00DC38B7 /* StartVC.swift */; };
+		2AD4C8AC2A35C8DD00DC38B7 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD4C8AB2A35C8DD00DC38B7 /* StartView.swift */; };
 		2AD81F9129CC28B80032829F /* SettingPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD81F9029CC28B80032829F /* SettingPWView.swift */; };
 		2AD81F9329CC28C50032829F /* SettingUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD81F9229CC28C50032829F /* SettingUserInfoView.swift */; };
 		2AD81F9529CC3FD00032829F /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD81F9429CC3FD00032829F /* SignupVC.swift */; };
@@ -211,6 +212,7 @@
 		2AC2B61229BD177D00C4A985 /* CoredataDiaryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataDiaryEntity.swift; sourceTree = "<group>"; };
 		2AC2B61429BD2A5200C4A985 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2AD4C8A92A345DDC00DC38B7 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
+		2AD4C8AB2A35C8DD00DC38B7 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		2AD81F9029CC28B80032829F /* SettingPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWView.swift; sourceTree = "<group>"; };
 		2AD81F9229CC28C50032829F /* SettingUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserInfoView.swift; sourceTree = "<group>"; };
 		2AD81F9429CC3FD00032829F /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
@@ -268,8 +270,8 @@
 		0208013C2A332FEA009B0A96 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				020801202A332E0C009B0A96 /* Onboarding */,
 				2AFF117A29574FF800EC85EA /* Login */,
+				020801202A332E0C009B0A96 /* Onboarding */,
 				2A9F34F928AC10D3006CCF7C /* Main */,
 				2A9F34FA28AC10DE006CCF7C /* Setting */,
 			);
@@ -287,6 +289,7 @@
 		029E05F02A16054000A6EC28 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2AD4C8AB2A35C8DD00DC38B7 /* StartView.swift */,
 				023ACEB52A14C0930022A9A3 /* Login.storyboard */,
 			);
 			path = View;
@@ -548,8 +551,8 @@
 		2AA8094429C6ECDD003170C4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2AEE20CB2950B12400A17F5B /* LoginVC.swift */,
 				2AD4C8A92A345DDC00DC38B7 /* StartVC.swift */,
+				2AEE20CB2950B12400A17F5B /* LoginVC.swift */,
 				2AD81F9429CC3FD00032829F /* SignupVC.swift */,
 			);
 			path = Controller;
@@ -904,6 +907,7 @@
 				2AC2B60129BB8EAD00C4A985 /* LottieManager.swift in Sources */,
 				023ACEB22A14AB610022A9A3 /* Enum.swift in Sources */,
 				2ABFAC0729CA80CB00273F0D /* SimpleWriteView.swift in Sources */,
+				2AD4C8AC2A35C8DD00DC38B7 /* StartView.swift in Sources */,
 				2A9F351928AE6410006CCF7C /* SettingLabelCell.swift in Sources */,
 				2A7241D128B2A5950040ADE9 /* DeletePopupVC.swift in Sources */,
 				020801322A332F34009B0A96 /* PageVC.swift in Sources */,
