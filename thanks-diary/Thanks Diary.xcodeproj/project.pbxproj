@@ -15,6 +15,9 @@
 		020801392A332F7D009B0A96 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020801382A332F7D009B0A96 /* PageView.swift */; };
 		0208013B2A332FC2009B0A96 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0208013A2A332FC2009B0A96 /* Start.storyboard */; };
 		0208013E2A36C871009B0A96 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208013D2A36C871009B0A96 /* SignupView.swift */; };
+		020801402A36D8C1009B0A96 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208013F2A36D8C1009B0A96 /* AlertView.swift */; };
+		020801422A36D8D1009B0A96 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020801412A36D8D1009B0A96 /* AlertVC.swift */; };
+		020801442A36E42C009B0A96 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 020801432A36E42C009B0A96 /* Common.storyboard */; };
 		023ACEB22A14AB610022A9A3 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023ACEB12A14AB610022A9A3 /* Enum.swift */; };
 		023ACEB62A14C0930022A9A3 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023ACEB52A14C0930022A9A3 /* Login.storyboard */; };
 		023ACEB82A14C0A30022A9A3 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023ACEB72A14C0A30022A9A3 /* Setting.storyboard */; };
@@ -130,6 +133,9 @@
 		020801382A332F7D009B0A96 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0208013A2A332FC2009B0A96 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		0208013D2A36C871009B0A96 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		0208013F2A36D8C1009B0A96 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		020801412A36D8D1009B0A96 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
+		020801432A36E42C009B0A96 /* Common.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
 		023ACEB12A14AB610022A9A3 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		023ACEB52A14C0930022A9A3 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		023ACEB72A14C0A30022A9A3 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -286,6 +292,9 @@
 			isa = PBXGroup;
 			children = (
 				023ACEBC2A14C92E0022A9A3 /* BaseVC.swift */,
+				0208013F2A36D8C1009B0A96 /* AlertView.swift */,
+				020801412A36D8D1009B0A96 /* AlertVC.swift */,
+				020801432A36E42C009B0A96 /* Common.storyboard */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -786,6 +795,7 @@
 				2A81232828BFB83B000A250E /* go.json in Resources */,
 				2A0D881828ABB80900576E56 /* wave.json in Resources */,
 				2A0D880628A540FB00576E56 /* Main.storyboard in Resources */,
+				020801442A36E42C009B0A96 /* Common.storyboard in Resources */,
 				02FF90592A20928B00772BFB /* heart.json in Resources */,
 				02C6A5AD2A25F9C3005F0970 /* NanumBarunGothicBold.ttf in Resources */,
 				2A81233028BFBF4D000A250E /* sun.json in Resources */,
@@ -847,6 +857,7 @@
 				0208013E2A36C871009B0A96 /* SignupView.swift in Sources */,
 				023ACEBD2A14C92E0022A9A3 /* BaseVC.swift in Sources */,
 				2ABFAC0929CA82FE00273F0D /* ReadView.swift in Sources */,
+				020801422A36D8D1009B0A96 /* AlertVC.swift in Sources */,
 				2A81234228C09CF6000A250E /* UserDefaultKey.swift in Sources */,
 				2AD4C8AA2A345DDC00DC38B7 /* StartVC.swift in Sources */,
 				2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */,
@@ -902,6 +913,7 @@
 				2A7241CF28B2A57E0040ADE9 /* ReadVC.swift in Sources */,
 				2AD81F9329CC28C50032829F /* SettingUserInfoView.swift in Sources */,
 				02AFB9F12A15F23600B56A24 /* UIButton.swift in Sources */,
+				020801402A36D8C1009B0A96 /* AlertView.swift in Sources */,
 				2AA8095229C797EE003170C4 /* AlertManager.swift in Sources */,
 				2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */,
 				2AC2B5FA29BB8B1300C4A985 /* PaddingLabel.swift in Sources */,
