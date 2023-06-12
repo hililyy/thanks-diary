@@ -14,6 +14,7 @@
 		020801362A332F5D009B0A96 /* ThirdStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020801352A332F5D009B0A96 /* ThirdStartVC.swift */; };
 		020801392A332F7D009B0A96 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020801382A332F7D009B0A96 /* PageView.swift */; };
 		0208013B2A332FC2009B0A96 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0208013A2A332FC2009B0A96 /* Start.storyboard */; };
+		0208013E2A36C871009B0A96 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208013D2A36C871009B0A96 /* SignupView.swift */; };
 		023ACEB22A14AB610022A9A3 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023ACEB12A14AB610022A9A3 /* Enum.swift */; };
 		023ACEB62A14C0930022A9A3 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023ACEB52A14C0930022A9A3 /* Login.storyboard */; };
 		023ACEB82A14C0A30022A9A3 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023ACEB72A14C0A30022A9A3 /* Setting.storyboard */; };
@@ -128,6 +129,7 @@
 		020801352A332F5D009B0A96 /* ThirdStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdStartVC.swift; sourceTree = "<group>"; };
 		020801382A332F7D009B0A96 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0208013A2A332FC2009B0A96 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		0208013D2A36C871009B0A96 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		023ACEB12A14AB610022A9A3 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		023ACEB52A14C0930022A9A3 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		023ACEB72A14C0A30022A9A3 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				2AD4C8AB2A35C8DD00DC38B7 /* StartView.swift */,
 				2AD4C8AD2A35E7EF00DC38B7 /* LoginView.swift */,
+				0208013D2A36C871009B0A96 /* SignupView.swift */,
 				023ACEB52A14C0930022A9A3 /* Login.storyboard */,
 			);
 			path = View;
@@ -841,6 +844,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0208013E2A36C871009B0A96 /* SignupView.swift in Sources */,
 				023ACEBD2A14C92E0022A9A3 /* BaseVC.swift in Sources */,
 				2ABFAC0929CA82FE00273F0D /* ReadView.swift in Sources */,
 				2A81234228C09CF6000A250E /* UserDefaultKey.swift in Sources */,

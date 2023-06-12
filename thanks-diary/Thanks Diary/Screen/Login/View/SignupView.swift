@@ -1,13 +1,13 @@
 //
-//  LoginView.swift
+//  SignupView.swift
 //  Thanks Diary
 //
-//  Created by 강조은 on 2023/06/11.
+//  Created by 강조은 on 2023/06/12.
 //
 
 import UIKit
 
-final class LoginView: UIView {
+final class SignupView: UIView {
     
     var backButton: UIButton = {
         let button = UIButton()
@@ -17,7 +17,7 @@ final class LoginView: UIView {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "이메일 로그인"
+        label.text = "회원가입"
         label.font = Font.NANUM_LIGHT_18
         return label
     }()
@@ -53,47 +53,34 @@ final class LoginView: UIView {
         return view
     }()
     
-    var loginButton: UIButton = {
+    var rePasswordTextField: UITextField = {
+        var textField = UITextField()
+        textField.placeholder = "비밀번호를 다시한번 입력해 주세요."
+        textField.font = Font.NANUM_LIGHT_14
+        textField.isSecureTextEntry = true
+        return textField
+    }()
+    
+    var rePasswordView: UIView = {
+        var view = UIView()
+        view.layer.cornerRadius = 20
+        view.layer.borderColor = Color.COLOR_GRAY3?.cgColor
+        view.layer.borderWidth = 1
+        return view
+    }()
+    
+    var signupButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
-        button.setTitle("로그인", for: .normal)
+        button.setTitle("회원가입", for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_18
         return button
     }()
     
     private var containerView: UIView = {
         let view = UIView()
-        return view
-    }()
-    
-    private var findView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    var findIdButton: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
-        button.setTitle("아이디 찾기", for: .normal)
-        button.titleLabel?.font = Font.NANUM_LIGHT_15
-        button.titleLabel?.textAlignment = .right
-        return button
-    }()
-    
-    var findPasswordButton: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
-        button.setTitle("비밀번호 찾기", for: .normal)
-        button.titleLabel?.font = Font.NANUM_LIGHT_15
-        button.titleLabel?.textAlignment = .left
-        return button
-    }()
-    
-    private var lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = Color.COLOR_GRAY3
         return view
     }()
     
@@ -116,15 +103,14 @@ final class LoginView: UIView {
         addSubview(backButton)
         addSubview(titleLabel)
         addSubview(containerView)
+        
         containerView.addSubview(emailView)
         emailView.addSubview(emailTextField)
         containerView.addSubview(passwordView)
         passwordView.addSubview(passwordTextField)
-        containerView.addSubview(loginButton)
-        addSubview(findView)
-        findView.addSubview(findIdButton)
-        findView.addSubview(findPasswordButton)
-        findView.addSubview(lineView)
+        containerView.addSubview(rePasswordView)
+        rePasswordView.addSubview(rePasswordTextField)
+        containerView.addSubview(signupButton)
     }
     
     private func setConstraints() {
@@ -135,11 +121,10 @@ final class LoginView: UIView {
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordView.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        findView.translatesAutoresizingMaskIntoConstraints = false
-        findIdButton.translatesAutoresizingMaskIntoConstraints = false
-        findPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        lineView.translatesAutoresizingMaskIntoConstraints = false
+        rePasswordTextField.translatesAutoresizingMaskIntoConstraints = false
+        rePasswordView.translatesAutoresizingMaskIntoConstraints = false
+        signupButton.translatesAutoresizingMaskIntoConstraints = false
+        
         
         NSLayoutConstraint.activate([
             backButton.heightAnchor.constraint(equalToConstant: 60),
@@ -163,7 +148,7 @@ final class LoginView: UIView {
             
             passwordView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             passwordView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            passwordView.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -35),
+            passwordView.bottomAnchor.constraint(equalTo: rePasswordView.topAnchor, constant: -25),
             
             passwordTextField.topAnchor.constraint(equalTo: passwordView.topAnchor),
             passwordTextField.leadingAnchor.constraint(equalTo: passwordView.leadingAnchor, constant: 15),
@@ -171,31 +156,24 @@ final class LoginView: UIView {
             passwordTextField.bottomAnchor.constraint(equalTo: passwordView.bottomAnchor),
             passwordTextField.heightAnchor.constraint(equalToConstant: 45),
             
-            loginButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            loginButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            loginButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            loginButton.heightAnchor.constraint(equalToConstant: 50),
+            rePasswordView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            rePasswordView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            rePasswordView.bottomAnchor.constraint(equalTo: signupButton.topAnchor, constant: -35),
             
-            containerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 70),
-            containerView.bottomAnchor.constraint(equalTo: findView.topAnchor, constant: -20),
+            rePasswordTextField.topAnchor.constraint(equalTo: rePasswordView.topAnchor),
+            rePasswordTextField.leadingAnchor.constraint(equalTo: rePasswordView.leadingAnchor, constant: 15),
+            rePasswordTextField.trailingAnchor.constraint(equalTo: rePasswordView.trailingAnchor, constant: -15),
+            rePasswordTextField.bottomAnchor.constraint(equalTo: rePasswordView.bottomAnchor),
+            rePasswordTextField.heightAnchor.constraint(equalToConstant: 45),
+            
+            signupButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            signupButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            signupButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            signupButton.heightAnchor.constraint(equalToConstant: 50),
+            
             containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            containerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 70),
             containerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            
-            findView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            findIdButton.topAnchor.constraint(equalTo: findView.topAnchor),
-            findIdButton.leadingAnchor.constraint(equalTo: findView.leadingAnchor),
-            findIdButton.trailingAnchor.constraint(equalTo: lineView.leadingAnchor, constant: -10),
-            findIdButton.bottomAnchor.constraint(equalTo: findView.bottomAnchor),
-            
-            lineView.topAnchor.constraint(equalTo: findView.topAnchor, constant: 5),
-            lineView.bottomAnchor.constraint(equalTo: findView.bottomAnchor, constant: -5),
-            lineView.widthAnchor.constraint(equalToConstant: 1),
-            
-            findPasswordButton.leadingAnchor.constraint(equalTo: lineView.trailingAnchor, constant: 10),
-            findPasswordButton.topAnchor.constraint(equalTo: findView.topAnchor),
-            findPasswordButton.trailingAnchor.constraint(equalTo: findView.trailingAnchor),
-            findPasswordButton.bottomAnchor.constraint(equalTo: findView.bottomAnchor)
         ])
     }
 }
