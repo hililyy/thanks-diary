@@ -7,7 +7,10 @@
 
 import UIKit
 
-class Color {
+struct Color {
+    
+    private init() {}
+    
     static let COLOR_LIGHTGRAYBLUE = UIColor(named: "mainColor")
     static let COLOR_GRAY1 = UIColor(named: "grayColor_1")
     static let COLOR_GRAY2 = UIColor(named: "grayColor_2")

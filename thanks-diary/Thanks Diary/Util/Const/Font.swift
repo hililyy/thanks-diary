@@ -7,7 +7,10 @@
 
 import UIKit
 
-class Font {
+struct Font {
+    
+    private init() {}
+    
     static let NANUM_BOLD_13 = UIFont(name: "NanumBarunGothicBold", size: 13)
     static let NANUM_BOLD_14 = UIFont(name: "NanumBarunGothicBold", size: 14)
     static let NANUM_BOLD_15 = UIFont(name: "NanumBarunGothicBold", size: 15)
