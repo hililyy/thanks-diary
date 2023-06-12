@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-final class DetailWriteVC: UIViewController {
+final class DetailWriteVC: BaseVC {
     
     @IBOutlet weak var diaryTitle: UILabel!
     @IBOutlet weak var titleTextfield: UITextField!
@@ -47,14 +47,14 @@ final class DetailWriteVC: UIViewController {
                     selectedIndex: index,
                     afterTitle: titleTextfield.text ?? "",
                     afterContents: contentsTextView.text ?? "")
-                showMainVC()
+                self.setRootVC(name: "Main", identifier: "MainVC")
             } else {
                 mainModel.updateFirebaseData(
                     diaryType: .detail,
                     selectedIndex: index,
                     afterTitle: titleTextfield.text ?? "",
                     afterContents: contentsTextView.text ?? "") {
-                        self.showMainVC()
+                        self.setRootVC(name: "Main", identifier: "MainVC")
                     }
             }
         } else {

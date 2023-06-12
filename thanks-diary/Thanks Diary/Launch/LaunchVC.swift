@@ -20,7 +20,7 @@ final class LaunchVC: BaseVC {
                 if LocalDataStore.localDataStore.getPasswordData() {
                     self.presentSettingPWVC()
                 } else {
-                    self.showMainVC()
+                    self.setRootVC(name: "Main", identifier: "MainVC")
                 }
             } else {
                 self.setRootVC(name: "Login", identifier: "StartVC")

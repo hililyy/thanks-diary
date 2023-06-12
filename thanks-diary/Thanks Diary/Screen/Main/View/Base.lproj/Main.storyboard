@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLa-OF-Gtn" customClass="FSCalendar">
-                                <rect key="frame" x="10" y="143" width="370" height="320"/>
+                                <rect key="frame" x="10" y="99" width="370" height="320"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="z77-im-saP"/>
@@ -39,7 +39,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2f-dB-wxT">
-                                <rect key="frame" x="338" y="91" width="52" height="52"/>
+                                <rect key="frame" x="338" y="47" width="52" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="P2f-dB-wxT" secondAttribute="height" multiplier="1:1" id="5Hn-1I-fGY"/>
                                     <constraint firstAttribute="width" constant="52" id="sMS-0Y-62m"/>
@@ -52,7 +52,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GSk-Mz-Wn5">
-                                <rect key="frame" x="0.0" y="532" width="390" height="278"/>
+                                <rect key="frame" x="0.0" y="488" width="390" height="322"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="vPC-Co-KWb">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="299"/>
@@ -140,16 +140,16 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_gray_line" translatesAutoresizingMaskIntoConstraints="NO" id="wcv-ue-ryN">
-                                <rect key="frame" x="0.0" y="482" width="390" height="1"/>
+                                <rect key="frame" x="0.0" y="438" width="390" height="1"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14일 (일)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0R-sM-KPW">
-                                <rect key="frame" x="25" y="496" width="165" height="23"/>
+                                <rect key="frame" x="25" y="452" width="165" height="23"/>
                                 <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65c-kB-gCJ">
-                                <rect key="frame" x="20" y="107" width="45" height="36"/>
+                                <rect key="frame" x="20" y="63" width="45" height="36"/>
                                 <color key="backgroundColor" red="0.88235294117647056" green="0.9137254901960784" blue="1" alpha="0.62605831323080496" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="0XX-9V-Lax"/>
@@ -165,7 +165,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnh-TT-xLz">
-                                <rect key="frame" x="293" y="102" width="30" height="30"/>
+                                <rect key="frame" x="293" y="58" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gnh-TT-xLz" secondAttribute="height" multiplier="1:1" id="ux8-hz-YRA"/>
                                     <constraint firstAttribute="width" constant="30" id="zD6-4a-tzj"/>
@@ -216,6 +216,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Oi-6J-0b1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="60" y="777.66116941529242"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="moL-eq-dEO">
+            <objects>
+                <viewController id="3ne-yD-qD6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rog-AD-Mjc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="blh-6x-oFz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVI-qL-Ios" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="29" y="1436"/>
         </scene>
         <!--Detail WriteVC-->
         <scene sceneID="lpK-Wm-E45">
@@ -357,7 +372,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="2022년 8월 14일 감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5e-Y5-hMq">
-                                <rect key="frame" x="60" y="72" width="220" height="23"/>
+                                <rect key="frame" x="59.999999999999986" y="72" width="215.66666666666663" height="23"/>
                                 <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
                                 <color key="textColor" name="grayColor_1"/>
                                 <nil key="highlightedColor"/>
@@ -575,22 +590,6 @@
             </objects>
             <point key="canvasLocation" x="2188" y="773"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="gay-DJ-Y8C">
-            <objects>
-                <navigationController storyboardIdentifier="main" modalPresentationStyle="fullScreen" id="n34-LA-5nJ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="edv-BO-oSD">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Rmf-89-8Rf" kind="relationship" relationship="rootViewController" id="F4e-Du-ufC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8ba-Ov-SjC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-675" y="777"/>
-        </scene>
         <!--Simple WriteVC-->
         <scene sceneID="hW2-2T-wSe">
             <objects>
@@ -740,7 +739,7 @@
     </scenes>
     <designables>
         <designable name="6MI-aR-JAp">
-            <size key="intrinsicContentSize" width="30.333333333333332" height="19.666666666666668"/>
+            <size key="intrinsicContentSize" width="29.666666666666668" height="20"/>
         </designable>
     </designables>
     <resources>

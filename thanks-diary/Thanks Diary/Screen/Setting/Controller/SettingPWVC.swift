@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SettingPWVC: UIViewController {
+final class SettingPWVC: BaseVC {
     
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var firstImg: UIImageView!
@@ -37,7 +37,7 @@ final class SettingPWVC: UIViewController {
         if count == 4 {
             if homeFlag == true {
                 if comparePW(LocalDataStore.localDataStore.getPasswordNumber()!, firstPW) {
-                    showMainVC()
+                    self.setRootVC(name: "Main", identifier: "MainVC")
                 } else {
                     notMatch()
                 }

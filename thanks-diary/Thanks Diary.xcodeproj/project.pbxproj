@@ -18,6 +18,7 @@
 		020801402A36D8C1009B0A96 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208013F2A36D8C1009B0A96 /* AlertView.swift */; };
 		020801422A36D8D1009B0A96 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020801412A36D8D1009B0A96 /* AlertVC.swift */; };
 		020801442A36E42C009B0A96 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 020801432A36E42C009B0A96 /* Common.storyboard */; };
+		020801462A3708D6009B0A96 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020801452A3708D6009B0A96 /* MainView.swift */; };
 		023ACEB22A14AB610022A9A3 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023ACEB12A14AB610022A9A3 /* Enum.swift */; };
 		023ACEB62A14C0930022A9A3 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023ACEB52A14C0930022A9A3 /* Login.storyboard */; };
 		023ACEB82A14C0A30022A9A3 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023ACEB72A14C0A30022A9A3 /* Setting.storyboard */; };
@@ -136,6 +137,7 @@
 		0208013F2A36D8C1009B0A96 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		020801412A36D8D1009B0A96 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
 		020801432A36E42C009B0A96 /* Common.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
+		020801452A3708D6009B0A96 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		023ACEB12A14AB610022A9A3 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		023ACEB52A14C0930022A9A3 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		023ACEB72A14C0A30022A9A3 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -280,12 +282,19 @@
 		0208013C2A332FEA009B0A96 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				2AFF117A29574FF800EC85EA /* Login */,
 				020801202A332E0C009B0A96 /* Onboarding */,
+				2AFF117A29574FF800EC85EA /* Login */,
 				2A9F34F928AC10D3006CCF7C /* Main */,
 				2A9F34FA28AC10DE006CCF7C /* Setting */,
 			);
 			path = Screen;
+			sourceTree = "<group>";
+		};
+		020801472A370B98009B0A96 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		023ACEBB2A14C9090022A9A3 /* Common */ = {
@@ -624,12 +633,14 @@
 		2ABFAC0329CA764600273F0D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				020801472A370B98009B0A96 /* Cell */,
 				2A0D880428A540FB00576E56 /* Main.storyboard */,
 				2ABFABFF29CA615800273F0D /* MainTableView.swift */,
 				2ABFAC0129CA6ECB00273F0D /* MainCalendar.swift */,
 				2ABFAC0429CA790E00273F0D /* DetailWriteView.swift */,
 				2ABFAC0629CA80CB00273F0D /* SimpleWriteView.swift */,
 				2ABFAC0829CA82FE00273F0D /* ReadView.swift */,
+				020801452A3708D6009B0A96 /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -898,6 +909,7 @@
 				02C6A59D2A20ADA1005F0970 /* FloatingButtonVC.swift in Sources */,
 				2ABFAC0029CA615800273F0D /* MainTableView.swift in Sources */,
 				2A81233928C0014D000A250E /* AlarmSettingCell.swift in Sources */,
+				020801462A3708D6009B0A96 /* MainView.swift in Sources */,
 				2A9F350E28AE1C0D006CCF7C /* MainVC.swift in Sources */,
 				2AEE20CC2950B12400A17F5B /* LoginVC.swift in Sources */,
 				2AC2B5FE29BB8DF800C4A985 /* AlarmAuth.swift in Sources */,
