@@ -48,7 +48,6 @@ final class MainView: UIView {
     
     let notWriteImageView: UIImageView = {
         let imageView = UIImageView()
-        
         return imageView
     }()
     

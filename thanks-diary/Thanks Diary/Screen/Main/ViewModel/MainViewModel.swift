@@ -1,14 +1,13 @@
 //
-//  MainModel.swift
+//  MainViewModel.swift
 //  Thanks Diary
 //
-//  Created by 강조은 on 2022/08/23.
+//  Created by 강조은 on 2023/06/20.
 //
 
-import UIKit
-import Firebase
+import Foundation
 
-final class MainModel {
+final class MainViewModel {
     
     var detailData: [DiaryEntity] = []
     var simpleData: [SimpleDiaryEntity] = []
@@ -24,7 +23,7 @@ final class MainModel {
     var simpleKey: [String] = []
     var detailKeybyDate: [String] = []
     var simpleKeybyDate: [String] = []
-    var loginType: LoginType = .email
+    var loginType: LoginType = .none
     
     func getData(completion: @escaping () -> ()) {
         DiaryCoreDataManager.shared.getData(

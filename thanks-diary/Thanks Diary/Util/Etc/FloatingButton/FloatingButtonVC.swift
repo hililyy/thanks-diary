@@ -9,7 +9,7 @@ import UIKit
 
 class FloatingButtonVC: BaseVC {
     
-    private let floatingButtonCloseView = FloatingButtonCloseView()
+    let floatingButtonCloseView = FloatingButtonCloseView()
     
     override func loadView() {
         view = floatingButtonCloseView
@@ -26,14 +26,14 @@ class FloatingButtonVC: BaseVC {
     }
     
     func setOpenConstraints() {
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
             self.floatingButtonCloseView.setOpenConstraints()
             self.view.layoutIfNeeded() // 화면 갱신
         }
     }
     
     func setCloseConstraints() {
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
             self.floatingButtonCloseView.setCloseConstraints()
             self.view.layoutIfNeeded() // 화면 갱신
         } completion: { completion in

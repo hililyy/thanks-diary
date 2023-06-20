@@ -11,7 +11,7 @@ import CoreData
 import Firebase
 
 final class MainVC: BaseVC {
-    @IBOutlet weak var todayDate: UILabel!
+    @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var diaryTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
@@ -19,7 +19,7 @@ final class MainVC: BaseVC {
     @IBOutlet weak var todayBtn: UIButton!
     @IBOutlet weak var uploadBtn: UIButton!
     
-    let mainModel = MainModel.model
+    let viewModel = MainViewModel()
     var mainTableView: MainTableView?
     var mainCalendar: MainCalendar?
     
@@ -30,8 +30,7 @@ final class MainVC: BaseVC {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        if mainModel.loginType == LoginType.none {
+        if viewModel.loginType == .none {
             reloadData()
         } else {
             reloadFirebaseData()
@@ -39,7 +38,7 @@ final class MainVC: BaseVC {
     }
     
     @IBAction func goSetting(_ sender: UIButton) {
-        self.showSettingVC()
+        pushVC(name: "Setting", identifier: "SettingVC")
     }
     
     @IBAction func moveTodayFocus(_ sender: UIButton) {
@@ -62,7 +61,7 @@ final class MainVC: BaseVC {
         calendar.dataSource = mainCalendar
         
         self.todayBtn.layer.cornerRadius = 10
-        self.todayDate.text = mainModel.selectedDate.convertString(format: "dd'일' (E)")
+        self.todayLabel.text = mainModel.selectedDate.convertString(format: "dd'일' (E)")
         mainCalendar?.setCalender()
         setuploadBtn()
     }
@@ -85,7 +84,22 @@ final class MainVC: BaseVC {
             let vc = FloatingButtonVC()
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true)
+            vc.floatingButtonCloseView.simpleButton.button.addTarget { [weak self] _ in
+                guard let self = self else { return }
+                self.dismiss(animated: true) {
+                    let simpleVC = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as! SimpleWriteVC
+                    simpleVC.modalPresentationStyle = .overFullScreen
+                    self.present(simpleVC, animated: true)
+                }
+            }
+            vc.floatingButtonCloseView.detailButton.button.addTarget { [weak self] _ in
+                guard let self = self else { return }
+                
+                self.dismiss(animated: true) {
+                    self.pushVC(name: "Main", identifier: "DetailWriteVC")
+                }
+            }
+            self.present(vc, animated: false)
         }
         view.addSubview(floatingButton)
         

@@ -73,8 +73,4 @@ final class DetailWriteVC: BaseVC {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
 }

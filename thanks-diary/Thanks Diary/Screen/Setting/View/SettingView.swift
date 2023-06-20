@@ -12,6 +12,7 @@ import AcknowList
 final class SettingView: NSObject {
     private var settingVC: SettingVC
     private let settingModel = SettingModel.model
+    let mainModel = MainModel.model
     
     init(_ settingVC: SettingVC) {
         self.settingVC = settingVC
@@ -53,30 +54,36 @@ extension SettingView: UITableViewDelegate, UITableViewDataSource, MFMailCompose
             }
             
             return cell
-        case 2:
-            let cell = settingVC.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
-            cell.settingLabel.text = "알림 설정"
-            cell.selectionStyle = .none
-            return cell
+//        case 2:
+//            let cell = settingVC.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
+//            cell.settingLabel.text = "알림 설정"
+//            cell.selectionStyle = .none
+//            return cell
             
-        case 3:
+        case 2:
             let cell = settingVC.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
             cell.settingLabel.text = "고객 센터"
             cell.selectionStyle = .none
             return cell
             
-        case 4:
+        case 3:
             let cell = settingVC.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
             cell.settingLabel.text = "오픈소스 라이선스"
             cell.selectionStyle = .none
             return cell
             
-        case 5:
+        case 4:
             let appVersion = loadAppStoreVersion()
             let cell = settingVC.settingTableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
             cell.settingLabel.text = "앱 버전"
             cell.settingDetailLabel.text = "\(appVersion)"
             return cell
+        case 5:
+            let cell = settingVC.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
+            cell.settingLabel.text = "기존 데이터 불러오기"
+            cell.selectionStyle = .none
+            return cell
+            
         default:
             return UITableViewCell.init()
         }
@@ -95,11 +102,11 @@ extension SettingView: UITableViewDelegate, UITableViewDataSource, MFMailCompose
         case 1: // 암호
             break
             
-        case 2: // 알림
-            settingVC.showSettingAlarmVC()
-            break
+//        case 2: // 알림
+//            settingVC.showSettingAlarmVC()
+//            break
             
-        case 3: // 고객센터
+        case 2: // 고객센터
             if MFMailComposeViewController.canSendMail() {
                 let compseVC = MFMailComposeViewController()
                 compseVC.mailComposeDelegate = self
@@ -108,13 +115,17 @@ extension SettingView: UITableViewDelegate, UITableViewDataSource, MFMailCompose
             }
             break
             
-        case 4: // 오픈소스 라이선스
+        case 3: // 오픈소스 라이선스
             let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
             settingVC.navigationController?.pushViewController(acknowList, animated: true)
             break
             
-        case 5: // 앱 버전
+        case 4: // 앱 버전
             break
+        case 5:
+            AlertManager.shared.okCancelAlert(self.settingVC, title: "알림", message: "백업되지 않은 데이터가 있으면 백업합니다.") {
+                self.mainModel.uploadData()
+            }
             
         default: break
         }
