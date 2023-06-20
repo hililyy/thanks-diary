@@ -10,40 +10,38 @@ import FirebaseAuth
 
 final class SignupVC: BaseVC {
     
-    private var viewModel: LoginViewModel?
+    private var viewModel = LoginViewModel()
     private let signupView = SignupView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = LoginViewModel(self, self)
         view = signupView
         setTarget()
     }
     
     private func setTarget() {
+        
         signupView.signupButton.addTarget { [weak self] _ in
             guard let self = self,
                   let email = self.signupView.emailTextField.text,
                   let password = self.signupView.passwordTextField.text
             else { return }
             
-            self.viewModel?.signup(email: email, password: password)
+            viewModel.signup(email: email,
+                             password: password) { [weak self] message in
+                guard let self = self else { return }
+                
+                if let message = message {
+                    AlertManager.shared.okAlert(self, title: "회원가입 실패", message: message)
+                } else {
+                    self.setRootVC(name: "Login", identifier: "StartVC")
+                }
+            }
         }
         
         signupView.backButton.addTarget { [weak self] _ in
             guard let self = self else { return }
             self.back(animated: true)
         }
-    }
-}
-
-extension SignupVC: PLoginValidity {
-    func success() {
-        AlertManager.shared.okAlert(self, title: "회원가입 완료", message: "회원가입이 완료되었습니다.")
-        self.back(animated: true)
-    }
-    
-    func fail(errorMessage: String) {
-        AlertManager.shared.okAlert(self, title: "회원가입 실패", message: errorMessage)
     }
 }

@@ -9,30 +9,22 @@ import UIKit
 
 final class LoginViewModel {
     
-    private var view: PLoginValidity
-    private var vc: UIViewController
-    
-    init(_ view: PLoginValidity, _ vc: UIViewController) {
-        self.view = view
-        self.vc = vc
-    }
-
-    func login(email: String, password: String) {
-        FirebaseLoginManager.shared.emailLogin(email: email, pw: password) { message in
+    func login(email: String, password: String, resultMessage: @escaping (String?) -> ()) {
+        FirebaseManager.shared.login(email: email, pw: password) { message in
             if let message = message {
-                self.view.fail(errorMessage: message)
+                resultMessage(message)
             } else {
-                self.view.success()
+                resultMessage(nil)
             }
         }
     }
     
-    func signup(email: String, password: String) {
-        FirebaseLoginManager.shared.emailSignup(email: email, pw: password) { message in
+    func signup(email: String, password: String, resultMessage: @escaping (String?) -> ()) {
+        FirebaseManager.shared.signup(email: email, pw: password) { message in
             if let message = message {
-                self.view.fail(errorMessage: message)
+                resultMessage(message)
             } else {
-                self.view.success()
+                resultMessage(nil)
             }
         }
     }

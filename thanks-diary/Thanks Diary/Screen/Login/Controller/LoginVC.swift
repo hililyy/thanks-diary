@@ -10,7 +10,7 @@ import UIKit
 final class LoginVC: BaseVC {
     
     private let loginView = LoginView()
-    private var viewModel: LoginViewModel?
+    private var viewModel = LoginViewModel()
     
     override func loadView() {
         view = loginView
@@ -18,7 +18,6 @@ final class LoginVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = LoginViewModel(self, self)
         setTarget()
     }
     
@@ -28,8 +27,17 @@ final class LoginVC: BaseVC {
                   let email = self.loginView.emailTextField.text,
                   let password = self.loginView.passwordTextField.text
             else { return }
-
-            self.viewModel?.login(email: email, password: password)
+            
+            viewModel.login(email: email,
+                            password: password) { [weak self] message in
+                guard let self = self else { return }
+                
+                if let message = message {
+                    AlertManager.shared.okAlert(self, title: "로그인 실패", message: message)
+                } else {
+                    self.setRootVC(name: "Main", identifier: "MainVC")
+                }
+            }
         }
 
         loginView.findIdButton.addTarget { [weak self] _ in
@@ -47,21 +55,5 @@ final class LoginVC: BaseVC {
             guard let self = self else { return }
             self.back(animated: true)
         }
-    }
-}
-    
-extension LoginVC: PLoginValidity {
-    
-    func success() {
-        if UserDefaultManager.bool(forKey: UserDefaultKey.IS_LOGIN.rawValue) {
-            setRootVC(name: "Main", identifier: "MainVC")
-        } else {
-            UserDefaultManager.set(true, forKey: UserDefaultKey.IS_LOGIN.rawValue)
-            pushVC(name: "Start", identifier: "PageVC")
-        }
-    }
-    
-    func fail(errorMessage: String) {
-        AlertManager.shared.okAlert(self, title: "로그인 실패", message: "로그인을 실패하였습니다.")
     }
 }
