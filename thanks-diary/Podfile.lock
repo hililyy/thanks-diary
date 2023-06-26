@@ -1,13 +1,11 @@
 PODS:
   - AcknowList (3.0.1)
-  - Floaty (4.2.0)
   - FSCalendar (2.8.4)
   - lottie-ios (4.2.0)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - AcknowList
-  - Floaty (~> 4.2.0)
   - FSCalendar
   - lottie-ios
   - Toast-Swift (~> 5.0.1)
@@ -15,18 +13,16 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AcknowList
-    - Floaty
     - FSCalendar
     - lottie-ios
     - Toast-Swift
 
 SPEC CHECKSUMS:
   AcknowList: 1aca788e5f1fae79d671c9c48d83ef21027232c0
-  Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: cbc687e2b403a00ad918ea8b357be033aafc4ee4
+PODFILE CHECKSUM: 65ff3ba3abb04ead0dfc2f0042e423fb96052479
 
 COCOAPODS: 1.12.0

@@ -15,10 +15,11 @@ final class LottieManager {
     func setLottie(_ vc: UIViewController, lottieView: UIView, name: String, fromProgress: AnimationProgressTime = 0.0, toProgress: AnimationProgressTime = 1.0, speed: CGFloat = 1, mode: LottieLoopMode) {
         let animationView: LottieAnimationView = .init(name: name)
         vc.view.addSubview(animationView)
+        animationView.setAutoLayout(to: lottieView)
         
         animationView.frame = lottieView.bounds
         animationView.center = lottieView.center
-        animationView.contentMode = .scaleAspectFill
+        animationView.contentMode = .scaleAspectFit
         animationView.play(fromProgress: fromProgress, toProgress: toProgress, loopMode: .loop) {_ in }
         animationView.loopMode = mode
         animationView.animationSpeed = speed

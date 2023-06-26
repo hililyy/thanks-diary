@@ -7,7 +7,7 @@
 
 import UIKit
 import FSCalendar
-import Floaty
+//import Floaty
 import CoreData
 import Toast_Swift
 
@@ -32,7 +32,7 @@ class MainVC: BaseVC {
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         
-        setFloty()
+//        setFloty()
         setCalender()
         initialize()
     }
@@ -54,32 +54,32 @@ class MainVC: BaseVC {
         self.goSettingVC()
     }
     
-    func setFloty() {
-        let floaty = Floaty()
-        floaty.buttonColor = UIColor(named: "mainColor")!
-        floaty.plusColor = UIColor(named: "whiteColor")!
-        floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!, handler: { item in
-            if self.model.todayDate == self.model.selectedDate {
-                self.goSimpleWriteVC()
-            } else {
-                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
-            }
-                floaty.close()
-        })
-        floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
-            if self.model.todayDate == self.model.selectedDate {
-                if self.model.longDiaryFlag == false {
-                    self.goDetailWriteVC()
-                } else {
-                    self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
-                }
-            } else {
-                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
-            }
-            floaty.close()
-        })
-        self.view.addSubview(floaty)
-    }
+//    func setFloty() {
+//        let floaty = Floaty()
+//        floaty.buttonColor = UIColor(named: "mainColor")!
+//        floaty.plusColor = UIColor(named: "whiteColor")!
+//        floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!, handler: { item in
+//            if self.model.todayDate == self.model.selectedDate {
+//                self.goSimpleWriteVC()
+//            } else {
+//                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
+//            }
+//                floaty.close()
+//        })
+//        floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
+//            if self.model.todayDate == self.model.selectedDate {
+//                if self.model.longDiaryFlag == false {
+//                    self.goDetailWriteVC()
+//                } else {
+//                    self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
+//                }
+//            } else {
+//                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
+//            }
+//            floaty.close()
+//        })
+//        self.view.addSubview(floaty)
+//    }
     
     func goSimpleWriteVC() {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }

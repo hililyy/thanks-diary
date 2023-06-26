@@ -41,6 +41,10 @@
 		025EF08D2A45A36000C930F2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF08C2A45A36000C930F2 /* Launch.storyboard */; };
 		02884C5B2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02884C5A2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist */; };
 		02968D1C2A45AB81005DF4B4 /* LocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02968D1B2A45AB81005DF4B4 /* LocalDataStore.swift */; };
+		029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EC2A494C3100D82289 /* FirstStartView.swift */; };
+		029F04F02A494C3100D82289 /* SecondStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04ED2A494C3100D82289 /* SecondStartView.swift */; };
+		029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EE2A494C3100D82289 /* ThirdStartView.swift */; };
+		029F04F22A494D5A00D82289 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF07F2A459EEF00C930F2 /* Start.storyboard */; };
 		2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */; };
 		2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */; };
 		2A0962DA28CF484300063DF3 /* TextData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2A0962D928CF484300063DF3 /* TextData.csv */; };
@@ -130,6 +134,9 @@
 		025EF08C2A45A36000C930F2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		02884C5A2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
 		02968D1B2A45AB81005DF4B4 /* LocalDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
+		029F04EC2A494C3100D82289 /* FirstStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartView.swift; sourceTree = "<group>"; };
+		029F04ED2A494C3100D82289 /* SecondStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStartView.swift; sourceTree = "<group>"; };
+		029F04EE2A494C3100D82289 /* ThirdStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdStartView.swift; sourceTree = "<group>"; };
 		2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicUltraLight.ttf; sourceTree = "<group>"; };
 		2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimeEntity.swift; sourceTree = "<group>"; };
 		2A0962C428CF275D00063DF3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -306,6 +313,9 @@
 			children = (
 				025EF07F2A459EEF00C930F2 /* Start.storyboard */,
 				025EF0802A459EEF00C930F2 /* PageView.swift */,
+				029F04EC2A494C3100D82289 /* FirstStartView.swift */,
+				029F04ED2A494C3100D82289 /* SecondStartView.swift */,
+				029F04EE2A494C3100D82289 /* ThirdStartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -609,6 +619,7 @@
 				025EF0442A459C4400C930F2 /* Common.storyboard in Resources */,
 				2A81232628BFB2BD000A250E /* writing.json in Resources */,
 				2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */,
+				029F04F22A494D5A00D82289 /* Start.storyboard in Resources */,
 				025EF0892A45A10C00C930F2 /* Main.storyboard in Resources */,
 				025EF08B2A45A16300C930F2 /* Setting.storyboard in Resources */,
 				2A0962DA28CF484300063DF3 /* TextData.csv in Resources */,
@@ -688,6 +699,7 @@
 				025EF0842A459EEF00C930F2 /* SecondStartVC.swift in Sources */,
 				2A72421128B426730040ADE9 /* SettingModel.swift in Sources */,
 				025EF06B2A459E2E00C930F2 /* String.swift in Sources */,
+				029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */,
 				025EF0592A459D2700C930F2 /* FirebaseManager.swift in Sources */,
 				2A7241D828B3EDE60040ADE9 /* MainModel.swift in Sources */,
 				2A81234E28C4E22C000A250E /* SimpleDiaryListCell.swift in Sources */,
@@ -719,7 +731,9 @@
 				025EF0672A459E2E00C930F2 /* UITextField.swift in Sources */,
 				2A7241CF28B2A57E0040ADE9 /* ReadVC.swift in Sources */,
 				025EF0762A459E4800C930F2 /* PaddingLabel.swift in Sources */,
+				029F04F02A494C3100D82289 /* SecondStartView.swift in Sources */,
 				2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */,
+				029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */,
 				2A7241DA28B3EDF70040ADE9 /* DiaryEntity.swift in Sources */,
 				2A81234C28C4E221000A250E /* DetailDiaryListCell.swift in Sources */,
 				2A81233228BFFA0C000A250E /* SettingAlarmVC.swift in Sources */,
