@@ -20,7 +20,6 @@ class MainVC: BaseVC {
     
     let model = MainModel.model
     private let floatingButton = FloatingButton()
-    fileprivate var datesWithCircle: [String] = []
     
     
     override func viewDidLoad() {
@@ -66,8 +65,9 @@ class MainVC: BaseVC {
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: false)
         }
+        
         view.addSubview(floatingButton)
-
+        
         floatingButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),

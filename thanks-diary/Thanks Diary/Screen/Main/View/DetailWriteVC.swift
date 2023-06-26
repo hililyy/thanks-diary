@@ -15,6 +15,7 @@ class DetailWriteVC: BaseVC {
     @IBOutlet weak var titleTextfield: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var completeBtn: UIButton!
+    
     var container: NSPersistentContainer!
     var titleString: String = ""
     var contentsString: String = ""

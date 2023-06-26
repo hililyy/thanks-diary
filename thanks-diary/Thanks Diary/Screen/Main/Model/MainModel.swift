@@ -11,38 +11,26 @@ import CoreData
 
 class MainModel {
     static let model = MainModel()
-    var detailData: [DiaryEntity] = []
+//    var detailData: [DiaryEntity] = []
+    var allDetailData: [String: [DiaryEntity]] = [:]
     var simpleData: [SimpleDiaryEntity] = []
     var longDiaryFlag: Bool = false
     var selectedDate: String = ""
     var todayDate: String = ""
     var dateList: [String] = []
+    var diaryDates: Set<String> = []
     
-    func getDetailData(selectedDate: String) {
-        detailData = []
-        dateList = []
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            let managedContext = appDelegate.persistentContainer.viewContext
-            
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DiaryData")
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result {
-                self.dateList.append(data.value(forKey: "date") as? String ?? "")
-                if data.value(forKey: "date") as! String == selectedDate {
-                    let tmpEntity = DiaryEntity(
-                        type: data.value(forKey: "type") as? String,
-                        title: data.value(forKey: "title") as? String,
-                        contents: data.value(forKey: "contents") as? String,
-                        date: data.value(forKey: "date") as? String
-                    )
-                detailData.append(tmpEntity)
-                }
-            }
-        } catch let error as NSError {
-            print(ErrorCase.NOT_SAVE_DATA)
-            print("Could not save. \(error), \(error.userInfo)")
+    func getAllDetailData() {
+        allDetailData = CoreDataManager.shared.getDetailData()
+        
+        for data in allDetailData {
+            diaryDates.insert(data.key)
         }
+    }
+    
+    func getDetailData(_ selectedData: String) -> [DiaryEntity] {
+        guard let data = allDetailData[selectedData] else { return [] }
+        return data
     }
     
     func getSimpleData(selectedDate: String) {

@@ -45,6 +45,8 @@
 		029F04F02A494C3100D82289 /* SecondStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04ED2A494C3100D82289 /* SecondStartView.swift */; };
 		029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EE2A494C3100D82289 /* ThirdStartView.swift */; };
 		029F04F22A494D5A00D82289 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF07F2A459EEF00C930F2 /* Start.storyboard */; };
+		029F04F52A495CB600D82289 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04F42A495CB600D82289 /* MainViewModel.swift */; };
+		029F04F72A495D0800D82289 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04F62A495D0800D82289 /* CoreDataManager.swift */; };
 		2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */; };
 		2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */; };
 		2A0962DA28CF484300063DF3 /* TextData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2A0962D928CF484300063DF3 /* TextData.csv */; };
@@ -137,6 +139,8 @@
 		029F04EC2A494C3100D82289 /* FirstStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartView.swift; sourceTree = "<group>"; };
 		029F04ED2A494C3100D82289 /* SecondStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStartView.swift; sourceTree = "<group>"; };
 		029F04EE2A494C3100D82289 /* ThirdStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdStartView.swift; sourceTree = "<group>"; };
+		029F04F42A495CB600D82289 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = "../../../../../../../../.Trash/thanks-diary 오후 1.42.24/thanks-diary/Thanks Diary/Screen/Onboarding/View/MainViewModel.swift"; sourceTree = "<group>"; };
+		029F04F62A495D0800D82289 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = "../../../../../../../.Trash/thanks-diary 오후 1.42.24/thanks-diary/Thanks Diary/Util/Manager/CoreDataManager.swift"; sourceTree = "<group>"; };
 		2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicUltraLight.ttf; sourceTree = "<group>"; };
 		2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimeEntity.swift; sourceTree = "<group>"; };
 		2A0962C428CF275D00063DF3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -225,6 +229,7 @@
 				025EF0552A459D2700C930F2 /* FirebaseManager.swift */,
 				025EF0532A459D2600C930F2 /* LottieManager.swift */,
 				025EF0542A459D2600C930F2 /* UserDefaultManager.swift */,
+				029F04F62A495D0800D82289 /* CoreDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -326,6 +331,14 @@
 				2A0D880728A540FE00576E56 /* Assets.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		029F04F32A495CA800D82289 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				029F04F42A495CB600D82289 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		097BDEFB190D1496A285C00F /* Pods */ = {
@@ -480,6 +493,7 @@
 		2A9F34F928AC10D3006CCF7C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				029F04F32A495CA800D82289 /* ViewModel */,
 				2A9F350C28AE1BF9006CCF7C /* Model */,
 				2A9F350B28AE1BF2006CCF7C /* View */,
 			);
@@ -717,6 +731,7 @@
 				2A81234A28C2A208000A250E /* DiaryData.xcdatamodeld in Sources */,
 				025EF0572A459D2700C930F2 /* LottieManager.swift in Sources */,
 				025EF04A2A459CA400C930F2 /* Color.swift in Sources */,
+				029F04F52A495CB600D82289 /* MainViewModel.swift in Sources */,
 				2A81233728C00138000A250E /* AlarmTimeCell.swift in Sources */,
 				025EF05C2A459DB700C930F2 /* AlarmAuth.swift in Sources */,
 				2A0D880328A540FB00576E56 /* LaunchVC.swift in Sources */,
@@ -724,6 +739,7 @@
 				025EF03E2A459C2900C930F2 /* BaseVC.swift in Sources */,
 				2A81233928C0014D000A250E /* AlarmSettingCell.swift in Sources */,
 				025EF0562A459D2700C930F2 /* AlertManager.swift in Sources */,
+				029F04F72A495D0800D82289 /* CoreDataManager.swift in Sources */,
 				02968D1C2A45AB81005DF4B4 /* LocalDataStore.swift in Sources */,
 				2A9F350E28AE1C0D006CCF7C /* MainVC.swift in Sources */,
 				2A81235428C5277D000A250E /* SimpleWriteVC.swift in Sources */,
