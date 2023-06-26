@@ -1,43 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kMz-6i-tLS">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="KOTRA_GOTHIC.ttf">
+            <string>KOTRA_GOTHIC</string>
+        </array>
+        <array key="NanumBarunGothicUltraLight.ttf">
+            <string>NanumBarunGothicUltraLight</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--LaunchVC-->
-        <scene sceneID="Qgj-Ow-GBK">
+        <!--SplashVC-->
+        <scene sceneID="NHQ-m6-Mdu">
             <objects>
-                <viewController storyboardIdentifier="LaunchVC" modalPresentationStyle="fullScreen" id="pFt-sT-tzu" customClass="LaunchVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IYm-fS-1xu">
+                <viewController modalPresentationStyle="fullScreen" id="kMz-6i-tLS" customClass="SplashVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wt9-9i-euy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Q3-Lk-IjR">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTF-L5-8gt">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5D2-ni-Ikg">
+                                        <rect key="frame" x="125" y="331" width="143" height="97"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcK-7x-ycs">
+                                                <rect key="frame" x="44.666666666666657" y="0.0" width="53.666666666666657" height="23"/>
+                                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWJ-to-td1">
+                                                <rect key="frame" x="0.0" y="23" width="143" height="46"/>
+                                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZl-hA-img">
+                                                <rect key="frame" x="46.666666666666657" y="69" width="50" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="WMF-Jd-9ny"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="10"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FO2-GS-DGL">
+                                        <rect key="frame" x="0.0" y="183" width="393" height="393"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FO2-GS-DGL" secondAttribute="height" multiplier="1:1" id="Hjc-J6-OP4"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="FO2-GS-DGL" firstAttribute="leading" secondItem="bTF-L5-8gt" secondAttribute="leading" id="359-LV-3sj"/>
+                                    <constraint firstItem="5D2-ni-Ikg" firstAttribute="centerX" secondItem="FO2-GS-DGL" secondAttribute="centerX" id="L8L-zm-Qx3"/>
+                                    <constraint firstAttribute="trailing" secondItem="FO2-GS-DGL" secondAttribute="trailing" id="Tvo-XN-F81"/>
+                                    <constraint firstItem="5D2-ni-Ikg" firstAttribute="centerY" secondItem="FO2-GS-DGL" secondAttribute="centerY" id="na7-W8-Xpb"/>
+                                    <constraint firstItem="FO2-GS-DGL" firstAttribute="centerY" secondItem="bTF-L5-8gt" secondAttribute="centerY" id="pxU-If-EAB"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="nYm-uc-pHg"/>
+                        <viewLayoutGuide key="safeArea" id="BiD-sU-4WR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="8Q3-Lk-IjR" secondAttribute="trailing" id="IJN-Fx-hsD"/>
-                            <constraint firstItem="8Q3-Lk-IjR" firstAttribute="top" secondItem="IYm-fS-1xu" secondAttribute="top" id="gd8-LK-UeE"/>
-                            <constraint firstAttribute="bottom" secondItem="8Q3-Lk-IjR" secondAttribute="bottom" id="qku-Qc-6r6"/>
-                            <constraint firstItem="8Q3-Lk-IjR" firstAttribute="leading" secondItem="IYm-fS-1xu" secondAttribute="leading" id="uHh-J2-x6y"/>
+                            <constraint firstItem="BiD-sU-4WR" firstAttribute="bottom" secondItem="bTF-L5-8gt" secondAttribute="bottom" id="9h8-di-74a"/>
+                            <constraint firstItem="bTF-L5-8gt" firstAttribute="top" secondItem="BiD-sU-4WR" secondAttribute="top" id="LUa-CZ-QRZ"/>
+                            <constraint firstItem="bTF-L5-8gt" firstAttribute="leading" secondItem="BiD-sU-4WR" secondAttribute="leading" id="wal-27-092"/>
+                            <constraint firstItem="bTF-L5-8gt" firstAttribute="trailing" secondItem="BiD-sU-4WR" secondAttribute="trailing" id="y7Q-TH-jXM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Lux-K3-orn"/>
+                    <navigationItem key="navigationItem" id="aNw-YW-JtA"/>
                     <connections>
-                        <outlet property="lottieView" destination="8Q3-Lk-IjR" id="FEl-dB-cbF"/>
+                        <outlet property="lottieView" destination="FO2-GS-DGL" id="tHi-Um-siG"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="def-T6-08J" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="frw-BO-8M3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="83" y="15"/>
+            <point key="canvasLocation" x="-147" y="26"/>
         </scene>
     </scenes>
     <resources>

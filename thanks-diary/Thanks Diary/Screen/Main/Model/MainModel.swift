@@ -6,140 +6,177 @@
 //
 
 import UIKit
-import Firebase
+import Foundation
+import CoreData
 
-final class MainModel {
-    
+class MainModel {
+    static let model = MainModel()
     var detailData: [DiaryEntity] = []
     var simpleData: [SimpleDiaryEntity] = []
+    var longDiaryFlag: Bool = false
+    var selectedDate: String = ""
+    var todayDate: String = ""
+    var dateList: [String] = []
     
-    var dateWithCircle: [String] = []
-    var selectedDate: Date = Date()
-    
-    var detailDiaryData: [AllDiaryData.Detail] = []
-    var simpleDiaryData: [AllDiaryData.Simple] = []
-    var detailDiaryDatabyDate: [AllDiaryData.Detail] = []
-    var simpleDiaryDatabyDate: [AllDiaryData.Simple] = []
-    var detailKey: [String] = []
-    var simpleKey: [String] = []
-    var detailKeybyDate: [String] = []
-    var simpleKeybyDate: [String] = []
-    var loginType: LoginType = .email
-    
-    func getData(completion: @escaping () -> ()) {
-        DiaryCoreDataManager.shared.getData(
-            loginType: loginType,
-            selectedDate: selectedDate) {
-                completion()
+    func getDetailData(selectedDate: String) {
+        detailData = []
+        dateList = []
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let managedContext = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DiaryData")
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result {
+                self.dateList.append(data.value(forKey: "date") as? String ?? "")
+                if data.value(forKey: "date") as! String == selectedDate {
+                    let tmpEntity = DiaryEntity(
+                        type: data.value(forKey: "type") as? String,
+                        title: data.value(forKey: "title") as? String,
+                        contents: data.value(forKey: "contents") as? String,
+                        date: data.value(forKey: "date") as? String
+                    )
+                detailData.append(tmpEntity)
+                }
             }
-    }
-    
-    func setData(diaryType: DiaryType, title: String = "", contents: String) {
-        DiaryCoreDataManager.shared.setData(
-            type: diaryType,
-            selectedDate: selectedDate,
-            title: title, contents: contents
-        )
-    }
-    
-    func updateData(diaryType: DiaryType, selectedIndex: Int, afterTitle: String = "", afterContents: String) {
-        DiaryCoreDataManager.shared.updateData(
-            type: diaryType,
-            selectedDate: selectedDate,
-            selectedIndex: selectedIndex,
-            afterTitle: afterTitle,
-            afterContents: afterContents
-        )
-    }
-    
-    func deleteData(diaryType: DiaryType, selectedIndex: Int) {
-        DiaryCoreDataManager.shared.deleteData(
-            type: diaryType,
-            selectedDate: selectedDate,
-            selectedIndex: selectedIndex
-        )
-    }
-    
-    // MARK: Firebase Code
-    
-    func getFirebaseData(completion: @escaping () -> ()) {
-        DiaryFirebaseManager.shared.getData {
-            completion()
+        } catch let error as NSError {
+            print(ErrorCase.NOT_SAVE_DATA)
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
-    func setFirebaseData(diaryType: DiaryType, title: String = "", contents: String, date: String = "") {
-        var newDate: String?
-        if date == "" {
-            newDate = self.selectedDate.convertString()
-        } else {
-            newDate = date
-        }
-        DiaryFirebaseManager.shared.setData(
-            type: diaryType,
-            title: title,
-            contents: contents,
-            date: newDate ?? ""
-        )
-    }
-    
-    func updateFirebaseData(diaryType: DiaryType, selectedIndex: Int, afterTitle: String = "", afterContents: String, completion: @escaping () -> ()) {
-        DiaryFirebaseManager.shared.updateData(
-            diaryType: diaryType,
-            selectedDate: selectedDate,
-            selectedIndex: selectedIndex,
-            afterTitle: afterTitle,
-            afterContents: afterContents) {
-                completion()
+    func getSimpleData(selectedDate: String) {
+        simpleData = []
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let managedContext = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SimpleDiaryData")
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+
+            for data in result {
+                self.dateList.append(data.value(forKey: "date") as? String ?? "")
+                if data.value(forKey: "date") as! String == selectedDate {
+                    
+                    let tmpEntity = SimpleDiaryEntity(
+                        type: data.value(forKey: "type") as? String,
+                        contents: data.value(forKey: "contents") as? String,
+                        date: data.value(forKey: "date") as? String
+                    )
+                    simpleData.append(tmpEntity)
+                }
             }
-    }
-    
-    func deleteFirebaseData(diaryType: DiaryType, selectedIndex: Int, completion: @escaping () -> ()) {
-        DiaryFirebaseManager.shared.deleteData(
-            diaryType: diaryType,
-            selectedIndex: selectedIndex) {
-                completion()
-            }
-    }
-    
-    func uploadData() {
-        self.getData() {
-            for data in self.detailData {
-                self.setFirebaseData(
-                    diaryType: .detail,
-                    title: data.title ?? "",
-                    contents: data.contents ?? "",
-                    date: data.date ?? "")
-            }
-            for data in self.simpleData {
-                self.setFirebaseData(
-                    diaryType: .simple,
-                    contents: data.contents ?? "",
-                    date: data.date ?? "")
-            }
+        } catch let error as NSError {
+            print(ErrorCase.NOT_SAVE_DATA)
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
-    func setDataByDate() {
-        detailDiaryDatabyDate.removeAll()
-        simpleDiaryDatabyDate.removeAll()
-        detailKeybyDate.removeAll()
-        simpleKeybyDate.removeAll()
-        var count = 0
-        for diary in detailDiaryData {
-            if selectedDate.convertString() == diary.date {
-                detailDiaryDatabyDate.append(diary)
-                detailKeybyDate.append(detailKey[count])
+    func updateDetailData(dateString: String, titleString: String, contentsString: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
+        fetchRequest.predicate = NSPredicate(format: "date = %@", dateString)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            let objectUpdate = result[0] as! NSManagedObject
+            objectUpdate.setValue(titleString, forKey: "title")
+            objectUpdate.setValue(contentsString, forKey: "contents")
+            do {
+                try managedContext.save()
+            } catch {
+                print(ErrorCase.NOT_SAVE_DATA)
+                print(error)
             }
-            count+=1
+        } catch {
+            print(ErrorCase.NOT_SAVE_DATA)
+            print(error)
         }
-        count = 0
-        for diary in simpleDiaryData {
-            if selectedDate.convertString() == diary.date {
-                simpleDiaryDatabyDate.append(diary)
-                simpleKeybyDate.append(simpleKey[count])
+    }
+    
+    func updateSimpleData(contentsString: String, afterContentsString: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
+        fetchRequest.predicate = NSPredicate(format: "contents = %@", contentsString)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            let objectUpdate = result[0] as! NSManagedObject
+            objectUpdate.setValue(afterContentsString, forKey: "contents")
+            do {
+                try managedContext.save()
+            } catch {
+                print(ErrorCase.NOT_SAVE_DATA)
+                print(error)
             }
-            count+=1
+        } catch {
+            print(ErrorCase.NOT_SAVE_DATA)
+            print(error)
         }
+        self.getSimpleData(selectedDate: self.selectedDate)
+    }
+    
+    func deleteDetailData(dateString: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
+        fetchRequest.predicate = NSPredicate(format: "date = %@", dateString)
+        
+        do {
+            let test = try managedContext.fetch(fetchRequest)
+            let objectToDelete = test[0] as! NSManagedObject
+            managedContext.delete(objectToDelete)
+            do {
+                try managedContext.save()
+            } catch {
+                print(ErrorCase.NOT_SAVE_DATA)
+                print(error)
+            }
+        } catch {
+            print(ErrorCase.NOT_SAVE_DATA)
+            print(error)
+        }
+        detailData = []
+    }
+    
+    func deleteSimpleData(contentsString: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
+        fetchRequest.predicate = NSPredicate(format: "contents = %@", contentsString)
+        
+        do {
+            let test = try managedContext.fetch(fetchRequest)
+            print(test[0])
+            guard let objectToDelete = test[0] as? NSManagedObject else { return }
+            managedContext.delete(objectToDelete)
+            do {
+                try managedContext.save()
+            } catch {
+                print(ErrorCase.NOT_SAVE_DATA)
+                print(error)
+            }
+        } catch {
+            print(ErrorCase.NOT_SAVE_DATA)
+            print(error)
+        }
+        
+        self.getSimpleData(selectedDate: self.selectedDate)
+    }
+    
+    func isTodayDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-M-d"
+        return formatter.string(from: Date())
+    }
+    
+    func setTodayDate(selectedData: Date) -> String {
+        let formatter = DateFormatter()
+        let loc = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "dd'일' (E)"
+        formatter.locale = loc
+        return formatter.string(from: selectedData)
     }
 }

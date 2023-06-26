@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ThirdStartVC: UIViewController {
+final class ThirdStartVC: BaseVC {
     @IBOutlet weak var lottieView: UIView!
     
     override func viewDidLoad() {

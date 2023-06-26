@@ -23,10 +23,10 @@ extension UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showSignupVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SignupVC") as? SignupVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    func showSignupVC() {
+//        guard let vc =  storyboard?.instantiateViewController(identifier: "SignupVC") as? SignupVC else { return }
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
     
     func showMainVC() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
@@ -34,18 +34,18 @@ extension UIViewController {
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
-    func presentLoginVC() {
-        let vc = storyboard!.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        let navi = UINavigationController(rootViewController: vc)
-        navi.modalPresentationStyle = .currentContext
-        present(navi, animated:false, completion: nil)
-    }
+//    func presentLoginVC() {
+//        let vc = storyboard!.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+//        let navi = UINavigationController(rootViewController: vc)
+//        navi.modalPresentationStyle = .currentContext
+//        present(navi, animated:false, completion: nil)
+//    }
     
-    func showLoginVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
+//    func showLoginVC() {
+//        guard let vc =  storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC else { return }
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
     func showRootLoginVC() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
         UIApplication.shared.windows.first?.rootViewController = vc
@@ -69,10 +69,10 @@ extension UIViewController {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
-        vc.editFlag = isEdit
-        vc.selectedIndex = selectedIndex
-        vc.noneReloadDelegate = self as? any reloadDelegate
-        vc.firebaseReloadDelegate = self as? any reloadFirebaseDelegate
+//        vc.editFlag = isEdit
+//        vc.selectedIndex = selectedIndex
+//        vc.noneReloadDelegate = self as? any reloadDelegate
+//        vc.firebaseReloadDelegate = self as? any reloadFirebaseDelegate
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -90,14 +90,14 @@ extension UIViewController {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .fullScreen
-            vc.selectedIndex = index
+//            vc.selectedIndex = index
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     func showDeletePopupVC(selectedIndex: Int) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DeletePopupVC") as? DeletePopupVC {
-            vc.selectedIndex = selectedIndex
+//            vc.selectedIndex = selectedIndex
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true, completion: nil)
@@ -107,7 +107,7 @@ extension UIViewController {
     func showDetailWriteVC(isEdit: Bool = false, selectedIndex: Int? = nil) {
         guard let vc =  self.storyboard?.instantiateViewController(identifier: "DetailWriteVC") as? DetailWriteVC else { return }
         vc.editFlag = isEdit
-        vc.selectedIndex = selectedIndex
+//        vc.selectedIndex = selectedIndex
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -117,15 +117,15 @@ extension UIViewController {
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
-    func showSettingUserInfoVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingUserInfoVC") as? SettingUserInfoVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    func showSettingUserInfoVC() {
+//        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingUserInfoVC") as? SettingUserInfoVC else { return }
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
     
-    func showSettingAlarmVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingAlarmVC") as? SettingAlarmVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    func showSettingAlarmVC() {
+//        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingAlarmVC") as? SettingAlarmVC else { return }
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
     
     func presentSettingAlarmDetailVC(selectedDate: Date) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingAlarmDetailVC") as? SettingAlarmDetailVC {

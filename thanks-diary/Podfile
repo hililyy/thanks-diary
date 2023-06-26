@@ -7,15 +7,7 @@ target 'Thanks Diary' do
 
   # Pods for Thanks Diary
   pod 'FSCalendar'
-  pod 'Floaty', '~> 4.2.0'
   pod 'Toast-Swift', '~> 5.0.1'
   pod 'AcknowList'
-  pod 'FirebaseAnalytics'
-  pod 'FirebaseAuth'
-  pod 'FirebaseFirestore'
-  pod 'Firebase/RemoteConfig'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
   pod 'lottie-ios'
-  pod 'ObjectMapper', '~> 3.5'
 end

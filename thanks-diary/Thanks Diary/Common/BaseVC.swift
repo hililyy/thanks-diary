@@ -52,6 +52,6 @@ class BaseVC: UIViewController {
 
 extension BaseVC: UIGestureRecognizerDelegate {
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-    return true 
+    return true
   }
 }

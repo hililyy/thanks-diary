@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FirstStartVC: UIViewController {
+final class FirstStartVC: BaseVC {
     @IBOutlet weak var lottieView: UIView!
     @IBOutlet weak var lottieView2: UIView!
     
