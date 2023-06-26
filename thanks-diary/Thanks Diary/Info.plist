@@ -20,7 +20,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>Start</string>
+					<string>Launch</string>
 				</dict>
 			</array>
 		</dict>

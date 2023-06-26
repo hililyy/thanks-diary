@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--SplashVC-->
+        <!--LaunchVC-->
         <scene sceneID="NHQ-m6-Mdu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="kMz-6i-tLS" customClass="SplashVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="kMz-6i-tLS" customClass="LaunchVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wt9-9i-euy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +82,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aNw-YW-JtA"/>
                     <connections>
-                        <outlet property="lottieView" destination="FO2-GS-DGL" id="tHi-Um-siG"/>
+                        <outlet property="lottieView" destination="FO2-GS-DGL" id="7v1-Ym-ydQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frw-BO-8M3" sceneMemberID="firstResponder"/>
