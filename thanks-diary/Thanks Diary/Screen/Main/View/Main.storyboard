@@ -164,19 +164,6 @@
                                     <action selector="moveTodayFocus:" destination="Rmf-89-8Rf" eventType="touchUpInside" id="cIt-oo-vS5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnh-TT-xLz">
-                                <rect key="frame" x="293" y="58" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gnh-TT-xLz" secondAttribute="height" multiplier="1:1" id="ux8-hz-YRA"/>
-                                    <constraint firstAttribute="width" constant="30" id="zD6-4a-tzj"/>
-                                </constraints>
-                                <color key="tintColor" name="grayColor_2"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="ic_upload"/>
-                                <connections>
-                                    <action selector="uploadData:" destination="Rmf-89-8Rf" eventType="touchUpInside" id="Wdp-kD-drQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qh6-Hu-iZE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -190,10 +177,8 @@
                             <constraint firstItem="wcv-ue-ryN" firstAttribute="top" secondItem="pLa-OF-Gtn" secondAttribute="bottom" constant="19" id="Ion-fj-OAc"/>
                             <constraint firstItem="GSk-Mz-Wn5" firstAttribute="top" secondItem="P0R-sM-KPW" secondAttribute="bottom" constant="13" id="M9x-l2-mrU"/>
                             <constraint firstItem="pLa-OF-Gtn" firstAttribute="leading" secondItem="Qh6-Hu-iZE" secondAttribute="leading" constant="10" id="Su2-oj-VRs"/>
-                            <constraint firstItem="P2f-dB-wxT" firstAttribute="centerY" secondItem="gnh-TT-xLz" secondAttribute="centerY" id="T8W-BR-mWM"/>
                             <constraint firstItem="65c-kB-gCJ" firstAttribute="leading" secondItem="Qh6-Hu-iZE" secondAttribute="leading" constant="20" id="T9K-kC-UgT"/>
                             <constraint firstItem="Qh6-Hu-iZE" firstAttribute="trailing" secondItem="GSk-Mz-Wn5" secondAttribute="trailing" id="YJW-um-ZY3"/>
-                            <constraint firstItem="P2f-dB-wxT" firstAttribute="leading" secondItem="gnh-TT-xLz" secondAttribute="trailing" constant="15" id="aDq-Zi-cff"/>
                             <constraint firstItem="Qh6-Hu-iZE" firstAttribute="trailing" secondItem="pLa-OF-Gtn" secondAttribute="trailing" constant="10" id="bXq-2b-XKf"/>
                             <constraint firstItem="P0R-sM-KPW" firstAttribute="leading" secondItem="Qh6-Hu-iZE" secondAttribute="leading" constant="25" id="cec-lZ-LcH"/>
                             <constraint firstItem="Qh6-Hu-iZE" firstAttribute="trailing" secondItem="P2f-dB-wxT" secondAttribute="trailing" id="jrz-7s-qei"/>
@@ -208,9 +193,7 @@
                         <outlet property="diaryTableView" destination="GSk-Mz-Wn5" id="BpI-TG-Fmc"/>
                         <outlet property="emptyImage" destination="APX-Wg-Za5" id="BHu-OB-1iO"/>
                         <outlet property="emptyView" destination="vPC-Co-KWb" id="2Ag-Us-TIm"/>
-                        <outlet property="todayBtn" destination="65c-kB-gCJ" id="kAF-qR-Ziw"/>
-                        <outlet property="todayLabel" destination="P0R-sM-KPW" id="LIa-a3-qa9"/>
-                        <outlet property="uploadBtn" destination="gnh-TT-xLz" id="57D-Z7-ZgW"/>
+                        <outlet property="todayDate" destination="P0R-sM-KPW" id="dF4-K9-Qrd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Oi-6J-0b1" sceneMemberID="firstResponder"/>
@@ -747,7 +730,6 @@
         <image name="ic_blue_dot_12" width="12" height="12"/>
         <image name="ic_setting" width="24" height="24"/>
         <image name="ic_trash" width="24" height="24"/>
-        <image name="ic_upload" width="100" height="100"/>
         <image name="image_detail_box" width="344" height="44"/>
         <image name="img_bottom" width="358" height="223"/>
         <image name="img_gray_line" width="390" height="1"/>

@@ -7,7 +7,6 @@
 
 import UIKit
 import FSCalendar
-//import Floaty
 import CoreData
 import Toast_Swift
 
@@ -20,6 +19,7 @@ class MainVC: BaseVC {
     @IBOutlet weak var emptyImage: UIImageView!
     
     let model = MainModel.model
+    private let floatingButton = FloatingButton()
     fileprivate var datesWithCircle: [String] = []
     
     
@@ -32,7 +32,7 @@ class MainVC: BaseVC {
         self.diaryTableView.delegate = self
         self.diaryTableView.dataSource = self
         
-//        setFloty()
+        floatingConstraints()
         setCalender()
         initialize()
     }
@@ -54,32 +54,32 @@ class MainVC: BaseVC {
         self.goSettingVC()
     }
     
-//    func setFloty() {
-//        let floaty = Floaty()
-//        floaty.buttonColor = UIColor(named: "mainColor")!
-//        floaty.plusColor = UIColor(named: "whiteColor")!
-//        floaty.addItem("간단하게", icon: UIImage(named: "ic_simple_write")!, handler: { item in
-//            if self.model.todayDate == self.model.selectedDate {
-//                self.goSimpleWriteVC()
-//            } else {
-//                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
-//            }
-//                floaty.close()
-//        })
-//        floaty.addItem("자세하게", icon: UIImage(named: "ic_detail_write")!, handler: { item in
-//            if self.model.todayDate == self.model.selectedDate {
-//                if self.model.longDiaryFlag == false {
-//                    self.goDetailWriteVC()
-//                } else {
-//                    self.view.makeToast("자세한 일기는 하루에 한번 작성 가능합니다.")
-//                }
-//            } else {
-//                self.view.makeToast("이전 날짜에는 일기를 작성할 수 없습니다.")
-//            }
-//            floaty.close()
-//        })
-//        self.view.addSubview(floaty)
-//    }
+    func floatingConstraints() {
+        let floatingButton = FloatingButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        floatingButton.setButtonImage(UIImage(named: "ic_pencil"))
+        floatingButton.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
+
+        floatingButton.button.addTarget { [weak self] _ in
+            guard let self = self else { return }
+            let vc = FloatingButtonVC()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: false)
+        }
+        view.addSubview(floatingButton)
+
+        floatingButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            floatingButton.widthAnchor.constraint(equalToConstant: 52),
+            floatingButton.heightAnchor.constraint(equalToConstant: 52)
+        ])
+
+        floatingButton.setView()
+    }
+    
+    
     
     func goSimpleWriteVC() {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }

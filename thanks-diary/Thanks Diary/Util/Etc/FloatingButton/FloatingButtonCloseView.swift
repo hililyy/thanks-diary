@@ -23,7 +23,7 @@ class FloatingButtonCloseView: UIView {
     
     var plusButton: FloatingButton = {
         let button = FloatingButton()
-        button.setButtonImage(UIImage(named: "ic_pencil") ?? .add)
+        button.setButtonImage(UIImage(named: "ic_x") ?? .add)
         button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
         button.setView()
         return button
@@ -45,16 +45,22 @@ class FloatingButtonCloseView: UIView {
         return button
     }()
     
-    var detailLabel: UILabel = {
-        let label = UILabel()
+    var detailLabel: PaddingLabel = {
+        let label = PaddingLabel()
         label.font = Font.NANUM_13
+        label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 5
         label.textAlignment = .right
         return label
     }()
     
     var simpleLabel: UILabel = {
-        let label = UILabel()
+        let label = PaddingLabel()
         label.font = Font.NANUM_13
+        label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 5
         label.textAlignment = .right
         return label
     }()
