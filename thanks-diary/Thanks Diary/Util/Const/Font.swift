@@ -46,4 +46,9 @@ struct Font {
     static let NANUM_ULTRALIGHT_18 = UIFont(name: "NanumBarunGothicUltraLight", size: 18)
     static let NANUM_ULTRALIGHT_19 = UIFont(name: "NanumBarunGothicUltraLight", size: 19)
     static let NANUM_ULTRALIGHT_20 = UIFont(name: "NanumBarunGothicUltraLight", size: 20)
+    static let NANUM_ULTRALIGHT_21 = UIFont(name: "NanumBarunGothicUltraLight", size: 21)
+    static let NANUM_ULTRALIGHT_22 = UIFont(name: "NanumBarunGothicUltraLight", size: 22)
+    static let NANUM_ULTRALIGHT_23 = UIFont(name: "NanumBarunGothicUltraLight", size: 23)
+    static let NANUM_ULTRALIGHT_24 = UIFont(name: "NanumBarunGothicUltraLight", size: 24)
+    static let NANUM_ULTRALIGHT_25 = UIFont(name: "NanumBarunGothicUltraLight", size: 25)
 }
