@@ -92,8 +92,8 @@ class PageView: UIView {
         
         NSLayoutConstraint.activate([
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerView.topAnchor.constraint(equalTo: topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerView.topAnchor.constraint(equalTo: progressStackView.bottomAnchor),
+            containerView.bottomAnchor.constraint(equalTo: nextButton.topAnchor),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             containerView.widthAnchor.constraint(equalTo: widthAnchor),
             

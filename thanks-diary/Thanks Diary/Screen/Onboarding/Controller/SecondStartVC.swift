@@ -8,10 +8,14 @@
 import UIKit
 
 final class SecondStartVC: BaseVC {
-    @IBOutlet weak var lottieView: UIView!
+    let secondStartView = SecondStartView()
+    
+    override func loadView() {
+        view = secondStartView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "writing", mode: .playOnce)
+        LottieManager.shared.setLottie(self, lottieView: secondStartView.lottieView, name: "writing", mode: .playOnce)
     }
 }

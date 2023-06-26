@@ -8,10 +8,13 @@
 import UIKit
 
 final class ThirdStartVC: BaseVC {
-    @IBOutlet weak var lottieView: UIView!
+    let thirdStartView = ThirdStartView()
     
+    override func loadView() {
+        view = thirdStartView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "go", mode: .playOnce)
+        LottieManager.shared.setLottie(self, lottieView: thirdStartView.lottieView, name: "go", mode: .playOnce)
     }
 }
