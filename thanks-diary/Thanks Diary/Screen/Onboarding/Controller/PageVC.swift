@@ -41,6 +41,7 @@ final class PageVC: BaseVC {
         pageView.nextButton.addTarget { [weak self ] _ in
             guard let self = self else { return }
             if self.currentIndex == self.pageList.count - 1 {
+                UserDefaultManager.set(true, forKey: UserDefaultKey.IS_LOGIN)
                 self.setRootVC(name: "Main", identifier: "MainVC")
                 return
             }

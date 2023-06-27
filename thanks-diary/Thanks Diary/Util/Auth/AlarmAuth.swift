@@ -15,7 +15,7 @@ final class AlarmAuth {
         
         userNotificationCenter.requestAuthorization(options: authOptions) { success, error in
             print("success: \(success)")
-            LocalDataStore.localDataStore.setPushAlarmAgree(newData: success)
+//            LocalDataStore.localDataStore.setPushAlarmAgree(newData: success)
             if let error = error {
                 print("Error: \(error)")
             }

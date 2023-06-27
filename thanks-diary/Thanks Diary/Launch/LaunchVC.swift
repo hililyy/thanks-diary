@@ -15,8 +15,21 @@ class LaunchVC: BaseVC {
         
         LottieManager.shared.setLottie(self, lottieView: lottieView, name: "dot", speed: 3, mode: .loop)
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.setRootVC(name: "Start", identifier: "PageVC")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            
+            if UserDefaultManager.bool(forKey: UserDefaultKey.IS_LOGIN) {
+                if !UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
+                    self.setRootVC(name: "Main", identifier: "MainVC")
+                } else {
+                    guard let vc =
+                            UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "SettingPWVC") as? SettingPWVC else { return }
+                    vc.homeFlag = true
+                    vc.modalPresentationStyle = .currentContext
+                    self.present(vc, animated: true)
+                }
+            } else {
+                self.setRootVC(name: "Start", identifier: "PageVC")
+            }
         }
     }
 }

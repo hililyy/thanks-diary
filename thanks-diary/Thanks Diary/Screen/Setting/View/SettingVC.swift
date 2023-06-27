@@ -29,15 +29,17 @@ class SettingVC: BaseVC {
     }
     @IBAction func switchAlarm(_ sender: Any) {
         alarmFlag = !alarmFlag
-        LocalDataStore.localDataStore.setPasswordData(newData: alarmFlag)
-        if LocalDataStore.localDataStore.getPasswordData() == true {
+        
+        UserDefaultManager.set(alarmFlag, forKey: UserDefaultKey.IS_PASSWORD)
+        
+        if UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
             guard let vc =  storyboard?.instantiateViewController(identifier: "SettingPWVC") as? SettingPWVC else { return }
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     func setPWSwitch() {
-        self.alarmFlag = LocalDataStore.localDataStore.getPasswordData()
+        self.alarmFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD)
     }
 }
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
@@ -50,7 +52,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell", for: indexPath) as! SettingSwitchCell
             cell.settingLabel.text = "암호 설정"
-            if LocalDataStore.localDataStore.getPasswordData() == false {
+            if !UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
                 cell.settingSwitch.isOn = false
             } else {
                 cell.settingSwitch.isOn = true

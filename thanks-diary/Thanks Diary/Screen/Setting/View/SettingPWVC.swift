@@ -96,12 +96,11 @@ class SettingPWVC: BaseVC {
                 UIImage(named: "ic_blue_dot_12")
             fourthImg.image =
                 UIImage(named: "ic_gray_dot_12")
+            
         case 4:
-            if homeFlag == true && firstPW == LocalDataStore.localDataStore.getPasswordNumber() {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-                UIApplication.shared.windows.first?.rootViewController = vc
-                UIApplication.shared.windows.first?.makeKeyAndVisible()
-            } else if homeFlag == true && firstPW != LocalDataStore.localDataStore.getPasswordNumber() {
+            if homeFlag == true && firstPW == UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
+                setRootVC(name: "Main", identifier: "MainVC")
+            } else if homeFlag == true && firstPW != UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
                 firstImg.image =
                     UIImage(named: "ic_gray_dot_12")
                 secondImg.image =
@@ -134,7 +133,7 @@ class SettingPWVC: BaseVC {
                     count = 0
                 } else {
                     if firstPW == secondPW {
-                        LocalDataStore.localDataStore.setPasswordNumber(newData: firstPW)
+                        UserDefaultManager.set(firstPW, forKey: UserDefaultKey.PASSWORD)
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         firstImg.image =
@@ -207,8 +206,5 @@ class SettingPWVC: BaseVC {
         default:
             break
         }
-    }
-    
-    @IBAction func touchEnterBtn(_ sender: Any) {
     }
 }
