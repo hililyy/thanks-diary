@@ -43,6 +43,8 @@ class MainViewModel {
     }
     
     func drawCalendarCircle() {
+        diaryDates = []
+        
         // 달력에 동그라미칠 날짜 저장
         for data in allDetailData {
             diaryDates.insert(data.key)
