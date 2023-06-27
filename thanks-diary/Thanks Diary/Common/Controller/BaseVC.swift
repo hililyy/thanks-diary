@@ -9,10 +9,17 @@ import UIKit
 
 class BaseVC: UIViewController {
 
+    public var backEventHandler: () -> () = {}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        backEventHandler()
     }
     
     func back(animated: Bool, completion: (() -> ())? = nil) {
@@ -43,6 +50,13 @@ class BaseVC: UIViewController {
         window.makeKeyAndVisible()
         
         pushVC(name: name, identifier: identifier)
+    }
+    
+    func presentErrorPopup() {
+        guard let vc = UIStoryboard(name: "Common", bundle: nil).instantiateViewController(withIdentifier: "AlertConfirmVC") as? AlertConfirmVC else { return }
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

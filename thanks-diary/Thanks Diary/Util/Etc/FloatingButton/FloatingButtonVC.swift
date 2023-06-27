@@ -11,6 +11,9 @@ class FloatingButtonVC: BaseVC {
     
     let floatingButtonCloseView = FloatingButtonCloseView()
     
+    public var detailHandler: () -> () = {}
+    public var simpleHandler: () -> () = {}
+    
     override func loadView() {
         view = floatingButtonCloseView
     }
@@ -26,14 +29,14 @@ class FloatingButtonVC: BaseVC {
     }
     
     func setOpenConstraints() {
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut) {
             self.floatingButtonCloseView.setOpenConstraints()
             self.view.layoutIfNeeded() // 화면 갱신
         }
     }
     
     func setCloseConstraints() {
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut) {
             self.floatingButtonCloseView.setCloseConstraints()
             self.view.layoutIfNeeded() // 화면 갱신
         } completion: { completion in
@@ -48,12 +51,28 @@ class FloatingButtonVC: BaseVC {
         
         floatingButtonCloseView.backgroundButton.addTarget { [weak self] _ in
             guard let self = self else { return }
+            
             self.dismiss(animated: true)
         }
         
         floatingButtonCloseView.plusButton.button.addTarget { [weak self] _ in
             guard let self = self else { return }
+            
             self.dismiss(animated: true)
+        }
+        
+        floatingButtonCloseView.detailButton.button.addTarget { [weak self] _ in
+            guard let self = self else { return }
+            self.dismiss(animated: true) {
+                self.detailHandler()
+            }
+        }
+        
+        floatingButtonCloseView.simpleButton.button.addTarget { [weak self] _ in
+            guard let self = self else { return }
+            self.dismiss(animated: true) {
+                self.simpleHandler()
+            }
         }
     }
 }

@@ -9,12 +9,11 @@ import UIKit
 
 class DeletePopupVC: BaseVC {
 
-    let model = MainModel.model
-    var selectedDataDate: String?
+    var selectedIndex: Int?
+    var parentVC: MainVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func goCancel(_ sender: Any) {
@@ -22,11 +21,15 @@ class DeletePopupVC: BaseVC {
     }
     
     @IBAction func goDelete(_ sender: Any) {
-        model.deleteDetailData(dateString: self.selectedDataDate ?? "")
-        model.longDiaryFlag = false
-//        LocalDataStore.localDataStore.setTodayDetailData(newData: false)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        guard let selectedIndex = selectedIndex else { return }
+        parentVC?.viewModel.deleteDetailData(selectedIndex: selectedIndex) { result in
+            if result {
+                self.setRootVC(name: "Main", identifier: "MainVC")
+            } else {
+                self.dismiss(animated: true) {
+                    self.presentErrorPopup()
+                }
+            }
+        }
     }
 }

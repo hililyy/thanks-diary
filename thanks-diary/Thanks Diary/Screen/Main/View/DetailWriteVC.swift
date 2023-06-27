@@ -11,17 +11,14 @@ import Toast_Swift
 
 class DetailWriteVC: BaseVC {
 
-    @IBOutlet weak var diaryTitle: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleTextfield: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var completeBtn: UIButton!
     
-    var container: NSPersistentContainer!
-    var titleString: String = ""
-    var contentsString: String = ""
-    var todayString: String = ""
-    let model = MainModel.model
-    var editFlag: Bool = false
+    var updateFlag: Bool = false
+    var parentVC: MainVC?
+    var selectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,113 +26,73 @@ class DetailWriteVC: BaseVC {
         setTitle()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    func setView() {
-        self.completeBtn.layer.cornerRadius = 10
+    private func setView() {
+        completeBtn.layer.cornerRadius = 10
         
-        self.titleTextfield.layer.cornerRadius = 20
-        self.titleTextfield.layer.borderWidth = 2
-        self.titleTextfield.layer.borderColor = UIColor(named: "mainColor")?.cgColor
-        
-        self.contentsTextView.layer.cornerRadius = 20
-        self.contentsTextView.layer.borderWidth = 2
-        self.contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
-        
+        titleTextfield.layer.cornerRadius = 20
+        titleTextfield.layer.borderWidth = 2
+        titleTextfield.layer.borderColor = UIColor(named: "mainColor")?.cgColor
         titleTextfield.addLeftPadding()
+        
+        contentsTextView.layer.cornerRadius = 20
+        contentsTextView.layer.borderWidth = 2
+        contentsTextView.layer.borderColor = UIColor(named: "mainColor")?.cgColor
         contentsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
     }
     
-    func setData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            let context = appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "DiaryData", in: context)
-        
-        if let entity = entity {
-            let managedObject = NSManagedObject(entity: entity, insertInto: context)
-            
-            managedObject.setValue(self.titleString, forKey: "title")
-            managedObject.setValue(self.contentsString, forKey: "contents")
-            managedObject.setValue(self.todayString, forKey: "date")
-            managedObject.setValue("detail", forKey: "type")
-            
-            do {
-                try context.save()
-                return
-            } catch {
-                print(ErrorCase.NOT_SAVE_DATA)
-                return
-            }
+    private func setTitle() {
+        if let date = parentVC?.viewModel.selectedDate.convertString(format: "yyyy년 M월 d일") {
+            titleLabel.text = date + " 감사일기"
         } else {
-            return
+            titleLabel.text = "오늘의 감사일기"
         }
-}
-    
-    func setTitle() {
-        if editFlag == false {
-            self.todayString = changeDateToString(date: Date(), formatString: "yyyy년 M월 d일")
-            self.diaryTitle.text = "\(todayString) 감사일기"
-        } else {
-            var tmpString = todayString.split(separator: "-")
-            self.diaryTitle.text = ("\(tmpString[0])년 \(tmpString[1])월 \(tmpString[2])일 감사일기")
-            self.titleTextfield.text = titleString
-            self.contentsTextView.text = contentsString
-        }
-    }
-    
-    func changeDateToString(date: Date, formatString: String) -> String {
-        let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = formatString
-        return dateFormatter.string(from: date)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            self.view.endEditing(true)
+        if updateFlag == true {
+            guard let index = selectedIndex else { return }
+            
+            titleTextfield.text = parentVC?.viewModel.selectedDetailData[index].title
+            contentsTextView.text = parentVC?.viewModel.selectedDetailData[index].contents
+        }
     }
 
     @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        back(animated: true)
     }
     
     @IBAction func goComplete(_ sender: Any) {
-        if (titleTextfield.text == "") || (contentsTextView.text == "") {
+        
+        guard let title = titleTextfield.text,
+              let contents = contentsTextView.text else { return }
+        
+        if title.isEmpty || contents.isEmpty {
             self.view.makeToast("제목과 내용을 모두 입력해 주세요.")
         } else {
-            do{
-                // update
-                if editFlag == true {
-                    setString()
-                    model.updateDetailData(dateString: self.todayString, titleString: self.titleString, contentsString: self.contentsString)
-                    goMainVC()
-                } else {
-                    model.longDiaryFlag = true
-                    setString()
-                    setData()
-                    self.navigationController?.popViewController(animated: true)
+            if updateFlag == true {
+                guard let index = selectedIndex else { return }
+                
+                parentVC?.viewModel.updateDetailData(
+                    selectedIndex: index,
+                    afterTitle: title,
+                    afterContents: contents) { result in
+                        if result {
+                            self.parentVC?.viewModel.getAllDiaryData {
+                                self.parentVC?.viewModel.getSelectedDiaryData {
+                                    self.back(animated: true)
+                                }
+                            }
+                        } else {
+                            self.presentErrorPopup()
+                        }
+                    }
+            } else {
+                parentVC?.viewModel.setDetailData(title: title, contents: contents) { result in
+                    if result {
+                        self.back(animated: true)
+                    } else {
+                        self.presentErrorPopup()
+                    }
                 }
-            } catch {
-                print(ErrorCase.NOT_SAVE_DATA)
             }
         }
     }
-    
-    func setString() {
-//        LocalDataStore.localDataStore.setTodayDetailData(newData: true)
-        self.titleString = titleTextfield.text ?? ""
-        self.contentsString = contentsTextView.text
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-M-d"
-        self.todayString = formatter.string(from: Date())
-    }
-    
-    func goMainVC() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-    }
 }
-

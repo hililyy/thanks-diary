@@ -65,17 +65,6 @@ extension UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showSimpleWriteVC(isEdit: Bool = false, selectedIndex: Int? = nil) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
-//        vc.editFlag = isEdit
-//        vc.selectedIndex = selectedIndex
-//        vc.noneReloadDelegate = self as? any reloadDelegate
-//        vc.firebaseReloadDelegate = self as? any reloadFirebaseDelegate
-        self.present(vc, animated: true, completion: nil)
-    }
-    
     func showDetailWriteVC() {
         guard let vc =  self.storyboard?.instantiateViewController(identifier: "DetailWriteVC") as? DetailWriteVC else { return }
         self.navigationController?.pushViewController(vc, animated: true)
@@ -106,7 +95,7 @@ extension UIViewController {
     
     func showDetailWriteVC(isEdit: Bool = false, selectedIndex: Int? = nil) {
         guard let vc =  self.storyboard?.instantiateViewController(identifier: "DetailWriteVC") as? DetailWriteVC else { return }
-        vc.editFlag = isEdit
+        vc.updateFlag = isEdit
 //        vc.selectedIndex = selectedIndex
         self.navigationController?.pushViewController(vc, animated: true)
     }

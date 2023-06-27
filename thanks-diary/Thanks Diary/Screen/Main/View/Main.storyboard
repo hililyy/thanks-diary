@@ -161,7 +161,7 @@
                                     <color key="titleColor" name="grayColor_1"/>
                                 </state>
                                 <connections>
-                                    <action selector="moveTodayFocus:" destination="Rmf-89-8Rf" eventType="touchUpInside" id="cIt-oo-vS5"/>
+                                    <action selector="moveTodayFocus:" destination="Rmf-89-8Rf" eventType="touchUpInside" id="nQ5-89-nyZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -193,7 +193,8 @@
                         <outlet property="diaryTableView" destination="GSk-Mz-Wn5" id="BpI-TG-Fmc"/>
                         <outlet property="emptyImage" destination="APX-Wg-Za5" id="BHu-OB-1iO"/>
                         <outlet property="emptyView" destination="vPC-Co-KWb" id="2Ag-Us-TIm"/>
-                        <outlet property="todayDate" destination="P0R-sM-KPW" id="dF4-K9-Qrd"/>
+                        <outlet property="todayButton" destination="65c-kB-gCJ" id="Vrd-3Z-Scf"/>
+                        <outlet property="todayLabel" destination="P0R-sM-KPW" id="AqO-4c-6eh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Oi-6J-0b1" sceneMemberID="firstResponder"/>
@@ -338,7 +339,7 @@
                     <connections>
                         <outlet property="completeBtn" destination="esm-Vg-eFe" id="5lN-aw-UEo"/>
                         <outlet property="contentsTextView" destination="zlO-TB-7mx" id="oAB-tX-HLF"/>
-                        <outlet property="diaryTitle" destination="JIX-Ii-dJd" id="Uhz-gr-nEh"/>
+                        <outlet property="titleLabel" destination="JIX-Ii-dJd" id="71P-tW-wAH"/>
                         <outlet property="titleTextfield" destination="1X2-nd-dAc" id="a9p-Sm-ZhL"/>
                     </connections>
                 </viewController>
@@ -484,9 +485,9 @@
                     </view>
                     <connections>
                         <outlet property="contentsTextView" destination="Ps2-mi-f92" id="Xkv-Zu-wr3"/>
-                        <outlet property="dateLabel" destination="o5e-Y5-hMq" id="9SA-7v-SPy"/>
                         <outlet property="editBtn" destination="diS-oz-why" id="ogu-CJ-9YV"/>
-                        <outlet property="titleLabel" destination="6MI-aR-JAp" id="FUW-zu-qr1"/>
+                        <outlet property="titleLabel" destination="o5e-Y5-hMq" id="CVs-wk-bCq"/>
+                        <outlet property="titlePaddingLable" destination="6MI-aR-JAp" id="CJw-fg-kn8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOt-kw-ULd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -589,7 +590,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title=""/>
                                         <connections>
-                                            <action selector="goBack:" destination="hhR-22-JNe" eventType="touchUpInside" id="0Gj-bt-0fB"/>
+                                            <action selector="goBack:" destination="hhR-22-JNe" eventType="touchUpInside" id="F82-a2-Gzk"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Psz-Q3-aj1">
@@ -616,7 +617,7 @@
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="취소"/>
                                                         <connections>
-                                                            <action selector="goBack:" destination="hhR-22-JNe" eventType="touchUpInside" id="975-nL-y94"/>
+                                                            <action selector="goBack:" destination="hhR-22-JNe" eventType="touchUpInside" id="SFw-rq-l55"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cC8-MK-KrE">
@@ -708,10 +709,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backBtn" destination="5jQ-iG-6o1" id="n9o-kn-u3X"/>
-                        <outlet property="cancelBtn" destination="RAL-y9-RvO" id="yN9-TW-TOm"/>
-                        <outlet property="okBtn" destination="cC8-MK-KrE" id="CQg-0b-VB4"/>
-                        <outlet property="simpleTextField" destination="XgO-gI-xKX" id="2x4-xe-OLc"/>
+                        <outlet property="cancelButton" destination="RAL-y9-RvO" id="VPd-Lf-UWm"/>
+                        <outlet property="contentsTextField" destination="XgO-gI-xKX" id="5AO-sY-26B"/>
+                        <outlet property="deleteButton" destination="sVT-nY-FHf" id="6xP-E1-a2j"/>
+                        <outlet property="okButton" destination="cC8-MK-KrE" id="nrK-6z-fPU"/>
                         <outlet property="textLengthLabel" destination="3cg-nS-uiu" id="Qzd-d8-967"/>
                     </connections>
                 </viewController>
