@@ -7,7 +7,6 @@ target 'Thanks Diary' do
 
   # Pods for Thanks Diary
   pod 'FSCalendar'
-  pod 'Toast-Swift', '~> 5.0.1'
   pod 'AcknowList'
   pod 'lottie-ios'
 end

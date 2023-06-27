@@ -45,7 +45,7 @@
 		026E9C2F2A4AC95500568CFD /* NanumBarunGothicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */; };
 		026E9C302A4AC95900568CFD /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */; };
 		026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */; };
-		02884C5B2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02884C5A2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist */; };
+		026E9C332A4AD5A600568CFD /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C322A4AD5A600568CFD /* Pods-Thanks Diary-acknowledgements.plist */; };
 		029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EC2A494C3100D82289 /* FirstStartView.swift */; };
 		029F04F02A494C3100D82289 /* SecondStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04ED2A494C3100D82289 /* SecondStartView.swift */; };
 		029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EE2A494C3100D82289 /* ThirdStartView.swift */; };
@@ -145,7 +145,7 @@
 		026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicBold.ttf; sourceTree = "<group>"; };
 		026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothic.ttf; sourceTree = "<group>"; };
 		026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicLight.ttf; sourceTree = "<group>"; };
-		02884C5A2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
+		026E9C322A4AD5A600568CFD /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
 		029F04EC2A494C3100D82289 /* FirstStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartView.swift; sourceTree = "<group>"; };
 		029F04ED2A494C3100D82289 /* SecondStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStartView.swift; sourceTree = "<group>"; };
 		029F04EE2A494C3100D82289 /* ThirdStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdStartView.swift; sourceTree = "<group>"; };
@@ -397,7 +397,7 @@
 		2A0D87F228A540FB00576E56 = {
 			isa = PBXGroup;
 			children = (
-				02884C5A2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist */,
+				026E9C322A4AD5A600568CFD /* Pods-Thanks Diary-acknowledgements.plist */,
 				2A0D87FD28A540FB00576E56 /* Thanks Diary */,
 				2A0D87FC28A540FB00576E56 /* Products */,
 				097BDEFB190D1496A285C00F /* Pods */,
@@ -678,6 +678,7 @@
 				025EF08B2A45A16300C930F2 /* Setting.storyboard in Resources */,
 				2A0962DA28CF484300063DF3 /* TextData.csv in Resources */,
 				2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */,
+				026E9C332A4AD5A600568CFD /* Pods-Thanks Diary-acknowledgements.plist in Resources */,
 				2A81232828BFB83B000A250E /* go.json in Resources */,
 				026E9C302A4AC95900568CFD /* NanumBarunGothicBold.ttf in Resources */,
 				2A0D881828ABB80900576E56 /* wave.json in Resources */,
@@ -685,7 +686,6 @@
 				025EF08D2A45A36000C930F2 /* Launch.storyboard in Resources */,
 				2A0D881A28ABB83A00576E56 /* dot.json in Resources */,
 				026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */,
-				02884C5B2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

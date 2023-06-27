@@ -8,7 +8,6 @@
 import UIKit
 import FSCalendar
 import CoreData
-import Toast_Swift
 
 final class MainVC: BaseVC {
 

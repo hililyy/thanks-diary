@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreData
-import Toast_Swift
 
 class SimpleWriteVC: BaseVC, UITextViewDelegate {
 //20자까지 작성
