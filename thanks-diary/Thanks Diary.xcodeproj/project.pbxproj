@@ -42,6 +42,9 @@
 		026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */; };
 		026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */; };
 		026E9C232A4AAAD400568CFD /* AlertConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */; };
+		026E9C2F2A4AC95500568CFD /* NanumBarunGothicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */; };
+		026E9C302A4AC95900568CFD /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */; };
+		026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */; };
 		02884C5B2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02884C5A2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist */; };
 		02968D1C2A45AB81005DF4B4 /* LocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02968D1B2A45AB81005DF4B4 /* LocalDataStore.swift */; };
 		029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EC2A494C3100D82289 /* FirstStartView.swift */; };
@@ -140,6 +143,9 @@
 		026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryProtocol.swift; sourceTree = "<group>"; };
 		026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmView.swift; sourceTree = "<group>"; };
 		026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmVC.swift; sourceTree = "<group>"; };
+		026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicBold.ttf; sourceTree = "<group>"; };
+		026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothic.ttf; sourceTree = "<group>"; };
+		026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicLight.ttf; sourceTree = "<group>"; };
 		02884C5A2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
 		02968D1B2A45AB81005DF4B4 /* LocalDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
 		029F04EC2A494C3100D82289 /* FirstStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartView.swift; sourceTree = "<group>"; };
@@ -430,6 +436,9 @@
 		2A0D881228ABB38900576E56 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */,
+				026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */,
+				026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */,
 				2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */,
 				2A0D881328ABB3A000576E56 /* KOTRA_GOTHIC.ttf */,
 			);
@@ -667,15 +676,18 @@
 				2A81232628BFB2BD000A250E /* writing.json in Resources */,
 				2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */,
 				029F04F22A494D5A00D82289 /* Start.storyboard in Resources */,
+				026E9C2F2A4AC95500568CFD /* NanumBarunGothicLight.ttf in Resources */,
 				025EF0892A45A10C00C930F2 /* Main.storyboard in Resources */,
 				025EF08B2A45A16300C930F2 /* Setting.storyboard in Resources */,
 				2A0962DA28CF484300063DF3 /* TextData.csv in Resources */,
 				2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */,
 				2A81232828BFB83B000A250E /* go.json in Resources */,
+				026E9C302A4AC95900568CFD /* NanumBarunGothicBold.ttf in Resources */,
 				2A0D881828ABB80900576E56 /* wave.json in Resources */,
 				2A81233028BFBF4D000A250E /* sun.json in Resources */,
 				025EF08D2A45A36000C930F2 /* Launch.storyboard in Resources */,
 				2A0D881A28ABB83A00576E56 /* dot.json in Resources */,
+				026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */,
 				02884C5B2A42ED6100214CE4 /* Pods-Thanks Diary-acknowledgements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -46,7 +46,7 @@ class PageView: UIView {
         let button = UIButton(type: .custom)
         button.layer.cornerRadius = 20
         button.backgroundColor = Color.COLOR_GRAYBLUE
-        button.titleLabel?.font = Font.NANUM_ULTRALIGHT_18
+        button.titleLabel?.font = Font.NANUM_LIGHT_18
         button.setTitle("다음", for: .normal)
         return button
     }()

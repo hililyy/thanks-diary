@@ -22,7 +22,6 @@ class FloatingButton: UIView {
         super.init(frame: frame)
         
         setConstraints()
-//        setView()
     }
     
     required init?(coder: NSCoder) {
