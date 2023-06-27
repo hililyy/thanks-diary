@@ -65,7 +65,11 @@ class DetailWriteVC: BaseVC {
               let contents = contentsTextView.text else { return }
         
         if title.isEmpty || contents.isEmpty {
-            self.view.makeToast("제목과 내용을 모두 입력해 주세요.")
+            completeBtn.isEnabled = false
+            toast(message: "제목과 내용을 모두 입력해 주세요.", withDuration: 0.5, delay: 1.5) {
+                self.completeBtn.isEnabled = true
+            }
+            
         } else {
             if updateFlag == true {
                 guard let index = selectedIndex else { return }

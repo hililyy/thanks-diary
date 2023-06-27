@@ -67,7 +67,10 @@ class SimpleWriteVC: BaseVC, UITextViewDelegate {
         guard let contents = contentsTextField.text else { return }
         
         if contents.isEmpty {
-            self.view.makeToast("내용을 모두 입력해 주세요.")
+            okButton.isEnabled = false
+            toast(message: "내용을 입력해 주세요.", withDuration: 0.5, delay: 1.5, type: "top") {
+                self.okButton.isEnabled = true
+            }
         } else {
             if updateFlag == true {
                 guard let index = selectedIndex else { return }
