@@ -148,7 +148,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
-        return CGPoint(x: 0, y: -5)
+        return CGPoint(x: 0, y: -5.15)
     }
     
     // 최대 선택 가능 날짜
