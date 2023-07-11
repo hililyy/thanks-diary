@@ -6,50 +6,40 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
 class PageView: UIView {
     
-    lazy var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
+    lazy var containerView = UIView().then {
+        $0.backgroundColor = .white
+    }
     
-    private lazy var progressStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [firstDotView, secondDotView, thirdDotView])
-        stackView.spacing = 8
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        return stackView
-    }()
+    private lazy var progressStackView =  UIStackView(arrangedSubviews: [firstDotView, secondDotView, thirdDotView]).then {
+        $0.spacing = 8
+        $0.axis = .horizontal
+        $0.distribution = .fill
+        $0.alignment = .fill
+    }
     
-    var firstDotView: UIView = {
-        let dot = UIView()
-        dot.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
-        return dot
-    }()
+    var firstDotView = UIView().then {
+        $0.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+    }
     
-    var secondDotView: UIView = {
-        let dot = UIView()
-        dot.backgroundColor = Color.COLOR_GRAY3
-        return dot
-    }()
+    var secondDotView = UIView().then {
+        $0.backgroundColor = Color.COLOR_GRAY3
+    }
     
-    var thirdDotView: UIView = {
-        let dot = UIView()
-        dot.backgroundColor = Color.COLOR_GRAY3
-        return dot
-    }()
+    var thirdDotView = UIView().then {
+        $0.backgroundColor = Color.COLOR_GRAY3
+    }
     
-    var nextButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.layer.cornerRadius = 20
-        button.backgroundColor = Color.COLOR_GRAYBLUE
-        button.titleLabel?.font = Font.NANUM_LIGHT_18
-        button.setTitle("다음", for: .normal)
-        return button
-    }()
+    var nextButton = UIButton(type: .custom).then {
+        $0.layer.cornerRadius = 20
+        $0.backgroundColor = Color.COLOR_GRAYBLUE
+        $0.titleLabel?.font = Font.NANUM_LIGHT_18
+        $0.setTitle("다음", for: .normal)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,7 +48,6 @@ class PageView: UIView {
         addSubView()
         setDot()
         setConstraints()
-        
     }
     
     func setDot() {
@@ -82,35 +71,39 @@ class PageView: UIView {
     }
     
     private func setConstraints() {
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        progressStackView.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        firstDotView.translatesAutoresizingMaskIntoConstraints = false
-        secondDotView.translatesAutoresizingMaskIntoConstraints = false
-        thirdDotView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.snp.makeConstraints {
+            $0.top.equalTo(progressStackView.snp.bottom)
+            $0.left.equalTo(snp.left)
+            $0.bottom.equalTo(nextButton.snp.top)
+            $0.right.equalTo(snp.right)
+            $0.width.equalTo(snp.width)
+        }
         
+        progressStackView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(50)
+            $0.centerX.equalTo(snp.centerX)
+        }
         
-        NSLayoutConstraint.activate([
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerView.topAnchor.constraint(equalTo: progressStackView.bottomAnchor),
-            containerView.bottomAnchor.constraint(equalTo: nextButton.topAnchor),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            containerView.widthAnchor.constraint(equalTo: widthAnchor),
-            
-            progressStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
-            progressStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            nextButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -15),
-            nextButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nextButton.heightAnchor.constraint(equalToConstant: 54),
-            
-            firstDotView.widthAnchor.constraint(equalToConstant: 12),
-            firstDotView.heightAnchor.constraint(equalToConstant: 12),
-            secondDotView.widthAnchor.constraint(equalToConstant: 12),
-            secondDotView.heightAnchor.constraint(equalToConstant: 12),
-            thirdDotView.widthAnchor.constraint(equalToConstant: 12),
-            thirdDotView.heightAnchor.constraint(equalToConstant: 12)
-        ])
+        nextButton.snp.makeConstraints {
+            $0.left.equalTo(safeAreaLayoutGuide.snp.left).offset(30)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-15)
+            $0.centerX.equalTo(snp.centerX)
+            $0.height.equalTo(54)
+        }
+        
+        firstDotView.snp.makeConstraints {
+            $0.width.equalTo(12)
+            $0.height.equalTo(12)
+        }
+        
+        secondDotView.snp.makeConstraints {
+            $0.width.equalTo(12)
+            $0.height.equalTo(12)
+        }
+        
+        thirdDotView.snp.makeConstraints {
+            $0.width.equalTo(12)
+            $0.height.equalTo(12)
+        }
     }
 }
