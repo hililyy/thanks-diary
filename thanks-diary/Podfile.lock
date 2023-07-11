@@ -2,23 +2,31 @@ PODS:
   - AcknowList (3.0.1)
   - FSCalendar (2.8.4)
   - lottie-ios (4.2.0)
+  - SnapKit (5.6.0)
+  - Then (3.0.0)
 
 DEPENDENCIES:
   - AcknowList
   - FSCalendar
   - lottie-ios
+  - SnapKit (~> 5.6.0)
+  - Then
 
 SPEC REPOS:
   trunk:
     - AcknowList
     - FSCalendar
     - lottie-ios
+    - SnapKit
+    - Then
 
 SPEC CHECKSUMS:
   AcknowList: 1aca788e5f1fae79d671c9c48d83ef21027232c0
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: a7fce361600795829634af57acff42b2b021e59b
+PODFILE CHECKSUM: a14bbf3b863adbd1463338b404471c985b10ca78
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.12.1

@@ -6,7 +6,9 @@ target 'Thanks Diary' do
   use_frameworks!
 
   # Pods for Thanks Diary
-  pod 'FSCalendar'
-  pod 'AcknowList'
-  pod 'lottie-ios'
+	pod 'FSCalendar'
+	pod 'AcknowList'
+	pod 'lottie-ios'
+	pod 'Then'
+	pod 'SnapKit', '~> 5.6.0'
 end
