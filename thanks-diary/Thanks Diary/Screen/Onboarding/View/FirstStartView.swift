@@ -6,23 +6,20 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
 final class FirstStartView: UIView {
-    var lottieView: UIView = {
-        let view = UIView()
-        return view
-    }()
     
-    var lottieView2: UIView = {
-        let view = UIView()
-        return view
-    }()
+    var lottieView = UIView()
     
-    private var messageLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = Font.NANUM_ULTRALIGHT_18
-        label.text = """
+    var lottieView2 = UIView()
+    
+    private var messageLabel = UILabel().then {
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        $0.font = Font.NANUM_ULTRALIGHT_18
+        $0.text = """
                     단순히 일기를 작성하는건
                     
                     부정적인 감정에 집중하기 쉬워요.
@@ -31,19 +28,21 @@ final class FirstStartView: UIView {
                     
                     긍정적인 감정에 집중할 수 있어요!
                     """
-        label.numberOfLines = 0
-        return label
-    }()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubView()
         setConstraints()
-        backgroundColor = .clear
+        setup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setup() {
+        backgroundColor = .clear
     }
     
     private func addSubView() {
@@ -53,25 +52,25 @@ final class FirstStartView: UIView {
     }
     
     private func setConstraints() {
-        lottieView.translatesAutoresizingMaskIntoConstraints = false
-        lottieView2.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        lottieView.snp.makeConstraints { make in
+            make.height.equalTo(170)
+            make.top.equalTo(snp.top).offset(20)
+            make.left.equalTo(snp.left).offset(75)
+            make.centerX.equalTo(snp.centerX)
+        }
         
-        NSLayoutConstraint.activate([
-            lottieView.heightAnchor.constraint(equalToConstant: 170),
-            lottieView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            lottieView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 75),
-            lottieView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            messageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            messageLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
-            lottieView2.heightAnchor.constraint(equalToConstant: 150),
-            lottieView2.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-            lottieView2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 75),
-            lottieView2.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
+        lottieView2.snp.makeConstraints { make in
+            make.height.equalTo(150)
+            make.bottom.equalTo(snp.bottom).offset(-20)
+            make.left.equalTo(snp.left).offset(75)
+            make.centerX.equalTo(snp.centerX)
+        }
+        
+        messageLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(snp.centerX)
+            make.centerY.equalTo(snp.centerY)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+        }
     }
 }
