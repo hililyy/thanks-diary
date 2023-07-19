@@ -29,18 +29,25 @@ class FloatingButtonVC: BaseVC {
     }
     
     func setOpenConstraints() {
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.7,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.7,
+                       options: .curveEaseOut) {
             self.floatingButtonCloseView.setOpenConstraints()
-            self.view.layoutIfNeeded() // 화면 갱신
+            self.view.layoutIfNeeded()
         }
     }
     
     func setCloseConstraints() {
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.7,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.7,
+                       options: .curveEaseOut) {
             self.floatingButtonCloseView.setCloseConstraints()
-            self.view.layoutIfNeeded() // 화면 갱신
+            self.view.layoutIfNeeded()
         } completion: { completion in
-            // 애니메이션이 끝나는 시점
             self.dismiss(animated: false)
         }
     }
@@ -49,27 +56,21 @@ class FloatingButtonVC: BaseVC {
         floatingButtonCloseView.setDetailLabel(label: "자세하게")
         floatingButtonCloseView.setSimpleLabel(label: "간단하게")
         
-        floatingButtonCloseView.backgroundButton.addTarget { [weak self] _ in
-            guard let self = self else { return }
-            
+        floatingButtonCloseView.backgroundButton.addTarget {
             self.dismiss(animated: true)
         }
         
-        floatingButtonCloseView.plusButton.button.addTarget { [weak self] _ in
-            guard let self = self else { return }
-            
+        floatingButtonCloseView.plusButton.button.addTarget {
             self.dismiss(animated: true)
         }
         
-        floatingButtonCloseView.detailButton.button.addTarget { [weak self] _ in
-            guard let self = self else { return }
+        floatingButtonCloseView.detailButton.button.addTarget {
             self.dismiss(animated: true) {
                 self.detailHandler()
             }
         }
         
-        floatingButtonCloseView.simpleButton.button.addTarget { [weak self] _ in
-            guard let self = self else { return }
+        floatingButtonCloseView.simpleButton.button.addTarget {
             self.dismiss(animated: true) {
                 self.simpleHandler()
             }
