@@ -20,6 +20,5 @@ class BaseTableViewCell: UITableViewCell {
     }
     
     func configure() {}
-    
     func setConstraints() {}
 }

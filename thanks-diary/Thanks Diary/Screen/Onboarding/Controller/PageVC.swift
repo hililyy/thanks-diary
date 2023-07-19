@@ -63,13 +63,10 @@ final class PageVC: BaseVC {
     }
 
     private func setPageVC() {
-        let storyBoard = UIStoryboard(name: "Start", bundle: nil)
 
-        let page1: FirstStartVC? = storyBoard.instantiateViewController(withIdentifier: "FirstStartVC") as? FirstStartVC
-        let page2: SecondStartVC? = storyBoard.instantiateViewController(withIdentifier: "SecondStartVC") as? SecondStartVC
-        let page3: ThirdStartVC? = storyBoard.instantiateViewController(withIdentifier: "ThirdStartVC") as? ThirdStartVC
-
-        guard let page1 = page1, let page2 = page2, let page3 = page3 else { return }
+        let page1 = FirstStartVC()
+        let page2 = SecondStartVC()
+        let page3 = ThirdStartVC()
 
         pageList = [page1, page2, page3]
 

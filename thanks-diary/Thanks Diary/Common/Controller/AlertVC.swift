@@ -21,11 +21,11 @@ class AlertVC: BaseVC {
     
     private func setTarget() {
         alertView.backButton.addTarget {
-            self.back(animated: true)
+            self.popVC()
         }
         
         alertView.cancelButton.addTarget {
-            self.back(animated: true)
+            self.popVC()
         }
         
         alertView.deleteButton.addTarget {

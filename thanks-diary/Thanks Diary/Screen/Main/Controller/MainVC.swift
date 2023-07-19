@@ -56,8 +56,7 @@ final class MainVC: BaseVC {
         floatingButton.setButtonImage(UIImage(named: "ic_pencil"))
         floatingButton.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
 
-        floatingButton.button.addTarget { [weak self] _ in
-            guard let self = self else { return }
+        floatingButton.button.addTarget {
             let vc = FloatingButtonVC()
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
@@ -89,8 +88,6 @@ final class MainVC: BaseVC {
             floatingButton.widthAnchor.constraint(equalToConstant: 52),
             floatingButton.heightAnchor.constraint(equalToConstant: 52)
         ])
-
-        floatingButton.setView()
     }
     
     func getAllData() {

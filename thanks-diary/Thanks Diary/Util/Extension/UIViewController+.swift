@@ -14,17 +14,17 @@ extension UIViewController {
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(PageVC())
     }
     
-//    // 메인화면 루트 뷰로 설정
+//    // 메인화면 루트 뷰로 설정 (메인 스토리보드 삭제시 주석 해제)
 //    func setMainToRoot() {
 //    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(MainNC())
 //    }
     
-    func popVC() {
-        navigationController?.popViewController(animated: true)
+    func popVC(isAnimated: Bool = true) {
+        navigationController?.popViewController(animated: isAnimated)
     }
     
-    func dismissVC() {
-        dismiss(animated: true)
+    func dismissVC(isAnimated: Bool = true) {
+        dismiss(animated: isAnimated)
     }
     
     func presentSettingPWVC() {

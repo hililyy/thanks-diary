@@ -9,7 +9,6 @@ import UIKit
 
 class BaseVC: UIViewController {
 
-    public var backEventHandler: () -> () = {}
     private var keyboardHeight: CGFloat = 0
     
     override func viewDidLoad() {
@@ -23,20 +22,6 @@ class BaseVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        backEventHandler()
-    }
-    
-    func back(animated: Bool, completion: (() -> ())? = nil) {
-        if isModal {
-            self.dismiss(animated: animated)
-        } else {
-            if let nav = navigationController {
-                nav.popViewController(animated: animated)
-            }
-        }
-    }
-    
     func pushVC(name: String, identifier: String, callback: ((UIViewController)->())? = nil) {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: identifier)

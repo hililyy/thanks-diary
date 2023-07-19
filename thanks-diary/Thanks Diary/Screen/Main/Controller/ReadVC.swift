@@ -55,7 +55,7 @@ class ReadVC: BaseVC {
     }
     
     @IBAction func goBack(_ sender: Any) {
-        back(animated: true)
+        popVC()
     }
     
     @IBAction func goDelete(_ sender: Any) {
