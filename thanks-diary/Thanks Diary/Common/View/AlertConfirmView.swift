@@ -25,7 +25,11 @@ class AlertConfirmView: UIView {
     let messageLabel: UILabel = {
         let label = UILabel()
         label.font = Font.NANUM_ULTRALIGHT_16
-        label.text = "오류가 발생했습니다.\n\n오류내용을 joun406@gmail.com으로 보내주시면 빠르게 수정하겠습니다. 감사합니다!"
+        label.text = """
+                    오류가 발생했습니다.
+                    
+                    오류내용을 joun406@gmail.com으로 보내주시면 빠르게 수정하겠습니다. 감사합니다!
+                    """
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .center
         label.numberOfLines = 0
