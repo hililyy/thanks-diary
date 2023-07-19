@@ -27,8 +27,7 @@ final class ThirdStartView: BaseView {
     }
     
     override func addSubView() {
-        addSubview(lottieView)
-        addSubview(messageLabel)
+        addSubviews([lottieView, messageLabel])
     }
     
     override func setConstraints() {

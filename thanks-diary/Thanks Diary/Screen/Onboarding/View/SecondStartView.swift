@@ -87,9 +87,7 @@ final class SecondStartView: BaseView {
     }
     
     override func addSubView() {
-        addSubview(lottieView)
-        addSubview(titleLabel)
-        addSubview(messageStackView)
+        addSubviews([lottieView, titleLabel, messageStackView])
     }
     
     override func setConstraints() {

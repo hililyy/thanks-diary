@@ -42,9 +42,7 @@ final class PageView: BaseView {
     }
     
     override func addSubView() {
-        addSubview(containerView)
-        addSubview(progressStackView)
-        addSubview(nextButton)
+        addSubviews([containerView, progressStackView, nextButton])
     }
     
     override func configureUI() {
