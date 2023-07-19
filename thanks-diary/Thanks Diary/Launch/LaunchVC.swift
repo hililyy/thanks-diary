@@ -28,7 +28,7 @@ class LaunchVC: BaseVC {
                     self.present(vc, animated: true)
                 }
             } else {
-                self.setRootVC(name: "Start", identifier: "PageVC")
+                self.setPageToRoot()
             }
         }
     }
