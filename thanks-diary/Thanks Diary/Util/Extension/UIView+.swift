@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    public func setAutoLayout(to: UIView) {
+    func setAutoLayout(to: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -17,5 +17,9 @@ extension UIView {
             self.trailingAnchor.constraint(equalTo: to.trailingAnchor),
             self.bottomAnchor.constraint(equalTo: to.bottomAnchor)
         ])
+    }
+    
+    func addSubviews(_ views: [UIView]) {
+        views.forEach { self.addSubview($0) }
     }
 }

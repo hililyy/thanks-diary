@@ -8,48 +8,23 @@
 import UIKit
 
 extension UIViewController {
-    func showFirstVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "FirstStartVC") as? FirstStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+    
+    // 시작하기(온보딩) 화면 루트 뷰로 설정
+    func setPageToRoot() {
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(PageVC())
     }
     
-    func showSecondVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SecondStartVC") as? SecondStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func showThirdVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "ThirdStartVC") as? ThirdStartVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-//    func showSignupVC() {
-//        guard let vc =  storyboard?.instantiateViewController(identifier: "SignupVC") as? SignupVC else { return }
-//        self.navigationController?.pushViewController(vc, animated: true)
+//    // 메인화면 루트 뷰로 설정
+//    func setMainToRoot() {
+//    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(MainNC())
 //    }
     
-    func showMainVC() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    func popVC() {
+        navigationController?.popViewController(animated: true)
     }
     
-//    func presentLoginVC() {
-//        let vc = storyboard!.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-//        let navi = UINavigationController(rootViewController: vc)
-//        navi.modalPresentationStyle = .currentContext
-//        present(navi, animated:false, completion: nil)
-//    }
-    
-//    func showLoginVC() {
-//        guard let vc =  storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC else { return }
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
-//    
-    func showRootLoginVC() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    func dismissVC() {
+        dismiss(animated: true)
     }
     
     func presentSettingPWVC() {
@@ -79,14 +54,12 @@ extension UIViewController {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .fullScreen
-//            vc.selectedIndex = index
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     func showDeletePopupVC(selectedIndex: Int) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DeletePopupVC") as? DeletePopupVC {
-//            vc.selectedIndex = selectedIndex
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true, completion: nil)
@@ -106,16 +79,6 @@ extension UIViewController {
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
-//    func showSettingUserInfoVC() {
-//        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingUserInfoVC") as? SettingUserInfoVC else { return }
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
-    
-//    func showSettingAlarmVC() {
-//        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingAlarmVC") as? SettingAlarmVC else { return }
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
-    
     func presentSettingAlarmDetailVC(selectedDate: Date) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingAlarmDetailVC") as? SettingAlarmDetailVC {
             vc.modalTransitionStyle = .crossDissolve
@@ -125,11 +88,6 @@ extension UIViewController {
             
             self.present(vc, animated: true, completion: nil)
         }
-    }
-    
-    func showEmailLogin() {
-//        guard let vc =  storyboard?.instantiateViewController(identifier: "EmailLoginVC") as? EmailLoginVC else { return }
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
