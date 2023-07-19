@@ -20,8 +20,7 @@ class AlertConfirmVC: UIViewController {
     }
     
     private func setTarget() {
-        alertConfirmView.okButton.addTarget { [weak self ] _ in
-            guard let self = self else { return }
+        alertConfirmView.okButton.addTarget {
             self.dismiss(animated: true)
         }
     }

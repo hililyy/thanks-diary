@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-class PageView: UIView {
+final class PageView: BaseView {
     
     lazy var containerView = UIView().then {
         $0.backgroundColor = .white
@@ -41,36 +41,21 @@ class PageView: UIView {
         $0.setTitle("다음", for: .normal)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setup()
-        addSubView()
-        setDot()
-        setConstraints()
-    }
-    
-    func setDot() {
-        firstDotView.layer.cornerRadius = 6
-        secondDotView.layer.cornerRadius = 6
-        thirdDotView.layer.cornerRadius = 6
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setup() {
-        backgroundColor = .white
-    }
-    
-    private func addSubView() {
+    override func addSubView() {
         addSubview(containerView)
         addSubview(progressStackView)
         addSubview(nextButton)
     }
     
-    private func setConstraints() {
+    override func configureUI() {
+        backgroundColor = .white
+        
+        firstDotView.layer.cornerRadius = 6
+        secondDotView.layer.cornerRadius = 6
+        thirdDotView.layer.cornerRadius = 6
+    }
+    
+    override func setConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalTo(progressStackView.snp.bottom)
             make.left.equalTo(snp.left)

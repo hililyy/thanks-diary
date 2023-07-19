@@ -20,18 +20,15 @@ class AlertVC: BaseVC {
     }
     
     private func setTarget() {
-        alertView.backButton.addTarget { [weak self ] _ in
-            guard let self = self else { return }
+        alertView.backButton.addTarget {
             self.back(animated: true)
         }
         
-        alertView.cancelButton.addTarget { [weak self ] _ in
-            guard let self = self else { return }
+        alertView.cancelButton.addTarget {
             self.back(animated: true)
         }
         
-        alertView.deleteButton.addTarget { [weak self ] _ in
-            guard let self = self else { return }
+        alertView.deleteButton.addTarget {
             print("삭제버튼 클릭")
         }
     }

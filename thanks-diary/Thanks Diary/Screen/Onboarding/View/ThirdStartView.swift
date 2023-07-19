@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-final class ThirdStartView: UIView {
+final class ThirdStartView: BaseView {
     var lottieView = UIView()
     
     private var messageLabel = UILabel().then {
@@ -22,27 +22,16 @@ final class ThirdStartView: UIView {
                     """
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-        addSubView()
-        setConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setup() {
+    override func configureUI() {
         backgroundColor = .clear
     }
     
-    private func addSubView() {
+    override func addSubView() {
         addSubview(lottieView)
         addSubview(messageLabel)
     }
     
-    private func setConstraints() {
+    override func setConstraints() {
         messageLabel.snp.makeConstraints { make in
             make.centerX.equalTo(snp.centerX)
             make.bottom.equalTo(lottieView.snp.top).offset(-50)

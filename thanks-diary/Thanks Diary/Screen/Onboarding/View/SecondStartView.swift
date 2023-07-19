@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-final class SecondStartView: UIView {
+final class SecondStartView: BaseView {
     let lottieView = UIView()
     
     private let titleLabel = UILabel().then {
@@ -82,28 +82,17 @@ final class SecondStartView: UIView {
         $0.alignment = .fill
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-        addSubView()
-        setupConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setup() {
+    override func configureUI() {
         backgroundColor = .clear
     }
     
-    private func addSubView() {
+    override func addSubView() {
         addSubview(lottieView)
         addSubview(titleLabel)
         addSubview(messageStackView)
     }
     
-    private func setupConstraints() {
+    override func setConstraints() {
         heartImageView1.snp.makeConstraints { make in
             make.width.equalTo(21)
             make.height.equalTo(21)
