@@ -55,7 +55,7 @@ class DetailWriteVC: BaseVC {
     }
 
     @IBAction func goBack(_ sender: Any) {
-        back(animated: true)
+        popVC()
     }
     
     @IBAction func goComplete(_ sender: Any) {
@@ -80,7 +80,7 @@ class DetailWriteVC: BaseVC {
                         if result {
                             self.parentVC?.viewModel.getAllDiaryData {
                                 self.parentVC?.viewModel.getSelectedDiaryData {
-                                    self.back(animated: true)
+                                    self.popVC()
                                 }
                             }
                         } else {
@@ -90,7 +90,7 @@ class DetailWriteVC: BaseVC {
             } else {
                 parentVC?.viewModel.setDetailData(title: title, contents: contents) { result in
                     if result {
-                        self.back(animated: true)
+                        self.popVC()
                     } else {
                         self.presentErrorPopup()
                     }

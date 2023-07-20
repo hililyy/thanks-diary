@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SnapKit
-import Then
 
 class FloatingButton: BaseView {
     var button = UIButton(type: .custom).then {
@@ -25,6 +23,10 @@ class FloatingButton: BaseView {
     
     func setButtonBackgroundColor(_ color: UIColor?) {
         button.backgroundColor = color
+    }
+    
+    override func configureUI() {
+        self.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
     }
     
     override func addSubView() {

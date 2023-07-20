@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		0229553D2A66867D004BF800 /* UIControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553C2A66867D004BF800 /* UIControl+.swift */; };
 		022955402A669273004BF800 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553F2A669273004BF800 /* BaseView.swift */; };
-		022955422A669BA0004BF800 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955412A669BA0004BF800 /* BaseTableView.swift */; };
+		022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955412A669BA0004BF800 /* BaseTVCell.swift */; };
 		025EF03E2A459C2900C930F2 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF03D2A459C2900C930F2 /* BaseVC.swift */; };
 		025EF0402A459C2F00C930F2 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF03F2A459C2F00C930F2 /* AlertView.swift */; };
 		025EF0422A459C3B00C930F2 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0412A459C3B00C930F2 /* AlertVC.swift */; };
-		025EF0442A459C4400C930F2 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF0432A459C4400C930F2 /* Common.storyboard */; };
 		025EF0482A459C9F00C930F2 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0472A459C9F00C930F2 /* Enum.swift */; };
 		025EF04A2A459CA400C930F2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0492A459CA400C930F2 /* Color.swift */; };
 		025EF04C2A459CA800C930F2 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF04B2A459CA800C930F2 /* Font.swift */; };
@@ -82,8 +81,8 @@
 		2A81233928C0014D000A250E /* AlarmSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81233828C0014D000A250E /* AlarmSettingCell.swift */; };
 		2A81233B28C0067B000A250E /* SettingAlarmDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81233A28C0067B000A250E /* SettingAlarmDetailVC.swift */; };
 		2A81234A28C2A208000A250E /* DiaryData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A81234828C2A208000A250E /* DiaryData.xcdatamodeld */; };
-		2A81234C28C4E221000A250E /* DetailDiaryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81234B28C4E221000A250E /* DetailDiaryTableCell.swift */; };
-		2A81234E28C4E22C000A250E /* SimpleDiaryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81234D28C4E22C000A250E /* SimpleDiaryTableCell.swift */; };
+		2A81234C28C4E221000A250E /* DetailDiaryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81234B28C4E221000A250E /* DetailDiaryTVCell.swift */; };
+		2A81234E28C4E22C000A250E /* SimpleDiaryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81234D28C4E22C000A250E /* SimpleDiaryTVCell.swift */; };
 		2A81235428C5277D000A250E /* SimpleWriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81235328C5277D000A250E /* SimpleWriteVC.swift */; };
 		2A81235A28C547A6000A250E /* SimpleDiaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81235928C547A6000A250E /* SimpleDiaryEntity.swift */; };
 		2A9F350E28AE1C0D006CCF7C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F350D28AE1C0D006CCF7C /* MainVC.swift */; };
@@ -110,11 +109,10 @@
 /* Begin PBXFileReference section */
 		0229553C2A66867D004BF800 /* UIControl+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+.swift"; sourceTree = "<group>"; };
 		0229553F2A669273004BF800 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		022955412A669BA0004BF800 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
+		022955412A669BA0004BF800 /* BaseTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTVCell.swift; sourceTree = "<group>"; };
 		025EF03D2A459C2900C930F2 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		025EF03F2A459C2F00C930F2 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		025EF0412A459C3B00C930F2 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
-		025EF0432A459C4400C930F2 /* Common.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
 		025EF0472A459C9F00C930F2 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		025EF0492A459CA400C930F2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		025EF04B2A459CA800C930F2 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -188,8 +186,8 @@
 		2A81233A28C0067B000A250E /* SettingAlarmDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmDetailVC.swift; sourceTree = "<group>"; };
 		2A81234328C0AD47000A250E /* Thanks Diary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Thanks Diary.entitlements"; sourceTree = "<group>"; };
 		2A81234928C2A208000A250E /* DiaryData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DiaryData.xcdatamodel; sourceTree = "<group>"; };
-		2A81234B28C4E221000A250E /* DetailDiaryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiaryTableCell.swift; sourceTree = "<group>"; };
-		2A81234D28C4E22C000A250E /* SimpleDiaryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDiaryTableCell.swift; sourceTree = "<group>"; };
+		2A81234B28C4E221000A250E /* DetailDiaryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiaryTVCell.swift; sourceTree = "<group>"; };
+		2A81234D28C4E22C000A250E /* SimpleDiaryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDiaryTVCell.swift; sourceTree = "<group>"; };
 		2A81235328C5277D000A250E /* SimpleWriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWriteVC.swift; sourceTree = "<group>"; };
 		2A81235928C547A6000A250E /* SimpleDiaryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDiaryEntity.swift; sourceTree = "<group>"; };
 		2A9F350D28AE1C0D006CCF7C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -219,7 +217,7 @@
 			children = (
 				025EF03D2A459C2900C930F2 /* BaseVC.swift */,
 				0229553F2A669273004BF800 /* BaseView.swift */,
-				022955412A669BA0004BF800 /* BaseTableView.swift */,
+				022955412A669BA0004BF800 /* BaseTVCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -238,7 +236,6 @@
 				0229553E2A669265004BF800 /* Base */,
 				026E9C262A4AAAE800568CFD /* Controller */,
 				026E9C242A4AAADF00568CFD /* View */,
-				025EF0432A459C4400C930F2 /* Common.storyboard */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -546,8 +543,8 @@
 		2A81235628C53143000A250E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				2A81234B28C4E221000A250E /* DetailDiaryTableCell.swift */,
-				2A81234D28C4E22C000A250E /* SimpleDiaryTableCell.swift */,
+				2A81234B28C4E221000A250E /* DetailDiaryTVCell.swift */,
+				2A81234D28C4E22C000A250E /* SimpleDiaryTVCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -699,7 +696,6 @@
 			files = (
 				2A81232C28BFBDEA000A250E /* plant.json in Resources */,
 				2A0D880828A540FE00576E56 /* Assets.xcassets in Resources */,
-				025EF0442A459C4400C930F2 /* Common.storyboard in Resources */,
 				2A81232628BFB2BD000A250E /* writing.json in Resources */,
 				2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */,
 				026E9C2F2A4AC95500568CFD /* NanumBarunGothicLight.ttf in Resources */,
@@ -790,12 +786,12 @@
 				029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */,
 				025EF0592A459D2700C930F2 /* FirebaseManager.swift in Sources */,
 				2A7241D828B3EDE60040ADE9 /* MainModel.swift in Sources */,
-				2A81234E28C4E22C000A250E /* SimpleDiaryTableCell.swift in Sources */,
+				2A81234E28C4E22C000A250E /* SimpleDiaryTVCell.swift in Sources */,
 				2A9F351728AE63FD006CCF7C /* SettingMoreCell.swift in Sources */,
 				2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */,
 				025EF06C2A459E2E00C930F2 /* Date+.swift in Sources */,
 				022955402A669273004BF800 /* BaseView.swift in Sources */,
-				022955422A669BA0004BF800 /* BaseTableView.swift in Sources */,
+				022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */,
 				025EF0862A459EEF00C930F2 /* PageView.swift in Sources */,
 				026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */,
 				025EF0752A459E4800C930F2 /* FloatingButton.swift in Sources */,
@@ -827,7 +823,7 @@
 				2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */,
 				029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */,
 				2A7241DA28B3EDF70040ADE9 /* DiaryEntity.swift in Sources */,
-				2A81234C28C4E221000A250E /* DetailDiaryTableCell.swift in Sources */,
+				2A81234C28C4E221000A250E /* DetailDiaryTVCell.swift in Sources */,
 				2A81233228BFFA0C000A250E /* SettingAlarmVC.swift in Sources */,
 				2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */,
 				025EF0502A459CE200C930F2 /* UserDefaultKey.swift in Sources */,

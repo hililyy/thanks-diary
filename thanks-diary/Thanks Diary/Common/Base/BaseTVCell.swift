@@ -1,17 +1,20 @@
 //
-//  BaseTableView.swift
+//  BaseTVCell.swift
 //  Thanks Diary
 //
 //  Created by 강조은 on 2023/07/18.
 //
 
 import UIKit
+import Then
+import SnapKit
 
-class BaseTableViewCell: UITableViewCell {
+class BaseTVCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configure()
+        configureUI()
+        addSubView()
         setConstraints()
     }
     
@@ -19,6 +22,7 @@ class BaseTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure() {}
+    func configureUI() {}
+    func addSubView() {}
     func setConstraints() {}
 }
