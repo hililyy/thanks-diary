@@ -48,6 +48,7 @@ final class MainView: BaseView {
         $0.font = Font.NANUM_ULTRALIGHT_20
         $0.textColor = Color.COLOR_GRAY1
         $0.textAlignment = .left
+        $0.text = Date().convertString(format: "dd일 (E)")
     }
     
     var diaryTableView = UITableView().then {
@@ -69,6 +70,10 @@ final class MainView: BaseView {
     func setEmptyImageView(image: UIImage?) {
         guard let image = image else { return }
         emptyImageView.image = image
+    }
+    
+    func setTodayLabelText(date: Date) {
+        todayLabel.text = date.convertString(format: "dd'일' (E)")
     }
     
     override func configureUI() {

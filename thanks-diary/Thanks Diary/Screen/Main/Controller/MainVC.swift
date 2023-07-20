@@ -10,9 +10,8 @@ import FSCalendar
 
 final class MainVC: BaseVC {
     
-    let mainView = MainView()
+    private let mainView = MainView()
     let viewModel = MainViewModel()
-    private let floatingButton = FloatingButton()
     
     override func loadView() {
         view = mainView
@@ -26,28 +25,18 @@ final class MainVC: BaseVC {
         mainView.diaryTableView.delegate = self
         mainView.diaryTableView.dataSource = self
         
-        floatingConstraints()
-        initialize()
+        setTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         getAllData()
     }
     
-    func initialize() {
-        mainView.todayLabel.text = viewModel.selectedDate.convertString(format: "dd일 (E)")
-        mainView.todayButton.layer.cornerRadius = 10
-    }
-    
-    @IBAction func goSetting(_ sender: UIButton) {
-        pushVC(name: "Setting", identifier: "SettingVC")
-    }
-    
-    @IBAction func moveTodayFocus(_ sender: UIButton) {
-        moveToday()
-    }
-    
-    func floatingConstraints() {
+    private func setTarget() {
+        
+        // 플로팅 버튼 타겟 설정
         mainView.floatingButton.button.addTarget {
             let vc = FloatingButtonVC()
             vc.modalPresentationStyle = .overFullScreen
@@ -69,6 +58,16 @@ final class MainVC: BaseVC {
             }
             
             self.present(vc, animated: false)
+        }
+        
+        // 설정 버튼 타겟 설정
+        mainView.settingButton.addTarget {
+            self.pushVC(name: "Setting", identifier: "SettingVC")
+        }
+        
+        // 오늘 버튼 타겟 설정
+        mainView.todayButton.addTarget {
+            self.moveToday()
         }
     }
     
