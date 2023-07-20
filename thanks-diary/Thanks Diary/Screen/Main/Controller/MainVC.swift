@@ -71,7 +71,8 @@ final class MainVC: BaseVC {
         }
     }
     
-    func getAllData() {
+    // 모든 일기 데이터 셋팅
+    private func getAllData() {
         viewModel.getAllDiaryData {
             self.viewModel.getSelectedDiaryData {
                 self.mainView.calendar.reloadData()
@@ -80,15 +81,17 @@ final class MainVC: BaseVC {
         }
     }
     
-    func getSelectedData() {
+    // 선택한 날짜에 해당하는 데이터 셋팅
+    private func getSelectedData() {
         self.viewModel.getSelectedDiaryData {
             self.mainView.diaryTableView.reloadData()
         }
     }
     
-    func moveToday() {
+    // 오늘 날짜로 이동
+    private func moveToday() {
         mainView.calendar.select(Date())
-        mainView.todayLabel.text = Date().convertString(format: "dd'일' (E)")
+        mainView.setTodayLabelText(date: Date())
         viewModel.selectedDate = Date()
         getSelectedData()
     }
@@ -121,36 +124,46 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
 
 extension MainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // 작성한 일기가 없으면 일기 작성 이미지 노출
         if viewModel.selectedDetailData.isEmpty && viewModel.selectedSimpleData.isEmpty {
+            mainView.emptyImageView.isHidden = false
+            mainView.emptyImageView.frame.size.height = 300
+            
             if  viewModel.selectedDate.convertString() == Date().convertString() {
-                mainView.emptyImageView.isHidden = false
-                mainView.emptyImageView.frame.size.height = 300
                 mainView.setEmptyImageView(image: UIImage(named: "img_not_today"))
                 return 0
             } else {
-                mainView.emptyImageView.isHidden = false
-                mainView.emptyImageView.frame.size.height = 300
                 mainView.setEmptyImageView(image: UIImage(named: "img_not_before"))
-                return 0
             }
+            
+            return 0
+        
+        // 일기 데이터 셋팅
         } else {
             mainView.emptyImageView.isHidden = true
             mainView.emptyImageView.frame.size.height = 0
+            
             return viewModel.selectedDetailData.count + viewModel.selectedSimpleData.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
+        
+        // 자세한 일기
         case ..<viewModel.selectedDetailData.count:
             guard let cell = mainView.diaryTableView.dequeueReusableCell(withIdentifier: DetailDiaryTVCell.id, for: indexPath) as? DetailDiaryTVCell else { return UITableViewCell() }
             cell.titleLabel.text = viewModel.selectedDetailData[indexPath.row].title
             return cell
+        
+        // 간단한 일기
         case viewModel.selectedDetailData.count...:
             guard let cell = mainView.diaryTableView.dequeueReusableCell(withIdentifier: SimpleDiaryTVCell.id, for: indexPath) as? SimpleDiaryTVCell else { return UITableViewCell() }
             cell.titleLabel.text =
             viewModel.selectedSimpleData[indexPath.row - viewModel.selectedDetailData.count].contents
             return cell
+            
         default:
             break
         }
@@ -160,6 +173,8 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+            
+        // 자세한 일기 조회
         case ..<viewModel.selectedDetailData.count:
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC else { return }
             viewModel.selectedDate = viewModel.selectedDetailData[indexPath.row].date?.convertDate() ?? Date()
@@ -167,6 +182,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
             vc.selectedIndex = indexPath.row
             self.navigationController?.pushViewController(vc, animated: true)
             
+        // 간단한 일기 조회
         case viewModel.selectedDetailData.count...:
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }
             vc.modalTransitionStyle = .crossDissolve
