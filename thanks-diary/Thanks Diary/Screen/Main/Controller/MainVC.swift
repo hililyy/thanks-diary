@@ -48,7 +48,7 @@ final class MainVC: BaseVC {
             }
             
             vc.simpleHandler = {
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }
+                let vc = SimpleWriteVC()
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .overFullScreen
                 vc.parentVC = self
@@ -188,7 +188,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
             
         // 간단한 일기 조회
         case viewModel.selectedDetailData.count...:
-            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SimpleWriteVC") as? SimpleWriteVC else { return }
+            let vc = SimpleWriteVC()
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overFullScreen
             vc.parentVC = self

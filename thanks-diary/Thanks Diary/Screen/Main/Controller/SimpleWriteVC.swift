@@ -6,121 +6,107 @@
 //
 
 import UIKit
-import CoreData
 
-class SimpleWriteVC: BaseVC, UITextViewDelegate {
-//20자까지 작성
-    @IBOutlet weak var contentsTextField: UITextView!
-    @IBOutlet weak var okButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var textLengthLabel: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
+final class SimpleWriteVC: BaseVC {
     
-    var afterContentsString: String = ""
-    var contentsString: String = ""
-    var todayString: String = ""
-    var delegate: reloadDelegate? = nil
+    var delegate: reloadDelegate?
     var updateFlag: Bool = false
     var selectedIndex: Int?
     let maxCount: Int = 23
     var parentVC: MainVC?
+    let simpleWriteView = SimpleWriteView()
+    
+    override func loadView() {
+        view = simpleWriteView
+    }
     
     override func viewDidLoad() {
-        contentsTextField.delegate = self
+        simpleWriteView.contentsTextView.delegate = self
         
-        setUI()
-        setData()
+        configureUI()
+        setTarget()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        contentsTextField.becomeFirstResponder()
-    }
-    
-    func setUI() {
-        contentsTextField.layer.cornerRadius = 15
-        contentsTextField.layer.borderWidth = 1
-        contentsTextField.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
+    func configureUI() {
         
-        cancelButton.layer.cornerRadius = 10
-        cancelButton.layer.borderWidth = 1.5
-        cancelButton.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
-        
-        okButton.layer.cornerRadius = 10
+        simpleWriteView.contentsTextView.becomeFirstResponder()
+        simpleWriteView.deleteButton.isHidden = !updateFlag
         
         if updateFlag == true {
-            deleteButton.isHidden = false
-        } else {
-            deleteButton.isHidden = true
+            guard let index = selectedIndex,
+                  let text = parentVC?.viewModel.selectedSimpleData[index].contents else { return }
+            simpleWriteView.setContentsTextView(text: text)
         }
-    }
-    
-    func setData() {
-        if updateFlag == true {
-            guard let index = selectedIndex else { return }
-            contentsTextField.text = parentVC?.viewModel.selectedSimpleData[index].contents
-        }
-        textLengthLabel.text = "\(contentsTextField.text.count)/25"
-    }
-    
-    @IBAction func goEnter(_ sender: Any) {
-        guard let contents = contentsTextField.text else { return }
         
-        if contents.isEmpty {
-            okButton.isEnabled = false
-            toast(message: "내용을 입력해 주세요.", withDuration: 0.5, delay: 1.5, type: "top") {
-                self.okButton.isEnabled = true
-            }
-        } else {
-            if updateFlag == true {
-                guard let index = selectedIndex else { return }
-                
-                parentVC?.viewModel.updateSimpleData(
-                    selectedIndex: index,
-                    afterContents: contents) { result in
-                        if result {
-                            self.dismiss(animated: true) {
-                                self.delegate?.reloadData()
-                            }
-                        } else {
-                            self.presentErrorPopup()
-                        }
-                    }
-            } else {
-                parentVC?.viewModel.setSimpleData(contents: contents) { result in
-                        if result {
-                            self.dismiss(animated: true) {
-                                self.delegate?.reloadData()
-                            }
-                        } else {
-                            self.presentErrorPopup()
-                        }
-                    }
-            }
-        }
+        simpleWriteView.setTextLength()
     }
     
-    @IBAction func goBack(_ sender: Any) {
-        dismiss(animated: true)
-    }
-    
-    @IBAction func goDelete(_ sender: Any) {
-        guard let index = selectedIndex else { return }
-        
-        parentVC?.viewModel.deleteSimpleData(selectedIndex: index) { result in
-            if result {
-                self.dismiss(animated: true) {
-                    self.delegate?.reloadData()
+    func setTarget() {
+        simpleWriteView.completeButton.addTarget {
+            guard let contents = self.simpleWriteView.contentsTextView.text else { return }
+            
+            if contents.isEmpty {
+                // 텍스트 뷰가 비어있으면 토스트 띄움
+                self.simpleWriteView.completeButton.isEnabled = false
+                self.toast(message: "내용을 입력해 주세요.", withDuration: 0.5, delay: 1.5, type: "top") {
+                    self.simpleWriteView.completeButton.isEnabled = true
                 }
             } else {
-                self.presentErrorPopup()
+                if self.updateFlag == true {
+                    // 수정
+                    guard let index = self.selectedIndex else { return }
+                    
+                    self.parentVC?.viewModel.updateSimpleData(
+                        selectedIndex: index,
+                        afterContents: contents) { result in
+                            if result {
+                                self.dismissVC {
+                                    self.delegate?.reloadData()
+                                }
+                            } else {
+                                self.presentErrorPopup()
+                            }
+                        }
+                } else {
+                    // 작성
+                    self.parentVC?.viewModel.setSimpleData(contents: contents) { result in
+                        if result {
+                            self.dismissVC {
+                                self.delegate?.reloadData()
+                            }
+                        } else {
+                            self.presentErrorPopup()
+                        }
+                    }
+                }
+            }
+        }
+        
+        simpleWriteView.cancelButton.addTarget {
+            self.dismissVC()
+        }
+        
+        simpleWriteView.deleteButton.addTarget {
+            guard let index = self.selectedIndex else { return }
+            
+            self.parentVC?.viewModel.deleteSimpleData(selectedIndex: index) { result in
+                if result {
+                    self.dismissVC {
+                        self.delegate?.reloadData()
+                    }
+                } else {
+                    self.presentErrorPopup()
+                }
             }
         }
     }
-    
+}
+
+extension SimpleWriteVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         //이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
-        self.textLengthLabel.text = "\(textView.text.count+1)/25"
+        simpleWriteView.textLengthLabel.text = "\(textView.text.count + 1)/25"
         let newLength = textView.text.count - range.length + text.count
         let koreanMaxCount = maxCount + 1
         
@@ -142,10 +128,10 @@ class SimpleWriteVC: BaseVC, UITextViewDelegate {
         }
         return true
     }
-
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.count > maxCount {
-        //글자수 제한에 걸리면 마지막 글자 삭제
+            //글자수 제한에 걸리면 마지막 글자 삭제
             textView.text.removeLast()
         }
     }
