@@ -11,11 +11,11 @@ import CoreData
 
 class MainViewModel {
     
-    var allDetailData: [String: [DiaryEntity]] = [:]
-    var allSimpleData: [String: [SimpleDiaryEntity]] = [:]
+    var allDetailData: [String: [DetailDiaryModel]] = [:]
+    var allSimpleData: [String: [SimpleDiaryModel]] = [:]
     
-    var selectedDetailData: [DiaryEntity] = []
-    var selectedSimpleData: [SimpleDiaryEntity] = []
+    var selectedDetailData: [DetailDiaryModel] = []
+    var selectedSimpleData: [SimpleDiaryModel] = []
     var selectedDate: Date = Date()
     var diaryDates: Set<String> = []
     

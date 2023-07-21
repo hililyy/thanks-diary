@@ -13,8 +13,8 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     private init() { }
     
-    func getDetailData() -> [String: [DiaryEntity]] {
-        var detailData: [String: [DiaryEntity]] = [:]
+    func getDetailData() -> [String: [DetailDiaryModel]] {
+        var detailData: [String: [DetailDiaryModel]] = [:]
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [:] }
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -24,7 +24,7 @@ class CoreDataManager {
             let result = try managedContext.fetch(fetchRequest)
             
             for data in result {
-                let diary = DiaryEntity(
+                let diary = DetailDiaryModel(
                     type: data.value(forKey: "type") as? String,
                     title: data.value(forKey: "title") as? String,
                     contents: data.value(forKey: "contents") as? String,
@@ -47,8 +47,8 @@ class CoreDataManager {
         return detailData
     }
     
-    func getSimpleData() -> [String: [SimpleDiaryEntity]] {
-        var simpleData: [String: [SimpleDiaryEntity]] = [:]
+    func getSimpleData() -> [String: [SimpleDiaryModel]] {
+        var simpleData: [String: [SimpleDiaryModel]] = [:]
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [:] }
             let managedContext = appDelegate.persistentContainer.viewContext
@@ -58,7 +58,7 @@ class CoreDataManager {
             let result = try managedContext.fetch(fetchRequest)
 
             for data in result {
-                let diary = SimpleDiaryEntity(
+                let diary = SimpleDiaryModel(
                     type: data.value(forKey: "type") as? String,
                     contents: data.value(forKey: "contents") as? String,
                     date: data.value(forKey: "date") as? String
