@@ -28,20 +28,6 @@ class BaseVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func setRootVC(name: String, identifier: String, callback: ((UIViewController)->())? = nil) {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first else { return }
-        
-        let storyboard = UIStoryboard(name: name, bundle: nil)
-        let rootViewController = storyboard.instantiateViewController(withIdentifier: identifier)
-        let navigationController = UINavigationController(rootViewController: rootViewController)
-        
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
-        
-        pushVC(name: name, identifier: identifier)
-    }
-    
     func presentErrorPopup() {
         guard let vc = UIStoryboard(name: "Common", bundle: nil).instantiateViewController(withIdentifier: "AlertConfirmVC") as? AlertConfirmVC else { return }
         vc.modalTransitionStyle = .crossDissolve
@@ -52,7 +38,10 @@ class BaseVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+}
+
+// 토스트 설정
+extension BaseVC: UIGestureRecognizerDelegate {
     func toast(message: String, withDuration: Double, delay: Double, type: String = "", completion: @escaping () -> ()) {
         let toastLabelWidth: CGFloat = 300
         let toastLabelHeight: CGFloat = 50
@@ -106,10 +95,8 @@ class BaseVC: UIViewController {
     func isKeyboardVisible() -> Bool {
         return keyboardHeight > 0
     }
-}
-
-extension BaseVC: UIGestureRecognizerDelegate {
-  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-    return true
-  }
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
