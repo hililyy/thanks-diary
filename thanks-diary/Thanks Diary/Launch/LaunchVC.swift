@@ -16,7 +16,7 @@ class LaunchVC: BaseVC {
         
         LottieManager.shared.setLottie(self, lottieView: lottieView, name: "dot", speed: 3, mode: .loop)
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             
             if UserDefaultManager.bool(forKey: UserDefaultKey.IS_LOGIN) {
                 if !UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
