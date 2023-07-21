@@ -19,8 +19,11 @@ final class ReadVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         setTarget()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureUI()
     }
     
     private func configureUI() {
