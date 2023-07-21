@@ -48,7 +48,7 @@ class FloatingButtonVC: BaseVC {
             self.floatingButtonCloseView.setCloseConstraints()
             self.view.layoutIfNeeded()
         } completion: { completion in
-            self.dismiss(animated: false)
+            self.dismissVC(isAnimated: false)
         }
     }
     
@@ -57,21 +57,21 @@ class FloatingButtonVC: BaseVC {
         floatingButtonCloseView.setSimpleLabel(label: "간단하게")
         
         floatingButtonCloseView.backgroundButton.addTarget {
-            self.dismiss(animated: true)
+            self.dismissVC()
         }
         
         floatingButtonCloseView.plusButton.button.addTarget {
-            self.dismiss(animated: true)
+            self.dismissVC()
         }
         
         floatingButtonCloseView.detailButton.button.addTarget {
-            self.dismiss(animated: true) {
+            self.dismissVC() {
                 self.detailHandler()
             }
         }
         
         floatingButtonCloseView.simpleButton.button.addTarget {
-            self.dismiss(animated: true) {
+            self.dismissVC() {
                 self.simpleHandler()
             }
         }

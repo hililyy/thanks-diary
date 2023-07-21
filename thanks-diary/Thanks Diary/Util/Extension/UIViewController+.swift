@@ -25,8 +25,10 @@ extension UIViewController {
     }
     
     // 프리젠트 뒤로가기
-    func dismissVC(isAnimated: Bool = true) {
-        dismiss(animated: isAnimated)
+    func dismissVC(isAnimated: Bool = true, completion: (() -> ())? = nil) {
+        dismiss(animated: isAnimated) {
+            completion?()
+        }
     }
     
     // 현재 화면의 rootVC 까지 뷰 제거
@@ -51,6 +53,7 @@ extension UIViewController {
         guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     func presentSettingAlarmDetailVC(selectedDate: Date) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingAlarmDetailVC") as? SettingAlarmDetailVC {
             vc.modalTransitionStyle = .crossDissolve

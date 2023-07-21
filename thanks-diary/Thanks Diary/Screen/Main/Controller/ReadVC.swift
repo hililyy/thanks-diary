@@ -53,7 +53,7 @@ final class ReadVC: BaseVC {
                     if result {
                         self.setMainToRoot()
                     } else {
-                        self.dismiss(animated: true) {
+                        self.dismissVC() {
                             self.presentErrorPopup()
                         }
                     }

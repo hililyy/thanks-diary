@@ -21,7 +21,7 @@ class AlertConfirmVC: UIViewController {
     
     private func setTarget() {
         alertConfirmView.okButton.addTarget {
-            self.dismiss(animated: true)
+            self.dismissVC()
         }
     }
 }
