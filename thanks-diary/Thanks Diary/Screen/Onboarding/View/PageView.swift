@@ -11,34 +11,34 @@ import SnapKit
 
 final class PageView: BaseView {
     
-    lazy var containerView = UIView().then {
-        $0.backgroundColor = .white
+    lazy var containerView = UIView().then { view in
+        view.backgroundColor = .white
     }
     
-    private lazy var progressStackView =  UIStackView(arrangedSubviews: [firstDotView, secondDotView, thirdDotView]).then {
-        $0.spacing = 8
-        $0.axis = .horizontal
-        $0.distribution = .fill
-        $0.alignment = .fill
+    private lazy var progressStackView =  UIStackView(arrangedSubviews: [firstDotView, secondDotView, thirdDotView]).then { stackView in
+        stackView.spacing = 8
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .fill
     }
     
-    var firstDotView = UIView().then {
-        $0.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+    var firstDotView = UIView().then { view in
+        view.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
     }
     
-    var secondDotView = UIView().then {
-        $0.backgroundColor = Color.COLOR_GRAY3
+    var secondDotView = UIView().then { view in
+        view.backgroundColor = Color.COLOR_GRAY3
     }
     
-    var thirdDotView = UIView().then {
-        $0.backgroundColor = Color.COLOR_GRAY3
+    var thirdDotView = UIView().then { view in
+        view.backgroundColor = Color.COLOR_GRAY3
     }
     
-    var nextButton = UIButton(type: .custom).then {
-        $0.layer.cornerRadius = 20
-        $0.backgroundColor = Color.COLOR_GRAYBLUE
-        $0.titleLabel?.font = Font.NANUM_LIGHT_18
-        $0.setTitle("다음", for: .normal)
+    var nextButton = UIButton(type: .custom).then { button in
+        button.layer.cornerRadius = 20
+        button.backgroundColor = Color.COLOR_GRAYBLUE
+        button.titleLabel?.font = Font.NANUM_LIGHT_18
+        button.setTitle("다음", for: .normal)
     }
     
     override func addSubView() {

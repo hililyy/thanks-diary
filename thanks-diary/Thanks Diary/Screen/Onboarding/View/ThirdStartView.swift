@@ -12,11 +12,11 @@ import SnapKit
 final class ThirdStartView: BaseView {
     var lottieView = UIView()
     
-    private var messageLabel = UILabel().then {
-        $0.textAlignment = .center
-        $0.font = Font.NANUM_ULTRALIGHT_20
-        $0.numberOfLines = 0
-        $0.text = """
+    private var messageLabel = UILabel().then { label in
+        label.textAlignment = .center
+        label.font = Font.NANUM_ULTRALIGHT_20
+        label.numberOfLines = 0
+        label.text = """
                     감사일기를 작성하고
                     나다운 하루를 만들어 보세요!
                     """

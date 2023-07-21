@@ -15,11 +15,11 @@ final class FirstStartView: BaseView {
     
     var lottieView2 = UIView()
     
-    private var messageLabel = UILabel().then {
-        $0.textAlignment = .center
-        $0.numberOfLines = 0
-        $0.font = Font.NANUM_ULTRALIGHT_18
-        $0.text = """
+    private var messageLabel = UILabel().then { label in
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = Font.NANUM_ULTRALIGHT_18
+        label.text = """
                     단순히 일기를 작성하는건
                     
                     부정적인 감정에 집중하기 쉬워요.

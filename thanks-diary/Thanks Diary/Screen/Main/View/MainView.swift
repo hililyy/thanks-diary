@@ -10,61 +10,61 @@ import FSCalendar
 
 final class MainView: BaseView {
     
-    var todayButton = UIButton(type: .custom).then {
-        $0.layer.cornerRadius = 10
-        $0.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
-        $0.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
-        $0.setTitleColor(Color.COLOR_GRAY1, for: .normal)
-        $0.setTitle("오늘", for: .normal)
+    var todayButton = UIButton(type: .custom).then { button in
+        button.layer.cornerRadius = 10
+        button.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
+        button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+        button.setTitle("오늘", for: .normal)
     }
     
-    var settingButton = UIButton(type: .custom).then {
-        $0.setImage(UIImage(named: "ic_setting"), for: .normal)
+    var settingButton = UIButton(type: .custom).then { button in
+        button.setImage(UIImage(named: "ic_setting"), for: .normal)
     }
     
-    var calendar = FSCalendar().then {
-        $0.backgroundColor = .white
-        $0.appearance.todayColor = Color.COLOR_LIGHTGRAYBLUE
-        $0.appearance.selectionColor = Color.COLOR_GRAY3
-        $0.locale = Locale(identifier: "ko_KR")
-        $0.appearance.headerDateFormat = "YYYY년 M월"
+    var calendar = FSCalendar().then { calendar in
+        calendar.backgroundColor = .white
+        calendar.appearance.todayColor = Color.COLOR_LIGHTGRAYBLUE
+        calendar.appearance.selectionColor = Color.COLOR_GRAY3
+        calendar.locale = Locale(identifier: "ko_KR")
+        calendar.appearance.headerDateFormat = "YYYY년 M월"
         
-        $0.appearance.headerTitleColor = Color.COLOR_GRAY1
-        $0.appearance.headerTitleFont = Font.NANUM_ULTRALIGHT_19
-        $0.appearance.titleFont = Font.NANUM_ULTRALIGHT_17
-        $0.appearance.weekdayFont = Font.NANUM_ULTRALIGHT_17
-        $0.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
+        calendar.appearance.headerTitleColor = Color.COLOR_GRAY1
+        calendar.appearance.headerTitleFont = Font.NANUM_ULTRALIGHT_19
+        calendar.appearance.titleFont = Font.NANUM_ULTRALIGHT_17
+        calendar.appearance.weekdayFont = Font.NANUM_ULTRALIGHT_17
+        calendar.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
         
-        $0.appearance.weekdayTextColor = Color.COLOR_GRAY1
-        $0.appearance.calendar.headerHeight = 50
-        $0.weekdayHeight = 30
-        $0.rowHeight = 40
+        calendar.appearance.weekdayTextColor = Color.COLOR_GRAY1
+        calendar.appearance.calendar.headerHeight = 50
+        calendar.weekdayHeight = 30
+        calendar.rowHeight = 40
     }
     
     var topView = UIView() // 오늘, 설정 버튼이 들어가는 뷰
     var titleView = UIView() // 오늘 날짜 뷰
 
-    var todayLabel = UILabel().then {
-        $0.font = Font.NANUM_ULTRALIGHT_20
-        $0.textColor = Color.COLOR_GRAY1
-        $0.textAlignment = .left
-        $0.text = Date().convertString(format: "dd일 (E)")
+    var todayLabel = UILabel().then { label in
+        label.font = Font.NANUM_ULTRALIGHT_20
+        label.textColor = Color.COLOR_GRAY1
+        label.textAlignment = .left
+        label.text = Date().convertString(format: "dd일 (E)")
     }
     
-    var diaryTableView = UITableView().then {
-        $0.separatorColor = .clear
-        $0.separatorStyle = .none
-        $0.register(DetailDiaryTVCell.self, forCellReuseIdentifier: DetailDiaryTVCell.id)
-        $0.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
+    var diaryTableView = UITableView().then { view in
+        view.separatorColor = .clear
+        view.separatorStyle = .none
+        view.register(DetailDiaryTVCell.self, forCellReuseIdentifier: DetailDiaryTVCell.id)
+        view.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
     }
     
-    var emptyImageView = UIImageView().then {
-        $0.contentMode = .scaleAspectFit
+    var emptyImageView = UIImageView().then { view in
+        view.contentMode = .scaleAspectFit
     }
     
-    var floatingButton = FloatingButton().then {
-        $0.setButtonImage(UIImage(named: "ic_pencil"))
-        $0.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
+    var floatingButton = FloatingButton().then { button in
+        button.setButtonImage(UIImage(named: "ic_pencil"))
+        button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }
     
     func setEmptyImageView(image: UIImage?) {

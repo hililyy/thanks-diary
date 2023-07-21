@@ -11,43 +11,43 @@ import Then
 
 final class FloatingButtonCloseView: BaseView {
     
-    lazy var backgroundView = UIView().then {
-        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+    lazy var backgroundView = UIView().then { view in
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
     }
     
-    lazy var backgroundButton = UIButton(type: .custom).then {
-        $0.backgroundColor = .clear
+    lazy var backgroundButton = UIButton(type: .custom).then { button in
+        button.backgroundColor = .clear
     }
     
-    var plusButton = FloatingButton().then {
-        $0.setButtonImage(UIImage(named: "ic_x") ?? .add)
-        $0.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
+    var plusButton = FloatingButton().then { button in
+        button.setButtonImage(UIImage(named: "ic_x") ?? .add)
+        button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }
     
-    var detailButton = FloatingButton().then {
-        $0.setButtonImage(UIImage(named: "ic_detail_write") ?? .remove)
-        $0.setButtonBackgroundColor(.white)
+    var detailButton = FloatingButton().then { button in
+        button.setButtonImage(UIImage(named: "ic_detail_write") ?? .remove)
+        button.setButtonBackgroundColor(.white)
     }
     
-    var simpleButton = FloatingButton().then {
-        $0.setButtonImage(UIImage(named: "ic_simple_write") ?? .actions)
-        $0.setButtonBackgroundColor(.white)
+    var simpleButton = FloatingButton().then { button in
+        button.setButtonImage(UIImage(named: "ic_simple_write") ?? .actions)
+        button.setButtonBackgroundColor(.white)
     }
     
-    var detailLabel = PaddingLabel().then {
-        $0.font = Font.NANUM_LIGHT_13
-        $0.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
-        $0.clipsToBounds = true
-        $0.layer.cornerRadius = 5
-        $0.textAlignment = .right
+    var detailLabel = PaddingLabel().then { label in
+        label.font = Font.NANUM_LIGHT_13
+        label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 5
+        label.textAlignment = .right
     }
     
-    var simpleLabel = PaddingLabel().then {
-        $0.font = Font.NANUM_LIGHT_13
-        $0.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
-        $0.clipsToBounds = true
-        $0.layer.cornerRadius = 5
-        $0.textAlignment = .right
+    var simpleLabel = PaddingLabel().then { label in
+        label.font = Font.NANUM_LIGHT_13
+        label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 5
+        label.textAlignment = .right
     }
     
     var detailButtonCenterY: Constraint!
