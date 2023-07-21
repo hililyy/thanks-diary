@@ -108,7 +108,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     
     // 특정 날짜에 이미지 세팅
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        return viewModel.diaryDates.contains(date.convertString()) ? UIImage(named: "ic_circle") : nil
+        return viewModel.diaryDates.contains(date.convertString()) ? Image.IC_CIRCLE : nil
     }
     
     // 날짜 이미지 위치 조정
@@ -131,10 +131,10 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
             mainView.emptyImageView.frame.size.height = 300
             
             if  viewModel.selectedDate.convertString() == Date().convertString() {
-                mainView.setEmptyImageView(image: UIImage(named: "img_not_today"))
+                mainView.setEmptyImageView(image: Image.IMG_NOT_TODAY)
                 return 0
             } else {
-                mainView.setEmptyImageView(image: UIImage(named: "img_not_before"))
+                mainView.setEmptyImageView(image: Image.IMG_NOT_BEFORE)
             }
             
             return 0

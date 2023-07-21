@@ -20,17 +20,17 @@ final class FloatingButtonCloseView: BaseView {
     }
     
     var plusButton = FloatingButton().then { button in
-        button.setButtonImage(UIImage(named: "ic_x") ?? .add)
+        button.setButtonImage(Image.IC_X ?? .add)
         button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }
     
     var detailButton = FloatingButton().then { button in
-        button.setButtonImage(UIImage(named: "ic_detail_write") ?? .remove)
+        button.setButtonImage(Image.IC_DETAIL_WRITE ?? .remove)
         button.setButtonBackgroundColor(.white)
     }
     
     var simpleButton = FloatingButton().then { button in
-        button.setButtonImage(UIImage(named: "ic_simple_write") ?? .actions)
+        button.setButtonImage(Image.IC_SIMPLE_WRITE ?? .actions)
         button.setButtonBackgroundColor(.white)
     }
     

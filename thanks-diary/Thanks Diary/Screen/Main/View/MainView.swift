@@ -19,7 +19,7 @@ final class MainView: BaseView {
     }
     
     var settingButton = UIButton(type: .custom).then { button in
-        button.setImage(UIImage(named: "ic_setting"), for: .normal)
+        button.setImage(Image.IC_SETTING, for: .normal)
     }
     
     var calendar = FSCalendar().then { calendar in
@@ -63,7 +63,7 @@ final class MainView: BaseView {
     }
     
     var floatingButton = FloatingButton().then { button in
-        button.setButtonImage(UIImage(named: "ic_pencil"))
+        button.setButtonImage(Image.IC_PENCIL)
         button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }
     
