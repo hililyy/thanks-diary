@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import CoreData
 
-class DetailWriteVC: BaseVC {
+final class DetailWriteVC: BaseVC {
     
     var updateFlag: Bool = false
     var parentVC: MainVC?

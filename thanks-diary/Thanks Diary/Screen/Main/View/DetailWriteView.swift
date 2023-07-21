@@ -13,7 +13,7 @@ final class DetailWriteView: BaseView {
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
-    var topLabel = UILabel().then { label in
+    private var topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
@@ -26,27 +26,27 @@ final class DetailWriteView: BaseView {
         button.layer.cornerRadius = 10
     }
     
-    var titleLabel = UILabel().then { label in
+    private var titleLabel = UILabel().then { label in
         label.text = "제목"
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
     
-    var contentsLabel = UILabel().then { label in
+    private var contentsLabel = UILabel().then { label in
         label.text = "내용"
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
     
-    var titleUnderLineImageView = UIImageView().then { imageView in
+    private var titleUnderLineImageView = UIImageView().then { imageView in
         imageView.image = Image.IMG_UNDERLINE
     }
     
-    var contentsUnderLineImageView = UIImageView().then { imageView in
+    private var contentsUnderLineImageView = UIImageView().then { imageView in
         imageView.image = Image.IMG_UNDERLINE
     }
     
-    var titleTextField = UITextField().then { textField in
+    private var titleTextField = UITextField().then { textField in
         textField.font = Font.NANUM_ULTRALIGHT_17
         textField.textColor = Color.COLOR_GRAY1
         textField.layer.cornerRadius = 20
@@ -55,7 +55,7 @@ final class DetailWriteView: BaseView {
         textField.addLeftPadding()
     }
     
-    var contentsTextView = UITextView().then { textField in
+    private var contentsTextView = UITextView().then { textField in
         textField.font = Font.NANUM_ULTRALIGHT_17
         textField.textColor = Color.COLOR_GRAY1
         textField.layer.cornerRadius = 20
