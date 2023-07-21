@@ -7,168 +7,139 @@
 
 import UIKit
 
-class AlertView: UIView {
+final class AlertView: BaseView {
     
-    let backgroundView: UIView = {
-        let view = UIView()
+    private let backgroundView = UIView().then { view in
         view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-        return view
-    }()
+    }
     
-    let alertView: UIView = {
-        let view = UIView()
+    private let alertView = UIView().then { view in
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
-        return view
-    }()
+    }
     
-    let messageLabel: UILabel = {
-        let label = UILabel()
+    private let messageLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_20
         label.text = "글을 삭제 하시겠습니까?"
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .center
-        return label
-    }()
+    }
     
-    let messageView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private let messageView = UIView()
+    private let buttonView = UIView()
     
-    let buttonView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    let cancelButton: UIButton = {
-        let button = UIButton(type: .custom)
+    let cancelButton = UIButton(type: .custom).then { button in
         button.setTitle("취소", for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner]
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
-        return button
-    }()
+    }
     
-    let deleteButton: UIButton = {
-        let button = UIButton(type: .custom)
+    let deleteButton = UIButton(type: .custom).then { button in
         button.setTitle("삭제", for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
-        return button
-    }()
+    }
     
-    let backButton: UIButton = {
-        let button = UIButton()
+    let backButton = UIButton().then { button in
         button.backgroundColor = .clear
-        return button
-    }()
-    
-    private var lineViewX: UIView = {
-        let view = UIView()
-        view.backgroundColor = Color.COLOR_GRAY3
-        return view
-    }()
-    
-    private var lineViewY: UIView = {
-        let view = UIView()
-        view.backgroundColor = Color.COLOR_GRAY3
-        return view
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addView()
-        setConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private var lineViewX = UIView().then { view in
+        view.backgroundColor = Color.COLOR_GRAY3
     }
     
-    private func addView() {
-        addSubview(backgroundView)
+    private var lineViewY = UIView().then { view in
+        view.backgroundColor = Color.COLOR_GRAY3
+    }
+    
+    override func addSubView() {
+        addSubviews([backgroundView, alertView])
         backgroundView.addSubview(backButton)
-        addSubview(alertView)
         alertView.addSubview(messageView)
         messageView.addSubview(messageLabel)
-        alertView.addSubview(buttonView)
-        alertView.addSubview(lineViewX)
-        buttonView.addSubview(cancelButton)
-        buttonView.addSubview(deleteButton)
-        buttonView.addSubview(lineViewY)
+        alertView.addSubviews([buttonView, lineViewX])
+        buttonView.addSubviews([cancelButton, deleteButton, lineViewY])
     }
     
-    private func setConstraints() {
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        alertView.translatesAutoresizingMaskIntoConstraints = false
-        messageView.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        buttonView.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        lineViewX.translatesAutoresizingMaskIntoConstraints = false
-        lineViewY.translatesAutoresizingMaskIntoConstraints = false
+    override func setConstraints() {
+        backgroundView.snp.makeConstraints { make in
+            make.top.equalTo(snp.top)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+            make.bottom.equalTo(snp.bottom)
+        }
         
-        NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            backButton.topAnchor.constraint(equalTo: topAnchor),
-            backButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            alertView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            alertView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            alertView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-            alertView.heightAnchor.constraint(equalToConstant: 220),
-            
-            messageView.topAnchor.constraint(equalTo: alertView.topAnchor),
-            messageView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor),
-            messageView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor),
-            messageView.bottomAnchor.constraint(equalTo: lineViewX.topAnchor),
-            
-            messageLabel.centerXAnchor.constraint(equalTo: messageView.centerXAnchor),
-            messageLabel.centerYAnchor.constraint(equalTo: messageView.centerYAnchor, constant: 10),
-            
-            lineViewX.topAnchor.constraint(equalTo: messageView.bottomAnchor),
-            lineViewX.leadingAnchor.constraint(equalTo: alertView.leadingAnchor),
-            lineViewX.trailingAnchor.constraint(equalTo: alertView.trailingAnchor),
-            lineViewX.bottomAnchor.constraint(equalTo: buttonView.topAnchor),
-            lineViewX.heightAnchor.constraint(equalToConstant: 1),
-            
-            buttonView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor),
-            buttonView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor),
-            buttonView.bottomAnchor.constraint(equalTo: alertView.bottomAnchor),
-            
-            cancelButton.topAnchor.constraint(equalTo: buttonView.topAnchor),
-            cancelButton.leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
-            cancelButton.trailingAnchor.constraint(equalTo: lineViewY.leadingAnchor),
-            cancelButton.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor),
-            cancelButton.heightAnchor.constraint(equalToConstant: 55),
-            
-            lineViewY.topAnchor.constraint(equalTo: buttonView.topAnchor),
-            lineViewY.leadingAnchor.constraint(equalTo: cancelButton.trailingAnchor),
-            lineViewY.trailingAnchor.constraint(equalTo: deleteButton.leadingAnchor),
-            lineViewY.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor),
-            lineViewY.widthAnchor.constraint(equalToConstant: 1),
-            
-            deleteButton.topAnchor.constraint(equalTo: buttonView.topAnchor),
-            deleteButton.trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
-            deleteButton.bottomAnchor.constraint(equalTo: alertView.bottomAnchor),
-            
-            cancelButton.widthAnchor.constraint(equalTo: deleteButton.widthAnchor),
-            cancelButton.heightAnchor.constraint(equalTo: deleteButton.heightAnchor)
-            
-        ])
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(snp.top)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+            make.bottom.equalTo(snp.bottom)
+        }
+
+        alertView.snp.makeConstraints { make in
+            make.left.equalTo(snp.left).offset(30)
+            make.centerX.equalTo(snp.centerX)
+            make.centerY.equalTo(snp.centerY)
+            make.height.equalTo(220)
+        }
+
+        messageView.snp.makeConstraints { make in
+            make.top.equalTo(alertView.snp.top)
+            make.left.equalTo(alertView.snp.left)
+            make.right.equalTo(alertView.snp.right)
+            make.bottom.equalTo(lineViewX.snp.top)
+        }
+
+        messageLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(messageView.snp.centerX)
+            make.centerY.equalTo(messageView.snp.centerY).offset(10)
+        }
+
+        lineViewX.snp.makeConstraints { make in
+            make.top.equalTo(messageView.snp.bottom)
+            make.left.equalTo(alertView.snp.left)
+            make.right.equalTo(alertView.snp.right)
+            make.bottom.equalTo(buttonView.snp.top)
+            make.height.equalTo(1)
+        }
+
+        buttonView.snp.makeConstraints { make in
+            make.left.equalTo(alertView.snp.left)
+            make.right.equalTo(alertView.snp.right)
+            make.bottom.equalTo(alertView.snp.bottom)
+        }
+
+        cancelButton.snp.makeConstraints { make in
+            make.top.equalTo(buttonView.snp.top)
+            make.left.equalTo(buttonView.snp.left)
+            make.right.equalTo(lineViewY.snp.left)
+            make.bottom.equalTo(buttonView.snp.bottom)
+            make.height.equalTo(55)
+        }
+
+        lineViewY.snp.makeConstraints { make in
+            make.top.equalTo(buttonView.snp.top)
+            make.left.equalTo(cancelButton.snp.right)
+            make.right.equalTo(deleteButton.snp.left)
+            make.bottom.equalTo(buttonView.snp.bottom)
+            make.width.equalTo(1)
+        }
+
+        deleteButton.snp.makeConstraints { make in
+            make.top.equalTo(buttonView.snp.top)
+            make.right.equalTo(buttonView.snp.right)
+            make.bottom.equalTo(alertView.snp.bottom)
+        }
+
+        cancelButton.snp.makeConstraints { make in
+            make.width.equalTo(deleteButton.snp.width)
+            make.height.equalTo(deleteButton.snp.height)
+        }
     }
 }

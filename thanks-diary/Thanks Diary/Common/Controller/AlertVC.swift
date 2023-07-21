@@ -9,6 +9,7 @@ import UIKit
 
 class AlertVC: BaseVC {
     let alertView = AlertView()
+    var deleteButtonTapHandler: () -> () = { }
     
     override func loadView() {
         view = alertView
@@ -29,7 +30,7 @@ class AlertVC: BaseVC {
         }
         
         alertView.deleteButton.addTarget {
-            print("삭제버튼 클릭")
+            self.deleteButtonTapHandler()
         }
     }
 }
