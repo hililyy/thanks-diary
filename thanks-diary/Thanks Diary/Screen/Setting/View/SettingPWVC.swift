@@ -99,7 +99,7 @@ class SettingPWVC: BaseVC {
             
         case 4:
             if homeFlag == true && firstPW == UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
-                setRootVC(name: "Main", identifier: "MainVC")
+                setMainToRoot()
             } else if homeFlag == true && firstPW != UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
                 firstImg.image =
                     UIImage(named: "ic_gray_dot_12")

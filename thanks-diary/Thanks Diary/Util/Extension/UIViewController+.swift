@@ -11,20 +11,27 @@ extension UIViewController {
     
     // 시작하기(온보딩) 화면 루트 뷰로 설정
     func setPageToRoot() {
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(PageVC())
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(PageNC())
     }
     
-//    // 메인화면 루트 뷰로 설정 (메인 스토리보드 삭제시 주석 해제)
-//    func setMainToRoot() {
-//    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(MainNC())
-//    }
+    // 메인화면 루트 뷰로 설정
+    func setMainToRoot() {
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(MainNC())
+    }
     
+    // 네비게이션 뒤로가기
     func popVC(isAnimated: Bool = true) {
         navigationController?.popViewController(animated: isAnimated)
     }
     
+    // 프리젠트 뒤로가기
     func dismissVC(isAnimated: Bool = true) {
         dismiss(animated: isAnimated)
+    }
+    
+    // 현재 화면의 rootVC 까지 뷰 제거
+    func dismissToRootVC() {
+        view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     func presentSettingPWVC() {
@@ -40,45 +47,10 @@ extension UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showDetailWriteVC() {
-        guard let vc =  self.storyboard?.instantiateViewController(identifier: "DetailWriteVC") as? DetailWriteVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     func showSettingVC() {
         guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func showReadVC(index: Int) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC {
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    func showDeletePopupVC(selectedIndex: Int) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DeletePopupVC") as? DeletePopupVC {
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            self.present(vc, animated: true, completion: nil)
-        }
-    }
-    
-    func showDetailWriteVC(isEdit: Bool = false, selectedIndex: Int? = nil) {
-        guard let vc =  self.storyboard?.instantiateViewController(identifier: "DetailWriteVC") as? DetailWriteVC else { return }
-        vc.updateFlag = isEdit
-//        vc.selectedIndex = selectedIndex
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func showDeleteVC() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main")
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-    }
-    
     func presentSettingAlarmDetailVC(selectedDate: Date) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingAlarmDetailVC") as? SettingAlarmDetailVC {
             vc.modalTransitionStyle = .crossDissolve
@@ -88,17 +60,5 @@ extension UIViewController {
             
             self.present(vc, animated: true, completion: nil)
         }
-    }
-}
-
-extension UIViewController {
-
-    var isModal: Bool {
-
-        let presentingIsModal = presentingViewController != nil
-        let presentingIsNavigation = navigationController?.presentingViewController?.presentedViewController == navigationController
-        let presentingIsTabBar = tabBarController?.presentingViewController is UITabBarController
-
-        return presentingIsModal || presentingIsNavigation || presentingIsTabBar
     }
 }

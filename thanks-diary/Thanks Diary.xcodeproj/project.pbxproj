@@ -13,6 +13,9 @@
 		0229554D2A6A1003004BF800 /* DetailWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229554C2A6A1003004BF800 /* DetailWriteView.swift */; };
 		0229554F2A6A12B3004BF800 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229554E2A6A12B3004BF800 /* Image.swift */; };
 		022955512A6A2E42004BF800 /* ReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955502A6A2E42004BF800 /* ReadView.swift */; };
+		022955532A6A60C7004BF800 /* MainNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955522A6A60C7004BF800 /* MainNC.swift */; };
+		022955552A6A614B004BF800 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955542A6A614B004BF800 /* BaseNC.swift */; };
+		022955572A6A6177004BF800 /* PageNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955562A6A6177004BF800 /* PageNC.swift */; };
 		025EF03E2A459C2900C930F2 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF03D2A459C2900C930F2 /* BaseVC.swift */; };
 		025EF0402A459C2F00C930F2 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF03F2A459C2F00C930F2 /* AlertView.swift */; };
 		025EF0422A459C3B00C930F2 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0412A459C3B00C930F2 /* AlertVC.swift */; };
@@ -71,7 +74,6 @@
 		2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */; };
 		2A7241CD28B26AAD0040ADE9 /* DetailWriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */; };
 		2A7241CF28B2A57E0040ADE9 /* ReadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CE28B2A57E0040ADE9 /* ReadVC.swift */; };
-		2A7241D128B2A5950040ADE9 /* DeletePopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D028B2A5950040ADE9 /* DeletePopupVC.swift */; };
 		2A7241D828B3EDE60040ADE9 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D728B3EDE60040ADE9 /* MainModel.swift */; };
 		2A7241DA28B3EDF70040ADE9 /* DiaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */; };
 		2A72421128B426730040ADE9 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A72421028B426730040ADE9 /* SettingModel.swift */; };
@@ -116,6 +118,9 @@
 		0229554C2A6A1003004BF800 /* DetailWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteView.swift; sourceTree = "<group>"; };
 		0229554E2A6A12B3004BF800 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		022955502A6A2E42004BF800 /* ReadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadView.swift; sourceTree = "<group>"; };
+		022955522A6A60C7004BF800 /* MainNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNC.swift; sourceTree = "<group>"; };
+		022955542A6A614B004BF800 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
+		022955562A6A6177004BF800 /* PageNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNC.swift; sourceTree = "<group>"; };
 		025EF03D2A459C2900C930F2 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		025EF03F2A459C2F00C930F2 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		025EF0412A459C3B00C930F2 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
@@ -178,7 +183,6 @@
 		2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWVC.swift; sourceTree = "<group>"; };
 		2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteVC.swift; sourceTree = "<group>"; };
 		2A7241CE28B2A57E0040ADE9 /* ReadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadVC.swift; sourceTree = "<group>"; };
-		2A7241D028B2A5950040ADE9 /* DeletePopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePopupVC.swift; sourceTree = "<group>"; };
 		2A7241D728B3EDE60040ADE9 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntity.swift; sourceTree = "<group>"; };
 		2A72421028B426730040ADE9 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				025EF03D2A459C2900C930F2 /* BaseVC.swift */,
 				0229553F2A669273004BF800 /* BaseView.swift */,
 				022955412A669BA0004BF800 /* BaseTVCell.swift */,
+				022955542A6A614B004BF800 /* BaseNC.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				025EF07D2A459EEF00C930F2 /* SecondStartVC.swift */,
 				025EF07B2A459EEF00C930F2 /* ThirdStartVC.swift */,
 				025EF07C2A459EEF00C930F2 /* PageVC.swift */,
+				022955562A6A6177004BF800 /* PageNC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -408,7 +414,7 @@
 				2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */,
 				2A81235328C5277D000A250E /* SimpleWriteVC.swift */,
 				2A7241CE28B2A57E0040ADE9 /* ReadVC.swift */,
-				2A7241D028B2A5950040ADE9 /* DeletePopupVC.swift */,
+				022955522A6A60C7004BF800 /* MainNC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -811,6 +817,7 @@
 				025EF0482A459C9F00C930F2 /* Enum.swift in Sources */,
 				025EF0582A459D2700C930F2 /* UserDefaultManager.swift in Sources */,
 				2A81234A28C2A208000A250E /* DiaryData.xcdatamodeld in Sources */,
+				022955532A6A60C7004BF800 /* MainNC.swift in Sources */,
 				025EF0572A459D2700C930F2 /* LottieManager.swift in Sources */,
 				022955512A6A2E42004BF800 /* ReadView.swift in Sources */,
 				026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */,
@@ -830,8 +837,10 @@
 				025EF0742A459E4800C930F2 /* FloatingButtonVC.swift in Sources */,
 				025EF0672A459E2E00C930F2 /* UITextField+.swift in Sources */,
 				2A7241CF28B2A57E0040ADE9 /* ReadVC.swift in Sources */,
+				022955572A6A6177004BF800 /* PageNC.swift in Sources */,
 				025EF0762A459E4800C930F2 /* PaddingLabel.swift in Sources */,
 				029F04F02A494C3100D82289 /* SecondStartView.swift in Sources */,
+				022955552A6A614B004BF800 /* BaseNC.swift in Sources */,
 				2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */,
 				029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */,
 				2A7241DA28B3EDF70040ADE9 /* DiaryEntity.swift in Sources */,
@@ -840,7 +849,6 @@
 				2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */,
 				025EF0502A459CE200C930F2 /* UserDefaultKey.swift in Sources */,
 				2A9F351928AE6410006CCF7C /* SettingLabelCell.swift in Sources */,
-				2A7241D128B2A5950040ADE9 /* DeletePopupVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

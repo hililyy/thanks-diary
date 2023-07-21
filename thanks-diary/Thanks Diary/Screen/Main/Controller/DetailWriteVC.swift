@@ -56,6 +56,7 @@ final class DetailWriteVC: BaseVC {
             
         } else {
             if updateFlag == true {
+                // 수정
                 guard let index = selectedIndex else { return }
                 
                 parentVC?.viewModel.updateDetailData(
@@ -73,13 +74,17 @@ final class DetailWriteVC: BaseVC {
                         }
                     }
             } else {
-                parentVC?.viewModel.setDetailData(title: detailWriteView.getTitleText(), contents: detailWriteView.getContentsText()) { result in
-                    if result {
-                        self.popVC()
-                    } else {
-                        self.presentErrorPopup()
+                
+                // 글 작성
+                parentVC?.viewModel.setDetailData(
+                    title: detailWriteView.getTitleText(),
+                    contents: detailWriteView.getContentsText()) { result in
+                        if result {
+                            self.popVC()
+                        } else {
+                            self.presentErrorPopup()
+                        }
                     }
-                }
             }
         }
     }

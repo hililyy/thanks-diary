@@ -42,7 +42,7 @@ final class MainVC: BaseVC {
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
             vc.detailHandler = {
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailWriteVC") as? DetailWriteVC else { return }
+                let vc = DetailWriteVC()
                 vc.parentVC = self
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -155,6 +155,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         case ..<viewModel.selectedDetailData.count:
             guard let cell = mainView.diaryTableView.dequeueReusableCell(withIdentifier: DetailDiaryTVCell.id, for: indexPath) as? DetailDiaryTVCell else { return UITableViewCell() }
             cell.titleLabel.text = viewModel.selectedDetailData[indexPath.row].title
+            
             return cell
         
         // 간단한 일기
@@ -162,6 +163,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
             guard let cell = mainView.diaryTableView.dequeueReusableCell(withIdentifier: SimpleDiaryTVCell.id, for: indexPath) as? SimpleDiaryTVCell else { return UITableViewCell() }
             cell.titleLabel.text =
             viewModel.selectedSimpleData[indexPath.row - viewModel.selectedDetailData.count].contents
+            
             return cell
             
         default:
@@ -176,11 +178,13 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
             
         // 자세한 일기 조회
         case ..<viewModel.selectedDetailData.count:
-            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReadVC") as? ReadVC else { return }
             viewModel.selectedDate = viewModel.selectedDetailData[indexPath.row].date?.convertDate() ?? Date()
+            
+            let vc = ReadVC()
             vc.parentVC = self
             vc.selectedIndex = indexPath.row
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            navigationController?.pushViewController(vc, animated: true)
             
         // 간단한 일기 조회
         case viewModel.selectedDetailData.count...:
@@ -191,7 +195,8 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
             vc.selectedIndex = indexPath.row - viewModel.selectedDetailData.count
             vc.delegate = self
             vc.updateFlag = true
-            self.present(vc, animated: true)
+            
+            present(vc, animated: true)
             
         default:
             break

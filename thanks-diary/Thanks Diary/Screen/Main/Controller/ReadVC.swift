@@ -43,17 +43,28 @@ final class ReadVC: BaseVC {
         }
         
         readView.deleteButton.addTarget {
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DeletePopupVC") as? DeletePopupVC {
-                vc.selectedIndex = self.selectedIndex
-                vc.parentVC = self.parentVC
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .overCurrentContext
-                self.present(vc, animated: true, completion: nil)
+            guard let selectedIndex = self.selectedIndex else { return }
+            
+            let vc = AlertVC()
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.deleteButtonTapHandler = {
+                self.parentVC?.viewModel.deleteDetailData(selectedIndex: selectedIndex) { result in
+                    if result {
+                        self.setMainToRoot()
+                    } else {
+                        self.dismiss(animated: true) {
+                            self.presentErrorPopup()
+                        }
+                    }
+                }
             }
+            
+            self.present(vc, animated: true)
         }
         
-        readView.updateButton.addTarget { 
-            guard let vc =  self.storyboard?.instantiateViewController(identifier: "DetailWriteVC") as? DetailWriteVC else { return }
+        readView.updateButton.addTarget {
+            let vc = DetailWriteVC()
             vc.updateFlag = true
             vc.selectedIndex = self.selectedIndex
             vc.parentVC = self.parentVC

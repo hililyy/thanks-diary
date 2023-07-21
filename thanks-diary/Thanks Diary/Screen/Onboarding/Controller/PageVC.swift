@@ -41,7 +41,7 @@ final class PageVC: BaseVC {
         pageView.nextButton.addTarget {
             if self.currentIndex == self.pageList.count - 1 {
                 UserDefaultManager.set(true, forKey: UserDefaultKey.IS_LOGIN)
-                self.setRootVC(name: "Main", identifier: "MainVC")
+                self.setMainToRoot()
                 return
             }
             self.nextPage()

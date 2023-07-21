@@ -19,7 +19,7 @@ class LaunchVC: BaseVC {
             
             if UserDefaultManager.bool(forKey: UserDefaultKey.IS_LOGIN) {
                 if !UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
-                    self.setRootVC(name: "Main", identifier: "MainVC")
+                    self.setMainToRoot()
                 } else {
                     guard let vc =
                             UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "SettingPWVC") as? SettingPWVC else { return }
