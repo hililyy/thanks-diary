@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Then
-import SnapKit
 
 final class SecondStartView: BaseView {
     let lottieView = UIView()

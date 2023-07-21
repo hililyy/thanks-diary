@@ -6,13 +6,10 @@
 //
 
 import UIKit
-import Then
-import SnapKit
 
 final class FirstStartView: BaseView {
     
     var lottieView = UIView()
-    
     var lottieView2 = UIView()
     
     private var messageLabel = UILabel().then { label in

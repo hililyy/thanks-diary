@@ -8,6 +8,7 @@
 import UIKit
 
 class FloatingButton: BaseView {
+    
     var button = UIButton(type: .custom).then {
         $0.layer.cornerRadius = 26
     }

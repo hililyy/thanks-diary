@@ -7,7 +7,8 @@
 
 import UIKit
 
-class AlertConfirmVC: UIViewController {
+class AlertConfirmVC: BaseVC {
+    
     let alertConfirmView = AlertConfirmView()
     
     override func loadView() {

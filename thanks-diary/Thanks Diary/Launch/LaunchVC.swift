@@ -8,6 +8,7 @@
 import UIKit
 
 class LaunchVC: BaseVC {
+    
     @IBOutlet weak var lottieView: UIView!
     
     override func viewDidLoad() {

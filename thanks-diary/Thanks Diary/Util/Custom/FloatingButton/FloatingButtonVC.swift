@@ -20,15 +20,15 @@ class FloatingButtonVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
+        setTarget()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setOpenConstraints()
+        setTarget()
     }
     
-    func setOpenConstraints() {
+    func updateOpenConstraints() {
         UIView.animate(withDuration: 0.7,
                        delay: 0,
                        usingSpringWithDamping: 0.7,
@@ -39,7 +39,7 @@ class FloatingButtonVC: BaseVC {
         }
     }
     
-    func setCloseConstraints() {
+    func updateCloseConstraints() {
         UIView.animate(withDuration: 0.7,
                        delay: 0,
                        usingSpringWithDamping: 0.7,
@@ -52,7 +52,7 @@ class FloatingButtonVC: BaseVC {
         }
     }
     
-    private func setupViews() {
+    private func setTarget() {
         floatingButtonCloseView.setDetailLabel(label: "자세하게")
         floatingButtonCloseView.setSimpleLabel(label: "간단하게")
         

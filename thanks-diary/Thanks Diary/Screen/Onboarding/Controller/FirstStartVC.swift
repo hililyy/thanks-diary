@@ -8,6 +8,7 @@
 import UIKit
 
 final class FirstStartVC: BaseVC {
+    
     let firstStartView = FirstStartView()
     
     override func loadView() {
