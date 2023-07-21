@@ -19,6 +19,7 @@ struct Image {
     static let IC_CIRCLE = UIImage(named: "ic_circle")
     static let IC_SETTING = UIImage(named: "ic_setting")
     static let IC_PENCIL = UIImage(named: "ic_pencil")
+    static let IC_TRASH = UIImage(named: "ic_trash")
     
     // image
     static let IMG_UNDERLINE = UIImage(named: "img_underline")

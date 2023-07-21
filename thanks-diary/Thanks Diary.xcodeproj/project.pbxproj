@@ -12,6 +12,7 @@
 		022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955412A669BA0004BF800 /* BaseTVCell.swift */; };
 		0229554D2A6A1003004BF800 /* DetailWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229554C2A6A1003004BF800 /* DetailWriteView.swift */; };
 		0229554F2A6A12B3004BF800 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229554E2A6A12B3004BF800 /* Image.swift */; };
+		022955512A6A2E42004BF800 /* ReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955502A6A2E42004BF800 /* ReadView.swift */; };
 		025EF03E2A459C2900C930F2 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF03D2A459C2900C930F2 /* BaseVC.swift */; };
 		025EF0402A459C2F00C930F2 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF03F2A459C2F00C930F2 /* AlertView.swift */; };
 		025EF0422A459C3B00C930F2 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0412A459C3B00C930F2 /* AlertVC.swift */; };
@@ -114,6 +115,7 @@
 		022955412A669BA0004BF800 /* BaseTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTVCell.swift; sourceTree = "<group>"; };
 		0229554C2A6A1003004BF800 /* DetailWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteView.swift; sourceTree = "<group>"; };
 		0229554E2A6A12B3004BF800 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		022955502A6A2E42004BF800 /* ReadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadView.swift; sourceTree = "<group>"; };
 		025EF03D2A459C2900C930F2 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		025EF03F2A459C2F00C930F2 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		025EF0412A459C3B00C930F2 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 				025EF0882A45A10C00C930F2 /* Main.storyboard */,
 				02F50B452A60F9BB006A59D3 /* MainView.swift */,
 				0229554C2A6A1003004BF800 /* DetailWriteView.swift */,
+				022955502A6A2E42004BF800 /* ReadView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				025EF0582A459D2700C930F2 /* UserDefaultManager.swift in Sources */,
 				2A81234A28C2A208000A250E /* DiaryData.xcdatamodeld in Sources */,
 				025EF0572A459D2700C930F2 /* LottieManager.swift in Sources */,
+				022955512A6A2E42004BF800 /* ReadView.swift in Sources */,
 				026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */,
 				025EF04A2A459CA400C930F2 /* Color.swift in Sources */,
 				2A81233728C00138000A250E /* AlarmTimeCell.swift in Sources */,

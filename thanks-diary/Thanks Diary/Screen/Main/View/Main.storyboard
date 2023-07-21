@@ -46,9 +46,24 @@
             <point key="canvasLocation" x="774" y="1474"/>
         </scene>
         <!--ReadVC-->
+        <scene sceneID="Xtx-c3-JFw">
+            <objects>
+                <viewController storyboardIdentifier="ReadVC" id="p3J-Ki-NsY" customClass="ReadVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pbq-aI-FP1">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Cl2-2k-DEW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kEp-TR-la1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1477" y="1474"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="n4Z-m4-TJj">
             <objects>
-                <viewController storyboardIdentifier="ReadVC" id="7bc-Ie-avc" customClass="ReadVC" customModule="Thanks_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7bc-Ie-avc" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i0n-Fe-Voy">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
