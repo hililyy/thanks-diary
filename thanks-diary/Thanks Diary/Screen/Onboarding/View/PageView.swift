@@ -24,14 +24,17 @@ final class PageView: BaseView {
     
     var firstDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        view.layer.cornerRadius = 6
     }
     
     var secondDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY3
+        view.layer.cornerRadius = 6
     }
     
     var thirdDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY3
+        view.layer.cornerRadius = 6
     }
     
     var nextButton = UIButton(type: .custom).then { button in
@@ -47,10 +50,6 @@ final class PageView: BaseView {
     
     override func configureUI() {
         backgroundColor = .white
-        
-        firstDotView.layer.cornerRadius = 6
-        secondDotView.layer.cornerRadius = 6
-        thirdDotView.layer.cornerRadius = 6
     }
     
     override func setConstraints() {
