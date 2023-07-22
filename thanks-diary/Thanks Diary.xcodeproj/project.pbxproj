@@ -94,6 +94,8 @@
 		2A9F351528AE63ED006CCF7C /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351428AE63ED006CCF7C /* SettingSwitchCell.swift */; };
 		2A9F351728AE63FD006CCF7C /* SettingMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351628AE63FD006CCF7C /* SettingMoreCell.swift */; };
 		2A9F351928AE6410006CCF7C /* SettingLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351828AE6410006CCF7C /* SettingLabelCell.swift */; };
+		2ABF8AA52A6C057E006ACBE2 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF8AA42A6C057E006ACBE2 /* SettingViewModel.swift */; };
+		2ABF8AA72A6C0EE3006ACBE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2ABF8AA62A6C0EE3006ACBE2 /* Localizable.strings */; };
 		ACEFCD4F27BC9557CACB1E3B /* Pods_Thanks_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429B7040896DFDAC458EFC4D /* Pods_Thanks_Diary.framework */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +205,8 @@
 		2A9F351428AE63ED006CCF7C /* SettingSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
 		2A9F351628AE63FD006CCF7C /* SettingMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMoreCell.swift; sourceTree = "<group>"; };
 		2A9F351828AE6410006CCF7C /* SettingLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLabelCell.swift; sourceTree = "<group>"; };
+		2ABF8AA42A6C057E006ACBE2 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		2ABF8AA62A6C0EE3006ACBE2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		429B7040896DFDAC458EFC4D /* Pods_Thanks_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thanks_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFFB6B127945F0159B1A30E4 /* Pods-Thanks Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thanks Diary.debug.xcconfig"; path = "Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA50272BCD4BD5CA6312F82 /* Pods-Thanks Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thanks Diary.release.xcconfig"; path = "Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary.release.xcconfig"; sourceTree = "<group>"; };
@@ -467,6 +471,7 @@
 				2A0D880028A540FB00576E56 /* SceneDelegate.swift */,
 				2A81234828C2A208000A250E /* DiaryData.xcdatamodeld */,
 				2A0D880C28A540FE00576E56 /* Info.plist */,
+				2ABF8AA62A6C0EE3006ACBE2 /* Localizable.strings */,
 			);
 			path = "Thanks Diary";
 			sourceTree = "<group>";
@@ -584,6 +589,7 @@
 		2A9F34FA28AC10DE006CCF7C /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				2ABF8AA32A6C0568006ACBE2 /* ViewModel */,
 				2A9F351128AE5752006CCF7C /* Model */,
 				2A9F351028AE574D006CCF7C /* View */,
 			);
@@ -629,6 +635,14 @@
 				2A72421028B426730040ADE9 /* SettingModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2ABF8AA32A6C0568006ACBE2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2ABF8AA42A6C057E006ACBE2 /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2DF9047C7ACFF111227AF94E /* Frameworks */ = {
@@ -706,6 +720,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ABF8AA72A6C0EE3006ACBE2 /* Localizable.strings in Resources */,
 				2A81232C28BFBDEA000A250E /* plant.json in Resources */,
 				2A0D880828A540FE00576E56 /* Assets.xcassets in Resources */,
 				2A81232628BFB2BD000A250E /* writing.json in Resources */,
@@ -817,6 +832,7 @@
 				022955512A6A2E42004BF800 /* ReadView.swift in Sources */,
 				026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */,
 				025EF04A2A459CA400C930F2 /* Color.swift in Sources */,
+				2ABF8AA52A6C057E006ACBE2 /* SettingViewModel.swift in Sources */,
 				2A81233728C00138000A250E /* AlarmTimeCell.swift in Sources */,
 				025EF05C2A459DB700C930F2 /* AlarmAuth.swift in Sources */,
 				0229553D2A66867D004BF800 /* UIControl+.swift in Sources */,
