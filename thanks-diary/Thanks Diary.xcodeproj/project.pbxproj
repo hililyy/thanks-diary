@@ -511,15 +511,15 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
-		2A81233328C000CD000A250E /* Alarm */ = {
+		2A55DC4E2A6D6EEC00A13F58 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2A9F351228AE5763006CCF7C /* SettingVC.swift */,
+				2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */,
 				2A81233128BFFA0C000A250E /* SettingAlarmVC.swift */,
 				2A81233A28C0067B000A250E /* SettingAlarmDetailVC.swift */,
-				2A81234728C0B72C000A250E /* Cell */,
-				2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */,
 			);
-			path = Alarm;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		2A81233D28C095B7000A250E /* Util */ = {
@@ -543,13 +543,6 @@
 				2A9F351628AE63FD006CCF7C /* SettingMoreCell.swift */,
 				2A9F351828AE6410006CCF7C /* SettingLabelCell.swift */,
 				2A7241C828B019C00040ADE9 /* SettingAlarmCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		2A81234728C0B72C000A250E /* Cell */ = {
-			isa = PBXGroup;
-			children = (
 				2A81233828C0014D000A250E /* AlarmSettingCell.swift */,
 				2A81233628C00138000A250E /* AlarmTimeCell.swift */,
 			);
@@ -579,9 +572,9 @@
 			children = (
 				026E9C1D2A4A7E1C00568CFD /* Protocol */,
 				02F50B442A60F932006A59D3 /* Controller */,
-				029F04FB2A4984DA00D82289 /* ViewModel */,
 				2A9F350C28AE1BF9006CCF7C /* Model */,
 				2A9F350B28AE1BF2006CCF7C /* View */,
+				029F04FB2A4984DA00D82289 /* ViewModel */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -589,9 +582,10 @@
 		2A9F34FA28AC10DE006CCF7C /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				2ABF8AA32A6C0568006ACBE2 /* ViewModel */,
+				2A55DC4E2A6D6EEC00A13F58 /* Controller */,
 				2A9F351128AE5752006CCF7C /* Model */,
 				2A9F351028AE574D006CCF7C /* View */,
+				2ABF8AA32A6C0568006ACBE2 /* ViewModel */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -621,10 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				025EF08A2A45A16300C930F2 /* Setting.storyboard */,
-				2A9F351228AE5763006CCF7C /* SettingVC.swift */,
-				2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */,
 				2A81234628C0B716000A250E /* Cell */,
-				2A81233328C000CD000A250E /* Alarm */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -633,6 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				2A72421028B426730040ADE9 /* SettingModel.swift */,
+				2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
