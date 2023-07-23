@@ -16,15 +16,7 @@ final class FirstStartView: BaseView {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = Font.NANUM_ULTRALIGHT_18
-        label.text = """
-                    단순히 일기를 작성하는건
-                    
-                    부정적인 감정에 집중하기 쉬워요.
-                    
-                    감사일기를 작성하면
-                    
-                    긍정적인 감정에 집중할 수 있어요!
-                    """
+        label.text = "text_start_message1".localized
     }
     
     override func configureUI() {

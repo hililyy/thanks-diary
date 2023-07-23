@@ -41,7 +41,7 @@ final class PageView: BaseView {
         button.layer.cornerRadius = 20
         button.backgroundColor = Color.COLOR_GRAYBLUE
         button.titleLabel?.font = Font.NANUM_LIGHT_18
-        button.setTitle("다음", for: .normal)
+        button.setTitle("text_next".localized, for: .normal)
     }
     
     override func addSubView() {

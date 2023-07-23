@@ -40,7 +40,7 @@ final class SimpleWriteView: BaseView {
     var buttonView = UIView()
     
     var completeButton = UIButton(type: .custom).then { button in
-        button.setTitle("작성 완료", for: .normal)
+        button.setTitle("text_write_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
@@ -48,7 +48,7 @@ final class SimpleWriteView: BaseView {
     }
     
     var cancelButton = UIButton(type: .custom).then { button in
-        button.setTitle("취소", for: .normal)
+        button.setTitle("text_calcel".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
         button.backgroundColor = .white

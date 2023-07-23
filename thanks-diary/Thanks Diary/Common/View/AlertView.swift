@@ -20,7 +20,7 @@ final class AlertView: BaseView {
     
     private let messageLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_20
-        label.text = "글을 삭제 하시겠습니까?"
+        label.text = "text_alert_delete".localized
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .center
     }
@@ -29,7 +29,7 @@ final class AlertView: BaseView {
     private let buttonView = UIView()
     
     let cancelButton = UIButton(type: .custom).then { button in
-        button.setTitle("취소", for: .normal)
+        button.setTitle("text_calcel".localized, for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
@@ -38,7 +38,7 @@ final class AlertView: BaseView {
     }
     
     let deleteButton = UIButton(type: .custom).then { button in
-        button.setTitle("삭제", for: .normal)
+        button.setTitle("text_delete".localized, for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.layer.cornerRadius = 10

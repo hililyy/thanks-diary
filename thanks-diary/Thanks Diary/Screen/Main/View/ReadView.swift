@@ -23,13 +23,13 @@ final class ReadView: BaseView {
     }
     
     private var titleLabel = UILabel().then { label in
-        label.text = "제목"
+        label.text = "text_title".localized
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
     
     private var contentsLabel = UILabel().then { label in
-        label.text = "내용"
+        label.text = "text_contents".localized
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
@@ -70,9 +70,9 @@ final class ReadView: BaseView {
     
     func setTopLabelData(date: Date?) {
         if let date = date {
-            topLabel.text = date.convertString(format: "yyyy년 M월 d일") + " 감사일기"
+            topLabel.text = ("\(date.convertString(format: "yyyy년 M월 d일")) \("text_thanks_diary".localized)")
         } else {
-            topLabel.text = "오늘의 감사일기"
+            topLabel.text = "text_today_thanks_diary".localized
         }
     }
     

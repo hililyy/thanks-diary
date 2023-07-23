@@ -13,7 +13,7 @@ final class SecondStartView: BaseView {
     private let titleLabel = UILabel().then { label in
         label.textAlignment = .center
         label.font = Font.NANUM_ULTRALIGHT_25
-        label.text = "감사일기 작성 방법"
+        label.text = "text_start_message2_1".localized
     }
     
     private let heartImageView1 = UIImageView(image: UIImage(named: "img_heart"))
@@ -24,25 +24,25 @@ final class SecondStartView: BaseView {
     private let messageLabel1 = UILabel().then { label in
         label.textAlignment = .left
         label.font = Font.NANUM_ULTRALIGHT_18
-        label.text = "긍정문으로 작성해요"
+        label.text = "text_start_message2_2".localized
     }
     
     private let messageLabel2 = UILabel().then { label in
         label.textAlignment = .left
         label.font = Font.NANUM_ULTRALIGHT_18
-        label.text = "작은 일에도 감사한일을 찾아보아요"
+        label.text = "text_start_message2_3".localized
     }
     
     private let messageLabel3 = UILabel().then { label in
         label.textAlignment = .left
         label.font = Font.NANUM_ULTRALIGHT_18
-        label.text = "매일매일 작성해요"
+        label.text = "text_start_message2_4".localized
     }
 
     private let messageLabel4 = UILabel().then { label in
         label.textAlignment = .left
         label.font = Font.NANUM_ULTRALIGHT_18
-        label.text = "감사한 일을 항상 생각해요"
+        label.text = "text_start_message2_5".localized
     }
     
     private lazy var messageImageStackView1 = UIStackView(arrangedSubviews: [heartImageView1, messageLabel1]).then { stackView in

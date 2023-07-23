@@ -15,10 +15,7 @@ final class ThirdStartView: BaseView {
         label.textAlignment = .center
         label.font = Font.NANUM_ULTRALIGHT_20
         label.numberOfLines = 0
-        label.text = """
-                    감사일기를 작성하고
-                    나다운 하루를 만들어 보세요!
-                    """
+        label.text = "text_start_message3".localized
     }
     
     override func configureUI() {

@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Thanks Diary
+
+  Created by 강조은 on 2023/07/23.
+  
+*/
+
+"text_ok" = "확인";
+"text_calcel" = "취소";
+"text_delete" = "삭제";
+"text_today" = "오늘";
+"text_complete" = "완료";
+"text_title" = "제목";
+"text_contents" = "내용";
+"text_thanks_diary" = "감사일기";
+"text_today_thanks_diary" = "오늘의 감사일기";
+"text_write_complete" = "작성 완료";
+"text_next" = "다음";
+"text_start_message1" = "단순히 일기를 작성하는건\n\n부정적인 감정에 집중하기 쉬워요.\n\n감사일기를 작성하면\n\n긍정적인 감정에 집중할 수 있어요!";
+"text_start_message2_1" = "감사일기 작성 방법";
+"text_start_message2_2" = "긍정문으로 작성해요";
+"text_start_message2_3" = "작은 일에도 감사한일을 찾아보아요";
+"text_start_message2_4" = "매일매일 작성해요";
+"text_start_message2_5" = "감사한 일을 항상 생각해요";
+"text_start_message3" = "감사일기를 작성하고\n나다운 하루를 만들어 보세요!";
+"text_detail" = "자세하게";
+"text_simple" = "간단하게";
+"text_alert_delete" = "글을 삭제 하시겠습니까?";
+"text_alert_error_message" = "* 오류가 발생했습니다 *\n\n\n오류내용을 joun406@gmail.com\n으로 보내주시면 빠르게 수정하겠습니다.\n\n감사합니다!";

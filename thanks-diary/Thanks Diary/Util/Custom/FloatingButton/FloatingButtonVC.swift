@@ -53,8 +53,8 @@ class FloatingButtonVC: BaseVC {
     }
     
     private func setTarget() {
-        floatingButtonCloseView.setDetailLabel(label: "자세하게")
-        floatingButtonCloseView.setSimpleLabel(label: "간단하게")
+        floatingButtonCloseView.setDetailLabel(label: "text_detail".localized)
+        floatingButtonCloseView.setSimpleLabel(label: "text_simple".localized)
         
         floatingButtonCloseView.backgroundButton.addTarget {
             self.dismissVC()

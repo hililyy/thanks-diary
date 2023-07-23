@@ -15,7 +15,7 @@ final class MainView: BaseView {
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
-        button.setTitle("오늘", for: .normal)
+        button.setTitle("text_today".localized, for: .normal)
     }
     
     var settingButton = UIButton(type: .custom).then { button in
