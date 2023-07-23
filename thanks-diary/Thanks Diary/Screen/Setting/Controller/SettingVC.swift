@@ -8,33 +8,28 @@
 import UIKit
 import AcknowList
 
-class SettingVC: BaseVC {
-
-    @IBOutlet weak var settingTableView: UITableView!
+final class SettingVC: BaseVC {
+    
     var alarmFlag: Bool = false
-
+    let settingView = SettingView()
+    
+    override func loadView() {
+        view = settingView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingTableView.dataSource = self
-        settingTableView.delegate = self
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
+        settingView.tableView.dataSource = self
+        settingView.tableView.delegate = self
+        
+        setTarget()
         setPWSwitch()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    @IBAction func switchAlarm(_ sender: Any) {
-        alarmFlag = !alarmFlag
-        
-        UserDefaultManager.set(alarmFlag, forKey: UserDefaultKey.IS_PASSWORD)
-        
-        if UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
-            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingPWVC") as? SettingPWVC else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
+    private func setTarget() {
+        settingView.backButton.addTarget {
+            self.popVC()
         }
     }
     
@@ -42,6 +37,7 @@ class SettingVC: BaseVC {
         self.alarmFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD)
     }
 }
+
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -50,12 +46,23 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell", for: indexPath) as! SettingSwitchCell
-            cell.settingLabel.text = "암호 설정"
+            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as! SettingSwitchTVCell
+            cell.titleLabel.text = "암호 설정"
             if !UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
                 cell.settingSwitch.isOn = false
             } else {
                 cell.settingSwitch.isOn = true
+            }
+            
+            cell.switchTapHandler = {
+                self.alarmFlag = !self.alarmFlag
+                
+                UserDefaultManager.set(self.alarmFlag, forKey: UserDefaultKey.IS_PASSWORD)
+                
+                if UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
+                    guard let vc =  self.storyboard?.instantiateViewController(identifier: "SettingPWVC") as? SettingPWVC else { return }
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
             
             return cell
@@ -66,22 +73,18 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
 //            return cell
             
         case 1:
-            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
-            cell.settingLabel.text = "오픈소스 라이선스"
-            cell.selectionStyle = .none
+            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
+            cell.titleLabel.text = "오픈소스 라이선스"
             return cell
         
         case 2:
-            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingLabelCell", for: indexPath) as! SettingLabelCell
-            cell.settingLabel.text = "앱 버전"
-            cell.settingDetailLabel.text = "1.0.3"
+            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
+            cell.titleLabel.text = "앱 버전"
+            cell.contentsLabel.text = "1.0.3"
             return cell
         default:
             return UITableViewCell.init()
         }
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

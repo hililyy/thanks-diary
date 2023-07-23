@@ -28,3 +28,4 @@
 "text_simple" = "간단하게";
 "text_alert_delete" = "글을 삭제 하시겠습니까?";
 "text_alert_error_message" = "* 오류가 발생했습니다 *\n\n\n오류내용을 joun406@gmail.com\n으로 보내주시면 빠르게 수정하겠습니다.\n\n감사합니다!";
+"text_setting" = "설정";
