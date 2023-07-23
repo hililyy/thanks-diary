@@ -52,6 +52,7 @@ final class MainView: BaseView {
     }
     
     var diaryTableView = UITableView().then { view in
+        view.rowHeight = 60
         view.separatorColor = .clear
         view.separatorStyle = .none
         view.register(DetailDiaryTVCell.self, forCellReuseIdentifier: DetailDiaryTVCell.id)
