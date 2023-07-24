@@ -7,204 +7,81 @@
 
 import UIKit
 
-class SettingPWVC: BaseVC {
-    
-    @IBOutlet weak var message: UILabel!
-    @IBOutlet weak var firstImg: UIImageView!
-    @IBOutlet weak var secondImg: UIImageView!
-    @IBOutlet weak var thirdImg: UIImageView!
-    @IBOutlet weak var fourthImg: UIImageView!
-    @IBOutlet weak var oneBtn: UIButton!
-    @IBOutlet weak var twoBtn: UIButton!
-    @IBOutlet weak var threeBtn: UIButton!
-    @IBOutlet weak var fourBtn: UIButton!
-    @IBOutlet weak var fiveBtn: UIButton!
-    @IBOutlet weak var sixBtn: UIButton!
-    @IBOutlet weak var sevenBtn: UIButton!
-    @IBOutlet weak var eightBtn: UIButton!
-    @IBOutlet weak var nineBtn: UIButton!
-    @IBOutlet weak var zeroBtn: UIButton!
+final class SettingPWVC: BaseVC {
     
     var count: Int = 0
     var reEnterFlag: Bool = false
     var homeFlag: Bool = false
     var firstPW: String = ""
     var secondPW: String = ""
-    var coincidePW: Bool = false
+    let settingPWView = SettingPWView()
+    
+    override func loadView() {
+        view = settingPWView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if homeFlag == true {
-            message.text = "비밀번호를 입력해주세요"
+            settingPWView.contentsLabel.text = "비밀번호를 입력해주세요"
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    @IBAction func touchNumberBtn(_ sender: UIButton) {
-        if sender == self.oneBtn {
-            firstPW.append(contentsOf: "1")
-        } else if sender == self.twoBtn {
-            firstPW.append(contentsOf: "2")
-        } else if sender == self.threeBtn {
-            firstPW.append(contentsOf: "3")
-        } else if sender == self.fourBtn {
-            firstPW.append(contentsOf: "4")
-        } else if sender == self.fiveBtn {
-            firstPW.append(contentsOf: "5")
-        } else if sender == self.sixBtn {
-            firstPW.append(contentsOf: "6")
-        } else if sender == self.sevenBtn {
-            firstPW.append(contentsOf: "7")
-        } else if sender == self.eightBtn {
-            firstPW.append(contentsOf: "8")
-        } else if sender == self.nineBtn {
-            firstPW.append(contentsOf: "9")
-        } else if sender == self.zeroBtn {
-            firstPW.append(contentsOf: "0")
-        }
-        count = count + 1
         
-        switch count {
-        case 1:
-            firstImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            secondImg.image =
-                UIImage(named: "ic_gray_dot_12")
-            thirdImg.image =
-                UIImage(named: "ic_gray_dot_12")
-            fourthImg.image =
-                UIImage(named: "ic_gray_dot_12")
-        case 2:
-            firstImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            secondImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            thirdImg.image =
-                UIImage(named: "ic_gray_dot_12")
-            fourthImg.image =
-                UIImage(named: "ic_gray_dot_12")
-        case 3:
-            firstImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            secondImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            thirdImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            fourthImg.image =
-                UIImage(named: "ic_gray_dot_12")
+        setTarget()
+    }
+    
+    func setTarget() {
+        settingPWView.numberButtonTapHandler = { [weak self] num in
+            guard let self = self else { return }
             
-        case 4:
-            if homeFlag == true && firstPW == UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
-                setMainToRoot()
-            } else if homeFlag == true && firstPW != UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
-                firstImg.image =
-                    UIImage(named: "ic_gray_dot_12")
-                secondImg.image =
-                    UIImage(named: "ic_gray_dot_12")
-                thirdImg.image =
-                    UIImage(named: "ic_gray_dot_12")
-                fourthImg.image =
-                    UIImage(named: "ic_gray_dot_12")
-                message.text = "비밀번호가 일치하지 않습니다"
-                message.textColor = UIColor(named: "redColor")!
-                firstPW = ""
-                secondPW = ""
-                reEnterFlag = false
-                count = 0
-            } else if homeFlag == false {
-                if reEnterFlag == false {
-                    firstImg.image =
-                        UIImage(named: "ic_gray_dot_12")
-                    secondImg.image =
-                        UIImage(named: "ic_gray_dot_12")
-                    thirdImg.image =
-                        UIImage(named: "ic_gray_dot_12")
-                    fourthImg.image =
-                        UIImage(named: "ic_gray_dot_12")
-                    message.text = "비밀번호를 다시 한번 입력해 주세요"
-                    message.textColor = UIColor(named: "grayColor_1")!
-                    secondPW = firstPW
-                    firstPW = ""
-                    reEnterFlag = true
-                    count = 0
-                } else {
-                    if firstPW == secondPW {
-                        UserDefaultManager.set(firstPW, forKey: UserDefaultKey.PASSWORD)
-                        self.navigationController?.popViewController(animated: true)
+            firstPW.append(contentsOf: "\(num)")
+            count += 1
+            settingPWView.setDotColor(num: count)
+            
+            if count == 4 {
+                if homeFlag {
+                    if firstPW == UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
+                        setMainToRoot()
                     } else {
-                        firstImg.image =
-                            UIImage(named: "ic_gray_dot_12")
-                        secondImg.image =
-                            UIImage(named: "ic_gray_dot_12")
-                        thirdImg.image =
-                            UIImage(named: "ic_gray_dot_12")
-                        fourthImg.image =
-                            UIImage(named: "ic_gray_dot_12")
-                        message.text = "비밀번호가 일치하지 않습니다"
-                        message.textColor = UIColor(named: "redColor")!
-                        firstPW = ""
-                        secondPW = ""
-                        reEnterFlag = false
-                        count = 0
+                        handleIncorrectPassword()
+                    }
+                } else {
+                    if reEnterFlag {
+                        if firstPW == secondPW {
+                            UserDefaultManager.set(firstPW, forKey: UserDefaultKey.PASSWORD)
+                            popVC()
+                        } else {
+                            handleIncorrectPassword()
+                        }
+                    } else {
+                        handleReEnterPassword()
                     }
                 }
             }
-        default:
-            break
+        }
+        
+        settingPWView.backButton.addTarget { [weak self] in
+            guard let self = self else { return }
+            count = max(0, count - 1)
+            firstPW.popLast()
+            settingPWView.setDotColor(num: count)
         }
     }
     
-    @IBAction func touchBackBtn(_ sender: Any) {
-        count = count - 1
-        firstPW.popLast()
-        if count < 0 {
-            count = 0
-        }
-        switch count {
-        case 0:
-            count = 0
-            firstImg.image =
-                UIImage(named: "ic_gray_dot_12")
-            secondImg.image =
-                UIImage(named: "ic_gray_dot_12")
-            thirdImg.image =
-                UIImage(named: "ic_gray_dot_12")
-            fourthImg.image =
-                UIImage(named: "ic_gray_dot_12")
-        case 1:
-            firstImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            secondImg.image =
-                UIImage(named: "ic_gray_dot_12")
-            thirdImg.image =
-                UIImage(named: "ic_gray_dot_12")
-            fourthImg.image =
-                UIImage(named: "ic_gray_dot_12")
-        case 2:
-            firstImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            secondImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            thirdImg.image =
-                UIImage(named: "ic_gray_dot_12")
-            fourthImg.image =
-                UIImage(named: "ic_gray_dot_12")
-        case 3:
-            firstImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            secondImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            thirdImg.image =
-                UIImage(named: "ic_blue_dot_12")
-            fourthImg.image =
-                UIImage(named: "ic_gray_dot_12")
-
-        default:
-            break
-        }
+    func handleIncorrectPassword() {
+        settingPWView.setDotColor(num: 0)
+        settingPWView.setContentsLabel(text: "text_password_incorrect".localized, textColor: Color.COLOR_RED ?? .red)
+        firstPW = ""
+        secondPW = ""
+        reEnterFlag = false
+        count = 0
+    }
+    
+    func handleReEnterPassword() {
+        settingPWView.setDotColor(num: 0)
+        settingPWView.setContentsLabel(text: "text_password_retry".localized)
+        secondPW = firstPW
+        firstPW = ""
+        reEnterFlag = true
+        count = 0
     }
 }

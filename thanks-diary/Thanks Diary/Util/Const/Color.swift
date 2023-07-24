@@ -16,4 +16,5 @@ struct Color {
     static let COLOR_GRAY2 = UIColor(named: "grayColor_2")
     static let COLOR_GRAY3 = UIColor(named: "grayColor_3")
     static let COLOR_GRAYBLUE = UIColor(named: "grayBlue")
+    static let COLOR_RED = UIColor(named: "redColor")
 }

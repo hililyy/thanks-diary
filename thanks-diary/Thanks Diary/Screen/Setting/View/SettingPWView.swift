@@ -76,51 +76,61 @@ final class SettingPWView: BaseView {
     let oneButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_ONE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 1
     }
     
     let twoButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_TWO, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 2
     }
     
     let threeButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_THREE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 3
     }
     
     let fourButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_FOUR, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 4
     }
     
     let fiveButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_FIVE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 5
     }
     
     let sixButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_SIX, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 6
     }
     
     let sevenButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_SEVEN, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 7
     }
     
     let eightButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_EIGHT, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 8
     }
     
     let nineButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_NINE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 9
     }
     
     let zeroButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_ZERO, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.tag = 0
     }
     
     let backButton = UIButton(type: .custom).then { button in
@@ -130,8 +140,74 @@ final class SettingPWView: BaseView {
     
     let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
     
+    var numberButtonTapHandler: (Int) -> () = { _ in }
+    
+    func setContentsLabel(text: String, textColor: UIColor = Color.COLOR_GRAY1!) {
+        contentsLabel.text = text
+        contentsLabel.textColor = textColor
+    }
+    
+    func setDotColor(num: Int) {
+        switch num {
+        case 0:
+            firstDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            secondDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            thirdDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            fourthDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            break
+            
+        case 1:
+            firstDotView.backgroundColor =
+            Color.COLOR_LIGHTGRAYBLUE
+            secondDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            thirdDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            fourthDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            break
+            
+        case 2:
+            firstDotView.backgroundColor =
+            Color.COLOR_LIGHTGRAYBLUE
+            secondDotView.backgroundColor =
+            Color.COLOR_LIGHTGRAYBLUE
+            thirdDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            fourthDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            break
+            
+        case 3:
+            firstDotView.backgroundColor =
+            Color.COLOR_LIGHTGRAYBLUE
+            secondDotView.backgroundColor =
+            Color.COLOR_LIGHTGRAYBLUE
+            thirdDotView.backgroundColor =
+            Color.COLOR_LIGHTGRAYBLUE
+            fourthDotView.backgroundColor =
+            Color.COLOR_GRAY3
+            break
+            
+        default:
+            break
+        }
+    }
+    
     override func configureUI() {
         backgroundColor = .white
+    }
+    
+    override func addTarget() {
+        for button in [oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton] {
+            button.addTarget {
+                self.numberButtonTapHandler(button.tag)
+            }
+        }
     }
     
     override func addSubView() {

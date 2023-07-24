@@ -46,6 +46,8 @@
 		025EF0862A459EEF00C930F2 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0802A459EEF00C930F2 /* PageView.swift */; };
 		025EF08B2A45A16300C930F2 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF08A2A45A16300C930F2 /* Setting.storyboard */; };
 		025EF08D2A45A36000C930F2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF08C2A45A36000C930F2 /* Launch.storyboard */; };
+		026E78E72A6E486C00A09282 /* SettingAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E78E62A6E486C00A09282 /* SettingAlarmView.swift */; };
+		026E78E92A6E4C0800A09282 /* SettingPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E78E82A6E4C0800A09282 /* SettingPWView.swift */; };
 		026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */; };
 		026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */; };
 		026E9C232A4AAAD400568CFD /* AlertConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */; };
@@ -150,6 +152,8 @@
 		025EF0802A459EEF00C930F2 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		025EF08A2A45A16300C930F2 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		025EF08C2A45A36000C930F2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		026E78E62A6E486C00A09282 /* SettingAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmView.swift; sourceTree = "<group>"; };
+		026E78E82A6E4C0800A09282 /* SettingPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWView.swift; sourceTree = "<group>"; };
 		026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryProtocol.swift; sourceTree = "<group>"; };
 		026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmView.swift; sourceTree = "<group>"; };
 		026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmVC.swift; sourceTree = "<group>"; };
@@ -609,6 +613,8 @@
 			children = (
 				025EF08A2A45A16300C930F2 /* Setting.storyboard */,
 				2A55DC4F2A6D6F8100A13F58 /* SettingView.swift */,
+				026E78E62A6E486C00A09282 /* SettingAlarmView.swift */,
+				026E78E82A6E4C0800A09282 /* SettingPWView.swift */,
 				2A81234628C0B716000A250E /* Cell */,
 			);
 			path = View;
@@ -804,6 +810,7 @@
 				025EF06C2A459E2E00C930F2 /* Date+.swift in Sources */,
 				022955402A669273004BF800 /* BaseView.swift in Sources */,
 				022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */,
+				026E78E72A6E486C00A09282 /* SettingAlarmView.swift in Sources */,
 				025EF0862A459EEF00C930F2 /* PageView.swift in Sources */,
 				026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */,
 				025EF0752A459E4800C930F2 /* FloatingButton.swift in Sources */,
@@ -813,6 +820,7 @@
 				025EF0482A459C9F00C930F2 /* Enum.swift in Sources */,
 				025EF0582A459D2700C930F2 /* UserDefaultManager.swift in Sources */,
 				2A81234A28C2A208000A250E /* DiaryData.xcdatamodeld in Sources */,
+				026E78E92A6E4C0800A09282 /* SettingPWView.swift in Sources */,
 				022955532A6A60C7004BF800 /* MainNC.swift in Sources */,
 				025EF0572A459D2700C930F2 /* LottieManager.swift in Sources */,
 				022955512A6A2E42004BF800 /* ReadView.swift in Sources */,
