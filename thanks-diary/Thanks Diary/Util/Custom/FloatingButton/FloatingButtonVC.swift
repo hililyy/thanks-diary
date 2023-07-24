@@ -25,7 +25,7 @@ class FloatingButtonVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setTarget()
+        updateOpenConstraints()
     }
     
     func updateOpenConstraints() {
@@ -40,7 +40,7 @@ class FloatingButtonVC: BaseVC {
     }
     
     func updateCloseConstraints() {
-        UIView.animate(withDuration: 0.7,
+        UIView.animate(withDuration: 0.4,
                        delay: 0,
                        usingSpringWithDamping: 0.7,
                        initialSpringVelocity: 0.7,
@@ -57,11 +57,11 @@ class FloatingButtonVC: BaseVC {
         floatingButtonCloseView.setSimpleLabel(label: "text_simple".localized)
         
         floatingButtonCloseView.backgroundButton.addTarget {
-            self.dismissVC()
+            self.updateCloseConstraints()
         }
         
         floatingButtonCloseView.plusButton.button.addTarget {
-            self.dismissVC()
+            self.updateCloseConstraints()
         }
         
         floatingButtonCloseView.detailButton.button.addTarget {
