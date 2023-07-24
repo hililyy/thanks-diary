@@ -44,10 +44,10 @@
 		025EF0832A459EEF00C930F2 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF07C2A459EEF00C930F2 /* PageVC.swift */; };
 		025EF0842A459EEF00C930F2 /* SecondStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF07D2A459EEF00C930F2 /* SecondStartVC.swift */; };
 		025EF0862A459EEF00C930F2 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0802A459EEF00C930F2 /* PageView.swift */; };
-		025EF08B2A45A16300C930F2 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF08A2A45A16300C930F2 /* Setting.storyboard */; };
 		025EF08D2A45A36000C930F2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF08C2A45A36000C930F2 /* Launch.storyboard */; };
 		026E78E72A6E486C00A09282 /* SettingAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E78E62A6E486C00A09282 /* SettingAlarmView.swift */; };
 		026E78E92A6E4C0800A09282 /* SettingPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E78E82A6E4C0800A09282 /* SettingPWView.swift */; };
+		026E78EB2A6E772800A09282 /* SettingAlarmDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E78EA2A6E772800A09282 /* SettingAlarmDetailView.swift */; };
 		026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */; };
 		026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */; };
 		026E9C232A4AAAD400568CFD /* AlertConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */; };
@@ -150,10 +150,10 @@
 		025EF07C2A459EEF00C930F2 /* PageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
 		025EF07D2A459EEF00C930F2 /* SecondStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStartVC.swift; sourceTree = "<group>"; };
 		025EF0802A459EEF00C930F2 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
-		025EF08A2A45A16300C930F2 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		025EF08C2A45A36000C930F2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		026E78E62A6E486C00A09282 /* SettingAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmView.swift; sourceTree = "<group>"; };
 		026E78E82A6E4C0800A09282 /* SettingPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWView.swift; sourceTree = "<group>"; };
+		026E78EA2A6E772800A09282 /* SettingAlarmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmDetailView.swift; sourceTree = "<group>"; };
 		026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryProtocol.swift; sourceTree = "<group>"; };
 		026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmView.swift; sourceTree = "<group>"; };
 		026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmVC.swift; sourceTree = "<group>"; };
@@ -611,9 +611,9 @@
 		2A9F351028AE574D006CCF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				025EF08A2A45A16300C930F2 /* Setting.storyboard */,
 				2A55DC4F2A6D6F8100A13F58 /* SettingView.swift */,
 				026E78E62A6E486C00A09282 /* SettingAlarmView.swift */,
+				026E78EA2A6E772800A09282 /* SettingAlarmDetailView.swift */,
 				026E78E82A6E4C0800A09282 /* SettingPWView.swift */,
 				2A81234628C0B716000A250E /* Cell */,
 			);
@@ -719,7 +719,6 @@
 				2A81232628BFB2BD000A250E /* writing.json in Resources */,
 				2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */,
 				026E9C2F2A4AC95500568CFD /* NanumBarunGothicLight.ttf in Resources */,
-				025EF08B2A45A16300C930F2 /* Setting.storyboard in Resources */,
 				2A0962DA28CF484300063DF3 /* TextData.csv in Resources */,
 				2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */,
 				026E9C582A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist in Resources */,
@@ -786,6 +785,7 @@
 				025EF04C2A459CA800C930F2 /* Font.swift in Sources */,
 				2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */,
 				025EF0422A459C3B00C930F2 /* AlertVC.swift in Sources */,
+				026E78EB2A6E772800A09282 /* SettingAlarmDetailView.swift in Sources */,
 				025EF05F2A459DF400C930F2 /* EmailLoginErrorList.swift in Sources */,
 				2A81235A28C547A6000A250E /* SimpleDiaryModel.swift in Sources */,
 				025EF06A2A459E2E00C930F2 /* UIViewController+.swift in Sources */,
