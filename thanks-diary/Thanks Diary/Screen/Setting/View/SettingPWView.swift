@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingPWView: BaseView {
+final class SettingPWView: BaseView {
     var lockImageView = UIImageView().then { imageView in
         imageView.image = Image.IMG_LOCK
     }
@@ -26,31 +26,24 @@ class SettingPWView: BaseView {
         label.textAlignment = .center
     }
     
-    private lazy var dotStackView =  UIStackView(arrangedSubviews: [firstDotView, secondDotView, thirdDotView, fourthDotView]).then { stackView in
-        stackView.spacing = 45
-        stackView.axis = .horizontal
-    }
+    var dotView = UIView()
     
     var firstDotView = UIView().then { view in
-        view.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         view.backgroundColor = Color.COLOR_GRAY3
         view.layer.cornerRadius = 10
     }
     
     var secondDotView = UIView().then { view in
-        view.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         view.backgroundColor = Color.COLOR_GRAY3
         view.layer.cornerRadius = 10
     }
     
     var thirdDotView = UIView().then { view in
-        view.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         view.backgroundColor = Color.COLOR_GRAY3
         view.layer.cornerRadius = 10
     }
     
     var fourthDotView = UIView().then { view in
-        view.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         view.backgroundColor = Color.COLOR_GRAY3
         view.layer.cornerRadius = 10
     }
@@ -145,8 +138,15 @@ class SettingPWView: BaseView {
         addSubviews([lockImageView,
                      titleLabel,
                      contentsLabel,
-                     dotStackView,
+                     dotView,
                      passwordStackView])
+        
+        dotView.addSubviews([
+            firstDotView,
+            secondDotView,
+            thirdDotView,
+            fourthDotView
+        ])
     }
     
     override func setConstraints() {
@@ -164,13 +164,48 @@ class SettingPWView: BaseView {
         }
         
         contentsLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(dotStackView.snp.top).offset(-30)
+            make.bottom.equalTo(dotView.snp.top).offset(-30)
             make.centerX.equalTo(snp.centerX)
         }
         
-        dotStackView.snp.makeConstraints { make in
+        dotView.snp.makeConstraints { make in
             make.bottom.equalTo(passwordStackView.snp.top).offset(-50)
-            make.centerX.equalTo(snp.centerX)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(20)
+        }
+
+        firstDotView.snp.makeConstraints { make in
+            make.top.equalTo(dotView.snp.top)
+            make.left.equalTo(dotView.snp.left)
+            make.right.equalTo(secondDotView.snp.left).offset(-45)
+            make.bottom.equalTo(dotView.snp.bottom)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+        }
+
+        secondDotView.snp.makeConstraints { make in
+            make.top.equalTo(dotView.snp.top)
+            make.left.equalTo(firstDotView.snp.right).offset(45)
+            make.bottom.equalTo(dotView.snp.bottom)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+        }
+
+        thirdDotView.snp.makeConstraints { make in
+            make.top.equalTo(dotView.snp.top)
+            make.left.equalTo(secondDotView.snp.right).offset(45)
+            make.bottom.equalTo(dotView.snp.bottom)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+        }
+
+        fourthDotView.snp.makeConstraints { make in
+            make.top.equalTo(dotView.snp.top)
+            make.left.equalTo(thirdDotView.snp.right).offset(45)
+            make.bottom.equalTo(dotView.snp.bottom)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
         }
         
         passwordStackView.snp.makeConstraints { make in
