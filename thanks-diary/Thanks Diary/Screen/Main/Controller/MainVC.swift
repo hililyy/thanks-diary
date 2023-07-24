@@ -62,7 +62,8 @@ final class MainVC: BaseVC {
         
         // 설정 버튼 타겟 설정
         mainView.settingButton.addTarget {
-            self.pushVC(name: "Setting", identifier: "SettingVC")
+            let vc = SettingVC()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
         // 오늘 버튼 타겟 설정

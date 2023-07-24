@@ -70,7 +70,7 @@ final class DetailWriteVC: BaseVC {
                                 }
                             }
                         } else {
-                            self.presentErrorPopup()
+                            print("error")
                         }
                     }
             } else {
@@ -82,7 +82,7 @@ final class DetailWriteVC: BaseVC {
                         if result {
                             self.popVC()
                         } else {
-                            self.presentErrorPopup()
+                            print("error")
                         }
                     }
             }

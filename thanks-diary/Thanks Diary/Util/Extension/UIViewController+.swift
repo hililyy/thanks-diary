@@ -35,33 +35,4 @@ extension UIViewController {
     func dismissToRootVC() {
         view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
-    
-    func presentSettingPWVC() {
-        let vc = storyboard!.instantiateViewController(withIdentifier: "SettingPWVC") as! SettingPWVC
-        vc.homeFlag = true
-        let navi = UINavigationController(rootViewController: vc)
-        navi.modalPresentationStyle = .currentContext
-        present(navi, animated:false, completion: nil)
-    }
-    
-    func showSettingPWVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingPWVC") as? SettingPWVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func showSettingVC() {
-        guard let vc =  storyboard?.instantiateViewController(identifier: "SettingVC") as? SettingVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func presentSettingAlarmDetailVC(selectedDate: Date) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingAlarmDetailVC") as? SettingAlarmDetailVC {
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.delegate = self as? any SendDataDelegate
-            vc.selectedTime = selectedDate
-            
-            self.present(vc, animated: true, completion: nil)
-        }
-    }
 }

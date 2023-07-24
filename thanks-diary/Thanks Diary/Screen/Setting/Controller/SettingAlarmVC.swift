@@ -77,14 +77,14 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: "SettingSwitchTVCell", for: indexPath) as! SettingSwitchTVCell
+            let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as! SettingSwitchTVCell
             cell.titleLabel.text = "알림 설정"
             cell.settingSwitch.isOn = switchFlag
             
             return cell
 
         case 1:
-            let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: "SettingLabelTVCell", for: indexPath) as! SettingLabelTVCell
+            let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
             cell.titleLabel.text = "시간 설정"
             return cell
 
@@ -99,15 +99,15 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             break
             
         case 1:
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingAlarmDetailVC") as? SettingAlarmDetailVC {
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .overCurrentContext
-                vc.selectedTime = self.selectedDate ?? Date()
-                if let date = selectedDate {
-                    vc.selectedTime = date
-                }
-                self.present(vc, animated: true, completion: nil)
+            let vc = SettingAlarmDetailVC()
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.selectedTime = self.selectedDate ?? Date()
+            if let date = selectedDate {
+                vc.selectedTime = date
             }
+            self.present(vc, animated: true, completion: nil)
+            
         default:
             break
         }

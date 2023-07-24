@@ -64,7 +64,7 @@ final class SimpleWriteVC: BaseVC {
                                     self.delegate?.reloadData()
                                 }
                             } else {
-                                self.presentErrorPopup()
+                                print("error")
                             }
                         }
                 } else {
@@ -75,7 +75,7 @@ final class SimpleWriteVC: BaseVC {
                                 self.delegate?.reloadData()
                             }
                         } else {
-                            self.presentErrorPopup()
+                            print("error")
                         }
                     }
                 }
@@ -95,7 +95,7 @@ final class SimpleWriteVC: BaseVC {
                         self.delegate?.reloadData()
                     }
                 } else {
-                    self.presentErrorPopup()
+                    print("error")
                 }
             }
         }

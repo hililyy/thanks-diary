@@ -60,7 +60,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
                 UserDefaultManager.set(self.alarmFlag, forKey: UserDefaultKey.IS_PASSWORD)
                 
                 if UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
-                    guard let vc =  self.storyboard?.instantiateViewController(identifier: "SettingPWVC") as? SettingPWVC else { return }
+                    let vc = SettingPWVC()
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
@@ -68,7 +68,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 1:
-            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: "SettingMoreTVCell", for: indexPath) as! SettingMoreTVCell
+            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
             cell.titleLabel.text = "알림 설정"
             return cell
             
@@ -94,7 +94,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             break
             
         case 1: // 알림
-            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingAlarmVC") as? SettingAlarmVC else { return }
+            let vc = SettingAlarmVC()
             self.navigationController?.pushViewController(vc, animated: true)
             break
             
