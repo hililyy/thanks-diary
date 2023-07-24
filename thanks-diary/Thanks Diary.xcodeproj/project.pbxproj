@@ -328,6 +328,7 @@
 		025EF0772A459ED400C930F2 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				2A9F34F728ABC27D006CCF7C /* Launch */,
 				025EF0782A459EEF00C930F2 /* Onboarding */,
 				2A9F34F928AC10D3006CCF7C /* Main */,
 				2A9F34FA28AC10DE006CCF7C /* Setting */,
@@ -375,6 +376,24 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		026E78EC2A6E7FD900A09282 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				2A55DC4B2A6D446A00A13F58 /* Localizable.strings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		026E78EE2A6E80E400A09282 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D880C28A540FE00576E56 /* Info.plist */,
+				2A0D87FE28A540FB00576E56 /* AppDelegate.swift */,
+				2A0D880028A540FB00576E56 /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		026E9C1D2A4A7E1C00568CFD /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,11 +431,11 @@
 		02F50B442A60F932006A59D3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				022955522A6A60C7004BF800 /* MainNC.swift */,
 				2A9F350D28AE1C0D006CCF7C /* MainVC.swift */,
 				2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */,
 				2A81235328C5277D000A250E /* SimpleWriteVC.swift */,
 				2A7241CE28B2A57E0040ADE9 /* ReadVC.swift */,
-				022955522A6A60C7004BF800 /* MainNC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -460,18 +479,13 @@
 		2A0D87FD28A540FB00576E56 /* Thanks Diary */ = {
 			isa = PBXGroup;
 			children = (
+				2A81234828C2A208000A250E /* DiaryData.xcdatamodeld */,
 				2A81234328C0AD47000A250E /* Thanks Diary.entitlements */,
 				025EF03C2A459BFA00C930F2 /* Common */,
 				2A81233D28C095B7000A250E /* Util */,
-				2A9F34F728ABC27D006CCF7C /* Launch */,
 				025EF0772A459ED400C930F2 /* Screen */,
-				2A0D881528ABB6D900576E56 /* Style */,
-				2A0962D828CF443E00063DF3 /* Data */,
-				2A0D87FE28A540FB00576E56 /* AppDelegate.swift */,
-				2A0D880028A540FB00576E56 /* SceneDelegate.swift */,
-				2A81234828C2A208000A250E /* DiaryData.xcdatamodeld */,
-				2A55DC4B2A6D446A00A13F58 /* Localizable.strings */,
-				2A0D880C28A540FE00576E56 /* Info.plist */,
+				026E78EE2A6E80E400A09282 /* Support */,
+				2A0D881528ABB6D900576E56 /* Resource */,
 			);
 			path = "Thanks Diary";
 			sourceTree = "<group>";
@@ -488,14 +502,16 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		2A0D881528ABB6D900576E56 /* Style */ = {
+		2A0D881528ABB6D900576E56 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				026E78EC2A6E7FD900A09282 /* Localizable */,
 				025EF0872A459FC300C930F2 /* Assets */,
 				2A0D881628ABB6E700576E56 /* Lottie */,
 				2A0D881228ABB38900576E56 /* Font */,
+				2A0962D828CF443E00063DF3 /* Data */,
 			);
-			path = Style;
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		2A0D881628ABB6E700576E56 /* Lottie */ = {
@@ -1000,7 +1016,7 @@
 				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_TEAM = 68P2WV4DR3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Thanks Diary/Info.plist";
+				INFOPLIST_FILE = "Thanks Diary/Support/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "감사일기";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1036,7 +1052,7 @@
 				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_TEAM = 68P2WV4DR3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Thanks Diary/Info.plist";
+				INFOPLIST_FILE = "Thanks Diary/Support/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "감사일기";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
