@@ -40,7 +40,7 @@ final class SettingVC: BaseVC {
 
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,24 +66,25 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-//        case 1:
-//            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "SettingMoreCell", for: indexPath) as! SettingMoreCell
-//            cell.settingLabel.text = "알림 설정"
-//            cell.selectionStyle = .none
-//            return cell
             
         case 1:
+            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: "SettingMoreTVCell", for: indexPath) as! SettingMoreTVCell
+            cell.titleLabel.text = "알림 설정"
+            return cell
+            
+        case 2:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
             cell.titleLabel.text = "오픈소스 라이선스"
             return cell
         
-        case 2:
+        case 3:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
             cell.titleLabel.text = "앱 버전"
             cell.contentsLabel.text = "1.0.3"
             return cell
+            
         default:
-            return UITableViewCell.init()
+            return UITableViewCell()
         }
     }
     
@@ -92,20 +93,21 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case 0: // 암호
             break
             
-//        case 1: // 알림
-//            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingAlarmVC") as? SettingAlarmVC else { return }
-//            self.navigationController?.pushViewController(vc, animated: true)
-//            break
+        case 1: // 알림
+            guard let vc =  storyboard?.instantiateViewController(identifier: "SettingAlarmVC") as? SettingAlarmVC else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
             
-        case 1: // 오픈소스 라이선스
+        case 2: // 오픈소스 라이선스
             let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
                     navigationController?.pushViewController(acknowList, animated: true)
             break
             
-        case 2: // 앱 버전
+        case 3: // 앱 버전
             break
             
-        default: break
+        default:
+            break
         }
     }
 }
