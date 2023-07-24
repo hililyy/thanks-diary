@@ -33,3 +33,4 @@
 "text_password_contents" = "설정할 비밀번호를 입력해 주세요.";
 "text_password_incorrect" = "비밀번호가 일치하지 않습니다";
 "text_password_retry" = "비밀번호를 다시 한번 입력해 주세요";
+"text_setting_alarm" = "알림 설정";
