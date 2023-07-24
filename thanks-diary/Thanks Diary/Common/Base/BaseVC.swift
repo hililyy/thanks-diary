@@ -21,19 +21,6 @@ class BaseVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
-    func pushVC(name: String, identifier: String, callback: ((UIViewController)->())? = nil) {
-        let storyboard = UIStoryboard(name: name, bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: identifier)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func presentErrorPopup() {
-        guard let vc = UIStoryboard(name: "Common", bundle: nil).instantiateViewController(withIdentifier: "AlertConfirmVC") as? AlertConfirmVC else { return }
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true)
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
