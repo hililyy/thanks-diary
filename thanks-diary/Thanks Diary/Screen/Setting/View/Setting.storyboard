@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -399,9 +399,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="Uim-Sf-bcN" secondAttribute="trailing" constant="30" id="yTZ-tQ-Dm9"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="alarmSwitchBtn" destination="Uim-Sf-bcN" id="FdE-o0-IYC"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlarmTimeCell" rowHeight="55" id="cYP-YL-6xs" customClass="AlarmTimeCell" customModule="Thanks_Diary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="105" width="393" height="55"/>
@@ -430,9 +427,6 @@
                                                 <constraint firstItem="BAO-oe-MWZ" firstAttribute="centerY" secondItem="00A-FQ-gPi" secondAttribute="centerY" id="hlo-ef-WV3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="selectedTimeLabel" destination="BAO-oe-MWZ" id="xsu-08-4E5"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -633,9 +627,6 @@
                                                 <constraint firstItem="lQX-9e-PbX" firstAttribute="centerY" secondItem="FOo-7N-C2l" secondAttribute="centerY" id="tQz-Af-9nP"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="settingLabel" destination="YPg-R6-8fn" id="Eaf-bD-FVn"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingLabelCell" rowHeight="55" id="NvK-Ck-cry" customClass="SettingLabelCell" customModule="Thanks_Diary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="105" width="393" height="55"/>
@@ -664,10 +655,6 @@
                                                 <constraint firstItem="0q4-Mc-i5B" firstAttribute="centerY" secondItem="j2F-FE-muO" secondAttribute="centerY" id="rxG-FH-jqz"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="settingDetailLabel" destination="Z57-fg-OMh" id="mRR-Xt-Dwg"/>
-                                            <outlet property="settingLabel" destination="0q4-Mc-i5B" id="iCc-76-5cz"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -28,12 +28,13 @@ final class SettingSwitchTVCell: BaseTVCell {
     }
     
     override func addSubView() {
-        addSubviews([titleLabel, settingSwitch])
+        contentView.addSubviews([titleLabel, settingSwitch])
     }
     
     override func setConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(15)
+            make.right.equalTo(settingSwitch.snp.left).offset(-200)
             make.centerY.equalTo(snp.centerY)
         }
         
