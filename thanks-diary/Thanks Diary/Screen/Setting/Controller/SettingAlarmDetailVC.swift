@@ -7,29 +7,33 @@
 
 import UIKit
 
-class SettingAlarmDetailVC: UIViewController {
+final class SettingAlarmDetailVC: BaseVC {
 
-    @IBOutlet weak var timeDatePicker: UIDatePicker!
     var selectedTime: Date?
     weak var delegate: SendDataDelegate?
+    let settingAlarmDetailView = SettingAlarmDetailView()
+    
+    override func loadView() {
+        view = settingAlarmDetailView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.timeDatePicker.date = self.selectedTime ?? Date()
-        let loc = Locale(identifier: "ko_KR")
-        self.timeDatePicker.locale = loc
+        addTarget()
     }
     
-    @IBAction func selectTime(_ sender: Any) {
-        self.selectedTime = timeDatePicker.date
-    }
-    @IBAction func cancel(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
-    @IBAction func enter(_ sender: Any) {
-        self.dismiss(animated: true, completion: {
-            self.delegate?.sendData(self.selectedTime ?? Date())
-        })
+    func addTarget() {
+        settingAlarmDetailView.cancelButton.addTarget {
+            self.dismissVC()
+        }
+        settingAlarmDetailView.backButton.addTarget {
+            self.dismissVC()
+        }
+        settingAlarmDetailView.okButton.addTarget {
+            self.dismissVC() {
+                self.delegate?.sendData(self.selectedTime ?? Date())
+            }
+        }
     }
 }
 

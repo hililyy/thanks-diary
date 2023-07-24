@@ -1,0 +1,138 @@
+//
+//  SettingAlarmDetailView.swift
+//  Thanks Diary
+//
+//  Created by 강조은 on 2023/07/24.
+//
+
+import UIKit
+
+final class SettingAlarmDetailView: BaseView {
+    
+    private let backgroundView = UIView().then { view in
+        view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+    }
+    
+    private let containerView = UIView().then { view in
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
+    }
+    
+    let datePicker = UIDatePicker().then { pickerView in
+        pickerView.preferredDatePickerStyle = .wheels
+        pickerView.locale = Locale(identifier: "ko_KR")
+        pickerView.datePickerMode = .time
+        pickerView.date = Date()
+    }
+    
+    private let buttonView = UIView()
+    
+    let cancelButton = UIButton(type: .custom).then { button in
+        button.setTitle("text_calcel".localized, for: .normal)
+        button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 10
+        button.layer.maskedCorners = [.layerMinXMaxYCorner]
+        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+    }
+    
+    let okButton = UIButton(type: .custom).then { button in
+        button.setTitle("text_ok".localized, for: .normal)
+        button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
+        button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        button.layer.cornerRadius = 10
+            button.layer.maskedCorners = [.layerMaxXMaxYCorner]
+        button.setTitleColor(Color.COLOR_GRAY1, for:.normal)
+    }
+    
+    let backButton = UIButton().then { button in
+        button.backgroundColor = .clear
+    }
+    
+    private var lineViewX = UIView().then { view in
+        view.backgroundColor = Color.COLOR_GRAY3
+    }
+    
+    private var lineViewY = UIView().then { view in
+        view.backgroundColor = Color.COLOR_GRAY3
+    }
+    
+    override func addSubView() {
+        addSubviews([backgroundView, containerView])
+        backgroundView.addSubview(backButton)
+        containerView.addSubview(datePicker)
+        containerView.addSubviews([buttonView, lineViewX])
+        buttonView.addSubviews([cancelButton, okButton, lineViewY])
+    }
+    
+    override func setConstraints() {
+        backgroundView.snp.makeConstraints { make in
+            make.top.equalTo(snp.top)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+            make.bottom.equalTo(snp.bottom)
+        }
+        
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(snp.top)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+            make.bottom.equalTo(snp.bottom)
+        }
+
+        containerView.snp.makeConstraints { make in
+            make.left.equalTo(snp.left).offset(30)
+            make.centerX.equalTo(snp.centerX)
+            make.centerY.equalTo(snp.centerY)
+            make.height.equalTo(220)
+        }
+
+        datePicker.snp.makeConstraints { make in
+            make.top.equalTo(containerView.snp.top)
+            make.left.equalTo(containerView.snp.left)
+            make.right.equalTo(containerView.snp.right)
+            make.bottom.equalTo(lineViewX.snp.top)
+        }
+
+        lineViewX.snp.makeConstraints { make in
+            make.top.equalTo(datePicker.snp.bottom)
+            make.left.equalTo(containerView.snp.left)
+            make.right.equalTo(containerView.snp.right)
+            make.bottom.equalTo(buttonView.snp.top)
+            make.height.equalTo(1)
+        }
+
+        buttonView.snp.makeConstraints { make in
+            make.left.equalTo(containerView.snp.left)
+            make.right.equalTo(containerView.snp.right)
+            make.bottom.equalTo(containerView.snp.bottom)
+        }
+
+        cancelButton.snp.makeConstraints { make in
+            make.top.equalTo(buttonView.snp.top)
+            make.left.equalTo(buttonView.snp.left)
+            make.right.equalTo(lineViewY.snp.left)
+            make.bottom.equalTo(buttonView.snp.bottom)
+            make.height.equalTo(55)
+        }
+
+        lineViewY.snp.makeConstraints { make in
+            make.top.equalTo(buttonView.snp.top)
+            make.left.equalTo(cancelButton.snp.right)
+            make.right.equalTo(okButton.snp.left)
+            make.bottom.equalTo(buttonView.snp.bottom)
+            make.width.equalTo(1)
+        }
+
+        okButton.snp.makeConstraints { make in
+            make.top.equalTo(buttonView.snp.top)
+            make.right.equalTo(buttonView.snp.right)
+            make.bottom.equalTo(containerView.snp.bottom)
+        }
+
+        cancelButton.snp.makeConstraints { make in
+            make.width.equalTo(okButton.snp.width)
+            make.height.equalTo(okButton.snp.height)
+        }
+    }
+}
