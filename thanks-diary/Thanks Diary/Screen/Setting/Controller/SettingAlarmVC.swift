@@ -9,7 +9,9 @@ import UIKit
 import UserNotifications
 
 final class SettingAlarmVC: UIViewController {
-
+    
+    // MARK: - Property
+    
     var selectedDate: Date? = nil
     var selectedStringDate: String = ""
     var switchFlag: Bool = false
@@ -17,6 +19,8 @@ final class SettingAlarmVC: UIViewController {
     var selectedTimeMinute: Int = -1
     let userNotificationCenter = UNUserNotificationCenter.current()
     let settingAlarmView = SettingAlarmView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = settingAlarmView
@@ -34,6 +38,8 @@ final class SettingAlarmVC: UIViewController {
         
         self.selectedStringDate = "\(self.selectedTimeHour)시 \(self.selectedTimeMinute)분"
     }
+    
+    // MARK: - Function
     
     func setTarget() {
         settingAlarmView.backButton.addTarget {
@@ -68,6 +74,8 @@ final class SettingAlarmVC: UIViewController {
         return dateFormatter.string(from: date)
     }
 }
+
+// MARK: - UITableView
 
 extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -9,10 +9,14 @@ import UIKit
 
 final class DetailWriteVC: BaseVC {
     
+    // MARK: - Property
+    
     var updateFlag: Bool = false
     var parentVC: MainVC?
     var selectedIndex: Int?
     let detailWriteView = DetailWriteView()
+    
+    // MARK:- Life Cycle
     
     override func loadView() {
         view = detailWriteView
@@ -23,7 +27,9 @@ final class DetailWriteVC: BaseVC {
         configureUI()
         setTarget()
     }
-
+    
+    // MARK: - Function
+    
     private func configureUI() {
         detailWriteView.setTopLabelData(date: parentVC?.viewModel.selectedDate)
         

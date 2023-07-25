@@ -9,12 +9,16 @@ import UIKit
 
 final class SettingPWVC: BaseVC {
     
+    // MARK: - Property
+    
     var count: Int = 0
     var reEnterFlag: Bool = false
     var homeFlag: Bool = false
     var firstPW: String = ""
     var secondPW: String = ""
     let settingPWView = SettingPWView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = settingPWView
@@ -29,7 +33,9 @@ final class SettingPWVC: BaseVC {
         setTarget()
     }
     
-    func setTarget() {
+    // MARK: - Function
+    
+    private func setTarget() {
         settingPWView.numberButtonTapHandler = { [weak self] num in
             guard let self = self else { return }
             

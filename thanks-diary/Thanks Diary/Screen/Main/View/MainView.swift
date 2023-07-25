@@ -10,7 +10,9 @@ import FSCalendar
 
 final class MainView: BaseView {
     
-    var todayButton = UIButton(type: .custom).then { button in
+    // MARK: - UI components
+    
+    private var todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
@@ -68,7 +70,9 @@ final class MainView: BaseView {
         button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }
     
-    func setEmptyImageView(image: UIImage?) {
+    // MARK: - Functions
+    
+    func setImageForEmptyView(image: UIImage?) {
         guard let image = image else { return }
         emptyImageView.image = image
     }

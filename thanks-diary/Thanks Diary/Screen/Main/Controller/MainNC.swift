@@ -7,7 +7,10 @@
 
 import UIKit
 
-class MainNC: BaseNavigationController {
+final class MainNC: BaseNavigationController {
+    
+    // MARK:- Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewControllers([MainVC()], animated: true)

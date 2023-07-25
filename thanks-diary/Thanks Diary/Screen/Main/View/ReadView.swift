@@ -9,7 +9,9 @@ import UIKit
 
 final class ReadView: BaseView {
     
-    var backButton = UIButton(type: .custom).then { button in
+    // MARK: - UI components
+    
+    private var backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
@@ -67,6 +69,8 @@ final class ReadView: BaseView {
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.layer.cornerRadius = 20
     }
+    
+    // MARK: - Functions
     
     func setTopLabelData(date: Date?) {
         if let date = date {

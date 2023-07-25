@@ -10,8 +10,12 @@ import FSCalendar
 
 final class MainVC: BaseVC {
     
+    // MARK: - Property
+    
     private let mainView = MainView()
     let viewModel = MainViewModel()
+    
+    // MARK:- Life Cycle
     
     override func loadView() {
         view = mainView
@@ -33,6 +37,8 @@ final class MainVC: BaseVC {
         
         getAllData()
     }
+    
+    // MARK: - Function
     
     private func setTarget() {
         
@@ -98,6 +104,8 @@ final class MainVC: BaseVC {
     }
 }
 
+// MARK: - FSCalendar
+
 extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     // 캘린더 날짜 선택시 동작
@@ -122,6 +130,8 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
         return Date()
     }
 }
+
+// MARK: - UITableView
 
 extension MainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -204,6 +214,8 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
+
+// MARK: - Custom Protocol
 
 extension MainVC: reloadDelegate {
     func reloadData() {

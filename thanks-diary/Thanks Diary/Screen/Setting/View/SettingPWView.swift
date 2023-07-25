@@ -8,7 +8,10 @@
 import UIKit
 
 final class SettingPWView: BaseView {
-    var lockImageView = UIImageView().then { imageView in
+    
+    // MARK: - UI components
+    
+    private var lockImageView = UIImageView().then { imageView in
         imageView.image = Image.IMG_LOCK
     }
     
@@ -209,6 +212,8 @@ final class SettingPWView: BaseView {
             }
         }
     }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([lockImageView,

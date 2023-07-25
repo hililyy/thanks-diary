@@ -9,12 +9,16 @@ import UIKit
 
 final class SimpleWriteVC: BaseVC {
     
+    // MARK: - Property
+    
     var delegate: reloadDelegate?
     var updateFlag: Bool = false
     var selectedIndex: Int?
     let maxCount: Int = 23
     var parentVC: MainVC?
     let simpleWriteView = SimpleWriteView()
+    
+    // MARK:- Life Cycle
     
     override func loadView() {
         view = simpleWriteView
@@ -27,7 +31,9 @@ final class SimpleWriteVC: BaseVC {
         setTarget()
     }
     
-    func configureUI() {
+    // MARK: - Function
+    
+    private func configureUI() {
         
         simpleWriteView.contentsTextView.becomeFirstResponder()
         simpleWriteView.deleteButton.isHidden = !updateFlag

@@ -8,10 +8,14 @@
 import UIKit
 
 final class SettingAlarmDetailVC: BaseVC {
-
+    
+    // MARK: - Property
+    
     var selectedTime: Date?
     weak var delegate: SendDataDelegate?
     let settingAlarmDetailView = SettingAlarmDetailView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = settingAlarmDetailView
@@ -36,6 +40,8 @@ final class SettingAlarmDetailVC: BaseVC {
         }
     }
 }
+
+// MARK: - Custom Delegate
 
 protocol SendDataDelegate: AnyObject {
     func sendData (_ date: Date)

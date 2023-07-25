@@ -9,7 +9,9 @@ import UIKit
 
 final class SettingView: BaseView {
     
-    var backButton = UIButton(type: .custom).then { button in
+    // MARK: - UI components
+    
+    private var backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     

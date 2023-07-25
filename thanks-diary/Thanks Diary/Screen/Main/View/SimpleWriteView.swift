@@ -9,6 +9,8 @@ import UIKit
 
 final class SimpleWriteView: BaseView {
     
+    // MARK: - UI components
+    
     private let backgroundView = UIView().then { view in
         view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
     }
@@ -56,6 +58,8 @@ final class SimpleWriteView: BaseView {
         button.layer.borderWidth = 1.5
         button.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
     }
+    
+    // MARK: - Functions
     
     func setContentsTextView(text: String) {
         contentsTextView.text = text

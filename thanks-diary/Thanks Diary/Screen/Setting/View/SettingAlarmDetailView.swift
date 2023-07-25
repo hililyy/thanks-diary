@@ -9,6 +9,8 @@ import UIKit
 
 final class SettingAlarmDetailView: BaseView {
     
+    // MARK: - UI components
+    
     private let backgroundView = UIView().then { view in
         view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
     }

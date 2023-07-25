@@ -9,9 +9,13 @@ import UIKit
 
 final class ReadVC: BaseVC {
     
+    // MARK: - Property
+    
     private let readView = ReadView()
     var selectedIndex: Int?
     var parentVC: MainVC?
+    
+    // MARK:- Life Cycle
     
     override func loadView() {
         view = readView
@@ -25,6 +29,8 @@ final class ReadVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         configureUI()
     }
+    
+    // MARK: - Function
     
     private func configureUI() {
         readView.setTopLabelData(date: parentVC?.viewModel.selectedDate)

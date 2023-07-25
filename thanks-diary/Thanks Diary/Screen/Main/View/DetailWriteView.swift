@@ -9,7 +9,8 @@ import UIKit
 
 final class DetailWriteView: BaseView {
     
-    var backButton = UIButton(type: .custom).then { button in
+    // MARK: - UI component
+    private var backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
@@ -63,6 +64,8 @@ final class DetailWriteView: BaseView {
         textField.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
         textField.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
     }
+    
+    // MARK: - Function
     
     func setTopLabelData(date: Date?) {
         if let date = date {
