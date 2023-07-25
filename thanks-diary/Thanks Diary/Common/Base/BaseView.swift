@@ -14,7 +14,7 @@ class BaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
-        addTarget()
+        setTarget()
         addSubView()
         setConstraints()
     }
@@ -24,7 +24,7 @@ class BaseView: UIView {
     }
     
     func configureUI() {}
-    func addTarget() {}
+    func setTarget() {}
     func addSubView() {}
     func setConstraints() {}
 }
