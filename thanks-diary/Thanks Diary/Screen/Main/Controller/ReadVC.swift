@@ -44,11 +44,11 @@ final class ReadVC: BaseVC {
     }
     
     private func setTarget() {
-        readView.backButton.addTarget {
+        readView.backButtonTapHandler = {
             self.popVC()
         }
         
-        readView.deleteButton.addTarget {
+        readView.deleteButtonTapHandler = {
             guard let selectedIndex = self.selectedIndex else { return }
             
             let vc = AlertVC()
@@ -69,7 +69,7 @@ final class ReadVC: BaseVC {
             self.present(vc, animated: true)
         }
         
-        readView.updateButton.addTarget {
+        readView.updateButtonTapHandler = {
             let vc = DetailWriteVC()
             vc.updateFlag = true
             vc.selectedIndex = self.selectedIndex

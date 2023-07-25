@@ -23,20 +23,24 @@ final class SettingAlarmDetailVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTarget()
+        setTarget()
     }
     
-    func addTarget() {
-        settingAlarmDetailView.cancelButton.addTarget {
+    // MARK: - Function
+    
+    private func setTarget() {
+        settingAlarmDetailView.backButtonTapHandler = {
             self.dismissVC()
         }
-        settingAlarmDetailView.backButton.addTarget {
-            self.dismissVC()
-        }
-        settingAlarmDetailView.okButton.addTarget {
+        
+        settingAlarmDetailView.okButtonTapHandler = {
             self.dismissVC() {
                 self.delegate?.sendData(self.selectedTime ?? Date())
             }
+        }
+        
+        settingAlarmDetailView.cancelButtonTapHandler = {
+            self.dismissVC()
         }
     }
 }

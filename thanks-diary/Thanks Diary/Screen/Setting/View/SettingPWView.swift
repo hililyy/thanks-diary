@@ -15,38 +15,38 @@ final class SettingPWView: BaseView {
         imageView.image = Image.IMG_LOCK
     }
     
-    var titleLabel = UILabel().then { label in
+    private var titleLabel = UILabel().then { label in
         label.text = "text_password".localized
         label.font = Font.NANUM_ULTRALIGHT_22
         label.textColor = .black
         label.textAlignment = .center
     }
     
-    var contentsLabel = UILabel().then { label in
-        label.text = "text_password_contents".localized
+    private var contentsLabel = UILabel().then { label in
+        label.text = "text_password_contents_1".localized
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .center
     }
     
-    var dotView = UIView()
+    private var dotView = UIView()
     
-    var firstDotView = UIView().then { view in
+    private var firstDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY3
         view.layer.cornerRadius = 10
     }
     
-    var secondDotView = UIView().then { view in
+    private var secondDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY3
         view.layer.cornerRadius = 10
     }
     
-    var thirdDotView = UIView().then { view in
+    private var thirdDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY3
         view.layer.cornerRadius = 10
     }
     
-    var fourthDotView = UIView().then { view in
+    private var fourthDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY3
         view.layer.cornerRadius = 10
     }
@@ -71,79 +71,79 @@ final class SettingPWView: BaseView {
         stackView.spacing = 15
     }
     
-    private lazy var passwordFourthStackView = UIStackView(arrangedSubviews: [emptyView, zeroButton, backButton]).then { stackView in
+    private lazy var passwordFourthStackView = UIStackView(arrangedSubviews: [emptyView, zeroButton, deleteButton]).then { stackView in
         stackView.axis = .horizontal
         stackView.spacing = 15
     }
     
-    let oneButton = UIButton(type: .custom).then { button in
+    private let oneButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_ONE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 1
     }
     
-    let twoButton = UIButton(type: .custom).then { button in
+    private let twoButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_TWO, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 2
     }
     
-    let threeButton = UIButton(type: .custom).then { button in
+    private let threeButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_THREE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 3
     }
     
-    let fourButton = UIButton(type: .custom).then { button in
+    private let fourButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_FOUR, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 4
     }
     
-    let fiveButton = UIButton(type: .custom).then { button in
+    private let fiveButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_FIVE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 5
     }
     
-    let sixButton = UIButton(type: .custom).then { button in
+    private let sixButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_SIX, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 6
     }
     
-    let sevenButton = UIButton(type: .custom).then { button in
+    private let sevenButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_SEVEN, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 7
     }
     
-    let eightButton = UIButton(type: .custom).then { button in
+    private let eightButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_EIGHT, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 8
     }
     
-    let nineButton = UIButton(type: .custom).then { button in
+    private let nineButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_NINE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 9
     }
     
-    let zeroButton = UIButton(type: .custom).then { button in
+    private let zeroButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_ZERO, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.tag = 0
     }
     
-    let backButton = UIButton(type: .custom).then { button in
+    private let deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_DELETE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
     }
     
-    let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+    private let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
     
-    var numberButtonTapHandler: (Int) -> () = { _ in }
+    // MARK: - Functions
     
     func setContentsLabel(text: String, textColor: UIColor = Color.COLOR_GRAY1!) {
         contentsLabel.text = text
@@ -201,15 +201,24 @@ final class SettingPWView: BaseView {
         }
     }
     
+    // MARK: - UI, Target
+    
+    var numberButtonTapHandler: (Int) -> () = { _ in }
+    var deleteButtonTapHandler: () -> () = {}
+    
     override func configureUI() {
         backgroundColor = .white
     }
     
-    override func addTarget() {
+    override func setTarget() {
         for button in [oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton] {
             button.addTarget {
                 self.numberButtonTapHandler(button.tag)
             }
+        }
+        
+        deleteButton.addTarget {
+            self.deleteButtonTapHandler()
         }
     }
     

@@ -20,7 +20,7 @@ final class SimpleWriteView: BaseView {
         view.layer.cornerRadius = 10
     }
     
-    var deleteButton = UIButton(type: .custom).then { button in
+    private var deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_TRASH, for: .normal)
     }
     
@@ -31,17 +31,18 @@ final class SimpleWriteView: BaseView {
         textView.layer.borderWidth = 1
         textView.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
+        textView.becomeFirstResponder()
     }
     
-    var textLengthLabel = UILabel().then { label in
+    private var textLengthLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_15
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .right
     }
     
-    var buttonView = UIView()
+    private var buttonView = UIView()
     
-    var completeButton = UIButton(type: .custom).then { button in
+    private var completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_write_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
@@ -49,7 +50,7 @@ final class SimpleWriteView: BaseView {
         button.layer.cornerRadius = 10
     }
     
-    var cancelButton = UIButton(type: .custom).then { button in
+    private var cancelButton = UIButton(type: .custom).then { button in
         button.setTitle("text_calcel".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
@@ -65,9 +66,51 @@ final class SimpleWriteView: BaseView {
         contentsTextView.text = text
     }
     
+    func setTextLengthLabel(text: String) {
+        textLengthLabel.text = text
+    }
+    
     func setTextLength() {
         textLengthLabel.text = "\(contentsTextView.text.count)/25"
     }
+    
+    func isContentsTextViewEmpty() -> Bool {
+        return contentsTextView.text.isEmpty
+    }
+    
+    func getContentsTextViewText() -> String {
+        return contentsTextView.text
+    }
+    
+    func setCompleteButtonEnable(_ isEnabled: Bool){
+        completeButton.isEnabled = isEnabled
+    }
+    
+    func setHiddenForDeleteButton(_ isHidden: Bool) {
+        deleteButton.isHidden = isHidden
+    }
+    
+    // MARK: - UI, Target
+    
+    var completeButtonTapHandler: () -> () = {}
+    var cancelButtonTapHandler: () -> () = {}
+    var deleteButtonTapHandler: () -> () = {}
+    
+    override func setTarget() {
+        completeButton.addTarget {
+            self.completeButtonTapHandler()
+        }
+        
+        cancelButton.addTarget {
+            self.cancelButtonTapHandler()
+        }
+        
+        deleteButton.addTarget {
+            self.deleteButtonTapHandler()
+        }
+    }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([backgroundView, containerView])

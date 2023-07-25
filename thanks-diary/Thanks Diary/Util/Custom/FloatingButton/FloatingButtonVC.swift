@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FloatingButtonVC: BaseVC {
+final class FloatingButtonVC: BaseVC {
     
     let floatingButtonCloseView = FloatingButtonCloseView()
     

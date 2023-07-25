@@ -42,15 +42,15 @@ final class MainVC: BaseVC {
     
     private func setTarget() {
         
-        // 플로팅 버튼 타겟 설정
-        mainView.floatingButton.button.addTarget {
+        // 플로팅 버튼 핸들러 설정
+        mainView.floatingButtonTapHandler = {
             let vc = FloatingButtonVC()
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
             vc.detailHandler = {
                 let vc = DetailWriteVC()
                 vc.parentVC = self
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.popVC()
             }
             
             vc.simpleHandler = {
@@ -66,14 +66,14 @@ final class MainVC: BaseVC {
             self.present(vc, animated: false)
         }
         
-        // 설정 버튼 타겟 설정
-        mainView.settingButton.addTarget {
+        // 설정 버튼 핸들러 설정
+        mainView.settingButtonTapHandler = {
             let vc = SettingVC()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
-        // 오늘 버튼 타겟 설정
-        mainView.todayButton.addTarget {
+        // 오늘 버튼 핸들러 설정
+        mainView.todayButtonTapHandler = {
             self.moveToday()
         }
     }
@@ -110,7 +110,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     
     // 캘린더 날짜 선택시 동작
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        mainView.todayLabel.text = date.convertString(format: "dd'일' (E)")
+        mainView.setTodayLabelText(date: date)
         viewModel.selectedDate = date
         getSelectedData()
     }
@@ -138,22 +138,20 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         
         // 작성한 일기가 없으면 일기 작성 이미지 노출
         if viewModel.selectedDetailData.isEmpty && viewModel.selectedSimpleData.isEmpty {
-            mainView.emptyImageView.isHidden = false
-            mainView.emptyImageView.frame.size.height = 300
+            mainView.setHiddenForEmptyView(isHidden: false)
             
             if  viewModel.selectedDate.convertString() == Date().convertString() {
-                mainView.setEmptyImageView(image: Image.IMG_NOT_TODAY)
+                mainView.setImageForEmptyView(image: Image.IMG_NOT_TODAY)
                 return 0
             } else {
-                mainView.setEmptyImageView(image: Image.IMG_NOT_BEFORE)
+                mainView.setImageForEmptyView(image: Image.IMG_NOT_BEFORE)
             }
             
             return 0
         
         // 일기 데이터 셋팅
         } else {
-            mainView.emptyImageView.isHidden = true
-            mainView.emptyImageView.frame.size.height = 0
+            mainView.setHiddenForEmptyView(isHidden: true)
             
             return viewModel.selectedDetailData.count + viewModel.selectedSimpleData.count
         }

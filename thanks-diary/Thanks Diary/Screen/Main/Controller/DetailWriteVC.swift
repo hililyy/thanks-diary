@@ -44,11 +44,11 @@ final class DetailWriteVC: BaseVC {
     }
     
     private func setTarget() {
-        detailWriteView.backButton.addTarget {
+        detailWriteView.backButtonTapHandler = {
             self.popVC()
         }
         
-        detailWriteView.completeButton.addTarget {
+        detailWriteView.completeButtonTapHandler = {
             self.complete()
         }
     }
@@ -56,7 +56,7 @@ final class DetailWriteVC: BaseVC {
     private func complete() {
         if detailWriteView.isEmptyTextField() {
             detailWriteView.setCompleteButtonEnable(isOn: false)
-            toast(message: "제목과 내용을 모두 입력해 주세요.", withDuration: 0.5, delay: 1.5) {
+            toast(message: "text_toast".localized, withDuration: 0.5, delay: 1.5) {
                 self.detailWriteView.setCompleteButtonEnable(isOn: true)
             }
             

@@ -10,8 +10,12 @@ import AcknowList
 
 final class SettingVC: BaseVC {
     
+    // MARK: - Property
+    
     var alarmFlag: Bool = false
     let settingView = SettingView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = settingView
@@ -27,16 +31,20 @@ final class SettingVC: BaseVC {
         setPWSwitch()
     }
     
+    // MARK: - Function
+    
     private func setTarget() {
-        settingView.backButton.addTarget {
+        settingView.backButtonTapHandler = {
             self.popVC()
         }
     }
     
-    func setPWSwitch() {
+    private func setPWSwitch() {
         self.alarmFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD)
     }
 }
+
+// MARK: - UITableView
 
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

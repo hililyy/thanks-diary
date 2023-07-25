@@ -42,7 +42,7 @@ final class SettingAlarmVC: UIViewController {
     // MARK: - Function
     
     func setTarget() {
-        settingAlarmView.backButton.addTarget {
+        settingAlarmView.backButtonTapHandler = {
             self.popVC()
         }
     }

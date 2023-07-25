@@ -35,8 +35,7 @@ final class SimpleWriteVC: BaseVC {
     
     private func configureUI() {
         
-        simpleWriteView.contentsTextView.becomeFirstResponder()
-        simpleWriteView.deleteButton.isHidden = !updateFlag
+        simpleWriteView.setHiddenForDeleteButton(!updateFlag)
         
         if updateFlag == true {
             guard let index = selectedIndex,
@@ -47,15 +46,15 @@ final class SimpleWriteVC: BaseVC {
         simpleWriteView.setTextLength()
     }
     
-    func setTarget() {
-        simpleWriteView.completeButton.addTarget {
-            guard let contents = self.simpleWriteView.contentsTextView.text else { return }
+    private func setTarget() {
+        simpleWriteView.completeButtonTapHandler = {
+            let contents = self.simpleWriteView.getContentsTextViewText()
             
             if contents.isEmpty {
                 // 텍스트 뷰가 비어있으면 토스트 띄움
-                self.simpleWriteView.completeButton.isEnabled = false
+                self.simpleWriteView.setCompleteButtonEnable(false)
                 self.toast(message: "내용을 입력해 주세요.", withDuration: 0.5, delay: 1.5, type: "top") {
-                    self.simpleWriteView.completeButton.isEnabled = true
+                    self.simpleWriteView.setCompleteButtonEnable(true)
                 }
             } else {
                 if self.updateFlag == true {
@@ -88,11 +87,11 @@ final class SimpleWriteVC: BaseVC {
             }
         }
         
-        simpleWriteView.cancelButton.addTarget {
+        simpleWriteView.cancelButtonTapHandler = {
             self.dismissVC()
         }
         
-        simpleWriteView.deleteButton.addTarget {
+        simpleWriteView.deleteButtonTapHandler = {
             guard let index = self.selectedIndex else { return }
             
             self.parentVC?.viewModel.deleteSimpleData(selectedIndex: index) { result in
@@ -112,7 +111,7 @@ extension SimpleWriteVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         //이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
-        simpleWriteView.textLengthLabel.text = "\(textView.text.count + 1)/25"
+        simpleWriteView.setTextLengthLabel(text: "\(textView.text.count + 1)/25")
         let newLength = textView.text.count - range.length + text.count
         let koreanMaxCount = maxCount + 1
         

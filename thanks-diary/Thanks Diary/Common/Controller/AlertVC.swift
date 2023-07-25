@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlertVC: BaseVC {
+final class AlertVC: BaseVC {
     let alertView = AlertView()
     var deleteButtonTapHandler: () -> () = { }
     

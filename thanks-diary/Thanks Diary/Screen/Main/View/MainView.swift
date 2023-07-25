@@ -20,7 +20,7 @@ final class MainView: BaseView {
         button.setTitle("text_today".localized, for: .normal)
     }
     
-    var settingButton = UIButton(type: .custom).then { button in
+    private var settingButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_SETTING, for: .normal)
     }
     
@@ -43,10 +43,10 @@ final class MainView: BaseView {
         calendar.rowHeight = 40
     }
     
-    var topView = UIView() // 오늘, 설정 버튼이 들어가는 뷰
-    var titleView = UIView() // 오늘 날짜 뷰
+    private var topView = UIView() // 오늘, 설정 버튼이 들어가는 뷰
+    private var titleView = UIView() // 오늘 날짜 뷰
 
-    var todayLabel = UILabel().then { label in
+    private var todayLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .left
@@ -61,11 +61,11 @@ final class MainView: BaseView {
         view.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
     }
     
-    var emptyImageView = UIImageView().then { view in
+    private var emptyImageView = UIImageView().then { view in
         view.contentMode = .scaleAspectFit
     }
     
-    var floatingButton = FloatingButton().then { button in
+    private var floatingButton = FloatingButton().then { button in
         button.setButtonImage(Image.IC_PENCIL)
         button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }
@@ -81,9 +81,40 @@ final class MainView: BaseView {
         todayLabel.text = date.convertString(format: "dd'일' (E)")
     }
     
+    func setHiddenForEmptyView(isHidden: Bool) {
+        emptyImageView.isHidden = isHidden
+        if isHidden {
+            emptyImageView.frame.size.height = 0
+        } else {
+            emptyImageView.frame.size.height = 300
+        }
+    }
+    
+    // MARK: - UI, Target
+    
+    var floatingButtonTapHandler: () -> () = {}
+    var settingButtonTapHandler: () -> () = {}
+    var todayButtonTapHandler: () -> () = {}
+    
     override func configureUI() {
         backgroundColor = .white
     }
+    
+    override func setTarget() {
+        floatingButton.button.addTarget {
+            self.floatingButtonTapHandler()
+        }
+        
+        settingButton.addTarget {
+            self.settingButtonTapHandler()
+        }
+        
+        todayButton.addTarget {
+            self.todayButtonTapHandler()
+        }
+    }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([topView,

@@ -27,7 +27,7 @@ final class SettingPWVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         if homeFlag == true {
-            settingPWView.contentsLabel.text = "비밀번호를 입력해주세요"
+            settingPWView.setContentsLabel(text: "text_password_contents_2".localized)
         }
         
         setTarget()
@@ -65,7 +65,7 @@ final class SettingPWVC: BaseVC {
             }
         }
         
-        settingPWView.backButton.addTarget { [weak self] in
+        settingPWView.deleteButtonTapHandler = { [weak self] in
             guard let self = self else { return }
             count = max(0, count - 1)
             firstPW.popLast()
@@ -73,7 +73,7 @@ final class SettingPWVC: BaseVC {
         }
     }
     
-    func handleIncorrectPassword() {
+    private func handleIncorrectPassword() {
         settingPWView.setDotColor(num: 0)
         settingPWView.setContentsLabel(text: "text_password_incorrect".localized, textColor: Color.COLOR_RED ?? .red)
         firstPW = ""
@@ -82,7 +82,7 @@ final class SettingPWVC: BaseVC {
         count = 0
     }
     
-    func handleReEnterPassword() {
+    private func handleReEnterPassword() {
         settingPWView.setDotColor(num: 0)
         settingPWView.setContentsLabel(text: "text_password_retry".localized)
         secondPW = firstPW

@@ -28,9 +28,21 @@ final class SettingAlarmView: BaseView {
         tableView.register(SettingLabelTVCell.self, forCellReuseIdentifier: SettingLabelTVCell.id)
     }
     
+    // MARK: - UI, Target
+    
+    var backButtonTapHandler: () -> () = {}
+    
     override func configureUI() {
         backgroundColor = .white
     }
+    
+    override func setTarget() {
+        backButton.addTarget {
+            self.backButtonTapHandler()
+        }
+    }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([backButton,

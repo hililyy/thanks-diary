@@ -19,7 +19,7 @@ final class DetailWriteView: BaseView {
         label.textColor = Color.COLOR_GRAY1
     }
     
-    var completeButton = UIButton(type: .custom).then { button in
+    private var completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
@@ -101,9 +101,26 @@ final class DetailWriteView: BaseView {
         contentsTextView.text = contentsText
     }
     
+    // MARK: - UI, Target
+    
+    var backButtonTapHandler: () -> () = {}
+    var completeButtonTapHandler: () -> () = {}
+    
     override func configureUI() {
         backgroundColor = .white
     }
+    
+    override func setTarget() {
+        backButton.addTarget {
+            self.backButtonTapHandler()
+        }
+        
+        completeButton.addTarget {
+            self.completeButtonTapHandler()
+        }
+    }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([backButton,

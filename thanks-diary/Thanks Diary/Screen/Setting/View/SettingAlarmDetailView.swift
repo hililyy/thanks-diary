@@ -29,7 +29,7 @@ final class SettingAlarmDetailView: BaseView {
     
     private let buttonView = UIView()
     
-    let cancelButton = UIButton(type: .custom).then { button in
+    private let cancelButton = UIButton(type: .custom).then { button in
         button.setTitle("text_calcel".localized, for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
         button.backgroundColor = .white
@@ -38,7 +38,7 @@ final class SettingAlarmDetailView: BaseView {
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
     }
     
-    let okButton = UIButton(type: .custom).then { button in
+    private let okButton = UIButton(type: .custom).then { button in
         button.setTitle("text_ok".localized, for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
@@ -47,7 +47,7 @@ final class SettingAlarmDetailView: BaseView {
         button.setTitleColor(Color.COLOR_GRAY1, for:.normal)
     }
     
-    let backButton = UIButton().then { button in
+    private let backButton = UIButton().then { button in
         button.backgroundColor = .clear
     }
     
@@ -58,6 +58,28 @@ final class SettingAlarmDetailView: BaseView {
     private var lineViewY = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY3
     }
+    
+    // MARK: - UI, Target
+    
+    var backButtonTapHandler: () -> () = {}
+    var okButtonTapHandler: () -> () = {}
+    var cancelButtonTapHandler: () -> () = {}
+    
+    override func setTarget() {
+        backButton.addTarget {
+            self.backButtonTapHandler()
+        }
+        
+        okButton.addTarget {
+            self.okButtonTapHandler()
+        }
+        
+        cancelButton.addTarget {
+            self.cancelButtonTapHandler()
+        }
+    }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([backgroundView, containerView])
