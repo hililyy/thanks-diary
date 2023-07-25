@@ -10,5 +10,7 @@ target 'Thanks Diary' do
 	pod 'AcknowList'
 	pod 'lottie-ios'
 	pod 'Then'
-	pod 'SnapKit', '~> 5.6.0'
+	pod 'SnapKit'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 end
