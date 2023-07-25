@@ -30,7 +30,9 @@
 "text_alert_error_message" = "* 오류가 발생했습니다 *\n\n\n오류내용을 joun406@gmail.com\n으로 보내주시면 빠르게 수정하겠습니다.\n\n감사합니다!";
 "text_setting" = "설정";
 "text_password" = "비밀번호";
-"text_password_contents" = "설정할 비밀번호를 입력해 주세요.";
+"text_password_contents_1" = "설정할 비밀번호를 입력해 주세요.";
+"text_password_contents_2" = "비밀번호를 입력해 주세요.";
 "text_password_incorrect" = "비밀번호가 일치하지 않습니다";
 "text_password_retry" = "비밀번호를 다시 한번 입력해 주세요";
 "text_setting_alarm" = "알림 설정";
+"text_toast" = "제목과 내용을 모두 입력해 주세요.";
