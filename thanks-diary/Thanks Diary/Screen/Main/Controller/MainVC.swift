@@ -50,7 +50,7 @@ final class MainVC: BaseVC {
             vc.detailHandler = {
                 let vc = DetailWriteVC()
                 vc.parentVC = self
-                self.popVC()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             
             vc.simpleHandler = {
