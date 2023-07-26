@@ -6,21 +6,23 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MainViewModel {
     
-    var allDetailData: [String: [DetailDiaryModel]] = [:]
-    var allSimpleData: [String: [SimpleDiaryModel]] = [:]
+    var allDetailData: [String: [DiaryModel]] = [:]
+    var allSimpleData: [String: [DiaryModel]] = [:]
     
-    var selectedDetailData: [DetailDiaryModel] = []
-    var selectedSimpleData: [SimpleDiaryModel] = []
+    var selectedDetailData: [DiaryModel] = []
+    var selectedSimpleData: [DiaryModel] = []
+
     var selectedDate: Date = Date()
     var diaryDates: Set<String> = []
     
     // 달력에 동그라미칠 날짜 저장
     func drawCalendarCircle() {
         diaryDates = []
-        
         
         for data in allDetailData {
             diaryDates.insert(data.key)
@@ -31,7 +33,6 @@ class MainViewModel {
         }
     }
 }
-
 
 // 다이어리 데이터 가져오기
 extension MainViewModel: DiaryReader {
@@ -45,7 +46,7 @@ extension MainViewModel: DiaryReader {
         completion()
     }
     
-    // 선택한 날짜에 해당하는 자세한 일기 데이터 가져오기
+    // 선택한 날짜에 해당하는 일기 데이터 가져오기
     func getSelectedDiaryData(completion: @escaping () -> ()) {
         let detailData = allDetailData[self.selectedDate.convertString()]
         let simpleData = allSimpleData[self.selectedDate.convertString()]

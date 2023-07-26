@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum DiaryType {
-    case detail
-    case simple
+enum DiaryType: String {
+    case detail = "detail"
+    case simple = "simple"
 }
 
 enum ResponseType {

@@ -13,8 +13,8 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     private init() { }
     
-    func getDetailData() -> [String: [DetailDiaryModel]] {
-        var detailData: [String: [DetailDiaryModel]] = [:]
+    func getDetailData() -> [String: [DiaryModel]] {
+        var detailData: [String: [DiaryModel]] = [:]
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [:] }
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -24,8 +24,8 @@ class CoreDataManager {
             let result = try managedContext.fetch(fetchRequest)
             
             for data in result {
-                let diary = DetailDiaryModel(
-                    type: data.value(forKey: "type") as? String,
+                let diary = DiaryModel(
+                    type: DiaryType(rawValue: data.value(forKey: "type") as? String ?? "") ?? .detail ,
                     title: data.value(forKey: "title") as? String,
                     contents: data.value(forKey: "contents") as? String,
                     date: data.value(forKey: "date") as? String
@@ -47,8 +47,8 @@ class CoreDataManager {
         return detailData
     }
     
-    func getSimpleData() -> [String: [SimpleDiaryModel]] {
-        var simpleData: [String: [SimpleDiaryModel]] = [:]
+    func getSimpleData() -> [String: [DiaryModel]] {
+        var simpleData: [String: [DiaryModel]] = [:]
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [:] }
             let managedContext = appDelegate.persistentContainer.viewContext
@@ -58,8 +58,9 @@ class CoreDataManager {
             let result = try managedContext.fetch(fetchRequest)
 
             for data in result {
-                let diary = SimpleDiaryModel(
-                    type: data.value(forKey: "type") as? String,
+                let diary = DiaryModel(
+                    type: DiaryType(rawValue: data.value(forKey: "type") as? String ?? "") ?? .simple,
+                    title: nil,
                     contents: data.value(forKey: "contents") as? String,
                     date: data.value(forKey: "date") as? String
                 )

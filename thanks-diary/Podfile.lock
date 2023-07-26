@@ -2,6 +2,12 @@ PODS:
   - AcknowList (3.0.1)
   - FSCalendar (2.8.4)
   - lottie-ios (4.2.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
   - SnapKit (5.6.0)
   - Then (3.0.0)
 
@@ -9,7 +15,9 @@ DEPENDENCIES:
   - AcknowList
   - FSCalendar
   - lottie-ios
-  - SnapKit (~> 5.6.0)
+  - RxCocoa
+  - RxSwift
+  - SnapKit
   - Then
 
 SPEC REPOS:
@@ -17,6 +25,9 @@ SPEC REPOS:
     - AcknowList
     - FSCalendar
     - lottie-ios
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SnapKit
     - Then
 
@@ -24,9 +35,12 @@ SPEC CHECKSUMS:
   AcknowList: 1aca788e5f1fae79d671c9c48d83ef21027232c0
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: a14bbf3b863adbd1463338b404471c985b10ca78
+PODFILE CHECKSUM: 89b40ba97df5463bb9fe377c22bcec8ac276a6aa
 
 COCOAPODS: 1.12.0
