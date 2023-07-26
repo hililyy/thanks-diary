@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BaseVC: UIViewController {
 
     private var keyboardHeight: CGFloat = 0
+    public var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

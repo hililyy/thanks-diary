@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SimpleWriteView: BaseView {
     
@@ -70,10 +72,6 @@ final class SimpleWriteView: BaseView {
         textLengthLabel.text = text
     }
     
-    func setTextLength() {
-        textLengthLabel.text = "\(contentsTextView.text.count)/25"
-    }
-    
     func isContentsTextViewEmpty() -> Bool {
         return contentsTextView.text.isEmpty
     }
@@ -97,6 +95,11 @@ final class SimpleWriteView: BaseView {
     var deleteButtonTapHandler: () -> () = {}
     
     override func setTarget() {
+        contentsTextView.rx.text
+            .map { "\($0?.count ?? 0)/25" }
+            .bind(to: textLengthLabel.rx.text)
+            .disposed(by: disposeBag)
+        
         completeButton.addTarget {
             self.completeButtonTapHandler()
         }

@@ -14,7 +14,7 @@ final class SimpleWriteVC: BaseVC {
     var delegate: reloadDelegate?
     var updateFlag: Bool = false
     var selectedIndex: Int?
-    let maxCount: Int = 23
+    let maxCount: Int = 24
     var parentVC: MainVC?
     let simpleWriteView = SimpleWriteView()
     
@@ -42,8 +42,6 @@ final class SimpleWriteVC: BaseVC {
                   let text = parentVC?.viewModel.selectedSimpleData[index].contents else { return }
             simpleWriteView.setContentsTextView(text: text)
         }
-        
-        simpleWriteView.setTextLength()
     }
     
     private func setTarget() {
@@ -111,7 +109,6 @@ extension SimpleWriteVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         //이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
-        simpleWriteView.setTextLengthLabel(text: "\(textView.text.count + 1)/25")
         let newLength = textView.text.count - range.length + text.count
         let koreanMaxCount = maxCount + 1
         
