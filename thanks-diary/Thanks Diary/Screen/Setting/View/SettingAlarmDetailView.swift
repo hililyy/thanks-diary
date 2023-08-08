@@ -91,31 +91,25 @@ final class SettingAlarmDetailView: BaseView {
     
     override func setConstraints() {
         backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         backButton.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
 
         containerView.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(30)
             make.centerX.equalTo(snp.centerX)
             make.centerY.equalTo(snp.centerY)
-            make.height.equalTo(220)
+            make.height.equalTo(260)
         }
 
         datePicker.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top)
+            make.top.equalTo(containerView.snp.top).offset(15)
             make.left.equalTo(containerView.snp.left)
             make.right.equalTo(containerView.snp.right)
-            make.bottom.equalTo(lineViewX.snp.top)
+            make.bottom.equalTo(lineViewX.snp.top).offset(-15)
         }
 
         lineViewX.snp.makeConstraints { make in
@@ -155,8 +149,8 @@ final class SettingAlarmDetailView: BaseView {
         }
 
         cancelButton.snp.makeConstraints { make in
-            make.width.equalTo(okButton.snp.width)
-            make.height.equalTo(okButton.snp.height)
+            make.width.equalTo(okButton)
+            make.height.equalTo(okButton)
         }
     }
 }

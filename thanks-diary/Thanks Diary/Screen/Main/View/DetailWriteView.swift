@@ -212,7 +212,7 @@ final class DetailWriteView: BaseView {
         
         contentView.snp.makeConstraints { make in
             make.edges.equalTo(contentScrollView)
-            make.width.equalTo(contentScrollView.snp.width)
+            make.width.equalTo(contentScrollView)
             make.height.equalTo(contentScrollView.snp.height).priority(.high)
         }
         
