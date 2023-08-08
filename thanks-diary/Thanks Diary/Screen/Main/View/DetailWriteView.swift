@@ -147,11 +147,11 @@ final class DetailWriteView: BaseView {
     }
     
     override func setTarget() {
-        backButton.addTarget {
+        backButton.addTarget { _ in
             self.backButtonTapHandler()
         }
         
-        completeButton.addTarget {
+        completeButton.addTarget { _ in
             self.completeButtonTapHandler()
         }
         

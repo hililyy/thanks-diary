@@ -103,15 +103,15 @@ final class MainView: BaseView {
     }
     
     override func setTarget() {
-        floatingButton.button.addTarget {
+        floatingButton.button.addTarget { _ in
             self.floatingButtonTapHandler()
         }
         
-        settingButton.addTarget {
+        settingButton.addTarget { _ in
             self.settingButtonTapHandler()
         }
         
-        todayButton.addTarget {
+        todayButton.addTarget { _ in
             self.todayButtonTapHandler()
         }
     }

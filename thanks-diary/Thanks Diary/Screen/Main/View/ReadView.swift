@@ -96,15 +96,15 @@ final class ReadView: BaseView {
     }
     
     override func setTarget() {
-        backButton.addTarget {
+        backButton.addTarget { _ in
             self.backButtonTapHandler()
         }
         
-        deleteButton.addTarget {
+        deleteButton.addTarget { _ in
             self.deleteButtonTapHandler()
         }
         
-        updateButton.addTarget {
+        updateButton.addTarget { _ in
             self.updateButtonTapHandler()
         }
     }

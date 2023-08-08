@@ -56,21 +56,21 @@ final class FloatingButtonVC: BaseVC {
         floatingButtonCloseView.setDetailLabel(label: "text_detail".localized)
         floatingButtonCloseView.setSimpleLabel(label: "text_simple".localized)
         
-        floatingButtonCloseView.backgroundButton.addTarget {
+        floatingButtonCloseView.backgroundButton.addTarget { _ in
             self.updateCloseConstraints()
         }
         
-        floatingButtonCloseView.plusButton.button.addTarget {
+        floatingButtonCloseView.plusButton.button.addTarget { _ in
             self.updateCloseConstraints()
         }
         
-        floatingButtonCloseView.detailButton.button.addTarget {
+        floatingButtonCloseView.detailButton.button.addTarget { _ in
             self.dismissVC() {
                 self.detailHandler()
             }
         }
         
-        floatingButtonCloseView.simpleButton.button.addTarget {
+        floatingButtonCloseView.simpleButton.button.addTarget { _ in
             self.dismissVC() {
                 self.simpleHandler()
             }

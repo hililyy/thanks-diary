@@ -28,7 +28,7 @@
 		025EF0572A459D2700C930F2 /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0532A459D2600C930F2 /* LottieManager.swift */; };
 		025EF0582A459D2700C930F2 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0542A459D2600C930F2 /* UserDefaultManager.swift */; };
 		025EF0592A459D2700C930F2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0552A459D2700C930F2 /* FirebaseManager.swift */; };
-		025EF05C2A459DB700C930F2 /* AlarmAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF05B2A459DB700C930F2 /* AlarmAuth.swift */; };
+		025EF05C2A459DB700C930F2 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF05B2A459DB700C930F2 /* AuthManager.swift */; };
 		025EF05F2A459DF400C930F2 /* EmailLoginErrorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF05E2A459DF400C930F2 /* EmailLoginErrorList.swift */; };
 		025EF0672A459E2E00C930F2 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0612A459E2D00C930F2 /* UITextField+.swift */; };
 		025EF0692A459E2E00C930F2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0632A459E2D00C930F2 /* UIView+.swift */; };
@@ -57,6 +57,7 @@
 		026E9C582A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C572A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist */; };
 		027C60C82A81EB82008F607F /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60C72A81EB82008F607F /* UIScrollView+.swift */; };
 		027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60CA2A81F78C008F607F /* CommonUtilManager.swift */; };
+		027C60CD2A8213D7008F607F /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */; };
 		029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EC2A494C3100D82289 /* FirstStartView.swift */; };
 		029F04F02A494C3100D82289 /* SecondStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04ED2A494C3100D82289 /* SecondStartView.swift */; };
 		029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EE2A494C3100D82289 /* ThirdStartView.swift */; };
@@ -135,7 +136,7 @@
 		025EF0532A459D2600C930F2 /* LottieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieManager.swift; sourceTree = "<group>"; };
 		025EF0542A459D2600C930F2 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		025EF0552A459D2700C930F2 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		025EF05B2A459DB700C930F2 /* AlarmAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmAuth.swift; sourceTree = "<group>"; };
+		025EF05B2A459DB700C930F2 /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		025EF05E2A459DF400C930F2 /* EmailLoginErrorList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginErrorList.swift; sourceTree = "<group>"; };
 		025EF0612A459E2D00C930F2 /* UITextField+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		025EF0632A459E2D00C930F2 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -164,6 +165,7 @@
 		026E9C572A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
 		027C60C72A81EB82008F607F /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		027C60CA2A81F78C008F607F /* CommonUtilManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtilManager.swift; sourceTree = "<group>"; };
+		027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		029F04EC2A494C3100D82289 /* FirstStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartView.swift; sourceTree = "<group>"; };
 		029F04ED2A494C3100D82289 /* SecondStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStartView.swift; sourceTree = "<group>"; };
 		029F04EE2A494C3100D82289 /* ThirdStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdStartView.swift; sourceTree = "<group>"; };
@@ -274,16 +276,10 @@
 				025EF0542A459D2600C930F2 /* UserDefaultManager.swift */,
 				029F04F82A4984BB00D82289 /* CoreDataManager.swift */,
 				027C60CA2A81F78C008F607F /* CommonUtilManager.swift */,
+				027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */,
+				025EF05B2A459DB700C930F2 /* AuthManager.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		025EF05A2A459DAC00C930F2 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				025EF05B2A459DB700C930F2 /* AlarmAuth.swift */,
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		025EF05D2A459DCF00C930F2 /* Error */ = {
@@ -555,7 +551,6 @@
 			children = (
 				025EF0462A459C9200C930F2 /* Const */,
 				025EF0512A459D0000C930F2 /* Manager */,
-				025EF05A2A459DAC00C930F2 /* Auth */,
 				025EF05D2A459DCF00C930F2 /* Error */,
 				025EF0602A459DFD00C930F2 /* Extension */,
 				025EF06D2A459E4700C930F2 /* Custom */,
@@ -855,7 +850,7 @@
 				026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */,
 				025EF04A2A459CA400C930F2 /* Color.swift in Sources */,
 				2ABF8AA52A6C057E006ACBE2 /* SettingViewModel.swift in Sources */,
-				025EF05C2A459DB700C930F2 /* AlarmAuth.swift in Sources */,
+				025EF05C2A459DB700C930F2 /* AuthManager.swift in Sources */,
 				0229553D2A66867D004BF800 /* UIControl+.swift in Sources */,
 				0229554F2A6A12B3004BF800 /* Image.swift in Sources */,
 				022955592A6A66D2004BF800 /* SimpleWriteView.swift in Sources */,
@@ -865,6 +860,7 @@
 				025EF03E2A459C2900C930F2 /* BaseVC.swift in Sources */,
 				025EF0562A459D2700C930F2 /* AlertManager.swift in Sources */,
 				029F04F92A4984BB00D82289 /* CoreDataManager.swift in Sources */,
+				027C60CD2A8213D7008F607F /* LocalNotificationManager.swift in Sources */,
 				2A9F350E28AE1C0D006CCF7C /* MainVC.swift in Sources */,
 				2A81235428C5277D000A250E /* SimpleWriteVC.swift in Sources */,
 				025EF0742A459E4800C930F2 /* FloatingButtonVC.swift in Sources */,

@@ -21,7 +21,7 @@ class AlertConfirmVC: BaseVC {
     }
     
     private func setTarget() {
-        alertConfirmView.okButton.addTarget {
+        alertConfirmView.okButton.addTarget { _ in
             self.dismissVC()
         }
     }

@@ -100,15 +100,15 @@ final class SimpleWriteView: BaseView {
             .bind(to: textLengthLabel.rx.text)
             .disposed(by: disposeBag)
         
-        completeButton.addTarget {
+        completeButton.addTarget { _ in
             self.completeButtonTapHandler()
         }
         
-        cancelButton.addTarget {
+        cancelButton.addTarget { _ in
             self.cancelButtonTapHandler()
         }
         
-        deleteButton.addTarget {
+        deleteButton.addTarget { _ in
             self.deleteButtonTapHandler()
         }
     }

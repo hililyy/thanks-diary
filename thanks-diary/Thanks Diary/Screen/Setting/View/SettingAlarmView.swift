@@ -37,7 +37,7 @@ final class SettingAlarmView: BaseView {
     }
     
     override func setTarget() {
-        backButton.addTarget {
+        backButton.addTarget { _ in
             self.backButtonTapHandler()
         }
     }

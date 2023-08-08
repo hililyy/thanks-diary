@@ -212,12 +212,12 @@ final class SettingPWView: BaseView {
     
     override func setTarget() {
         for button in [oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton] {
-            button.addTarget {
+            button.addTarget { _ in
                 self.numberButtonTapHandler(button.tag)
             }
         }
         
-        deleteButton.addTarget {
+        deleteButton.addTarget { _ in
             self.deleteButtonTapHandler()
         }
     }

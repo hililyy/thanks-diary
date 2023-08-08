@@ -66,7 +66,7 @@ final class SettingAlarmDetailView: BaseView {
     var cancelButtonTapHandler: () -> () = {}
     
     override func setTarget() {
-        backButton.addTarget {
+        backButton.addTarget { _ in
             self.backButtonTapHandler()
         }
         
@@ -74,7 +74,7 @@ final class SettingAlarmDetailView: BaseView {
             self.okButtonTapHandler()
         }
         
-        cancelButton.addTarget {
+        cancelButton.addTarget { _ in
             self.cancelButtonTapHandler()
         }
     }
