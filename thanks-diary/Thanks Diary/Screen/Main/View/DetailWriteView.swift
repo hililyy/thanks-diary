@@ -10,6 +10,7 @@ import UIKit
 final class DetailWriteView: BaseView {
     
     // MARK: - UI component
+    
     private var backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
@@ -27,14 +28,20 @@ final class DetailWriteView: BaseView {
         button.layer.cornerRadius = 10
     }
     
+    private let contentScrollView = UIScrollView().then { scrollView in
+        scrollView.showsVerticalScrollIndicator = false
+    }
+    
+    private let contentView = UIView()
+    
     private var titleLabel = UILabel().then { label in
-        label.text = "title".localized
+        label.text = "text_title".localized
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
     
     private var contentsLabel = UILabel().then { label in
-        label.text = "contents".localized
+        label.text = "text_contents".localized
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
@@ -101,6 +108,35 @@ final class DetailWriteView: BaseView {
         contentsTextView.text = contentsText
     }
     
+    // 키보드 나타났을 때
+    override func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        
+        let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.size.height, right: 0.0)
+        contentScrollView.contentInset = contentInset
+        contentScrollView.scrollIndicatorInsets = contentInset
+        
+        if contentsTextView.isFirstResponder {
+            contentScrollView.scrollToCenter(height: titleTextField.frame.height + titleLabel.frame.height + 25)
+        } else {
+            contentScrollView.scrollToTop()
+        }
+    }
+    
+    // 키보드 사라질 때
+    override func keyboardWillHide() {
+        let contentInset = UIEdgeInsets.zero
+        contentScrollView.contentInset = contentInset
+        contentScrollView.scrollIndicatorInsets = contentInset
+    }
+    
+    // 텍스트 필드 외부 터치 시 키보드 닫기
+    @objc private func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
+        titleTextField.resignFirstResponder()
+        contentsTextView.resignFirstResponder()
+    }
+    
     // MARK: - UI, Target
     
     var backButtonTapHandler: () -> () = {}
@@ -118,6 +154,12 @@ final class DetailWriteView: BaseView {
         completeButton.addTarget {
             self.completeButtonTapHandler()
         }
+        
+        setKeyboardNotification()
+        
+        // 텍스트 필드 외부 터치 시 키보드 닫기위함 제스처 추가
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        contentScrollView.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - Constraint
@@ -126,12 +168,19 @@ final class DetailWriteView: BaseView {
         addSubviews([backButton,
                      topLabel,
                      completeButton,
-                     titleUnderLineImageView,
-                     titleLabel,
-                     titleTextField,
-                     contentsUnderLineImageView,
-                     contentsLabel,
-                     contentsTextView])
+                     contentScrollView
+                    ])
+        
+        contentScrollView.addSubview(contentView)
+        
+        contentView.addSubviews([
+            titleUnderLineImageView,
+            titleLabel,
+            titleTextField,
+            contentsUnderLineImageView,
+            contentsLabel,
+            contentsTextView
+        ])
     }
     
     override func setConstraints() {
@@ -154,9 +203,22 @@ final class DetailWriteView: BaseView {
             make.centerY.equalTo(topLabel.snp.centerY)
         }
         
-        titleLabel.snp.makeConstraints { make in
+        contentScrollView.snp.makeConstraints { make in
             make.top.equalTo(backButton.snp.bottom).offset(10)
-            make.left.equalTo(snp.left).offset(35)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalTo(contentScrollView)
+            make.width.equalTo(contentScrollView.snp.width)
+            make.height.equalTo(contentScrollView.snp.height).priority(.high)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.top).offset(10)
+            make.left.equalTo(contentView.snp.left).offset(35)
             make.height.equalTo(35)
         }
         
@@ -170,13 +232,13 @@ final class DetailWriteView: BaseView {
         titleTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
             make.left.equalTo(titleLabel.snp.left)
-            make.centerX.equalTo(snp.centerX)
+            make.centerX.equalTo(contentView.snp.centerX)
             make.bottom.equalTo(contentsLabel.snp.top).offset(-15)
             make.height.equalTo(44)
         }
         
         contentsLabel.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(35)
+            make.left.equalTo(contentView.snp.left).offset(35)
             make.height.equalTo(35)
         }
         
@@ -190,8 +252,8 @@ final class DetailWriteView: BaseView {
         contentsTextView.snp.makeConstraints { make in
             make.top.equalTo(contentsLabel.snp.bottom).offset(3)
             make.left.equalTo(contentsLabel.snp.left)
-            make.centerX.equalTo(snp.centerX)
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-30)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-30)
         }
     }
 }

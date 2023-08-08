@@ -55,6 +55,7 @@
 		026E9C302A4AC95900568CFD /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */; };
 		026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */; };
 		026E9C582A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C572A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist */; };
+		027C60C82A81EB82008F607F /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60C72A81EB82008F607F /* UIScrollView+.swift */; };
 		029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EC2A494C3100D82289 /* FirstStartView.swift */; };
 		029F04F02A494C3100D82289 /* SecondStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04ED2A494C3100D82289 /* SecondStartView.swift */; };
 		029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EE2A494C3100D82289 /* ThirdStartView.swift */; };
@@ -160,6 +161,7 @@
 		026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothic.ttf; sourceTree = "<group>"; };
 		026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicLight.ttf; sourceTree = "<group>"; };
 		026E9C572A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
+		027C60C72A81EB82008F607F /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		029F04EC2A494C3100D82289 /* FirstStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartView.swift; sourceTree = "<group>"; };
 		029F04ED2A494C3100D82289 /* SecondStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStartView.swift; sourceTree = "<group>"; };
 		029F04EE2A494C3100D82289 /* ThirdStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdStartView.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				0229553C2A66867D004BF800 /* UIControl+.swift */,
 				025EF0632A459E2D00C930F2 /* UIView+.swift */,
 				025EF0642A459E2D00C930F2 /* UIViewController+.swift */,
+				027C60C72A81EB82008F607F /* UIScrollView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				026E78E72A6E486C00A09282 /* SettingAlarmView.swift in Sources */,
 				025EF0862A459EEF00C930F2 /* PageView.swift in Sources */,
 				026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */,
+				027C60C82A81EB82008F607F /* UIScrollView+.swift in Sources */,
 				025EF0752A459E4800C930F2 /* FloatingButton.swift in Sources */,
 				025EF0832A459EEF00C930F2 /* PageVC.swift in Sources */,
 				2A81233B28C0067B000A250E /* SettingAlarmDetailVC.swift in Sources */,
