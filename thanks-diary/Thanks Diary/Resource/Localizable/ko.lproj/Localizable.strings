@@ -36,3 +36,5 @@
 "text_password_retry" = "비밀번호를 다시 한번 입력해 주세요";
 "text_setting_alarm" = "알림 설정";
 "text_toast" = "제목과 내용을 모두 입력해 주세요.";
+"text_push_title" = "💙감사일기를 작성할 시간이에요💙";
+"text_push_contents" = "오늘의 일기를 작성해볼까요?💌";

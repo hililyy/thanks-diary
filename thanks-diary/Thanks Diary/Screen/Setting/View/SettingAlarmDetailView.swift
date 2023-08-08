@@ -62,20 +62,26 @@ final class SettingAlarmDetailView: BaseView {
     // MARK: - UI, Target
     
     var backButtonTapHandler: () -> () = {}
-    var okButtonTapHandler: () -> () = {}
+    var okButtonTapHandler: (Date) -> () = { _ in }
     var cancelButtonTapHandler: () -> () = {}
+    var selectedTime = Date()
     
     override func setTarget() {
         backButton.addTarget { _ in
             self.backButtonTapHandler()
         }
         
-        okButton.addTarget {
-            self.okButtonTapHandler()
+        okButton.addTarget { _ in
+            self.okButtonTapHandler(self.selectedTime)
         }
         
         cancelButton.addTarget { _ in
             self.cancelButtonTapHandler()
+        }
+        
+        datePicker.addTarget(for: .valueChanged) { sender in
+            guard let picker = sender as? UIDatePicker else { return }
+            self.selectedTime = picker.date
         }
     }
     

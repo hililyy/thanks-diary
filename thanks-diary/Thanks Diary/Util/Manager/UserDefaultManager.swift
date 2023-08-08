@@ -44,4 +44,12 @@ class UserDefaultManager {
     class func data(forKey: String) -> Data? {
         return UserDefaults.standard.data(forKey: forKey)
     }
+    
+    class func date(forKey: String) -> Date? {
+        return UserDefaults.standard.object(forKey: forKey) as? Date
+    }
+    
+    class func delete(forKey: String) {
+        UserDefaults.standard.removeObject(forKey: forKey)
+    }
 }

@@ -13,16 +13,7 @@ final class LocalNotificationManager {
     static let shared = LocalNotificationManager()
     private init() {}
     
-    ///Push Notification에 대한 인증 설정 함수입니다.
-    func setAuthorization() {
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound] // 필요한 알림 권한을 설정
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: { _, _ in }
-        )
-    }
-    
-    /// 대기중인 Push Notification을 출력합니다.
+    // 대기중인 Push Notification 출력
     func printPendingNotification() {
         UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
             for request in requests {
@@ -30,27 +21,22 @@ final class LocalNotificationManager {
                 print("Title: \(request.content.title)")
                 print("Body: \(request.content.body)")
                 print("Trigger: \(String(describing: request.trigger))")
-                print("---")
+                print("-------------------------")
             }
         }
     }
     
-    /// 대기중인 Push Notification을 취소합니다.
-    /// - Parameter identifiers: 삭제하고자하는 알림 식별자 리스트입니다.
-    func removePendingNotification(identifiers: [String]){
-        UNUserNotificationCenter
-            .current()
-            .removePendingNotificationRequests(withIdentifiers: identifiers)
+    // 대기중인 Push Notification 취소
+    func removePendingNotification(identifiers: [String] = []){
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["LOCAL_PUSH"])
     }
     
-    /// 이미 전달된 Push Notification을 알림센터에서 삭제합니다.
-    /// - Parameter identifiers: 삭제하고자하는 알림 식별자 리스트입니다.
-    func removeDeliveredNotification(identifiers: [String]){
-        UNUserNotificationCenter
-            .current()
-            .removeDeliveredNotifications(withIdentifiers: identifiers)
+    // 이미 전달된 Push Notification을 알림센터에서 삭제 (이미 도착한 푸시 메시지 삭제)
+    func removeDeliveredNotification(identifiers: [String] = []){
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["LOCAL_PUSH"])
     }
     
+    // 푸시 메시지 등록
     func requestSendNotification(title: String = "", contents: String = "", time: Date) {
         
         let content = UNMutableNotificationContent()

@@ -17,6 +17,7 @@ final class SettingSwitchTVCell: BaseTVCell {
     }
     
     var settingSwitch = UISwitch()
+    
     var switchTapHandler: () -> () = {}
     
     override func configureUI() {

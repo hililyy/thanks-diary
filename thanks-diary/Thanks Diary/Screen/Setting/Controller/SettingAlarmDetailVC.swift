@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import UserNotifications
 
 final class SettingAlarmDetailVC: BaseVC {
     
     // MARK: - Property
     
-    var selectedTime: Date?
-    weak var delegate: SendDataDelegate?
     let settingAlarmDetailView = SettingAlarmDetailView()
+    var parentVC: SettingAlarmVC?
+    var delegate: reloadDelegate?
     
     // MARK: - Life Cycle
     
@@ -33,9 +34,12 @@ final class SettingAlarmDetailVC: BaseVC {
             self.dismissVC()
         }
         
-        settingAlarmDetailView.okButtonTapHandler = {
+        settingAlarmDetailView.okButtonTapHandler = { time in
             self.dismissVC() {
-                self.delegate?.sendData(self.selectedTime ?? Date())
+                UserDefaultManager.set(time, forKey: UserDefaultKey.PUSH_TIME)
+                LocalNotificationManager.shared.requestSendNotification(time: time)
+                self.parentVC?.viewModel.selectedTime = time
+                self.delegate?.reloadData()
             }
         }
         
@@ -43,10 +47,4 @@ final class SettingAlarmDetailVC: BaseVC {
             self.dismissVC()
         }
     }
-}
-
-// MARK: - Custom Delegate
-
-protocol SendDataDelegate: AnyObject {
-    func sendData (_ date: Date)
 }

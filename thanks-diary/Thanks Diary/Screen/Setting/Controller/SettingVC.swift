@@ -112,6 +112,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             break
             
         case 3: // 앱 버전
+            LocalNotificationManager.shared.printPendingNotification()
             break
             
         default:

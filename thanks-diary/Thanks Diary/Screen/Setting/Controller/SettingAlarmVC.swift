@@ -6,19 +6,14 @@
 //
 
 import UIKit
-import UserNotifications
 
-final class SettingAlarmVC: UIViewController {
+final class SettingAlarmVC: BaseVC {
     
     // MARK: - Property
     
-    var selectedDate: Date? = nil
-    var selectedStringDate: String = ""
     var switchFlag: Bool = false
-    var selectedTimeHour: Int = -1
-    var selectedTimeMinute: Int = -1
-    let userNotificationCenter = UNUserNotificationCenter.current()
     let settingAlarmView = SettingAlarmView()
+    let viewModel = SettingViewModel()
     
     // MARK: - Life Cycle
     
@@ -32,11 +27,17 @@ final class SettingAlarmVC: UIViewController {
         setTarget()
         settingAlarmView.tableView.dataSource = self
         settingAlarmView.tableView.delegate = self
-        self.switchFlag = false
-        self.selectedTimeHour = 0
-        self.selectedTimeMinute = 0
         
-        self.selectedStringDate = "\(self.selectedTimeHour)시 \(self.selectedTimeMinute)분"
+        AuthManager.shared.getNotiStatus { status in
+            if status == .denied {
+                LocalNotificationManager.shared.removePendingNotification()
+                UserDefaultManager.delete(forKey: UserDefaultKey.PUSH_TIME)
+                UserDefaultManager.set(false, forKey: UserDefaultKey.IS_PUSH)
+                self.switchFlag = false
+            } else {
+                self.switchFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PUSH)
+            }
+        }
     }
     
     // MARK: - Function
@@ -44,26 +45,6 @@ final class SettingAlarmVC: UIViewController {
     func setTarget() {
         settingAlarmView.backButtonTapHandler = {
             self.popVC()
-        }
-    }
-    
-    func sendNotification() {
-        let notificationContent = UNMutableNotificationContent()
-
-        notificationContent.title = "💙감사일기를 작성할 시간이예요💙"
-        notificationContent.body = "오늘의 일기를 작성해볼까요?💌"
-        var date = DateComponents()
-        date.hour = Int(self.selectedTimeHour)
-        date.minute = self.selectedTimeMinute
-        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
-        let request = UNNotificationRequest(identifier: "testNotification",
-                                            content: notificationContent,
-                                            trigger: trigger)
-
-        userNotificationCenter.add(request) { error in
-            if let error = error {
-                print("Notification Error: ", error)
-            }
         }
     }
     
@@ -89,11 +70,52 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = "알림 설정"
             cell.settingSwitch.isOn = switchFlag
             
+            cell.switchTapHandler = {
+                AuthManager.shared.getNotiStatus { status in
+                    
+                    switch status {
+                        
+                    case .authorized:
+                        let isPush = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PUSH)
+                        UserDefaultManager.set(!isPush, forKey: UserDefaultKey.IS_PUSH)
+                        self.switchFlag = !isPush
+                        
+                        // on -> off로 가는 상황
+                        if isPush {
+                            LocalNotificationManager.shared.removePendingNotification()
+                            UserDefaultManager.delete(forKey: UserDefaultKey.PUSH_TIME)
+                            UserDefaultManager.set(false, forKey: UserDefaultKey.IS_PUSH)
+                            self.viewModel.selectedTime = nil
+                            
+                        // off -> on으로 가는 상황
+                        } else {
+                            LocalNotificationManager.shared.requestSendNotification(time: Date())
+                            UserDefaultManager.set(Date(), forKey: UserDefaultKey.PUSH_TIME)
+                            UserDefaultManager.set(true, forKey: UserDefaultKey.IS_PUSH)
+                            self.viewModel.selectedTime = Date()
+                        }
+                        
+                        self.reloadData()
+                        break
+                    case .denied:
+                        self.switchFlag = false
+                        self.reloadData()
+                        print("설정 팝업으로 이동")
+                        // TODO: 설정 팝업으로 이동
+                        break
+                    default:
+                        AuthManager.shared.requestNotiAuth()
+                        break
+                    }
+                }
+            }
+            
             return cell
 
         case 1:
             let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
             cell.titleLabel.text = "시간 설정"
+            cell.contentsLabel.text = viewModel.selectedTime?.convertString(format: "a hh시 mm분")
             return cell
 
         default:
@@ -107,17 +129,30 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             break
             
         case 1:
-            let vc = SettingAlarmDetailVC()
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.selectedTime = self.selectedDate ?? Date()
-            if let date = selectedDate {
-                vc.selectedTime = date
+            if switchFlag {
+                let vc = SettingAlarmDetailVC()
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.delegate = self
+                vc.parentVC = self
+                self.present(vc, animated: true)
+            } else {
+                toast(message: "푸시 꺼져있으니 켜주세용", withDuration: 1, delay: 1, completion: {})
             }
-            self.present(vc, animated: true, completion: nil)
+            
             
         default:
             break
+        }
+    }
+}
+
+// MARK: - Custom Protocol
+
+extension SettingAlarmVC: reloadDelegate {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.settingAlarmView.tableView.reloadData()
         }
     }
 }
