@@ -39,27 +39,27 @@ final class SettingPWVC: BaseVC {
         settingPWView.numberButtonTapHandler = { [weak self] num in
             guard let self = self else { return }
             
-            firstPW.append(contentsOf: "\(num)")
-            count += 1
-            settingPWView.setDotColor(num: count)
+            self.firstPW.append(contentsOf: "\(num)")
+            self.count += 1
+            self.settingPWView.setDotColor(num: self.count)
             
-            if count == 4 {
-                if homeFlag {
-                    if firstPW == UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
-                        setMainToRoot()
+            if self.count == 4 {
+                if self.homeFlag {
+                    if self.firstPW == UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
+                        self.setMainToRoot()
                     } else {
-                        handleIncorrectPassword()
+                        self.handleIncorrectPassword()
                     }
                 } else {
-                    if reEnterFlag {
-                        if firstPW == secondPW {
-                            UserDefaultManager.set(firstPW, forKey: UserDefaultKey.PASSWORD)
-                            popVC()
+                    if self.reEnterFlag {
+                        if self.firstPW == self.secondPW {
+                            UserDefaultManager.set(self.firstPW, forKey: UserDefaultKey.PASSWORD)
+                            self.popVC()
                         } else {
-                            handleIncorrectPassword()
+                            self.handleIncorrectPassword()
                         }
                     } else {
-                        handleReEnterPassword()
+                        self.handleReEnterPassword()
                     }
                 }
             }
@@ -67,9 +67,9 @@ final class SettingPWVC: BaseVC {
         
         settingPWView.deleteButtonTapHandler = { [weak self] in
             guard let self = self else { return }
-            count = max(0, count - 1)
-            firstPW.popLast()
-            settingPWView.setDotColor(num: count)
+            self.count = max(0, self.count - 1)
+            self.firstPW.popLast()
+            self.settingPWView.setDotColor(num: self.count)
         }
     }
     
