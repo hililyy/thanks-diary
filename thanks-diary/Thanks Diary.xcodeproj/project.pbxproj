@@ -56,6 +56,7 @@
 		026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */; };
 		026E9C582A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C572A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist */; };
 		027C60C82A81EB82008F607F /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60C72A81EB82008F607F /* UIScrollView+.swift */; };
+		027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60CA2A81F78C008F607F /* CommonUtilManager.swift */; };
 		029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EC2A494C3100D82289 /* FirstStartView.swift */; };
 		029F04F02A494C3100D82289 /* SecondStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04ED2A494C3100D82289 /* SecondStartView.swift */; };
 		029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EE2A494C3100D82289 /* ThirdStartView.swift */; };
@@ -162,6 +163,7 @@
 		026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicLight.ttf; sourceTree = "<group>"; };
 		026E9C572A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
 		027C60C72A81EB82008F607F /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
+		027C60CA2A81F78C008F607F /* CommonUtilManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtilManager.swift; sourceTree = "<group>"; };
 		029F04EC2A494C3100D82289 /* FirstStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartView.swift; sourceTree = "<group>"; };
 		029F04ED2A494C3100D82289 /* SecondStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStartView.swift; sourceTree = "<group>"; };
 		029F04EE2A494C3100D82289 /* ThirdStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdStartView.swift; sourceTree = "<group>"; };
@@ -247,8 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				0229553E2A669265004BF800 /* Base */,
-				026E9C262A4AAAE800568CFD /* Controller */,
-				026E9C242A4AAADF00568CFD /* View */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -273,6 +273,7 @@
 				025EF0532A459D2600C930F2 /* LottieManager.swift */,
 				025EF0542A459D2600C930F2 /* UserDefaultManager.swift */,
 				029F04F82A4984BB00D82289 /* CoreDataManager.swift */,
+				027C60CA2A81F78C008F607F /* CommonUtilManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -311,6 +312,7 @@
 		025EF06D2A459E4700C930F2 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				027C60C92A81F742008F607F /* Alert */,
 				025EF06E2A459E4700C930F2 /* FloatingButton */,
 			);
 			path = Custom;
@@ -419,6 +421,15 @@
 				026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		027C60C92A81F742008F607F /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				026E9C262A4AAAE800568CFD /* Controller */,
+				026E9C242A4AAADF00568CFD /* View */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		029F04FB2A4984DA00D82289 /* ViewModel */ = {
@@ -817,6 +828,7 @@
 				025EF0842A459EEF00C930F2 /* SecondStartVC.swift in Sources */,
 				2A72421128B426730040ADE9 /* SettingModel.swift in Sources */,
 				025EF06B2A459E2E00C930F2 /* String+.swift in Sources */,
+				027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */,
 				029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */,
 				025EF0592A459D2700C930F2 /* FirebaseManager.swift in Sources */,
 				2A81234E28C4E22C000A250E /* SimpleDiaryTVCell.swift in Sources */,
