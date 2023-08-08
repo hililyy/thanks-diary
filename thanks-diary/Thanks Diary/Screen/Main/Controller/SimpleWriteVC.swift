@@ -18,7 +18,7 @@ final class SimpleWriteVC: BaseVC {
     var parentVC: MainVC?
     let simpleWriteView = SimpleWriteView()
     
-    // MARK:- Life Cycle
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = simpleWriteView
@@ -133,7 +133,6 @@ extension SimpleWriteVC: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.count > maxCount {
-            //글자수 제한에 걸리면 마지막 글자 삭제
             textView.text.removeLast()
         }
     }

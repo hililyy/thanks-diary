@@ -88,7 +88,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case 3:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
             cell.titleLabel.text = "앱 버전"
-            cell.contentsLabel.text = "1.0.3"
+            cell.contentsLabel.text = CommonUtilManager.shared.getAppVersion()
             return cell
             
         default:
