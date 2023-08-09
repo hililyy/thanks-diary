@@ -7,6 +7,7 @@
 
 import UIKit
 import AcknowList
+import MessageUI
 
 final class SettingVC: BaseVC {
     
@@ -48,7 +49,7 @@ final class SettingVC: BaseVC {
 
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,6 +88,11 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         
         case 3:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
+            cell.titleLabel.text = "건의사항"
+            return cell
+            
+        case 4:
+            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
             cell.titleLabel.text = "앱 버전"
             cell.contentsLabel.text = CommonUtilManager.shared.getAppVersion()
             return cell
@@ -111,12 +117,31 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
                     navigationController?.pushViewController(acknowList, animated: true)
             break
             
-        case 3: // 앱 버전
+        case 3: // 건의하기
+            sendEmail()
+            break
+            
+        case 4: // 앱 버전
             LocalNotificationManager.shared.printPendingNotification()
             break
             
         default:
             break
+        }
+    }
+}
+
+extension SettingVC: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let compseVC = MFMailComposeViewController()
+            compseVC.mailComposeDelegate = self
+            compseVC.setToRecipients(["joun406@gmail.com"])
+            self.present(compseVC, animated: true, completion: nil)
         }
     }
 }
