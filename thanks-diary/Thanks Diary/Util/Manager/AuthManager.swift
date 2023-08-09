@@ -12,17 +12,17 @@ final class AuthManager {
     static let shared = AuthManager()
     private init() {}
     
-    func requestNotiAuth() {
+    func requestNotiAuth(completion: @escaping (Bool) -> (), errorHandler: @escaping () -> ()) {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions) { success, error in
-                print("success: \(success)")
-                if let error = error {
-                    print("Error: \(error)")
-                    // TODO: 오류 팝업 노출
-                }
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { success, error in
+            print("success: \(success)")
+            completion(success)
+            if let error = error {
+                print("Error: \(error)")
+                errorHandler()
             }
+        }
     }
     
     func getNotiStatus(completion: @escaping (UNAuthorizationStatus) -> ()) {

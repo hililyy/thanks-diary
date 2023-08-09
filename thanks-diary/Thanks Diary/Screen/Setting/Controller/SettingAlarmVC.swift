@@ -97,14 +97,26 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                         
                         self.reloadData()
                         break
+                        
                     case .denied:
                         self.switchFlag = false
                         self.reloadData()
                         print("설정 팝업으로 이동")
                         // TODO: 설정 팝업으로 이동
                         break
+                        
                     default:
-                        AuthManager.shared.requestNotiAuth()
+                        AuthManager.shared.requestNotiAuth(completion: { result in
+                            if result {
+                                print("권한 허용")
+                            } else {
+                                print("설정 팝업")
+                                // TODO: 설정 팝업
+                            }
+                        }, errorHandler: {
+                            print("에러 팝업")
+                            // TODO: 에러 팝업
+                        })
                         break
                     }
                 }
@@ -138,8 +150,8 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                 self.present(vc, animated: true)
             } else {
                 toast(message: "푸시 꺼져있으니 켜주세용", withDuration: 1, delay: 1, completion: {})
+                // TODO: 토스트 위치 변경
             }
-            
             
         default:
             break
