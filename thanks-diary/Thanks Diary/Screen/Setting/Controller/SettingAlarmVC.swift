@@ -24,16 +24,18 @@ final class SettingAlarmVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTarget()
         settingAlarmView.tableView.dataSource = self
         settingAlarmView.tableView.delegate = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         AuthManager.shared.getNotiStatus { status in
             if status == .denied {
                 LocalNotificationManager.shared.removePendingNotification()
                 UserDefaultManager.delete(forKey: UserDefaultKey.PUSH_TIME)
                 UserDefaultManager.set(false, forKey: UserDefaultKey.IS_PUSH)
                 self.switchFlag = false
+                self.reloadData()
             } else {
                 self.switchFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PUSH)
             }
@@ -42,17 +44,27 @@ final class SettingAlarmVC: BaseVC {
     
     // MARK: - Function
     
-    func setTarget() {
-        settingAlarmView.backButtonTapHandler = {
-            self.popVC()
-        }
-    }
-    
     func changeDateToString(date: Date, formatString: String) -> String {
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = formatString
         return dateFormatter.string(from: date)
+    }
+    
+    func showSettingAlert() {
+        DispatchQueue.main.async {
+            let vc = AlertVC()
+            vc.alertView.setText(message: "text_app_setting_1".localized, leftButtonText: "text_cancel".localized, rightButtonText: "text_app_setting_2".localized)
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.leftButtonTapHandler = {
+                self.dismissVC()
+            }
+            vc.rightButtonTapHandler = {
+                self.goAppSetting()
+            }
+            self.present(vc, animated: true)
+        }
     }
 }
 
@@ -101,8 +113,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                     case .denied:
                         self.switchFlag = false
                         self.reloadData()
-                        print("설정 팝업으로 이동")
-                        // TODO: 설정 팝업으로 이동
+                        self.showSettingAlert()
                         break
                         
                     default:
@@ -112,10 +123,10 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                             } else {
                                 print("설정 팝업")
                                 // TODO: 설정 팝업
+                                self.showSettingAlert()
                             }
                         }, errorHandler: {
-                            print("에러 팝업")
-                            // TODO: 에러 팝업
+                            self.showErrorPopup()
                         })
                         break
                     }
@@ -149,8 +160,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                 vc.parentVC = self
                 self.present(vc, animated: true)
             } else {
-                toast(message: "푸시 꺼져있으니 켜주세용", withDuration: 1, delay: 1, completion: {})
-                // TODO: 토스트 위치 변경
+                toast(message: "text_on_alarm".localized, withDuration: 1, delay: 1, type: "top", completion: {})
             }
             
         default:

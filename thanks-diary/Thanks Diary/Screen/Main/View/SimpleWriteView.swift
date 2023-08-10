@@ -53,7 +53,7 @@ final class SimpleWriteView: BaseView {
     }
     
     private var cancelButton = UIButton(type: .custom).then { button in
-        button.setTitle("text_calcel".localized, for: .normal)
+        button.setTitle("text_cancel".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
         button.backgroundColor = .white
