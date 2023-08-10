@@ -7,7 +7,6 @@
 
 import UIKit
 import AcknowList
-import MessageUI
 
 final class SettingVC: BaseVC {
     
@@ -127,21 +126,6 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             
         default:
             break
-        }
-    }
-}
-
-extension SettingVC: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func sendEmail() {
-        if MFMailComposeViewController.canSendMail() {
-            let compseVC = MFMailComposeViewController()
-            compseVC.mailComposeDelegate = self
-            compseVC.setToRecipients(["joun406@gmail.com"])
-            self.present(compseVC, animated: true, completion: nil)
         }
     }
 }

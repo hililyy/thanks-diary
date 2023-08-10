@@ -60,7 +60,7 @@ final class ReadVC: BaseVC {
                         self.setMainToRoot()
                     } else {
                         self.dismissVC() {
-                            print("error")
+                            self.showErrorPopup()
                         }
                     }
                 }

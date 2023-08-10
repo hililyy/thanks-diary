@@ -19,7 +19,6 @@ final class AuthManager {
             print("success: \(success)")
             completion(success)
             if let error = error {
-                print("Error: \(error)")
                 errorHandler()
             }
         }

@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MessageUI
 
 class BaseVC: UIViewController {
 
@@ -54,8 +55,11 @@ class BaseVC: UIViewController {
             vc.alertView.setText(message: "text_error".localized, leftButtonText: "text_inquiry".localized, rightButtonText: "text_exit".localized)
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
+            vc.leftButtonTapHandler = {
+                self.sendEmail()
+            }
             vc.rightButtonTapHandler = {
-                self.goAppSetting()
+                self.exitApp()
             }
             self.present(vc, animated: true)
         }
@@ -127,5 +131,21 @@ extension BaseVC: UIGestureRecognizerDelegate {
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+}
+
+// 이메일
+extension BaseVC: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let compseVC = MFMailComposeViewController()
+            compseVC.mailComposeDelegate = self
+            compseVC.setToRecipients(["joun406@gmail.com"])
+            self.present(compseVC, animated: true, completion: nil)
+        }
     }
 }
