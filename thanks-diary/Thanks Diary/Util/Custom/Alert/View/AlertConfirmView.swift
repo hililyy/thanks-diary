@@ -9,6 +9,8 @@ import UIKit
 
 final class AlertConfirmView: BaseView {
     
+    // MARK: - Property
+    
     private let backgroundView = UIView().then { view in
         view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
     }
@@ -45,6 +47,8 @@ final class AlertConfirmView: BaseView {
     private let lineViewX = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY3
     }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([backgroundView, alertView])

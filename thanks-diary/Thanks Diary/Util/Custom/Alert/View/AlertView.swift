@@ -9,6 +9,8 @@ import UIKit
 
 final class AlertView: BaseView {
     
+    // MARK: - Property
+    
     private let backgroundView = UIView().then { view in
         view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
     }
@@ -23,13 +25,14 @@ final class AlertView: BaseView {
         label.text = "text_alert_delete".localized
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .center
+        label.numberOfLines = 0
     }
     
     private let messageView = UIView()
     private let buttonView = UIView()
     
-    let cancelButton = UIButton(type: .custom).then { button in
-        button.setTitle("text_calcel".localized, for: .normal)
+    let leftButton = UIButton(type: .custom).then { button in
+        button.setTitle("text_cancel".localized, for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
@@ -37,7 +40,7 @@ final class AlertView: BaseView {
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
     }
     
-    let deleteButton = UIButton(type: .custom).then { button in
+    let rightButton = UIButton(type: .custom).then { button in
         button.setTitle("text_delete".localized, for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
@@ -58,13 +61,21 @@ final class AlertView: BaseView {
         view.backgroundColor = Color.COLOR_GRAY3
     }
     
+    // MARK: - Function
+    
+    func setText(message: String, leftButtonText: String, rightButtonText: String) {
+        messageLabel.text = message
+        leftButton.setTitle(leftButtonText, for: .normal)
+        rightButton.setTitle(rightButtonText, for: .normal)
+    }
+    
     override func addSubView() {
         addSubviews([backgroundView, alertView])
         backgroundView.addSubview(backButton)
         alertView.addSubview(messageView)
         messageView.addSubview(messageLabel)
         alertView.addSubviews([buttonView, lineViewX])
-        buttonView.addSubviews([cancelButton, deleteButton, lineViewY])
+        buttonView.addSubviews([leftButton, rightButton, lineViewY])
     }
     
     override func setConstraints() {
@@ -97,6 +108,8 @@ final class AlertView: BaseView {
         }
 
         messageLabel.snp.makeConstraints { make in
+            make.left.equalTo(messageView.snp.left).offset(15)
+            make.right.equalTo(messageView.snp.right).offset(-15)
             make.centerX.equalTo(messageView.snp.centerX)
             make.centerY.equalTo(messageView.snp.centerY).offset(10)
         }
@@ -115,7 +128,7 @@ final class AlertView: BaseView {
             make.bottom.equalTo(alertView.snp.bottom)
         }
 
-        cancelButton.snp.makeConstraints { make in
+        leftButton.snp.makeConstraints { make in
             make.top.equalTo(buttonView.snp.top)
             make.left.equalTo(buttonView.snp.left)
             make.right.equalTo(lineViewY.snp.left)
@@ -125,21 +138,21 @@ final class AlertView: BaseView {
 
         lineViewY.snp.makeConstraints { make in
             make.top.equalTo(buttonView.snp.top)
-            make.left.equalTo(cancelButton.snp.right)
-            make.right.equalTo(deleteButton.snp.left)
+            make.left.equalTo(leftButton.snp.right)
+            make.right.equalTo(rightButton.snp.left)
             make.bottom.equalTo(buttonView.snp.bottom)
             make.width.equalTo(1)
         }
 
-        deleteButton.snp.makeConstraints { make in
+        rightButton.snp.makeConstraints { make in
             make.top.equalTo(buttonView.snp.top)
             make.right.equalTo(buttonView.snp.right)
             make.bottom.equalTo(alertView.snp.bottom)
         }
 
-        cancelButton.snp.makeConstraints { make in
-            make.width.equalTo(deleteButton.snp.width)
-            make.height.equalTo(deleteButton.snp.height)
+        leftButton.snp.makeConstraints { make in
+            make.width.equalTo(rightButton.snp.width)
+            make.height.equalTo(rightButton.snp.height)
         }
     }
 }

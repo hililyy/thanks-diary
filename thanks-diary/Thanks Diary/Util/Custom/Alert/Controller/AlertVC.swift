@@ -9,7 +9,8 @@ import UIKit
 
 final class AlertVC: BaseVC {
     let alertView = AlertView()
-    var deleteButtonTapHandler: () -> () = { }
+    var leftButtonTapHandler: () -> () = { }
+    var rightButtonTapHandler: () -> () = { }
     
     override func loadView() {
         view = alertView
@@ -22,15 +23,19 @@ final class AlertVC: BaseVC {
     
     private func setTarget() {
         alertView.backButton.addTarget { _ in
-            self.popVC()
+            self.dismissVC()
         }
         
-        alertView.cancelButton.addTarget { _ in
-            self.popVC()
+        alertView.leftButton.addTarget { _ in
+            self.dismissVC() {
+                self.leftButtonTapHandler()
+            }
         }
         
-        alertView.deleteButton.addTarget { _ in
-            self.deleteButtonTapHandler()
+        alertView.rightButton.addTarget { _ in
+            self.dismissVC() {
+                self.rightButtonTapHandler()
+            }
         }
     }
 }
