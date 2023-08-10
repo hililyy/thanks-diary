@@ -21,7 +21,7 @@ class BaseVC: UIViewController {
         setToast()
     }
     
-    func setNavigation() {
+    private func setNavigation() {
         navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -30,7 +30,39 @@ class BaseVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    
+    func goAppSetting() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+        
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+        }
+    }
+    
+    func exitApp() {
+        DispatchQueue.main.async {
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                exit(0)
+            }
+        }
+    }
+    
+    func showErrorPopup() {
+        DispatchQueue.main.async {
+            let vc = AlertVC()
+            vc.alertView.setText(message: "text_error".localized, leftButtonText: "text_inquiry".localized, rightButtonText: "text_exit".localized)
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.rightButtonTapHandler = {
+                self.dismissVC()
+            }
+            vc.rightButtonTapHandler = {
+                self.goAppSetting()
+            }
+            self.present(vc, animated: true)
+        }
+    }
 }
 
 // 토스트 설정
