@@ -21,6 +21,10 @@ class SettingLabelTVCell: BaseTVCell {
         label.textColor = Color.COLOR_GRAY2
     }
     
+    override func configureUI() {
+        selectionStyle = .none
+    }
+    
     override func addSubView() {
         addSubviews([titleLabel, contentsLabel])
     }

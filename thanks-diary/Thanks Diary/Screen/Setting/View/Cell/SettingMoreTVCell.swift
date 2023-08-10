@@ -20,6 +20,10 @@ final class SettingMoreTVCell: BaseTVCell {
         imageView.image = Image.IC_MORE
     }
     
+    override func configureUI() {
+        selectionStyle = .none
+    }
+    
     override func addSubView() {
         addSubviews([titleLabel, moreImageView])
     }
