@@ -7,10 +7,11 @@
 */
 
 "text_ok" = "확인";
-"text_calcel" = "취소";
+"text_cancel" = "취소";
 "text_delete" = "삭제";
 "text_today" = "오늘";
 "text_complete" = "완료";
+"text_close" = "닫기";
 "text_title" = "제목";
 "text_contents" = "내용";
 "text_thanks_diary" = "감사일기";
@@ -38,3 +39,9 @@
 "text_toast" = "제목과 내용을 모두 입력해 주세요.";
 "text_push_title" = "💙감사일기를 작성할 시간이에요💙";
 "text_push_contents" = "오늘의 일기를 작성해볼까요?💌";
+"text_app_setting_1" = "알림 설정 권한이 거부되었습니다.\n\n설정으로 이동하여 알림을 허용해주세요.";
+"text_app_setting_2" = "설정으로 이동";
+"text_error" = "오류가 발생하였습니다.\n\n앱을 다시 실행하거나 관리자에게 문의해주세요.";
+"text_inquiry" = "문의하기";
+"text_exit" = "앱 종료";
+"text_on_alarm" = "알림 설정이 켜져있어야 시간 설정이 가능합니다.";
