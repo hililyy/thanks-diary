@@ -189,6 +189,7 @@
 		2A4F9301290071C200ECFE88 /* ErrorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCase.swift; sourceTree = "<group>"; };
 		2A55DC4A2A6D446A00A13F58 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A55DC4F2A6D6F8100A13F58 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		2A55DC722A85300D00A13F58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWVC.swift; sourceTree = "<group>"; };
 		2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteVC.swift; sourceTree = "<group>"; };
 		2A7241CE28B2A57E0040ADE9 /* ReadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadVC.swift; sourceTree = "<group>"; };
@@ -888,6 +889,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2A55DC4A2A6D446A00A13F58 /* ko */,
+				2A55DC722A85300D00A13F58 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
