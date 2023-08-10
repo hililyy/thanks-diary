@@ -17,7 +17,7 @@ final class MainVC: BaseVC {
     private let mainView = MainView()
     let viewModel = MainViewModel()
     
-    // MARK:- Life Cycle
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = mainView

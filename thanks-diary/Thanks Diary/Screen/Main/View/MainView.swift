@@ -55,12 +55,12 @@ final class MainView: BaseView {
         label.text = Date().convertString(format: "dd일 (E)")
     }
     
-    var diaryTableView = UITableView().then { view in
-        view.rowHeight = 60
-        view.separatorColor = .clear
-        view.separatorStyle = .none
-        view.register(DetailDiaryTVCell.self, forCellReuseIdentifier: DetailDiaryTVCell.id)
-        view.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
+    var diaryTableView = UITableView().then { tableView in
+        tableView.rowHeight = 60
+        tableView.separatorColor = .clear
+        tableView.separatorStyle = .none
+        tableView.register(DetailDiaryTVCell.self, forCellReuseIdentifier: DetailDiaryTVCell.id)
+        tableView.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
     }
     
     private var emptyImageView = UIImageView().then { view in

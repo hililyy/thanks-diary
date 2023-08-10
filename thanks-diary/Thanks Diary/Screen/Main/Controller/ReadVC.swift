@@ -15,7 +15,7 @@ final class ReadVC: BaseVC {
     var selectedIndex: Int?
     var parentVC: MainVC?
     
-    // MARK:- Life Cycle
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = readView
@@ -54,7 +54,10 @@ final class ReadVC: BaseVC {
             let vc = AlertVC()
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
-            vc.deleteButtonTapHandler = {
+            vc.leftButtonTapHandler = {
+                self.dismissVC()
+            }
+            vc.rightButtonTapHandler = {
                 self.parentVC?.viewModel.deleteDetailData(selectedIndex: selectedIndex) { result in
                     if result {
                         self.setMainToRoot()
