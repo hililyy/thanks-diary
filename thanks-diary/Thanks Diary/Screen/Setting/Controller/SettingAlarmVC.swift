@@ -31,11 +31,7 @@ final class SettingAlarmVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         AuthManager.shared.getNotiStatus { status in
             if status == .denied {
-                LocalNotificationManager.shared.removePendingNotification()
-                UserDefaultManager.delete(forKey: UserDefaultKey.PUSH_TIME)
-                UserDefaultManager.set(false, forKey: UserDefaultKey.IS_PUSH)
-                self.switchFlag = false
-                self.reloadData()
+                self.setNotification(isOn: false)
             } else {
                 self.switchFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PUSH)
             }
@@ -49,6 +45,25 @@ final class SettingAlarmVC: BaseVC {
         
         dateFormatter.dateFormat = formatString
         return dateFormatter.string(from: date)
+    }
+    
+    func setNotification(isOn: Bool) {
+        if isOn {
+            LocalNotificationManager.shared.requestSendNotification(time: Date())
+            UserDefaultManager.set(Date(), forKey: UserDefaultKey.PUSH_TIME)
+            UserDefaultManager.set(true, forKey: UserDefaultKey.IS_PUSH)
+            self.viewModel.selectedTime = Date()
+            self.switchFlag = true
+            
+        } else {
+            LocalNotificationManager.shared.removePendingNotification()
+            UserDefaultManager.delete(forKey: UserDefaultKey.PUSH_TIME)
+            UserDefaultManager.set(false, forKey: UserDefaultKey.IS_PUSH)
+            self.viewModel.selectedTime = nil
+            self.switchFlag = false
+        }
+        
+        self.reloadData()
     }
     
     func showSettingAlert() {
@@ -94,17 +109,10 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                         
                         // on -> off로 가는 상황
                         if isPush {
-                            LocalNotificationManager.shared.removePendingNotification()
-                            UserDefaultManager.delete(forKey: UserDefaultKey.PUSH_TIME)
-                            UserDefaultManager.set(false, forKey: UserDefaultKey.IS_PUSH)
-                            self.viewModel.selectedTime = nil
-                            
+                            self.setNotification(isOn: false)
                         // off -> on으로 가는 상황
                         } else {
-                            LocalNotificationManager.shared.requestSendNotification(time: Date())
-                            UserDefaultManager.set(Date(), forKey: UserDefaultKey.PUSH_TIME)
-                            UserDefaultManager.set(true, forKey: UserDefaultKey.IS_PUSH)
-                            self.viewModel.selectedTime = Date()
+                            self.setNotification(isOn: true)
                         }
                         
                         self.reloadData()
@@ -112,20 +120,20 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                         
                     case .denied:
                         self.switchFlag = false
-                        self.reloadData()
                         self.showSettingAlert()
+                        self.reloadData()
                         break
                         
                     default:
                         AuthManager.shared.requestNotiAuth(completion: { result in
                             if result {
                                 self.switchFlag = true
-                                self.reloadData()
                             } else {
                                 self.switchFlag = false
-                                self.reloadData()
                                 self.showSettingAlert()
                             }
+                            
+                            self.reloadData()
                         }, errorHandler: {
                             self.showErrorPopup()
                         })
