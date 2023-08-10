@@ -26,6 +26,8 @@ final class DetailWriteVC: BaseVC {
         super.viewDidLoad()
         configureUI()
         setTarget()
+        
+        detailWriteView.titleTextField.delegate = self
     }
     
     // MARK: - Function
@@ -93,5 +95,12 @@ final class DetailWriteVC: BaseVC {
                     }
             }
         }
+    }
+}
+
+extension DetailWriteVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newLength = (textField.text?.count ?? 0) + string.count - range.length
+        return newLength <= 20
     }
 }

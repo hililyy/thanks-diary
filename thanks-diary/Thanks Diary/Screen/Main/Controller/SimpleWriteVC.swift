@@ -14,7 +14,7 @@ final class SimpleWriteVC: BaseVC {
     var delegate: reloadDelegate?
     var updateFlag: Bool = false
     var selectedIndex: Int?
-    let maxCount: Int = 24
+    let maxCount: Int = 22
     var parentVC: MainVC?
     let simpleWriteView = SimpleWriteView()
     
