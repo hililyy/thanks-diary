@@ -54,9 +54,6 @@ final class ReadVC: BaseVC {
             let vc = AlertVC()
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
-            vc.leftButtonTapHandler = {
-                self.dismissVC()
-            }
             vc.rightButtonTapHandler = {
                 self.parentVC?.viewModel.deleteDetailData(selectedIndex: selectedIndex) { result in
                     if result {

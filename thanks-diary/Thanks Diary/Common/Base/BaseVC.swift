@@ -55,9 +55,6 @@ class BaseVC: UIViewController {
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             vc.rightButtonTapHandler = {
-                self.dismissVC()
-            }
-            vc.rightButtonTapHandler = {
                 self.goAppSetting()
             }
             self.present(vc, animated: true)

@@ -54,7 +54,7 @@ final class DetailWriteView: BaseView {
         imageView.image = Image.IMG_UNDERLINE
     }
     
-    private var titleTextField = UITextField().then { textField in
+    var titleTextField = UITextField().then { textField in
         textField.font = Font.NANUM_ULTRALIGHT_17
         textField.textColor = Color.COLOR_GRAY1
         textField.layer.cornerRadius = 20

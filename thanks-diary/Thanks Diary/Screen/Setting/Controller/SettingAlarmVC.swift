@@ -72,9 +72,6 @@ final class SettingAlarmVC: BaseVC {
             vc.alertView.setText(message: "text_app_setting_1".localized, leftButtonText: "text_cancel".localized, rightButtonText: "text_app_setting_2".localized)
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
-            vc.leftButtonTapHandler = {
-                self.dismissVC()
-            }
             vc.rightButtonTapHandler = {
                 self.goAppSetting()
             }
