@@ -119,10 +119,11 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                     default:
                         AuthManager.shared.requestNotiAuth(completion: { result in
                             if result {
-                                print("권한 허용")
+                                self.switchFlag = true
+                                self.reloadData()
                             } else {
-                                print("설정 팝업")
-                                // TODO: 설정 팝업
+                                self.switchFlag = false
+                                self.reloadData()
                                 self.showSettingAlert()
                             }
                         }, errorHandler: {
