@@ -40,6 +40,12 @@ final class SettingAlarmVC: BaseVC {
     
     // MARK: - Function
     
+    private func setTarget() {
+        settingAlarmView.backButtonTapHandler = {
+            self.popVC()
+        }
+    }
+    
     func changeDateToString(date: Date, formatString: String) -> String {
         let dateFormatter = DateFormatter()
         
