@@ -11,14 +11,12 @@ final class SimpleWriteVC: BaseVC {
     
     // MARK: - Property
     
-    var delegate: reloadDelegate?
-    var updateFlag: Bool = false
-    var selectedIndex: Int?
-    let maxCount: Int = 22
-    var parentVC: MainVC?
-    let simpleWriteView = SimpleWriteView()
+    private let simpleWriteView = SimpleWriteView()
+    var viewModel: MainViewModel?
+    var beforeData: DiaryModel?
+    let maxCount: Int = 24
     
-    // MARK: - Life Cycle
+    // MARK:- Life Cycle
     
     override func loadView() {
         view = simpleWriteView
@@ -35,36 +33,40 @@ final class SimpleWriteVC: BaseVC {
     
     private func configureUI() {
         
-        simpleWriteView.setHiddenForDeleteButton(!updateFlag)
+        simpleWriteView.setHiddenForDeleteButton(beforeData == nil)
         
-        if updateFlag == true {
-            guard let index = selectedIndex,
-                  let text = parentVC?.viewModel.selectedSimpleData[index].contents else { return }
+        if let beforeData = beforeData {
+            guard let text = beforeData.contents else { return }
             simpleWriteView.setContentsTextView(text: text)
         }
     }
     
     private func setTarget() {
+        
         simpleWriteView.completeButtonTapHandler = {
-            let contents = self.simpleWriteView.getContentsTextViewText()
+            let newData = DiaryModel(
+                type: .simple,
+                title: "",
+                contents: self.simpleWriteView.getContentsTextViewText(),
+                date: self.viewModel?.selectedDate.value.convertString()
+            )
             
-            if contents.isEmpty {
+            if let contents = newData.contents,
+               contents.isEmpty {
                 // 텍스트 뷰가 비어있으면 토스트 띄움
                 self.simpleWriteView.setCompleteButtonEnable(false)
                 self.toast(message: "내용을 입력해 주세요.", withDuration: 0.5, delay: 1.5, type: "top") {
                     self.simpleWriteView.setCompleteButtonEnable(true)
                 }
             } else {
-                if self.updateFlag == true {
+                if let beforeData = self.beforeData {
                     // 수정
-                    guard let index = self.selectedIndex else { return }
-                    
-                    self.parentVC?.viewModel.updateSimpleData(
-                        selectedIndex: index,
-                        afterContents: contents) { result in
+                    self.viewModel?.updateSimpleData(
+                        beforeData: beforeData,
+                        newData: newData) { result in
                             if result {
                                 self.dismissVC {
-                                    self.delegate?.reloadData()
+                                    self.viewModel?.getData()
                                 }
                             } else {
                                 self.showErrorPopup()
@@ -72,10 +74,10 @@ final class SimpleWriteVC: BaseVC {
                         }
                 } else {
                     // 작성
-                    self.parentVC?.viewModel.setSimpleData(contents: contents) { result in
+                    self.viewModel?.setSimpleData(newData: newData) { result in
                         if result {
-                            self.dismissVC {
-                                self.delegate?.reloadData()
+                            self.dismissVC(){
+                                self.viewModel?.getData()
                             }
                         } else {
                             self.showErrorPopup()
@@ -90,13 +92,10 @@ final class SimpleWriteVC: BaseVC {
         }
         
         simpleWriteView.deleteButtonTapHandler = {
-            guard let index = self.selectedIndex else { return }
-            
-            self.parentVC?.viewModel.deleteSimpleData(selectedIndex: index) { result in
+            guard let beforeData = self.beforeData else { return }
+            self.viewModel?.deleteSimpleData(deleteData: beforeData) { result in
                 if result {
-                    self.dismissVC {
-                        self.delegate?.reloadData()
-                    }
+                    self.dismissVC()
                 } else {
                     self.showErrorPopup()
                 }
