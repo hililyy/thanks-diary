@@ -142,8 +142,6 @@ final class MainVC: BaseVC {
             .bind { [weak self] (diary, index) in
                 guard let self = self else { return }
                 
-                self.viewModel.selectedIndex = index.row
-                
                 if diary.type == .detail {
                     let vc = ReadVC()
                     vc.viewModel = self.viewModel

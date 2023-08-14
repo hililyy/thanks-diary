@@ -53,8 +53,8 @@ final class ReadVC: BaseVC {
             let vc = AlertVC()
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
-            vc.leftButtonTapHandler = {
-                self.viewModel?.deleteDetailData(deleteData: diaryData) { result in
+            vc.rightButtonTapHandler = {
+                self.viewModel?.deleteData(deleteData: diaryData) { result in
                     if result {
                         self.setMainToRoot()
                     } else {
@@ -64,7 +64,6 @@ final class ReadVC: BaseVC {
                     }
                 }
             }
-            
             self.present(vc, animated: true)
         }
         

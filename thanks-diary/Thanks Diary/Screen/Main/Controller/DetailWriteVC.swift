@@ -69,7 +69,7 @@ final class DetailWriteVC: BaseVC {
         } else {
             if let beforeData = beforeData {
                 // 수정
-                viewModel?.updateDetailData(beforeData: beforeData, newData: newData) { result in
+                viewModel?.updateData(beforeData: beforeData, newData: newData) { result in
                     if result {
                         self.popVC()
                         self.viewModel?.getData()
@@ -79,7 +79,7 @@ final class DetailWriteVC: BaseVC {
                 }
             } else {
                 // 글 작성
-                viewModel?.setDetailData(newData: newData) { result in
+                viewModel?.setData(newData: newData) { result in
                     if result {
                         self.popVC()
                         self.viewModel?.getData()

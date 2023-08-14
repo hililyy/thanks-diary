@@ -61,7 +61,7 @@ final class SimpleWriteVC: BaseVC {
             } else {
                 if let beforeData = self.beforeData {
                     // 수정
-                    self.viewModel?.updateSimpleData(
+                    self.viewModel?.updateData(
                         beforeData: beforeData,
                         newData: newData) { result in
                             if result {
@@ -74,7 +74,7 @@ final class SimpleWriteVC: BaseVC {
                         }
                 } else {
                     // 작성
-                    self.viewModel?.setSimpleData(newData: newData) { result in
+                    self.viewModel?.setData(newData: newData) { result in
                         if result {
                             self.dismissVC(){
                                 self.viewModel?.getData()
@@ -93,7 +93,7 @@ final class SimpleWriteVC: BaseVC {
         
         simpleWriteView.deleteButtonTapHandler = {
             guard let beforeData = self.beforeData else { return }
-            self.viewModel?.deleteSimpleData(deleteData: beforeData) { result in
+            self.viewModel?.deleteData(deleteData: beforeData) { result in
                 if result {
                     self.dismissVC()
                 } else {
