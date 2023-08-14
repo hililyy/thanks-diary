@@ -17,9 +17,8 @@ final class MainViewModel {
 
     // 선택한 날짜의 일기 데이터
     lazy var selectedAllData: Observable<[DiaryModel]> = selectedDate.map { date in
-        print(date.convertString())
-        guard let detailData = self.allDetailDataRx.value[date.convertString()],
-              let simpleData = self.allSimpleDataRx.value[date.convertString()] else { return [] }
+        let detailData = self.allDetailDataRx.value[date.convertString()] ?? []
+        let simpleData = self.allSimpleDataRx.value[date.convertString()] ?? []
         return detailData + simpleData
     }
     
@@ -29,9 +28,6 @@ final class MainViewModel {
     init() {
         getData()
     }
-    
-
-    
 }
 
 // 다이어리 조회, 생성, 수정, 삭제
