@@ -24,6 +24,7 @@ final class DetailDiaryTVCell: BaseTVCell {
     
     override func configureUI() {
         selectionStyle = .none
+        backgroundColor = .clear
     }
     
     override func addSubView() {

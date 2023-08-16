@@ -64,6 +64,7 @@ final class DetailWriteView: BaseView {
     }
     
     private var contentsTextView = UITextView().then { textField in
+        textField.backgroundColor = .clear
         textField.font = Font.NANUM_ULTRALIGHT_17
         textField.textColor = Color.COLOR_GRAY1
         textField.layer.cornerRadius = 20

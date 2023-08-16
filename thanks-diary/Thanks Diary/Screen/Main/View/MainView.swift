@@ -56,6 +56,7 @@ final class MainView: BaseView {
     }
     
     var diaryTableView = UITableView().then { tableView in
+        tableView.backgroundColor = .clear
         tableView.rowHeight = 60
         tableView.separatorColor = .clear
         tableView.separatorStyle = .none

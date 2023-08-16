@@ -24,6 +24,7 @@ final class SettingAlarmVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setTarget()
         settingAlarmView.tableView.dataSource = self
         settingAlarmView.tableView.delegate = self
     }

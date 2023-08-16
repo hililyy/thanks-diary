@@ -23,6 +23,7 @@ final class SettingView: BaseView {
     }
     
     var tableView = UITableView().then { tableView in
+        tableView.backgroundColor = .clear
         tableView.rowHeight = 55
         tableView.register(SettingSwitchTVCell.self, forCellReuseIdentifier: SettingSwitchTVCell.id)
         tableView.register(SettingMoreTVCell.self, forCellReuseIdentifier: SettingMoreTVCell.id)

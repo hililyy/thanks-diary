@@ -22,7 +22,7 @@ final class SettingSwitchTVCell: BaseTVCell {
     
     override func configureUI() {
         selectionStyle = .none
-        
+        backgroundColor = .clear
         settingSwitch.addTarget { _ in
             self.switchTapHandler()
         }

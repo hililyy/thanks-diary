@@ -23,6 +23,7 @@ final class SimpleDiaryTVCell: BaseTVCell {
     
     override func configureUI() {
         selectionStyle = .none
+        backgroundColor = .clear
     }
     
     override func addSubView() {

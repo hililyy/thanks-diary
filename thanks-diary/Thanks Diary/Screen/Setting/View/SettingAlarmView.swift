@@ -23,6 +23,7 @@ final class SettingAlarmView: BaseView {
     }
     
     var tableView = UITableView().then { tableView in
+        tableView.backgroundColor = .clear
         tableView.rowHeight = 55
         tableView.register(SettingSwitchTVCell.self, forCellReuseIdentifier: SettingSwitchTVCell.id)
         tableView.register(SettingLabelTVCell.self, forCellReuseIdentifier: SettingLabelTVCell.id)

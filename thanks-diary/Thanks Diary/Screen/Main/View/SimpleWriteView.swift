@@ -27,6 +27,7 @@ final class SimpleWriteView: BaseView {
     }
     
     var contentsTextView = UITextView().then { textView in
+        textView.backgroundColor = .clear
         textView.font = Font.NANUM_ULTRALIGHT_17
         textView.textColor = Color.COLOR_GRAY1
         textView.layer.cornerRadius = 15

@@ -39,6 +39,7 @@ final class FloatingButtonCloseView: BaseView {
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
         label.textAlignment = .right
+        label.textColor = .black
     }
     
     var simpleLabel = PaddingLabel().then { label in
@@ -47,6 +48,7 @@ final class FloatingButtonCloseView: BaseView {
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
         label.textAlignment = .right
+        label.textColor = .black
     }
     
     var detailButtonCenterY: Constraint!
