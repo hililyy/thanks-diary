@@ -170,7 +170,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .overCurrentContext
                 vc.delegate = self
-                vc.parentVC = self
+                vc.viewModel = self.viewModel
                 self.present(vc, animated: true)
             } else {
                 toast(message: "text_on_alarm".localized, withDuration: 1, delay: 1, type: "top", completion: {})

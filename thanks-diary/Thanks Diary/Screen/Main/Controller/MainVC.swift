@@ -51,7 +51,7 @@ final class MainVC: BaseVC {
             vc.modalTransitionStyle = .crossDissolve
             vc.detailHandler = {
                 let vc = DetailWriteVC()
-                vc.parentVC = self
+                vc.viewModel = self.viewModel
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -59,7 +59,7 @@ final class MainVC: BaseVC {
                 let vc = SimpleWriteVC()
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .overFullScreen
-                vc.parentVC = self
+                vc.viewModel = self.viewModel
                 vc.delegate = self
                 vc.updateFlag = false
                 self.present(vc, animated: true)
@@ -192,7 +192,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
             viewModel.selectedDate = viewModel.selectedDetailData[indexPath.row].date?.convertDate() ?? Date()
             
             let vc = ReadVC()
-            vc.parentVC = self
+            vc.viewModel = self.viewModel
             vc.selectedIndex = indexPath.row
             
             navigationController?.pushViewController(vc, animated: true)
@@ -202,7 +202,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
             let vc = SimpleWriteVC()
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overFullScreen
-            vc.parentVC = self
+            vc.viewModel = self.viewModel
             vc.selectedIndex = indexPath.row - viewModel.selectedDetailData.count
             vc.delegate = self
             vc.updateFlag = true

@@ -13,7 +13,7 @@ final class SettingAlarmDetailVC: BaseVC {
     // MARK: - Property
     
     let settingAlarmDetailView = SettingAlarmDetailView()
-    var parentVC: SettingAlarmVC?
+    var viewModel: SettingViewModel?
     var delegate: reloadDelegate?
     
     // MARK: - Life Cycle
@@ -24,7 +24,7 @@ final class SettingAlarmDetailVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingAlarmDetailView.setDatepickerDate(date: parentVC?.viewModel.selectedTime)
+        settingAlarmDetailView.setDatepickerDate(date: viewModel?.selectedTime)
         setTarget()
     }
     
@@ -39,7 +39,7 @@ final class SettingAlarmDetailVC: BaseVC {
             self.dismissVC() {
                 UserDefaultManager.set(time, forKey: UserDefaultKey.PUSH_TIME)
                 LocalNotificationManager.shared.requestSendNotification(time: time)
-                self.parentVC?.viewModel.selectedTime = time
+                self.viewModel?.selectedTime = time
                 self.delegate?.reloadData()
             }
         }

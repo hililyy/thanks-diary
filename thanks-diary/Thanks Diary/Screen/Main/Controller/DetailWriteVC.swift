@@ -12,7 +12,7 @@ final class DetailWriteVC: BaseVC {
     // MARK: - Property
     
     var updateFlag: Bool = false
-    var parentVC: MainVC?
+    var viewModel: MainViewModel?
     var selectedIndex: Int?
     let detailWriteView = DetailWriteView()
     
@@ -33,12 +33,12 @@ final class DetailWriteVC: BaseVC {
     // MARK: - Function
     
     private func configureUI() {
-        detailWriteView.setTopLabelData(date: parentVC?.viewModel.selectedDate)
+        detailWriteView.setTopLabelData(date: viewModel?.selectedDate)
         
         if updateFlag == true {
             guard let index = selectedIndex,
-                  let titleText = parentVC?.viewModel.selectedDetailData[index].title,
-                  let contentsText = parentVC?.viewModel.selectedDetailData[index].contents else { return }
+                  let titleText = viewModel?.selectedDetailData[index].title,
+                  let contentsText = viewModel?.selectedDetailData[index].contents else { return }
             
             detailWriteView.setTextFieldData(titleText: titleText,
                                              contentsText: contentsText)
@@ -67,13 +67,13 @@ final class DetailWriteVC: BaseVC {
                 // 수정
                 guard let index = selectedIndex else { return }
                 
-                parentVC?.viewModel.updateDetailData(
+                viewModel?.updateDetailData(
                     selectedIndex: index,
                     afterTitle: detailWriteView.getTitleText(),
                     afterContents: detailWriteView.getContentsText()) { result in
                         if result {
-                            self.parentVC?.viewModel.getAllDiaryData {
-                                self.parentVC?.viewModel.getSelectedDiaryData {
+                            self.viewModel?.getAllDiaryData {
+                                self.viewModel?.getSelectedDiaryData {
                                     self.popVC()
                                 }
                             }
@@ -84,7 +84,7 @@ final class DetailWriteVC: BaseVC {
             } else {
                 
                 // 글 작성
-                parentVC?.viewModel.setDetailData(
+                viewModel?.setDetailData(
                     title: detailWriteView.getTitleText(),
                     contents: detailWriteView.getContentsText()) { result in
                         if result {

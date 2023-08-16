@@ -15,7 +15,7 @@ final class SimpleWriteVC: BaseVC {
     var updateFlag: Bool = false
     var selectedIndex: Int?
     let maxCount: Int = 22
-    var parentVC: MainVC?
+    var viewModel: MainViewModel?
     let simpleWriteView = SimpleWriteView()
     
     // MARK: - Life Cycle
@@ -39,7 +39,7 @@ final class SimpleWriteVC: BaseVC {
         
         if updateFlag == true {
             guard let index = selectedIndex,
-                  let text = parentVC?.viewModel.selectedSimpleData[index].contents else { return }
+                  let text = viewModel?.selectedSimpleData[index].contents else { return }
             simpleWriteView.setContentsTextView(text: text)
         }
     }
@@ -59,7 +59,7 @@ final class SimpleWriteVC: BaseVC {
                     // 수정
                     guard let index = self.selectedIndex else { return }
                     
-                    self.parentVC?.viewModel.updateSimpleData(
+                    self.viewModel?.updateSimpleData(
                         selectedIndex: index,
                         afterContents: contents) { result in
                             if result {
@@ -72,7 +72,7 @@ final class SimpleWriteVC: BaseVC {
                         }
                 } else {
                     // 작성
-                    self.parentVC?.viewModel.setSimpleData(contents: contents) { result in
+                    self.viewModel?.setSimpleData(contents: contents) { result in
                         if result {
                             self.dismissVC {
                                 self.delegate?.reloadData()
@@ -92,7 +92,7 @@ final class SimpleWriteVC: BaseVC {
         simpleWriteView.deleteButtonTapHandler = {
             guard let index = self.selectedIndex else { return }
             
-            self.parentVC?.viewModel.deleteSimpleData(selectedIndex: index) { result in
+            self.viewModel?.deleteSimpleData(selectedIndex: index) { result in
                 if result {
                     self.dismissVC {
                         self.delegate?.reloadData()

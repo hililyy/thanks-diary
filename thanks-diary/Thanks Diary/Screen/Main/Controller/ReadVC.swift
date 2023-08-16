@@ -13,7 +13,7 @@ final class ReadVC: BaseVC {
     
     private let readView = ReadView()
     var selectedIndex: Int?
-    var parentVC: MainVC?
+    var viewModel: MainViewModel?
     
     // MARK: - Life Cycle
     
@@ -33,11 +33,11 @@ final class ReadVC: BaseVC {
     // MARK: - Function
     
     private func configureUI() {
-        readView.setTopLabelData(date: parentVC?.viewModel.selectedDate)
+        readView.setTopLabelData(date: viewModel?.selectedDate)
         
         guard let index = selectedIndex,
-              let titleText = parentVC?.viewModel.selectedDetailData[index].title,
-              let contentsText = parentVC?.viewModel.selectedDetailData[index].contents else { return }
+              let titleText = viewModel?.selectedDetailData[index].title,
+              let contentsText = viewModel?.selectedDetailData[index].contents else { return }
         
         readView.setTextFieldData(titleText: titleText,
                                   contentsText: contentsText)
@@ -55,7 +55,7 @@ final class ReadVC: BaseVC {
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             vc.rightButtonTapHandler = {
-                self.parentVC?.viewModel.deleteDetailData(selectedIndex: selectedIndex) { result in
+                self.viewModel?.deleteDetailData(selectedIndex: selectedIndex) { result in
                     if result {
                         self.setMainToRoot()
                     } else {
@@ -73,7 +73,7 @@ final class ReadVC: BaseVC {
             let vc = DetailWriteVC()
             vc.updateFlag = true
             vc.selectedIndex = self.selectedIndex
-            vc.parentVC = self.parentVC
+            vc.viewModel = self.viewModel
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
