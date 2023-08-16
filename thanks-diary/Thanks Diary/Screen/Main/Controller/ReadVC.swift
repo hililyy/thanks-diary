@@ -12,10 +12,10 @@ final class ReadVC: BaseVC {
     // MARK: - Property
     
     private let readView = ReadView()
-    var diaryData: DiaryModel?
-    var viewModel: MainViewModel?
+    var selectedIndex: Int?
+    var parentVC: MainVC?
     
-    // MARK:- Life Cycle
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = readView
@@ -33,28 +33,29 @@ final class ReadVC: BaseVC {
     // MARK: - Function
     
     private func configureUI() {
-        readView.setTopLabelData(date: viewModel?.selectedDate.value)
+        readView.setTopLabelData(date: parentVC?.viewModel.selectedDate)
         
-        guard let titleText = diaryData?.title,
-              let contentsText = diaryData?.contents else { return }
+        guard let index = selectedIndex,
+              let titleText = parentVC?.viewModel.selectedDetailData[index].title,
+              let contentsText = parentVC?.viewModel.selectedDetailData[index].contents else { return }
         
         readView.setTextFieldData(titleText: titleText,
                                   contentsText: contentsText)
     }
     
     private func setTarget() {
-        guard let diaryData = diaryData else { return }
-        
         readView.backButtonTapHandler = {
             self.popVC()
         }
         
         readView.deleteButtonTapHandler = {
+            guard let selectedIndex = self.selectedIndex else { return }
+            
             let vc = AlertVC()
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             vc.rightButtonTapHandler = {
-                self.viewModel?.deleteData(deleteData: diaryData) { result in
+                self.parentVC?.viewModel.deleteDetailData(selectedIndex: selectedIndex) { result in
                     if result {
                         self.setMainToRoot()
                     } else {
@@ -64,13 +65,15 @@ final class ReadVC: BaseVC {
                     }
                 }
             }
+            
             self.present(vc, animated: true)
         }
         
         readView.updateButtonTapHandler = {
             let vc = DetailWriteVC()
-            vc.viewModel = self.viewModel
-            vc.beforeData = diaryData
+            vc.updateFlag = true
+            vc.selectedIndex = self.selectedIndex
+            vc.parentVC = self.parentVC
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

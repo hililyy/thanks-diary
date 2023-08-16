@@ -11,14 +11,14 @@ final class SimpleDiaryTVCell: BaseTVCell {
     
     static let id = "SimpleDiaryTVCell"
     
-    var dotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
-        view.layer.cornerRadius = 3.5
+    var dotView = UIView().then {
+        $0.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        $0.layer.cornerRadius = 3.5
     }
     
-    var titleLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_17
-        label.textColor = Color.COLOR_GRAY1
+    var titleLabel = UILabel().then {
+        $0.font = Font.NANUM_ULTRALIGHT_17
+        $0.textColor = Color.COLOR_GRAY1
     }
     
     override func configureUI() {
