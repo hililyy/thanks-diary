@@ -16,8 +16,8 @@ final class MainVC: BaseVC {
     
     private let mainView = MainView()
     let viewModel = MainViewModel()
-    
-    // MARK: - Life Cycle
+
+    // MARK:- Life Cycle
     
     override func loadView() {
         view = mainView
@@ -28,22 +28,41 @@ final class MainVC: BaseVC {
         
         mainView.calendar.delegate = self
         mainView.calendar.dataSource = self
-        mainView.diaryTableView.delegate = self
-        mainView.diaryTableView.dataSource = self
-        
+        setTable()
         setTarget()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        getAllData()
+        setObservable()
     }
     
     // MARK: - Function
     
-    private func setTarget() {
+    func setObservable() {
+        // 선택한 날짜에 대한 데이터가 변경됐을 때 (tableView reload)
+        viewModel.selectedAllData
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] allData in
+                guard let self = self else { return }
+                self.mainView.diaryTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
         
+        // 모든 다이어리 데이터가 갱신 되었을 때 (선택한 날짜 [string] 갱신)
+        Observable.combineLatest(viewModel.allDetailDataRx, viewModel.allSimpleDataRx)
+            .subscribe(onNext: { [weak self] detailDatas, simpleDatas in
+                guard let self = self else { return }
+                let detailData = detailDatas.map({ $0.key })
+                let simpleData = simpleDatas.map({ $0.key })
+                self.viewModel.diaryDates = Set(detailData).union(simpleData)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.selectedDate
+            .bind(onNext: {
+                self.mainView.setTodayLabelText(date: $0)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setTarget() {
         // 플로팅 버튼 핸들러 설정
         mainView.floatingButtonTapHandler = {
             let vc = FloatingButtonVC()
@@ -51,7 +70,8 @@ final class MainVC: BaseVC {
             vc.modalTransitionStyle = .crossDissolve
             vc.detailHandler = {
                 let vc = DetailWriteVC()
-                vc.parentVC = self
+                vc.viewModel = self.viewModel
+                vc.beforeData = nil
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -59,9 +79,8 @@ final class MainVC: BaseVC {
                 let vc = SimpleWriteVC()
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .overFullScreen
-                vc.parentVC = self
-                vc.delegate = self
-                vc.updateFlag = false
+                vc.viewModel = self.viewModel
+                vc.beforeData = nil
                 self.present(vc, animated: true)
             }
             
@@ -80,29 +99,70 @@ final class MainVC: BaseVC {
         }
     }
     
-    // 모든 일기 데이터 셋팅
-    private func getAllData() {
-        viewModel.getAllDiaryData {
-            self.viewModel.getSelectedDiaryData {
-                self.mainView.calendar.reloadData()
-                self.mainView.diaryTableView.reloadData()
-            }
-        }
+    private func setTable() {
+        viewModel.selectedAllData
+            .subscribe(onNext: { allData in
+                if allData.isEmpty {
+                    let date = self.viewModel.selectedDate.value
+                    self.mainView.setHiddenForEmptyView(isHidden: false)
+                    
+                    if date == Date() {
+                        self.mainView.setImageForEmptyView(image: Image.IMG_NOT_TODAY)
+                    } else {
+                        self.mainView.setImageForEmptyView(image: Image.IMG_NOT_BEFORE)
+                    }
+                } else {
+                    self.mainView.setHiddenForEmptyView(isHidden: true)
+                    self.bindTableView()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
-    // 선택한 날짜에 해당하는 데이터 셋팅
-    private func getSelectedData() {
-        self.viewModel.getSelectedDiaryData {
-            self.mainView.diaryTableView.reloadData()
-        }
+    private func bindTableView() {
+        mainView.diaryTableView.delegate = nil
+        mainView.diaryTableView.dataSource = nil
+        
+        viewModel.selectedAllData
+            .bind(to: mainView.diaryTableView.rx.items) { tableView, index, element in
+                let cellIdentifier = element.type == .detail ? DetailDiaryTVCell.id : SimpleDiaryTVCell.id
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
+                
+                if let detailCell = cell as? DetailDiaryTVCell {
+                    detailCell.titleLabel.text = element.title
+                } else if let simpleCell = cell as? SimpleDiaryTVCell {
+                    simpleCell.titleLabel.text = element.contents
+                }
+                return cell
+            }
+            .disposed(by: disposeBag)
+        
+        
+        Observable.zip(mainView.diaryTableView.rx.modelSelected(DiaryModel.self), mainView.diaryTableView.rx.itemSelected)
+            .bind { [weak self] (diary, index) in
+                guard let self = self else { return }
+                
+                if diary.type == .detail {
+                    let vc = ReadVC()
+                    vc.viewModel = self.viewModel
+                    vc.diaryData = diary
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    let vc = SimpleWriteVC()
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.modalPresentationStyle = .overFullScreen
+                    vc.viewModel = self.viewModel
+                    vc.beforeData = diary
+                    self.present(vc, animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     // 오늘 날짜로 이동
     private func moveToday() {
+        viewModel.selectedDate.accept(Date())
         mainView.calendar.select(Date())
-        mainView.setTodayLabelText(date: Date())
-        viewModel.selectedDate = Date()
-        getSelectedData()
     }
 }
 
@@ -112,9 +172,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     
     // 캘린더 날짜 선택시 동작
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        mainView.setTodayLabelText(date: date)
-        viewModel.selectedDate = date
-        getSelectedData()
+        viewModel.selectedDate.accept(date)
     }
     
     // 특정 날짜에 이미지 세팅
@@ -130,95 +188,5 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     // 최대 선택 가능 날짜
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
-    }
-}
-
-// MARK: - UITableView
-
-extension MainVC: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // 작성한 일기가 없으면 일기 작성 이미지 노출
-        if viewModel.selectedDetailData.isEmpty && viewModel.selectedSimpleData.isEmpty {
-            mainView.setHiddenForEmptyView(isHidden: false)
-            
-            if  viewModel.selectedDate.convertString() == Date().convertString() {
-                mainView.setImageForEmptyView(image: Image.IMG_NOT_TODAY)
-                return 0
-            } else {
-                mainView.setImageForEmptyView(image: Image.IMG_NOT_BEFORE)
-            }
-            
-            return 0
-        
-        // 일기 데이터 셋팅
-        } else {
-            mainView.setHiddenForEmptyView(isHidden: true)
-            
-            return viewModel.selectedDetailData.count + viewModel.selectedSimpleData.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        
-        // 자세한 일기
-        case ..<viewModel.selectedDetailData.count:
-            guard let cell = mainView.diaryTableView.dequeueReusableCell(withIdentifier: DetailDiaryTVCell.id, for: indexPath) as? DetailDiaryTVCell else { return UITableViewCell() }
-            cell.titleLabel.text = viewModel.selectedDetailData[indexPath.row].title
-            
-            return cell
-        
-        // 간단한 일기
-        case viewModel.selectedDetailData.count...:
-            guard let cell = mainView.diaryTableView.dequeueReusableCell(withIdentifier: SimpleDiaryTVCell.id, for: indexPath) as? SimpleDiaryTVCell else { return UITableViewCell() }
-            cell.titleLabel.text =
-            viewModel.selectedSimpleData[indexPath.row - viewModel.selectedDetailData.count].contents
-            
-            return cell
-            
-        default:
-            break
-        }
-        
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-            
-        // 자세한 일기 조회
-        case ..<viewModel.selectedDetailData.count:
-            viewModel.selectedDate = viewModel.selectedDetailData[indexPath.row].date?.convertDate() ?? Date()
-            
-            let vc = ReadVC()
-            vc.parentVC = self
-            vc.selectedIndex = indexPath.row
-            
-            navigationController?.pushViewController(vc, animated: true)
-            
-        // 간단한 일기 조회
-        case viewModel.selectedDetailData.count...:
-            let vc = SimpleWriteVC()
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overFullScreen
-            vc.parentVC = self
-            vc.selectedIndex = indexPath.row - viewModel.selectedDetailData.count
-            vc.delegate = self
-            vc.updateFlag = true
-            
-            present(vc, animated: true)
-            
-        default:
-            break
-        }
-    }
-}
-
-// MARK: - Custom Protocol
-
-extension MainVC: reloadDelegate {
-    func reloadData() {
-        getAllData()
     }
 }
