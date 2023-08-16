@@ -24,6 +24,7 @@ final class SettingAlarmDetailVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        settingAlarmDetailView.setDatepickerDate(date: parentVC?.viewModel.selectedTime)
         setTarget()
     }
     

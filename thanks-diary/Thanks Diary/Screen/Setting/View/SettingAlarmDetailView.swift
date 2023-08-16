@@ -60,6 +60,12 @@ final class SettingAlarmDetailView: BaseView {
         view.backgroundColor = Color.COLOR_GRAY3
     }
     
+    // MARK: - Function
+    
+    func setDatepickerDate(date: Date?) {
+        datePicker.date = date ?? Date()
+    }
+    
     // MARK: - UI, Target
     
     var backButtonTapHandler: () -> () = {}
