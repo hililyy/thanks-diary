@@ -20,6 +20,7 @@ class BaseVC: UIViewController {
         
         setNavigation()
         setToast()
+        AppearanceCheck()
     }
     
     private func setNavigation() {
@@ -62,6 +63,27 @@ class BaseVC: UIViewController {
                 self.exitApp()
             }
             self.present(vc, animated: true)
+        }
+    }
+    
+    func AppearanceCheck() {
+        guard let appearance = UserDefaults.standard.string(forKey: UserDefaultKey.THEME_MODE) else { return }
+        // 다크모드인 상태
+        if appearance == "dark" {
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = .dark
+            }
+            
+            UIApplication.shared.statusBarStyle = .lightContent
+            
+        // 라이트 모드인 상태
+        } else {
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = .light
+            }
+            
+            UIApplication.shared.statusBarStyle = .darkContent
+            
         }
     }
 }

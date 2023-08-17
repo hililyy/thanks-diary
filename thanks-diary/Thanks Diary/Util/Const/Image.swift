@@ -28,6 +28,8 @@ struct Image {
     static let IMG_NOT_TODAY = UIImage(named: "img_not_today")
     static let IMG_NOT_BEFORE = UIImage(named: "img_not_before")
     static let IMG_LOCK = UIImage(named: "img_lock")
+    static let IMG_SREEN_LIGHT = UIImage(named: "img_screen_light")
+    static let IMG_SREEN_DARK = UIImage(named: "img_screen_dark")
     
     // number image
     static let IC_ONE = UIImage(named: "ic_one")

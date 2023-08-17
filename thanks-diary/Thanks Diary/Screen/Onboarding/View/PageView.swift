@@ -11,9 +11,7 @@ import SnapKit
 
 final class PageView: BaseView {
     
-    lazy var containerView = UIView().then { view in
-        view.backgroundColor = .white
-    }
+    lazy var containerView = UIView()
     
     private lazy var progressStackView =  UIStackView(arrangedSubviews: [firstDotView, secondDotView, thirdDotView]).then { stackView in
         stackView.spacing = 8
@@ -42,6 +40,7 @@ final class PageView: BaseView {
         button.backgroundColor = Color.COLOR_GRAYBLUE
         button.titleLabel?.font = Font.NANUM_LIGHT_18
         button.setTitle("text_next".localized, for: .normal)
+        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
     }
     
     override func addSubView() {
@@ -49,7 +48,7 @@ final class PageView: BaseView {
     }
     
     override func configureUI() {
-        backgroundColor = .white
+        backgroundColor = Color.COLOR_WHITE
     }
     
     override func setConstraints() {

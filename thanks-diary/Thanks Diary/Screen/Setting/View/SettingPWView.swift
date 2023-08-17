@@ -32,22 +32,22 @@ final class SettingPWView: BaseView {
     private var dotView = UIView()
     
     private var firstDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Color.COLOR_GRAY7
         view.layer.cornerRadius = 10
     }
     
     private var secondDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Color.COLOR_GRAY7
         view.layer.cornerRadius = 10
     }
     
     private var thirdDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Color.COLOR_GRAY7
         view.layer.cornerRadius = 10
     }
     
     private var fourthDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Color.COLOR_GRAY7
         view.layer.cornerRadius = 10
     }
     
@@ -154,24 +154,24 @@ final class SettingPWView: BaseView {
         switch num {
         case 0:
             firstDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             secondDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             thirdDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             fourthDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             break
             
         case 1:
             firstDotView.backgroundColor =
             Color.COLOR_LIGHTGRAYBLUE
             secondDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             thirdDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             fourthDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             break
             
         case 2:
@@ -180,9 +180,9 @@ final class SettingPWView: BaseView {
             secondDotView.backgroundColor =
             Color.COLOR_LIGHTGRAYBLUE
             thirdDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             fourthDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             break
             
         case 3:
@@ -193,7 +193,7 @@ final class SettingPWView: BaseView {
             thirdDotView.backgroundColor =
             Color.COLOR_LIGHTGRAYBLUE
             fourthDotView.backgroundColor =
-            Color.COLOR_GRAY3
+            Color.COLOR_GRAY7
             break
             
         default:

@@ -16,3 +16,8 @@ enum LoginType: String {
     case none = "none"
     case email = "email"
 }
+
+enum ThemeMode: String {
+    case light = "light"
+    case dark = "dark"
+}
