@@ -4,8 +4,6 @@
 <dict>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIUserInterfaceStyle</key>
-	<string>Dark</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NanumBarunGothic.ttf</string>
