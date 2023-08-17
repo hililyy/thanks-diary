@@ -12,11 +12,11 @@ final class AlertView: BaseView {
     // MARK: - Property
     
     private let backgroundView = UIView().then { view in
-        view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
     private let alertView = UIView().then { view in
-        view.backgroundColor = .white
+        view.backgroundColor = Color.COLOR_GRAY4
         view.layer.cornerRadius = 10
     }
     
@@ -34,7 +34,7 @@ final class AlertView: BaseView {
     let leftButton = UIButton(type: .custom).then { button in
         button.setTitle("text_cancel".localized, for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
-        button.backgroundColor = .white
+        button.backgroundColor = .clear
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner]
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
@@ -46,7 +46,7 @@ final class AlertView: BaseView {
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
     }
     
     let backButton = UIButton().then { button in

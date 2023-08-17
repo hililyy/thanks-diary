@@ -22,7 +22,7 @@ final class DetailWriteView: BaseView {
     
     private var completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_complete".localized, for: .normal)
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.layer.cornerRadius = 10
@@ -144,7 +144,7 @@ final class DetailWriteView: BaseView {
     var completeButtonTapHandler: () -> () = {}
     
     override func configureUI() {
-        backgroundColor = .white
+        backgroundColor = Color.COLOR_WHITE
     }
     
     override func setTarget() {

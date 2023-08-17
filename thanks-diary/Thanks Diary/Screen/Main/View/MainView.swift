@@ -18,7 +18,7 @@ final class MainView: BaseView {
         button.layer.cornerRadius = 10
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.setTitle("text_today".localized, for: .normal)
     }
     
@@ -27,29 +27,37 @@ final class MainView: BaseView {
     }
     
     var calendar = FSCalendar().then { calendar in
-        calendar.backgroundColor = .white
-        calendar.appearance.todayColor = Color.COLOR_LIGHTGRAYBLUE
-        calendar.appearance.selectionColor = Color.COLOR_GRAY3
+        calendar.backgroundColor = Color.COLOR_GRAY4
+        calendar.appearance.todayColor = Color.COLOR_GRAYBLUE // 오늘 날짜 동글라미 색상
+        calendar.appearance.selectionColor = Color.COLOR_GRAY5
         calendar.locale = Locale(identifier: "ko_KR")
         calendar.appearance.headerDateFormat = "YYYY년 M월"
         
         calendar.appearance.headerTitleColor = Color.COLOR_GRAY1
-        calendar.appearance.headerTitleFont = Font.NANUM_ULTRALIGHT_19
-        calendar.appearance.titleFont = Font.NANUM_ULTRALIGHT_17
+        calendar.appearance.headerTitleFont = Font.NANUM_LIGHT_19
+        calendar.appearance.titleFont = Font.NANUM_LIGHT_17
         calendar.appearance.weekdayFont = Font.NANUM_ULTRALIGHT_17
         calendar.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
         
         calendar.appearance.weekdayTextColor = Color.COLOR_GRAY1
+        calendar.appearance.titleDefaultColor = Color.COLOR_GRAY1 // 선택가능한 날짜 색
+        calendar.appearance.titlePlaceholderColor = Color.COLOR_WHITE_GRAY  // 선택 불가능한 날짜 색
+
         calendar.appearance.calendar.headerHeight = 50
         calendar.weekdayHeight = 30
         calendar.rowHeight = 40
+        calendar.layer.cornerRadius = 10
+    }
+    
+    private var lineViewX = UIView().then { view in
+        view.backgroundColor = Color.COLOR_GRAY3
     }
     
     private var topView = UIView() // 오늘, 설정 버튼이 들어가는 뷰
     private var titleView = UIView() // 오늘 날짜 뷰
 
     private var todayLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_20
+        label.font = Font.NANUM_LIGHT_20
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .left
         label.text = Date().convertString(format: "dd일 (E)")
@@ -100,7 +108,7 @@ final class MainView: BaseView {
     var todayButtonTapHandler: () -> () = {}
     
     override func configureUI() {
-        backgroundColor = .white
+        backgroundColor = Color.COLOR_WHITE
     }
     
     override func setTarget() {
@@ -122,6 +130,7 @@ final class MainView: BaseView {
     override func addSubView() {
         addSubviews([topView,
                      calendar,
+                     lineViewX,
                      titleView,
                      diaryTableView,
                      emptyImageView,
@@ -135,7 +144,7 @@ final class MainView: BaseView {
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.left.equalTo(snp.left)
             make.right.equalTo(snp.right)
-            make.bottom.equalTo(calendar.snp.top)
+            make.bottom.equalTo(calendar.snp.top).offset(-10)
             make.height.equalTo(52)
         }
         
@@ -154,11 +163,18 @@ final class MainView: BaseView {
         }
         
         calendar.snp.makeConstraints { make in
-            make.top.equalTo(topView.snp.bottom)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+            make.bottom.equalTo(lineViewX.snp.top).offset(-15)
+            make.height.equalTo(320)
+        }
+        
+        lineViewX.snp.makeConstraints { make in
+            make.top.equalTo(calendar.snp.bottom)
             make.left.equalTo(snp.left)
             make.right.equalTo(snp.right)
             make.bottom.equalTo(titleView.snp.top)
-            make.height.equalTo(320)
+            make.height.equalTo(1)
         }
         
         titleView.snp.makeConstraints { make in

@@ -34,7 +34,7 @@ final class SettingAlarmView: BaseView {
     var backButtonTapHandler: () -> () = {}
     
     override func configureUI() {
-        backgroundColor = .white
+        backgroundColor = Color.COLOR_WHITE
     }
     
     override func setTarget() {

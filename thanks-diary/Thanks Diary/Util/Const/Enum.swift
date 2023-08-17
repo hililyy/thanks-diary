@@ -12,11 +12,6 @@ enum DiaryType: String {
     case simple = "simple"
 }
 
-enum ResponseType {
-    case success
-    case fail
-}
-
 enum LoginType: String {
     case none = "none"
     case email = "email"

@@ -16,4 +16,5 @@ struct UserDefaultKey {
     static let IS_PASSWORD = "IS_PASSWORD" // 비밀번호 여부
     static let PUSH_TIME = "PUSH_TIME" // 설정한 푸시 시간
     static let IS_PUSH = "IS_PUSH" // 푸시 여부
+    static let THEME_MODE = "THEME_MODE" // 앱 테마 (라이트, 다크)
 }

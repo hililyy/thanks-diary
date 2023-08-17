@@ -65,7 +65,7 @@ final class ReadView: BaseView {
     
     private var updateButton = UIButton(type: .custom).then { button in
         button.setTitle("수정하기", for: .normal)
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_20
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.layer.cornerRadius = 20
@@ -93,7 +93,7 @@ final class ReadView: BaseView {
     var updateButtonTapHandler: () -> () = {}
     
     override func configureUI() {
-        backgroundColor = .white
+        backgroundColor = Color.COLOR_WHITE
     }
     
     override func setTarget() {

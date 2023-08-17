@@ -36,7 +36,7 @@ final class SettingView: BaseView {
     var switchTapHandler: () -> () = {}
     
     override func configureUI() {
-        backgroundColor = .white
+        backgroundColor = Color.COLOR_WHITE
     }
     
     override func setTarget() {

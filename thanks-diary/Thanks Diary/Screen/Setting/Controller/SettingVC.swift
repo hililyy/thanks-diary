@@ -56,11 +56,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as! SettingSwitchTVCell
             cell.titleLabel.text = "암호 설정"
-            if !UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
-                cell.settingSwitch.isOn = false
-            } else {
-                cell.settingSwitch.isOn = true
-            }
+            cell.settingSwitch.isOn = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD)
             
             cell.switchTapHandler = {
                 self.alarmFlag = !self.alarmFlag
@@ -82,15 +78,20 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             
         case 2:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
-            cell.titleLabel.text = "오픈소스 라이선스"
+            cell.titleLabel.text = "테마 설정"
             return cell
-        
+            
         case 3:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
             cell.titleLabel.text = "건의사항"
             return cell
             
         case 4:
+            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
+            cell.titleLabel.text = "오픈소스 라이선스"
+            return cell
+            
+        case 5:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
             cell.titleLabel.text = "앱 버전"
             cell.contentsLabel.text = CommonUtilManager.shared.getAppVersion()
@@ -111,16 +112,21 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(vc, animated: true)
             break
             
-        case 2: // 오픈소스 라이선스
-            let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
-                    navigationController?.pushViewController(acknowList, animated: true)
+        case 2: // 테마 설정
+            let vc = SettingThemeVC()
+            self.navigationController?.pushViewController(vc, animated: true)
             break
             
         case 3: // 건의하기
             sendEmail()
             break
             
-        case 4: // 앱 버전
+        case 4: // 오픈소스 라이선스
+            let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
+                    navigationController?.pushViewController(acknowList, animated: true)
+            break
+                  
+        case 5: // 앱 버전
             LocalNotificationManager.shared.printPendingNotification()
             break
             

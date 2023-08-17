@@ -207,7 +207,7 @@ final class SettingPWView: BaseView {
     var deleteButtonTapHandler: () -> () = {}
     
     override func configureUI() {
-        backgroundColor = .white
+        backgroundColor = Color.COLOR_WHITE
     }
     
     override func setTarget() {

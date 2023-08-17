@@ -14,11 +14,11 @@ final class SimpleWriteView: BaseView {
     // MARK: - UI components
     
     private let backgroundView = UIView().then { view in
-        view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
     private let containerView = UIView().then { view in
-        view.backgroundColor = .white
+        view.backgroundColor = Color.COLOR_GRAY4
         view.layer.cornerRadius = 10
     }
     
@@ -47,7 +47,7 @@ final class SimpleWriteView: BaseView {
     
     private var completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_write_complete".localized, for: .normal)
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.layer.cornerRadius = 10
@@ -57,7 +57,7 @@ final class SimpleWriteView: BaseView {
         button.setTitle("text_cancel".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
-        button.backgroundColor = .white
+        button.backgroundColor = .clear
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1.5
         button.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor

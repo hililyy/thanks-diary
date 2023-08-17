@@ -29,6 +29,7 @@ struct Image {
     static let IMG_NOT_BEFORE = UIImage(named: "img_not_before")
     static let IMG_LOCK = UIImage(named: "img_lock")
     
+    // number image
     static let IC_ONE = UIImage(named: "ic_one")
     static let IC_TWO = UIImage(named: "ic_two")
     static let IC_THREE = UIImage(named: "ic_three")
