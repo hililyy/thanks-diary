@@ -11,10 +11,9 @@ final class DetailWriteVC: BaseVC {
     
     // MARK: - Property
     
-    var updateFlag: Bool = false
+    private let detailWriteView = DetailWriteView()
     var viewModel: MainViewModel?
-    var selectedIndex: Int?
-    let detailWriteView = DetailWriteView()
+    var beforeData: DiaryModel?
     
     // MARK:- Life Cycle
     
@@ -26,22 +25,20 @@ final class DetailWriteVC: BaseVC {
         super.viewDidLoad()
         configureUI()
         setTarget()
-        
-        detailWriteView.titleTextField.delegate = self
     }
     
     // MARK: - Function
     
     private func configureUI() {
-        detailWriteView.setTopLabelData(date: viewModel?.selectedDate)
+        detailWriteView.setTopLabelData(date: viewModel?.selectedDate.value)
         
-        if updateFlag == true {
-            guard let index = selectedIndex,
-                  let titleText = viewModel?.selectedDetailData[index].title,
-                  let contentsText = viewModel?.selectedDetailData[index].contents else { return }
+        if let beforeData = beforeData {
+            guard let titleText = beforeData.title,
+                  let contentsText = beforeData.contents else { return }
             
-            detailWriteView.setTextFieldData(titleText: titleText,
-                                             contentsText: contentsText)
+            detailWriteView.setTextFieldData(
+                titleText: titleText,
+                contentsText: contentsText)
         }
     }
     
@@ -56,6 +53,13 @@ final class DetailWriteVC: BaseVC {
     }
     
     private func complete() {
+        let newData = DiaryModel(
+            type: .detail,
+            title: detailWriteView.getTitleText(),
+            contents: detailWriteView.getContentsText(),
+            date: viewModel?.selectedDate.value.convertString()
+        )
+        
         if detailWriteView.isEmptyTextField() {
             detailWriteView.setCompleteButtonEnable(isOn: false)
             toast(message: "text_toast".localized, withDuration: 0.5, delay: 1.5) {
@@ -63,44 +67,27 @@ final class DetailWriteVC: BaseVC {
             }
             
         } else {
-            if updateFlag == true {
+            if let beforeData = beforeData {
                 // 수정
-                guard let index = selectedIndex else { return }
-                
-                viewModel?.updateDetailData(
-                    selectedIndex: index,
-                    afterTitle: detailWriteView.getTitleText(),
-                    afterContents: detailWriteView.getContentsText()) { result in
-                        if result {
-                            self.viewModel?.getAllDiaryData {
-                                self.viewModel?.getSelectedDiaryData {
-                                    self.popVC()
-                                }
-                            }
-                        } else {
-                            self.showErrorPopup()
-                        }
+                viewModel?.updateData(beforeData: beforeData, newData: newData) { result in
+                    if result {
+                        self.popVC()
+                        self.viewModel?.getData()
+                    } else {
+                        self.showErrorPopup()
                     }
+                }
             } else {
-                
                 // 글 작성
-                viewModel?.setDetailData(
-                    title: detailWriteView.getTitleText(),
-                    contents: detailWriteView.getContentsText()) { result in
-                        if result {
-                            self.popVC()
-                        } else {
-                            self.showErrorPopup()
-                        }
+                viewModel?.setData(newData: newData) { result in
+                    if result {
+                        self.popVC()
+                        self.viewModel?.getData()
+                    } else {
+                        self.showErrorPopup()
                     }
+                }
             }
         }
-    }
-}
-
-extension DetailWriteVC: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newLength = (textField.text?.count ?? 0) + string.count - range.length
-        return newLength <= 20
     }
 }
