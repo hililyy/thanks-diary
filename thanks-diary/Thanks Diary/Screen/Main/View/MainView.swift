@@ -170,7 +170,6 @@ final class MainView: BaseView {
         }
         
         lineViewX.snp.makeConstraints { make in
-            make.top.equalTo(calendar.snp.bottom)
             make.left.equalTo(snp.left)
             make.right.equalTo(snp.right)
             make.bottom.equalTo(titleView.snp.top)
