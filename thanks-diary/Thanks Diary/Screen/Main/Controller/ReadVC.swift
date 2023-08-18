@@ -13,7 +13,6 @@ final class ReadVC: BaseVC {
     
     private let readView = ReadView()
     var viewModel: MainViewModel?
-    var diaryData: DiaryModel?
     
     // MARK:- Life Cycle
     
@@ -35,15 +34,16 @@ final class ReadVC: BaseVC {
     private func configureUI() {
         readView.setTopLabelData(date: viewModel?.selectedDate.value)
         
-        guard let titleText = diaryData?.title,
-              let contentsText = diaryData?.contents else { return }
+        guard let diaryData = viewModel?.selectedDiaryData,
+              let titleText = diaryData.title,
+              let contentsText = diaryData.contents else { return }
         
         readView.setTextFieldData(titleText: titleText,
                                   contentsText: contentsText)
     }
     
     private func setTarget() {
-        guard let diaryData = diaryData else { return }
+        guard let diaryData = viewModel?.selectedDiaryData else { return }
         
         readView.backButtonTapHandler = {
             self.popVC()
@@ -54,7 +54,7 @@ final class ReadVC: BaseVC {
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             vc.rightButtonTapHandler = {
-                self.viewModel?.deleteData(deleteData: diaryData) { result in
+                self.viewModel?.deleteData() { result in
                     if result {
                         self.setMainToRoot()
                     } else {
@@ -70,7 +70,7 @@ final class ReadVC: BaseVC {
         readView.updateButtonTapHandler = {
             let vc = DetailWriteVC()
             vc.viewModel = self.viewModel
-            vc.beforeData = diaryData
+            self.viewModel?.selectedDiaryData = diaryData
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

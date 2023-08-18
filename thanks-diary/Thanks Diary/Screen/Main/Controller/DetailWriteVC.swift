@@ -13,7 +13,6 @@ final class DetailWriteVC: BaseVC {
     
     private let detailWriteView = DetailWriteView()
     var viewModel: MainViewModel?
-    var beforeData: DiaryModel?
     
     // MARK:- Life Cycle
     
@@ -32,7 +31,7 @@ final class DetailWriteVC: BaseVC {
     private func configureUI() {
         detailWriteView.setTopLabelData(date: viewModel?.selectedDate.value)
         
-        if let beforeData = beforeData {
+        if let beforeData = viewModel?.selectedDiaryData {
             guard let titleText = beforeData.title,
                   let contentsText = beforeData.contents else { return }
             
@@ -67,11 +66,12 @@ final class DetailWriteVC: BaseVC {
             }
             
         } else {
-            if let beforeData = beforeData {
+            if let _ = viewModel?.selectedDiaryData {
                 // 수정
-                viewModel?.updateData(beforeData: beforeData, newData: newData) { result in
+                viewModel?.updateData(newData: newData) { result in
                     if result {
                         self.popVC()
+                        self.viewModel?.selectedDiaryData = newData
                         self.viewModel?.getData()
                     } else {
                         self.showErrorPopup()

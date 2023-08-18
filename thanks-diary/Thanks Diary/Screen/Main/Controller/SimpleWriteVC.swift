@@ -13,7 +13,6 @@ final class SimpleWriteVC: BaseVC {
     
     private let simpleWriteView = SimpleWriteView()
     var viewModel: MainViewModel?
-    var beforeData: DiaryModel?
     let maxCount: Int = 22
     
     // MARK:- Life Cycle
@@ -33,9 +32,9 @@ final class SimpleWriteVC: BaseVC {
     
     private func configureUI() {
         
-        simpleWriteView.setHiddenForDeleteButton(beforeData == nil)
+        simpleWriteView.setHiddenForDeleteButton(viewModel?.selectedDiaryData == nil)
         
-        if let beforeData = beforeData {
+        if let beforeData = viewModel?.selectedDiaryData {
             guard let text = beforeData.contents else { return }
             simpleWriteView.setContentsTextView(text: text)
         }
@@ -59,10 +58,9 @@ final class SimpleWriteVC: BaseVC {
                     self.simpleWriteView.setCompleteButtonEnable(true)
                 }
             } else {
-                if let beforeData = self.beforeData {
+                if let _ = self.viewModel?.selectedDiaryData {
                     // 수정
                     self.viewModel?.updateData(
-                        beforeData: beforeData,
                         newData: newData) { result in
                             if result {
                                 self.dismissVC {
@@ -92,10 +90,11 @@ final class SimpleWriteVC: BaseVC {
         }
         
         simpleWriteView.deleteButtonTapHandler = {
-            guard let beforeData = self.beforeData else { return }
-            self.viewModel?.deleteData(deleteData: beforeData) { result in
+            self.viewModel?.deleteData() { result in
                 if result {
-                    self.dismissVC()
+                    self.dismissVC {
+                        self.viewModel?.getData()
+                    }
                 } else {
                     self.showErrorPopup()
                 }

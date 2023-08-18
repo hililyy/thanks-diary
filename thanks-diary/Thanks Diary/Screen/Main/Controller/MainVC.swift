@@ -36,14 +36,6 @@ final class MainVC: BaseVC {
     // MARK: - Function
     
     func setObservable() {
-        // 선택한 날짜에 대한 데이터가 변경됐을 때 (tableView reload)
-        viewModel.selectedAllData
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] allData in
-                guard let self = self else { return }
-                self.mainView.diaryTableView.reloadData()
-            })
-            .disposed(by: disposeBag)
         
         // 모든 다이어리 데이터가 갱신 되었을 때 (선택한 날짜 [string] 갱신)
         Observable.combineLatest(viewModel.allDetailDataRx, viewModel.allSimpleDataRx)
@@ -52,6 +44,7 @@ final class MainVC: BaseVC {
                 let detailData = detailDatas.map({ $0.key })
                 let simpleData = simpleDatas.map({ $0.key })
                 self.viewModel.diaryDates = Set(detailData).union(simpleData)
+                mainView.calendar.reloadData()
             })
             .disposed(by: disposeBag)
         
@@ -68,10 +61,11 @@ final class MainVC: BaseVC {
             let vc = FloatingButtonVC()
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
+            
             vc.detailHandler = {
                 let vc = DetailWriteVC()
                 vc.viewModel = self.viewModel
-                vc.beforeData = nil
+                self.viewModel.selectedDiaryData = nil
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -80,7 +74,7 @@ final class MainVC: BaseVC {
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .overFullScreen
                 vc.viewModel = self.viewModel
-                vc.beforeData = nil
+                self.viewModel.selectedDiaryData = nil
                 self.present(vc, animated: true)
             }
             
@@ -100,28 +94,25 @@ final class MainVC: BaseVC {
     }
     
     private func setTable() {
+        mainView.diaryTableView.delegate = nil
+        mainView.diaryTableView.dataSource = nil
+        
         viewModel.selectedAllData
             .subscribe(onNext: { allData in
                 if allData.isEmpty {
                     let date = self.viewModel.selectedDate.value
                     self.mainView.setHiddenForEmptyView(isHidden: false)
                     
-                    if date == Date() {
+                    if date.convertString() == Date().convertString() {
                         self.mainView.setImageForEmptyView(image: Image.IMG_NOT_TODAY)
                     } else {
                         self.mainView.setImageForEmptyView(image: Image.IMG_NOT_BEFORE)
                     }
                 } else {
                     self.mainView.setHiddenForEmptyView(isHidden: true)
-                    self.bindTableView()
                 }
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func bindTableView() {
-        mainView.diaryTableView.delegate = nil
-        mainView.diaryTableView.dataSource = nil
         
         viewModel.selectedAllData
             .bind(to: mainView.diaryTableView.rx.items) { tableView, index, element in
@@ -145,14 +136,14 @@ final class MainVC: BaseVC {
                 if diary.type == .detail {
                     let vc = ReadVC()
                     vc.viewModel = self.viewModel
-                    vc.diaryData = diary
+                    viewModel.selectedDiaryData = diary
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
                     let vc = SimpleWriteVC()
                     vc.modalTransitionStyle = .crossDissolve
                     vc.modalPresentationStyle = .overFullScreen
                     vc.viewModel = self.viewModel
-                    vc.beforeData = diary
+                    viewModel.selectedDiaryData = diary
                     self.present(vc, animated: true)
                 }
             }
