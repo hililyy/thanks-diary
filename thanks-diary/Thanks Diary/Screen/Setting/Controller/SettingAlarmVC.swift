@@ -11,9 +11,9 @@ final class SettingAlarmVC: BaseVC {
     
     // MARK: - Property
     
-    var switchFlag: Bool = false
     let settingAlarmView = SettingAlarmView()
     let viewModel = SettingViewModel()
+    var switchFlag: Bool = false
     
     // MARK: - Life Cycle
     
@@ -47,14 +47,14 @@ final class SettingAlarmVC: BaseVC {
         }
     }
     
-    func changeDateToString(date: Date, formatString: String) -> String {
+    private func changeDateToString(date: Date, formatString: String) -> String {
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = formatString
         return dateFormatter.string(from: date)
     }
     
-    func setNotification(isOn: Bool) {
+    private func setNotification(isOn: Bool) {
         if isOn {
             LocalNotificationManager.shared.requestSendNotification(time: Date())
             UserDefaultManager.set(Date(), forKey: UserDefaultKey.PUSH_TIME)
@@ -73,7 +73,7 @@ final class SettingAlarmVC: BaseVC {
         self.reloadData()
     }
     
-    func showSettingAlert() {
+    private func showSettingAlert() {
         DispatchQueue.main.async {
             let vc = AlertVC()
             vc.alertView.setText(message: "text_app_setting_1".localized, leftButtonText: "text_cancel".localized, rightButtonText: "text_app_setting_2".localized)

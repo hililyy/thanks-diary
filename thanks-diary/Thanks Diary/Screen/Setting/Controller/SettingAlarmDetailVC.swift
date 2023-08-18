@@ -12,7 +12,7 @@ final class SettingAlarmDetailVC: BaseVC {
     
     // MARK: - Property
     
-    let settingAlarmDetailView = SettingAlarmDetailView()
+    private let settingAlarmDetailView = SettingAlarmDetailView()
     var viewModel: SettingViewModel?
     var delegate: reloadDelegate?
     

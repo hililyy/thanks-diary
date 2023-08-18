@@ -14,7 +14,7 @@ final class ReadVC: BaseVC {
     private let readView = ReadView()
     var viewModel: MainViewModel?
     
-    // MARK:- Life Cycle
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = readView

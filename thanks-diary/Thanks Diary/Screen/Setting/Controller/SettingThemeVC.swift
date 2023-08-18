@@ -9,7 +9,11 @@ import UIKit
 
 final class SettingThemeVC: BaseVC {
     
-    let settingThemeView = SettingThemeView()
+    // MARK: - Property
+    
+    private let settingThemeView = SettingThemeView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = settingThemeView
@@ -24,6 +28,8 @@ final class SettingThemeVC: BaseVC {
         super.viewWillAppear(animated)
         AppearanceCheck()
     }
+    
+    // MARK: - Function
     
     private func setTarget() {
         settingThemeView.darkButtonTapHandler = {

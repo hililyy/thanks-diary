@@ -9,11 +9,16 @@ import UIKit
 
 final class ThirdStartVC: BaseVC {
     
-    let thirdStartView = ThirdStartView()
+    // MARK: - Property
+    
+    private let thirdStartView = ThirdStartView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = thirdStartView
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         LottieManager.shared.setLottie(self, lottieView: thirdStartView.lottieView, name: "go", mode: .playOnce)

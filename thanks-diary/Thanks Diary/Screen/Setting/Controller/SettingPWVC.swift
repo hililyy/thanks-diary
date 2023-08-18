@@ -11,12 +11,12 @@ final class SettingPWVC: BaseVC {
     
     // MARK: - Property
     
+    let settingPWView = SettingPWView()
     var count: Int = 0
     var reEnterFlag: Bool = false
     var homeFlag: Bool = false
     var firstPW: String = ""
     var secondPW: String = ""
-    let settingPWView = SettingPWView()
     
     // MARK: - Life Cycle
     

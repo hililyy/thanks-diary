@@ -11,6 +11,8 @@ final class SettingMoreTVCell: BaseTVCell {
 
     static let id = "SettingMoreTVCell"
     
+    // MARK: - UI components
+    
     var titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
@@ -20,10 +22,14 @@ final class SettingMoreTVCell: BaseTVCell {
         imageView.image = Image.IC_MORE
     }
     
+    // MARK: - UI, Target
+    
     override func configureUI() {
         selectionStyle = .none
         backgroundColor = .clear
     }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([titleLabel, moreImageView])

@@ -103,11 +103,9 @@ final class MainVC: BaseVC {
                     let date = self.viewModel.selectedDate.value
                     self.mainView.setHiddenForEmptyView(isHidden: false)
                     
-                    if date.convertString() == Date().convertString() {
-                        self.mainView.setImageForEmptyView(image: Image.IMG_NOT_TODAY)
-                    } else {
-                        self.mainView.setImageForEmptyView(image: Image.IMG_NOT_BEFORE)
-                    }
+                    let image = date.convertString() == Date().convertString() ? Image.IMG_NOT_TODAY : Image.IMG_NOT_BEFORE
+                    self.mainView.setImageForEmptyView(image: image)
+                    
                 } else {
                     self.mainView.setHiddenForEmptyView(isHidden: true)
                 }

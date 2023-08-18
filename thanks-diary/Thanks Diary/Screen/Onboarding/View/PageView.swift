@@ -6,10 +6,10 @@
 //
 
 import UIKit
-import Then
-import SnapKit
 
 final class PageView: BaseView {
+    
+    // MARK: - UI components
     
     lazy var containerView = UIView()
     
@@ -43,14 +43,16 @@ final class PageView: BaseView {
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
     }
     
-    override func addSubView() {
-        addSubviews([containerView, progressStackView, nextButton])
-    }
+    // MARK: - UI, Target
     
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE
     }
     
+    override func addSubView() {
+        addSubviews([containerView, progressStackView, nextButton])
+    }
+
     override func setConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalTo(progressStackView.snp.bottom)

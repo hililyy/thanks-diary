@@ -14,7 +14,7 @@ final class DetailWriteVC: BaseVC {
     private let detailWriteView = DetailWriteView()
     var viewModel: MainViewModel?
     
-    // MARK:- Life Cycle
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = detailWriteView

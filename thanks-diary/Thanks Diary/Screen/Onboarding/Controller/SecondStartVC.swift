@@ -9,7 +9,11 @@ import UIKit
 
 final class SecondStartVC: BaseVC {
     
-    let secondStartView = SecondStartView()
+    // MARK: - Property
+    
+    private let secondStartView = SecondStartView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = secondStartView

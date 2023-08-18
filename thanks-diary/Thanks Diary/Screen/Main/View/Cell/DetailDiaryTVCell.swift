@@ -11,6 +11,8 @@ final class DetailDiaryTVCell: BaseTVCell {
     
     static let id = "DetailDiaryTVCell"
     
+    // MARK: - UI components
+    
     var titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
@@ -22,10 +24,14 @@ final class DetailDiaryTVCell: BaseTVCell {
         view.layer.borderWidth = 2
     }
     
+    // MARK: - UI, Target
+    
     override func configureUI() {
         selectionStyle = .none
         backgroundColor = .clear
     }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubview(borderView)

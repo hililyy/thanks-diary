@@ -158,7 +158,7 @@ final class DetailWriteView: BaseView {
         
         setKeyboardNotification()
         
-        // 텍스트 필드 외부 터치 시 키보드 닫기위함 제스처 추가
+        // 텍스트 필드 외부 터치 시 키보드 닫기 위한 제스처 추가
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
         contentScrollView.addGestureRecognizer(tapGesture)
     }

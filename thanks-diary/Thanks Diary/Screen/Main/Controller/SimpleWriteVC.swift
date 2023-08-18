@@ -15,7 +15,7 @@ final class SimpleWriteVC: BaseVC {
     var viewModel: MainViewModel?
     let maxCount: Int = 22
     
-    // MARK:- Life Cycle
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = simpleWriteView
@@ -102,6 +102,8 @@ final class SimpleWriteVC: BaseVC {
         }
     }
 }
+
+// MARK: - UITextViewDelegate
 
 extension SimpleWriteVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

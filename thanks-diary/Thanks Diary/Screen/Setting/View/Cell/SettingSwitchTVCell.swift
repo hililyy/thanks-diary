@@ -11,6 +11,8 @@ final class SettingSwitchTVCell: BaseTVCell {
 
     static let id = "SettingSwitchTVCell"
     
+    // MARK: - UI components
+    
     var titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
@@ -20,6 +22,8 @@ final class SettingSwitchTVCell: BaseTVCell {
     
     var switchTapHandler: () -> () = {}
     
+    // MARK: - UI, Target
+    
     override func configureUI() {
         selectionStyle = .none
         backgroundColor = .clear
@@ -27,6 +31,8 @@ final class SettingSwitchTVCell: BaseTVCell {
             self.switchTapHandler()
         }
     }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         contentView.addSubviews([titleLabel, settingSwitch])

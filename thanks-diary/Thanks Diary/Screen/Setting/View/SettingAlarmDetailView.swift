@@ -21,7 +21,6 @@ final class SettingAlarmDetailView: BaseView {
     }
     
     let datePicker = UIDatePicker().then { pickerView in
-//        pickerView.overrideUserInterfaceStyle = .light
         pickerView.preferredDatePickerStyle = .wheels
         pickerView.locale = Locale(identifier: "ko_KR")
         pickerView.datePickerMode = .time

@@ -9,6 +9,8 @@ import UIKit
 
 final class PageVC: BaseVC {
     
+    // MARK: - Property
+    
     private let pageView = PageView()
     private var pageContainer: UIPageViewController!
     private var pageList = [UIViewController]()
@@ -26,7 +28,9 @@ final class PageVC: BaseVC {
             }
         }
     }
-
+    
+    // MARK: - Life Cycle
+    
     override func loadView() {
         view = pageView
     }
@@ -63,7 +67,6 @@ final class PageVC: BaseVC {
     }
 
     private func setPageVC() {
-
         let page1 = FirstStartVC()
         let page2 = SecondStartVC()
         let page3 = ThirdStartVC()
@@ -71,13 +74,10 @@ final class PageVC: BaseVC {
         pageList = [page1, page2, page3]
 
         pageContainer = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-
         pageContainer.delegate = self
-
         if let firstVC = pageList.first {
             pageContainer.setViewControllers([firstVC], direction: .forward, animated: true)
         }
-
         pageContainer.view.frame = pageView.containerView.bounds
         pageView.containerView.addSubview(pageContainer.view)
         pageContainer.view.setAutoLayout(to: pageView.containerView)
@@ -92,7 +92,6 @@ final class PageVC: BaseVC {
 }
 
 extension PageVC: UIPageViewControllerDelegate {
-
     // 페이지 이동할때 마다 호출
     func pageViewController(_ pageViewController: UIPageViewController,didFinishAnimating finished: Bool,previousViewControllers: [UIViewController],transitionCompleted completed: Bool){
         guard completed else { return }

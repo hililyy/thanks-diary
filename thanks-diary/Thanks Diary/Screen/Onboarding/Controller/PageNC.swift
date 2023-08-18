@@ -8,6 +8,9 @@
 import UIKit
 
 class PageNC: BaseNavigationController {
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewControllers([PageVC()], animated: true)

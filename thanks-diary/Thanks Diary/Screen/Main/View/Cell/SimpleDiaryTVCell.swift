@@ -11,6 +11,8 @@ final class SimpleDiaryTVCell: BaseTVCell {
     
     static let id = "SimpleDiaryTVCell"
     
+    // MARK: - UI components
+    
     var dotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         view.layer.cornerRadius = 3.5
@@ -21,10 +23,14 @@ final class SimpleDiaryTVCell: BaseTVCell {
         label.textColor = Color.COLOR_GRAY1
     }
     
+    // MARK: - UI, Target
+    
     override func configureUI() {
         selectionStyle = .none
         backgroundColor = .clear
     }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([dotView, titleLabel])

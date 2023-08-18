@@ -7,9 +7,11 @@
 
 import UIKit
 
-class SettingLabelTVCell: BaseTVCell {
+final class SettingLabelTVCell: BaseTVCell {
     
     static let id = "SettingLabelTVCell"
+    
+    // MARK: - UI components
     
     var titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
@@ -21,10 +23,14 @@ class SettingLabelTVCell: BaseTVCell {
         label.textColor = Color.COLOR_GRAY2
     }
     
+    // MARK: - UI, Target
+    
     override func configureUI() {
         selectionStyle = .none
         backgroundColor = .clear
     }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([titleLabel, contentsLabel])

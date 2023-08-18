@@ -67,7 +67,6 @@
 		029F04FD2A4984E800D82289 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04FC2A4984E800D82289 /* MainViewModel.swift */; };
 		02F50B462A60F9BB006A59D3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F50B452A60F9BB006A59D3 /* MainView.swift */; };
 		2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */; };
-		2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */; };
 		2A0962DA28CF484300063DF3 /* TextData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2A0962D928CF484300063DF3 /* TextData.csv */; };
 		2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D87FE28A540FB00576E56 /* AppDelegate.swift */; };
 		2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D880028A540FB00576E56 /* SceneDelegate.swift */; };
@@ -83,7 +82,6 @@
 		2A7241CD28B26AAD0040ADE9 /* DetailWriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */; };
 		2A7241CF28B2A57E0040ADE9 /* ReadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CE28B2A57E0040ADE9 /* ReadVC.swift */; };
 		2A7241DA28B3EDF70040ADE9 /* DiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D928B3EDF70040ADE9 /* DiaryModel.swift */; };
-		2A72421128B426730040ADE9 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A72421028B426730040ADE9 /* SettingModel.swift */; };
 		2A81232628BFB2BD000A250E /* writing.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A81232528BFB2BD000A250E /* writing.json */; };
 		2A81232828BFB83B000A250E /* go.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A81232728BFB83B000A250E /* go.json */; };
 		2A81232C28BFBDEA000A250E /* plant.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A81232B28BFBDEA000A250E /* plant.json */; };
@@ -177,7 +175,6 @@
 		029F04FC2A4984E800D82289 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		02F50B452A60F9BB006A59D3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicUltraLight.ttf; sourceTree = "<group>"; };
-		2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimeEntity.swift; sourceTree = "<group>"; };
 		2A0962C428CF275D00063DF3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2A0962C628CF275D00063DF3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2A0962D928CF484300063DF3 /* TextData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TextData.csv; sourceTree = "<group>"; };
@@ -198,7 +195,6 @@
 		2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteVC.swift; sourceTree = "<group>"; };
 		2A7241CE28B2A57E0040ADE9 /* ReadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadVC.swift; sourceTree = "<group>"; };
 		2A7241D928B3EDF70040ADE9 /* DiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryModel.swift; sourceTree = "<group>"; };
-		2A72421028B426730040ADE9 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		2A81232528BFB2BD000A250E /* writing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = writing.json; sourceTree = "<group>"; };
 		2A81232728BFB83B000A250E /* go.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = go.json; sourceTree = "<group>"; };
 		2A81232B28BFBDEA000A250E /* plant.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plant.json; sourceTree = "<group>"; };
@@ -609,7 +605,6 @@
 			isa = PBXGroup;
 			children = (
 				2A55DC4E2A6D6EEC00A13F58 /* Controller */,
-				2A9F351128AE5752006CCF7C /* Model */,
 				2A9F351028AE574D006CCF7C /* View */,
 				2ABF8AA32A6C0568006ACBE2 /* ViewModel */,
 			);
@@ -647,15 +642,6 @@
 				2A81234628C0B716000A250E /* Cell */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		2A9F351128AE5752006CCF7C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2A72421028B426730040ADE9 /* SettingModel.swift */,
-				2A0962BD28CE2E0C00063DF3 /* AlarmTimeEntity.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		2ABF8AA32A6C0568006ACBE2 /* ViewModel */ = {
@@ -828,14 +814,12 @@
 				026E9C232A4AAAD400568CFD /* AlertConfirmVC.swift in Sources */,
 				025EF0732A459E4800C930F2 /* FloatingButtonCloseView.swift in Sources */,
 				025EF0842A459EEF00C930F2 /* SecondStartVC.swift in Sources */,
-				2A72421128B426730040ADE9 /* SettingModel.swift in Sources */,
 				025EF06B2A459E2E00C930F2 /* String+.swift in Sources */,
 				027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */,
 				029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */,
 				025EF0592A459D2700C930F2 /* FirebaseManager.swift in Sources */,
 				2A81234E28C4E22C000A250E /* SimpleDiaryTVCell.swift in Sources */,
 				2A9F351728AE63FD006CCF7C /* SettingMoreTVCell.swift in Sources */,
-				2A0962BE28CE2E0C00063DF3 /* AlarmTimeEntity.swift in Sources */,
 				025EF06C2A459E2E00C930F2 /* Date+.swift in Sources */,
 				022955402A669273004BF800 /* BaseView.swift in Sources */,
 				027C60DE2A8DBFE0008F607F /* SettingThemeVC.swift in Sources */,

@@ -9,6 +9,8 @@ import UIKit
 
 final class SettingThemeView: BaseView {
     
+    // MARK: - UI components
+    
     private var backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
@@ -62,6 +64,8 @@ final class SettingThemeView: BaseView {
         label.font = Font.NANUM_LIGHT_17
     }
     
+    // MARK: - Functions
+    
     func setTheme(theme: ThemeMode) {
         if theme == .light {
             lightImageView.alpha = 1.0
@@ -80,6 +84,8 @@ final class SettingThemeView: BaseView {
             lightView.backgroundColor = .clear
         }
     }
+    
+    // MARK: - UI, Target
     
     var backButtonTapHandler: () -> () = {}
     var lightButtonTapHandler: () -> () = {}
@@ -106,6 +112,8 @@ final class SettingThemeView: BaseView {
             self.darkButtonTapHandler()
         }
     }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([backButton,

@@ -7,6 +7,6 @@
 
 import Foundation
 
-class SettingViewModel {
+final class SettingViewModel {
     var selectedTime: Date? = UserDefaultManager.date(forKey: UserDefaultKey.PUSH_TIME)
 }

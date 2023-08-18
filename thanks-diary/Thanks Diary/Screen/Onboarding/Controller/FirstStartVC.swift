@@ -9,7 +9,11 @@ import UIKit
 
 final class FirstStartVC: BaseVC {
     
-    let firstStartView = FirstStartView()
+    // MARK: - Property
+    
+    private let firstStartView = FirstStartView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = firstStartView
