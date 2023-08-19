@@ -28,7 +28,16 @@ final class SettingVC: BaseVC {
         settingView.tableView.delegate = self
         
         setTarget()
-        setPWSwitch()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD).isEmpty {
+            UserDefaultManager.set(false, forKey: UserDefaultKey.IS_PASSWORD)
+        }
+        alarmFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD)
+        settingView.tableView.reloadData()
     }
     
     // MARK: - Function
@@ -37,10 +46,6 @@ final class SettingVC: BaseVC {
         settingView.backButtonTapHandler = {
             self.popVC()
         }
-    }
-    
-    private func setPWSwitch() {
-        self.alarmFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD)
     }
 }
 
@@ -56,16 +61,16 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as! SettingSwitchTVCell
             cell.titleLabel.text = "암호 설정"
-            cell.settingSwitch.isOn = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD)
+            cell.settingSwitch.isOn = alarmFlag
             
             cell.switchTapHandler = {
                 self.alarmFlag = !self.alarmFlag
-                
                 UserDefaultManager.set(self.alarmFlag, forKey: UserDefaultKey.IS_PASSWORD)
-                
-                if UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
+                if self.alarmFlag {
                     let vc = SettingPWVC()
                     self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    UserDefaultManager.set("", forKey: UserDefaultKey.PASSWORD)
                 }
             }
             

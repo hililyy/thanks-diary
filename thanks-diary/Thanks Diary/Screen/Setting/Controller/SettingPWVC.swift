@@ -28,6 +28,8 @@ final class SettingPWVC: BaseVC {
         super.viewDidLoad()
         if homeFlag == true {
             settingPWView.setContentsLabel(text: "text_password_contents_2".localized)
+        } else {
+            UserDefaultManager.set("", forKey: UserDefaultKey.PASSWORD)
         }
         
         setTarget()
@@ -54,6 +56,7 @@ final class SettingPWVC: BaseVC {
                     if self.reEnterFlag {
                         if self.firstPW == self.secondPW {
                             UserDefaultManager.set(self.firstPW, forKey: UserDefaultKey.PASSWORD)
+                            UserDefaultManager.set(true, forKey: UserDefaultKey.IS_PASSWORD)
                             self.popVC()
                         } else {
                             self.handleIncorrectPassword()

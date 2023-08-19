@@ -15,6 +15,11 @@ class LaunchVC: BaseVC {
         super.viewDidLoad()
         
         LottieManager.shared.setLottie(self, lottieView: lottieView, name: "dot", speed: 3, mode: .loop)
+         
+        // 비밀번호 ""으로 설정된 유저 비밀번호 변경
+        if UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) == "" {
+            UserDefaultManager.set("0000", forKey: UserDefaultKey.PASSWORD)
+        }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             

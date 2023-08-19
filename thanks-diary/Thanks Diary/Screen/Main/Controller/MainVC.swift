@@ -44,7 +44,7 @@ final class MainVC: BaseVC {
                 let detailData = detailDatas.map({ $0.key })
                 let simpleData = simpleDatas.map({ $0.key })
                 self.viewModel.diaryDates = Set(detailData).union(simpleData)
-                mainView.calendar.reloadData()
+                self.mainView.calendar.reloadData()
             })
             .disposed(by: disposeBag)
         
@@ -134,14 +134,14 @@ final class MainVC: BaseVC {
                 if diary.type == .detail {
                     let vc = ReadVC()
                     vc.viewModel = self.viewModel
-                    viewModel.selectedDiaryData = diary
+                    self.viewModel.selectedDiaryData = diary
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
                     let vc = SimpleWriteVC()
                     vc.modalTransitionStyle = .crossDissolve
                     vc.modalPresentationStyle = .overFullScreen
                     vc.viewModel = self.viewModel
-                    viewModel.selectedDiaryData = diary
+                    self.viewModel.selectedDiaryData = diary
                     self.present(vc, animated: true)
                 }
             }
