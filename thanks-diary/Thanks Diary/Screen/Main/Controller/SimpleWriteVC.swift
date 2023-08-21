@@ -121,8 +121,7 @@ extension SimpleWriteVC: UITextViewDelegate {
             
             guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: range.location),
                   let endPosition = textView.position(from: textView.beginningOfDocument, offset: NSMaxRange(range)),
-                  let textRange = textView.textRange(from: startPosition, to: endPosition)
-            else { return false }
+                  let textRange = textView.textRange(from: startPosition, to: endPosition) else { return false }
             
             textView.replace(textRange, withText: String(newText))
             

@@ -43,8 +43,6 @@ final class ReadVC: BaseVC {
     }
     
     private func setTarget() {
-        guard let diaryData = viewModel?.selectedDiaryData else { return }
-        
         readView.backButtonTapHandler = {
             self.popVC()
         }

@@ -28,12 +28,6 @@ final class MainView: BaseView {
     
     var calendar = FSCalendar().then { calendar in
         calendar.backgroundColor = Color.COLOR_GRAY4
-        calendar.appearance.todayColor = Color.COLOR_GRAYBLUE // 오늘 날짜 동글라미 색상
-        calendar.appearance.selectionColor = Color.COLOR_GRAY5
-        calendar.locale = Locale(identifier: "ko_KR")
-        calendar.appearance.headerDateFormat = "YYYY년 M월"
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        
         calendar.appearance.headerTitleColor = Color.COLOR_GRAY1
         calendar.appearance.weekdayTextColor = Color.COLOR_GRAY1
         calendar.appearance.titleDefaultColor = Color.COLOR_GRAY1 // 선택가능한 날짜 색
@@ -43,8 +37,14 @@ final class MainView: BaseView {
         calendar.appearance.weekdayFont = Font.NANUM_ULTRALIGHT_17
         calendar.appearance.titleFont = Font.NANUM_LIGHT_17
         calendar.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
+        calendar.appearance.todayColor = Color.COLOR_GRAYBLUE // 오늘 날짜 동글라미 색상
+        calendar.appearance.selectionColor = Color.COLOR_GRAY5
         
+        calendar.appearance.headerDateFormat = "YYYY년 M월"
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.calendar.headerHeight = 50
+        
+        calendar.locale = Locale(identifier: "ko_KR")
         calendar.weekdayHeight = 30
         calendar.rowHeight = 40
         calendar.layer.cornerRadius = 10
@@ -66,9 +66,9 @@ final class MainView: BaseView {
     
     var diaryTableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
-        tableView.rowHeight = 60
         tableView.separatorColor = .clear
         tableView.separatorStyle = .none
+        tableView.rowHeight = 60
         tableView.register(DetailDiaryTVCell.self, forCellReuseIdentifier: DetailDiaryTVCell.id)
         tableView.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
     }
@@ -95,11 +95,7 @@ final class MainView: BaseView {
     
     func setHiddenForEmptyView(isHidden: Bool) {
         emptyImageView.isHidden = isHidden
-        if isHidden {
-            emptyImageView.frame.size.height = 0
-        } else {
-            emptyImageView.frame.size.height = 300
-        }
+        emptyImageView.frame.size.height = isHidden ? 0 : 300
     }
     
     // MARK: - UI, Target

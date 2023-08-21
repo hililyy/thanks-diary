@@ -71,7 +71,7 @@ final class SettingPWVC: BaseVC {
         settingPWView.deleteButtonTapHandler = { [weak self] in
             guard let self = self else { return }
             self.count = max(0, self.count - 1)
-            self.firstPW.popLast()
+            _ = self.firstPW.popLast()
             self.settingPWView.setDotColor(num: self.count)
         }
     }

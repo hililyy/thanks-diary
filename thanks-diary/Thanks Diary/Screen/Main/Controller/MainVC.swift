@@ -100,12 +100,11 @@ final class MainVC: BaseVC {
         viewModel.selectedAllData
             .subscribe(onNext: { allData in
                 if allData.isEmpty {
-                    let date = self.viewModel.selectedDate.value
                     self.mainView.setHiddenForEmptyView(isHidden: false)
                     
+                    let date = self.viewModel.selectedDate.value
                     let image = date.convertString() == Date().convertString() ? Image.IMG_NOT_TODAY : Image.IMG_NOT_BEFORE
                     self.mainView.setImageForEmptyView(image: image)
-                    
                 } else {
                     self.mainView.setHiddenForEmptyView(isHidden: true)
                 }
@@ -122,6 +121,7 @@ final class MainVC: BaseVC {
                 } else if let simpleCell = cell as? SimpleDiaryTVCell {
                     simpleCell.titleLabel.text = element.contents
                 }
+                
                 return cell
             }
             .disposed(by: disposeBag)

@@ -115,25 +115,20 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case 1: // 알림
             let vc = SettingAlarmVC()
             self.navigationController?.pushViewController(vc, animated: true)
-            break
             
         case 2: // 테마 설정
             let vc = SettingThemeVC()
             self.navigationController?.pushViewController(vc, animated: true)
-            break
             
         case 3: // 건의하기
             sendEmail()
-            break
             
         case 4: // 오픈소스 라이선스
             let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
                     navigationController?.pushViewController(acknowList, animated: true)
-            break
                   
         case 5: // 앱 버전
             LocalNotificationManager.shared.printPendingNotification()
-            break
             
         default:
             break

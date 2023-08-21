@@ -35,11 +35,11 @@ final class MainViewModel {
 extension MainViewModel {
     // 조회
     func getData() {
-        _ = CoreDataManager.shared.getDetailDataRx()
+        CoreDataManager.shared.getDetailDataRx()
             .bind(to: allDetailDataRx)
             .disposed(by: disposeBag)
         
-        _ = CoreDataManager.shared.getSimpleDataRx()
+        CoreDataManager.shared.getSimpleDataRx()
             .bind(to: allSimpleDataRx)
             .disposed(by: disposeBag)
         
@@ -49,12 +49,12 @@ extension MainViewModel {
     // 저장
     func setData(newData: DiaryModel, completion: @escaping (Bool) -> ()) {
         CoreDataManager.shared.setData(newData: newData) { result in
-                if result {
-                    completion(true)
-                } else {
-                    completion(false)
-                }
+            if result {
+                completion(true)
+            } else {
+                completion(false)
             }
+        }
     }
     
     // 수정
