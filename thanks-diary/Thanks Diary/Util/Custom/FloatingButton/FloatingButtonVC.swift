@@ -11,9 +11,6 @@ final class FloatingButtonVC: BaseVC {
     
     let floatingButtonCloseView = FloatingButtonCloseView()
     
-    public var detailHandler: () -> () = {}
-    public var simpleHandler: () -> () = {}
-    
     override func loadView() {
         view = floatingButtonCloseView
     }
@@ -62,18 +59,6 @@ final class FloatingButtonVC: BaseVC {
         
         floatingButtonCloseView.plusButton.button.addTarget { _ in
             self.updateCloseConstraints()
-        }
-        
-        floatingButtonCloseView.detailButton.button.addTarget { _ in
-            self.dismissVC() {
-                self.detailHandler()
-            }
-        }
-        
-        floatingButtonCloseView.simpleButton.button.addTarget { _ in
-            self.dismissVC() {
-                self.simpleHandler()
-            }
         }
     }
 }

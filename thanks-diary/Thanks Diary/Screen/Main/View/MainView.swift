@@ -14,7 +14,7 @@ final class MainView: BaseView {
     
     // MARK: - UI components
     
-    private var todayButton = UIButton(type: .custom).then { button in
+    var todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
@@ -22,7 +22,7 @@ final class MainView: BaseView {
         button.setTitle("text_today".localized, for: .normal)
     }
     
-    private var settingButton = UIButton(type: .custom).then { button in
+    var settingButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_SETTING, for: .normal)
     }
     
@@ -77,7 +77,7 @@ final class MainView: BaseView {
         view.contentMode = .scaleAspectFit
     }
     
-    private var floatingButton = FloatingButton().then { button in
+    var floatingButton = FloatingButton().then { button in
         button.setButtonImage(Image.IC_PENCIL)
         button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }
@@ -100,26 +100,8 @@ final class MainView: BaseView {
     
     // MARK: - UI, Target
     
-    var floatingButtonTapHandler: () -> () = {}
-    var settingButtonTapHandler: () -> () = {}
-    var todayButtonTapHandler: () -> () = {}
-    
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE
-    }
-    
-    override func setTarget() {
-        floatingButton.button.addTarget { _ in
-            self.floatingButtonTapHandler()
-        }
-        
-        settingButton.addTarget { _ in
-            self.settingButtonTapHandler()
-        }
-        
-        todayButton.addTarget { _ in
-            self.todayButtonTapHandler()
-        }
     }
     
     // MARK: - Constraint

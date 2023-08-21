@@ -56,41 +56,72 @@ final class MainVC: BaseVC {
     }
     
     private func setTarget() {
-        // 플로팅 버튼 핸들러 설정
-        mainView.floatingButtonTapHandler = {
-            let vc = FloatingButtonVC()
-            vc.modalPresentationStyle = .overFullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            
-            vc.detailHandler = {
-                let vc = DetailWriteVC()
-                vc.viewModel = self.viewModel
-                self.viewModel.selectedDiaryData = nil
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            
-            vc.simpleHandler = {
-                let vc = SimpleWriteVC()
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .overFullScreen
-                vc.viewModel = self.viewModel
-                self.viewModel.selectedDiaryData = nil
-                self.present(vc, animated: true)
-            }
-            
-            self.present(vc, animated: false)
-        }
+        // 플로팅 버튼 설정
+        mainView.floatingButton.button.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.pushFloatingButtonVC()
+            })
+            .disposed(by: disposeBag)
         
         // 설정 버튼 핸들러 설정
-        mainView.settingButtonTapHandler = {
-            let vc = SettingVC()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        mainView.settingButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                let vc = SettingVC()
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
         
         // 오늘 버튼 핸들러 설정
-        mainView.todayButtonTapHandler = {
-            self.moveToday()
-        }
+        mainView.todayButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.moveToday()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func pushFloatingButtonVC() {
+        let vc = FloatingButtonVC()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        
+        vc.floatingButtonCloseView.detailButton.button.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.dismissVC() {
+                    self.pushDetailWriteVC()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        vc.floatingButtonCloseView.simpleButton.button.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.dismissVC() {
+                    self.presentSimpleWriteVC()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        self.present(vc, animated: false)
+    }
+    
+    private func pushDetailWriteVC() {
+        let vc = DetailWriteVC()
+        vc.viewModel = self.viewModel
+        self.viewModel.selectedDiaryData = nil
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func presentSimpleWriteVC() {
+        let vc = SimpleWriteVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        vc.viewModel = self.viewModel
+        self.viewModel.selectedDiaryData = nil
+        self.present(vc, animated: true)
     }
     
     private func setTable() {
