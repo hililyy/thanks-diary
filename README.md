@@ -1,8 +1,8 @@
 # 감사일기 📝
 > 다이어리 애플리케이션입니다.</br>
-> 기획부터 디자인, 개발까지 혼자 진행한 프로젝트입니다.🙏🏻 </br>
+> 기획부터 디자인, 개발까지 혼자 진행한 프로젝트입니다. 🙏🏻 </br>
 > 다운로드 1500회👆🏻, 업데이트 3200회👆🏻 (23/8/21 기준) </br>
-> [앱스토어 바로가기👈🏻](https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8F%84-%EA%B0%90%EC%82%AC%EC%9D%BC%EA%B8%B0/id6443505485)
+> [앱스토어 바로가기✨](https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8F%84-%EA%B0%90%EC%82%AC%EC%9D%BC%EA%B8%B0/id6443505485)
 </br>
 
 ## 미리보기
@@ -14,10 +14,14 @@
 - 사용언어: Swift  
 - 라이브러리 및 프레임워크 :
   - Coredata
-  - SnapKit, Then
+  - SnapKit, Then (Code Base)
   - RxSwift, RxCocoa
   - FSCalendar
   - Lottie
+- 아키텍처
+  - MVVM
+- 최소버전
+  - iOS 14.0
 
 </br>
 
@@ -35,7 +39,7 @@
 
 </br>
 
-## 버전기록
+## 버전기록 (6회)
 <details>
 <summary>버전 1.2.0</summary>
   
