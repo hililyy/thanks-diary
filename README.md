@@ -1,55 +1,81 @@
 # 감사일기 📝
 > 다이어리 애플리케이션입니다.</br>
-> 기획부터 디자인, 개발까지 혼자 진행한 프로젝트입니다.🙏🏻
-
+> 기획부터 디자인, 개발까지 혼자 진행한 프로젝트입니다.🙏🏻 </br>
+> 다운로드 1500회👆🏻, 업데이트 3200회👆🏻 (23/8/21 기준) </br>
+> [앱스토어 바로가기👈🏻](https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8F%84-%EA%B0%90%EC%82%AC%EC%9D%BC%EA%B8%B0/id6443505485)
 </br>
 
 ## 미리보기
-![image](https://user-images.githubusercontent.com/76806444/224955337-a6ae0736-291a-45b4-86de-0dbe0162cf93.png)
+![image](https://github.com/hililyy/thanks-diary/assets/76806444/1234bfe4-5020-41b0-b08b-b1f689f0d4ae)
 
 </br>
 
 ## 개발정보
 - 사용언어: Swift  
 - 라이브러리 및 프레임워크 :
+  - Coredata
+  - SnapKit, Then
+  - RxSwift, RxCocoa
   - FSCalendar
   - Lottie
-  - Coredata
-  - Firebase
 
 </br>
 
 ## 기능정의
 
-1. 로그인 / 회원가입 / 로그아웃
-- Firebase를 이용해 로그인, 회원가입, 로그아웃을 할 수 있습니다. (Apple, Google, Kakao, Email)
-2. 일기 CRUD
+1. 일기 CRUD
 - 제목과 내용이 있는 자세히 적기, 내용만 있는 간단히 적기 기능이 있습니다.
 - 메인화면에서 캘린더와 함께 날짜별로 글을 확인할 수 있습니다.
-- 일기는 Firebase에 저장되어 동기화됩니다.
-3. 알림
-- 사용자가 설정한 시간에 푸쉬알림을 통해 일기 작성을 알립니다.
-4. 비밀번호
+2. 알림
+- 사용자가 설정한 시간에 푸시알림을 전송하여 일기 작성을 알립니다.
+3. 비밀번호
 - 사용자가 설정한 비밀번호를 앱 시작시 입력합니다.
+4. 테마모드
+- 유저가 직접 라이트모드와 다크모드를 선택할 수 있습니다.
 
 </br>
 
-## commit message convention
-```
-  - [INIT] : 초기화
-  - [ADD] : 파일 추가
-  - [RENAME] : 파일 혹은 폴더명을 수정하거나 옮기는 작업만인 경우
-  - [REMOVE] : 파일을 삭제하는 작업만 수행한 경우
-  - [FEAT] : 기능 추가
-  - [DELETE] : 기능 삭제
-  - [UPDATE] : 기능 수정
-  - [FIX] : 버그 수정
-  - [REFACTOR]: 리팩토링
-  - [STYLE] : 스타일 (코드 형식, 세미콜론 추가: 비즈니스 로직에 변경 없음)
-  - [DOCS] : 문서 (문서 추가(Add), 수정, 삭제)
-  - [CHORE] : 기타 변경사항 (빌드 스크립트 수정, 에셋 추가 등)
-  - [DESIGN] : 사용자 UI 디자인 변경
-  - [HOTFIX] : 급하게 치명적인 버그를 고쳐야하는 경우
-  - [COMMENT] : 필요한 주석 추가 및 변경
-  - [TEST] : 테스트 추가, 테스트 리팩토링(프로덕션 코드 변경 X)
-  ```
+## 버전기록
+<details>
+<summary>버전 1.2.0</summary>
+  
+  - 다크모드/라이트모드 선택
+  - 자잘한 오류 수정
+</details>
+
+<details>
+<summary>버전 1.1.0</summary>
+  
+  - 알림기능 재 추가
+  - 자잘한 오류 수정
+</details>
+
+<details>
+<summary>버전 1.0.3</summary>
+  
+  - UI/UX 수정
+  - 앱 안정화 진행
+  - 이전 날짜 일기 작성 가능하도록 기능 변경
+</details>
+
+<details>
+<summary>버전 1.0.2</summary>
+  
+  - 오류 수정 (+ 알림 기능 임시 삭제)
+</details>
+
+<details>
+<summary>버전 1.0.1</summary>
+  
+  - 특정 날짜에서 일기가 작성되지 않는 오류 수정
+  - 앱 시작하기 로티 이미지 추가
+  - 글 작성하기 UI/UX 수정
+</details>
+
+<details>
+<summary>버전 1.0</summary>
+  
+  - 일기 CRUD
+  - 푸시 알림
+  - 비밀번호
+</details>
