@@ -87,7 +87,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 3:
-            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
+            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
             cell.titleLabel.text = "건의사항"
             return cell
             
