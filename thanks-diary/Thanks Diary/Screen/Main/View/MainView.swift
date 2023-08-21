@@ -32,17 +32,18 @@ final class MainView: BaseView {
         calendar.appearance.selectionColor = Color.COLOR_GRAY5
         calendar.locale = Locale(identifier: "ko_KR")
         calendar.appearance.headerDateFormat = "YYYY년 M월"
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         
         calendar.appearance.headerTitleColor = Color.COLOR_GRAY1
-        calendar.appearance.headerTitleFont = Font.NANUM_LIGHT_19
-        calendar.appearance.titleFont = Font.NANUM_LIGHT_17
-        calendar.appearance.weekdayFont = Font.NANUM_ULTRALIGHT_17
-        calendar.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
-        
         calendar.appearance.weekdayTextColor = Color.COLOR_GRAY1
         calendar.appearance.titleDefaultColor = Color.COLOR_GRAY1 // 선택가능한 날짜 색
         calendar.appearance.titlePlaceholderColor = Color.COLOR_WHITE_GRAY  // 선택 불가능한 날짜 색
-
+        
+        calendar.appearance.headerTitleFont = Font.NANUM_LIGHT_19
+        calendar.appearance.weekdayFont = Font.NANUM_ULTRALIGHT_17
+        calendar.appearance.titleFont = Font.NANUM_LIGHT_17
+        calendar.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
+        
         calendar.appearance.calendar.headerHeight = 50
         calendar.weekdayHeight = 30
         calendar.rowHeight = 40
