@@ -70,7 +70,6 @@ final class ReadVC: BaseVC {
         readView.updateButtonTapHandler = {
             let vc = DetailWriteVC()
             vc.viewModel = self.viewModel
-            self.viewModel?.selectedDiaryData = diaryData
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

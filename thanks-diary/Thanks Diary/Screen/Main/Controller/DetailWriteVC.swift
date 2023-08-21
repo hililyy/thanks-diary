@@ -70,9 +70,9 @@ final class DetailWriteVC: BaseVC {
                 // 수정
                 viewModel?.updateData(newData: newData) { result in
                     if result {
-                        self.popVC()
                         self.viewModel?.selectedDiaryData = newData
                         self.viewModel?.getData()
+                        self.popVC()
                     } else {
                         self.showErrorPopup()
                     }
