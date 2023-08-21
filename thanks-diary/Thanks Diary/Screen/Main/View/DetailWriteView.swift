@@ -11,7 +11,7 @@ final class DetailWriteView: BaseView {
     
     // MARK: - UI component
     
-    private var backButton = UIButton(type: .custom).then { button in
+    var backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
@@ -20,7 +20,7 @@ final class DetailWriteView: BaseView {
         label.textColor = Color.COLOR_GRAY1
     }
     
-    private var completeButton = UIButton(type: .custom).then { button in
+    var completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
@@ -140,22 +140,11 @@ final class DetailWriteView: BaseView {
     
     // MARK: - UI, Target
     
-    var backButtonTapHandler: () -> () = {}
-    var completeButtonTapHandler: () -> () = {}
-    
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE
     }
     
     override func setTarget() {
-        backButton.addTarget { _ in
-            self.backButtonTapHandler()
-        }
-        
-        completeButton.addTarget { _ in
-            self.completeButtonTapHandler()
-        }
-        
         setKeyboardNotification()
         
         // 텍스트 필드 외부 터치 시 키보드 닫기 위한 제스처 추가

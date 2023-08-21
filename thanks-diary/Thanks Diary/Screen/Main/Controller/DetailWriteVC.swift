@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class DetailWriteVC: BaseVC {
     
@@ -42,13 +44,19 @@ final class DetailWriteVC: BaseVC {
     }
     
     private func setTarget() {
-        detailWriteView.backButtonTapHandler = {
-            self.popVC()
-        }
+        detailWriteView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.popVC()
+            })
+            .disposed(by: disposeBag)
         
-        detailWriteView.completeButtonTapHandler = {
-            self.complete()
-        }
+        detailWriteView.completeButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.complete()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func complete() {

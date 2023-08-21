@@ -11,7 +11,7 @@ final class ReadView: BaseView {
     
     // MARK: - UI components
     
-    private var backButton = UIButton(type: .custom).then { button in
+    var backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
@@ -20,7 +20,7 @@ final class ReadView: BaseView {
         label.textColor = Color.COLOR_GRAY1
     }
     
-    private var deleteButton = UIButton(type: .custom).then { button in
+    var deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_TRASH, for: .normal)
     }
     
@@ -63,7 +63,7 @@ final class ReadView: BaseView {
         textView.isEditable = false
     }
     
-    private var updateButton = UIButton(type: .custom).then { button in
+    var updateButton = UIButton(type: .custom).then { button in
         button.setTitle("수정하기", for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_20
@@ -88,26 +88,8 @@ final class ReadView: BaseView {
     
     // MARK: - UI, Target
     
-    var backButtonTapHandler: () -> () = {}
-    var deleteButtonTapHandler: () -> () = {}
-    var updateButtonTapHandler: () -> () = {}
-    
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE
-    }
-    
-    override func setTarget() {
-        backButton.addTarget { _ in
-            self.backButtonTapHandler()
-        }
-        
-        deleteButton.addTarget { _ in
-            self.deleteButtonTapHandler()
-        }
-        
-        updateButton.addTarget { _ in
-            self.updateButtonTapHandler()
-        }
     }
     
     // MARK: - Constraint

@@ -22,7 +22,7 @@ final class SimpleWriteView: BaseView {
         view.layer.cornerRadius = 10
     }
     
-    private var deleteButton = UIButton(type: .custom).then { button in
+    var deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_TRASH, for: .normal)
     }
     
@@ -45,7 +45,7 @@ final class SimpleWriteView: BaseView {
     
     private var buttonView = UIView()
     
-    private var completeButton = UIButton(type: .custom).then { button in
+    var completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_write_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
@@ -53,7 +53,7 @@ final class SimpleWriteView: BaseView {
         button.layer.cornerRadius = 10
     }
     
-    private var cancelButton = UIButton(type: .custom).then { button in
+    var cancelButton = UIButton(type: .custom).then { button in
         button.setTitle("text_cancel".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
@@ -91,27 +91,11 @@ final class SimpleWriteView: BaseView {
     
     // MARK: - UI, Target
     
-    var completeButtonTapHandler: () -> () = {}
-    var cancelButtonTapHandler: () -> () = {}
-    var deleteButtonTapHandler: () -> () = {}
-    
     override func setTarget() {
         contentsTextView.rx.text
             .map { "\($0?.count ?? 0)/23" }
             .bind(to: textLengthLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        completeButton.addTarget { _ in
-            self.completeButtonTapHandler()
-        }
-        
-        cancelButton.addTarget { _ in
-            self.cancelButtonTapHandler()
-        }
-        
-        deleteButton.addTarget { _ in
-            self.deleteButtonTapHandler()
-        }
     }
     
     // MARK: - Constraint

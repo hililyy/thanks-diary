@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SimpleWriteVC: BaseVC {
     
@@ -41,64 +43,85 @@ final class SimpleWriteVC: BaseVC {
     }
     
     private func setTarget() {
+        simpleWriteView.completeButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                let newData = DiaryModel(
+                    type: .simple,
+                    title: "",
+                    contents: self.simpleWriteView.getContentsTextViewText(),
+                    date: self.viewModel?.selectedDate.value.convertString()
+                )
+                
+                if let contents = newData.contents,
+                   contents.isEmpty {
+                    // 텍스트 뷰가 비어있으면 토스트 띄움
+                    self.showToast()
+                } else {
+                    if let _ = self.viewModel?.selectedDiaryData {
+                        self.updateDiary(newData)
+                    } else {
+                        self.writeDiary(newData)
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
         
-        simpleWriteView.completeButtonTapHandler = {
-            let newData = DiaryModel(
-                type: .simple,
-                title: "",
-                contents: self.simpleWriteView.getContentsTextViewText(),
-                date: self.viewModel?.selectedDate.value.convertString()
-            )
-            
-            if let contents = newData.contents,
-               contents.isEmpty {
-                // 텍스트 뷰가 비어있으면 토스트 띄움
-                self.simpleWriteView.setCompleteButtonEnable(false)
-                self.toast(message: "내용을 입력해 주세요.", withDuration: 0.5, delay: 1.5, type: "top") {
-                    self.simpleWriteView.setCompleteButtonEnable(true)
+        simpleWriteView.cancelButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.dismissVC()
+            })
+            .disposed(by: disposeBag)
+        
+        simpleWriteView.deleteButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.deleteDiary()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func updateDiary(_ newData: DiaryModel) {
+        self.viewModel?.updateData(newData: newData) { result in
+            if result {
+                self.dismissVC {
+                    self.viewModel?.getData()
                 }
             } else {
-                if let _ = self.viewModel?.selectedDiaryData {
-                    // 수정
-                    self.viewModel?.updateData(
-                        newData: newData) { result in
-                            if result {
-                                self.dismissVC {
-                                    self.viewModel?.getData()
-                                }
-                            } else {
-                                self.showErrorPopup()
-                            }
-                        }
-                } else {
-                    // 작성
-                    self.viewModel?.setData(newData: newData) { result in
-                        if result {
-                            self.dismissVC {
-                                self.viewModel?.getData()
-                            }
-                        } else {
-                            self.showErrorPopup()
-                        }
-                    }
-                }
+                self.showErrorPopup()
             }
         }
-        
-        simpleWriteView.cancelButtonTapHandler = {
-            self.dismissVC()
-        }
-        
-        simpleWriteView.deleteButtonTapHandler = {
-            self.viewModel?.deleteData() { result in
-                if result {
-                    self.dismissVC {
-                        self.viewModel?.getData()
-                    }
-                } else {
-                    self.showErrorPopup()
+    }
+    
+    private func writeDiary(_ newData: DiaryModel) {
+        self.viewModel?.setData(newData: newData) { result in
+            if result {
+                self.dismissVC {
+                    self.viewModel?.getData()
                 }
+            } else {
+                self.showErrorPopup()
             }
+        }
+    }
+    
+    private func deleteDiary() {
+        self.viewModel?.deleteData() { result in
+            if result {
+                self.dismissVC {
+                    self.viewModel?.getData()
+                }
+            } else {
+                self.showErrorPopup()
+            }
+        }
+    }
+    
+    private func showToast() {
+        self.simpleWriteView.setCompleteButtonEnable(false)
+        self.toast(message: "내용을 입력해 주세요.", withDuration: 0.5, delay: 1.5, type: "top") {
+            self.simpleWriteView.setCompleteButtonEnable(true)
         }
     }
 }

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ReadVC: BaseVC {
     
@@ -43,32 +45,49 @@ final class ReadVC: BaseVC {
     }
     
     private func setTarget() {
-        readView.backButtonTapHandler = {
-            self.popVC()
-        }
+        readView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.popVC()
+            })
+            .disposed(by: disposeBag)
         
-        readView.deleteButtonTapHandler = {
-            let vc = AlertVC()
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.rightButtonTapHandler = {
-                self.viewModel?.deleteData() { result in
-                    if result {
-                        self.setMainToRoot()
-                    } else {
-                        self.dismissVC() {
-                            self.showErrorPopup()
-                        }
+        readView.deleteButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.presentAlertVC()
+            })
+            .disposed(by: disposeBag)
+        
+        readView.updateButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.pushDetailWriteVC()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func presentAlertVC() {
+        let vc = AlertVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.rightButtonTapHandler = {
+            self.viewModel?.deleteData() { result in
+                if result {
+                    self.setMainToRoot()
+                } else {
+                    self.dismissVC() {
+                        self.showErrorPopup()
                     }
                 }
             }
-            self.present(vc, animated: true)
         }
-        
-        readView.updateButtonTapHandler = {
-            let vc = DetailWriteVC()
-            vc.viewModel = self.viewModel
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        self.present(vc, animated: true)
+    }
+    
+    private func pushDetailWriteVC() {
+        let vc = DetailWriteVC()
+        vc.viewModel = self.viewModel
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
