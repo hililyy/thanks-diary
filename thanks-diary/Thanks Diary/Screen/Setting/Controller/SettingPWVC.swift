@@ -27,8 +27,10 @@ final class SettingPWVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         if homeFlag == true {
+            settingPWView.backButton.isHidden = true
             settingPWView.setContentsLabel(text: "text_password_contents_2".localized)
         } else {
+            settingPWView.backButton.isHidden = false
             UserDefaultManager.set("", forKey: UserDefaultKey.PASSWORD)
         }
         
@@ -73,6 +75,10 @@ final class SettingPWVC: BaseVC {
             self.count = max(0, self.count - 1)
             _ = self.firstPW.popLast()
             self.settingPWView.setDotColor(num: self.count)
+        }
+        
+        settingPWView.backButtonTapHandler = {
+            self.popVC()
         }
     }
     

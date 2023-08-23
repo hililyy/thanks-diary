@@ -11,6 +11,10 @@ final class SettingPWView: BaseView {
     
     // MARK: - UI components
     
+    var backButton = UIButton(type: .custom).then { button in
+        button.setImage(Image.IC_BACK, for: .normal)
+    }
+    
     private var lockImageView = UIImageView().then { imageView in
         imageView.image = Image.IMG_LOCK
     }
@@ -79,66 +83,77 @@ final class SettingPWView: BaseView {
     private let oneButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_ONE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 1
     }
     
     private let twoButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_TWO, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 2
     }
     
     private let threeButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_THREE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 3
     }
     
     private let fourButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_FOUR, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 4
     }
     
     private let fiveButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_FIVE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 5
     }
     
     private let sixButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_SIX, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 6
     }
     
     private let sevenButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_SEVEN, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 7
     }
     
     private let eightButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_EIGHT, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 8
     }
     
     private let nineButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_NINE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 9
     }
     
     private let zeroButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_ZERO, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
         button.tag = 0
     }
     
     private let deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_DELETE, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        button.adjustsImageWhenHighlighted = false
     }
     
     private let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
@@ -205,6 +220,7 @@ final class SettingPWView: BaseView {
     
     var numberButtonTapHandler: (Int) -> () = { _ in }
     var deleteButtonTapHandler: () -> () = {}
+    var backButtonTapHandler: () -> () = {}
     
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE
@@ -220,12 +236,17 @@ final class SettingPWView: BaseView {
         deleteButton.addTarget { _ in
             self.deleteButtonTapHandler()
         }
+        
+        backButton.addTarget { _ in
+            self.backButtonTapHandler()
+        }
     }
     
     // MARK: - Constraint
     
     override func addSubView() {
-        addSubviews([lockImageView,
+        addSubviews([backButton,
+                     lockImageView,
                      titleLabel,
                      contentsLabel,
                      dotView,
@@ -240,6 +261,13 @@ final class SettingPWView: BaseView {
     }
     
     override func setConstraints() {
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(25)
+            make.left.equalTo(snp.left).offset(20)
+            make.width.equalTo(44)
+            make.height.equalTo(44)
+        }
+        
         lockImageView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(70)
             make.centerX.equalTo(snp.centerX)

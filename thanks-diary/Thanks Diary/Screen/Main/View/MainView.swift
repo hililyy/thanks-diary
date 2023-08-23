@@ -31,13 +31,13 @@ final class MainView: BaseView {
         calendar.appearance.headerTitleColor = Color.COLOR_GRAY1
         calendar.appearance.weekdayTextColor = Color.COLOR_GRAY1
         calendar.appearance.titleDefaultColor = Color.COLOR_GRAY1 // 선택가능한 날짜 색
-        calendar.appearance.titlePlaceholderColor = Color.COLOR_WHITE_GRAY  // 선택 불가능한 날짜 색
+        calendar.appearance.titlePlaceholderColor = Color.COLOR_WHITE_GRAY // 선택 불가능한 날짜 색
         
         calendar.appearance.headerTitleFont = Font.NANUM_LIGHT_19
         calendar.appearance.weekdayFont = Font.NANUM_ULTRALIGHT_17
         calendar.appearance.titleFont = Font.NANUM_LIGHT_17
         calendar.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
-        calendar.appearance.todayColor = Color.COLOR_GRAYBLUE // 오늘 날짜 동글라미 색상
+        calendar.appearance.todayColor = Color.COLOR_LIGHTGRAYBLUE // 오늘 날짜 동그라미 색상
         calendar.appearance.selectionColor = Color.COLOR_GRAY5
         
         calendar.appearance.headerDateFormat = "YYYY년 M월"
