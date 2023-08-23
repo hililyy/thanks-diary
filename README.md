@@ -39,7 +39,13 @@
 
 </br>
 
-## 버전기록 (6회)
+## 버전기록 (7회)
+<details>
+<summary>버전 1.2.1</summary>
+  
+  - 자잘한 오류 / UI 수정
+</details>
+
 <details>
 <summary>버전 1.2.0</summary>
   
