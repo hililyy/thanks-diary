@@ -27,6 +27,7 @@ final class SettingSwitchTVCell: BaseTVCell {
     override func configureUI() {
         selectionStyle = .none
         backgroundColor = .clear
+        settingSwitch.onTintColor = Color.COLOR_LIGHTGRAYBLUE
         settingSwitch.addTarget { _ in
             self.switchTapHandler()
         }
