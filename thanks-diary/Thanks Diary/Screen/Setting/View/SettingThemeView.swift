@@ -22,29 +22,28 @@ final class SettingThemeView: BaseView {
         label.textAlignment = .center
     }
     
-    private lazy var contentsStackView = UIStackView(arrangedSubviews: [lightView, darkView]).then { stackView in
-        stackView.spacing = 20
+    private lazy var contentsStackView = UIStackView(arrangedSubviews: [lightContentView, darkContentView]).then { stackView in
+        stackView.spacing = 50
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
     }
     
+    private var lightContentView = UIView()
+    private var darkContentView = UIView()
+    
     private var lightView = UIView().then { view in
-        view.layer.cornerRadius = 10
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 20
+        view.layer.borderWidth = 2
+        view.layer.borderColor = Color.COLOR_GRAY2?.cgColor
     }
     
     private var darkView = UIView().then { view in
-        view.layer.cornerRadius = 10
-    }
-    
-    private var lightImageView = UIImageView().then { imageView in
-        imageView.image = Image.IMG_SREEN_LIGHT
-        imageView.contentMode = .scaleAspectFit
-    }
-    
-    private var darkImageView = UIImageView().then { imageView in
-        imageView.image = Image.IMG_SREEN_DARK
-        imageView.contentMode = .scaleAspectFit
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 20
+        view.layer.borderWidth = 2
+        view.layer.borderColor = Color.COLOR_GRAY2?.cgColor
     }
     
     private var lightButton = UIButton(type: .custom)
@@ -54,34 +53,28 @@ final class SettingThemeView: BaseView {
         label.textColor = Color.COLOR_GRAY6
         label.text = "라이트 모드"
         label.textAlignment = .center
-        label.font = Font.NANUM_LIGHT_17
+        label.font = Font.NANUM_LIGHT_15
     }
     
     private var darkLabel = UILabel().then { label in
         label.textColor = Color.COLOR_GRAY6
         label.text = "다크 모드"
         label.textAlignment = .center
-        label.font = Font.NANUM_LIGHT_17
+        label.font = Font.NANUM_LIGHT_15
     }
     
     // MARK: - Functions
     
     func setTheme(theme: ThemeMode) {
-        if theme == .light {
-            lightImageView.alpha = 1.0
-            lightView.backgroundColor = .lightGray
-            lightView.layer.borderWidth = 0
+        switch theme {
             
-            darkImageView.alpha = 0.2
-            darkView.backgroundColor = .clear
+        case .light:
+            lightView.alpha = 1.0
+            darkView.alpha = 0.2
             
-        } else {
-            darkImageView.alpha = 1.0
-            darkView.backgroundColor = .lightGray
-            darkView.layer.borderWidth = 0
-            
-            lightImageView.alpha = 0.2
-            lightView.backgroundColor = .clear
+        case .dark:
+            lightView.alpha = 0.2
+            darkView.alpha = 1.0
         }
     }
     
@@ -90,6 +83,7 @@ final class SettingThemeView: BaseView {
     var backButtonTapHandler: () -> () = {}
     var lightButtonTapHandler: () -> () = {}
     var darkButtonTapHandler: () -> () = {}
+    var systemButtonTapHandler: () -> () = {}
     
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE
@@ -119,16 +113,16 @@ final class SettingThemeView: BaseView {
         addSubviews([backButton,
                      topLabel,
                      contentsStackView
-        ])
-
-        lightView.addSubviews([
-            lightImageView,
+                    ])
+        
+        lightContentView.addSubviews([
+            lightView,
             lightLabel,
             lightButton,
         ])
-
-        darkView.addSubviews([
-            darkImageView,
+        
+        darkContentView.addSubviews([
+            darkView,
             darkLabel,
             darkButton,
         ])
@@ -151,47 +145,48 @@ final class SettingThemeView: BaseView {
         
         contentsStackView.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp.bottom).offset(50)
-            make.left.equalTo(snp.left).offset(20)
-            make.bottom.equalTo(snp.bottom).offset(-300)
+            make.left.equalTo(snp.left).offset(50)
             make.centerX.equalTo(snp.centerX)
         }
 
-        lightImageView.snp.makeConstraints { make in
-            make.top.equalTo(lightView.snp.top)
-            make.left.equalTo(lightView.snp.left).offset(10)
-            make.right.equalTo(lightView.snp.right).offset(-10)
+        lightView.snp.makeConstraints { make in
+            make.top.equalTo(lightContentView.snp.top)
+            make.left.equalTo(lightContentView.snp.left)
+            make.right.equalTo(lightContentView.snp.right)
             make.bottom.equalTo(lightLabel.snp.top).offset(-20)
-            make.width.equalTo(darkImageView)
-            make.height.equalTo(darkImageView)
+            make.width.equalTo(106)
+            make.height.equalTo(106)
         }
 
         lightLabel.snp.makeConstraints { make in
-            make.left.equalTo(lightView.snp.left)
-            make.right.equalTo(lightView.snp.right)
-            make.bottom.equalTo(lightView.snp.bottom).offset(-20)
+            make.left.equalTo(lightContentView.snp.left)
+            make.right.equalTo(lightContentView.snp.right)
+            make.bottom.equalTo(lightContentView.snp.bottom)
+            make.height.equalTo(30)
         }
         
         lightButton.snp.makeConstraints { make in
-            make.edges.equalTo(lightView)
+            make.edges.equalTo(lightContentView)
         }
-
-        darkImageView.snp.makeConstraints { make in
-            make.top.equalTo(darkView.snp.top)
-            make.left.equalTo(darkView.snp.left).offset(10)
-            make.right.equalTo(darkView.snp.right).offset(-10)
+        
+        darkView.snp.makeConstraints { make in
+            make.top.equalTo(darkContentView.snp.top)
+            make.left.equalTo(darkContentView.snp.left)
+            make.right.equalTo(darkContentView.snp.right)
             make.bottom.equalTo(darkLabel.snp.top).offset(-20)
-            make.width.equalTo(lightImageView)
-            make.height.equalTo(lightImageView)
+            make.width.equalTo(lightView.snp.width)
+            make.height.equalTo(lightView.snp.width)
         }
 
         darkLabel.snp.makeConstraints { make in
-            make.left.equalTo(darkView.snp.left)
-            make.right.equalTo(darkView.snp.right)
-            make.bottom.equalTo(darkView.snp.bottom).offset(-20)
+            make.left.equalTo(darkContentView.snp.left)
+            make.right.equalTo(darkContentView.snp.right)
+            make.bottom.equalTo(darkContentView.snp.bottom)
+            make.height.equalTo(30)
         }
         
         darkButton.snp.makeConstraints { make in
-            make.edges.equalTo(darkView)
+            make.edges.equalTo(darkContentView)
         }
     }
 }

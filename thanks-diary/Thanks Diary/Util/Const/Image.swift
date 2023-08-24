@@ -30,6 +30,7 @@ struct Image {
     static let IMG_LOCK = UIImage(named: "img_lock")
     static let IMG_SREEN_LIGHT = UIImage(named: "img_screen_light")
     static let IMG_SREEN_DARK = UIImage(named: "img_screen_dark")
+    static let IMG_SYSTEM_THEME = UIImage(named: "img_system_theme")
     
     // number image
     static let IC_ONE = UIImage(named: "ic_one")

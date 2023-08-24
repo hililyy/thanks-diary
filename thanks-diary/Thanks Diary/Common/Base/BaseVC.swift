@@ -73,7 +73,6 @@ class BaseVC: UIViewController {
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = .dark
             }
-            
             UIApplication.shared.statusBarStyle = .lightContent
             
         // 라이트 모드인 상태
@@ -81,9 +80,7 @@ class BaseVC: UIViewController {
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = .light
             }
-            
             UIApplication.shared.statusBarStyle = .darkContent
-            
         }
     }
 }
