@@ -14,6 +14,7 @@ final class SettingVC: BaseVC {
     
     private let settingView = SettingView()
     private var alarmFlag: Bool = false
+    let viewModel = SettingViewModel()
     
     // MARK: - Life Cycle
     
@@ -114,6 +115,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             
         case 1: // 알림
             let vc = SettingAlarmVC()
+            vc.viewModel = viewModel
             self.navigationController?.pushViewController(vc, animated: true)
             
         case 2: // 테마 설정
@@ -121,7 +123,10 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(vc, animated: true)
             
         case 3: // 건의하기
-            sendEmail()
+//            sendEmail()
+            let vc = SettingSuggestVC()
+            vc.viewModel = viewModel
+            self.navigationController?.pushViewController(vc, animated: true)
             
         case 4: // 오픈소스 라이선스
             let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")

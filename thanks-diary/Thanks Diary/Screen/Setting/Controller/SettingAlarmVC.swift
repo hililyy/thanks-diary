@@ -12,7 +12,7 @@ final class SettingAlarmVC: BaseVC {
     // MARK: - Property
     
     let settingAlarmView = SettingAlarmView()
-    let viewModel = SettingViewModel()
+    var viewModel: SettingViewModel?
     var switchFlag: Bool = false
     
     // MARK: - Life Cycle
@@ -59,14 +59,14 @@ final class SettingAlarmVC: BaseVC {
             LocalNotificationManager.shared.requestSendNotification(time: Date())
             UserDefaultManager.set(Date(), forKey: UserDefaultKey.PUSH_TIME)
             UserDefaultManager.set(true, forKey: UserDefaultKey.IS_PUSH)
-            self.viewModel.selectedTime = Date()
+            self.viewModel?.selectedTime = Date()
             self.switchFlag = true
             
         } else {
             LocalNotificationManager.shared.removePendingNotification()
             UserDefaultManager.delete(forKey: UserDefaultKey.PUSH_TIME)
             UserDefaultManager.set(false, forKey: UserDefaultKey.IS_PUSH)
-            self.viewModel.selectedTime = nil
+            self.viewModel?.selectedTime = nil
             self.switchFlag = false
         }
         
@@ -151,7 +151,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
         case 1:
             let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
             cell.titleLabel.text = "시간 설정"
-            cell.contentsLabel.text = viewModel.selectedTime?.convertString(format: "a hh시 mm분")
+            cell.contentsLabel.text = viewModel?.selectedTime?.convertString(format: "a hh시 mm분")
             return cell
 
         default:
