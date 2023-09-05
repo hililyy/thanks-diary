@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import RxSwift
 
-class CoreDataManager {
+final class CoreDataManager {
     
     static let shared = CoreDataManager()
     private init() { }

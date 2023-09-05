@@ -123,7 +123,6 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(vc, animated: true)
             
         case 3: // 건의하기
-//            sendEmail()
             let vc = SettingSuggestVC()
             vc.viewModel = viewModel
             self.navigationController?.pushViewController(vc, animated: true)

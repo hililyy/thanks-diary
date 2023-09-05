@@ -10,6 +10,8 @@ import SnapKit
 
 final class FloatingButtonCloseView: BaseView {
     
+    // MARK: - UI components
+    
     lazy var backgroundView = UIView().then { view in
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
     }
@@ -51,6 +53,8 @@ final class FloatingButtonCloseView: BaseView {
         label.textColor = .black
     }
     
+    // MARK: - Functions
+    
     var detailButtonCenterY: Constraint!
     var simpleButtonCenterY: Constraint!
     
@@ -72,14 +76,17 @@ final class FloatingButtonCloseView: BaseView {
         simpleButtonCenterY.update(offset: 0)
     }
     
+    // MARK: - Constraint
+    
     override func addSubView() {
-        addSubview(backgroundView)
-        addSubview(backgroundButton)
-        addSubview(plusButton)
-        addSubview(detailButton)
-        addSubview(simpleButton)
-        addSubview(detailLabel)
-        addSubview(simpleLabel)
+        addSubviews([backgroundView,
+                     backgroundButton,
+                     plusButton,
+                     detailButton,
+                     simpleButton,
+                     detailLabel,
+                     simpleLabel
+                    ])
     }
     
     override func setConstraints() {

@@ -49,8 +49,12 @@ final class PageView: BaseView {
         backgroundColor = Color.COLOR_WHITE
     }
     
+    // MARK: - Constraint
+    
     override func addSubView() {
-        addSubviews([containerView, progressStackView, nextButton])
+        addSubviews([containerView,
+                     progressStackView,
+                     nextButton])
     }
 
     override func setConstraints() {

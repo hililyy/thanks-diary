@@ -8,6 +8,9 @@
 import UIKit
 
 final class SecondStartView: BaseView {
+    
+    // MARK: - UI components
+    
     let lottieView = UIView()
     
     private let titleLabel = UILabel().then { label in
@@ -85,12 +88,18 @@ final class SecondStartView: BaseView {
         stackView.alignment = .fill
     }
     
+    // MARK: - UI, Target
+    
     override func configureUI() {
         backgroundColor = .clear
     }
     
+    // MARK: - Constraint
+    
     override func addSubView() {
-        addSubviews([lottieView, titleLabel, messageStackView])
+        addSubviews([lottieView,
+                     titleLabel,
+                     messageStackView])
     }
     
     override func setConstraints() {

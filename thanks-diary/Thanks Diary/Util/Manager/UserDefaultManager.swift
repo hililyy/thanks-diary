@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserDefaultManager {
+final class UserDefaultManager {
     
     class func set(_ value: Any, forKey: String) {
         UserDefaults.standard.set(value, forKey: forKey)

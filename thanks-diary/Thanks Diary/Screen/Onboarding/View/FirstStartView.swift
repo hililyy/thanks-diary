@@ -9,6 +9,8 @@ import UIKit
 
 final class FirstStartView: BaseView {
     
+    // MARK: - UI components
+    
     var lottieView = UIView()
     var lottieView2 = UIView()
     
@@ -20,12 +22,18 @@ final class FirstStartView: BaseView {
         label.text = "text_start_message1".localized
     }
     
+    // MARK: - UI, Target
+    
     override func configureUI() {
         backgroundColor = .clear
     }
     
+    // MARK: - Constraint
+    
     override func addSubView() {
-        addSubviews([lottieView, lottieView2, messageLabel])
+        addSubviews([lottieView,
+                     lottieView2,
+                     messageLabel])
     }
     
     override func setConstraints() {

@@ -7,7 +7,9 @@
 
 import UIKit
 
-class FloatingButton: BaseView {
+final class FloatingButton: BaseView {
+    
+    // MARK: - Property
     
     var button = UIButton(type: .custom).then {
         $0.layer.cornerRadius = 26
@@ -26,13 +28,16 @@ class FloatingButton: BaseView {
         button.backgroundColor = color
     }
     
+    // MARK: - UI, Target
+    
     override func configureUI() {
         self.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
     }
     
+    // MARK: - Constraint
+    
     override func addSubView() {
-        addSubview(button)
-        addSubview(imageView)
+        addSubviews([button, imageView])
     }
     
     override func setConstraints() {

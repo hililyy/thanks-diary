@@ -30,12 +30,12 @@ final class MainVC: BaseVC {
         mainView.calendar.dataSource = self
         setTable()
         setTarget()
-        setObservable()
+        setCalenderCircleDatas()
     }
     
     // MARK: - Function
     
-    func setObservable() {
+    func setCalenderCircleDatas() {
         
         // 모든 다이어리 데이터가 갱신 되었을 때 (선택한 날짜 [string] 갱신)
         Observable.combineLatest(viewModel.allDetailDataRx, viewModel.allSimpleDataRx)

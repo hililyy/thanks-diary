@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PageNC: BaseNavigationController {
+final class PageNC: BaseNavigationController {
     
     // MARK: - Life Cycle
     

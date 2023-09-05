@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIControl {
+    
     func addTarget(for controlEvents: UIControl.Event = .touchUpInside, _ closure: @escaping (UIControl) -> ()) {
         addAction(UIAction { (action: UIAction) in
             guard let sender = action.sender as? UIControl else { return }

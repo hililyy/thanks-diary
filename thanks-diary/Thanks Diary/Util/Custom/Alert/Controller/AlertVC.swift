@@ -8,9 +8,14 @@
 import UIKit
 
 final class AlertVC: BaseVC {
+    
+    // MARK: - Property
+    
     let alertView = AlertView()
     var leftButtonTapHandler: () -> () = { }
     var rightButtonTapHandler: () -> () = { }
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = alertView
@@ -20,6 +25,8 @@ final class AlertVC: BaseVC {
         super.viewDidLoad()
         setTarget()
     }
+    
+    // MARK: - Function
     
     private func setTarget() {
         alertView.backButton.addTarget { _ in

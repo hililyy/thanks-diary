@@ -7,10 +7,10 @@
 
 import UIKit
 
-class CommonUtilManager {
+final class CommonUtilManager {
     
     static let shared = CommonUtilManager()
-    private init() { }
+    private init() {}
     
     func getAppVersion() -> String {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {

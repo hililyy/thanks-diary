@@ -31,7 +31,7 @@ final class MainViewModel {
     }
 }
 
-// 다이어리 조회, 생성, 수정, 삭제
+// 다이어리 CRUD
 extension MainViewModel {
     // 조회
     func getData() {

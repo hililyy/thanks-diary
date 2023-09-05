@@ -21,6 +21,10 @@ final class ThirdStartVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLottie()
+    }
+    
+    private func setLottie() {
         LottieManager.shared.setLottie(self, lottieView: thirdStartView.lottieView, name: "go", mode: .playOnce)
     }
 }

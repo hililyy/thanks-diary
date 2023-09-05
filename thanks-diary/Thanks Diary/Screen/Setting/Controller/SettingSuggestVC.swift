@@ -62,6 +62,7 @@ final class SettingSuggestVC: BaseVC {
 }
 
 // MARK: - TableView
+// TODO: Rx적용
 
 extension SettingSuggestVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

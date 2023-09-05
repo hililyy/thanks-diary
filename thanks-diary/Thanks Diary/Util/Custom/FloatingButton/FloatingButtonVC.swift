@@ -9,7 +9,11 @@ import UIKit
 
 final class FloatingButtonVC: BaseVC {
     
+    // MARK: - Property
+    
     let floatingButtonCloseView = FloatingButtonCloseView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = floatingButtonCloseView
@@ -24,6 +28,8 @@ final class FloatingButtonVC: BaseVC {
         super.viewDidAppear(animated)
         updateOpenConstraints()
     }
+    
+    // MARK: - Function
     
     func updateOpenConstraints() {
         UIView.animate(withDuration: 0.7,

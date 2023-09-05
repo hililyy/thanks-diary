@@ -21,6 +21,10 @@ final class FirstStartVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLottie()
+    }
+    
+    private func setLottie() {
         LottieManager.shared.setLottie(self, lottieView: firstStartView.lottieView, name: "sun", mode: .loop)
         LottieManager.shared.setLottie(self, lottieView: firstStartView.lottieView2, name: "plant", mode: .playOnce)
     }

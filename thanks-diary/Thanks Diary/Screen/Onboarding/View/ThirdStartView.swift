@@ -9,6 +9,8 @@ import UIKit
 
 final class ThirdStartView: BaseView {
     
+    // MARK: - UI components
+    
     var lottieView = UIView()
     
     private var messageLabel = UILabel().then { label in
@@ -19,9 +21,13 @@ final class ThirdStartView: BaseView {
         label.text = "text_start_message3".localized
     }
     
+    // MARK: - UI, Target
+    
     override func configureUI() {
         backgroundColor = .clear
     }
+    
+    // MARK: - Constraint
     
     override func addSubView() {
         addSubviews([lottieView, messageLabel])

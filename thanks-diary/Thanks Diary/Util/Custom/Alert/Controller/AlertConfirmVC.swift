@@ -7,9 +7,13 @@
 
 import UIKit
 
-class AlertConfirmVC: BaseVC {
+final class AlertConfirmVC: BaseVC {
+    
+    // MARK: - Property
     
     let alertConfirmView = AlertConfirmView()
+    
+    // MARK: - Life Cycle
     
     override func loadView() {
         view = alertConfirmView
@@ -19,6 +23,8 @@ class AlertConfirmVC: BaseVC {
         super.viewDidLoad()
         setTarget()
     }
+    
+    // MARK: - Function
     
     private func setTarget() {
         alertConfirmView.okButton.addTarget { _ in
