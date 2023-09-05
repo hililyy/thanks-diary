@@ -102,7 +102,11 @@ extension BaseVC: UIGestureRecognizerDelegate {
         var toastLabelY: CGFloat
         
         if keyboardHeight > 0 {
-            toastLabelY = self.view.frame.size.height - keyboardHeight - toastLabelHeight - 50
+            if type == "top" {
+                toastLabelY = 100
+            } else {
+                toastLabelY = self.view.frame.size.height - keyboardHeight - toastLabelHeight - 50
+            }
         } else {
             if type == "top" {
                 toastLabelY = 100
