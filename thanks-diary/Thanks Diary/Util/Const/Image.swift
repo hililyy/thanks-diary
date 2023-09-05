@@ -22,6 +22,8 @@ struct Image {
     static let IC_TRASH = UIImage(named: "ic_trash")
     static let IC_MORE = UIImage(named: "ic_more")
     static let IC_DELETE = UIImage(named: "ic_delete")
+    static let IC_WRITE = UIImage(named: "ic_write")
+    static let IC_MAIL = UIImage(named: "ic_mail")
     
     // image
     static let IMG_UNDERLINE = UIImage(named: "img_underline")
