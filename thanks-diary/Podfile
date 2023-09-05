@@ -11,6 +11,8 @@ target 'Thanks Diary' do
 	pod 'lottie-ios'
 	pod 'Then'
 	pod 'SnapKit'
-  pod 'RxSwift'
-  pod 'RxCocoa'
+ 	pod 'RxSwift'
+  	pod 'RxCocoa'
+	pod 'Firebase/Database'
+	pod 'Firebase/Auth'
 end
