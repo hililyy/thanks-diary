@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseAuth
 import FirebaseCore
+import RxSwift
 
 final class FirebaseManager {
     
@@ -15,7 +16,7 @@ final class FirebaseManager {
     private init() { }
     
     // 건의하기 게시판 데이터 조회
-    func getSuggestDatas(completion: @escaping ([SettingSuggestModel]) -> ()) {
+    func getSuggestDatas(completion: @escaping (Result<[SettingSuggestModel], Error>) -> ()) {
         Database.database().reference().child("suggest").observeSingleEvent(of: .value) { snapshot in
             var values: [[String:Any]] = []
             
@@ -24,9 +25,25 @@ final class FirebaseManager {
                 values.append(value)
             }
             
-            let newDatas = CommonUtilManager.shared.dictionaryToObject(objectType: SettingSuggestModel.self, dictionary: values)
+            if let data = CommonUtilManager.shared.dictionaryToObject(objectType: SettingSuggestModel.self, dictionary: values) {
+                completion(.success(data))
+            }
+        }
+    }
+    
+    func getSuggestDatasRx() -> Observable<[SettingSuggestModel]> {
+        return Observable.create() { emitter in
             
-            completion(newDatas ?? [])
+            self.getSuggestDatas { result in
+                switch result {
+                case .success(let data):
+                    emitter.onNext(data)
+                    emitter.onCompleted()
+                case .failure(let err):
+                    emitter.onError(err)
+                }
+            }
+            return Disposables.create()
         }
     }
     
@@ -35,7 +52,7 @@ final class FirebaseManager {
         let newData = [
             "uid": CommonUtilManager.shared.getUUID(),
             "contents": contents,
-            "status": "progress"
+            "status": SuggestType.waiting.rawValue
         ]
         
         Database.database().reference().child("suggest").childByAutoId().setValue(newData)

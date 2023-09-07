@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SettingSuggestWriteVC: BaseVC {
+final class SettingSuggestWriteVC: BaseVC {
     
     // MARK: - Property
     
@@ -40,13 +40,14 @@ class SettingSuggestWriteVC: BaseVC {
         settingSuggestWriteView.completeButton.rx.tap
             .asDriver()
             .drive(onNext: {
-                if let contents = self.settingSuggestWriteView.contentsTextView.text,
-                   contents.isEmpty
-                {
+                guard let contents = self.settingSuggestWriteView.contentsTextView.text else { return }
+                
+                if contents.isEmpty {
                     self.showToast()
                 } else {
                     self.dismissVC {
-                        self.viewModel?.setSuggestData(contents: self.settingSuggestWriteView.contentsTextView.text)
+                        self.viewModel?.setSuggestData(contents: contents)
+                        self.viewModel?.getSuggestDatas()
                     }
                 }
             })

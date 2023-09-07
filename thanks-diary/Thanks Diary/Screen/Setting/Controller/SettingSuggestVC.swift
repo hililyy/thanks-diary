@@ -24,18 +24,23 @@ final class SettingSuggestVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.getSuggestDatas()
         setTarget()
-        
-        settingSuggestView.tableView.delegate = self
-        settingSuggestView.tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel?.getSuggestDatas {
-            self.settingSuggestView.tableView.reloadData()
-            self.settingSuggestView.loading.stopAnimating()
-        }
+        
+        viewModel?.suggestData
+            .bind(to: settingSuggestView.tableView.rx.items(
+                cellIdentifier: SettingSuggestTVCell.id,
+                cellType: SettingSuggestTVCell.self)) { index, item, cell in
+                    cell.contentsLabel.text = item.contents
+                    cell.statusLabel.text = SuggestType(rawValue: item.status ?? "")?.description
+                    cell.setStatusLabelUI(SuggestType(rawValue: item.status ?? "") ?? .waiting)
+                    self.settingSuggestView.loading.stopAnimating()
+                }
+                .disposed(by: disposeBag)
     }
     
     // MARK: - Function
@@ -58,27 +63,5 @@ final class SettingSuggestVC: BaseVC {
                 self.present(vc, animated: true)
             })
             .disposed(by: disposeBag)
-    }
-}
-
-// MARK: - TableView
-// TODO: Rx적용
-
-extension SettingSuggestVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.suggestData.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = settingSuggestView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
-        cell.titleLabel.text = viewModel?.suggestData[indexPath.row].contents
-        
-        cell.contentsLabel.text = viewModel?.suggestData[indexPath.row].status == "progress" ? "진행중" : "완료"
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
 }

@@ -21,6 +21,7 @@
 		025E043F2AA6C78600C01D24 /* SettingSuggestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E043E2AA6C78600C01D24 /* SettingSuggestModel.swift */; };
 		025E04412AA7106A00C01D24 /* SettingSuggestWriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E04402AA7106A00C01D24 /* SettingSuggestWriteVC.swift */; };
 		025E04432AA7107200C01D24 /* SettingSuggestWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E04422AA7107200C01D24 /* SettingSuggestWriteView.swift */; };
+		025E04492AA9A1EE00C01D24 /* SettingSuggestTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E04482AA9A1EE00C01D24 /* SettingSuggestTVCell.swift */; };
 		025EF03E2A459C2900C930F2 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF03D2A459C2900C930F2 /* BaseVC.swift */; };
 		025EF0402A459C2F00C930F2 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF03F2A459C2F00C930F2 /* AlertView.swift */; };
 		025EF0422A459C3B00C930F2 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0412A459C3B00C930F2 /* AlertVC.swift */; };
@@ -135,6 +136,7 @@
 		025E043E2AA6C78600C01D24 /* SettingSuggestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSuggestModel.swift; sourceTree = "<group>"; };
 		025E04402AA7106A00C01D24 /* SettingSuggestWriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSuggestWriteVC.swift; sourceTree = "<group>"; };
 		025E04422AA7107200C01D24 /* SettingSuggestWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSuggestWriteView.swift; sourceTree = "<group>"; };
+		025E04482AA9A1EE00C01D24 /* SettingSuggestTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSuggestTVCell.swift; sourceTree = "<group>"; };
 		025EF03D2A459C2900C930F2 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		025EF03F2A459C2F00C930F2 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		025EF0412A459C3B00C930F2 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				2A9F351428AE63ED006CCF7C /* SettingSwitchTVCell.swift */,
 				2A9F351628AE63FD006CCF7C /* SettingMoreTVCell.swift */,
 				2A9F351828AE6410006CCF7C /* SettingLabelTVCell.swift */,
+				025E04482AA9A1EE00C01D24 /* SettingSuggestTVCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -851,6 +854,7 @@
 				022955402A669273004BF800 /* BaseView.swift in Sources */,
 				027C60DE2A8DBFE0008F607F /* SettingThemeVC.swift in Sources */,
 				022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */,
+				025E04492AA9A1EE00C01D24 /* SettingSuggestTVCell.swift in Sources */,
 				026E78E72A6E486C00A09282 /* SettingAlarmView.swift in Sources */,
 				025EF0862A459EEF00C930F2 /* PageView.swift in Sources */,
 				026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */,

@@ -8,21 +8,33 @@
 import Foundation
 
 enum DiaryType: String {
-    case detail = "detail"
-    case simple = "simple"
+    case detail
+    case simple
 }
 
 enum LoginType: String {
-    case none = "none"
-    case email = "email"
+    case none
+    case email
 }
 
 enum ThemeMode: String {
-    case light = "light"
-    case dark = "dark"
+    case light
+    case dark
 }
 
 enum SuggestType: String {
-    case progress = "progress"
-    case complete = "complete"
+    case waiting
+    case progress
+    case complete
+    
+    var description: String {
+        switch self {
+        case .waiting:
+            return "대기중"
+        case .progress:
+            return "진행중"
+        case .complete:
+            return "완료"
+        }
+    }
 }

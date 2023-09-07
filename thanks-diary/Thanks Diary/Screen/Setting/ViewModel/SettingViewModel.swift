@@ -6,17 +6,19 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 final class SettingViewModel {
     
+    var disposeBag = DisposeBag()
     var selectedTime: Date? = UserDefaultManager.date(forKey: UserDefaultKey.PUSH_TIME)
-    var suggestData: [SettingSuggestModel] = []
+    var suggestData = BehaviorRelay<[SettingSuggestModel]>(value: [])
     
-    func getSuggestDatas(completion: @escaping() -> ()){
-        FirebaseManager.shared.getSuggestDatas { datas in
-            self.suggestData = datas
-            completion()
-        }
+    func getSuggestDatas(){
+        FirebaseManager.shared.getSuggestDatasRx()
+            .bind(to: suggestData)
+            .disposed(by: disposeBag)
     }
     
     func setSuggestData(contents: String) {

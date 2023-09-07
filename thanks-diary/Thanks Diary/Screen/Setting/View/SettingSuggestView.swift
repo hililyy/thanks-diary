@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 final class SettingSuggestView: BaseView {
     
@@ -26,7 +24,7 @@ final class SettingSuggestView: BaseView {
     
     var tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
-        tableView.register(SettingLabelTVCell.self, forCellReuseIdentifier: SettingLabelTVCell.id)
+        tableView.register(SettingSuggestTVCell.self, forCellReuseIdentifier: SettingSuggestTVCell.id)
     }
     
     var loading = UIActivityIndicatorView().then { activityIndicator in
