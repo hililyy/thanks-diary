@@ -26,7 +26,6 @@ final class SettingSuggestView: BaseView {
     
     var tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
-        tableView.rowHeight = 55
         tableView.register(SettingLabelTVCell.self, forCellReuseIdentifier: SettingLabelTVCell.id)
     }
     

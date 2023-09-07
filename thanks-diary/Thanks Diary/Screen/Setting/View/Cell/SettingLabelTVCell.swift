@@ -16,11 +16,14 @@ final class SettingLabelTVCell: BaseTVCell {
     var titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
     }
     
     var contentsLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY2
+        label.textAlignment = .right
     }
     
     // MARK: - UI, Target
@@ -38,12 +41,17 @@ final class SettingLabelTVCell: BaseTVCell {
     
     override func setConstraints() {
         titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(snp.top).offset(15)
             make.left.equalTo(snp.left).offset(15)
+            make.right.equalTo(contentsLabel.snp.left).offset(-10)
+            make.bottom.equalTo(snp.bottom).offset(-15)
             make.centerY.equalTo(snp.centerY)
         }
         
         contentsLabel.snp.makeConstraints { make in
+            make.top.equalTo(snp.top).offset(15)
             make.right.equalTo(snp.right).offset(-10)
+            make.bottom.equalTo(snp.bottom).offset(-15)
             make.centerY.equalTo(snp.centerY)
         }
     }

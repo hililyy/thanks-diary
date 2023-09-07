@@ -72,8 +72,13 @@ extension SettingSuggestVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = settingSuggestView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
         cell.titleLabel.text = viewModel?.suggestData[indexPath.row].contents
-        cell.contentsLabel.text = "완료"
+        
+        cell.contentsLabel.text = viewModel?.suggestData[indexPath.row].status == "progress" ? "진행중" : "완료"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

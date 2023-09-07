@@ -21,3 +21,8 @@ enum ThemeMode: String {
     case light = "light"
     case dark = "dark"
 }
+
+enum SuggestType: String {
+    case progress = "progress"
+    case complete = "complete"
+}
