@@ -5,6 +5,7 @@
 //  Created by 강조은 on 2023/03/11.
 //
 
+import UIKit
 import Lottie
 
 final class LottieManager {

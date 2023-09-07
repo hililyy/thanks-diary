@@ -3,10 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02087C372AA9C4F600921F4D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C362AA9C4F600921F4D /* FSCalendar */; };
+		02087C3A2AA9C50300921F4D /* AcknowList in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C392AA9C50300921F4D /* AcknowList */; };
+		02087C3D2AA9C51200921F4D /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C3C2AA9C51200921F4D /* Then */; };
+		02087C402AA9C52100921F4D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C3F2AA9C52100921F4D /* SnapKit */; };
+		02087C432AA9C54100921F4D /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C422AA9C54100921F4D /* RxBlocking */; };
+		02087C452AA9C54100921F4D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C442AA9C54100921F4D /* RxCocoa */; };
+		02087C472AA9C54100921F4D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C462AA9C54100921F4D /* RxRelay */; };
+		02087C492AA9C54100921F4D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C482AA9C54100921F4D /* RxSwift */; };
+		02087C4B2AA9C54100921F4D /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C4A2AA9C54100921F4D /* RxTest */; };
+		02087C4E2AA9C56D00921F4D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C4D2AA9C56D00921F4D /* FirebaseAuth */; };
+		02087C502AA9C56E00921F4D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C4F2AA9C56E00921F4D /* FirebaseDatabase */; };
+		02087C532AA9C5AD00921F4D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C522AA9C5AD00921F4D /* Lottie */; };
+		02087CE22AA9CAA300921F4D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02087CE12AA9CAA300921F4D /* XCTest.framework */; };
+		02087CE32AA9CAA300921F4D /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02087CE12AA9CAA300921F4D /* XCTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0229553D2A66867D004BF800 /* UIControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553C2A66867D004BF800 /* UIControl+.swift */; };
 		022955402A669273004BF800 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553F2A669273004BF800 /* BaseView.swift */; };
 		022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955412A669BA0004BF800 /* BaseTVCell.swift */; };
@@ -59,7 +73,6 @@
 		026E9C2F2A4AC95500568CFD /* NanumBarunGothicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */; };
 		026E9C302A4AC95900568CFD /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */; };
 		026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */; };
-		026E9C582A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C572A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist */; };
 		027C60C82A81EB82008F607F /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60C72A81EB82008F607F /* UIScrollView+.swift */; };
 		027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60CA2A81F78C008F607F /* CommonUtilManager.swift */; };
 		027C60CD2A8213D7008F607F /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */; };
@@ -105,10 +118,20 @@
 		2A9F351728AE63FD006CCF7C /* SettingMoreTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351628AE63FD006CCF7C /* SettingMoreTVCell.swift */; };
 		2A9F351928AE6410006CCF7C /* SettingLabelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351828AE6410006CCF7C /* SettingLabelTVCell.swift */; };
 		2ABF8AA52A6C057E006ACBE2 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF8AA42A6C057E006ACBE2 /* SettingViewModel.swift */; };
-		ACEFCD4F27BC9557CACB1E3B /* Pods_Thanks_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429B7040896DFDAC458EFC4D /* Pods_Thanks_Diary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		02087CE42AA9CAA400921F4D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				02087CE32AA9CAA300921F4D /* XCTest.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A0962D728CF275F00063DF3 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,6 +145,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02087C542AA9C93A00921F4D /* Thanks Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thanks Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		02087CE12AA9CAA300921F4D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0229553C2A66867D004BF800 /* UIControl+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+.swift"; sourceTree = "<group>"; };
 		0229553F2A669273004BF800 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		022955412A669BA0004BF800 /* BaseTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTVCell.swift; sourceTree = "<group>"; };
@@ -174,7 +199,6 @@
 		026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicBold.ttf; sourceTree = "<group>"; };
 		026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothic.ttf; sourceTree = "<group>"; };
 		026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicLight.ttf; sourceTree = "<group>"; };
-		026E9C572A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Thanks Diary-acknowledgements.plist"; sourceTree = "<group>"; };
 		027C60C72A81EB82008F607F /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		027C60CA2A81F78C008F607F /* CommonUtilManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtilManager.swift; sourceTree = "<group>"; };
 		027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
@@ -189,10 +213,7 @@
 		02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSuggestView.swift; sourceTree = "<group>"; };
 		02F50B452A60F9BB006A59D3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicUltraLight.ttf; sourceTree = "<group>"; };
-		2A0962C428CF275D00063DF3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		2A0962C628CF275D00063DF3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2A0962D928CF484300063DF3 /* TextData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TextData.csv; sourceTree = "<group>"; };
-		2A0D87FB28A540FB00576E56 /* Thanks Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thanks Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A0D87FE28A540FB00576E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A0D880028A540FB00576E56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2A0D880228A540FB00576E56 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
@@ -226,9 +247,6 @@
 		2A9F351628AE63FD006CCF7C /* SettingMoreTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMoreTVCell.swift; sourceTree = "<group>"; };
 		2A9F351828AE6410006CCF7C /* SettingLabelTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLabelTVCell.swift; sourceTree = "<group>"; };
 		2ABF8AA42A6C057E006ACBE2 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		429B7040896DFDAC458EFC4D /* Pods_Thanks_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thanks_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFFB6B127945F0159B1A30E4 /* Pods-Thanks Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thanks Diary.debug.xcconfig"; path = "Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary.debug.xcconfig"; sourceTree = "<group>"; };
-		DEA50272BCD4BD5CA6312F82 /* Pods-Thanks Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thanks Diary.release.xcconfig"; path = "Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,13 +254,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACEFCD4F27BC9557CACB1E3B /* Pods_Thanks_Diary.framework in Frameworks */,
+				02087C452AA9C54100921F4D /* RxCocoa in Frameworks */,
+				02087C4E2AA9C56D00921F4D /* FirebaseAuth in Frameworks */,
+				02087C4B2AA9C54100921F4D /* RxTest in Frameworks */,
+				02087C372AA9C4F600921F4D /* FSCalendar in Frameworks */,
+				02087C472AA9C54100921F4D /* RxRelay in Frameworks */,
+				02087C402AA9C52100921F4D /* SnapKit in Frameworks */,
+				02087CE22AA9CAA300921F4D /* XCTest.framework in Frameworks */,
+				02087C3D2AA9C51200921F4D /* Then in Frameworks */,
+				02087C3A2AA9C50300921F4D /* AcknowList in Frameworks */,
+				02087C502AA9C56E00921F4D /* FirebaseDatabase in Frameworks */,
+				02087C492AA9C54100921F4D /* RxSwift in Frameworks */,
+				02087C432AA9C54100921F4D /* RxBlocking in Frameworks */,
+				02087C532AA9C5AD00921F4D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02087CE02AA9CAA300921F4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02087CE12AA9CAA300921F4D /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0229553E2A669265004BF800 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,15 +510,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		097BDEFB190D1496A285C00F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AFFB6B127945F0159B1A30E4 /* Pods-Thanks Diary.debug.xcconfig */,
-				DEA50272BCD4BD5CA6312F82 /* Pods-Thanks Diary.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		2A0962D828CF443E00063DF3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,20 +521,10 @@
 		2A0D87F228A540FB00576E56 = {
 			isa = PBXGroup;
 			children = (
-				026E9C572A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist */,
 				2A0D87FD28A540FB00576E56 /* Thanks Diary */,
-				2A0D87FC28A540FB00576E56 /* Products */,
-				097BDEFB190D1496A285C00F /* Pods */,
-				2DF9047C7ACFF111227AF94E /* Frameworks */,
+				02087C542AA9C93A00921F4D /* Thanks Diary.app */,
+				02087CE02AA9CAA300921F4D /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		2A0D87FC28A540FB00576E56 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2A0D87FB28A540FB00576E56 /* Thanks Diary.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		2A0D87FD28A540FB00576E56 /* Thanks Diary */ = {
@@ -681,16 +700,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		2DF9047C7ACFF111227AF94E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				429B7040896DFDAC458EFC4D /* Pods_Thanks_Diary.framework */,
-				2A0962C428CF275D00063DF3 /* WidgetKit.framework */,
-				2A0962C628CF275D00063DF3 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -698,12 +707,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A0D880F28A540FE00576E56 /* Build configuration list for PBXNativeTarget "Thanks Diary" */;
 			buildPhases = (
-				E387B386A2CD6266A217C430 /* [CP] Check Pods Manifest.lock */,
 				2A0D87F728A540FB00576E56 /* Sources */,
 				2A0D87F828A540FB00576E56 /* Frameworks */,
 				2A0D87F928A540FB00576E56 /* Resources */,
-				EC4AA72DE5D3E95A351FE85E /* [CP] Embed Pods Frameworks */,
 				2A0962D728CF275F00063DF3 /* Embed App Extensions */,
+				02087CE42AA9CAA400921F4D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -711,9 +719,21 @@
 			);
 			name = "Thanks Diary";
 			packageProductDependencies = (
+				02087C362AA9C4F600921F4D /* FSCalendar */,
+				02087C392AA9C50300921F4D /* AcknowList */,
+				02087C3C2AA9C51200921F4D /* Then */,
+				02087C3F2AA9C52100921F4D /* SnapKit */,
+				02087C422AA9C54100921F4D /* RxBlocking */,
+				02087C442AA9C54100921F4D /* RxCocoa */,
+				02087C462AA9C54100921F4D /* RxRelay */,
+				02087C482AA9C54100921F4D /* RxSwift */,
+				02087C4A2AA9C54100921F4D /* RxTest */,
+				02087C4D2AA9C56D00921F4D /* FirebaseAuth */,
+				02087C4F2AA9C56E00921F4D /* FirebaseDatabase */,
+				02087C522AA9C5AD00921F4D /* Lottie */,
 			);
 			productName = "Thanks Diary";
-			productReference = 2A0D87FB28A540FB00576E56 /* Thanks Diary.app */;
+			productReference = 02087C542AA9C93A00921F4D /* Thanks Diary.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -732,7 +752,7 @@
 				};
 			};
 			buildConfigurationList = 2A0D87F628A540FB00576E56 /* Build configuration list for PBXProject "Thanks Diary" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -742,8 +762,15 @@
 			);
 			mainGroup = 2A0D87F228A540FB00576E56;
 			packageReferences = (
+				02087C352AA9C4F600921F4D /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				02087C382AA9C50300921F4D /* XCRemoteSwiftPackageReference "AcknowList" */,
+				02087C3B2AA9C51200921F4D /* XCRemoteSwiftPackageReference "Then" */,
+				02087C3E2AA9C52100921F4D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */,
+				02087C4C2AA9C56D00921F4D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
-			productRefGroup = 2A0D87FC28A540FB00576E56 /* Products */;
+			productRefGroup = 2A0D87F228A540FB00576E56;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -765,7 +792,6 @@
 				026E9C2F2A4AC95500568CFD /* NanumBarunGothicLight.ttf in Resources */,
 				2A0962DA28CF484300063DF3 /* TextData.csv in Resources */,
 				2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */,
-				026E9C582A4C339200568CFD /* Pods-Thanks Diary-acknowledgements.plist in Resources */,
 				2A81232828BFB83B000A250E /* go.json in Resources */,
 				026E9C302A4AC95900568CFD /* NanumBarunGothicBold.ttf in Resources */,
 				2A0D881828ABB80900576E56 /* wave.json in Resources */,
@@ -778,48 +804,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		E387B386A2CD6266A217C430 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Thanks Diary-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EC4AA72DE5D3E95A351FE85E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Thanks Diary/Pods-Thanks Diary-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2A0D87F728A540FB00576E56 /* Sources */ = {
@@ -1045,7 +1029,6 @@
 		};
 		2A0D881028A540FE00576E56 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFFB6B127945F0159B1A30E4 /* Pods-Thanks Diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1053,6 +1036,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 68P2WV4DR3;
+				ENABLE_TESTABILITY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Thanks Diary/Support/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "감사일기";
@@ -1081,7 +1065,6 @@
 		};
 		2A0D881128A540FE00576E56 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEA50272BCD4BD5CA6312F82 /* Pods-Thanks Diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1089,6 +1072,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 68P2WV4DR3;
+				ENABLE_TESTABILITY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Thanks Diary/Support/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "감사일기";
@@ -1137,6 +1121,128 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		02087C352AA9C4F600921F4D /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		02087C382AA9C50300921F4D /* XCRemoteSwiftPackageReference "AcknowList" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vtourraine/AcknowList";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		02087C3B2AA9C51200921F4D /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		02087C3E2AA9C52100921F4D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		02087C4C2AA9C56D00921F4D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		02087C362AA9C4F600921F4D /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C352AA9C4F600921F4D /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		02087C392AA9C50300921F4D /* AcknowList */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C382AA9C50300921F4D /* XCRemoteSwiftPackageReference "AcknowList" */;
+			productName = AcknowList;
+		};
+		02087C3C2AA9C51200921F4D /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C3B2AA9C51200921F4D /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		02087C3F2AA9C52100921F4D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C3E2AA9C52100921F4D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		02087C422AA9C54100921F4D /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		02087C442AA9C54100921F4D /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		02087C462AA9C54100921F4D /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		02087C482AA9C54100921F4D /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		02087C4A2AA9C54100921F4D /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		02087C4D2AA9C56D00921F4D /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C4C2AA9C56D00921F4D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		02087C4F2AA9C56E00921F4D /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C4C2AA9C56D00921F4D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		02087C522AA9C5AD00921F4D /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2A81234828C2A208000A250E /* DiaryData.xcdatamodeld */ = {
