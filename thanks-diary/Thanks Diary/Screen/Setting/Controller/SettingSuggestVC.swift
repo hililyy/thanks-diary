@@ -26,21 +26,7 @@ final class SettingSuggestVC: BaseVC {
         super.viewDidLoad()
         viewModel?.getSuggestDatas()
         setTarget()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        viewModel?.suggestData
-            .bind(to: settingSuggestView.tableView.rx.items(
-                cellIdentifier: SettingSuggestTVCell.id,
-                cellType: SettingSuggestTVCell.self)) { index, item, cell in
-                    cell.contentsLabel.text = item.contents
-                    cell.statusLabel.text = SuggestType(rawValue: item.status ?? "")?.description
-                    cell.setStatusLabelUI(SuggestType(rawValue: item.status ?? "") ?? .waiting)
-                    self.settingSuggestView.loading.stopAnimating()
-                }
-                .disposed(by: disposeBag)
+        setTable()
     }
     
     // MARK: - Function
@@ -63,5 +49,18 @@ final class SettingSuggestVC: BaseVC {
                 self.present(vc, animated: true)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func setTable() {
+        viewModel?.suggestData
+            .bind(to: settingSuggestView.tableView.rx.items(
+                cellIdentifier: SettingSuggestTVCell.id,
+                cellType: SettingSuggestTVCell.self)) { index, item, cell in
+                    cell.contentsLabel.text = item.contents
+                    cell.statusLabel.text = SuggestType(rawValue: item.status ?? "")?.description
+                    cell.setStatusLabelUI(SuggestType(rawValue: item.status ?? "") ?? .waiting)
+                    self.settingSuggestView.loading.stopAnimating()
+                }
+                .disposed(by: disposeBag)
     }
 }
