@@ -15,12 +15,9 @@
 		02087C452AA9C54100921F4D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C442AA9C54100921F4D /* RxCocoa */; };
 		02087C472AA9C54100921F4D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C462AA9C54100921F4D /* RxRelay */; };
 		02087C492AA9C54100921F4D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C482AA9C54100921F4D /* RxSwift */; };
-		02087C4B2AA9C54100921F4D /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C4A2AA9C54100921F4D /* RxTest */; };
 		02087C4E2AA9C56D00921F4D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C4D2AA9C56D00921F4D /* FirebaseAuth */; };
 		02087C502AA9C56E00921F4D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C4F2AA9C56E00921F4D /* FirebaseDatabase */; };
 		02087C532AA9C5AD00921F4D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C522AA9C5AD00921F4D /* Lottie */; };
-		02087CE22AA9CAA300921F4D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02087CE12AA9CAA300921F4D /* XCTest.framework */; };
-		02087CE32AA9CAA300921F4D /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02087CE12AA9CAA300921F4D /* XCTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0229553D2A66867D004BF800 /* UIControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553C2A66867D004BF800 /* UIControl+.swift */; };
 		022955402A669273004BF800 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553F2A669273004BF800 /* BaseView.swift */; };
 		022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955412A669BA0004BF800 /* BaseTVCell.swift */; };
@@ -121,17 +118,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		02087CE42AA9CAA400921F4D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				02087CE32AA9CAA300921F4D /* XCTest.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2A0962D728CF275F00063DF3 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,7 +132,6 @@
 
 /* Begin PBXFileReference section */
 		02087C542AA9C93A00921F4D /* Thanks Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thanks Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		02087CE12AA9CAA300921F4D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0229553C2A66867D004BF800 /* UIControl+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+.swift"; sourceTree = "<group>"; };
 		0229553F2A669273004BF800 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		022955412A669BA0004BF800 /* BaseTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTVCell.swift; sourceTree = "<group>"; };
@@ -256,11 +241,9 @@
 			files = (
 				02087C452AA9C54100921F4D /* RxCocoa in Frameworks */,
 				02087C4E2AA9C56D00921F4D /* FirebaseAuth in Frameworks */,
-				02087C4B2AA9C54100921F4D /* RxTest in Frameworks */,
 				02087C372AA9C4F600921F4D /* FSCalendar in Frameworks */,
 				02087C472AA9C54100921F4D /* RxRelay in Frameworks */,
 				02087C402AA9C52100921F4D /* SnapKit in Frameworks */,
-				02087CE22AA9CAA300921F4D /* XCTest.framework in Frameworks */,
 				02087C3D2AA9C51200921F4D /* Then in Frameworks */,
 				02087C3A2AA9C50300921F4D /* AcknowList in Frameworks */,
 				02087C502AA9C56E00921F4D /* FirebaseDatabase in Frameworks */,
@@ -273,14 +256,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02087CE02AA9CAA300921F4D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				02087CE12AA9CAA300921F4D /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		0229553E2A669265004BF800 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,7 +498,6 @@
 			children = (
 				2A0D87FD28A540FB00576E56 /* Thanks Diary */,
 				02087C542AA9C93A00921F4D /* Thanks Diary.app */,
-				02087CE02AA9CAA300921F4D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -711,7 +685,6 @@
 				2A0D87F828A540FB00576E56 /* Frameworks */,
 				2A0D87F928A540FB00576E56 /* Resources */,
 				2A0962D728CF275F00063DF3 /* Embed App Extensions */,
-				02087CE42AA9CAA400921F4D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -727,7 +700,6 @@
 				02087C442AA9C54100921F4D /* RxCocoa */,
 				02087C462AA9C54100921F4D /* RxRelay */,
 				02087C482AA9C54100921F4D /* RxSwift */,
-				02087C4A2AA9C54100921F4D /* RxTest */,
 				02087C4D2AA9C56D00921F4D /* FirebaseAuth */,
 				02087C4F2AA9C56E00921F4D /* FirebaseDatabase */,
 				02087C522AA9C5AD00921F4D /* Lottie */,
@@ -1221,11 +1193,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
-		};
-		02087C4A2AA9C54100921F4D /* RxTest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
 		};
 		02087C4D2AA9C56D00921F4D /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
