@@ -15,7 +15,7 @@ final class SimpleWriteVC: BaseVC {
     
     private let simpleWriteView = SimpleWriteView()
     var viewModel: MainViewModel?
-    let maxCount: Int = 22
+    let maxCount: Int = 50
     
     // MARK: - Life Cycle
     

@@ -21,6 +21,7 @@ final class SimpleDiaryTVCell: BaseTVCell {
     var titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
+        label.numberOfLines = 0
     }
     
     // MARK: - UI, Target
@@ -45,8 +46,10 @@ final class SimpleDiaryTVCell: BaseTVCell {
         }
         
         titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(snp.top).offset(15)
             make.left.equalTo(dotView.snp.right).offset(7)
-            make.right.equalTo(20)
+            make.right.equalTo(snp.right).offset(-20)
+            make.bottom.equalTo(snp.bottom).offset(-5)
             make.centerY.equalTo(snp.centerY)
         }
     }

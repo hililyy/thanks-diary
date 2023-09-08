@@ -93,7 +93,7 @@ final class SimpleWriteView: BaseView {
     
     override func setTarget() {
         contentsTextView.rx.text
-            .map { "\($0?.count ?? 0)/23" }
+            .map { "\($0?.count ?? 0)/50" }
             .bind(to: textLengthLabel.rx.text)
             .disposed(by: disposeBag)
     }

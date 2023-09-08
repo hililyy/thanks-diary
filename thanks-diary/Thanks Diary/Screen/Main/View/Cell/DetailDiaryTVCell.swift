@@ -16,6 +16,7 @@ final class DetailDiaryTVCell: BaseTVCell {
     var titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
+        label.numberOfLines = 0
     }
     
     var borderView = UIView().then { view in
@@ -47,10 +48,11 @@ final class DetailDiaryTVCell: BaseTVCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(borderView.snp.top)
+            make.top.equalTo(borderView.snp.top).offset(15)
             make.left.equalTo(borderView.snp.left).offset(20)
-            make.right.equalTo(borderView.snp.right).offset(20)
-            make.bottom.equalTo(borderView.snp.bottom)
+            make.right.equalTo(borderView.snp.right).offset(-20)
+            make.bottom.equalTo(borderView.snp.bottom).offset(-15)
+            make.height.lessThanOrEqualTo(100)
         }
     }
 }

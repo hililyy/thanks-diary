@@ -54,23 +54,24 @@ final class DetailWriteView: BaseView {
         imageView.image = Image.IMG_UNDERLINE
     }
     
-    var titleTextField = UITextField().then { textField in
-        textField.font = Font.NANUM_ULTRALIGHT_17
-        textField.textColor = Color.COLOR_GRAY1
-        textField.layer.cornerRadius = 20
-        textField.layer.borderWidth = 2
-        textField.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
-        textField.addLeftPadding()
+    var titleTextView = UITextView().then { textView in
+        textView.font = Font.NANUM_ULTRALIGHT_17
+        textView.textColor = Color.COLOR_GRAY1
+        textView.layer.cornerRadius = 20
+        textView.layer.borderWidth = 2
+        textView.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
+        textView.isScrollEnabled = false
+        textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
     
-    private var contentsTextView = UITextView().then { textField in
-        textField.backgroundColor = .clear
-        textField.font = Font.NANUM_ULTRALIGHT_17
-        textField.textColor = Color.COLOR_GRAY1
-        textField.layer.cornerRadius = 20
-        textField.layer.borderWidth = 2
-        textField.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
-        textField.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
+    private var contentsTextView = UITextView().then { textView in
+        textView.backgroundColor = .clear
+        textView.font = Font.NANUM_ULTRALIGHT_17
+        textView.textColor = Color.COLOR_GRAY1
+        textView.layer.cornerRadius = 20
+        textView.layer.borderWidth = 2
+        textView.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
+        textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
     
     // MARK: - Function
@@ -84,14 +85,14 @@ final class DetailWriteView: BaseView {
     }
     
     func isEmptyTextField() -> Bool {
-        guard let title = titleTextField.text,
+        guard let title = titleTextView.text,
               let contents = contentsTextView.text else { return false}
 
         return title.isEmpty || contents.isEmpty ? true : false
     }
     
     func getTitleText() -> String {
-        guard let title = titleTextField.text else { return "" }
+        guard let title = titleTextView.text else { return "" }
         return title
     }
     
@@ -105,7 +106,7 @@ final class DetailWriteView: BaseView {
     }
     
     func setTextFieldData(titleText: String, contentsText: String) {
-        titleTextField.text = titleText
+        titleTextView.text = titleText
         contentsTextView.text = contentsText
     }
     
@@ -119,7 +120,7 @@ final class DetailWriteView: BaseView {
         contentScrollView.scrollIndicatorInsets = contentInset
         
         if contentsTextView.isFirstResponder {
-            contentScrollView.scrollToCenter(height: titleTextField.frame.height + titleLabel.frame.height + 25)
+            contentScrollView.scrollToCenter(height: titleTextView.frame.height + titleLabel.frame.height + 25)
         } else {
             contentScrollView.scrollToTop()
         }
@@ -134,7 +135,7 @@ final class DetailWriteView: BaseView {
     
     // 텍스트 필드 외부 터치 시 키보드 닫기
     @objc private func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        titleTextField.resignFirstResponder()
+        titleTextView.resignFirstResponder()
         contentsTextView.resignFirstResponder()
     }
     
@@ -142,6 +143,22 @@ final class DetailWriteView: BaseView {
     
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE
+        titleTextView.sizeToFit()
+        
+        titleTextView.rx
+           .didChange
+           .subscribe(onNext: { [weak self] in
+               guard let self = self else { return }
+             let size = CGSize(width: self.titleTextView.frame.width, height: .infinity)
+             let estimatedSize = self.titleTextView.sizeThatFits(size)
+             let isMaxHeight = estimatedSize.height >= 100
+             
+             guard isMaxHeight != self.titleTextView.isScrollEnabled else { return }
+             self.titleTextView.isScrollEnabled = isMaxHeight
+             self.titleTextView.reloadInputViews()
+             self.setNeedsUpdateConstraints()
+           })
+           .disposed(by: disposeBag)
     }
     
     override func setTarget() {
@@ -166,7 +183,7 @@ final class DetailWriteView: BaseView {
         contentView.addSubviews([
             titleUnderLineImageView,
             titleLabel,
-            titleTextField,
+            titleTextView,
             contentsUnderLineImageView,
             contentsLabel,
             contentsTextView
@@ -219,12 +236,13 @@ final class DetailWriteView: BaseView {
             make.width.equalTo(55)
         }
         
-        titleTextField.snp.makeConstraints { make in
+        titleTextView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
             make.left.equalTo(titleLabel.snp.left)
             make.centerX.equalTo(contentView.snp.centerX)
             make.bottom.equalTo(contentsLabel.snp.top).offset(-15)
-            make.height.equalTo(44)
+            make.height.greaterThanOrEqualTo(44)
+            make.height.lessThanOrEqualTo(100)
         }
         
         contentsLabel.snp.makeConstraints { make in
@@ -244,6 +262,7 @@ final class DetailWriteView: BaseView {
             make.left.equalTo(contentsLabel.snp.left)
             make.centerX.equalTo(contentView.snp.centerX)
             make.bottom.equalTo(contentView.snp.bottom).offset(-30)
+            make.height.greaterThanOrEqualTo(250)
         }
     }
 }
