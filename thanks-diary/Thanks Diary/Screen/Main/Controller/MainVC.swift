@@ -25,7 +25,6 @@ final class MainVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mainView.calendar.delegate = self
         mainView.calendar.dataSource = self
         setTable()
@@ -33,14 +32,18 @@ final class MainVC: BaseVC {
         setCalenderCircleDatas()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getData()
+    }
+    
     // MARK: - Function
     
     func setCalenderCircleDatas() {
-        
         // 모든 다이어리 데이터가 갱신 되었을 때 (선택한 날짜 [string] 갱신)
         Observable.combineLatest(viewModel.allDetailDataRx, viewModel.allSimpleDataRx)
             .subscribe(onNext: { [weak self] detailDatas, simpleDatas in
-                guard let self = self else { return }
+                guard let self else { return }
                 let detailData = detailDatas.map({ $0.key })
                 let simpleData = simpleDatas.map({ $0.key })
                 self.viewModel.diaryDates = Set(detailData).union(simpleData)
@@ -49,7 +52,9 @@ final class MainVC: BaseVC {
             .disposed(by: disposeBag)
         
         viewModel.selectedDate
-            .bind(onNext: {
+            .bind(onNext: { [weak self] in
+                guard let self else { return }
+                
                 self.mainView.setTodayLabelText(date: $0)
             })
             .disposed(by: disposeBag)
@@ -59,7 +64,9 @@ final class MainVC: BaseVC {
         // 플로팅 버튼 설정
         mainView.floatingButton.button.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                
                 self.pushFloatingButtonVC()
             })
             .disposed(by: disposeBag)
@@ -67,7 +74,9 @@ final class MainVC: BaseVC {
         // 설정 버튼 핸들러 설정
         mainView.settingButton.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                
                 let vc = SettingVC()
                 self.navigationController?.pushViewController(vc, animated: true)
             })
@@ -76,7 +85,9 @@ final class MainVC: BaseVC {
         // 오늘 버튼 핸들러 설정
         mainView.todayButton.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                
                 self.moveToday()
             })
             .disposed(by: disposeBag)
@@ -89,7 +100,9 @@ final class MainVC: BaseVC {
         
         vc.floatingButtonCloseView.detailButton.button.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                
                 self.dismissVC() {
                     self.pushDetailWriteVC()
                 }
@@ -98,7 +111,9 @@ final class MainVC: BaseVC {
         
         vc.floatingButtonCloseView.simpleButton.button.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                
                 self.dismissVC() {
                     self.presentSimpleWriteVC()
                 }
@@ -111,7 +126,7 @@ final class MainVC: BaseVC {
     private func pushDetailWriteVC() {
         let vc = DetailWriteVC()
         vc.viewModel = self.viewModel
-        self.viewModel.selectedDiaryData = nil
+        vc.beforeData = nil
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -120,7 +135,7 @@ final class MainVC: BaseVC {
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overFullScreen
         vc.viewModel = self.viewModel
-        self.viewModel.selectedDiaryData = nil
+        vc.beforeData = nil
         self.present(vc, animated: true)
     }
     
@@ -129,7 +144,9 @@ final class MainVC: BaseVC {
         mainView.diaryTableView.dataSource = nil
         
         viewModel.selectedAllData
-            .subscribe(onNext: { allData in
+            .subscribe(onNext: { [weak self] allData in
+                guard let self else { return }
+                
                 if allData.isEmpty {
                     self.mainView.setHiddenForEmptyView(isHidden: false)
                     
@@ -143,7 +160,8 @@ final class MainVC: BaseVC {
             .disposed(by: disposeBag)
         
         viewModel.selectedAllData
-            .bind(to: mainView.diaryTableView.rx.items) { tableView, index, element in
+            .bind(to: mainView.diaryTableView.rx.items) { [weak self] tableView, index, element in
+                guard let self else { return UITableViewCell() }
                 let cellIdentifier = element.type == .detail ? DetailDiaryTVCell.id : SimpleDiaryTVCell.id
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
                 
@@ -160,19 +178,19 @@ final class MainVC: BaseVC {
         
         Observable.zip(mainView.diaryTableView.rx.modelSelected(DiaryModel.self), mainView.diaryTableView.rx.itemSelected)
             .bind { [weak self] (diary, index) in
-                guard let self = self else { return }
+                guard let self else { return }
                 
                 if diary.type == .detail {
-                    let vc = ReadVC()
+                    let vc = DetailWriteVC()
                     vc.viewModel = self.viewModel
-                    self.viewModel.selectedDiaryData = diary
+                    vc.beforeData = diary
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
                     let vc = SimpleWriteVC()
                     vc.modalTransitionStyle = .crossDissolve
                     vc.modalPresentationStyle = .overFullScreen
                     vc.viewModel = self.viewModel
-                    self.viewModel.selectedDiaryData = diary
+                    vc.beforeData = diary
                     self.present(vc, animated: true)
                 }
             }

@@ -27,6 +27,10 @@ class BaseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func configureUI() {}
     func setTarget() {}
     func addSubView() {}

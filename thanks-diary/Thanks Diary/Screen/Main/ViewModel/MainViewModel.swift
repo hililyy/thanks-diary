@@ -22,7 +22,6 @@ final class MainViewModel {
         return detailData + simpleData
     }
     
-    var selectedDiaryData: DiaryModel?
     var selectedDate = BehaviorRelay<Date>(value: Date()) // 선택한 날짜
     var diaryDates: Set<String> = [] // 일기를 작성한 날짜 Set
     
@@ -58,9 +57,8 @@ extension MainViewModel {
     }
     
     // 수정
-    func updateData(newData: DiaryModel, completion: @escaping (Bool) -> ()) {
-        guard let selectedDiaryData = selectedDiaryData else { return }
-        CoreDataManager.shared.updateData(beforeData: selectedDiaryData, newData: newData) { result in
+    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> ()) {
+        CoreDataManager.shared.updateData(beforeData: beforeData, newData: newData) { result in
             if result {
                 completion(true)
             } else {
@@ -70,9 +68,8 @@ extension MainViewModel {
     }
     
     // 삭제
-    func deleteData(completion: @escaping (Bool) -> ()) {
-        guard let selectedDiaryData = selectedDiaryData else { return }
-        CoreDataManager.shared.deleteData(deleteData: selectedDiaryData) { result in
+    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> ()) {
+        CoreDataManager.shared.deleteData(deleteData: deleteData) { result in
             if result {
                 completion(true)
             } else {

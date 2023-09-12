@@ -13,7 +13,7 @@ final class PageView: BaseView {
     
     lazy var containerView = UIView()
     
-    private lazy var progressStackView =  UIStackView(arrangedSubviews: [firstDotView, secondDotView, thirdDotView]).then { stackView in
+    private lazy var progressStackView = UIStackView(arrangedSubviews: [firstDotView, secondDotView, thirdDotView]).then { stackView in
         stackView.spacing = 8
         stackView.axis = .horizontal
         stackView.distribution = .fill

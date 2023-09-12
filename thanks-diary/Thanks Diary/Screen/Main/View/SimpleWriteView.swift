@@ -89,6 +89,12 @@ final class SimpleWriteView: BaseView {
         deleteButton.isHidden = isHidden
     }
     
+    func isEmptyTextField() -> Bool {
+        guard let contents = contentsTextView.text else { return false}
+
+        return contents.isEmpty
+    }
+    
     // MARK: - UI, Target
     
     override func setTarget() {

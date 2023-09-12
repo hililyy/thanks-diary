@@ -50,7 +50,6 @@ final class SimpleDiaryTVCell: BaseTVCell {
             make.left.equalTo(dotView.snp.right).offset(7)
             make.right.equalTo(snp.right).offset(-20)
             make.bottom.equalTo(snp.bottom).offset(-5)
-            make.centerY.equalTo(snp.centerY)
         }
     }
 }

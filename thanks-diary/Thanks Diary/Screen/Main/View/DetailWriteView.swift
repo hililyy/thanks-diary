@@ -20,12 +20,22 @@ final class DetailWriteView: BaseView {
         label.textColor = Color.COLOR_GRAY1
     }
     
+    var deleteButton = UIButton(type: .custom).then { button in
+        button.setImage(Image.IC_TRASH, for: .normal)
+    }
+    
     var completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.layer.cornerRadius = 10
+    }
+    
+    private lazy var buttonStackView = UIStackView(arrangedSubviews: [deleteButton]).then { stackView in
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .fill
     }
     
     private let contentScrollView = UIScrollView().then { scrollView in
@@ -71,6 +81,7 @@ final class DetailWriteView: BaseView {
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
         textView.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
+        textView.isScrollEnabled = true
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
     
@@ -112,6 +123,11 @@ final class DetailWriteView: BaseView {
     
     // 키보드 나타났을 때
     override func keyboardWillShow(_ notification: Notification) {
+        buttonStackView.removeAllSubViews()
+        buttonStackView.addArrangedSubview(completeButton)
+        
+        setTitleTextViewIsScrolled()
+        
         guard let userInfo = notification.userInfo,
             let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         
@@ -128,6 +144,10 @@ final class DetailWriteView: BaseView {
     
     // 키보드 사라질 때
     override func keyboardWillHide() {
+        buttonStackView.removeAllSubViews()
+        buttonStackView.addArrangedSubview(deleteButton)
+        completeHandler()
+        
         let contentInset = UIEdgeInsets.zero
         contentScrollView.contentInset = contentInset
         contentScrollView.scrollIndicatorInsets = contentInset
@@ -139,6 +159,8 @@ final class DetailWriteView: BaseView {
         contentsTextView.resignFirstResponder()
     }
     
+    var completeHandler: () -> () = {}
+    
     // MARK: - UI, Target
     
     override func configureUI() {
@@ -148,17 +170,20 @@ final class DetailWriteView: BaseView {
         titleTextView.rx
            .didChange
            .subscribe(onNext: { [weak self] in
-               guard let self = self else { return }
-             let size = CGSize(width: self.titleTextView.frame.width, height: .infinity)
-             let estimatedSize = self.titleTextView.sizeThatFits(size)
-             let isMaxHeight = estimatedSize.height >= 100
-             
-             guard isMaxHeight != self.titleTextView.isScrollEnabled else { return }
-             self.titleTextView.isScrollEnabled = isMaxHeight
-             self.titleTextView.reloadInputViews()
-             self.setNeedsUpdateConstraints()
+               self?.setTitleTextViewIsScrolled()
            })
            .disposed(by: disposeBag)
+    }
+    
+    func setTitleTextViewIsScrolled() {
+        let size = CGSize(width: self.titleTextView.frame.width, height: .infinity)
+        let estimatedSize = self.titleTextView.sizeThatFits(size)
+        let isMaxHeight = estimatedSize.height >= 100
+        
+        guard isMaxHeight != self.titleTextView.isScrollEnabled else { return }
+        self.titleTextView.isScrollEnabled = isMaxHeight
+        self.titleTextView.reloadInputViews()
+        self.setNeedsUpdateConstraints()
     }
     
     override func setTarget() {
@@ -174,7 +199,7 @@ final class DetailWriteView: BaseView {
     override func addSubView() {
         addSubviews([backButton,
                      topLabel,
-                     completeButton,
+                     buttonStackView,
                      contentScrollView
                     ])
         
@@ -203,11 +228,19 @@ final class DetailWriteView: BaseView {
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(25)
         }
         
-        completeButton.snp.makeConstraints { make in
+        buttonStackView.snp.makeConstraints { make in
             make.right.equalTo(snp.right).offset(-20)
+            make.centerY.equalTo(topLabel.snp.centerY)
+        }
+        
+        completeButton.snp.makeConstraints { make in
             make.width.equalTo(52)
             make.height.equalTo(40)
-            make.centerY.equalTo(topLabel.snp.centerY)
+        }
+        
+        deleteButton.snp.makeConstraints { make in
+            make.width.equalTo(52)
+            make.height.equalTo(40)
         }
         
         contentScrollView.snp.makeConstraints { make in

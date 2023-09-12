@@ -15,6 +15,7 @@ final class DetailWriteVC: BaseVC {
     
     private let detailWriteView = DetailWriteView()
     var viewModel: MainViewModel?
+    var beforeData: DiaryModel?
     
     // MARK: - Life Cycle
     
@@ -33,7 +34,7 @@ final class DetailWriteVC: BaseVC {
     private func configureUI() {
         detailWriteView.setTopLabelData(date: viewModel?.selectedDate.value)
         
-        if let beforeData = viewModel?.selectedDiaryData {
+        if let beforeData {
             guard let titleText = beforeData.title,
                   let contentsText = beforeData.contents else { return }
             
@@ -46,17 +47,32 @@ final class DetailWriteVC: BaseVC {
     private func setTarget() {
         detailWriteView.backButton.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
                 self.popVC()
             })
             .disposed(by: disposeBag)
         
         detailWriteView.completeButton.rx.tap
             .asDriver()
-            .drive(onNext: {
-                self.complete()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                self.view.endEditing(true)
             })
             .disposed(by: disposeBag)
+        
+        detailWriteView.deleteButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                self.presentDeleteAlertVC()
+            })
+            .disposed(by: disposeBag)
+        
+        detailWriteView.completeHandler = { [weak self] in
+            guard let self else { return }
+            self.complete()
+        }
     }
     
     private func complete() {
@@ -68,34 +84,62 @@ final class DetailWriteVC: BaseVC {
         )
         
         if detailWriteView.isEmptyTextField() {
-            detailWriteView.setCompleteButtonEnable(isOn: false)
-            toast(message: "text_toast".localized, withDuration: 0.5, delay: 1.5) {
-                self.detailWriteView.setCompleteButtonEnable(isOn: true)
-            }
-            
+            showFillTextFieldToast()
         } else {
-            if let _ = viewModel?.selectedDiaryData {
-                // 수정
-                viewModel?.updateData(newData: newData) { result in
-                    if result {
-                        self.viewModel?.selectedDiaryData = newData
-                        self.viewModel?.getData()
-                        self.popVC()
-                    } else {
-                        self.showErrorPopup()
-                    }
-                }
+            if let beforeData {
+                self.update(beforeData: beforeData, newData: newData)
             } else {
-                // 글 작성
-                viewModel?.setData(newData: newData) { result in
-                    if result {
-                        self.popVC()
-                        self.viewModel?.getData()
-                    } else {
-                        self.showErrorPopup()
-                    }
+                self.write(newData)
+            }
+        }
+    }
+    
+    private func showFillTextFieldToast() {
+        detailWriteView.setCompleteButtonEnable(isOn: false)
+        toast(message: "text_toast".localized, withDuration: 0.5, delay: 1.5) {
+            self.detailWriteView.setCompleteButtonEnable(isOn: true)
+        }
+    }
+    
+    private func update(beforeData: DiaryModel, newData: DiaryModel) {
+        viewModel?.updateData(beforeData: beforeData, newData: newData) { [weak self] result in
+            guard let self else { return }
+            if result {
+                self.beforeData = newData
+            } else {
+                self.showErrorPopup()
+            }
+        }
+    }
+    
+    private func write(_ newData: DiaryModel) {
+        viewModel?.setData(newData: newData) { [weak self] result in
+            guard let self else { return }
+            if result {
+                self.beforeData = newData
+            } else {
+                self.showErrorPopup()
+            }
+        }
+    }
+    
+    private func presentDeleteAlertVC() {
+        guard let deleteData = beforeData else { return }
+        
+        let vc = AlertVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.rightButtonTapHandler = { [weak self] in
+            guard let self else { return }
+            self.viewModel?.deleteData(deleteData: deleteData) { result in
+                if result {
+                    self.popVC()
+                } else {
+                    self.popVC()
+                    self.showErrorPopup()
                 }
             }
         }
+        self.present(vc, animated: true)
     }
 }

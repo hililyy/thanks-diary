@@ -16,6 +16,7 @@ final class SimpleWriteVC: BaseVC {
     private let simpleWriteView = SimpleWriteView()
     var viewModel: MainViewModel?
     let maxCount: Int = 50
+    var beforeData: DiaryModel?
     
     // MARK: - Life Cycle
     
@@ -33,10 +34,9 @@ final class SimpleWriteVC: BaseVC {
     // MARK: - Function
     
     private func configureUI() {
+        simpleWriteView.setHiddenForDeleteButton(beforeData == nil)
         
-        simpleWriteView.setHiddenForDeleteButton(viewModel?.selectedDiaryData == nil)
-        
-        if let beforeData = viewModel?.selectedDiaryData {
+        if let beforeData {
             guard let text = beforeData.contents else { return }
             simpleWriteView.setContentsTextView(text: text)
         }
@@ -53,15 +53,14 @@ final class SimpleWriteVC: BaseVC {
                     date: self.viewModel?.selectedDate.value.convertString()
                 )
                 
-                if let contents = newData.contents,
-                   contents.isEmpty {
+                if self.simpleWriteView.isEmptyTextField() {
                     // 텍스트 뷰가 비어있으면 토스트 띄움
-                    self.showToast()
+                    self.showFillTextFieldToast()
                 } else {
-                    if let _ = self.viewModel?.selectedDiaryData {
-                        self.updateDiary(newData)
+                    if let beforeData = self.beforeData {
+                        self.update(beforeData: beforeData, newData: newData)
                     } else {
-                        self.writeDiary(newData)
+                        self.write(newData)
                     }
                 }
             })
@@ -82,8 +81,9 @@ final class SimpleWriteVC: BaseVC {
             .disposed(by: disposeBag)
     }
     
-    private func updateDiary(_ newData: DiaryModel) {
-        self.viewModel?.updateData(newData: newData) { result in
+    private func update(beforeData: DiaryModel, newData: DiaryModel) {
+        self.viewModel?.updateData(beforeData: beforeData, newData: newData) { [weak self] result in
+            guard let self else { return }
             if result {
                 self.dismissVC {
                     self.viewModel?.getData()
@@ -94,8 +94,9 @@ final class SimpleWriteVC: BaseVC {
         }
     }
     
-    private func writeDiary(_ newData: DiaryModel) {
-        self.viewModel?.setData(newData: newData) { result in
+    private func write(_ newData: DiaryModel) {
+        self.viewModel?.setData(newData: newData) { [weak self] result in
+            guard let self else { return }
             if result {
                 self.dismissVC {
                     self.viewModel?.getData()
@@ -107,7 +108,10 @@ final class SimpleWriteVC: BaseVC {
     }
     
     private func deleteDiary() {
-        self.viewModel?.deleteData() { result in
+        guard let deleteData = beforeData else { return }
+        
+        self.viewModel?.deleteData(deleteData: deleteData) { [weak self] result in
+            guard let self else { return }
             if result {
                 self.dismissVC {
                     self.viewModel?.getData()
@@ -118,7 +122,7 @@ final class SimpleWriteVC: BaseVC {
         }
     }
     
-    private func showToast() {
+    private func showFillTextFieldToast() {
         self.simpleWriteView.setCompleteButtonEnable(false)
         self.toast(message: "내용을 입력해 주세요.", withDuration: 0.5, delay: 1.5, type: "top") {
             self.simpleWriteView.setCompleteButtonEnable(true)
