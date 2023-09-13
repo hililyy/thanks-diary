@@ -31,7 +31,7 @@ final class MainViewModel {
 }
 
 // 다이어리 CRUD
-extension MainViewModel {
+extension MainViewModel: DiaryRepository {
     // 조회
     func getData() {
         CoreDataManager.shared.getDetailDataRx()

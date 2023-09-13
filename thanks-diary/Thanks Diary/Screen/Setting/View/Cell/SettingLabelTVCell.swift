@@ -41,18 +41,15 @@ final class SettingLabelTVCell: BaseTVCell {
     
     override func setConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(15)
+            make.top.equalTo(snp.top).offset(20)
             make.left.equalTo(snp.left).offset(15)
             make.right.equalTo(contentsLabel.snp.left).offset(-10)
-            make.bottom.equalTo(snp.bottom).offset(-15)
-            make.centerY.equalTo(snp.centerY)
+            make.bottom.equalTo(snp.bottom).offset(-20)
         }
         
         contentsLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(15)
             make.right.equalTo(snp.right).offset(-10)
-            make.bottom.equalTo(snp.bottom).offset(-15)
-            make.centerY.equalTo(snp.centerY)
+            make.centerY.equalTo(titleLabel.snp.centerY)
         }
     }
 }

@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SettingView: BaseView {
     
     // MARK: - UI components
     
-    private var backButton = UIButton(type: .custom).then { button in
+    var backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
@@ -24,7 +26,6 @@ final class SettingView: BaseView {
     
     var tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
-        tableView.rowHeight = 55
         tableView.register(SettingSwitchTVCell.self, forCellReuseIdentifier: SettingSwitchTVCell.id)
         tableView.register(SettingMoreTVCell.self, forCellReuseIdentifier: SettingMoreTVCell.id)
         tableView.register(SettingLabelTVCell.self, forCellReuseIdentifier: SettingLabelTVCell.id)
@@ -32,18 +33,18 @@ final class SettingView: BaseView {
     
     // MARK: - UI, Target
     
-    var backButtonTapHandler: () -> () = {}
-    var switchTapHandler: () -> () = {}
-    
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE
     }
     
-    override func setTarget() {
-        backButton.addTarget { _ in
-            self.backButtonTapHandler()
-        }
-    }
+    var settingNames = BehaviorRelay<[SettingNameModel]>(value: [
+        SettingNameModel(title: "text_setting_name1".localized, type: ._switch),
+        SettingNameModel(title: "text_setting_name2".localized, type: .more),
+        SettingNameModel(title: "text_setting_name3".localized, type: .more),
+        SettingNameModel(title: "text_setting_name4".localized, type: .more),
+        SettingNameModel(title: "text_setting_name5".localized, type: .more),
+        SettingNameModel(title: "text_setting_name6".localized, type: .label)
+    ])
     
     // MARK: - Constraint
     

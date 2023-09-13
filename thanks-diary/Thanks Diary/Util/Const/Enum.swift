@@ -38,3 +38,10 @@ enum SuggestType: String {
         }
     }
 }
+
+enum SettingNameType {
+    case more
+    case label
+    case _switch
+    
+}

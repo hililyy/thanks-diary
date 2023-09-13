@@ -45,3 +45,9 @@
 "text_inquiry" = "문의하기";
 "text_exit" = "앱 종료";
 "text_on_alarm" = "알림 설정이 켜져있어야 시간 설정이 가능합니다.";
+"text_setting_name1" = "암호 설정";
+"text_setting_name2" = "알림 설정";
+"text_setting_name3" = "테마 설정";
+"text_setting_name4" = "건의사항";
+"text_setting_name5" = "오픈소스 라이선스";
+"text_setting_name6" = "앱 버전";

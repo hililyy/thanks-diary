@@ -27,6 +27,7 @@ final class SettingSwitchTVCell: BaseTVCell {
     override func configureUI() {
         selectionStyle = .none
         backgroundColor = .clear
+        
         settingSwitch.onTintColor = Color.COLOR_LIGHTGRAYBLUE
         settingSwitch.addTarget { _ in
             self.switchTapHandler()
@@ -41,14 +42,16 @@ final class SettingSwitchTVCell: BaseTVCell {
     
     override func setConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(15)
-            make.right.equalTo(settingSwitch.snp.left).offset(-200)
-            make.centerY.equalTo(snp.centerY)
+            make.top.equalTo(contentView.snp.top).offset(20)
+            make.left.equalTo(contentView.snp.left).offset(15)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-20)
         }
         
         settingSwitch.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-30)
-            make.centerY.equalTo(snp.centerY)
+            make.top.equalTo(snp.top).offset(20)
+            make.right.equalTo(snp.right).offset(-20)
+            make.bottom.equalTo(snp.bottom).offset(-20)
+            make.centerY.equalTo(titleLabel.snp.centerY)
         }
     }
 }

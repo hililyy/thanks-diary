@@ -37,13 +37,14 @@ final class SettingMoreTVCell: BaseTVCell {
     
     override func setConstraints() {
         titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(snp.top).offset(20)
             make.left.equalTo(snp.left).offset(15)
-            make.centerY.equalTo(snp.centerY)
+            make.bottom.equalTo(snp.bottom).offset(-20)
         }
         
         moreImageView.snp.makeConstraints { make in
             make.right.equalTo(snp.right).offset(-10)
-            make.centerY.equalTo(snp.centerY)
+            make.centerY.equalTo(titleLabel.snp.centerY)
             make.width.equalTo(24)
             make.height.equalTo(24)
         }

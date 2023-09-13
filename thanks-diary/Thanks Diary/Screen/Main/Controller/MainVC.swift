@@ -160,8 +160,7 @@ final class MainVC: BaseVC {
             .disposed(by: disposeBag)
         
         viewModel.selectedAllData
-            .bind(to: mainView.diaryTableView.rx.items) { [weak self] tableView, index, element in
-                guard let self else { return UITableViewCell() }
+            .bind(to: mainView.diaryTableView.rx.items) { tableView, index, element in
                 let cellIdentifier = element.type == .detail ? DetailDiaryTVCell.id : SimpleDiaryTVCell.id
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
                 
@@ -177,7 +176,7 @@ final class MainVC: BaseVC {
         
         
         Observable.zip(mainView.diaryTableView.rx.modelSelected(DiaryModel.self), mainView.diaryTableView.rx.itemSelected)
-            .bind { [weak self] (diary, index) in
+            .bind { [weak self] diary, index in
                 guard let self else { return }
                 
                 if diary.type == .detail {
