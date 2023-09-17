@@ -30,11 +30,11 @@ enum SuggestType: String {
     var description: String {
         switch self {
         case .waiting:
-            return "대기중"
+            return "text_waiting".localized
         case .progress:
-            return "진행중"
+            return "text_progress".localized
         case .complete:
-            return "완료"
+            return "text_complete".localized
         }
     }
 }

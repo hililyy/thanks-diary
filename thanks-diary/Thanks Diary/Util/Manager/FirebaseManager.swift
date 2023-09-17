@@ -68,13 +68,13 @@ extension FirebaseManager {
                 let code = (error as NSError).code
                 switch code {
                 case EmailErrorList.ALREADY_SIGNUP.rawValue:
-                    completion("이미 존재하는 이메일입니다.\n다른 이메일로 변경해 주세요.")
+                    completion("text_already_signup".localized)
                 case EmailErrorList.WRONG_EMAIL_FORMAT.rawValue:
-                    completion("이메일 형식이 잘못되었습니다.")
+                    completion("text_wrong_email_forget".localized)
                 case EmailErrorList.SHORT_PASSWORD.rawValue:
-                    completion("비밀번호를 6자 이상 입력해 주세요.")
+                    completion("text_short_password".localized)
                 default:
-                    completion("회원가입을 실패하였습니다.")
+                    completion("text_fail_signup".localized)
                 }
             } else {
                 completion(nil)
@@ -89,13 +89,13 @@ extension FirebaseManager {
                 let code = (error as NSError).code
                 switch code {
                 case EmailErrorList.WRONG_EMAIL_FORMAT.rawValue:
-                    completion("이메일 형식이 잘못되었습니다.")
+                    completion("text_wrong_email_format" = "이메일 형식이 잘못되었습니다.".localized)
                 case EmailErrorList.MISMATCH_PASSWORD.rawValue:
-                    completion("비밀번호가 일치하지 않습니다.")
+                    completion("text_mismatch_password".localized)
                 case EmailErrorList.NON_EXISTENT_USER.rawValue:
-                    completion("이메일이 존재하지 않습니다.")
+                    completion("text_non_existent_user".localized)
                 default:
-                    completion("로그인을 실패하였습니다.")
+                    completion("text_fail_login".localized)
                 }
             } else {
                 completion(nil)
@@ -118,6 +118,6 @@ extension FirebaseManager {
     
     // 현재 로그인한 유저 아이디
     func getCurrentUserEmail() -> String {
-        return Auth.auth().currentUser?.email ?? "로그인한 이메일이 없습니다."
+        return Auth.auth().currentUser?.email ?? "text_non_existent_email".localized
     }
 }

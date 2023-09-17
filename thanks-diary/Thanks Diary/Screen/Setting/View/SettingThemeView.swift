@@ -18,7 +18,7 @@ final class SettingThemeView: BaseView {
     private var topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_22
         label.textColor = Color.COLOR_GRAY1
-        label.text = "테마 선택"
+        label.text = "text_setting_name8".localized
         label.textAlignment = .center
     }
     
@@ -51,14 +51,14 @@ final class SettingThemeView: BaseView {
     
     private var lightLabel = UILabel().then { label in
         label.textColor = Color.COLOR_GRAY6
-        label.text = "라이트 모드"
+        label.text = "text_lightmode".localized
         label.textAlignment = .center
         label.font = Font.NANUM_LIGHT_15
     }
     
     private var darkLabel = UILabel().then { label in
         label.textColor = Color.COLOR_GRAY6
-        label.text = "다크 모드"
+        label.text = "text_darkmode".localized
         label.textAlignment = .center
         label.font = Font.NANUM_LIGHT_15
     }

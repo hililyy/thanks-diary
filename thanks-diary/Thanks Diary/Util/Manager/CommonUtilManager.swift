@@ -14,7 +14,7 @@ final class CommonUtilManager {
     
     func getAppVersion() -> String {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
-            return "앱 버전 정보를 찾을 수 없습니다."
+            return "text_non_existent_appinfo".localized
         }
         return version
     }

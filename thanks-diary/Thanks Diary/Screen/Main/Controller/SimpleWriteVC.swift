@@ -124,7 +124,7 @@ final class SimpleWriteVC: BaseVC {
     
     private func showFillTextFieldToast() {
         self.simpleWriteView.setCompleteButtonEnable(false)
-        self.toast(message: "내용을 입력해 주세요.", withDuration: 0.5, delay: 1.5, type: "top") {
+        self.toast(message: "text_input_contents".localized, withDuration: 0.5, delay: 1.5, type: "top") {
             self.simpleWriteView.setCompleteButtonEnable(true)
         }
     }

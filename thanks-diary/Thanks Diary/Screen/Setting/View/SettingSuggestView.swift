@@ -18,7 +18,7 @@ final class SettingSuggestView: BaseView {
     private var topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_22
         label.textColor = Color.COLOR_GRAY1
-        label.text = "건의 게시판"
+        label.text = "text_setting_name9".localized
         label.textAlignment = .center
     }
     
