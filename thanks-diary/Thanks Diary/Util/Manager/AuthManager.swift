@@ -18,7 +18,7 @@ final class AuthManager {
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { success, error in
             print("success: \(success)")
             completion(success)
-            if let error {
+            if error != nil {
                 errorHandler()
             }
         }

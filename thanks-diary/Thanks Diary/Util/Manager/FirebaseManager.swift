@@ -89,7 +89,7 @@ extension FirebaseManager {
                 let code = (error as NSError).code
                 switch code {
                 case EmailErrorList.WRONG_EMAIL_FORMAT.rawValue:
-                    completion("text_wrong_email_format" = "이메일 형식이 잘못되었습니다.".localized)
+                    completion("text_wrong_email_format".localized)
                 case EmailErrorList.MISMATCH_PASSWORD.rawValue:
                     completion("text_mismatch_password".localized)
                 case EmailErrorList.NON_EXISTENT_USER.rawValue:
