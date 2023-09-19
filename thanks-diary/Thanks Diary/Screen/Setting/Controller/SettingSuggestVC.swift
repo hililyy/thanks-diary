@@ -31,7 +31,7 @@ final class SettingSuggestVC: BaseVC {
     
     // MARK: - Function
     
-    func setTarget() {
+    private func setTarget() {
         settingSuggestView.backButton.rx.tap
             .asDriver()
             .drive(onNext: {
@@ -51,7 +51,7 @@ final class SettingSuggestVC: BaseVC {
             .disposed(by: disposeBag)
     }
     
-    func setTable() {
+    private func setTable() {
         viewModel?.suggestData
             .bind(to: settingSuggestView.tableView.rx.items(
                 cellIdentifier: SettingSuggestTVCell.id,

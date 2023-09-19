@@ -13,12 +13,12 @@ final class SettingSwitchTVCell: BaseTVCell {
     
     // MARK: - UI components
     
-    var titleLabel = UILabel().then { label in
+    let titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
     }
     
-    var settingSwitch = UISwitch()
+    let settingSwitch = UISwitch()
     
     var switchTapHandler: () -> () = {}
     

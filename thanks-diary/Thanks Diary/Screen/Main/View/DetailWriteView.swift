@@ -11,20 +11,20 @@ final class DetailWriteView: BaseView {
     
     // MARK: - UI component
     
-    var backButton = UIButton(type: .custom).then { button in
+    let backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
-    private var topLabel = UILabel().then { label in
+    private let topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
     
-    var deleteButton = UIButton(type: .custom).then { button in
+    let deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_TRASH, for: .normal)
     }
     
-    var completeButton = UIButton(type: .custom).then { button in
+    let completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
@@ -44,27 +44,27 @@ final class DetailWriteView: BaseView {
     
     private let contentView = UIView()
     
-    private var titleLabel = UILabel().then { label in
+    private let titleLabel = UILabel().then { label in
         label.text = "text_title".localized
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
     
-    private var contentsLabel = UILabel().then { label in
+    private let contentsLabel = UILabel().then { label in
         label.text = "text_contents".localized
         label.font = Font.NANUM_ULTRALIGHT_20
         label.textColor = Color.COLOR_GRAY1
     }
     
-    private var titleUnderLineImageView = UIImageView().then { imageView in
+    private let titleUnderLineImageView = UIImageView().then { imageView in
         imageView.image = Image.IMG_UNDERLINE
     }
     
-    private var contentsUnderLineImageView = UIImageView().then { imageView in
+    private let contentsUnderLineImageView = UIImageView().then { imageView in
         imageView.image = Image.IMG_UNDERLINE
     }
     
-    var titleTextView = UITextView().then { textView in
+    let titleTextView = UITextView().then { textView in
         textView.font = Font.NANUM_ULTRALIGHT_17
         textView.textColor = Color.COLOR_GRAY1
         textView.layer.cornerRadius = 20
@@ -74,7 +74,7 @@ final class DetailWriteView: BaseView {
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
     
-    private var contentsTextView = UITextView().then { textView in
+    private let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
         textView.font = Font.NANUM_ULTRALIGHT_17
         textView.textColor = Color.COLOR_GRAY1
@@ -175,7 +175,7 @@ final class DetailWriteView: BaseView {
            .disposed(by: disposeBag)
     }
     
-    func setTitleTextViewIsScrolled() {
+    private func setTitleTextViewIsScrolled() {
         let size = CGSize(width: self.titleTextView.frame.width, height: .infinity)
         let estimatedSize = self.titleTextView.sizeThatFits(size)
         let isMaxHeight = estimatedSize.height >= 100

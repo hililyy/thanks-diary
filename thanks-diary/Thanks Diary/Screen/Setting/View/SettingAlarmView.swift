@@ -6,41 +6,35 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SettingAlarmView: BaseView {
     
     // MARK: - UI components
     
-    private var backButton = UIButton(type: .custom).then { button in
+    let backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
-    private var topLabel = UILabel().then { label in
+    private let topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_22
         label.textColor = Color.COLOR_GRAY1
         label.text = "text_setting_alarm".localized
         label.textAlignment = .center
     }
     
-    var tableView = UITableView().then { tableView in
+    let tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
         tableView.rowHeight = 55
         tableView.register(SettingSwitchTVCell.self, forCellReuseIdentifier: SettingSwitchTVCell.id)
         tableView.register(SettingLabelTVCell.self, forCellReuseIdentifier: SettingLabelTVCell.id)
     }
     
-    // MARK: - UI, Target
-    
-    var backButtonTapHandler: () -> () = {}
-    
+    // MARK: - UI, Data
+
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE
-    }
-    
-    override func setTarget() {
-        backButton.addTarget { _ in
-            self.backButtonTapHandler()
-        }
     }
     
     // MARK: - Constraint

@@ -22,11 +22,11 @@ final class SimpleWriteView: BaseView {
         view.layer.cornerRadius = 10
     }
     
-    var deleteButton = UIButton(type: .custom).then { button in
+    let deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_TRASH, for: .normal)
     }
     
-    var contentsTextView = UITextView().then { textView in
+    let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
         textView.font = Font.NANUM_ULTRALIGHT_17
         textView.textColor = Color.COLOR_GRAY1
@@ -37,15 +37,15 @@ final class SimpleWriteView: BaseView {
         textView.becomeFirstResponder()
     }
     
-    private var textLengthLabel = UILabel().then { label in
+    private let textLengthLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_15
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .right
     }
     
-    private var buttonView = UIView()
+    private let buttonView = UIView()
     
-    var completeButton = UIButton(type: .custom).then { button in
+    let completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_write_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
@@ -53,7 +53,7 @@ final class SimpleWriteView: BaseView {
         button.layer.cornerRadius = 10
     }
     
-    var cancelButton = UIButton(type: .custom).then { button in
+    let cancelButton = UIButton(type: .custom).then { button in
         button.setTitle("text_cancel".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
@@ -67,10 +67,6 @@ final class SimpleWriteView: BaseView {
     
     func setContentsTextView(text: String) {
         contentsTextView.text = text
-    }
-    
-    func setTextLengthLabel(text: String) {
-        textLengthLabel.text = text
     }
     
     func isContentsTextViewEmpty() -> Bool {

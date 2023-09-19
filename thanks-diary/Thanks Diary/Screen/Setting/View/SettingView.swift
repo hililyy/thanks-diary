@@ -13,18 +13,18 @@ final class SettingView: BaseView {
     
     // MARK: - UI components
     
-    var backButton = UIButton(type: .custom).then { button in
+    let backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
-    private var topLabel = UILabel().then { label in
+    private let topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_22
         label.textColor = Color.COLOR_GRAY1
         label.text = "text_setting".localized
         label.textAlignment = .center
     }
     
-    var tableView = UITableView().then { tableView in
+    let tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
         tableView.register(SettingSwitchTVCell.self, forCellReuseIdentifier: SettingSwitchTVCell.id)
         tableView.register(SettingMoreTVCell.self, forCellReuseIdentifier: SettingMoreTVCell.id)
@@ -33,11 +33,7 @@ final class SettingView: BaseView {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
-        backgroundColor = Color.COLOR_WHITE
-    }
-    
-    var settingNames = BehaviorRelay<[SettingNameModel]>(value: [
+    let titles = BehaviorRelay<[SettingNameModel]>(value: [
         SettingNameModel(title: "text_setting_name1".localized, type: ._switch),
         SettingNameModel(title: "text_setting_name2".localized, type: .more),
         SettingNameModel(title: "text_setting_name3".localized, type: .more),
@@ -45,6 +41,10 @@ final class SettingView: BaseView {
         SettingNameModel(title: "text_setting_name5".localized, type: .more),
         SettingNameModel(title: "text_setting_name6".localized, type: .label)
     ])
+    
+    override func configureUI() {
+        backgroundColor = Color.COLOR_WHITE
+    }
     
     // MARK: - Constraint
     

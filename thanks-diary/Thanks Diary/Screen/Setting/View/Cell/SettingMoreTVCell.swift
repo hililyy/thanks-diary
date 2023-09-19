@@ -13,12 +13,12 @@ final class SettingMoreTVCell: BaseTVCell {
     
     // MARK: - UI components
     
-    var titleLabel = UILabel().then { label in
+    let titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
     }
     
-    var moreImageView = UIImageView().then { imageView in
+    let moreImageView = UIImageView().then { imageView in
         imageView.image = Image.IC_MORE
     }
     

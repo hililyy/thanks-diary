@@ -11,46 +11,46 @@ final class SettingPWView: BaseView {
     
     // MARK: - UI components
     
-    var backButton = UIButton(type: .custom).then { button in
+    let backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
-    private var lockImageView = UIImageView().then { imageView in
+    private let lockImageView = UIImageView().then { imageView in
         imageView.image = Image.IMG_LOCK
     }
     
-    private var titleLabel = UILabel().then { label in
+    private let titleLabel = UILabel().then { label in
         label.text = "text_password".localized
         label.font = Font.NANUM_ULTRALIGHT_22
         label.textColor = .black
         label.textAlignment = .center
     }
     
-    private var contentsLabel = UILabel().then { label in
+    private let contentsLabel = UILabel().then { label in
         label.text = "text_password_contents_1".localized
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .center
     }
     
-    private var dotView = UIView()
+    private let dotView = UIView()
     
-    private var firstDotView = UIView().then { view in
+    private let firstDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY7
         view.layer.cornerRadius = 10
     }
     
-    private var secondDotView = UIView().then { view in
+    private let secondDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY7
         view.layer.cornerRadius = 10
     }
     
-    private var thirdDotView = UIView().then { view in
+    private let thirdDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY7
         view.layer.cornerRadius = 10
     }
     
-    private var fourthDotView = UIView().then { view in
+    private let fourthDotView = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY7
         view.layer.cornerRadius = 10
     }

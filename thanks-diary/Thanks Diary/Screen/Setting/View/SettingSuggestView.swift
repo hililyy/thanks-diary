@@ -11,27 +11,27 @@ final class SettingSuggestView: BaseView {
     
     // MARK: - UI components
     
-    var backButton = UIButton(type: .custom).then { button in
+    let backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
-    private var topLabel = UILabel().then { label in
+    private let topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_22
         label.textColor = Color.COLOR_GRAY1
         label.text = "text_setting_name9".localized
         label.textAlignment = .center
     }
     
-    var tableView = UITableView().then { tableView in
+    let tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
         tableView.register(SettingSuggestTVCell.self, forCellReuseIdentifier: SettingSuggestTVCell.id)
     }
     
-    var loading = UIActivityIndicatorView().then { activityIndicator in
+    let loading = UIActivityIndicatorView().then { activityIndicator in
         activityIndicator.startAnimating()
     }
     
-    var writeButton = UIButton().then { button in
+    let writeButton = UIButton().then { button in
         button.setImage(Image.IC_WRITE, for: .normal)
     }
     

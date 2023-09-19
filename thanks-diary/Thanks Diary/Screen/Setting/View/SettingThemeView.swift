@@ -11,11 +11,11 @@ final class SettingThemeView: BaseView {
     
     // MARK: - UI components
     
-    private var backButton = UIButton(type: .custom).then { button in
+    private let backButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_BACK, for: .normal)
     }
     
-    private var topLabel = UILabel().then { label in
+    private let topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_22
         label.textColor = Color.COLOR_GRAY1
         label.text = "text_setting_name8".localized
@@ -29,34 +29,34 @@ final class SettingThemeView: BaseView {
         stackView.alignment = .fill
     }
     
-    private var lightContentView = UIView()
-    private var darkContentView = UIView()
+    private let lightContentView = UIView()
+    private let darkContentView = UIView()
     
-    private var lightView = UIView().then { view in
+    private let lightView = UIView().then { view in
         view.backgroundColor = .white
         view.layer.cornerRadius = 20
         view.layer.borderWidth = 2
         view.layer.borderColor = Color.COLOR_GRAY2?.cgColor
     }
     
-    private var darkView = UIView().then { view in
+    private let darkView = UIView().then { view in
         view.backgroundColor = .black
         view.layer.cornerRadius = 20
         view.layer.borderWidth = 2
         view.layer.borderColor = Color.COLOR_GRAY2?.cgColor
     }
     
-    private var lightButton = UIButton(type: .custom)
-    private var darkButton = UIButton(type: .custom)
+    private let lightButton = UIButton(type: .custom)
+    private let darkButton = UIButton(type: .custom)
     
-    private var lightLabel = UILabel().then { label in
+    private let lightLabel = UILabel().then { label in
         label.textColor = Color.COLOR_GRAY6
         label.text = "text_lightmode".localized
         label.textAlignment = .center
         label.font = Font.NANUM_LIGHT_15
     }
     
-    private var darkLabel = UILabel().then { label in
+    private let darkLabel = UILabel().then { label in
         label.textColor = Color.COLOR_GRAY6
         label.text = "text_darkmode".localized
         label.textAlignment = .center

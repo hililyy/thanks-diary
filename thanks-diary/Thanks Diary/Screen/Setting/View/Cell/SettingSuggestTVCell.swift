@@ -13,18 +13,18 @@ final class SettingSuggestTVCell: BaseTVCell {
     
     // MARK: - UI components
     
-    var contentsLabel = UILabel().then { label in
+    let contentsLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
     }
     
-    var statusView = UIView().then { view in
+    let statusView = UIView().then { view in
         view.layer.cornerRadius = 10
     }
     
-    var statusLabel = UILabel().then { label in
+    let statusLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_15
         label.textColor = Color.COLOR_GRAY6
         label.textAlignment = .center

@@ -13,13 +13,13 @@ final class DetailDiaryTVCell: BaseTVCell {
     
     // MARK: - UI components
     
-    var titleLabel = UILabel().then { label in
+    let titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
         label.textColor = Color.COLOR_GRAY1
         label.numberOfLines = 0
     }
     
-    var borderView = UIView().then { view in
+    let borderView = UIView().then { view in
         view.layer.cornerRadius = 10
         view.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
         view.layer.borderWidth = 2

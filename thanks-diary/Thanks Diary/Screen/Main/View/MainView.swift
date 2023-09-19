@@ -14,7 +14,7 @@ final class MainView: BaseView {
     
     // MARK: - UI components
     
-    var todayButton = UIButton(type: .custom).then { button in
+    let todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
@@ -22,11 +22,11 @@ final class MainView: BaseView {
         button.setTitle("text_today".localized, for: .normal)
     }
     
-    var settingButton = UIButton(type: .custom).then { button in
+    let settingButton = UIButton(type: .custom).then { button in
         button.setImage(Image.IC_SETTING, for: .normal)
     }
     
-    var calendar = FSCalendar().then { calendar in
+    let calendar = FSCalendar().then { calendar in
         calendar.backgroundColor = Color.COLOR_GRAY4
         calendar.appearance.headerTitleColor = Color.COLOR_GRAY1
         calendar.appearance.weekdayTextColor = Color.COLOR_GRAY1
@@ -50,21 +50,21 @@ final class MainView: BaseView {
         calendar.layer.cornerRadius = 10
     }
     
-    private var lineViewX = UIView().then { view in
+    private let lineViewX = UIView().then { view in
         view.backgroundColor = Color.COLOR_GRAY3
     }
     
-    private var topView = UIView() // 오늘, 설정 버튼이 들어가는 뷰
-    private var titleView = UIView() // 오늘 날짜 뷰
+    private let topView = UIView() // 오늘, 설정 버튼이 들어가는 뷰
+    private let titleView = UIView() // 오늘 날짜 뷰
 
-    private var todayLabel = UILabel().then { label in
+    private let todayLabel = UILabel().then { label in
         label.font = Font.NANUM_LIGHT_20
         label.textColor = Color.COLOR_GRAY1
         label.textAlignment = .left
         label.text = Date().convertString(format: "dd일 (E)")
     }
     
-    var diaryTableView = UITableView().then { tableView in
+    let diaryTableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.separatorStyle = .none
@@ -72,11 +72,11 @@ final class MainView: BaseView {
         tableView.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
     }
     
-    private var emptyImageView = UIImageView().then { view in
+    private let emptyImageView = UIImageView().then { view in
         view.contentMode = .scaleAspectFit
     }
     
-    var floatingButton = FloatingButton().then { button in
+    let floatingButton = FloatingButton().then { button in
         button.setButtonImage(Image.IC_PENCIL)
         button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }

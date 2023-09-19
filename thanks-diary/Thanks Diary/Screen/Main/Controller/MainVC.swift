@@ -39,7 +39,7 @@ final class MainVC: BaseVC {
     
     // MARK: - Function
     
-    func setCalenderCircleDatas() {
+    private func setCalenderCircleDatas() {
         // 모든 다이어리 데이터가 갱신 되었을 때 (선택한 날짜 [string] 갱신)
         Observable.combineLatest(viewModel.allDetailDataRx, viewModel.allSimpleDataRx)
             .subscribe(onNext: { [weak self] detailDatas, simpleDatas in

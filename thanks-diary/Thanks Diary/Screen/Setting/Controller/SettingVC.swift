@@ -15,7 +15,7 @@ final class SettingVC: BaseVC {
     // MARK: - Property
     
     private let settingView = SettingView()
-    let viewModel = SettingViewModel()
+    private let viewModel = SettingViewModel()
     private var alarmFlag: Bool = false
     
     // MARK: - Life Cycle
