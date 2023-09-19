@@ -39,7 +39,6 @@
 		025EF04A2A459CA400C930F2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0492A459CA400C930F2 /* Color.swift */; };
 		025EF04C2A459CA800C930F2 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF04B2A459CA800C930F2 /* Font.swift */; };
 		025EF0502A459CE200C930F2 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF04F2A459CE200C930F2 /* UserDefaultKey.swift */; };
-		025EF0562A459D2700C930F2 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0522A459D2600C930F2 /* AlertManager.swift */; };
 		025EF0572A459D2700C930F2 /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0532A459D2600C930F2 /* LottieManager.swift */; };
 		025EF0582A459D2700C930F2 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0542A459D2600C930F2 /* UserDefaultManager.swift */; };
 		025EF0592A459D2700C930F2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0552A459D2700C930F2 /* FirebaseManager.swift */; };
@@ -152,7 +151,6 @@
 		025EF0492A459CA400C930F2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		025EF04B2A459CA800C930F2 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		025EF04F2A459CE200C930F2 /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
-		025EF0522A459D2600C930F2 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		025EF0532A459D2600C930F2 /* LottieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieManager.swift; sourceTree = "<group>"; };
 		025EF0542A459D2600C930F2 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		025EF0552A459D2700C930F2 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -290,22 +288,21 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		025EF0462A459C9200C930F2 /* Const */ = {
+		025EF0462A459C9200C930F2 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
-				025EF0472A459C9F00C930F2 /* Enum.swift */,
+				025EF05D2A459DCF00C930F2 /* Enum */,
 				025EF0492A459CA400C930F2 /* Color.swift */,
 				025EF04B2A459CA800C930F2 /* Font.swift */,
 				0229554E2A6A12B3004BF800 /* Image.swift */,
 				025EF04F2A459CE200C930F2 /* UserDefaultKey.swift */,
 			);
-			path = Const;
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		025EF0512A459D0000C930F2 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				025EF0522A459D2600C930F2 /* AlertManager.swift */,
 				025EF0552A459D2700C930F2 /* FirebaseManager.swift */,
 				025EF0532A459D2600C930F2 /* LottieManager.swift */,
 				025EF0542A459D2600C930F2 /* UserDefaultManager.swift */,
@@ -317,13 +314,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		025EF05D2A459DCF00C930F2 /* Error */ = {
+		025EF05D2A459DCF00C930F2 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				025EF0472A459C9F00C930F2 /* Enum.swift */,
 				2A4F9301290071C200ECFE88 /* ErrorCase.swift */,
 				025EF05E2A459DF400C930F2 /* EmailLoginErrorList.swift */,
 			);
-			path = Error;
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		025EF0602A459DFD00C930F2 /* Extension */ = {
@@ -567,9 +565,8 @@
 		2A81233D28C095B7000A250E /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				025EF0462A459C9200C930F2 /* Const */,
+				025EF0462A459C9200C930F2 /* Constant */,
 				025EF0512A459D0000C930F2 /* Manager */,
-				025EF05D2A459DCF00C930F2 /* Error */,
 				025EF0602A459DFD00C930F2 /* Extension */,
 				025EF06D2A459E4700C930F2 /* Custom */,
 				022955432A669D73004BF800 /* Etc */,
@@ -836,7 +833,6 @@
 				2A0D880328A540FB00576E56 /* LaunchVC.swift in Sources */,
 				025EF0812A459EEF00C930F2 /* FirstStartVC.swift in Sources */,
 				025EF03E2A459C2900C930F2 /* BaseVC.swift in Sources */,
-				025EF0562A459D2700C930F2 /* AlertManager.swift in Sources */,
 				029F04F92A4984BB00D82289 /* CoreDataManager.swift in Sources */,
 				02D7BB732AA6BFDB00419739 /* SettingSuggestView.swift in Sources */,
 				027C60CD2A8213D7008F607F /* LocalNotificationManager.swift in Sources */,
