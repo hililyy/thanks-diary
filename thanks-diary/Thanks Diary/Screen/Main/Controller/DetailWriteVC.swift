@@ -35,12 +35,9 @@ final class DetailWriteVC: BaseVC {
         detailWriteView.setTopLabelData(date: viewModel?.selectedDate.value)
         
         if let beforeData {
-            guard let titleText = beforeData.title,
-                  let contentsText = beforeData.contents else { return }
-            
             detailWriteView.setTextFieldData(
-                titleText: titleText,
-                contentsText: contentsText)
+                titleText: beforeData.title,
+                contentsText: beforeData.contents)
         }
     }
     
@@ -80,7 +77,7 @@ final class DetailWriteVC: BaseVC {
             type: .detail,
             title: detailWriteView.getTitleText(),
             contents: detailWriteView.getContentsText(),
-            date: viewModel?.selectedDate.value.convertString()
+            date: viewModel?.selectedDate.value.convertString() ?? Date().convertString()
         )
         
         if detailWriteView.isEmptyTextField() {

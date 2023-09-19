@@ -39,14 +39,17 @@ final class CoreDataManager {
             let result = try managedContext.fetch(fetchRequest)
             
             for data in result {
-                let diary = DiaryModel(
-                    type: DiaryType(rawValue: data.value(forKey: "type") as? String ?? "") ?? .detail ,
-                    title: data.value(forKey: "title") as? String,
-                    contents: data.value(forKey: "contents") as? String,
-                    date: data.value(forKey: "date") as? String
-                )
+                guard let type = DiaryType(rawValue: data.value(forKey: "type") as? String ?? ""),
+                      let title = data.value(forKey: "title") as? String,
+                      let contents = data.value(forKey: "contents") as? String,
+                      let date = data.value(forKey: "date") as? String else { return [:] }
                 
-                guard let date = diary.date else { return [:] }
+                let diary = DiaryModel(
+                    type: type,
+                    title: title,
+                    contents: contents,
+                    date: date
+                )
                 
                 if detailData[date] == nil {
                     detailData[date] = []
@@ -90,14 +93,16 @@ final class CoreDataManager {
             let result = try managedContext.fetch(fetchRequest)
 
             for data in result {
-                let diary = DiaryModel(
-                    type: DiaryType(rawValue: data.value(forKey: "type") as? String ?? "") ?? .simple,
-                    title: nil,
-                    contents: data.value(forKey: "contents") as? String,
-                    date: data.value(forKey: "date") as? String
-                )
+                guard let type = DiaryType(rawValue: data.value(forKey: "type") as? String ?? ""),
+                      let contents = data.value(forKey: "contents") as? String,
+                      let date = data.value(forKey: "date") as? String else { return [:] }
                 
-                guard let date = diary.date else { return [:] }
+                let diary = DiaryModel(
+                    type: type,
+                    title: "",
+                    contents: contents,
+                    date: date
+                )
                 
                 if simpleData[date] == nil {
                     simpleData[date] = []
@@ -172,7 +177,7 @@ final class CoreDataManager {
             
         case .detail:
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
-            fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", beforeData.date ?? "", beforeData.title ?? "", beforeData.contents ?? "")
+            fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", beforeData.date, beforeData.title, beforeData.contents )
             do {
                 let result = try managedContext.fetch(fetchRequest)
                 let objectUpdate = result[0] as! NSManagedObject
@@ -190,7 +195,7 @@ final class CoreDataManager {
             
         case .simple:
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
-            fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", beforeData.date ?? "", beforeData.contents ?? "")
+            fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", beforeData.date, beforeData.contents)
             do {
                 let result = try managedContext.fetch(fetchRequest)
                 let objectUpdate = result[0] as! NSManagedObject
@@ -217,7 +222,7 @@ final class CoreDataManager {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let managedContext = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
-            fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", deleteData.date ?? "", deleteData.title ?? "", deleteData.contents ?? "")
+            fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", deleteData.date, deleteData.title, deleteData.contents)
             do {
                 let test = try managedContext.fetch(fetchRequest)
                 let objectToDelete = test[0] as! NSManagedObject
@@ -237,7 +242,7 @@ final class CoreDataManager {
         case .simple:
             let managedContext = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
-            fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", deleteData.date ?? "", deleteData.contents ?? "")
+            fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", deleteData.date, deleteData.contents)
             do {
                 let test = try managedContext.fetch(fetchRequest)
                 let objectToDelete = test[0] as! NSManagedObject

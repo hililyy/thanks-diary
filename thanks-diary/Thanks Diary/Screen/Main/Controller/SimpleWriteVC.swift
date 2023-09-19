@@ -15,7 +15,7 @@ final class SimpleWriteVC: BaseVC {
     
     private let simpleWriteView = SimpleWriteView()
     var viewModel: MainViewModel?
-    let maxCount: Int = 50
+    private let maxCount: Int = 50
     var beforeData: DiaryModel?
     
     // MARK: - Life Cycle
@@ -37,8 +37,7 @@ final class SimpleWriteVC: BaseVC {
         simpleWriteView.setHiddenForDeleteButton(beforeData == nil)
         
         if let beforeData {
-            guard let text = beforeData.contents else { return }
-            simpleWriteView.setContentsTextView(text: text)
+            simpleWriteView.setContentsTextView(text: beforeData.contents)
         }
     }
     
@@ -50,7 +49,7 @@ final class SimpleWriteVC: BaseVC {
                     type: .simple,
                     title: "",
                     contents: self.simpleWriteView.getContentsTextViewText(),
-                    date: self.viewModel?.selectedDate.value.convertString()
+                    date: self.viewModel?.selectedDate.value.convertString() ?? Date().convertString()
                 )
                 
                 if self.simpleWriteView.isEmptyTextField() {

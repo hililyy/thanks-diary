@@ -9,7 +9,7 @@ import Foundation
 
 struct DiaryModel {
     var type: DiaryType
-    var title: String?
-    var contents: String?
-    var date: String?
+    var title: String
+    var contents: String
+    var date: String
 }
