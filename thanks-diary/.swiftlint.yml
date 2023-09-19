@@ -7,7 +7,8 @@ disabled_rules:
   - trailing_comma
   - force_try
   - identifier_name
-
+  - type_name
+  
 type_body_length: 250
 line_length: 120
 function_body_length: 50
