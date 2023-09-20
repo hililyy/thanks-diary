@@ -19,7 +19,6 @@ final class CommonUtilManager {
         return version
     }
     
-    
     func dictionaryToObject <T: Decodable> (objectType: T.Type, dictionary: [[String: Any]]) -> [T]? {
         
         guard let dictionaries = try? JSONSerialization.data(withJSONObject: dictionary) else { return nil }

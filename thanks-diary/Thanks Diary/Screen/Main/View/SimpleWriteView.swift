@@ -77,7 +77,7 @@ final class SimpleWriteView: BaseView {
         return contentsTextView.text
     }
     
-    func setCompleteButtonEnable(_ isEnabled: Bool){
+    func setCompleteButtonEnable(_ isEnabled: Bool) {
         completeButton.isEnabled = isEnabled
     }
     

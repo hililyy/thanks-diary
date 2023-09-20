@@ -176,7 +176,6 @@ final class SettingPWView: BaseView {
             Color.COLOR_GRAY7
             fourthDotView.backgroundColor =
             Color.COLOR_GRAY7
-            break
             
         case 1:
             firstDotView.backgroundColor =
@@ -187,7 +186,6 @@ final class SettingPWView: BaseView {
             Color.COLOR_GRAY7
             fourthDotView.backgroundColor =
             Color.COLOR_GRAY7
-            break
             
         case 2:
             firstDotView.backgroundColor =
@@ -198,7 +196,6 @@ final class SettingPWView: BaseView {
             Color.COLOR_GRAY7
             fourthDotView.backgroundColor =
             Color.COLOR_GRAY7
-            break
             
         case 3:
             firstDotView.backgroundColor =
@@ -209,7 +206,6 @@ final class SettingPWView: BaseView {
             Color.COLOR_LIGHTGRAYBLUE
             fourthDotView.backgroundColor =
             Color.COLOR_GRAY7
-            break
             
         default:
             break
@@ -218,9 +214,9 @@ final class SettingPWView: BaseView {
     
     // MARK: - UI, Target
     
-    var numberButtonTapHandler: (Int) -> () = { _ in }
-    var deleteButtonTapHandler: () -> () = {}
-    var backButtonTapHandler: () -> () = {}
+    var numberButtonTapHandler: (Int) -> Void = { _ in }
+    var deleteButtonTapHandler: () -> Void = {}
+    var backButtonTapHandler: () -> Void = {}
     
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE

@@ -23,7 +23,7 @@ extension UIScrollView {
     // 최하단으로 이동
     func scrollToBottom() {
         let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
-        if(bottomOffset.y > 0) {
+        if bottomOffset.y > 0 {
             setContentOffset(bottomOffset, animated: true)
         }
     }

@@ -80,10 +80,10 @@ final class SettingThemeView: BaseView {
     
     // MARK: - UI, Target
     
-    var backButtonTapHandler: () -> () = {}
-    var lightButtonTapHandler: () -> () = {}
-    var darkButtonTapHandler: () -> () = {}
-    var systemButtonTapHandler: () -> () = {}
+    var backButtonTapHandler: () -> Void = {}
+    var lightButtonTapHandler: () -> Void = {}
+    var darkButtonTapHandler: () -> Void = {}
+    var systemButtonTapHandler: () -> Void = {}
     
     override func configureUI() {
         backgroundColor = Color.COLOR_WHITE

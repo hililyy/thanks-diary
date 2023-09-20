@@ -9,9 +9,9 @@ import Foundation
 
 protocol DiaryRepository {
     func getData()
-    func setData(newData: DiaryModel, completion: @escaping (Bool) -> ())
-    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> ())
-    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> ())
+    func setData(newData: DiaryModel, completion: @escaping (Bool) -> Void)
+    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void)
+    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void)
 }
 
 protocol reloadDelegate {

@@ -44,7 +44,7 @@ final class SettingAlarmDetailView: BaseView {
         button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
-        button.setTitleColor(Color.COLOR_GRAY6, for:.normal)
+        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
     }
     
     private let backButton = UIButton().then { button in
@@ -67,9 +67,9 @@ final class SettingAlarmDetailView: BaseView {
     
     // MARK: - UI, Target
     
-    var backButtonTapHandler: () -> () = {}
-    var okButtonTapHandler: (Date) -> () = { _ in }
-    var cancelButtonTapHandler: () -> () = {}
+    var backButtonTapHandler: () -> Void = {}
+    var okButtonTapHandler: (Date) -> Void = { _ in }
+    var cancelButtonTapHandler: () -> Void = {}
     var selectedTime = Date()
     
     override func setTarget() {

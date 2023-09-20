@@ -159,7 +159,7 @@ final class DetailWriteView: BaseView {
         contentsTextView.resignFirstResponder()
     }
     
-    var completeHandler: () -> () = {}
+    var completeHandler: () -> Void = {}
     
     // MARK: - UI, Target
     

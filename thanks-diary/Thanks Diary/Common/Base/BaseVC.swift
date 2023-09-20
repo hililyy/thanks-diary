@@ -94,7 +94,7 @@ extension BaseVC: UIGestureRecognizerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func toast(message: String, withDuration: Double, delay: Double, type: String = "", completion: @escaping () -> ()) {
+    func toast(message: String, withDuration: Double, delay: Double, type: String = "", completion: @escaping () -> Void) {
         let toastLabelWidth: CGFloat = 300
         let toastLabelHeight: CGFloat = 50
         let toastLabelX = (self.view.frame.size.width - toastLabelWidth) / 2
@@ -129,7 +129,7 @@ extension BaseVC: UIGestureRecognizerDelegate {
         
         UIView.animate(withDuration: withDuration, delay: delay, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
-        }, completion: { (isCompleted) in
+        }, completion: { _ in
             toastLabel.removeFromSuperview()
             completion()
         })

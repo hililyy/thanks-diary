@@ -15,7 +15,7 @@ final class SettingViewModel {
     var selectedTime: Date? = UserDefaultManager.date(forKey: UserDefaultKey.PUSH_TIME)
     var suggestData = BehaviorRelay<[SettingSuggestModel]>(value: [])
     
-    func getSuggestDatas(){
+    func getSuggestDatas() {
         FirebaseManager.shared.getSuggestDatasRx()
             .bind(to: suggestData)
             .disposed(by: disposeBag)

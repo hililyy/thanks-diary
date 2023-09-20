@@ -37,7 +37,7 @@ final class UserDefaultManager {
         return UserDefaults.standard.array(forKey: forKey) ?? []
     }
     
-    class func dictionary(forKey: String) -> [String : Any] {
+    class func dictionary(forKey: String) -> [String: Any] {
         return UserDefaults.standard.dictionary(forKey: forKey) ?? [:]
     }
     

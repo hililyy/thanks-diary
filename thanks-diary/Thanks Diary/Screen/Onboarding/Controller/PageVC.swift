@@ -93,7 +93,7 @@ final class PageVC: BaseVC {
 
 extension PageVC: UIPageViewControllerDelegate {
     // 페이지 이동할때 마다 호출
-    func pageViewController(_ pageViewController: UIPageViewController,didFinishAnimating finished: Bool,previousViewControllers: [UIViewController],transitionCompleted completed: Bool){
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard completed else { return }
         currentIndex = pageViewController.viewControllers!.first!.view.tag
     }

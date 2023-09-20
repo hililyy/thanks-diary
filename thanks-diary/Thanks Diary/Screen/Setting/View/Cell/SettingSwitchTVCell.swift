@@ -20,7 +20,7 @@ final class SettingSwitchTVCell: BaseTVCell {
     
     let settingSwitch = UISwitch()
     
-    var switchTapHandler: () -> () = {}
+    var switchTapHandler: () -> Void = {}
     
     // MARK: - UI, Target
     

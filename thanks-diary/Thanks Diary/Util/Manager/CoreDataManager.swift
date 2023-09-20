@@ -15,7 +15,7 @@ final class CoreDataManager {
     private init() { }
     
     func getDetailDataRx() -> Observable<[String: [DiaryModel]]> {
-        return Observable.create() { emitter in
+        return Observable.create { emitter in
             let result = self.getDetailData()
             if let result = result {
                 emitter.onNext(result)
@@ -69,7 +69,7 @@ final class CoreDataManager {
     }
     
     func getSimpleDataRx() -> Observable<[String: [DiaryModel]]> {
-        return Observable.create() { emitter in
+        return Observable.create { emitter in
             let result = self.getSimpleData()
             if let result = result {
                 emitter.onNext(result)
@@ -118,7 +118,7 @@ final class CoreDataManager {
         return simpleData
     }
     
-    func setData(newData: DiaryModel, completion: @escaping (Bool) -> ()) {
+    func setData(newData: DiaryModel, completion: @escaping (Bool) -> Void) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         
@@ -169,7 +169,7 @@ final class CoreDataManager {
         }
     }
     
-    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> ()) {
+    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         
@@ -214,7 +214,7 @@ final class CoreDataManager {
         }
     }
     
-    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> ()) {
+    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         switch deleteData.type {

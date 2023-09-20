@@ -27,12 +27,12 @@ final class LocalNotificationManager {
     }
     
     // 대기중인 Push Notification 취소
-    func removePendingNotification(identifiers: [String] = []){
+    func removePendingNotification(identifiers: [String] = []) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["LOCAL_PUSH"])
     }
     
     // 이미 전달된 Push Notification을 알림센터에서 삭제 (이미 도착한 푸시 메시지 삭제)
-    func removeDeliveredNotification(identifiers: [String] = []){
+    func removeDeliveredNotification(identifiers: [String] = []) {
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["LOCAL_PUSH"])
     }
     

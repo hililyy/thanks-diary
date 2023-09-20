@@ -80,4 +80,3 @@ final class SettingSuggestTVCell: BaseTVCell {
         }
     }
 }
-

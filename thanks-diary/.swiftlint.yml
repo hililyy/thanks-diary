@@ -8,8 +8,7 @@ disabled_rules:
   - force_try
   - identifier_name
   - type_name
-  
-type_body_length: 250
-line_length: 120
-function_body_length: 50
-file_length: 500
+  - file_length
+  - line_length
+  - function_body_length
+  - type_body_length

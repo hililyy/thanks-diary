@@ -103,7 +103,7 @@ final class MainVC: BaseVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                self.dismissVC() {
+                self.dismissVC {
                     self.pushDetailWriteVC()
                 }
             })
@@ -114,7 +114,7 @@ final class MainVC: BaseVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                self.dismissVC() {
+                self.dismissVC {
                     self.presentSimpleWriteVC()
                 }
             })
@@ -160,7 +160,7 @@ final class MainVC: BaseVC {
             .disposed(by: disposeBag)
         
         viewModel.selectedAllData
-            .bind(to: mainView.diaryTableView.rx.items) { tableView, index, element in
+            .bind(to: mainView.diaryTableView.rx.items) { tableView, _, element in
                 let cellIdentifier = element.type == .detail ? DetailDiaryTVCell.id : SimpleDiaryTVCell.id
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
                 
@@ -174,9 +174,8 @@ final class MainVC: BaseVC {
             }
             .disposed(by: disposeBag)
         
-        
         Observable.zip(mainView.diaryTableView.rx.modelSelected(DiaryModel.self), mainView.diaryTableView.rx.itemSelected)
-            .bind { [weak self] diary, index in
+            .bind { [weak self] diary, _ in
                 guard let self else { return }
                 
                 if diary.type == .detail {

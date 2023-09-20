@@ -16,9 +16,9 @@ final class FirebaseManager {
     private init() { }
     
     // 건의하기 게시판 데이터 조회
-    func getSuggestDatas(completion: @escaping (Result<[SettingSuggestModel], Error>) -> ()) {
+    func getSuggestDatas(completion: @escaping (Result<[SettingSuggestModel], Error>) -> Void) {
         Database.database().reference().child("suggest").observeSingleEvent(of: .value) { snapshot in
-            var values: [[String:Any]] = []
+            var values: [[String: Any]] = []
             
             for snap in snapshot.children.allObjects as! [DataSnapshot] {
                 guard let value = snap.value as? [String: Any] else { return }
@@ -32,7 +32,7 @@ final class FirebaseManager {
     }
     
     func getSuggestDatasRx() -> Observable<[SettingSuggestModel]> {
-        return Observable.create() { emitter in
+        return Observable.create { emitter in
             
             self.getSuggestDatas { result in
                 switch result {
@@ -62,7 +62,7 @@ final class FirebaseManager {
 // Auth
 extension FirebaseManager {
     // 회원가입
-    func signup(email: String, pw: String, completion: @escaping (String?) -> ()) {
+    func signup(email: String, pw: String, completion: @escaping (String?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: pw) { _, error in
             if let error = error {
                 let code = (error as NSError).code
@@ -83,7 +83,7 @@ extension FirebaseManager {
     }
     
     // 로그인
-    func login(email: String, pw: String, completion: @escaping (String?) -> ()) {
+    func login(email: String, pw: String, completion: @escaping (String?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: pw) { _, error in
             if let error = error {
                 let code = (error as NSError).code
@@ -104,7 +104,7 @@ extension FirebaseManager {
     }
     
     // 회원탈퇴
-    func signout(completion: @escaping (Bool) -> ()) {
+    func signout(completion: @escaping (Bool) -> Void) {
         let user = Auth.auth().currentUser
         user?.delete { error in
             if let error = error {

@@ -134,13 +134,13 @@ final class SimpleWriteVC: BaseVC {
 extension SimpleWriteVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        //이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
+        // 이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
         let newLength = textView.text.count - range.length + text.count
         let koreanMaxCount = maxCount + 1
         
-        //글자수가 초과 된 경우 or 초과되지 않은 경우
+        // 글자수가 초과 된 경우 or 초과되지 않은 경우
         if newLength > koreanMaxCount {
-            let overflow = newLength - koreanMaxCount //초과된 글자수
+            let overflow = newLength - koreanMaxCount // 초과된 글자수
             if text.count < overflow { return true }
             let index = text.index(text.endIndex, offsetBy: -overflow)
             let newText = text[..<index]

@@ -55,7 +55,7 @@ final class SettingSuggestVC: BaseVC {
         viewModel?.suggestData
             .bind(to: settingSuggestView.tableView.rx.items(
                 cellIdentifier: SettingSuggestTVCell.id,
-                cellType: SettingSuggestTVCell.self)) { index, item, cell in
+                cellType: SettingSuggestTVCell.self)) { _, item, cell in
                     cell.contentsLabel.text = item.contents
                     cell.statusLabel.text = SuggestType(rawValue: item.status ?? "")?.description
                     cell.setStatusLabelUI(SuggestType(rawValue: item.status ?? "") ?? .waiting)

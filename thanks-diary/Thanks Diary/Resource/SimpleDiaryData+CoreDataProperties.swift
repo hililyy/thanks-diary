@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension SimpleDiaryData {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<SimpleDiaryData> {

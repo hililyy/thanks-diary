@@ -25,7 +25,7 @@ extension UIViewController {
     }
     
     // 프리젠트 뒤로가기
-    func dismissVC(isAnimated: Bool = true, completion: (() -> ())? = nil) {
+    func dismissVC(isAnimated: Bool = true, completion: (() -> Void)? = nil) {
         dismiss(animated: isAnimated) {
             completion?()
         }

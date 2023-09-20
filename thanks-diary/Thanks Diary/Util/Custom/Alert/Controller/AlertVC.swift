@@ -12,8 +12,8 @@ final class AlertVC: BaseVC {
     // MARK: - Property
     
     let alertView = AlertView()
-    var leftButtonTapHandler: () -> () = { }
-    var rightButtonTapHandler: () -> () = { }
+    var leftButtonTapHandler: () -> Void = {}
+    var rightButtonTapHandler: () -> Void = {}
     
     // MARK: - Life Cycle
     
@@ -34,13 +34,13 @@ final class AlertVC: BaseVC {
         }
         
         alertView.leftButton.addTarget { _ in
-            self.dismissVC() {
+            self.dismissVC {
                 self.leftButtonTapHandler()
             }
         }
         
         alertView.rightButton.addTarget { _ in
-            self.dismissVC() {
+            self.dismissVC {
                 self.rightButtonTapHandler()
             }
         }

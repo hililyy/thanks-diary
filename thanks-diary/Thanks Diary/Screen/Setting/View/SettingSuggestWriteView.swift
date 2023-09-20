@@ -49,7 +49,7 @@ final class SettingSuggestWriteView: BaseView {
     
     // MARK: - Functions
     
-    func setCompleteButtonEnable(_ isEnabled: Bool){
+    func setCompleteButtonEnable(_ isEnabled: Bool) {
         completeButton.isEnabled = isEnabled
     }
     

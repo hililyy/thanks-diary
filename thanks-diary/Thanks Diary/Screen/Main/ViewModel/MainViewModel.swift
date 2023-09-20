@@ -46,7 +46,7 @@ extension MainViewModel: DiaryRepository {
     }
     
     // 저장
-    func setData(newData: DiaryModel, completion: @escaping (Bool) -> ()) {
+    func setData(newData: DiaryModel, completion: @escaping (Bool) -> Void) {
         CoreDataManager.shared.setData(newData: newData) { result in
             if result {
                 completion(true)
@@ -57,7 +57,7 @@ extension MainViewModel: DiaryRepository {
     }
     
     // 수정
-    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> ()) {
+    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void) {
         CoreDataManager.shared.updateData(beforeData: beforeData, newData: newData) { result in
             if result {
                 completion(true)
@@ -68,7 +68,7 @@ extension MainViewModel: DiaryRepository {
     }
     
     // 삭제
-    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> ()) {
+    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void) {
         CoreDataManager.shared.deleteData(deleteData: deleteData) { result in
             if result {
                 completion(true)

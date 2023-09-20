@@ -50,7 +50,7 @@ final class FloatingButtonVC: BaseVC {
                        options: .curveEaseOut) {
             self.floatingButtonCloseView.setCloseConstraints()
             self.view.layoutIfNeeded()
-        } completion: { completion in
+        } completion: { _ in
             self.dismissVC(isAnimated: false)
         }
     }

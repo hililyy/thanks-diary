@@ -42,9 +42,9 @@ final class SettingAlarmVC: BaseVC {
     // MARK: - Function
     
     private func setTarget() {
-        settingAlarmView.backButtonTapHandler = {
-            self.popVC()
-        }
+//        settingAlarmView.backButtonTapHandler = {
+//            self.popVC()
+//        }
     }
     
     private func changeDateToString(date: Date, formatString: String) -> String {
@@ -120,13 +120,11 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                         }
                         
                         self.reloadData()
-                        break
                         
                     case .denied:
                         self.switchFlag = false
                         self.showSettingAlert()
                         self.reloadData()
-                        break
                         
                     default:
                         AuthManager.shared.requestNotiAuth(completion: { result in
@@ -141,7 +139,6 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                         }, errorHandler: {
                             self.showErrorPopup()
                         })
-                        break
                     }
                 }
             }

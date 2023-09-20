@@ -12,7 +12,7 @@ final class AuthManager {
     static let shared = AuthManager()
     private init() {}
     
-    func requestNotiAuth(completion: @escaping (Bool) -> (), errorHandler: @escaping () -> ()) {
+    func requestNotiAuth(completion: @escaping (Bool) -> Void, errorHandler: @escaping () -> Void) {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { success, error in
@@ -24,7 +24,7 @@ final class AuthManager {
         }
     }
     
-    func getNotiStatus(completion: @escaping (UNAuthorizationStatus) -> ()) {
+    func getNotiStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
         UNUserNotificationCenter.current().getNotificationSettings { setting in
             completion(setting.authorizationStatus)
         }

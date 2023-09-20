@@ -9,7 +9,7 @@ import UIKit
 
 final class MainNC: BaseNavigationController {
     
-    // MARK:- Life Cycle
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
