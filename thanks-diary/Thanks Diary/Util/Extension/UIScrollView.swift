@@ -1,5 +1,5 @@
 //
-//  UIScrollView+.swift
+//  UIScrollView.swift
 //  Thanks Diary
 //
 //  Created by 강조은 on 2023/08/08.
@@ -13,9 +13,8 @@ extension UIScrollView {
         setContentOffset(.zero, animated: true)
     }
     
-    // 특정 위치로 이동
-    func scrollToCenter(height: CGFloat) {
-        let centerOffset = CGPoint(x: 0, y: (contentSize.height - bounds.size.height + height) )
+    func scrollTo(positionY: CGFloat) {
+        let centerOffset = CGPoint(x: 0, y: (contentSize.height - bounds.size.height + positionY) )
         setContentOffset(centerOffset, animated: true)
     }
 
