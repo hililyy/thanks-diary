@@ -42,20 +42,20 @@ final class SettingView: BaseView {
         SettingNameModel(title: "text_setting_name6".localized, type: .label)
     ])
     
-    override func configureUI() {
+    override func initUI() {
         backgroundColor = Color.COLOR_WHITE
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backButton,
                      topLabel,
                      tableView
         ])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         backButton.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(20)
             make.right.equalTo(topLabel.snp.left).offset(-5)

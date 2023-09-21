@@ -218,11 +218,11 @@ final class SettingPWView: BaseView {
     var deleteButtonTapHandler: () -> Void = {}
     var backButtonTapHandler: () -> Void = {}
     
-    override func configureUI() {
+    override func initUI() {
         backgroundColor = Color.COLOR_WHITE
     }
     
-    override func setTarget() {
+    override func initTarget() {
         for button in [oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton] {
             button.addTarget { _ in
                 self.numberButtonTapHandler(button.tag)
@@ -240,7 +240,7 @@ final class SettingPWView: BaseView {
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backButton,
                      lockImageView,
                      titleLabel,
@@ -256,7 +256,7 @@ final class SettingPWView: BaseView {
         ])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         backButton.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(25)
             make.left.equalTo(snp.left).offset(20)

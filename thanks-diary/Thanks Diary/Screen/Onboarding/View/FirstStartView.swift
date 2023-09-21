@@ -24,19 +24,19 @@ final class FirstStartView: BaseView {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         backgroundColor = .clear
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([lottieView,
                      lottieView2,
                      messageLabel])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         lottieView.snp.makeConstraints { make in
             make.height.equalTo(170)
             make.top.equalTo(snp.top).offset(20)

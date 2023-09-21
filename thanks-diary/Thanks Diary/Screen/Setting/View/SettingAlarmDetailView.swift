@@ -72,7 +72,7 @@ final class SettingAlarmDetailView: BaseView {
     var cancelButtonTapHandler: () -> Void = {}
     var selectedTime = Date()
     
-    override func setTarget() {
+    override func initTarget() {
         backButton.addTarget { _ in
             self.backButtonTapHandler()
         }
@@ -93,7 +93,7 @@ final class SettingAlarmDetailView: BaseView {
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backgroundView, containerView])
         backgroundView.addSubview(backButton)
         containerView.addSubview(datePicker)
@@ -101,7 +101,7 @@ final class SettingAlarmDetailView: BaseView {
         buttonView.addSubviews([cancelButton, okButton, lineViewY])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         backgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

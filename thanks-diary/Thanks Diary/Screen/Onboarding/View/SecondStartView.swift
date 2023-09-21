@@ -90,19 +90,19 @@ final class SecondStartView: BaseView {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         backgroundColor = .clear
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([lottieView,
                      titleLabel,
                      messageStackView])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         heartImageView1.snp.makeConstraints { make in
             make.width.equalTo(21)
             make.height.equalTo(21)

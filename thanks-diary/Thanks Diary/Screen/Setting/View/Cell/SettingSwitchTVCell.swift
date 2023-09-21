@@ -24,7 +24,7 @@ final class SettingSwitchTVCell: BaseTVCell {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         selectionStyle = .none
         backgroundColor = .clear
         
@@ -36,11 +36,11 @@ final class SettingSwitchTVCell: BaseTVCell {
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         contentView.addSubviews([titleLabel, settingSwitch])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(20)
             make.left.equalTo(contentView.snp.left).offset(15)

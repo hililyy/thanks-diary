@@ -99,13 +99,13 @@ final class MainView: BaseView {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         backgroundColor = Color.COLOR_WHITE
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([topView,
                      calendar,
                      lineViewX,
@@ -117,7 +117,7 @@ final class MainView: BaseView {
         titleView.addSubview(todayLabel)
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         topView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.left.equalTo(snp.left)

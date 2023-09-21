@@ -85,7 +85,7 @@ final class SettingThemeView: BaseView {
     var darkButtonTapHandler: () -> Void = {}
     var systemButtonTapHandler: () -> Void = {}
     
-    override func configureUI() {
+    override func initUI() {
         backgroundColor = Color.COLOR_WHITE
         
         if let mode = ThemeMode(rawValue: UserDefaultManager.string(forKey: UserDefaultKey.THEME_MODE)) {
@@ -93,7 +93,7 @@ final class SettingThemeView: BaseView {
         }
     }
     
-    override func setTarget() {
+    override func initTarget() {
         backButton.addTarget { _ in
             self.backButtonTapHandler()
         }
@@ -128,7 +128,7 @@ final class SettingThemeView: BaseView {
         ])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         backButton.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(20)
             make.right.equalTo(topLabel.snp.left).offset(-5)

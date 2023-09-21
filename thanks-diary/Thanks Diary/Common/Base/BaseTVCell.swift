@@ -13,16 +13,16 @@ class BaseTVCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureUI()
-        addSubView()
-        setConstraints()
+        initUI()
+        initSubviews()
+        initConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureUI() {}
-    func addSubView() {}
-    func setConstraints() {}
+    func initUI() {}
+    func initSubviews() {}
+    func initConstraints() {}
 }

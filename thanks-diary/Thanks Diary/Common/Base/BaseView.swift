@@ -17,10 +17,10 @@ class BaseView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
-        setTarget()
-        addSubView()
-        setConstraints()
+        initUI()
+        initTarget()
+        initSubviews()
+        initConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -31,10 +31,10 @@ class BaseView: UIView {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func configureUI() {}
-    func setTarget() {}
-    func addSubView() {}
-    func setConstraints() {}
+    func initUI() {}
+    func initTarget() {}
+    func initSubviews() {}
+    func initConstraints() {}
     
     func setKeyboardNotification() {
         NotificationCenter.default.addObserver(

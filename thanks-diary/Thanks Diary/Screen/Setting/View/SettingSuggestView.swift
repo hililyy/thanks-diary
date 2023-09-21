@@ -37,13 +37,13 @@ final class SettingSuggestView: BaseView {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         backgroundColor = Color.COLOR_WHITE
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backButton,
                      writeButton,
                      topLabel,
@@ -52,7 +52,7 @@ final class SettingSuggestView: BaseView {
         ])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         backButton.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(20)
             make.width.equalTo(44)

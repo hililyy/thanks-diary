@@ -23,17 +23,17 @@ final class ThirdStartView: BaseView {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         backgroundColor = .clear
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([lottieView, messageLabel])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         messageLabel.snp.makeConstraints { make in
             make.centerX.equalTo(snp.centerX)
             make.bottom.equalTo(lottieView.snp.top).offset(-50)

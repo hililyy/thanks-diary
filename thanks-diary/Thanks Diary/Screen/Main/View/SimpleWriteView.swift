@@ -93,7 +93,7 @@ final class SimpleWriteView: BaseView {
     
     // MARK: - UI, Target
     
-    override func setTarget() {
+    override func initTarget() {
         contentsTextView.rx.text
             .map { "\($0?.count ?? 0)/50" }
             .bind(to: textLengthLabel.rx.text)
@@ -102,13 +102,13 @@ final class SimpleWriteView: BaseView {
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backgroundView, containerView])
         containerView.addSubviews([deleteButton, contentsTextView, textLengthLabel, buttonView])
         buttonView.addSubviews([completeButton, cancelButton])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         backgroundView.snp.makeConstraints { make in
             make.top.equalTo(snp.top)
             make.left.equalTo(snp.left)

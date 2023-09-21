@@ -43,19 +43,19 @@ final class SettingSuggestTVCell: BaseTVCell {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         selectionStyle = .none
         backgroundColor = .clear
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([contentsLabel, statusView])
         statusView.addSubview(statusLabel)
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         contentsLabel.snp.makeConstraints { make in
             make.top.equalTo(snp.top).offset(15)
             make.left.equalTo(snp.left).offset(15)
