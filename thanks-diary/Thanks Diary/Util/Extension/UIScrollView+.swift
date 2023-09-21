@@ -9,7 +9,6 @@ import UIKit
 
 extension UIScrollView {
     
-    // 최상단으로 이동
     func scrollToTop() {
         setContentOffset(.zero, animated: true)
     }
@@ -20,7 +19,6 @@ extension UIScrollView {
         setContentOffset(centerOffset, animated: true)
     }
 
-    // 최하단으로 이동
     func scrollToBottom() {
         let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
         if bottomOffset.y > 0 {
