@@ -1,14 +1,5 @@
 disabled_rules:
   - trailing_whitespace
-  - xctfail_message
   - function_parameter_count
   - legacy_constructor
-  - force_cast
   - trailing_comma
-  - force_try
-  - identifier_name
-  - type_name
-  - file_length
-  - line_length
-  - function_body_length
-  - type_body_length
