@@ -50,7 +50,7 @@ final class AlertConfirmView: BaseView {
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backgroundView, alertView])
         alertView.addSubviews([messageView, buttonView, lineViewX])
         backgroundView.addSubview(backButton)
@@ -58,7 +58,7 @@ final class AlertConfirmView: BaseView {
         buttonView.addSubview(okButton)
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         backgroundView.snp.makeConstraints { make in
             make.top.equalTo(snp.top)
             make.left.equalTo(snp.left)

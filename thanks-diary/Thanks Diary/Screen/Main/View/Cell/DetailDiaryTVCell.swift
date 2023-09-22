@@ -27,19 +27,19 @@ final class DetailDiaryTVCell: BaseTVCell {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         selectionStyle = .none
         backgroundColor = .clear
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubview(borderView)
         borderView.addSubview(titleLabel)
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         borderView.snp.makeConstraints { make in
             make.top.equalTo(snp.top).offset(5)
             make.left.equalTo(snp.left).offset(15)

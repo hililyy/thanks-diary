@@ -110,7 +110,7 @@ final class SettingThemeView: BaseView {
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backButton,
                      topLabel,
                      contentsStackView

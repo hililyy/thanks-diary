@@ -37,18 +37,18 @@ final class PageVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTarget()
-        setPageVC()
+        initTarget()
+        initPageVC()
     }
 
-    private func setTarget() {
+    private func initTarget() {
         pageView.nextButton.addTarget { _ in
             if self.currentIndex == self.pageList.count - 1 {
                 UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_LOGIN.rawValue)
                 self.registMainToRoot()
                 return
             }
-            self.nextPage()
+            self.moveNextPage()
         }
     }
 
@@ -66,12 +66,9 @@ final class PageVC: BaseVC {
         })
     }
 
-    private func setPageVC() {
-        let page1 = FirstStartVC()
-        let page2 = SecondStartVC()
-        let page3 = ThirdStartVC()
+    private func initPageVC() {
 
-        pageList = [page1, page2, page3]
+        pageList = [FirstStartVC(), SecondStartVC(), ThirdStartVC()]
 
         pageContainer = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageContainer.delegate = self
@@ -83,7 +80,7 @@ final class PageVC: BaseVC {
         pageContainer.view.setAutoLayout(to: pageView.containerView)
     }
 
-    private func nextPage() {
+    private func moveNextPage() {
         if currentIndex < pageList.count - 1 {
             currentIndex += 1
         }
@@ -97,22 +94,4 @@ extension PageVC: UIPageViewControllerDelegate {
         guard completed else { return }
         currentIndex = pageViewController.viewControllers!.first!.view.tag
     }
-
-//    // 페이지 왼쪽 스와이프
-//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-//        guard let index = pageList.firstIndex(of: viewController),
-//              index - 1 >= 0
-//        else { return nil }
-//
-//        return pageList[index - 1]
-//    }
-//
-//    // 페이지 오른쪽 스와이프
-//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-//        guard let index = pageList.firstIndex(of: viewController),
-//              index + 1 != pageList.count
-//        else { return nil }
-//
-//        return pageList[index + 1]
-//    }
 }

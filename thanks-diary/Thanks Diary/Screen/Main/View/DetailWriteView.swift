@@ -163,7 +163,7 @@ final class DetailWriteView: BaseView {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         backgroundColor = Color.COLOR_WHITE
         titleTextView.sizeToFit()
         
@@ -186,7 +186,7 @@ final class DetailWriteView: BaseView {
         self.setNeedsUpdateConstraints()
     }
     
-    override func setTarget() {
+    override func initTarget() {
         setKeyboardNotification()
         
         // 텍스트 필드 외부 터치 시 키보드 닫기 위한 제스처 추가
@@ -196,7 +196,7 @@ final class DetailWriteView: BaseView {
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backButton,
                      topLabel,
                      buttonStackView,

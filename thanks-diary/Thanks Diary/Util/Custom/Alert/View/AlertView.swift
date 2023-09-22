@@ -69,7 +69,7 @@ final class AlertView: BaseView {
         rightButton.setTitle(rightButtonText, for: .normal)
     }
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backgroundView, alertView])
         backgroundView.addSubview(backButton)
         alertView.addSubview(messageView)
@@ -78,7 +78,7 @@ final class AlertView: BaseView {
         buttonView.addSubviews([leftButton, rightButton, lineViewY])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         backgroundView.snp.makeConstraints { make in
             make.top.equalTo(snp.top)
             make.left.equalTo(snp.left)

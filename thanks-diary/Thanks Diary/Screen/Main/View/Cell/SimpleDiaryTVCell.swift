@@ -26,18 +26,18 @@ final class SimpleDiaryTVCell: BaseTVCell {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         selectionStyle = .none
         backgroundColor = .clear
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([dotView, titleLabel])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         dotView.snp.makeConstraints { make in
             make.width.equalTo(7)
             make.height.equalTo(7)

@@ -21,7 +21,7 @@ final class FloatingButtonCloseView: BaseView {
     }
     
     var plusButton = FloatingButton().then { button in
-        button.setButtonImage(Image.IC_X ?? .add)
+        button.setButtonImage(Image.IC_X ?? .remove)
         button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }
     
@@ -78,7 +78,7 @@ final class FloatingButtonCloseView: BaseView {
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([backgroundView,
                      backgroundButton,
                      plusButton,
@@ -89,7 +89,7 @@ final class FloatingButtonCloseView: BaseView {
                     ])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         detailButton.snp.makeConstraints { make in
             detailButtonCenterY = make.centerY.equalTo(plusButton.snp.centerY).constraint
         }

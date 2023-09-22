@@ -13,7 +13,7 @@ extension UIViewController {
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(PageNC())
     }
     
-    func setMainToRoot() {
+    func registMainToRoot() {
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(MainNC())
     }
     

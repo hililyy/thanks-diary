@@ -11,15 +11,15 @@ final class FloatingButton: BaseView {
     
     // MARK: - Property
     
-    var button = UIButton(type: .custom).then {
-        $0.layer.cornerRadius = 26
+    var button = UIButton(type: .custom).then { button in
+        button.layer.cornerRadius = 26
     }
-    var imageView = UIImageView().then {
-        $0.layer.cornerRadius = 26
-        $0.isUserInteractionEnabled = false
+    var imageView = UIImageView().then { view in
+        view.layer.cornerRadius = 26
+        view.isUserInteractionEnabled = false
     }
     
-    func setButtonImage(_ img: UIImage?) {
+    func setButtonImage(_ img: UIImage) {
         imageView.image = img
         imageView.contentMode = .scaleAspectFit
     }
@@ -30,17 +30,17 @@ final class FloatingButton: BaseView {
     
     // MARK: - UI, Target
     
-    override func configureUI() {
+    override func initUI() {
         self.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
     }
     
     // MARK: - Constraint
     
-    override func addSubView() {
+    override func initSubviews() {
         addSubviews([button, imageView])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         imageView.snp.makeConstraints { make in
             make.top.equalTo(snp.top).offset(10)
             make.left.equalTo(snp.left).offset(10)

@@ -43,5 +43,4 @@ enum SettingNameType {
     case more
     case label
     case _switch
-    
 }

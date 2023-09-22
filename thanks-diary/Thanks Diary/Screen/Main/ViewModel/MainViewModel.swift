@@ -26,7 +26,7 @@ final class MainViewModel {
     var diaryDates: Set<String> = [] // 일기를 작성한 날짜 Set
     
     init() {
-        getData()
+        readData()
     }
 }
 
