@@ -28,7 +28,7 @@ final class SettingSwitchTVCell: BaseTVCell {
         selectionStyle = .none
         backgroundColor = .clear
         
-        settingSwitch.onTintColor = Color.COLOR_LIGHTGRAYBLUE
+        settingSwitch.onTintColor = Asset.Color.lightGrayBlue.color
         settingSwitch.addTarget { _ in
             self.switchTapHandler()
         }

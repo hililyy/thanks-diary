@@ -32,7 +32,7 @@ final class SimpleWriteView: BaseView {
         textView.textColor = Color.COLOR_GRAY1
         textView.layer.cornerRadius = 15
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
+        textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
         textView.becomeFirstResponder()
     }
@@ -49,7 +49,7 @@ final class SimpleWriteView: BaseView {
         button.setTitle("text_write_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
-        button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
     }
     
@@ -60,7 +60,7 @@ final class SimpleWriteView: BaseView {
         button.backgroundColor = .clear
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1.5
-        button.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
+        button.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
     }
     
     // MARK: - Functions

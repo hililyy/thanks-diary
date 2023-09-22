@@ -43,7 +43,7 @@ final class SettingView: BaseView {
     ])
     
     override func initUI() {
-        backgroundColor = Color.COLOR_WHITE
+        backgroundColor = Asset.Color.white.color
     }
     
     // MARK: - Constraint

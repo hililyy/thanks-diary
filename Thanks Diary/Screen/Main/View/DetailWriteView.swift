@@ -28,7 +28,7 @@ final class DetailWriteView: BaseView {
         button.setTitle("text_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
-        button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
     }
     
@@ -69,7 +69,7 @@ final class DetailWriteView: BaseView {
         textView.textColor = Color.COLOR_GRAY1
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
-        textView.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
+        textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
         textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
@@ -80,7 +80,7 @@ final class DetailWriteView: BaseView {
         textView.textColor = Color.COLOR_GRAY1
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
-        textView.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
+        textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
         textView.isScrollEnabled = true
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
@@ -165,7 +165,7 @@ final class DetailWriteView: BaseView {
     // MARK: - UI, Target
     
     override func initUI() {
-        backgroundColor = Color.COLOR_WHITE
+        backgroundColor = Asset.Color.white.color
         titleTextView.sizeToFit()
         
         titleTextView.rx

@@ -179,7 +179,7 @@ final class SettingPWView: BaseView {
             
         case 1:
             firstDotView.backgroundColor =
-            Color.COLOR_LIGHTGRAYBLUE
+            Asset.Color.lightGrayBlue.color
             secondDotView.backgroundColor =
             Color.COLOR_GRAY7
             thirdDotView.backgroundColor =
@@ -189,9 +189,9 @@ final class SettingPWView: BaseView {
             
         case 2:
             firstDotView.backgroundColor =
-            Color.COLOR_LIGHTGRAYBLUE
+            Asset.Color.lightGrayBlue.color
             secondDotView.backgroundColor =
-            Color.COLOR_LIGHTGRAYBLUE
+            Asset.Color.lightGrayBlue.color
             thirdDotView.backgroundColor =
             Color.COLOR_GRAY7
             fourthDotView.backgroundColor =
@@ -199,11 +199,11 @@ final class SettingPWView: BaseView {
             
         case 3:
             firstDotView.backgroundColor =
-            Color.COLOR_LIGHTGRAYBLUE
+            Asset.Color.lightGrayBlue.color
             secondDotView.backgroundColor =
-            Color.COLOR_LIGHTGRAYBLUE
+            Asset.Color.lightGrayBlue.color
             thirdDotView.backgroundColor =
-            Color.COLOR_LIGHTGRAYBLUE
+            Asset.Color.lightGrayBlue.color
             fourthDotView.backgroundColor =
             Color.COLOR_GRAY7
             
@@ -219,7 +219,7 @@ final class SettingPWView: BaseView {
     var backButtonTapHandler: () -> Void = {}
     
     override func initUI() {
-        backgroundColor = Color.COLOR_WHITE
+        backgroundColor = Asset.Color.white.color
     }
     
     override func initTarget() {

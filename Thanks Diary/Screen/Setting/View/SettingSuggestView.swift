@@ -38,7 +38,7 @@ final class SettingSuggestView: BaseView {
     // MARK: - UI, Target
     
     override func initUI() {
-        backgroundColor = Color.COLOR_WHITE
+        backgroundColor = Asset.Color.white.color
     }
     
     // MARK: - Constraint

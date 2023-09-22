@@ -86,7 +86,7 @@ final class SettingThemeView: BaseView {
     var systemButtonTapHandler: () -> Void = {}
     
     override func initUI() {
-        backgroundColor = Color.COLOR_WHITE
+        backgroundColor = Asset.Color.white.color
         
         if let mode = UserDefaultManager.instance?.string(UserDefaultKey.THEME_MODE.rawValue),
             let themeMode = ThemeMode(rawValue: mode) {

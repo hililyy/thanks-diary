@@ -37,7 +37,7 @@ final class SettingSuggestTVCell: BaseTVCell {
         case .progress:
             statusView.backgroundColor = Color.COLOR_YELLOW
         case .complete:
-            statusView.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+            statusView.backgroundColor = Asset.Color.lightGrayBlue.color
         }
     }
     

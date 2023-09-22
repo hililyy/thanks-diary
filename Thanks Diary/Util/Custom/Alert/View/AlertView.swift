@@ -43,7 +43,7 @@ final class AlertView: BaseView {
     let rightButton = UIButton(type: .custom).then { button in
         button.setTitle("text_delete".localized, for: .normal)
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
-        button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)

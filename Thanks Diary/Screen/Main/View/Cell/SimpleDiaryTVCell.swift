@@ -14,7 +14,7 @@ final class SimpleDiaryTVCell: BaseTVCell {
     // MARK: - UI components
     
     let dotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        view.backgroundColor = Asset.Color.lightGrayBlue.color
         view.layer.cornerRadius = 3.5
     }
     

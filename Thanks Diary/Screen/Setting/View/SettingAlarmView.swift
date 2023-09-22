@@ -33,7 +33,7 @@ final class SettingAlarmView: BaseView {
     // MARK: - UI, Data
 
     override func initUI() {
-        backgroundColor = Color.COLOR_WHITE
+        backgroundColor = Asset.Color.white.color
     }
     
     // MARK: - Constraint

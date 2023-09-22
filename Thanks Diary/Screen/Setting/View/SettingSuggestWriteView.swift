@@ -34,7 +34,7 @@ final class SettingSuggestWriteView: BaseView {
         textView.textColor = Color.COLOR_GRAY1
         textView.layer.cornerRadius = 15
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = Color.COLOR_LIGHTGRAYBLUE?.cgColor
+        textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
         textView.becomeFirstResponder()
     }
@@ -43,7 +43,7 @@ final class SettingSuggestWriteView: BaseView {
         button.setTitle("text_write_complete".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
-        button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
     }
     

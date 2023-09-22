@@ -21,7 +21,7 @@ final class PageView: BaseView {
     }
     
     var firstDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        view.backgroundColor = Asset.Color.lightGrayBlue.color
         view.layer.cornerRadius = 6
     }
     
@@ -37,7 +37,7 @@ final class PageView: BaseView {
     
     var nextButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 20
-        button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.titleLabel?.font = Font.NANUM_LIGHT_18
         button.setTitle("text_next".localized, for: .normal)
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
@@ -46,7 +46,7 @@ final class PageView: BaseView {
     // MARK: - UI, Target
     
     override func initUI() {
-        backgroundColor = Color.COLOR_WHITE
+        backgroundColor = Asset.Color.white.color
     }
     
     // MARK: - Constraint

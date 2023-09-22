@@ -17,7 +17,7 @@ final class MainView: BaseView {
     let todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
-        button.backgroundColor = Color.COLOR_LIGHTGRAYBLUE
+        button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
         button.setTitle("text_today".localized, for: .normal)
     }
@@ -31,13 +31,13 @@ final class MainView: BaseView {
         calendar.appearance.headerTitleColor = Color.COLOR_GRAY1
         calendar.appearance.weekdayTextColor = Color.COLOR_GRAY1
         calendar.appearance.titleDefaultColor = Color.COLOR_GRAY1 // 선택가능한 날짜 색
-        calendar.appearance.titlePlaceholderColor = Color.COLOR_WHITE_GRAY // 선택 불가능한 날짜 색
+        calendar.appearance.titlePlaceholderColor = Asset.Color.gray8.color // 선택 불가능한 날짜 색
         
         calendar.appearance.headerTitleFont = Font.NANUM_LIGHT_19
         calendar.appearance.weekdayFont = Font.NANUM_ULTRALIGHT_17
         calendar.appearance.titleFont = Font.NANUM_LIGHT_17
         calendar.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
-        calendar.appearance.todayColor = Color.COLOR_LIGHTGRAYBLUE // 오늘 날짜 동그라미 색상
+        calendar.appearance.todayColor = Asset.Color.lightGrayBlue.color // 오늘 날짜 동그라미 색상
         calendar.appearance.selectionColor = Color.COLOR_GRAY5
         
         calendar.appearance.headerDateFormat = "format_date3".localized
@@ -78,7 +78,7 @@ final class MainView: BaseView {
     
     let floatingButton = FloatingButton().then { button in
         button.setButtonImage(Image.IC_PENCIL ?? .add)
-        button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
+        button.setButtonBackgroundColor(Asset.Color.lightGrayBlue.color)
     }
     
     // MARK: - Functions
@@ -100,7 +100,7 @@ final class MainView: BaseView {
     // MARK: - UI, Target
     
     override func initUI() {
-        backgroundColor = Color.COLOR_WHITE
+        backgroundColor = Asset.Color.white.color
     }
     
     // MARK: - Constraint
