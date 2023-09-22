@@ -40,7 +40,7 @@ final class MainView: BaseView {
         calendar.appearance.todayColor = Color.COLOR_LIGHTGRAYBLUE // 오늘 날짜 동그라미 색상
         calendar.appearance.selectionColor = Color.COLOR_GRAY5
         
-        calendar.appearance.headerDateFormat = "YYYY년 M월"
+        calendar.appearance.headerDateFormat = "format_date3".localized
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.calendar.headerHeight = 50
         
@@ -89,7 +89,7 @@ final class MainView: BaseView {
     }
     
     func setTodayLabelText(date: Date) {
-        todayLabel.text = date.convertString(format: "dd'일' (E)")
+        todayLabel.text = date.convertString(format: "format_date2".localized)
     }
     
     func setHiddenForEmptyView(isHidden: Bool) {

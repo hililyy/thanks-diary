@@ -89,7 +89,7 @@ final class DetailWriteView: BaseView {
     
     func setTopLabelData(date: Date?) {
         if let date = date {
-            topLabel.text = ("\(date.convertString(format: "yyyy년 M월 d일")) \("text_thanks_diary".localized)")
+            topLabel.text = ("\(date.convertString(format: "format_date1".localized))  \("text_thanks_diary".localized)")
         } else {
             topLabel.text = "text_today_thanks_diary".localized
         }
@@ -99,7 +99,7 @@ final class DetailWriteView: BaseView {
         guard let title = titleTextView.text,
               let contents = contentsTextView.text else { return false}
 
-        return title.isEmpty || contents.isEmpty ? true : false
+        return title.isEmpty || contents.isEmpty
     }
     
     func getTitleText() -> String {
@@ -136,7 +136,8 @@ final class DetailWriteView: BaseView {
         contentScrollView.scrollIndicatorInsets = contentInset
         
         if contentsTextView.isFirstResponder {
-            contentScrollView.scrollToCenter(height: titleTextView.frame.height + titleLabel.frame.height + 25)
+            let positionY = titleTextView.frame.height + titleLabel.frame.height + 25
+            contentScrollView.scrollTo(positionY: positionY)
         } else {
             contentScrollView.scrollToTop()
         }
@@ -215,7 +216,7 @@ final class DetailWriteView: BaseView {
         ])
     }
     
-    override func setConstraints() {
+    override func initConstraints() {
         backButton.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(20)
             make.right.equalTo(topLabel.snp.left).offset(-5)
