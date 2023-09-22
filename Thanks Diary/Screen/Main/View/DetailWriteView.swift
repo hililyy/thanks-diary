@@ -12,7 +12,7 @@ final class DetailWriteView: BaseView {
     // MARK: - UI component
     
     let backButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_BACK, for: .normal)
+        button.setImage(Asset.Icon.icBack.image, for: .normal)
     }
     
     private let topLabel = UILabel().then { label in
@@ -21,7 +21,7 @@ final class DetailWriteView: BaseView {
     }
     
     let deleteButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_TRASH, for: .normal)
+        button.setImage(Asset.Icon.icTrash.image, for: .normal)
     }
     
     let completeButton = UIButton(type: .custom).then { button in
@@ -57,11 +57,11 @@ final class DetailWriteView: BaseView {
     }
     
     private let titleUnderLineImageView = UIImageView().then { imageView in
-        imageView.image = Image.IMG_UNDERLINE
+        imageView.image = Asset.Img.imgUnderline.image
     }
     
     private let contentsUnderLineImageView = UIImageView().then { imageView in
-        imageView.image = Image.IMG_UNDERLINE
+        imageView.image = Asset.Img.imgUnderline.image
     }
     
     let titleTextView = UITextView().then { textView in

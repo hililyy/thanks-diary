@@ -23,7 +23,7 @@ final class SimpleWriteView: BaseView {
     }
     
     let deleteButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_TRASH, for: .normal)
+        button.setImage(Asset.Icon.icTrash.image, for: .normal)
     }
     
     let contentsTextView = UITextView().then { textView in

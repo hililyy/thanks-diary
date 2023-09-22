@@ -12,11 +12,11 @@ final class SettingPWView: BaseView {
     // MARK: - UI components
     
     let backButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_BACK, for: .normal)
+        button.setImage(Asset.Icon.icBack.image, for: .normal)
     }
     
     private let lockImageView = UIImageView().then { imageView in
-        imageView.image = Image.IMG_LOCK
+        imageView.image = Asset.Img.imgLock.image
     }
     
     private let titleLabel = UILabel().then { label in
@@ -81,77 +81,77 @@ final class SettingPWView: BaseView {
     }
     
     private let oneButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_ONE, for: .normal)
+        button.setImage(Asset.Icon.Lock.icOne.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 1
     }
     
     private let twoButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_TWO, for: .normal)
+        button.setImage(Asset.Icon.Lock.icTwo.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 2
     }
     
     private let threeButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_THREE, for: .normal)
+        button.setImage(Asset.Icon.Lock.icThree.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 3
     }
     
     private let fourButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_FOUR, for: .normal)
+        button.setImage(Asset.Icon.Lock.icFour.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 4
     }
     
     private let fiveButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_FIVE, for: .normal)
+        button.setImage(Asset.Icon.Lock.icFive.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 5
     }
     
     private let sixButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_SIX, for: .normal)
+        button.setImage(Asset.Icon.Lock.icSix.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 6
     }
     
     private let sevenButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_SEVEN, for: .normal)
+        button.setImage(Asset.Icon.Lock.icSeven.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 7
     }
     
     private let eightButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_EIGHT, for: .normal)
+        button.setImage(Asset.Icon.Lock.icEight.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 8
     }
     
     private let nineButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_NINE, for: .normal)
+        button.setImage(Asset.Icon.Lock.icNine.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 9
     }
     
     private let zeroButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_ZERO, for: .normal)
+        button.setImage(Asset.Icon.Lock.icZero.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
         button.tag = 0
     }
     
     private let deleteButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_DELETE, for: .normal)
+        button.setImage(Asset.Icon.Lock.icDelete.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
     }

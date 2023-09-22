@@ -25,7 +25,7 @@ final class SettingSuggestWriteView: BaseView {
     }
     
     let mailButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_MAIL, for: .normal)
+        button.setImage(Asset.Icon.icMail.image, for: .normal)
     }
     
     let contentsTextView = UITextView().then { textView in

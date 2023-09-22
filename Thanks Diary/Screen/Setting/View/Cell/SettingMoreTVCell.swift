@@ -19,7 +19,7 @@ final class SettingMoreTVCell: BaseTVCell {
     }
     
     let moreImageView = UIImageView().then { imageView in
-        imageView.image = Image.IC_MORE
+        imageView.image = Asset.Icon.icMore.image
     }
     
     // MARK: - UI, Target

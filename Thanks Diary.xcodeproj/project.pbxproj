@@ -22,7 +22,6 @@
 		022955402A669273004BF800 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553F2A669273004BF800 /* BaseView.swift */; };
 		022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955412A669BA0004BF800 /* BaseTVCell.swift */; };
 		0229554D2A6A1003004BF800 /* DetailWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229554C2A6A1003004BF800 /* DetailWriteView.swift */; };
-		0229554F2A6A12B3004BF800 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229554E2A6A12B3004BF800 /* Image.swift */; };
 		022955532A6A60C7004BF800 /* MainNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955522A6A60C7004BF800 /* MainNC.swift */; };
 		022955552A6A614B004BF800 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955542A6A614B004BF800 /* BaseNC.swift */; };
 		022955572A6A6177004BF800 /* PageNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955562A6A6177004BF800 /* PageNC.swift */; };
@@ -136,7 +135,6 @@
 		0229553F2A669273004BF800 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		022955412A669BA0004BF800 /* BaseTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTVCell.swift; sourceTree = "<group>"; };
 		0229554C2A6A1003004BF800 /* DetailWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteView.swift; sourceTree = "<group>"; };
-		0229554E2A6A12B3004BF800 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		022955522A6A60C7004BF800 /* MainNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNC.swift; sourceTree = "<group>"; };
 		022955542A6A614B004BF800 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
 		022955562A6A6177004BF800 /* PageNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNC.swift; sourceTree = "<group>"; };
@@ -297,7 +295,6 @@
 			children = (
 				025EF05D2A459DCF00C930F2 /* Enum */,
 				025EF04B2A459CA800C930F2 /* Font.swift */,
-				0229554E2A6A12B3004BF800 /* Image.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -875,7 +872,6 @@
 				2ABF8AA52A6C057E006ACBE2 /* SettingViewModel.swift in Sources */,
 				025EF05C2A459DB700C930F2 /* AuthManager.swift in Sources */,
 				0229553D2A66867D004BF800 /* UIControl.swift in Sources */,
-				0229554F2A6A12B3004BF800 /* Image.swift in Sources */,
 				022955592A6A66D2004BF800 /* SimpleWriteView.swift in Sources */,
 				2A55DC502A6D6F8100A13F58 /* SettingView.swift in Sources */,
 				2A0D880328A540FB00576E56 /* LaunchVC.swift in Sources */,

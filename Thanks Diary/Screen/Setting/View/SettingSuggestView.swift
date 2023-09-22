@@ -12,7 +12,7 @@ final class SettingSuggestView: BaseView {
     // MARK: - UI components
     
     let backButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_BACK, for: .normal)
+        button.setImage(Asset.Icon.icBack.image, for: .normal)
     }
     
     private let topLabel = UILabel().then { label in
@@ -32,7 +32,7 @@ final class SettingSuggestView: BaseView {
     }
     
     let writeButton = UIButton().then { button in
-        button.setImage(Image.IC_WRITE, for: .normal)
+        button.setImage(Asset.Icon.icWrite.image, for: .normal)
     }
     
     // MARK: - UI, Target

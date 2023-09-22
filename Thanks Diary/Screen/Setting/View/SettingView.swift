@@ -14,7 +14,7 @@ final class SettingView: BaseView {
     // MARK: - UI components
     
     let backButton = UIButton(type: .custom).then { button in
-        button.setImage(Image.IC_BACK, for: .normal)
+        button.setImage(Asset.Icon.icBack.image, for: .normal)
     }
     
     private let topLabel = UILabel().then { label in

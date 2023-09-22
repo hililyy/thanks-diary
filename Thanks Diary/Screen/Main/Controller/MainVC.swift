@@ -151,7 +151,7 @@ final class MainVC: BaseVC {
                     self.mainView.setHiddenForEmptyView(isHidden: false)
                     
                     let date = self.viewModel.selectedDate.value
-                    let image = date.convertString() == Date().convertString() ? Image.IMG_NOT_TODAY : Image.IMG_NOT_BEFORE
+                    let image = date.convertString() == Date().convertString() ? Asset.Img.imgNotToday.image : Asset.Img.imgNotBefore.image
                     self.mainView.setImageForEmptyView(image: image)
                 } else {
                     self.mainView.setHiddenForEmptyView(isHidden: true)
@@ -213,7 +213,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     
     // 특정 날짜에 이미지 세팅
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        return viewModel.diaryDates.contains(date.convertString()) ? Image.IC_CIRCLE : nil
+        return viewModel.diaryDates.contains(date.convertString()) ? Asset.Icon.icCircle.image : nil
     }
     
     // 날짜 이미지 위치 조정
