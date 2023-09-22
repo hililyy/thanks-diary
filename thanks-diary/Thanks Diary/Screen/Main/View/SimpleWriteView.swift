@@ -93,9 +93,15 @@ final class SimpleWriteView: BaseView {
     
     // MARK: - UI, Target
     
+    var maxCount: Int = 0
+    
+    func setMaxCount(count: Int) {
+        maxCount = count
+    }
+    
     override func initTarget() {
         contentsTextView.rx.text
-            .map { "\($0?.count ?? 0)/50" }
+            .map { "\($0?.count ?? 0)/\(self.maxCount)" }
             .bind(to: textLengthLabel.rx.text)
             .disposed(by: disposeBag)
     }

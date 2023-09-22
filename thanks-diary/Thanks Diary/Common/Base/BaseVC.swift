@@ -94,28 +94,20 @@ extension BaseVC: UIGestureRecognizerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func toast(message: String, withDuration: Double, delay: Double, type: String = "", completion: @escaping () -> Void) {
+    func toast(message: String, withDuration: Double, delay: Double, positionType: PositionType? = nil, completion: @escaping () -> Void) {
         let toastLabelWidth: CGFloat = 300
         let toastLabelHeight: CGFloat = 50
-        let toastLabelX = (self.view.frame.size.width - toastLabelWidth) / 2
+        let toastLabelX = (view.frame.size.width - toastLabelWidth) / 2
+        var toastLabelY: CGFloat = 100
         
-        var toastLabelY: CGFloat
-        
-        if keyboardHeight > 0 {
-            if type == "top" {
-                toastLabelY = 100
-            } else {
-                toastLabelY = self.view.frame.size.height - keyboardHeight - toastLabelHeight - 50
-            }
-        } else {
-            if type == "top" {
-                toastLabelY = 100
-            } else {
-                toastLabelY = self.view.frame.size.height - toastLabelHeight - 50
-            }
+        if positionType != .top {
+            toastLabelY = view.frame.size.height - toastLabelHeight - 50 - max(keyboardHeight, 0)
         }
         
-        let toastLabel = UILabel(frame: CGRect(x: toastLabelX, y: toastLabelY, width: toastLabelWidth, height: toastLabelHeight))
+        let toastLabel = UILabel(frame: CGRect(x: toastLabelX,
+                                               y: toastLabelY,
+                                               width: toastLabelWidth,
+                                               height: toastLabelHeight))
         toastLabel.backgroundColor = Color.COLOR_GRAYBLUE
         toastLabel.textColor = .white
         toastLabel.font = Font.NANUM_LIGHT_15
@@ -125,9 +117,12 @@ extension BaseVC: UIGestureRecognizerDelegate {
         toastLabel.layer.cornerRadius = 15
         toastLabel.clipsToBounds = true
         
-        self.view.addSubview(toastLabel)
+        view.addSubview(toastLabel)
         
-        UIView.animate(withDuration: withDuration, delay: delay, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: withDuration,
+                       delay: delay,
+                       options: .curveEaseOut,
+                       animations: {
             toastLabel.alpha = 0.0
         }, completion: { _ in
             toastLabel.removeFromSuperview()
@@ -137,9 +132,7 @@ extension BaseVC: UIGestureRecognizerDelegate {
     
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
-              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
-            return
-        }
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         
         keyboardHeight = keyboardFrame.height
     }

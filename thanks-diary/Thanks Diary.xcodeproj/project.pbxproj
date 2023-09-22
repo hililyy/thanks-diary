@@ -297,7 +297,6 @@
 				025EF0492A459CA400C930F2 /* Color.swift */,
 				025EF04B2A459CA800C930F2 /* Font.swift */,
 				0229554E2A6A12B3004BF800 /* Image.swift */,
-				025EF04F2A459CE200C930F2 /* UserDefaultKey.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -322,6 +321,7 @@
 				025EF0472A459C9F00C930F2 /* Enum.swift */,
 				2A4F9301290071C200ECFE88 /* ErrorCase.swift */,
 				025EF05E2A459DF400C930F2 /* EmailLoginErrorList.swift */,
+				025EF04F2A459CE200C930F2 /* UserDefaultKey.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";

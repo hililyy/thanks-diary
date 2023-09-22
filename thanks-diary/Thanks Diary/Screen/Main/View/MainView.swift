@@ -77,7 +77,7 @@ final class MainView: BaseView {
     }
     
     let floatingButton = FloatingButton().then { button in
-        button.setButtonImage(Image.IC_PENCIL)
+        button.setButtonImage(Image.IC_PENCIL ?? .add)
         button.setButtonBackgroundColor(Color.COLOR_LIGHTGRAYBLUE)
     }
     

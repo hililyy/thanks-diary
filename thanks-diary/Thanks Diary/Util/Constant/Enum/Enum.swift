@@ -44,3 +44,9 @@ enum SettingNameType {
     case label
     case _switch
 }
+
+enum PositionType {
+    case top
+    case center
+    case bottom
+}

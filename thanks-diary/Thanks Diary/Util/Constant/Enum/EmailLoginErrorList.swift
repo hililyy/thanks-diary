@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum EmailErrorList: NSInteger {
+enum EmailErrorList: Int {
     case ALREADY_SIGNUP = 17007
     case WRONG_EMAIL_FORMAT = 17008
     case MISMATCH_PASSWORD = 17009

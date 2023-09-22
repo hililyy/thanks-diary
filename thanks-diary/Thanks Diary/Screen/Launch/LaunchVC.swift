@@ -47,9 +47,11 @@ final class LaunchVC: BaseVC {
                     vc.homeFlag = true
                     vc.modalPresentationStyle = .currentContext
                     self.present(vc, animated: true)
+                } else {
+                    self.registMainToRoot()
                 }
             } else {
-                self.setPageToRoot()
+                self.registPageToRoot()
             }
         }
     }
