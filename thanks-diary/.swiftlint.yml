@@ -1,5 +1,0 @@
-disabled_rules:
-  - trailing_whitespace
-  - function_parameter_count
-  - legacy_constructor
-  - trailing_comma

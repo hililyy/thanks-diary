@@ -34,12 +34,12 @@ final class SettingView: BaseView {
     // MARK: - UI, Target
     
     let titles = BehaviorRelay<[SettingNameModel]>(value: [
-        SettingNameModel(title: "text_setting_name1".localized, type: ._switch),
-        SettingNameModel(title: "text_setting_name2".localized, type: .more),
-        SettingNameModel(title: "text_setting_name3".localized, type: .more),
-        SettingNameModel(title: "text_setting_name4".localized, type: .more),
-        SettingNameModel(title: "text_setting_name5".localized, type: .more),
-        SettingNameModel(title: "text_setting_name6".localized, type: .label)
+        SettingNameModel(title: "text_setting_name1".localized, contents: "", type: ._switch),
+        SettingNameModel(title: "text_setting_name2".localized, contents: "", type: .more),
+        SettingNameModel(title: "text_setting_name3".localized, contents: "", type: .more),
+        SettingNameModel(title: "text_setting_name4".localized, contents: "", type: .more),
+        SettingNameModel(title: "text_setting_name5".localized, contents: "", type: .more),
+        SettingNameModel(title: "text_setting_name6".localized, contents: "", type: .label)
     ])
     
     override func initUI() {

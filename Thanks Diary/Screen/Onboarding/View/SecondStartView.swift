@@ -11,7 +11,7 @@ final class SecondStartView: BaseView {
     
     // MARK: - UI components
     
-    let lottieView = UIView()
+    let lottieView = UIView() // 로티설정도 요기서 
     
     private let titleLabel = UILabel().then { label in
         label.textColor = Color.COLOR_GRAY1

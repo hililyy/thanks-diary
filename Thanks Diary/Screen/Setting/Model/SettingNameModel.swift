@@ -8,6 +8,7 @@
 import Foundation
 
 struct SettingNameModel {
-    var title: String?
-    var type: SettingNameType?
+    var title: String
+    var contents: String
+    var type: SettingNameType
 }

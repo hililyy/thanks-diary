@@ -14,7 +14,7 @@ final class SettingAlarmDetailVC: BaseVC {
     
     private let settingAlarmDetailView = SettingAlarmDetailView()
     var viewModel: SettingViewModel?
-    var delegate: reloadDelegate?
+//    var delegate: reloadDelegate?
     
     // MARK: - Life Cycle
     
@@ -40,7 +40,7 @@ final class SettingAlarmDetailVC: BaseVC {
                 UserDefaultManager.instance?.set(time, key: UserDefaultKey.PUSH_TIME.rawValue)
                 LocalNotificationManager.instance?.requestSendNotification(time: time)
                 self.viewModel?.selectedTime = time
-                self.delegate?.reloadData()
+//                self.delegate?.reloadData()
             }
         }
         

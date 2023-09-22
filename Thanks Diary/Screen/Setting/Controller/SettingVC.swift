@@ -57,73 +57,74 @@ final class SettingVC: BaseVC {
     }
     
 //    private func setTable() {
-//        settingView.settingNames.bind(to: settingView.tableView.rx.items) { tableView, index, element in
+//        settingView.titles.bind(to: settingView.tableView.rx.items) { tableView, index, element in
 //            switch element.type {
 //            case ._switch:
+//                
 //                guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id) as? SettingSwitchTVCell else { return UITableViewCell() }
 //                cell.titleLabel.text = element.title
 //                cell.settingSwitch.isOn = self.alarmFlag
 //                cell.switchTapHandler = {
 //                    self.alarmFlag.toggle()
-//                    UserDefaultManager.set(self.alarmFlag, forKey: UserDefaultKey.IS_PASSWORD)
+//                    UserDefaultManager.instance?.set(self.alarmFlag, forKey: UserDefaultKey.IS_PASSWORD.rawValue)
 //                    if self.alarmFlag {
 //                        let vc = SettingPWVC()
 //                        self.navigationController?.pushViewController(vc, animated: true)
 //                    } else {
-//                        UserDefaultManager.set("", forKey: UserDefaultKey.PASSWORD)
+//                        UserDefaultManager.instance?.set("", forKey: UserDefaultKey.PASSWORD.rawValue)
 //                    }
 //                }
-//
+//                
 //                return cell
-//
+//                
 //            case .more:
 //                guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id) as? SettingMoreTVCell else { return UITableViewCell() }
 //                cell.titleLabel.text = element.title
 //                return cell
-//
+//                
 //            case .label:
 //                guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id) as? SettingLabelTVCell else { return UITableViewCell() }
 //                cell.titleLabel.text = element.title
-//                cell.contentsLabel.text = CommonUtilManager.shared.getAppVersion()
+//                cell.contentsLabel.text = CommonUtilManager.getInstance().getAppVersion()
 //                return cell
-//
+//                
 //            default:
 //                break
 //            }
-//
+//            
 //            return UITableViewCell()
 //        }
 //        .disposed(by: disposeBag)
-//
+//        
 //        Observable.zip(settingView.tableView.rx.modelSelected(SettingNameModel.self), settingView.tableView.rx.itemSelected)
 //            .bind { [weak self] diary, index in
 //                guard let self else { return }
-//
+//                
 //                switch index.row {
 //                case 0: // 암호
 //                    break
-//
+//                    
 //                case 1: // 알림
 //                    let vc = SettingAlarmVC()
-//                    vc.viewModel = viewModel
+//                    vc.viewModel = self.viewModel
 //                    self.navigationController?.pushViewController(vc, animated: true)
-//
+//                    
 //                case 2: // 테마 설정
 //                    let vc = SettingThemeVC()
 //                    self.navigationController?.pushViewController(vc, animated: true)
-//
+//                    
 //                case 3: // 건의하기
 //                    let vc = SettingSuggestVC()
-//                    vc.viewModel = viewModel
+//                    vc.viewModel = self.viewModel
 //                    self.navigationController?.pushViewController(vc, animated: true)
-//
+//                    
 //                case 4: // 오픈소스 라이선스
 //                    let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
-//                            navigationController?.pushViewController(acknowList, animated: true)
-//
+//                    self.navigationController?.pushViewController(acknowList, animated: true)
+//                          
 //                case 5: // 앱 버전
-//                    LocalNotificationManager.shared.printPendingNotification()
-//
+//                    LocalNotificationManager.instance?.printPendingNotification()
+//                    
 //                default:
 //                    break
 //                }

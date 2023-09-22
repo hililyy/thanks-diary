@@ -29,6 +29,10 @@ final class PageVC: BaseVC {
         }
     }
     
+//    func setMainToRoot() { // 씬에서 루트뷰 변경하게 수정
+//        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(MainNC())
+//    }
+    
     // MARK: - Life Cycle
     
     override func loadView() {
@@ -63,7 +67,7 @@ final class PageVC: BaseVC {
 
         UIView.transition(with: self.pageView.thirdDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.pageView.thirdDotView.backgroundColor = self.currentIndex == 2 ? Color.COLOR_LIGHTGRAYBLUE : Color.COLOR_GRAY3
-        })
+        })// set은 무조건 인자가 있어야하
     }
 
     private func initPageVC() {

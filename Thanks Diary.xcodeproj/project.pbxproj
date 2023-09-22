@@ -739,6 +739,7 @@
 				02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */,
 				02087C4C2AA9C56D00921F4D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				0289B97C2ABD7E390066DC57 /* XCRemoteSwiftPackageReference "SwiftGen" */,
 			);
 			productRefGroup = 2A0D87F228A540FB00576E56;
 			projectDirPath = "";
@@ -1166,6 +1167,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.0;
+			};
+		};
+		0289B97C2ABD7E390066DC57 /* XCRemoteSwiftPackageReference "SwiftGen" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftGen/SwiftGen.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
