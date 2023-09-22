@@ -7,14 +7,11 @@
 
 import UIKit
 
-struct UserDefaultKey {
-    
-    private init() {}
-    
-    static let IS_LOGIN = "IS_LOGIN"
-    static let PASSWORD = "PASSWORD"
-    static let IS_PASSWORD = "IS_PASSWORD"
-    static let PUSH_TIME = "PUSH_TIME"
-    static let IS_PUSH = "IS_PUSH"
-    static let THEME_MODE = "THEME_MODE"
+enum UserDefaultKey: String {
+    case IS_LOGIN
+    case PASSWORD
+    case IS_PASSWORD
+    case PUSH_TIME
+    case IS_PUSH
+    case THEME_MODE
 }
