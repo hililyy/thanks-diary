@@ -16,14 +16,14 @@ final class AlertView: BaseView {
     }
     
     private let alertView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY4
+        view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
     }
     
     private let messageLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_20
         label.text = "text_alert_delete".localized
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
     }
@@ -37,7 +37,7 @@ final class AlertView: BaseView {
         button.backgroundColor = .clear
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner]
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+        button.setTitleColor(Asset.Color.gray1.color, for: .normal)
     }
     
     let rightButton = UIButton(type: .custom).then { button in
@@ -46,7 +46,7 @@ final class AlertView: BaseView {
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
-        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
+        button.setTitleColor(Asset.Color.gray6.color, for: .normal)
     }
     
     let backButton = UIButton().then { button in
@@ -54,11 +54,11 @@ final class AlertView: BaseView {
     }
     
     private var lineViewX = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Asset.Color.gray3.color
     }
     
     private var lineViewY = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Asset.Color.gray3.color
     }
     
     // MARK: - Function

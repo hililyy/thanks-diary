@@ -26,12 +26,12 @@ final class PageView: BaseView {
     }
     
     var secondDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Asset.Color.gray3.color
         view.layer.cornerRadius = 6
     }
     
     var thirdDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Asset.Color.gray3.color
         view.layer.cornerRadius = 6
     }
     
@@ -40,7 +40,7 @@ final class PageView: BaseView {
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.titleLabel?.font = Font.NANUM_LIGHT_18
         button.setTitle("text_next".localized, for: .normal)
-        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
+        button.setTitleColor(Asset.Color.gray6.color, for: .normal)
     }
     
     // MARK: - UI, Target

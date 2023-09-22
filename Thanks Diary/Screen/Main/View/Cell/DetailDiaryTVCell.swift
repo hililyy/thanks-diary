@@ -15,7 +15,7 @@ final class DetailDiaryTVCell: BaseTVCell {
     
     let titleLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
     }
     

@@ -20,7 +20,7 @@ final class SettingSuggestWriteView: BaseView {
     }
     
     private let containerView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY4
+        view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
     }
     
@@ -31,7 +31,7 @@ final class SettingSuggestWriteView: BaseView {
     let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
         textView.font = Font.NANUM_ULTRALIGHT_17
-        textView.textColor = Color.COLOR_GRAY1
+        textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 15
         textView.layer.borderWidth = 1
         textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
@@ -41,7 +41,7 @@ final class SettingSuggestWriteView: BaseView {
     
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_write_complete".localized, for: .normal)
-        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
+        button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10

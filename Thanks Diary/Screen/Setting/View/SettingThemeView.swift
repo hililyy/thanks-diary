@@ -17,7 +17,7 @@ final class SettingThemeView: BaseView {
     
     private let topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_22
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.text = "text_setting_name8".localized
         label.textAlignment = .center
     }
@@ -36,28 +36,28 @@ final class SettingThemeView: BaseView {
         view.backgroundColor = .white
         view.layer.cornerRadius = 20
         view.layer.borderWidth = 2
-        view.layer.borderColor = Color.COLOR_GRAY2?.cgColor
+        view.layer.borderColor = Asset.Color.gray2.color.cgColor
     }
     
     private let darkView = UIView().then { view in
         view.backgroundColor = .black
         view.layer.cornerRadius = 20
         view.layer.borderWidth = 2
-        view.layer.borderColor = Color.COLOR_GRAY2?.cgColor
+        view.layer.borderColor = Asset.Color.gray2.color.cgColor
     }
     
     private let lightButton = UIButton(type: .custom)
     private let darkButton = UIButton(type: .custom)
     
     private let lightLabel = UILabel().then { label in
-        label.textColor = Color.COLOR_GRAY6
+        label.textColor = Asset.Color.gray6.color
         label.text = "text_lightmode".localized
         label.textAlignment = .center
         label.font = Font.NANUM_LIGHT_15
     }
     
     private let darkLabel = UILabel().then { label in
-        label.textColor = Color.COLOR_GRAY6
+        label.textColor = Asset.Color.gray6.color
         label.text = "text_darkmode".localized
         label.textAlignment = .center
         label.font = Font.NANUM_LIGHT_15

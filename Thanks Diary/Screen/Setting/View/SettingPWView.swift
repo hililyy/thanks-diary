@@ -29,29 +29,29 @@ final class SettingPWView: BaseView {
     private let contentsLabel = UILabel().then { label in
         label.text = "text_password_contents_1".localized
         label.font = Font.NANUM_ULTRALIGHT_17
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
     }
     
     private let dotView = UIView()
     
     private let firstDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY7
+        view.backgroundColor = Asset.Color.gray7.color
         view.layer.cornerRadius = 10
     }
     
     private let secondDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY7
+        view.backgroundColor = Asset.Color.gray7.color
         view.layer.cornerRadius = 10
     }
     
     private let thirdDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY7
+        view.backgroundColor = Asset.Color.gray7.color
         view.layer.cornerRadius = 10
     }
     
     private let fourthDotView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY7
+        view.backgroundColor = Asset.Color.gray7.color
         view.layer.cornerRadius = 10
     }
     
@@ -160,7 +160,7 @@ final class SettingPWView: BaseView {
     
     // MARK: - Functions
     
-    func setContentsLabel(text: String, textColor: UIColor = Color.COLOR_GRAY1!) {
+    func setContentsLabel(text: String, textColor: UIColor = Asset.Color.gray1.color) {
         contentsLabel.text = text
         contentsLabel.textColor = textColor
     }
@@ -169,23 +169,23 @@ final class SettingPWView: BaseView {
         switch num {
         case 0:
             firstDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             secondDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             thirdDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             fourthDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             
         case 1:
             firstDotView.backgroundColor =
             Asset.Color.lightGrayBlue.color
             secondDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             thirdDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             fourthDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             
         case 2:
             firstDotView.backgroundColor =
@@ -193,9 +193,9 @@ final class SettingPWView: BaseView {
             secondDotView.backgroundColor =
             Asset.Color.lightGrayBlue.color
             thirdDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             fourthDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             
         case 3:
             firstDotView.backgroundColor =
@@ -205,7 +205,7 @@ final class SettingPWView: BaseView {
             thirdDotView.backgroundColor =
             Asset.Color.lightGrayBlue.color
             fourthDotView.backgroundColor =
-            Color.COLOR_GRAY7
+            Asset.Color.gray7.color
             
         default:
             break

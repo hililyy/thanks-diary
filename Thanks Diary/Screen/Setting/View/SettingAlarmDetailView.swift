@@ -16,7 +16,7 @@ final class SettingAlarmDetailView: BaseView {
     }
     
     private let containerView = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY4
+        view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
     }
     
@@ -35,7 +35,7 @@ final class SettingAlarmDetailView: BaseView {
         button.backgroundColor = .clear
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner]
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+        button.setTitleColor(Asset.Color.gray1.color, for: .normal)
     }
     
     private let okButton = UIButton(type: .custom).then { button in
@@ -44,7 +44,7 @@ final class SettingAlarmDetailView: BaseView {
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
-        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
+        button.setTitleColor(Asset.Color.gray6.color, for: .normal)
     }
     
     private let backButton = UIButton().then { button in
@@ -52,11 +52,11 @@ final class SettingAlarmDetailView: BaseView {
     }
     
     private var lineViewX = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Asset.Color.gray3.color
     }
     
     private var lineViewY = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Asset.Color.gray3.color
     }
     
     // MARK: - Function

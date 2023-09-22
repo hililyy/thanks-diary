@@ -17,7 +17,7 @@ final class DetailWriteView: BaseView {
     
     private let topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_20
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
     }
     
     let deleteButton = UIButton(type: .custom).then { button in
@@ -26,7 +26,7 @@ final class DetailWriteView: BaseView {
     
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_complete".localized, for: .normal)
-        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
+        button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font = Font.NANUM_LIGHT_15
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
@@ -47,13 +47,13 @@ final class DetailWriteView: BaseView {
     private let titleLabel = UILabel().then { label in
         label.text = "text_title".localized
         label.font = Font.NANUM_ULTRALIGHT_20
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
     }
     
     private let contentsLabel = UILabel().then { label in
         label.text = "text_contents".localized
         label.font = Font.NANUM_ULTRALIGHT_20
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
     }
     
     private let titleUnderLineImageView = UIImageView().then { imageView in
@@ -66,7 +66,7 @@ final class DetailWriteView: BaseView {
     
     let titleTextView = UITextView().then { textView in
         textView.font = Font.NANUM_ULTRALIGHT_17
-        textView.textColor = Color.COLOR_GRAY1
+        textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
         textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
@@ -77,7 +77,7 @@ final class DetailWriteView: BaseView {
     private let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
         textView.font = Font.NANUM_ULTRALIGHT_17
-        textView.textColor = Color.COLOR_GRAY1
+        textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
         textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor

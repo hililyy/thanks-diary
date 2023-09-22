@@ -14,7 +14,7 @@ final class SecondStartView: BaseView {
     let lottieView = UIView() // 로티설정도 요기서 
     
     private let titleLabel = UILabel().then { label in
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.font = Font.NANUM_ULTRALIGHT_25
         label.text = "text_start_message2_1".localized
@@ -26,28 +26,28 @@ final class SecondStartView: BaseView {
     private let heartImageView4 = UIImageView(image: UIImage(named: "img_heart"))
     
     private let messageLabel1 = UILabel().then { label in
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = Font.NANUM_ULTRALIGHT_18
         label.text = "text_start_message2_2".localized
     }
     
     private let messageLabel2 = UILabel().then { label in
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = Font.NANUM_ULTRALIGHT_18
         label.text = "text_start_message2_3".localized
     }
     
     private let messageLabel3 = UILabel().then { label in
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = Font.NANUM_ULTRALIGHT_18
         label.text = "text_start_message2_4".localized
     }
 
     private let messageLabel4 = UILabel().then { label in
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = Font.NANUM_ULTRALIGHT_18
         label.text = "text_start_message2_5".localized

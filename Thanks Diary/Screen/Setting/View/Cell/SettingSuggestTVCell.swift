@@ -15,7 +15,7 @@ final class SettingSuggestTVCell: BaseTVCell {
     
     let contentsLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_17
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
     }
@@ -26,16 +26,16 @@ final class SettingSuggestTVCell: BaseTVCell {
     
     let statusLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_15
-        label.textColor = Color.COLOR_GRAY6
+        label.textColor = Asset.Color.gray6.color
         label.textAlignment = .center
     }
     
     func setStatusLabelUI(_ type: SuggestType) {
         switch type {
         case .waiting:
-            statusView.backgroundColor = Color.COLOR_GRAY5
+            statusView.backgroundColor = Asset.Color.gray5.color
         case .progress:
-            statusView.backgroundColor = Color.COLOR_YELLOW
+            statusView.backgroundColor = Asset.Color.yellow.color
         case .complete:
             statusView.backgroundColor = Asset.Color.lightGrayBlue.color
         }

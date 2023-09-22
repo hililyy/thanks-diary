@@ -18,7 +18,7 @@ final class MainView: BaseView {
         button.layer.cornerRadius = 10
         button.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
         button.backgroundColor = Asset.Color.lightGrayBlue.color
-        button.setTitleColor(Color.COLOR_GRAY6, for: .normal)
+        button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.setTitle("text_today".localized, for: .normal)
     }
     
@@ -27,10 +27,10 @@ final class MainView: BaseView {
     }
     
     let calendar = FSCalendar().then { calendar in
-        calendar.backgroundColor = Color.COLOR_GRAY4
-        calendar.appearance.headerTitleColor = Color.COLOR_GRAY1
-        calendar.appearance.weekdayTextColor = Color.COLOR_GRAY1
-        calendar.appearance.titleDefaultColor = Color.COLOR_GRAY1 // 선택가능한 날짜 색
+        calendar.backgroundColor = Asset.Color.gray4.color
+        calendar.appearance.headerTitleColor = Asset.Color.gray1.color
+        calendar.appearance.weekdayTextColor = Asset.Color.gray1.color
+        calendar.appearance.titleDefaultColor = Asset.Color.gray1.color // 선택가능한 날짜 색
         calendar.appearance.titlePlaceholderColor = Asset.Color.gray8.color // 선택 불가능한 날짜 색
         
         calendar.appearance.headerTitleFont = Font.NANUM_LIGHT_19
@@ -38,7 +38,7 @@ final class MainView: BaseView {
         calendar.appearance.titleFont = Font.NANUM_LIGHT_17
         calendar.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
         calendar.appearance.todayColor = Asset.Color.lightGrayBlue.color // 오늘 날짜 동그라미 색상
-        calendar.appearance.selectionColor = Color.COLOR_GRAY5
+        calendar.appearance.selectionColor = Asset.Color.gray5.color
         
         calendar.appearance.headerDateFormat = "format_date3".localized
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
@@ -51,7 +51,7 @@ final class MainView: BaseView {
     }
     
     private let lineViewX = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Asset.Color.gray3.color
     }
     
     private let topView = UIView() // 오늘, 설정 버튼이 들어가는 뷰
@@ -59,7 +59,7 @@ final class MainView: BaseView {
 
     private let todayLabel = UILabel().then { label in
         label.font = Font.NANUM_LIGHT_20
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.text = Date().convertString(format: "dd일 (E)")
     }

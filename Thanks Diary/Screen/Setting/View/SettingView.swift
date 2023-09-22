@@ -19,7 +19,7 @@ final class SettingView: BaseView {
     
     private let topLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_22
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.text = "text_setting".localized
         label.textAlignment = .center
     }

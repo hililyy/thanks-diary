@@ -58,15 +58,15 @@ final class PageVC: BaseVC {
 
     private func changeDotViewColor() {
         UIView.transition(with: self.pageView.firstDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.pageView.firstDotView.backgroundColor = self.currentIndex == 0 ? Asset.Color.lightGrayBlue.color : Color.COLOR_GRAY3
+            self.pageView.firstDotView.backgroundColor = self.currentIndex == 0 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
         })
 
         UIView.transition(with: self.pageView.secondDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.pageView.secondDotView.backgroundColor = self.currentIndex == 1 ? Asset.Color.lightGrayBlue.color : Color.COLOR_GRAY3
+            self.pageView.secondDotView.backgroundColor = self.currentIndex == 1 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
         })
 
         UIView.transition(with: self.pageView.thirdDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.pageView.thirdDotView.backgroundColor = self.currentIndex == 2 ? Asset.Color.lightGrayBlue.color : Color.COLOR_GRAY3
+            self.pageView.thirdDotView.backgroundColor = self.currentIndex == 2 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
         })// set은 무조건 인자가 있어야하
     }
 

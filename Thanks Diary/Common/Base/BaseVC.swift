@@ -108,7 +108,7 @@ extension BaseVC: UIGestureRecognizerDelegate {
                                                y: toastLabelY,
                                                width: toastLabelWidth,
                                                height: toastLabelHeight))
-        toastLabel.backgroundColor = Color.COLOR_GRAYBLUE
+        toastLabel.backgroundColor = Asset.Color.grayBlue.color
         toastLabel.textColor = .white
         toastLabel.font = Font.NANUM_LIGHT_15
         toastLabel.textAlignment = .center

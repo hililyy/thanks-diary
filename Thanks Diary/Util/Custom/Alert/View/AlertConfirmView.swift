@@ -23,7 +23,7 @@ final class AlertConfirmView: BaseView {
     private let messageLabel = UILabel().then { label in
         label.font = Font.NANUM_ULTRALIGHT_16
         label.text = "text_alert_error_message".localized
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
     }
@@ -37,7 +37,7 @@ final class AlertConfirmView: BaseView {
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        button.setTitleColor(Color.COLOR_GRAY1, for: .normal)
+        button.setTitleColor(Asset.Color.gray1.color, for: .normal)
     }
     
     private let backButton = UIButton().then { button in
@@ -45,7 +45,7 @@ final class AlertConfirmView: BaseView {
     }
     
     private let lineViewX = UIView().then { view in
-        view.backgroundColor = Color.COLOR_GRAY3
+        view.backgroundColor = Asset.Color.gray3.color
     }
     
     // MARK: - Constraint

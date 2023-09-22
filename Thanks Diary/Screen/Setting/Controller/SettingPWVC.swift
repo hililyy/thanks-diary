@@ -84,7 +84,7 @@ final class SettingPWVC: BaseVC {
     
     private func handleIncorrectPassword() {
         settingPWView.setDotColor(num: 0)
-        settingPWView.setContentsLabel(text: "text_password_incorrect".localized, textColor: Color.COLOR_RED ?? .red)
+        settingPWView.setContentsLabel(text: "text_password_incorrect".localized, textColor: Asset.Color.red.color ?? .red)
         firstPW = ""
         secondPW = ""
         reEnterFlag = false

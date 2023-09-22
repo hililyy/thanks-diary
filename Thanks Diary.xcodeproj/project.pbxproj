@@ -36,7 +36,6 @@
 		025EF0402A459C2F00C930F2 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF03F2A459C2F00C930F2 /* AlertView.swift */; };
 		025EF0422A459C3B00C930F2 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0412A459C3B00C930F2 /* AlertVC.swift */; };
 		025EF0482A459C9F00C930F2 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0472A459C9F00C930F2 /* Enum.swift */; };
-		025EF04A2A459CA400C930F2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0492A459CA400C930F2 /* Color.swift */; };
 		025EF04C2A459CA800C930F2 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF04B2A459CA800C930F2 /* Font.swift */; };
 		025EF0502A459CE200C930F2 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF04F2A459CE200C930F2 /* UserDefaultKey.swift */; };
 		025EF0572A459D2700C930F2 /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0532A459D2600C930F2 /* LottieManager.swift */; };
@@ -151,7 +150,6 @@
 		025EF03F2A459C2F00C930F2 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		025EF0412A459C3B00C930F2 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
 		025EF0472A459C9F00C930F2 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
-		025EF0492A459CA400C930F2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		025EF04B2A459CA800C930F2 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		025EF04F2A459CE200C930F2 /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
 		025EF0532A459D2600C930F2 /* LottieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieManager.swift; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				025EF05D2A459DCF00C930F2 /* Enum */,
-				025EF0492A459CA400C930F2 /* Color.swift */,
 				025EF04B2A459CA800C930F2 /* Font.swift */,
 				0229554E2A6A12B3004BF800 /* Image.swift */,
 			);
@@ -688,8 +685,8 @@
 				2A0D87F828A540FB00576E56 /* Frameworks */,
 				2A0D87F928A540FB00576E56 /* Resources */,
 				2A0962D728CF275F00063DF3 /* Embed App Extensions */,
-				0289B96C2AB99FB60066DC57 /* ShellScript */,
-				029392432ABD96D300FB2553 /* ShellScript */,
+				0289B96C2AB99FB60066DC57 /* SwiftLint Run Script */,
+				029392432ABD96D300FB2553 /* SwiftGen Run Script */,
 			);
 			buildRules = (
 			);
@@ -785,7 +782,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0289B96C2AB99FB60066DC57 /* ShellScript */ = {
+		0289B96C2AB99FB60066DC57 /* SwiftLint Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -794,6 +791,7 @@
 			);
 			inputPaths = (
 			);
+			name = "SwiftLint Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -802,7 +800,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		029392432ABD96D300FB2553 /* ShellScript */ = {
+		029392432ABD96D300FB2553 /* SwiftGen Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -811,6 +809,7 @@
 			);
 			inputPaths = (
 			);
+			name = "SwiftGen Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -871,7 +870,6 @@
 				022955532A6A60C7004BF800 /* MainNC.swift in Sources */,
 				025EF0572A459D2700C930F2 /* LottieManager.swift in Sources */,
 				026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */,
-				025EF04A2A459CA400C930F2 /* Color.swift in Sources */,
 				025E043F2AA6C78600C01D24 /* SettingSuggestModel.swift in Sources */,
 				025E043C2AA6C0CE00C01D24 /* SettingSuggestVC.swift in Sources */,
 				2ABF8AA52A6C057E006ACBE2 /* SettingViewModel.swift in Sources */,

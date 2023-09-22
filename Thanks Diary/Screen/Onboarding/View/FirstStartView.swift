@@ -15,7 +15,7 @@ final class FirstStartView: BaseView {
     var lottieView2 = UIView()
     
     private var messageLabel = UILabel().then { label in
-        label.textColor = Color.COLOR_GRAY1
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = Font.NANUM_ULTRALIGHT_18
