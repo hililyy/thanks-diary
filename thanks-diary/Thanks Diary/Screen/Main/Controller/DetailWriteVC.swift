@@ -110,7 +110,7 @@ final class DetailWriteVC: BaseVC {
     }
     
     private func write(_ newData: DiaryModel) {
-        viewModel?.setData(newData: newData) { [weak self] result in
+        viewModel?.createData(newData: newData) { [weak self] result in
             guard let self else { return }
             if result {
                 self.beforeData = newData

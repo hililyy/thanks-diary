@@ -34,7 +34,7 @@ final class MainVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.getData()
+        viewModel.readData()
     }
     
     // MARK: - Function

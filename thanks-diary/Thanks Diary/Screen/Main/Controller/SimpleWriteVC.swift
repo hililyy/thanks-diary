@@ -85,7 +85,7 @@ final class SimpleWriteVC: BaseVC {
             guard let self else { return }
             if result {
                 self.dismissVC {
-                    self.viewModel?.getData()
+                    self.viewModel?.readData()
                 }
             } else {
                 self.showErrorPopup()
@@ -94,11 +94,11 @@ final class SimpleWriteVC: BaseVC {
     }
     
     private func write(_ newData: DiaryModel) {
-        self.viewModel?.setData(newData: newData) { [weak self] result in
+        self.viewModel?.createData(newData: newData) { [weak self] result in
             guard let self else { return }
             if result {
                 self.dismissVC {
-                    self.viewModel?.getData()
+                    self.viewModel?.readData()
                 }
             } else {
                 self.showErrorPopup()
@@ -113,7 +113,7 @@ final class SimpleWriteVC: BaseVC {
             guard let self else { return }
             if result {
                 self.dismissVC {
-                    self.viewModel?.getData()
+                    self.viewModel?.readData()
                 }
             } else {
                 self.showErrorPopup()
