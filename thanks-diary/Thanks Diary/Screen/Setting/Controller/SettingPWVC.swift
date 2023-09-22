@@ -31,7 +31,7 @@ final class SettingPWVC: BaseVC {
             settingPWView.setContentsLabel(text: "text_password_contents_2".localized)
         } else {
             settingPWView.backButton.isHidden = false
-            UserDefaultManager.set("", forKey: UserDefaultKey.PASSWORD)
+            UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
         }
         
         setTarget()
@@ -49,16 +49,16 @@ final class SettingPWVC: BaseVC {
             
             if self.count == 4 {
                 if self.homeFlag {
-                    if self.firstPW == UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD) {
-                        self.setMainToRoot()
+                    if self.firstPW == UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) {
+                        self.registMainToRoot()
                     } else {
                         self.handleIncorrectPassword()
                     }
                 } else {
                     if self.reEnterFlag {
                         if self.firstPW == self.secondPW {
-                            UserDefaultManager.set(self.firstPW, forKey: UserDefaultKey.PASSWORD)
-                            UserDefaultManager.set(true, forKey: UserDefaultKey.IS_PASSWORD)
+                            UserDefaultManager.instance?.set(self.firstPW, key: UserDefaultKey.PASSWORD.rawValue)
+                            UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_PASSWORD.rawValue)
                             self.popVC()
                         } else {
                             self.handleIncorrectPassword()

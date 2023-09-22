@@ -9,17 +9,26 @@ import UIKit
 
 final class CommonUtilManager {
     
-    static let shared = CommonUtilManager()
     private init() {}
+    
+    private static var _instance: CommonUtilManager?
+    
+    public static var instance: CommonUtilManager? {
+        get {
+            return _instance ?? CommonUtilManager()
+        }
+    }
     
     func getAppVersion() -> String {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
-            return "text_non_existent_appinfo".localized
+            return "text_non_existent_appinfo".localized // 더 좋은 방법 찾아보기
         }
         return version
     }
     
-    func dictionaryToObject <T: Decodable> (objectType: T.Type, dictionary: [[String: Any]]) -> [T]? {
+    func dictionaryToObject <T: Decodable> (
+        objectType: T.Type,
+        dictionary: [[String: Any]]) -> [T]? {
         
         guard let dictionaries = try? JSONSerialization.data(withJSONObject: dictionary) else { return nil }
         let decoder = JSONDecoder()
@@ -30,6 +39,6 @@ final class CommonUtilManager {
     }
     
     func getUUID() -> String {
-        return UIDevice.current.identifierForVendor!.uuidString
+        return UIDevice.current.identifierForVendor!.uuidString // 옵서널 바인딩 추가 , getter로 변경
     }
 }

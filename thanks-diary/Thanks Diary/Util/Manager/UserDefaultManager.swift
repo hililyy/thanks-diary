@@ -9,47 +9,57 @@ import Foundation
 
 final class UserDefaultManager {
     
-    class func set(_ value: Any, forKey: String) {
-        UserDefaults.standard.set(value, forKey: forKey)
+    private init() {}
+    
+    private static var _instance: UserDefaultManager?
+    
+    public static var instance: UserDefaultManager? {
+        get {
+            return _instance ?? UserDefaultManager()
+        }
     }
     
-    class func string(forKey: String) -> String {
-        return UserDefaults.standard.string(forKey: forKey) ?? ""
+    func set(_ value: Any, key: String) {
+        UserDefaults.standard.set(value, forKey: key)
     }
     
-    class func bool(forKey: String) -> Bool {
-        return UserDefaults.standard.bool(forKey: forKey)
+    func string(_ key: String) -> String {
+        return UserDefaults.standard.string(forKey: key) ?? ""
     }
     
-    class func int(forKey: String) -> Int {
-        return UserDefaults.standard.integer(forKey: forKey)
+    func bool(_ key: String) -> Bool {
+        return UserDefaults.standard.bool(forKey: key)
     }
     
-    class func float(forKey: String) -> Float {
-        return UserDefaults.standard.float(forKey: forKey)
+    func int(_ key: String) -> Int {
+        return UserDefaults.standard.integer(forKey: key)
     }
     
-    class func double(forKey: String) -> Double {
-        return UserDefaults.standard.double(forKey: forKey)
+    func float(_ key: String) -> Float {
+        return UserDefaults.standard.float(forKey: key)
     }
     
-    class func array(forKey: String) -> [Any] {
-        return UserDefaults.standard.array(forKey: forKey) ?? []
+    func double(_ key: String) -> Double {
+        return UserDefaults.standard.double(forKey: key)
     }
     
-    class func dictionary(forKey: String) -> [String: Any] {
-        return UserDefaults.standard.dictionary(forKey: forKey) ?? [:]
+    func array(_ key: String) -> [Any] {
+        return UserDefaults.standard.array(forKey: key) ?? []
     }
     
-    class func data(forKey: String) -> Data? {
-        return UserDefaults.standard.data(forKey: forKey)
+    func dictionary(_ key: String) -> [String: Any] {
+        return UserDefaults.standard.dictionary(forKey: key) ?? [:]
     }
     
-    class func date(forKey: String) -> Date? {
-        return UserDefaults.standard.object(forKey: forKey) as? Date
+    func data(_ key: String) -> Data? {
+        return UserDefaults.standard.data(forKey: key)
     }
     
-    class func delete(forKey: String) {
-        UserDefaults.standard.removeObject(forKey: forKey)
+    func date(_ key: String) -> Date? {
+        return UserDefaults.standard.object(forKey: key) as? Date
+    }
+    
+    func delete(_ key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
     }
 }

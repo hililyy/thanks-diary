@@ -11,8 +11,15 @@ import RxSwift
 
 final class CoreDataManager {
     
-    static let shared = CoreDataManager()
-    private init() { }
+    private init() {}
+    
+    private static var _instance: CoreDataManager?
+    
+    public static var instance: CoreDataManager? {
+        get {
+            return _instance ?? CoreDataManager()
+        }
+    }
     
     func getDetailDataRx() -> Observable<[String: [DiaryModel]]> {
         return Observable.create { emitter in

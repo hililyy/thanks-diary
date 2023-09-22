@@ -10,10 +10,24 @@ import Lottie
 
 final class LottieManager {
     
-    static let shared = LottieManager()
-    private init() { }
+    private init() {}
     
-    func setLottie(_ vc: UIViewController, lottieView: UIView, name: String, fromProgress: AnimationProgressTime = 0.0, toProgress: AnimationProgressTime = 1.0, speed: CGFloat = 1, mode: LottieLoopMode) {
+    private static var _instance: LottieManager?
+    
+    public static var instance: LottieManager? {
+        get {
+            return _instance ?? LottieManager()
+        }
+    }
+    
+    // 파라미터 개수 너무 많음 -> struct 나 class로 변경 (2개정도만 있는게 좋음)
+    func setLottie(_ vc: UIViewController,
+                   lottieView: UIView,
+                   name: String,
+                   fromProgress: AnimationProgressTime = 0.0,
+                   toProgress: AnimationProgressTime = 1.0,
+                   speed: CGFloat = 1,
+                   mode: LottieLoopMode) {
         let animationView: LottieAnimationView = .init(name: name)
         vc.view.addSubview(animationView)
         animationView.setAutoLayout(to: lottieView)

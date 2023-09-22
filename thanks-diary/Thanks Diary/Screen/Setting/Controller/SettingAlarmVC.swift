@@ -30,11 +30,12 @@ final class SettingAlarmVC: BaseVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        AuthManager.shared.getNotiStatus { status in
+        AuthManager.instance?.getNotiStatus { status in
             if status == .denied {
                 self.setNotification(isOn: false)
             } else {
-                self.switchFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PUSH)
+                guard let isPush = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PUSH.rawValue) else { return }
+                self.switchFlag = isPush
             }
         }
     }

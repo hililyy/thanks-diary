@@ -25,6 +25,6 @@ final class SecondStartVC: BaseVC {
     }
     
     private func setLottie() {
-        LottieManager.shared.setLottie(self, lottieView: secondStartView.lottieView, name: "writing", mode: .playOnce)
+        LottieManager.instance?.setLottie(self, lottieView: secondStartView.lottieView, name: "writing", mode: .playOnce)
     }
 }

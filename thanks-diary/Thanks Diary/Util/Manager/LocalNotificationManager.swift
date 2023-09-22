@@ -10,13 +10,20 @@ import UserNotifications
 
 final class LocalNotificationManager {
     
-    static let shared = LocalNotificationManager()
     private init() {}
+    
+    private static var _instance: LocalNotificationManager?
+    
+    public static var instance: LocalNotificationManager? {
+        get {
+            return _instance ?? LocalNotificationManager()
+        }
+    }
     
     // 대기중인 Push Notification 출력
     func printPendingNotification() {
         UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-            for request in requests {
+            for request in requests { // 로그 라이브러리로 테스트하기, print사용시 에러 나도록 lint 설정, 어디서 몇번째 줄에서 나왔는지 알 수 있음
                 print("Identifier: \(request.identifier)")
                 print("Title: \(request.content.title)")
                 print("Body: \(request.content.body)")
@@ -27,7 +34,7 @@ final class LocalNotificationManager {
     }
     
     // 대기중인 Push Notification 취소
-    func removePendingNotification(identifiers: [String] = []) {
+    func cancelPendingNotification(identifiers: [String] = []) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["LOCAL_PUSH"])
     }
     
@@ -35,7 +42,7 @@ final class LocalNotificationManager {
     func removeDeliveredNotification(identifiers: [String] = []) {
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["LOCAL_PUSH"])
     }
-    
+    // TODO - 전체 함수 명 변경
     // 푸시 메시지 등록
     func requestSendNotification(title: String = "", contents: String = "", time: Date) {
         

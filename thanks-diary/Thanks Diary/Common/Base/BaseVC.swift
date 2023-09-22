@@ -67,7 +67,7 @@ class BaseVC: UIViewController {
     }
     
     func AppearanceCheck() {
-        guard let appearance = UserDefaults.standard.string(forKey: UserDefaultKey.THEME_MODE) else { return }
+        guard let appearance = UserDefaultManager.instance?.string(UserDefaultKey.THEME_MODE.rawValue) else { return }
         // 다크모드인 상태
         if appearance == "dark" {
             UIApplication.shared.windows.forEach { window in

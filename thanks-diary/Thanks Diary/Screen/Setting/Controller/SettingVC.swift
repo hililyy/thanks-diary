@@ -33,10 +33,14 @@ final class SettingVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD).isEmpty {
-            UserDefaultManager.set(false, forKey: UserDefaultKey.IS_PASSWORD)
+        guard let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) else { return }
+        
+        if password.isEmpty {
+            UserDefaultManager.instance?.set(false, key: UserDefaultKey.IS_PASSWORD.rawValue)
         }
-        alarmFlag = UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD)
+        
+        guard let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue) else { return }
+        alarmFlag = isPassword
         settingView.tableView.reloadData()
     }
     

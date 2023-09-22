@@ -12,16 +12,20 @@ import RxCocoa
 final class SettingViewModel {
     
     var disposeBag = DisposeBag()
-    var selectedTime: Date? = UserDefaultManager.date(forKey: UserDefaultKey.PUSH_TIME)
+    var selectedTime: Date? = UserDefaultManager.instance?.date(UserDefaultKey.PUSH_TIME.rawValue)
     var suggestData = BehaviorRelay<[SettingSuggestModel]>(value: [])
+    let alarmTableTitles = BehaviorRelay<[SettingNameModel]>(value: [
+        SettingNameModel(title: "text_setting_name7".localized, contents: "", type: ._switch),
+        SettingNameModel(title: "text_setting_name2".localized, contents: "", type: .more)
+    ])
     
     func getSuggestDatas() {
-        FirebaseManager.shared.getSuggestDatasRx()
+        FirebaseManager.instance?.getSuggestDatasRx()
             .bind(to: suggestData)
             .disposed(by: disposeBag)
     }
     
     func setSuggestData(contents: String) {
-        FirebaseManager.shared.setSuggestData(contents: contents)
+        FirebaseManager.instance?.addSuggestData(contents: contents)
     }
 }

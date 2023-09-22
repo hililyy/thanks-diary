@@ -88,8 +88,9 @@ final class SettingThemeView: BaseView {
     override func initUI() {
         backgroundColor = Color.COLOR_WHITE
         
-        if let mode = ThemeMode(rawValue: UserDefaultManager.string(forKey: UserDefaultKey.THEME_MODE)) {
-            setTheme(theme: mode)
+        if let mode = UserDefaultManager.instance?.string(UserDefaultKey.THEME_MODE.rawValue),
+            let themeMode = ThemeMode(rawValue: mode) {
+            setTheme(theme: themeMode)
         }
     }
     

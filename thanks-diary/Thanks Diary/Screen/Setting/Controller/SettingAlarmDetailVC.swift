@@ -37,8 +37,8 @@ final class SettingAlarmDetailVC: BaseVC {
         
         settingAlarmDetailView.okButtonTapHandler = { time in
             self.dismissVC {
-                UserDefaultManager.set(time, forKey: UserDefaultKey.PUSH_TIME)
-                LocalNotificationManager.shared.requestSendNotification(time: time)
+                UserDefaultManager.instance?.set(time, key: UserDefaultKey.PUSH_TIME.rawValue)
+                LocalNotificationManager.instance?.requestSendNotification(time: time)
                 self.viewModel?.selectedTime = time
                 self.delegate?.reloadData()
             }

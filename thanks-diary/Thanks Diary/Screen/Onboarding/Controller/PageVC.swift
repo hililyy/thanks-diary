@@ -44,8 +44,8 @@ final class PageVC: BaseVC {
     private func setTarget() {
         pageView.nextButton.addTarget { _ in
             if self.currentIndex == self.pageList.count - 1 {
-                UserDefaultManager.set(true, forKey: UserDefaultKey.IS_LOGIN)
-                self.setMainToRoot()
+                UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_LOGIN.rawValue)
+                self.registMainToRoot()
                 return
             }
             self.nextPage()

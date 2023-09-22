@@ -26,23 +26,23 @@ final class LaunchVC: BaseVC {
     // MARK: - Function
     
     private func setLottie() {
-        LottieManager.shared.setLottie(self, lottieView: lottieView, name: "dot", speed: 3, mode: .loop)
+        LottieManager.instance?.setLottie(self, lottieView: lottieView, name: "dot", speed: 3, mode: .loop)
     }
     
     // 비밀번호 ""으로 설정된 유저 비밀번호 변경(초기화)
     private func setPasswordInit() {
-        if UserDefaultManager.string(forKey: UserDefaultKey.PASSWORD).isEmpty {
-            UserDefaultManager.set("0000", forKey: UserDefaultKey.PASSWORD)
+        guard let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) else { return }
+        if password.isEmpty {
+            UserDefaultManager.instance?.set("0000", key: UserDefaultKey.PASSWORD.rawValue)
         }
     }
     
     private func setLaunch() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            
-            if UserDefaultManager.bool(forKey: UserDefaultKey.IS_LOGIN) {
-                if !UserDefaultManager.bool(forKey: UserDefaultKey.IS_PASSWORD) {
-                    self.setMainToRoot()
-                } else {
+            guard let isLogin = UserDefaultManager.instance?.bool(UserDefaultKey.IS_LOGIN.rawValue) else { return }
+            if isLogin {
+                guard let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue) else { return }
+                if isPassword {
                     let vc = SettingPWVC()
                     vc.homeFlag = true
                     vc.modalPresentationStyle = .currentContext

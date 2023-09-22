@@ -33,12 +33,12 @@ final class MainViewModel {
 // 다이어리 CRUD
 extension MainViewModel: DiaryRepository {
     // 조회
-    func getData() {
-        CoreDataManager.shared.getDetailDataRx()
+    func readData() {
+        CoreDataManager.instance?.getDetailDataRx()
             .bind(to: allDetailDataRx)
             .disposed(by: disposeBag)
         
-        CoreDataManager.shared.getSimpleDataRx()
+        CoreDataManager.instance?.getSimpleDataRx()
             .bind(to: allSimpleDataRx)
             .disposed(by: disposeBag)
         
@@ -46,8 +46,8 @@ extension MainViewModel: DiaryRepository {
     }
     
     // 저장
-    func setData(newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.shared.setData(newData: newData) { result in
+    func createData(newData: DiaryModel, completion: @escaping (Bool) -> Void) {
+        CoreDataManager.instance?.setData(newData: newData) { result in
             if result {
                 completion(true)
             } else {
@@ -58,7 +58,7 @@ extension MainViewModel: DiaryRepository {
     
     // 수정
     func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.shared.updateData(beforeData: beforeData, newData: newData) { result in
+        CoreDataManager.instance?.updateData(beforeData: beforeData, newData: newData) { result in
             if result {
                 completion(true)
             } else {
@@ -69,7 +69,7 @@ extension MainViewModel: DiaryRepository {
     
     // 삭제
     func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.shared.deleteData(deleteData: deleteData) { result in
+        CoreDataManager.instance?.deleteData(deleteData: deleteData) { result in
             if result {
                 completion(true)
             } else {
