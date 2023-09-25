@@ -159,7 +159,7 @@ extension BaseVC: MFMailComposeViewControllerDelegate {
         if MFMailComposeViewController.canSendMail() {
             let compseVC = MFMailComposeViewController()
             compseVC.mailComposeDelegate = self
-            compseVC.setToRecipients(["joun406@gmail.com"])
+            compseVC.setToRecipients([Constant.EMAIL])
             self.present(compseVC, animated: true, completion: nil)
         }
     }

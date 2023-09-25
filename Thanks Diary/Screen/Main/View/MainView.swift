@@ -44,7 +44,7 @@ final class MainView: BaseView {
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.calendar.headerHeight = 50
         
-        calendar.locale = Locale(identifier: "ko_KR")
+        calendar.locale = Locale(identifier: Constant.LOCAL_IDENTIFIER)
         calendar.weekdayHeight = 30
         calendar.rowHeight = 40
         calendar.layer.cornerRadius = 10

@@ -33,12 +33,12 @@ final class LocalNotificationManager {
     
     // 대기중인 Push Notification 취소
     func cancelPendingNotification(identifiers: [String] = []) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["LOCAL_PUSH"])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [Constant.PUSH_IDENTIFIER])
     }
     
     // 이미 전달된 Push Notification을 알림센터에서 삭제 (이미 도착한 푸시 메시지 삭제)
     func removeDeliveredNotification(identifiers: [String] = []) {
-        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["LOCAL_PUSH"])
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [Constant.PUSH_IDENTIFIER])
     }
     // TODO - 전체 함수 명 변경
     // 푸시 메시지 등록
@@ -52,7 +52,7 @@ final class LocalNotificationManager {
         dateComponents.calendar = Calendar.current
             
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HHmm"
+        dateFormatter.dateFormat = Constant.HHMM
         
         let timeStr = dateFormatter.string(from: time)
         let hourString = timeStr.prefix(2)
@@ -64,7 +64,7 @@ final class LocalNotificationManager {
             
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
-        let request = UNNotificationRequest(identifier: "LOCAL_PUSH",
+        let request = UNNotificationRequest(identifier: Constant.PUSH_IDENTIFIER,
                                             content: content,
                                             trigger: trigger)
             

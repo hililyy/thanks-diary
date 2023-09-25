@@ -33,7 +33,7 @@ final class LaunchVC: BaseVC {
     private func setPasswordInit() {
         guard let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) else { return }
         if password.isEmpty {
-            UserDefaultManager.instance?.set("0000", key: UserDefaultKey.PASSWORD.rawValue)
+            UserDefaultManager.instance?.set(Constant.INIT_PASSWORD, key: UserDefaultKey.PASSWORD.rawValue)
         }
     }
     

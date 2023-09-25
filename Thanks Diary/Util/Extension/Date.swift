@@ -7,10 +7,10 @@
 
 import Foundation
 extension Date {
-    func convertString(format: String = "yyyy-M-d") -> String {
+    func convertString(format: String = Constant.YYYYMD) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: Constant.LOCAL_IDENTIFIER)
         return dateFormatter.string(from: self)
     }
 }

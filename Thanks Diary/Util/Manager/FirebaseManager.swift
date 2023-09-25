@@ -21,7 +21,10 @@ final class FirebaseManager {
     }
     
     func getSuggestDatas(completion: @escaping (Result<[SettingSuggestModel], Error>) -> Void) {
-        Database.database().reference().child("suggest").observeSingleEvent(of: .value) { snapshot in
+        Database.database()
+            .reference()
+            .child(Constant.FIREBASE_CHILD_SUGGEST)
+            .observeSingleEvent(of: .value) { snapshot in
             var values: [[String: Any]] = []
             
             for snap in snapshot.children.allObjects as! [DataSnapshot] {
@@ -56,11 +59,11 @@ final class FirebaseManager {
     
     func addSuggestData(contents: String) {
         let newData = [
-            "uid": CommonUtilManager.instance?.getUUID(),
-            "contents": contents,
-            "status": SuggestType.waiting.rawValue
+            Constant.FIREBASE_ITEM_UID: CommonUtilManager.instance?.getUUID(),
+            Constant.FIREBASE_ITEM_CONTENTS: contents,
+            Constant.FIREBASE_ITEM_STATUS: SuggestType.waiting.rawValue
         ]
         
-        Database.database().reference().child("suggest").childByAutoId().setValue(newData)
+        Database.database().reference().child(Constant.FIREBASE_CHILD_SUGGEST).childByAutoId().setValue(newData)
     }
 }

@@ -18,8 +18,8 @@ final class CommonUtilManager {
     }
     
     func getAppVersion() -> String {
-        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
-            return L10n.nonExistentAppinfo // 더 좋은 방법 찾아보기
+        guard let version = Bundle.main.infoDictionary?[Constant.INFO_APP_VERSION] as? String else {
+            return L10n.nonExistentAppinfo
         }
         return version
     }

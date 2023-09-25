@@ -30,9 +30,7 @@ final class MainViewModel {
     }
 }
 
-// 다이어리 CRUD
 extension MainViewModel: DiaryRepository {
-    // 조회
     func readData() {
         CoreDataManager.instance?.getDetailDataRx()
             .bind(to: allDetailDataRx)
@@ -45,7 +43,6 @@ extension MainViewModel: DiaryRepository {
         selectedDate.accept(selectedDate.value)
     }
     
-    // 저장
     func createData(newData: DiaryModel, completion: @escaping (Bool) -> Void) {
         CoreDataManager.instance?.setData(newData: newData) { result in
             if result {
@@ -56,7 +53,6 @@ extension MainViewModel: DiaryRepository {
         }
     }
     
-    // 수정
     func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void) {
         CoreDataManager.instance?.updateData(beforeData: beforeData, newData: newData) { result in
             if result {
@@ -67,7 +63,6 @@ extension MainViewModel: DiaryRepository {
         }
     }
     
-    // 삭제
     func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void) {
         CoreDataManager.instance?.deleteData(deleteData: deleteData) { result in
             if result {

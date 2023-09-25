@@ -8,10 +8,10 @@
 import Foundation
 
 extension String {
-    func convertDate(format: String = "yyyy-M-d") -> Date? {
+    func convertDate(format: String = Constant.YYYYMD) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone(identifier: Constant.TIMEZONE_IDENTIFIER)
         if let date = dateFormatter.date(from: self) {
             return date
         } else {
