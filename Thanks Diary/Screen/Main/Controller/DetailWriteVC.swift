@@ -93,7 +93,7 @@ final class DetailWriteVC: BaseVC {
     
     private func showFillTextFieldToast() {
         detailWriteView.setCompleteButtonEnable(isOn: false)
-        toast(message: "text_toast".localized, withDuration: 0.5, delay: 1.5) {
+        toast(message: L10n.toast, withDuration: 0.5, delay: 1.5) {
             self.detailWriteView.setCompleteButtonEnable(isOn: true)
         }
     }

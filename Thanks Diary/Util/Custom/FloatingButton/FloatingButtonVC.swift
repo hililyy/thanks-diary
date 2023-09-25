@@ -56,8 +56,8 @@ final class FloatingButtonVC: BaseVC {
     }
     
     private func setTarget() {
-        floatingButtonCloseView.setDetailLabel(label: "text_detail".localized)
-        floatingButtonCloseView.setSimpleLabel(label: "text_simple".localized)
+        floatingButtonCloseView.setDetailLabel(label: L10n.detail)
+        floatingButtonCloseView.setSimpleLabel(label: L10n.simple)
         
         floatingButtonCloseView.backgroundButton.addTarget { _ in
             self.updateCloseConstraints()

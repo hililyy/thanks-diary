@@ -19,11 +19,11 @@ final class PageVC: BaseVC {
             changeDotViewColor()
             if currentIndex == pageList.count - 1 {
                 UIView.transition(with: self.pageView.nextButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-                    self.pageView.nextButton.setTitle("text_start".localized, for: .normal)
+                    self.pageView.nextButton.setTitle(L10n.start, for: .normal)
                 })
             } else {
                 UIView.transition(with: self.pageView.nextButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-                    self.pageView.nextButton.setTitle("text_next".localized, for: .normal)
+                    self.pageView.nextButton.setTitle(L10n.next, for: .normal)
                 })
             }
         }

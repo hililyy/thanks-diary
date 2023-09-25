@@ -25,7 +25,7 @@ final class DetailWriteView: BaseView {
     }
     
     let completeButton = UIButton(type: .custom).then { button in
-        button.setTitle("text_complete".localized, for: .normal)
+        button.setTitle(L10n.complete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
@@ -45,13 +45,13 @@ final class DetailWriteView: BaseView {
     private let contentView = UIView()
     
     private let titleLabel = UILabel().then { label in
-        label.text = "text_title".localized
+        label.text = L10n.title
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
     private let contentsLabel = UILabel().then { label in
-        label.text = "text_contents".localized
+        label.text = L10n.contents
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
@@ -89,9 +89,9 @@ final class DetailWriteView: BaseView {
     
     func setTopLabelData(date: Date?) {
         if let date = date {
-            topLabel.text = ("\(date.convertString(format: "format_date1".localized))  \("text_thanks_diary".localized)")
+            topLabel.text = ("\(date.convertString(format: L10n.formatDate1))  \(L10n.thanksDiary)")
         } else {
-            topLabel.text = "text_today_thanks_diary".localized
+            topLabel.text = L10n.todayThanksDiary
         }
     }
     

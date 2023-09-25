@@ -18,7 +18,7 @@ final class SettingSuggestView: BaseView {
     private let topLabel = UILabel().then { label in
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 22)
         label.textColor = Asset.Color.gray1.color
-        label.text = "text_setting_name9".localized
+        label.text = L10n.settingName9
         label.textAlignment = .center
     }
     

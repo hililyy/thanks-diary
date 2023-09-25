@@ -16,9 +16,7 @@ final class CoreDataManager {
     private static var _instance: CoreDataManager?
     
     public static var instance: CoreDataManager? {
-        get {
-            return _instance ?? CoreDataManager()
-        }
+        return _instance ?? CoreDataManager()
     }
     
     func getDetailDataRx() -> Observable<[String: [DiaryModel]]> {

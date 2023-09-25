@@ -15,9 +15,7 @@ final class LottieManager {
     private static var _instance: LottieManager?
     
     public static var instance: LottieManager? {
-        get {
-            return _instance ?? LottieManager()
-        }
+        return _instance ?? LottieManager()
     }
     
     // 파라미터 개수 너무 많음 -> struct 나 class로 변경 (2개정도만 있는게 좋음)

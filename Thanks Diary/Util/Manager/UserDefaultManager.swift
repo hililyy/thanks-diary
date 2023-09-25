@@ -14,9 +14,7 @@ final class UserDefaultManager {
     private static var _instance: UserDefaultManager?
     
     public static var instance: UserDefaultManager? {
-        get {
-            return _instance ?? UserDefaultManager()
-        }
+        return _instance ?? UserDefaultManager()
     }
     
     func set(_ value: Any, key: String) {

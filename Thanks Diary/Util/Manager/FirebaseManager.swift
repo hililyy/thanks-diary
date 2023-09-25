@@ -17,9 +17,7 @@ final class FirebaseManager {
     private static var _instance: FirebaseManager?
     
     public static var instance: FirebaseManager? {
-        get {
-            return _instance ?? FirebaseManager()
-        }
+        return _instance ?? FirebaseManager()
     }
     
     func getSuggestDatas(completion: @escaping (Result<[SettingSuggestModel], Error>) -> Void) {

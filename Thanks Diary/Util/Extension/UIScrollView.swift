@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIScrollView {
-    
     func scrollToTop() {
         setContentOffset(.zero, animated: true)
     }

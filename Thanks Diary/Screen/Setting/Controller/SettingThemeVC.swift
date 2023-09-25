@@ -33,13 +33,13 @@ final class SettingThemeVC: BaseVC {
     
     private func setTarget() {
         settingThemeView.darkButtonTapHandler = {
-            UserDefaultManager.instance?.set("dark", key: UserDefaultKey.THEME_MODE.rawValue)
+            UserDefaultManager.instance?.set(ThemeMode.dark.rawValue, key: UserDefaultKey.THEME_MODE.rawValue)
             self.settingThemeView.setTheme(theme: .dark)
             self.viewWillAppear(true)
         }
         
         settingThemeView.lightButtonTapHandler = {
-            UserDefaultManager.instance?.set("light", key: UserDefaultKey.THEME_MODE.rawValue)
+            UserDefaultManager.instance?.set(ThemeMode.light.rawValue, key: UserDefaultKey.THEME_MODE.rawValue)
             self.settingThemeView.setTheme(theme: .light)
             self.viewWillAppear(true)
         }

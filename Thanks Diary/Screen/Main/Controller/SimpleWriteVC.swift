@@ -54,7 +54,6 @@ final class SimpleWriteVC: BaseVC {
                 )
                 
                 if self.simpleWriteView.isEmptyTextField() {
-                    // 텍스트 뷰가 비어있으면 토스트 띄움
                     self.showFillTextFieldToast()
                 } else {
                     if let beforeData = self.beforeData {
@@ -124,7 +123,7 @@ final class SimpleWriteVC: BaseVC {
     
     private func showFillTextFieldToast() {
         self.simpleWriteView.setCompleteButtonEnable(false)
-        self.toast(message: "text_input_contents".localized, withDuration: 0.5, delay: 1.5, positionType: .top) {
+        self.toast(message: L10n.inputContents, withDuration: 0.5, delay: 1.5, positionType: .top) {
             self.simpleWriteView.setCompleteButtonEnable(true)
         }
     }

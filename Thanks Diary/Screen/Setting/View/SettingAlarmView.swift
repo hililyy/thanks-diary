@@ -20,7 +20,7 @@ final class SettingAlarmView: BaseView {
     private let topLabel = UILabel().then { label in
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 22)
         label.textColor = Asset.Color.gray1.color
-        label.text = "text_setting_alarm".localized
+        label.text = L10n.settingAlarm
         label.textAlignment = .center
     }
     

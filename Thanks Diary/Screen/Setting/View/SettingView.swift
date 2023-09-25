@@ -20,7 +20,7 @@ final class SettingView: BaseView {
     private let topLabel = UILabel().then { label in
         label.font =  FontFamily.NanumBarunGothic.ultraLight.font(size: 22)
         label.textColor = Asset.Color.gray1.color
-        label.text = "text_setting".localized
+        label.text = L10n.setting
         label.textAlignment = .center
     }
     
@@ -34,12 +34,12 @@ final class SettingView: BaseView {
     // MARK: - UI, Target
     
     let titles = BehaviorRelay<[SettingNameModel]>(value: [
-        SettingNameModel(title: "text_setting_name1".localized, contents: "", type: ._switch),
-        SettingNameModel(title: "text_setting_name2".localized, contents: "", type: .more),
-        SettingNameModel(title: "text_setting_name3".localized, contents: "", type: .more),
-        SettingNameModel(title: "text_setting_name4".localized, contents: "", type: .more),
-        SettingNameModel(title: "text_setting_name5".localized, contents: "", type: .more),
-        SettingNameModel(title: "text_setting_name6".localized, contents: "", type: .label)
+        SettingNameModel(title: L10n.settingName1, contents: "", type: ._switch),
+        SettingNameModel(title: L10n.settingName2, contents: "", type: .more),
+        SettingNameModel(title: L10n.settingName3, contents: "", type: .more),
+        SettingNameModel(title: L10n.settingName4, contents: "", type: .more),
+        SettingNameModel(title: L10n.settingName5, contents: "", type: .more),
+        SettingNameModel(title: L10n.settingName6, contents: "", type: .label)
     ])
     
     override func initUI() {

@@ -13,3 +13,10 @@ fonts:
   outputs:
     - templateName: swift5
       output: Thanks Diary/Resource/SwiftGen/Fonts.swift
+
+strings:
+  inputs:
+    - Thanks Diary/Resource/Localizable/ko.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: Thanks Diary/Resource/SwiftGen/Strings.swift

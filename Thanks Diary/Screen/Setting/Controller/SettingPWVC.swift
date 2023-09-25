@@ -28,7 +28,7 @@ final class SettingPWVC: BaseVC {
         super.viewDidLoad()
         if homeFlag == true {
             settingPWView.backButton.isHidden = true
-            settingPWView.setContentsLabel(text: "text_password_contents_2".localized)
+            settingPWView.setContentsLabel(text: L10n.passwordContents2)
         } else {
             settingPWView.backButton.isHidden = false
             UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
@@ -43,7 +43,7 @@ final class SettingPWVC: BaseVC {
         settingPWView.numberButtonTapHandler = { [weak self] num in
             guard let self = self else { return }
             
-            self.firstPW.append(contentsOf: "\(num)")
+            self.firstPW.append("\(num)")
             self.count += 1
             self.settingPWView.setDotColor(num: self.count)
             
@@ -84,7 +84,7 @@ final class SettingPWVC: BaseVC {
     
     private func handleIncorrectPassword() {
         settingPWView.setDotColor(num: 0)
-        settingPWView.setContentsLabel(text: "text_password_incorrect".localized, textColor: Asset.Color.red.color ?? .red)
+        settingPWView.setContentsLabel(text: L10n.passwordIncorrect, textColor: Asset.Color.red.color ?? .red)
         firstPW = ""
         secondPW = ""
         reEnterFlag = false
@@ -93,7 +93,7 @@ final class SettingPWVC: BaseVC {
     
     private func handleReEnterPassword() {
         settingPWView.setDotColor(num: 0)
-        settingPWView.setContentsLabel(text: "text_password_retry".localized)
+        settingPWView.setContentsLabel(text: L10n.passwordRetry)
         secondPW = firstPW
         firstPW = ""
         reEnterFlag = true

@@ -14,14 +14,12 @@ final class CommonUtilManager {
     private static var _instance: CommonUtilManager?
     
     public static var instance: CommonUtilManager? {
-        get {
-            return _instance ?? CommonUtilManager()
-        }
+        return _instance ?? CommonUtilManager()
     }
     
     func getAppVersion() -> String {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
-            return "text_non_existent_appinfo".localized // 더 좋은 방법 찾아보기
+            return L10n.nonExistentAppinfo // 더 좋은 방법 찾아보기
         }
         return version
     }

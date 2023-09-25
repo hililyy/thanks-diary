@@ -14,9 +14,7 @@ final class AuthManager {
     private static var _instance: AuthManager?
     
     public static var instance: AuthManager? {
-        get {
-            return _instance ?? AuthManager()
-        }
+        return _instance ?? AuthManager()
     }
     
     // 콜백 안쓸수 있으면 안쓰는게 좋음

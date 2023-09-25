@@ -53,7 +53,9 @@ class BaseVC: UIViewController {
     func showErrorPopup() {
         DispatchQueue.main.async {
             let vc = AlertVC()
-            vc.alertView.setText(message: "text_error".localized, leftButtonText: "text_inquiry".localized, rightButtonText: "text_exit".localized)
+            vc.alertView.setText(message: L10n.error,
+                                 leftButtonText: L10n.inquiry,
+                                 rightButtonText: L10n.exit)
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             vc.leftButtonTapHandler = {
@@ -67,15 +69,13 @@ class BaseVC: UIViewController {
     }
     
     func AppearanceCheck() {
-        guard let appearance = UserDefaultManager.instance?.string(UserDefaultKey.THEME_MODE.rawValue) else { return }
-        // 다크모드인 상태
-        if appearance == "dark" {
+        guard let mode = UserDefaultManager.instance?.string(UserDefaultKey.THEME_MODE.rawValue),
+              let modeType = ThemeMode(rawValue: mode) else { return }
+        if modeType == .dark {
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = .dark
             }
             UIApplication.shared.statusBarStyle = .lightContent
-            
-        // 라이트 모드인 상태
         } else {
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = .light
@@ -87,7 +87,6 @@ class BaseVC: UIViewController {
 
 // 토스트 설정
 extension BaseVC: UIGestureRecognizerDelegate {
-    
     func setToast() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         

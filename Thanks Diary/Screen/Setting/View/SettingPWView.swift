@@ -20,14 +20,14 @@ final class SettingPWView: BaseView {
     }
     
     private let titleLabel = UILabel().then { label in
-        label.text = "text_password".localized
+        label.text = L10n.password
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 22)
         label.textColor = .black
         label.textAlignment = .center
     }
     
     private let contentsLabel = UILabel().then { label in
-        label.text = "text_password_contents_1".localized
+        label.text = L10n.passwordContents1
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center

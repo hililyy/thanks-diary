@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIViewController {
-    
     func registPageToRoot() {
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(PageNC())
     }

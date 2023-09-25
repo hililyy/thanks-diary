@@ -17,40 +17,40 @@ final class SecondStartView: BaseView {
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
-        label.text = "text_start_message2_1".localized
+        label.text = L10n.startPage2Message1
     }
     
-    private let heartImageView1 = UIImageView(image: UIImage(named: "img_heart"))
-    private let heartImageView2 = UIImageView(image: UIImage(named: "img_heart"))
-    private let heartImageView3 = UIImageView(image: UIImage(named: "img_heart"))
-    private let heartImageView4 = UIImageView(image: UIImage(named: "img_heart"))
+    private let heartImageView1 = UIImageView(image: Asset.Image.imgHeart.image)
+    private let heartImageView2 = UIImageView(image: Asset.Image.imgHeart.image)
+    private let heartImageView3 = UIImageView(image: Asset.Image.imgHeart.image)
+    private let heartImageView4 = UIImageView(image: Asset.Image.imgHeart.image)
     
     private let messageLabel1 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
-        label.text = "text_start_message2_2".localized
+        label.text = L10n.startPage2Message2
     }
     
     private let messageLabel2 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 18)
-        label.text = "text_start_message2_3".localized
+        label.text = L10n.startPage2Message3
     }
     
     private let messageLabel3 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 18)
-        label.text = "text_start_message2_4".localized
+        label.text = L10n.startPage2Message4
     }
 
     private let messageLabel4 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 18)
-        label.text = "text_start_message2_5".localized
+        label.text = L10n.startPage2Message5
     }
     
     private lazy var messageImageStackView1 = UIStackView(arrangedSubviews: [heartImageView1, messageLabel1]).then { stackView in

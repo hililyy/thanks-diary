@@ -15,9 +15,7 @@ final class LocalNotificationManager {
     private static var _instance: LocalNotificationManager?
     
     public static var instance: LocalNotificationManager? {
-        get {
-            return _instance ?? LocalNotificationManager()
-        }
+        return _instance ?? LocalNotificationManager()
     }
     
     // 대기중인 Push Notification 출력
@@ -47,8 +45,8 @@ final class LocalNotificationManager {
     func requestSendNotification(title: String = "", contents: String = "", time: Date) {
         
         let content = UNMutableNotificationContent()
-        content.title = "text_push_title".localized
-        content.body = "text_push_contents".localized
+        content.title = L10n.pushTitle
+        content.body = L10n.pushContents
             
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
@@ -71,7 +69,7 @@ final class LocalNotificationManager {
                                             trigger: trigger)
             
         UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
+            if let error {
                 print(error.localizedDescription)
             }
         }

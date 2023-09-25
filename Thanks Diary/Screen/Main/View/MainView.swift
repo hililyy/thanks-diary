@@ -19,7 +19,7 @@ final class MainView: BaseView {
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-        button.setTitle("text_today".localized, for: .normal)
+        button.setTitle(L10n.today, for: .normal)
     }
     
     let settingButton = UIButton(type: .custom).then { button in
@@ -40,7 +40,7 @@ final class MainView: BaseView {
         calendar.appearance.todayColor = Asset.Color.lightGrayBlue.color // 오늘 날짜 동그라미 색상
         calendar.appearance.selectionColor = Asset.Color.gray5.color
         
-        calendar.appearance.headerDateFormat = "format_date3".localized
+        calendar.appearance.headerDateFormat = L10n.formatDate3
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.calendar.headerHeight = 50
         
@@ -61,7 +61,7 @@ final class MainView: BaseView {
         label.font = FontFamily.NanumBarunGothic.light.font(size: 20)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.text = Date().convertString(format: "dd일 (E)")
+        label.text = Date().convertString(format: L10n.formatDate2)
     }
     
     let diaryTableView = UITableView().then { tableView in
@@ -89,7 +89,7 @@ final class MainView: BaseView {
     }
     
     func setTodayLabelText(date: Date) {
-        todayLabel.text = date.convertString(format: "format_date2".localized)
+        todayLabel.text = date.convertString(format: L10n.formatDate2)
     }
     
     func setHiddenForEmptyView(isHidden: Bool) {

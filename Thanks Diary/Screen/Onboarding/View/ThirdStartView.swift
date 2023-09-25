@@ -18,7 +18,7 @@ final class ThirdStartView: BaseView {
         label.textAlignment = .center
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
         label.numberOfLines = 0
-        label.text = "text_start_message3".localized
+        label.text = L10n.startPage3Message1
     }
     
     // MARK: - UI, Target

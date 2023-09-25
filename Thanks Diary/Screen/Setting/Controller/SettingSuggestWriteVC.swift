@@ -63,7 +63,7 @@ final class SettingSuggestWriteVC: BaseVC {
     
     private func showToast() {
         self.settingSuggestWriteView.setCompleteButtonEnable(false)
-        self.toast(message: "text_input_contents".localized, withDuration: 0.5, delay: 1.5, positionType: .top) {
+        self.toast(message: L10n.inputContents, withDuration: 0.5, delay: 1.5, positionType: .top) {
             self.settingSuggestWriteView.setCompleteButtonEnable(true)
         }
     }

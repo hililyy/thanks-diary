@@ -15,8 +15,8 @@ final class SettingViewModel {
     var selectedTime: Date? = UserDefaultManager.instance?.date(UserDefaultKey.PUSH_TIME.rawValue)
     var suggestData = BehaviorRelay<[SettingSuggestModel]>(value: [])
     let alarmTableTitles = BehaviorRelay<[SettingNameModel]>(value: [
-        SettingNameModel(title: "text_setting_name7".localized, contents: "", type: ._switch),
-        SettingNameModel(title: "text_setting_name2".localized, contents: "", type: .more)
+        SettingNameModel(title: L10n.settingName7, contents: "", type: ._switch),
+        SettingNameModel(title: L10n.settingName2, contents: "", type: .more)
     ])
     
     func getSuggestDatas() {

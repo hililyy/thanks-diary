@@ -39,7 +39,7 @@ final class PageView: BaseView {
         button.layer.cornerRadius = 20
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.titleLabel?.font = FontFamily.NanumBarunGothic.light.font(size: 18)
-        button.setTitle("text_next".localized, for: .normal)
+        button.setTitle(L10n.next, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
     }
     

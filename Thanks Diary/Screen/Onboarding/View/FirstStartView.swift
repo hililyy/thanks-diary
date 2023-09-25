@@ -19,7 +19,7 @@ final class FirstStartView: BaseView {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 18)
-        label.text = "text_start_message1".localized
+        label.text = L10n.startPage1Message1
     }
     
     // MARK: - UI, Target

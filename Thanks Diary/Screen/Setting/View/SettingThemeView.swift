@@ -18,7 +18,7 @@ final class SettingThemeView: BaseView {
     private let topLabel = UILabel().then { label in
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 22)
         label.textColor = Asset.Color.gray1.color
-        label.text = "text_setting_name8".localized
+        label.text = L10n.settingName8
         label.textAlignment = .center
     }
     
@@ -51,14 +51,14 @@ final class SettingThemeView: BaseView {
     
     private let lightLabel = UILabel().then { label in
         label.textColor = Asset.Color.gray6.color
-        label.text = "text_lightmode".localized
+        label.text = L10n.lightmode
         label.textAlignment = .center
         label.font = FontFamily.NanumBarunGothic.light.font(size: 15)
     }
     
     private let darkLabel = UILabel().then { label in
         label.textColor = Asset.Color.gray6.color
-        label.text = "text_darkmode".localized
+        label.text = L10n.darkmode
         label.textAlignment = .center
         label.font = FontFamily.NanumBarunGothic.light.font(size: 15)
     }

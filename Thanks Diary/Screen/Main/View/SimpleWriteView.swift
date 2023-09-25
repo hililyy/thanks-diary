@@ -46,7 +46,7 @@ final class SimpleWriteView: BaseView {
     private let buttonView = UIView()
     
     let completeButton = UIButton(type: .custom).then { button in
-        button.setTitle("text_write_complete".localized, for: .normal)
+        button.setTitle(L10n.writeComplete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font =  FontFamily.NanumBarunGothic.light.font(size: 15)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
@@ -54,7 +54,7 @@ final class SimpleWriteView: BaseView {
     }
     
     let cancelButton = UIButton(type: .custom).then { button in
-        button.setTitle("text_cancel".localized, for: .normal)
+        button.setTitle(L10n.cancel, for: .normal)
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)
         button.titleLabel?.font =  FontFamily.NanumBarunGothic.light.font(size: 15)
         button.backgroundColor = .clear

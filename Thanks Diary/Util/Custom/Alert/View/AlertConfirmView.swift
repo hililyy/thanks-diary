@@ -22,7 +22,7 @@ final class AlertConfirmView: BaseView {
     
     private let messageLabel = UILabel().then { label in
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 16)
-        label.text = "text_alert_error_message".localized
+        label.text = L10n.alertErrorMessage
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -32,7 +32,7 @@ final class AlertConfirmView: BaseView {
     private let buttonView = UIView()
     
     let okButton = UIButton(type: .custom).then { button in
-        button.setTitle("text_ok".localized, for: .normal)
+        button.setTitle(L10n.ok, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10

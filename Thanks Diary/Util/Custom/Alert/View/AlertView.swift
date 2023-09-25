@@ -22,7 +22,7 @@ final class AlertView: BaseView {
     
     private let messageLabel = UILabel().then { label in
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
-        label.text = "text_alert_delete".localized
+        label.text = L10n.alertDelete
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -32,7 +32,7 @@ final class AlertView: BaseView {
     private let buttonView = UIView()
     
     let leftButton = UIButton(type: .custom).then { button in
-        button.setTitle("text_cancel".localized, for: .normal)
+        button.setTitle(L10n.cancel, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 10
@@ -41,7 +41,7 @@ final class AlertView: BaseView {
     }
     
     let rightButton = UIButton(type: .custom).then { button in
-        button.setTitle("text_delete".localized, for: .normal)
+        button.setTitle(L10n.delete, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10

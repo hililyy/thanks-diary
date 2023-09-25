@@ -165,7 +165,7 @@ final class SettingAlarmVC: BaseVC {
     private func showSettingAlert() {
         DispatchQueue.main.async {
             let vc = AlertVC()
-            vc.alertView.setText(message: "text_app_setting_1".localized, leftButtonText: "text_cancel".localized, rightButtonText: "text_app_setting_2".localized)
+            vc.alertView.setText(message: L10n.appSetting1, leftButtonText: L10n.cancel, rightButtonText: L10n.appSetting2)
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             vc.rightButtonTapHandler = {
