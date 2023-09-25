@@ -26,7 +26,13 @@ final class LaunchVC: BaseVC {
     // MARK: - Function
     
     private func setLottie() {
-        LottieManager.instance?.setLottie(self, lottieView: lottieView, name: Files.dotJson.name, speed: 3, mode: .loop)
+        let goLottie = LottieManager.LottieInfo(vc: self,
+                                 lottieView: lottieView,
+                                 name: Files.dotJson.name,
+                                 speed: 3,
+                                 mode: .loop)
+        
+        LottieManager.instance?.setLottie(goLottie)
     }
     
     // 비밀번호 ""으로 설정된 유저 비밀번호 변경(초기화)

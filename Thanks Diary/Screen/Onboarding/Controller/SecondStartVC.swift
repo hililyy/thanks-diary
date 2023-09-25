@@ -25,6 +25,11 @@ final class SecondStartVC: BaseVC {
     }
     
     private func setLottie() {
-        LottieManager.instance?.setLottie(self, lottieView: secondStartView.lottieView, name: Files.writingJson.name, mode: .playOnce)
+        let writingLottie = LottieManager.LottieInfo(vc: self,
+                                                     lottieView: secondStartView.lottieView,
+                                                     name: Files.writingJson.name,
+                                                     mode: .playOnce)
+        
+        LottieManager.instance?.setLottie(writingLottie)
     }
 }

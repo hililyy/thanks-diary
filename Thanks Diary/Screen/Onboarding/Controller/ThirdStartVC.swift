@@ -25,6 +25,11 @@ final class ThirdStartVC: BaseVC {
     }
     
     private func setLottie() {
-        LottieManager.instance?.setLottie(self, lottieView: thirdStartView.lottieView, name: Files.goJson.name, mode: .playOnce)
+        let goLottie = LottieManager.LottieInfo(vc: self,
+                                                lottieView: thirdStartView.lottieView,
+                                                name: Files.goJson.name,
+                                                mode: .playOnce)
+        
+        LottieManager.instance?.setLottie(goLottie)
     }
 }
