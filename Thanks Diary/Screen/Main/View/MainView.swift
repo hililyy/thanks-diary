@@ -16,14 +16,14 @@ final class MainView: BaseView {
     
     let todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
-        button.titleLabel?.font = Font.NANUM_ULTRALIGHT_15
+        button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.setTitle("text_today".localized, for: .normal)
     }
     
     let settingButton = UIButton(type: .custom).then { button in
-        button.setImage(Asset.Icon.icSetting.image, for: .normal)
+        button.setImage(Asset.Image.icSetting.image, for: .normal)
     }
     
     let calendar = FSCalendar().then { calendar in
@@ -33,10 +33,10 @@ final class MainView: BaseView {
         calendar.appearance.titleDefaultColor = Asset.Color.gray1.color // 선택가능한 날짜 색
         calendar.appearance.titlePlaceholderColor = Asset.Color.gray8.color // 선택 불가능한 날짜 색
         
-        calendar.appearance.headerTitleFont = Font.NANUM_LIGHT_19
-        calendar.appearance.weekdayFont = Font.NANUM_ULTRALIGHT_17
-        calendar.appearance.titleFont = Font.NANUM_LIGHT_17
-        calendar.appearance.subtitleFont = Font.NANUM_ULTRALIGHT_17
+        calendar.appearance.headerTitleFont = FontFamily.NanumBarunGothic.light.font(size: 19)
+        calendar.appearance.weekdayFont = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
+        calendar.appearance.titleFont =  FontFamily.NanumBarunGothic.light.font(size: 17)
+        calendar.appearance.subtitleFont =  FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         calendar.appearance.todayColor = Asset.Color.lightGrayBlue.color // 오늘 날짜 동그라미 색상
         calendar.appearance.selectionColor = Asset.Color.gray5.color
         
@@ -58,7 +58,7 @@ final class MainView: BaseView {
     private let titleView = UIView() // 오늘 날짜 뷰
 
     private let todayLabel = UILabel().then { label in
-        label.font = Font.NANUM_LIGHT_20
+        label.font = FontFamily.NanumBarunGothic.light.font(size: 20)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.text = Date().convertString(format: "dd일 (E)")
@@ -77,7 +77,7 @@ final class MainView: BaseView {
     }
     
     let floatingButton = FloatingButton().then { button in
-        button.setButtonImage(Asset.Icon.icPencil.image ?? .add)
+        button.setButtonImage(Asset.Image.icPencil.image)
         button.setButtonBackgroundColor(Asset.Color.lightGrayBlue.color)
     }
     

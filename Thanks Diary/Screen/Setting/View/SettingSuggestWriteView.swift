@@ -25,12 +25,12 @@ final class SettingSuggestWriteView: BaseView {
     }
     
     let mailButton = UIButton(type: .custom).then { button in
-        button.setImage(Asset.Icon.icMail.image, for: .normal)
+        button.setImage(Asset.Image.icMail.image, for: .normal)
     }
     
     let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = Font.NANUM_ULTRALIGHT_17
+        textView.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 15
         textView.layer.borderWidth = 1
@@ -42,7 +42,7 @@ final class SettingSuggestWriteView: BaseView {
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_write_complete".localized, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-        button.titleLabel?.font = Font.NANUM_LIGHT_15
+        button.titleLabel?.font = FontFamily.NanumBarunGothic.light.font(size: 15)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
     }

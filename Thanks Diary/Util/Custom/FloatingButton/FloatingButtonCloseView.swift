@@ -21,22 +21,22 @@ final class FloatingButtonCloseView: BaseView {
     }
     
     var plusButton = FloatingButton().then { button in
-        button.setButtonImage(Asset.Icon.icX.image)
+        button.setButtonImage(Asset.Image.icX.image)
         button.setButtonBackgroundColor(Asset.Color.lightGrayBlue.color)
     }
     
     var detailButton = FloatingButton().then { button in
-        button.setButtonImage(Asset.Icon.icDetailWrite.image)
+        button.setButtonImage(Asset.Image.icDetailWrite.image)
         button.setButtonBackgroundColor(.white)
     }
     
     var simpleButton = FloatingButton().then { button in
-        button.setButtonImage(Asset.Icon.icSimpleWrite.image)
+        button.setButtonImage(Asset.Image.icSimpleWrite.image)
         button.setButtonBackgroundColor(.white)
     }
     
     var detailLabel = PaddingLabel().then { label in
-        label.font = Font.NANUM_LIGHT_13
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
@@ -45,7 +45,7 @@ final class FloatingButtonCloseView: BaseView {
     }
     
     var simpleLabel = PaddingLabel().then { label in
-        label.font = Font.NANUM_LIGHT_13
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5

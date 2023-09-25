@@ -1,27 +1,15 @@
- xcassets:
-   - inputs:
-     - Thanks Diary/Resource/Assets/Image.xcassets
-   - outputs:
-     - templateName: swift5
-       params:
-         forceProvidesNamespaces: true
-         enumName: SwiftGenColor
-         imageTypeName: ImageSwiftGen
-       output: Thanks Diary/Resource/SwiftGen/Image.swift
-       
-   - inputs:
-     - Thanks Diary/Resource/Assets/Color.xcassets
-   - outputs:
-     - templateName: swift5
-       params:
-         forceProvidesNamespaces: true
-         enumName: SwiftGenColor
-         colorTypeName: ColorSwiftGen
-       output: Thanks Diary/Resource/SwiftGen/Color.swift
-       
- fonts:
-    - inputs:
-      - Thanks Diary/Resource/Font
-    - outputs:
-      templateName: swift5
-      output: Thanks Diary/Resource/SwiftGen/Font.swift
+xcassets:
+  inputs:
+    - Thanks Diary/Resource/Assets/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      params:
+        forceProvidesNamespaces: true
+      output: Thanks Diary/Resource/SwiftGen/Assets.swift
+
+fonts:
+  inputs:
+    - Thanks Diary/Resource/Font
+  outputs:
+    - templateName: swift5
+      output: Thanks Diary/Resource/SwiftGen/Fonts.swift

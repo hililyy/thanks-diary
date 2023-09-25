@@ -16,7 +16,7 @@ final class ThirdStartView: BaseView {
     private var messageLabel = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-        label.font = Font.NANUM_ULTRALIGHT_20
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
         label.numberOfLines = 0
         label.text = "text_start_message3".localized
     }

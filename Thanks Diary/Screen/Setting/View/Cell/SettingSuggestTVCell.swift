@@ -14,7 +14,7 @@ final class SettingSuggestTVCell: BaseTVCell {
     // MARK: - UI components
     
     let contentsLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_17
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -25,7 +25,7 @@ final class SettingSuggestTVCell: BaseTVCell {
     }
     
     let statusLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_15
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         label.textColor = Asset.Color.gray6.color
         label.textAlignment = .center
     }

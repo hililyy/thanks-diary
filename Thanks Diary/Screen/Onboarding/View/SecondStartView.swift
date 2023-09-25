@@ -16,7 +16,7 @@ final class SecondStartView: BaseView {
     private let titleLabel = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-        label.font = Font.NANUM_ULTRALIGHT_25
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
         label.text = "text_start_message2_1".localized
     }
     
@@ -28,28 +28,28 @@ final class SecondStartView: BaseView {
     private let messageLabel1 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.font = Font.NANUM_ULTRALIGHT_18
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         label.text = "text_start_message2_2".localized
     }
     
     private let messageLabel2 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.font = Font.NANUM_ULTRALIGHT_18
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 18)
         label.text = "text_start_message2_3".localized
     }
     
     private let messageLabel3 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.font = Font.NANUM_ULTRALIGHT_18
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 18)
         label.text = "text_start_message2_4".localized
     }
 
     private let messageLabel4 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.font = Font.NANUM_ULTRALIGHT_18
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 18)
         label.text = "text_start_message2_5".localized
     }
     

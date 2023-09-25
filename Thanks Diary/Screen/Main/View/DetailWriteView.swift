@@ -12,22 +12,22 @@ final class DetailWriteView: BaseView {
     // MARK: - UI component
     
     let backButton = UIButton(type: .custom).then { button in
-        button.setImage(Asset.Icon.icBack.image, for: .normal)
+        button.setImage(Asset.Image.icBack.image, for: .normal)
     }
     
     private let topLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_20
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
     let deleteButton = UIButton(type: .custom).then { button in
-        button.setImage(Asset.Icon.icTrash.image, for: .normal)
+        button.setImage(Asset.Image.icTrash.image, for: .normal)
     }
     
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_complete".localized, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-        button.titleLabel?.font = Font.NANUM_LIGHT_15
+        button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
     }
@@ -46,26 +46,26 @@ final class DetailWriteView: BaseView {
     
     private let titleLabel = UILabel().then { label in
         label.text = "text_title".localized
-        label.font = Font.NANUM_ULTRALIGHT_20
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
     private let contentsLabel = UILabel().then { label in
         label.text = "text_contents".localized
-        label.font = Font.NANUM_ULTRALIGHT_20
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
     private let titleUnderLineImageView = UIImageView().then { imageView in
-        imageView.image = Asset.Img.imgUnderline.image
+        imageView.image = Asset.Image.imgUnderline.image
     }
     
     private let contentsUnderLineImageView = UIImageView().then { imageView in
-        imageView.image = Asset.Img.imgUnderline.image
+        imageView.image = Asset.Image.imgUnderline.image
     }
     
     let titleTextView = UITextView().then { textView in
-        textView.font = Font.NANUM_ULTRALIGHT_17
+        textView.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
@@ -76,7 +76,7 @@ final class DetailWriteView: BaseView {
     
     private let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = Font.NANUM_ULTRALIGHT_17
+        textView.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2

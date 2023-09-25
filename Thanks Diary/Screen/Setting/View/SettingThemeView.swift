@@ -12,11 +12,11 @@ final class SettingThemeView: BaseView {
     // MARK: - UI components
     
     private let backButton = UIButton(type: .custom).then { button in
-        button.setImage(Asset.Icon.icBack.image, for: .normal)
+        button.setImage(Asset.Image.icBack.image, for: .normal)
     }
     
     private let topLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_22
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.text = "text_setting_name8".localized
         label.textAlignment = .center
@@ -53,14 +53,14 @@ final class SettingThemeView: BaseView {
         label.textColor = Asset.Color.gray6.color
         label.text = "text_lightmode".localized
         label.textAlignment = .center
-        label.font = Font.NANUM_LIGHT_15
+        label.font = FontFamily.NanumBarunGothic.light.font(size: 15)
     }
     
     private let darkLabel = UILabel().then { label in
         label.textColor = Asset.Color.gray6.color
         label.text = "text_darkmode".localized
         label.textAlignment = .center
-        label.font = Font.NANUM_LIGHT_15
+        label.font = FontFamily.NanumBarunGothic.light.font(size: 15)
     }
     
     // MARK: - Functions

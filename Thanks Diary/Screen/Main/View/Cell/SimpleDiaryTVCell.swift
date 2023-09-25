@@ -19,7 +19,7 @@ final class SimpleDiaryTVCell: BaseTVCell {
     }
     
     let titleLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_17
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
     }

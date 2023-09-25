@@ -110,7 +110,7 @@ extension BaseVC: UIGestureRecognizerDelegate {
                                                height: toastLabelHeight))
         toastLabel.backgroundColor = Asset.Color.grayBlue.color
         toastLabel.textColor = .white
-        toastLabel.font = Font.NANUM_LIGHT_15
+        toastLabel.font =  FontFamily.NanumBarunGothic.light.font(size: 15)
         toastLabel.textAlignment = .center
         toastLabel.text = message
         toastLabel.alpha = 1.0

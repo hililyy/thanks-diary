@@ -18,7 +18,7 @@ final class FirstStartView: BaseView {
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = Font.NANUM_ULTRALIGHT_18
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 18)
         label.text = "text_start_message1".localized
     }
     

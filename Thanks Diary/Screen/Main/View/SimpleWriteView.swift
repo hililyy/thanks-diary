@@ -23,12 +23,12 @@ final class SimpleWriteView: BaseView {
     }
     
     let deleteButton = UIButton(type: .custom).then { button in
-        button.setImage(Asset.Icon.icTrash.image, for: .normal)
+        button.setImage(Asset.Image.icTrash.image, for: .normal)
     }
     
     let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = Font.NANUM_ULTRALIGHT_17
+        textView.font =  FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 15
         textView.layer.borderWidth = 1
@@ -38,7 +38,7 @@ final class SimpleWriteView: BaseView {
     }
     
     private let textLengthLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_15
+        label.font =  FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .right
     }
@@ -48,7 +48,7 @@ final class SimpleWriteView: BaseView {
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle("text_write_complete".localized, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-        button.titleLabel?.font = Font.NANUM_LIGHT_15
+        button.titleLabel?.font =  FontFamily.NanumBarunGothic.light.font(size: 15)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
     }
@@ -56,7 +56,7 @@ final class SimpleWriteView: BaseView {
     let cancelButton = UIButton(type: .custom).then { button in
         button.setTitle("text_cancel".localized, for: .normal)
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)
-        button.titleLabel?.font = Font.NANUM_LIGHT_15
+        button.titleLabel?.font =  FontFamily.NanumBarunGothic.light.font(size: 15)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1.5

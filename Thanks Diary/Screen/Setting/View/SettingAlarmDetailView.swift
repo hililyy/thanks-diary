@@ -31,7 +31,7 @@ final class SettingAlarmDetailView: BaseView {
     
     private let cancelButton = UIButton(type: .custom).then { button in
         button.setTitle("text_cancel".localized, for: .normal)
-        button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
+        button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner]
@@ -40,7 +40,7 @@ final class SettingAlarmDetailView: BaseView {
     
     private let okButton = UIButton(type: .custom).then { button in
         button.setTitle("text_ok".localized, for: .normal)
-        button.titleLabel?.font = Font.NANUM_ULTRALIGHT_17
+        button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]

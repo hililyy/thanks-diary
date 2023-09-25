@@ -14,12 +14,12 @@ final class SettingMoreTVCell: BaseTVCell {
     // MARK: - UI components
     
     let titleLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_17
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         label.textColor = Asset.Color.gray1.color
     }
     
     let moreImageView = UIImageView().then { imageView in
-        imageView.image = Asset.Icon.icMore.image
+        imageView.image = Asset.Image.icMore.image
     }
     
     // MARK: - UI, Target

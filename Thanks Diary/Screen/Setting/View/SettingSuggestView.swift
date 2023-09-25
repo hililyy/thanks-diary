@@ -12,11 +12,11 @@ final class SettingSuggestView: BaseView {
     // MARK: - UI components
     
     let backButton = UIButton(type: .custom).then { button in
-        button.setImage(Asset.Icon.icBack.image, for: .normal)
+        button.setImage(Asset.Image.icBack.image, for: .normal)
     }
     
     private let topLabel = UILabel().then { label in
-        label.font = Font.NANUM_ULTRALIGHT_22
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.text = "text_setting_name9".localized
         label.textAlignment = .center
@@ -32,7 +32,7 @@ final class SettingSuggestView: BaseView {
     }
     
     let writeButton = UIButton().then { button in
-        button.setImage(Asset.Icon.icWrite.image, for: .normal)
+        button.setImage(Asset.Image.icWrite.image, for: .normal)
     }
     
     // MARK: - UI, Target
