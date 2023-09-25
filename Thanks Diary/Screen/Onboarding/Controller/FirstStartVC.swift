@@ -25,7 +25,7 @@ final class FirstStartVC: BaseVC {
     }
     
     private func setLottie() {
-        LottieManager.instance?.setLottie(self, lottieView: firstStartView.lottieView, name: "sun", mode: .loop)
-        LottieManager.instance?.setLottie(self, lottieView: firstStartView.lottieView2, name: "plant", mode: .playOnce)
+        LottieManager.instance?.setLottie(self, lottieView: firstStartView.lottieView, name: Files.sunJson.name, mode: .loop)
+        LottieManager.instance?.setLottie(self, lottieView: firstStartView.lottieView2, name: Files.plantJson.name, mode: .playOnce)
     }
 }

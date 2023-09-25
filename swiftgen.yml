@@ -20,3 +20,11 @@ strings:
   outputs:
     - templateName: structured-swift5
       output: Thanks Diary/Resource/SwiftGen/Strings.swift
+
+files:
+  inputs:
+    - Thanks Diary/Resource/Lottie
+  filter: .+\.json$
+  outputs:
+    templateName: structured-swift5
+    output: Thanks Diary/Resource/SwiftGen/Lottie.swift
