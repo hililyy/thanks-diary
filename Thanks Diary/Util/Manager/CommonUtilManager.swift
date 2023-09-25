@@ -17,7 +17,12 @@ final class CommonUtilManager {
         return _instance ?? CommonUtilManager()
     }
     
-    func getAppVersion() -> String {
+    var uuid: String {
+        guard let uuid = UIDevice.current.identifierForVendor else { return "" }
+        return uuid.uuidString
+    }
+    
+    var appVersion: String {
         guard let version = Bundle.main.infoDictionary?[Constant.INFO_APP_VERSION] as? String else {
             return L10n.nonExistentAppinfo
         }
@@ -34,9 +39,5 @@ final class CommonUtilManager {
         guard let objects = try? decoder.decode([T].self, from: dictionaries) else { return nil }
         return objects
         
-    }
-    
-    func getUUID() -> String {
-        return UIDevice.current.identifierForVendor!.uuidString // 옵서널 바인딩 추가 , getter로 변경
     }
 }

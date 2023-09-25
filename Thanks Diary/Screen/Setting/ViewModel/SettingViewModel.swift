@@ -19,6 +19,15 @@ final class SettingViewModel {
         SettingNameModel(title: L10n.settingName2, contents: "", type: .more)
     ])
     
+    let settingTableTitles = BehaviorRelay<[SettingNameModel]>(value: [
+        SettingNameModel(title: L10n.settingName1, contents: "", type: ._switch),
+        SettingNameModel(title: L10n.settingName2, contents: "", type: .more),
+        SettingNameModel(title: L10n.settingName3, contents: "", type: .more),
+        SettingNameModel(title: L10n.settingName4, contents: "", type: .more),
+        SettingNameModel(title: L10n.settingName5, contents: "", type: .more),
+        SettingNameModel(title: L10n.settingName6, contents: "", type: .label)
+    ])
+    
     func getSuggestDatas() {
         FirebaseManager.instance?.getSuggestDatasRx()
             .bind(to: suggestData)

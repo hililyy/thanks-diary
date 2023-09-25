@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 extension Date {
     func convertString(format: String = Constant.YYYYMD) -> String {
         let dateFormatter = DateFormatter()

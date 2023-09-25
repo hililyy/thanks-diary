@@ -59,7 +59,7 @@ final class FirebaseManager {
     
     func addSuggestData(contents: String) {
         let newData = [
-            Constant.FIREBASE_ITEM_UID: CommonUtilManager.instance?.getUUID(),
+            Constant.FIREBASE_ITEM_UID: CommonUtilManager.instance?.uuid,
             Constant.FIREBASE_ITEM_CONTENTS: contents,
             Constant.FIREBASE_ITEM_STATUS: SuggestType.waiting.rawValue
         ]

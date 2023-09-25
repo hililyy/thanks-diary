@@ -22,7 +22,7 @@ final class CoreDataManager {
     func getDetailDataRx() -> Observable<[String: [DiaryModel]]> {
         return Observable.create { emitter in
             let result = self.getDetailData()
-            if let result = result {
+            if let result {
                 emitter.onNext(result)
                 emitter.onCompleted()
             } else {

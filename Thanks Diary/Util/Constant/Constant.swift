@@ -29,6 +29,7 @@ final class Constant {
     // date
     static let HHMM = "HHmm"
     static let YYYYMD = "yyyy-M-d"
+    static let AHHMM = "a hh시 mm분"
     static let LOCAL_IDENTIFIER = "ko_KR"
     static let TIMEZONE_IDENTIFIER = "UTC"
 }
