@@ -36,7 +36,7 @@ class BaseView: UIView {
     func initSubviews() {}
     func initConstraints() {}
     
-    func setKeyboardNotification() {
+    func initKeyboardNotification() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShow),

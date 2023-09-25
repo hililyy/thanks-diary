@@ -26,7 +26,7 @@ final class DetailWriteVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        setTarget()
+        initTarget()
     }
     
     // MARK: - Function
@@ -41,7 +41,7 @@ final class DetailWriteVC: BaseVC {
         }
     }
     
-    private func setTarget() {
+    private func initTarget() {
         detailWriteView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
@@ -129,14 +129,12 @@ final class DetailWriteVC: BaseVC {
         vc.rightButtonTapHandler = { [weak self] in
             guard let self else { return }
             self.viewModel?.deleteData(deleteData: deleteData) { result in
-                if result {
-                    self.popVC()
-                } else {
-                    self.popVC()
+                self.popVC()
+                if !result {
                     self.showErrorPopup()
                 }
             }
         }
-        self.present(vc, animated: true)
+        present(vc, animated: true)
     }
 }

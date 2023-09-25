@@ -88,7 +88,7 @@ final class DetailWriteView: BaseView {
     // MARK: - Function
     
     func setTopLabelData(date: Date?) {
-        if let date = date {
+        if let date {
             topLabel.text = ("\(date.convertString(format: L10n.formatDate1))  \(L10n.thanksDiary)")
         } else {
             topLabel.text = L10n.todayThanksDiary
@@ -126,7 +126,7 @@ final class DetailWriteView: BaseView {
         buttonStackView.removeAllSubViews()
         buttonStackView.addArrangedSubview(completeButton)
         
-        setTitleTextViewIsScrolled()
+        moveScrollPositionByTitleTextView()
         
         guard let userInfo = notification.userInfo,
             let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
@@ -171,12 +171,12 @@ final class DetailWriteView: BaseView {
         titleTextView.rx
            .didChange
            .subscribe(onNext: { [weak self] in
-               self?.setTitleTextViewIsScrolled()
+               self?.moveScrollPositionByTitleTextView()
            })
            .disposed(by: disposeBag)
     }
     
-    private func setTitleTextViewIsScrolled() {
+    private func moveScrollPositionByTitleTextView() {
         let size = CGSize(width: self.titleTextView.frame.width, height: .infinity)
         let estimatedSize = self.titleTextView.sizeThatFits(size)
         let isMaxHeight = estimatedSize.height >= 100
@@ -188,7 +188,7 @@ final class DetailWriteView: BaseView {
     }
     
     override func initTarget() {
-        setKeyboardNotification()
+        initKeyboardNotification()
         
         // 텍스트 필드 외부 터치 시 키보드 닫기 위한 제스처 추가
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))

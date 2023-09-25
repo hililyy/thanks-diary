@@ -108,8 +108,8 @@ internal enum L10n {
   internal static let settingName2 = L10n.tr("Localizable", "setting_name2", fallback: "알림 설정")
   /// 테마 설정
   internal static let settingName3 = L10n.tr("Localizable", "setting_name3", fallback: "테마 설정")
-  /// 건의사항
-  internal static let settingName4 = L10n.tr("Localizable", "setting_name4", fallback: "건의사항")
+  /// 건의 게시판
+  internal static let settingName4 = L10n.tr("Localizable", "setting_name4", fallback: "건의 게시판")
   /// 오픈소스 라이선스
   internal static let settingName5 = L10n.tr("Localizable", "setting_name5", fallback: "오픈소스 라이선스")
   /// 앱 버전

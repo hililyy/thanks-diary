@@ -70,7 +70,6 @@ final class SettingAlarmDetailView: BaseView {
     var datePickerHandler: (Date) -> Void = { _ in }
     
     override func initTarget() {
-        
         datePicker.addTarget(for: .valueChanged) { sender in
             guard let picker = sender as? UIDatePicker else { return }
             self.datePickerHandler(picker.date)

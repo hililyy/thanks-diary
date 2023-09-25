@@ -23,7 +23,7 @@ final class SettingAlarmVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTarget()
+        initTarget()
         settingAlarmView.tableView.dataSource = self
         settingAlarmView.tableView.delegate = self
     }
@@ -41,7 +41,7 @@ final class SettingAlarmVC: BaseVC {
     
     // MARK: - Function
     
-    private func setTarget() {
+    private func initTarget() {
         settingAlarmView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
@@ -59,21 +59,28 @@ final class SettingAlarmVC: BaseVC {
     
     private func setNotification(isOn: Bool) {
         if isOn {
-            LocalNotificationManager.instance?.registNotification(time: Date())
-            UserDefaultManager.instance?.set(Date(), key: UserDefaultKey.PUSH_TIME.rawValue)
-            UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_PUSH.rawValue)
-            self.viewModel?.selectedTime = Date()
-            self.switchFlag = true
-            
+            onNotification()
         } else {
-            LocalNotificationManager.instance?.cancelRegistedNotification()
-            UserDefaultManager.instance?.delete(UserDefaultKey.PUSH_TIME.rawValue)
-            UserDefaultManager.instance?.set(false, key: UserDefaultKey.IS_PUSH.rawValue)
-            self.viewModel?.selectedTime = nil
-            self.switchFlag = false
+            offNotification()
         }
         
         self.reload()
+    }
+    
+    private func onNotification() {
+        LocalNotificationManager.instance?.registNotification(time: Date())
+        UserDefaultManager.instance?.set(Date(), key: UserDefaultKey.PUSH_TIME.rawValue)
+        UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_PUSH.rawValue)
+        self.viewModel?.selectedTime = Date()
+        self.switchFlag = true
+    }
+    
+    private func offNotification() {
+        LocalNotificationManager.instance?.cancelRegistedNotification()
+        UserDefaultManager.instance?.delete(UserDefaultKey.PUSH_TIME.rawValue)
+        UserDefaultManager.instance?.set(false, key: UserDefaultKey.IS_PUSH.rawValue)
+        self.viewModel?.selectedTime = nil
+        self.switchFlag = false
     }
     
     private func showSettingAlert() {

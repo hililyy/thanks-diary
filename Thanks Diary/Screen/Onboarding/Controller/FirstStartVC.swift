@@ -21,10 +21,10 @@ final class FirstStartVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLottie()
+        initLottie()
     }
     
-    private func setLottie() {
+    private func initLottie() {
         let sunLottie = LottieManager.LottieInfo(vc: self,
                                                  lottieView: firstStartView.lottieView,
                                                  name: Files.sunJson.name,

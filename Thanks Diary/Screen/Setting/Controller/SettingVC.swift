@@ -28,26 +28,27 @@ final class SettingVC: BaseVC {
         settingView.tableView.dataSource = self
         settingView.tableView.delegate = self
         
-        setTarget()
+        initTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) else { return }
-        
-        if password.isEmpty {
+        if let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue),
+            password.isEmpty {
             UserDefaultManager.instance?.set(false, key: UserDefaultKey.IS_PASSWORD.rawValue)
         }
         
-        guard let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue) else { return }
-        alarmFlag = isPassword
+        if let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue) {
+            alarmFlag = isPassword
+        }
+        
         settingView.tableView.reloadData()
     }
     
     // MARK: - Function
     
-    private func setTarget() {
+    private func initTarget() {
         settingView.backButton.rx.tap
             .asDriver()
             .drive(onNext: {

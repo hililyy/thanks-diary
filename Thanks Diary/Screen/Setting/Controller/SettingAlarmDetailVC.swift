@@ -25,12 +25,12 @@ final class SettingAlarmDetailVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingAlarmDetailView.setDatepickerDate(date: viewModel?.selectedTime)
-        setTarget()
+        initTarget()
     }
     
     // MARK: - Function
     
-    private func setTarget() {
+    private func initTarget() {
         settingAlarmDetailView.datePickerHandler = { time in
             self.viewModel?.selectedTime = time
         }

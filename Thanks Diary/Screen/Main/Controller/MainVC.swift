@@ -27,9 +27,9 @@ final class MainVC: BaseVC {
         super.viewDidLoad()
         mainView.calendar.delegate = self
         mainView.calendar.dataSource = self
-        setTable()
-        setTarget()
-        setCalenderCircleDatas()
+        initTable()
+        initTarget()
+        changeCalenderCircleDatas()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,8 +39,7 @@ final class MainVC: BaseVC {
     
     // MARK: - Function
     
-    private func setCalenderCircleDatas() {
-        // 모든 다이어리 데이터가 갱신 되었을 때 (선택한 날짜 [string] 갱신)
+    private func changeCalenderCircleDatas() {
         Observable.combineLatest(viewModel.allDetailDataRx, viewModel.allSimpleDataRx)
             .subscribe(onNext: { [weak self] detailDatas, simpleDatas in
                 guard let self else { return }
@@ -60,8 +59,7 @@ final class MainVC: BaseVC {
             .disposed(by: disposeBag)
     }
     
-    private func setTarget() {
-        // 플로팅 버튼 설정
+    private func initTarget() {
         mainView.floatingButton.button.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
@@ -71,7 +69,6 @@ final class MainVC: BaseVC {
             })
             .disposed(by: disposeBag)
         
-        // 설정 버튼 핸들러 설정
         mainView.settingButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
@@ -82,7 +79,6 @@ final class MainVC: BaseVC {
             })
             .disposed(by: disposeBag)
         
-        // 오늘 버튼 핸들러 설정
         mainView.todayButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
@@ -139,7 +135,7 @@ final class MainVC: BaseVC {
         self.present(vc, animated: true)
     }
     
-    private func setTable() {
+    private func initTable() {
         mainView.diaryTableView.delegate = nil
         mainView.diaryTableView.dataSource = nil
         
@@ -195,7 +191,6 @@ final class MainVC: BaseVC {
             .disposed(by: disposeBag)
     }
     
-    // 오늘 날짜로 이동
     private func moveToday() {
         viewModel.selectedDate.accept(Date())
         mainView.calendar.select(Date())
@@ -206,22 +201,18 @@ final class MainVC: BaseVC {
 
 extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
-    // 캘린더 날짜 선택시 동작
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         viewModel.selectedDate.accept(date)
     }
     
-    // 특정 날짜에 이미지 세팅
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         return viewModel.diaryDates.contains(date.convertString()) ? Asset.Image.icCircle.image : nil
     }
     
-    // 날짜 이미지 위치 조정
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
         return CGPoint(x: 0, y: -5.15)
     }
     
-    // 최대 선택 가능 날짜
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }

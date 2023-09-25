@@ -18,14 +18,14 @@ final class LaunchVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setLottie()
-        setPasswordInit()
-        setLaunch()
+        initLottie()
+        initPassword()
+        initLaunch()
     }
     
     // MARK: - Function
     
-    private func setLottie() {
+    private func initLottie() {
         let goLottie = LottieManager.LottieInfo(vc: self,
                                  lottieView: lottieView,
                                  name: Files.dotJson.name,
@@ -36,28 +36,23 @@ final class LaunchVC: BaseVC {
     }
     
     // 비밀번호 ""으로 설정된 유저 비밀번호 변경(초기화)
-    private func setPasswordInit() {
+    private func initPassword() {
         guard let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) else { return }
         if password.isEmpty {
             UserDefaultManager.instance?.set(Constant.INIT_PASSWORD, key: UserDefaultKey.PASSWORD.rawValue)
         }
     }
     
-    private func setLaunch() {
+    private func initLaunch() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            guard let isLogin = UserDefaultManager.instance?.bool(UserDefaultKey.IS_LOGIN.rawValue) else { return }
-            if isLogin {
-                guard let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue) else { return }
-                if isPassword {
-                    let vc = SettingPWVC()
-                    vc.homeFlag = true
-                    vc.modalPresentationStyle = .currentContext
-                    self.present(vc, animated: true)
-                } else {
-                    self.registMainToRoot()
-                }
+            if let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue),
+               isPassword {
+                let vc = SettingPWVC()
+                vc.homeFlag = true
+                vc.modalPresentationStyle = .currentContext
+                self.present(vc, animated: true)
             } else {
-                self.registPageToRoot()
+                self.registMainToRoot()
             }
         }
     }

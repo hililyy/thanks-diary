@@ -25,13 +25,13 @@ final class SettingSuggestVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.getSuggestDatas()
-        setTarget()
-        setTable()
+        initTarget()
+        initTable()
     }
     
     // MARK: - Function
     
-    private func setTarget() {
+    private func initTarget() {
         settingSuggestView.backButton.rx.tap
             .asDriver()
             .drive(onNext: {
@@ -51,7 +51,7 @@ final class SettingSuggestVC: BaseVC {
             .disposed(by: disposeBag)
     }
     
-    private func setTable() {
+    private func initTable() {
         viewModel?.suggestData
             .bind(to: settingSuggestView.tableView.rx.items(
                 cellIdentifier: SettingSuggestTVCell.id,

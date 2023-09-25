@@ -21,10 +21,10 @@ final class ThirdStartVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLottie()
+        initLottie()
     }
     
-    private func setLottie() {
+    private func initLottie() {
         let goLottie = LottieManager.LottieInfo(vc: self,
                                                 lottieView: thirdStartView.lottieView,
                                                 name: Files.goJson.name,

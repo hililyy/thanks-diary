@@ -67,11 +67,10 @@ final class PageVC: BaseVC {
 
         UIView.transition(with: self.pageView.thirdDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.pageView.thirdDotView.backgroundColor = self.currentIndex == 2 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
-        })// set은 무조건 인자가 있어야하
+        })
     }
 
     private func initPageVC() {
-
         pageList = [FirstStartVC(), SecondStartVC(), ThirdStartVC()]
 
         pageContainer = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)

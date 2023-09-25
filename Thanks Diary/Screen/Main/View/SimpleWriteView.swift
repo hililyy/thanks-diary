@@ -86,8 +86,7 @@ final class SimpleWriteView: BaseView {
     }
     
     func isEmptyTextField() -> Bool {
-        guard let contents = contentsTextView.text else { return false}
-
+        guard let contents = contentsTextView.text else { return false }
         return contents.isEmpty
     }
     
@@ -109,9 +108,14 @@ final class SimpleWriteView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backgroundView, containerView])
-        containerView.addSubviews([deleteButton, contentsTextView, textLengthLabel, buttonView])
-        buttonView.addSubviews([completeButton, cancelButton])
+        addSubviews([backgroundView,
+                     containerView])
+        containerView.addSubviews([deleteButton,
+                                   contentsTextView,
+                                   textLengthLabel,
+                                   buttonView])
+        buttonView.addSubviews([completeButton,
+                                cancelButton])
     }
     
     override func initConstraints() {

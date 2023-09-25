@@ -21,17 +21,17 @@ final class SettingThemeVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTarget()
+        initTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        AppearanceCheck()
+        checkAppearance()
     }
     
     // MARK: - Function
     
-    private func setTarget() {
+    private func initTarget() {
         settingThemeView.darkButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in

@@ -28,13 +28,13 @@ final class SimpleWriteVC: BaseVC {
     override func viewDidLoad() {
         simpleWriteView.contentsTextView.delegate = self
         simpleWriteView.maxCount = maxCount
-        configureUI()
-        setTarget()
+        initUI()
+        initTarget()
     }
     
     // MARK: - Function
     
-    private func configureUI() {
+    private func initUI() {
         simpleWriteView.setHiddenForDeleteButton(beforeData == nil)
         
         if let beforeData {
@@ -42,7 +42,7 @@ final class SimpleWriteVC: BaseVC {
         }
     }
     
-    private func setTarget() {
+    private func initTarget() {
         simpleWriteView.completeButton.rx.tap
             .asDriver()
             .drive(onNext: {

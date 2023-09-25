@@ -20,7 +20,7 @@ class BaseVC: UIViewController {
         
         setNavigation()
         setToast()
-        AppearanceCheck()
+        checkAppearance()
     }
     
     private func setNavigation() {
@@ -68,7 +68,7 @@ class BaseVC: UIViewController {
         }
     }
     
-    func AppearanceCheck() {
+    func checkAppearance() {
         guard let mode = UserDefaultManager.instance?.string(UserDefaultKey.THEME_MODE.rawValue),
               let modeType = ThemeMode(rawValue: mode) else { return }
         if modeType == .dark {

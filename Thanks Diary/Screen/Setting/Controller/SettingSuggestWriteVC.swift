@@ -24,12 +24,12 @@ final class SettingSuggestWriteVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTarget()
+        initTarget()
     }
     
     // MARK: - Function
     
-    private func setTarget() {
+    private func initTarget() {
         settingSuggestWriteView.backgroundButton.rx.tap
             .asDriver()
             .drive(onNext: {

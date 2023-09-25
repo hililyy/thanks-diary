@@ -28,22 +28,25 @@ final class SettingPWVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if homeFlag == true {
-            settingPWView.backButton.isHidden = true
-            settingPWView.setContentsLabel(text: L10n.passwordContents2)
-        } else {
-            settingPWView.backButton.isHidden = false
-            UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
-        }
-        
-        setTarget()
+        initalize()
+        initTarget()
     }
     
     // MARK: - Function
     
-    private func setTarget() {
+    private func initalize() {
+        settingPWView.backButton.isHidden = homeFlag
+        
+        if homeFlag {
+            settingPWView.setContentsLabel(text: L10n.passwordContents2)
+        } else {
+            UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
+        }
+    }
+    
+    private func initTarget() {
         settingPWView.numberButtonTapHandler = { [weak self] num in
-            guard let self = self else { return }
+            guard let self else { return }
             
             self.firstPW.append("\(num)")
             self.count += 1

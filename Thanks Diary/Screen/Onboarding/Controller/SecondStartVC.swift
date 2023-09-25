@@ -21,10 +21,10 @@ final class SecondStartVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLottie()
+        initLottie()
     }
     
-    private func setLottie() {
+    private func initLottie() {
         let writingLottie = LottieManager.LottieInfo(vc: self,
                                                      lottieView: secondStartView.lottieView,
                                                      name: Files.writingJson.name,

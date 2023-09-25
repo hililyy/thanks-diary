@@ -66,16 +66,8 @@ final class SettingThemeView: BaseView {
     // MARK: - Functions
     
     func setTheme(theme: ThemeMode) {
-        switch theme {
-            
-        case .light:
-            lightView.alpha = 1.0
-            darkView.alpha = 0.2
-            
-        case .dark:
-            lightView.alpha = 0.2
-            darkView.alpha = 1.0
-        }
+        lightView.alpha = theme == .light ? 1.0 : 0.2
+        darkView.alpha = theme == .dark ? 1.0 : 0.2
     }
     
     // MARK: - UI, Target
@@ -92,10 +84,11 @@ final class SettingThemeView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backButton,
-                     topLabel,
-                     contentsStackView
-                    ])
+        addSubviews([
+            backButton,
+            topLabel,
+            contentsStackView
+        ])
         
         lightContentView.addSubviews([
             lightView,
