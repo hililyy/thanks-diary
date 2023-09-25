@@ -150,7 +150,7 @@ final class SettingPWView: BaseView {
         button.tag = 0
     }
     
-    private let deleteButton = UIButton(type: .custom).then { button in
+    let deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Asset.Image.icDelete.image, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         button.adjustsImageWhenHighlighted = false
@@ -215,8 +215,6 @@ final class SettingPWView: BaseView {
     // MARK: - UI, Target
     
     var numberButtonTapHandler: (Int) -> Void = { _ in }
-    var deleteButtonTapHandler: () -> Void = {}
-    var backButtonTapHandler: () -> Void = {}
     
     override func initUI() {
         backgroundColor = Asset.Color.white.color
@@ -227,14 +225,6 @@ final class SettingPWView: BaseView {
             button.addTarget { _ in
                 self.numberButtonTapHandler(button.tag)
             }
-        }
-        
-        deleteButton.addTarget { _ in
-            self.deleteButtonTapHandler()
-        }
-        
-        backButton.addTarget { _ in
-            self.backButtonTapHandler()
         }
     }
     

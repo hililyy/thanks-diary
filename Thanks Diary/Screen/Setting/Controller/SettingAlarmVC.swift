@@ -44,7 +44,8 @@ final class SettingAlarmVC: BaseVC {
     private func setTarget() {
         settingAlarmView.backButton.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
                 self.popVC()
             })
             .disposed(by: disposeBag)

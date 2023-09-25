@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SettingPWVC: BaseVC {
     
@@ -70,16 +72,23 @@ final class SettingPWVC: BaseVC {
             }
         }
         
-        settingPWView.deleteButtonTapHandler = { [weak self] in
-            guard let self = self else { return }
-            self.count = max(0, self.count - 1)
-            _ = self.firstPW.popLast()
-            self.settingPWView.setDotColor(num: self.count)
-        }
+        settingPWView.deleteButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.count = max(0, self.count - 1)
+                _ = self.firstPW.popLast()
+                self.settingPWView.setDotColor(num: self.count)
+            })
+            .disposed(by: disposeBag)
         
-        settingPWView.backButtonTapHandler = {
-            self.popVC()
-        }
+        settingPWView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                self.popVC()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func handleIncorrectPassword() {

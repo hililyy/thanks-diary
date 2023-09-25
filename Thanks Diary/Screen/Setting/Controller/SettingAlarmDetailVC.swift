@@ -31,21 +31,38 @@ final class SettingAlarmDetailVC: BaseVC {
     // MARK: - Function
     
     private func setTarget() {
-        settingAlarmDetailView.backButtonTapHandler = {
-            self.dismissVC()
+        settingAlarmDetailView.datePickerHandler = { time in
+            self.viewModel?.selectedTime = time
         }
         
-        settingAlarmDetailView.okButtonTapHandler = { time in
-            self.dismissVC {
-                UserDefaultManager.instance?.set(time, key: UserDefaultKey.PUSH_TIME.rawValue)
-                LocalNotificationManager.instance?.registNotification(time: time)
-                self.viewModel?.selectedTime = time
-                self.delegate?.reload()
-            }
-        }
+        settingAlarmDetailView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                self.dismissVC()
+            })
+            .disposed(by: disposeBag)
         
-        settingAlarmDetailView.cancelButtonTapHandler = {
-            self.dismissVC()
-        }
+        settingAlarmDetailView.okButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                let time = viewModel?.selectedTime ?? Date()
+                self.dismissVC {
+                    UserDefaultManager.instance?.set(time, key: UserDefaultKey.PUSH_TIME.rawValue)
+                    LocalNotificationManager.instance?.registNotification(time: time)
+                    self.viewModel?.selectedTime = time
+                    self.delegate?.reload()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        settingAlarmDetailView.cancelButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                self.dismissVC()
+            })
+            .disposed(by: disposeBag)
     }
 }

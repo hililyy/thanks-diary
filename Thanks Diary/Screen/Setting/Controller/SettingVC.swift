@@ -65,13 +65,15 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
+        let data = settingView.settingTableTitles[indexPath.row]
+        switch data.type {
+        case ._switch:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as! SettingSwitchTVCell
-            cell.titleLabel.text = "암호 설정"
+            cell.titleLabel.text = data.title
             cell.settingSwitch.isOn = alarmFlag
             
-            cell.switchTapHandler = {
+            cell.switchTapHandler = { [weak self] in
+                guard let self else { return }
                 self.alarmFlag = !self.alarmFlag
                 UserDefaultManager.instance?.set(self.alarmFlag, key: UserDefaultKey.IS_PASSWORD.rawValue)
                 if self.alarmFlag {
@@ -81,37 +83,16 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
                     UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
                 }
             }
-            
             return cell
-            
-        case 1:
+        case .more:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
-            cell.titleLabel.text = "알림 설정"
+            cell.titleLabel.text = data.title
             return cell
-            
-        case 2:
-            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
-            cell.titleLabel.text = "테마 설정"
-            return cell
-            
-        case 3:
-            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
-            cell.titleLabel.text = "건의사항"
-            return cell
-            
-        case 4:
-            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
-            cell.titleLabel.text = "오픈소스 라이선스"
-            return cell
-            
-        case 5:
+        case .label:
             let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
-            cell.titleLabel.text = "앱 버전"
-            cell.contentsLabel.text = CommonUtilManager.instance?.appVersion
+            cell.titleLabel.text = data.title
+            cell.contentsLabel.text = data.contents
             return cell
-            
-        default:
-            return UITableViewCell()
         }
     }
     
@@ -119,28 +100,22 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0: // 암호
             break
-            
         case 1: // 알림
             let vc = SettingAlarmVC()
             vc.viewModel = viewModel
             self.navigationController?.pushViewController(vc, animated: true)
-            
         case 2: // 테마 설정
             let vc = SettingThemeVC()
             self.navigationController?.pushViewController(vc, animated: true)
-            
         case 3: // 건의하기
             let vc = SettingSuggestVC()
             vc.viewModel = viewModel
             self.navigationController?.pushViewController(vc, animated: true)
-            
         case 4: // 오픈소스 라이선스
             let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
                     navigationController?.pushViewController(acknowList, animated: true)
-                  
         case 5: // 앱 버전
             LocalNotificationManager.instance?.printRegistedNotification()
-            
         default:
             break
         }

@@ -11,7 +11,7 @@ final class SettingThemeView: BaseView {
     
     // MARK: - UI components
     
-    private let backButton = UIButton(type: .custom).then { button in
+    let backButton = UIButton(type: .custom).then { button in
         button.setImage(Asset.Image.icBack.image, for: .normal)
     }
     
@@ -46,8 +46,8 @@ final class SettingThemeView: BaseView {
         view.layer.borderColor = Asset.Color.gray2.color.cgColor
     }
     
-    private let lightButton = UIButton(type: .custom)
-    private let darkButton = UIButton(type: .custom)
+    let lightButton = UIButton(type: .custom)
+    let darkButton = UIButton(type: .custom)
     
     private let lightLabel = UILabel().then { label in
         label.textColor = Asset.Color.gray6.color
@@ -80,31 +80,12 @@ final class SettingThemeView: BaseView {
     
     // MARK: - UI, Target
     
-    var backButtonTapHandler: () -> Void = {}
-    var lightButtonTapHandler: () -> Void = {}
-    var darkButtonTapHandler: () -> Void = {}
-    var systemButtonTapHandler: () -> Void = {}
-    
     override func initUI() {
         backgroundColor = Asset.Color.white.color
         
         if let mode = UserDefaultManager.instance?.string(UserDefaultKey.THEME_MODE.rawValue),
             let themeMode = ThemeMode(rawValue: mode) {
             setTheme(theme: themeMode)
-        }
-    }
-    
-    override func initTarget() {
-        backButton.addTarget { _ in
-            self.backButtonTapHandler()
-        }
-        
-        lightButton.addTarget { _ in
-            self.lightButtonTapHandler()
-        }
-        
-        darkButton.addTarget { _ in
-            self.darkButtonTapHandler()
         }
     }
     

@@ -29,7 +29,7 @@ final class SettingAlarmDetailView: BaseView {
     
     private let buttonView = UIView()
     
-    private let cancelButton = UIButton(type: .custom).then { button in
+    let cancelButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.cancel, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         button.backgroundColor = .clear
@@ -38,7 +38,7 @@ final class SettingAlarmDetailView: BaseView {
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)
     }
     
-    private let okButton = UIButton(type: .custom).then { button in
+    let okButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.ok, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         button.backgroundColor = Asset.Color.lightGrayBlue.color
@@ -47,7 +47,7 @@ final class SettingAlarmDetailView: BaseView {
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
     }
     
-    private let backButton = UIButton().then { button in
+    let backButton = UIButton().then { button in
         button.backgroundColor = .clear
     }
     
@@ -67,27 +67,13 @@ final class SettingAlarmDetailView: BaseView {
     
     // MARK: - UI, Target
     
-    var backButtonTapHandler: () -> Void = {}
-    var okButtonTapHandler: (Date) -> Void = { _ in }
-    var cancelButtonTapHandler: () -> Void = {}
-    var selectedTime = Date()
+    var datePickerHandler: (Date) -> Void = { _ in }
     
     override func initTarget() {
-        backButton.addTarget { _ in
-            self.backButtonTapHandler()
-        }
-        
-        okButton.addTarget { _ in
-            self.okButtonTapHandler(self.selectedTime)
-        }
-        
-        cancelButton.addTarget { _ in
-            self.cancelButtonTapHandler()
-        }
         
         datePicker.addTarget(for: .valueChanged) { sender in
             guard let picker = sender as? UIDatePicker else { return }
-            self.selectedTime = picker.date
+            self.datePickerHandler(picker.date)
         }
     }
     

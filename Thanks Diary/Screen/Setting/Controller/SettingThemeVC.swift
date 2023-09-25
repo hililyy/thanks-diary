@@ -32,20 +32,32 @@ final class SettingThemeVC: BaseVC {
     // MARK: - Function
     
     private func setTarget() {
-        settingThemeView.darkButtonTapHandler = {
-            UserDefaultManager.instance?.set(ThemeMode.dark.rawValue, key: UserDefaultKey.THEME_MODE.rawValue)
-            self.settingThemeView.setTheme(theme: .dark)
-            self.viewWillAppear(true)
-        }
+        settingThemeView.darkButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                UserDefaultManager.instance?.set(ThemeMode.dark.rawValue, key: UserDefaultKey.THEME_MODE.rawValue)
+                self.settingThemeView.setTheme(theme: .dark)
+                self.viewWillAppear(true)
+            })
+            .disposed(by: disposeBag)
         
-        settingThemeView.lightButtonTapHandler = {
-            UserDefaultManager.instance?.set(ThemeMode.light.rawValue, key: UserDefaultKey.THEME_MODE.rawValue)
-            self.settingThemeView.setTheme(theme: .light)
-            self.viewWillAppear(true)
-        }
+        settingThemeView.lightButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                UserDefaultManager.instance?.set(ThemeMode.light.rawValue, key: UserDefaultKey.THEME_MODE.rawValue)
+                self.settingThemeView.setTheme(theme: .light)
+                self.viewWillAppear(true)
+            })
+            .disposed(by: disposeBag)
         
-        settingThemeView.backButtonTapHandler = {
-            self.popVC()
-        }
+        settingThemeView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                self.popVC()
+            })
+            .disposed(by: disposeBag)
     }
 }
