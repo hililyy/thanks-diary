@@ -67,6 +67,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = settingView.settingTableTitles[indexPath.row]
+        
         switch data.type {
         case ._switch:
             guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
@@ -85,10 +86,12 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             return cell
+            
         case .more:
             guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
             return cell
+            
         case .label:
             guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
@@ -101,20 +104,25 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0: // 암호
             break
+            
         case 1: // 알림
             let vc = SettingAlarmVC()
             vc.viewModel = viewModel
             self.navigationController?.pushViewController(vc, animated: true)
+            
         case 2: // 테마 설정
             let vc = SettingThemeVC()
             self.navigationController?.pushViewController(vc, animated: true)
+            
         case 3: // 건의하기
             let vc = SettingSuggestVC()
             vc.viewModel = viewModel
             self.navigationController?.pushViewController(vc, animated: true)
+            
         case 4: // 오픈소스 라이선스
             let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
                     navigationController?.pushViewController(acknowList, animated: true)
+            
         case 5: // 앱 버전
             LocalNotificationManager.instance?.printRegistedNotification()
         default:

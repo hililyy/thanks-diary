@@ -19,6 +19,7 @@ final class SettingPWVC: BaseVC {
     var homeFlag: Bool = false
     var firstPW: String = ""
     var secondPW: String = ""
+    var maxCount: Int = 4
     
     // MARK: - Life Cycle
     
@@ -52,7 +53,7 @@ final class SettingPWVC: BaseVC {
             self.count += 1
             self.settingPWView.setDotColor(num: self.count)
             
-            if self.count == 4 {
+            if self.count == maxCount {
                 if self.homeFlag {
                     if self.firstPW == UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) {
                         self.registMainToRoot()

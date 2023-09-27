@@ -166,50 +166,13 @@ final class SettingPWView: BaseView {
     }
     
     func setDotColor(num: Int) {
-        switch num {
-        case 0:
-            firstDotView.backgroundColor =
-            Asset.Color.gray7.color
-            secondDotView.backgroundColor =
-            Asset.Color.gray7.color
-            thirdDotView.backgroundColor =
-            Asset.Color.gray7.color
-            fourthDotView.backgroundColor =
-            Asset.Color.gray7.color
-            
-        case 1:
-            firstDotView.backgroundColor =
-            Asset.Color.lightGrayBlue.color
-            secondDotView.backgroundColor =
-            Asset.Color.gray7.color
-            thirdDotView.backgroundColor =
-            Asset.Color.gray7.color
-            fourthDotView.backgroundColor =
-            Asset.Color.gray7.color
-            
-        case 2:
-            firstDotView.backgroundColor =
-            Asset.Color.lightGrayBlue.color
-            secondDotView.backgroundColor =
-            Asset.Color.lightGrayBlue.color
-            thirdDotView.backgroundColor =
-            Asset.Color.gray7.color
-            fourthDotView.backgroundColor =
-            Asset.Color.gray7.color
-            
-        case 3:
-            firstDotView.backgroundColor =
-            Asset.Color.lightGrayBlue.color
-            secondDotView.backgroundColor =
-            Asset.Color.lightGrayBlue.color
-            thirdDotView.backgroundColor =
-            Asset.Color.lightGrayBlue.color
-            fourthDotView.backgroundColor =
-            Asset.Color.gray7.color
-            
-        default:
-            break
-        }
+        let gray = Asset.Color.gray7.color
+        let blue = Asset.Color.lightGrayBlue.color
+        
+        firstDotView.backgroundColor = num > 0 ? blue : gray
+        secondDotView.backgroundColor = num > 1 ? blue : gray
+        thirdDotView.backgroundColor = num > 2 ? blue : gray
+        fourthDotView.backgroundColor = gray
     }
     
     // MARK: - UI, Target

@@ -17,15 +17,11 @@ final class PageVC: BaseVC {
     private var currentIndex: Int = 0 {
         didSet {
             changeDotViewColor()
-            if currentIndex == pageList.count - 1 {
-                UIView.transition(with: self.pageView.nextButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-                    self.pageView.nextButton.setTitle(L10n.start, for: .normal)
-                })
-            } else {
-                UIView.transition(with: self.pageView.nextButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-                    self.pageView.nextButton.setTitle(L10n.next, for: .normal)
-                })
-            }
+            let title = currentIndex == pageList.count - 1 ? L10n.start : L10n.next
+            UIView.transition(with: self.pageView.nextButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                self.pageView.nextButton.setTitle(title, for: .normal)
+            })
+            
         }
     }
     
@@ -56,13 +52,7 @@ final class PageVC: BaseVC {
     private func changeDotViewColor() {
         UIView.transition(with: self.pageView.firstDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.pageView.firstDotView.backgroundColor = self.currentIndex == 0 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
-        })
-
-        UIView.transition(with: self.pageView.secondDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.pageView.secondDotView.backgroundColor = self.currentIndex == 1 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
-        })
-
-        UIView.transition(with: self.pageView.thirdDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.pageView.thirdDotView.backgroundColor = self.currentIndex == 2 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
         })
     }
