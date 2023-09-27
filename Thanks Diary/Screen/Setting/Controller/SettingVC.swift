@@ -69,7 +69,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         let data = settingView.settingTableTitles[indexPath.row]
         switch data.type {
         case ._switch:
-            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as! SettingSwitchTVCell
+            guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
             cell.settingSwitch.isOn = alarmFlag
             
@@ -86,11 +86,11 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
         case .more:
-            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as! SettingMoreTVCell
+            guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
             return cell
         case .label:
-            let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
+            guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
             cell.contentsLabel.text = data.contents
             return cell

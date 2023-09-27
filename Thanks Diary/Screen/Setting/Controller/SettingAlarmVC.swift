@@ -107,7 +107,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as! SettingSwitchTVCell
+            guard let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
             cell.titleLabel.text = L10n.settingName2
             cell.settingSwitch.isOn = switchFlag
             
@@ -119,29 +119,20 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                         guard let isPush = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PUSH.rawValue) else { return }
                         UserDefaultManager.instance?.set(!isPush, key: UserDefaultKey.IS_PUSH.rawValue)
                         self.switchFlag = !isPush
-                        
-                        // on -> off로 가는 상황
-                        if isPush {
-                            self.setNotification(isOn: false)
-                        // off -> on으로 가는 상황
-                        } else {
-                            self.setNotification(isOn: true)
-                        }
-                        
+                        self.setNotification(isOn: !isPush)
                         self.reload()
+                        
                     case .denied:
                         self.switchFlag = false
                         self.showSettingAlert()
                         self.reload()
+                        
                     default:
                         AuthManager.instance?.requestNotiAuth(completion: { result in
-                            if result {
-                                self.switchFlag = true
-                            } else {
-                                self.switchFlag = false
+                            self.switchFlag = result
+                            if !result {
                                 self.showSettingAlert()
                             }
-                            
                             self.reload()
                         }, errorHandler: {
                             self.showErrorPopup()
@@ -153,7 +144,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case 1:
-            let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as! SettingLabelTVCell
+            guard let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
             cell.titleLabel.text = L10n.settingName7
             cell.contentsLabel.text = viewModel?.selectedTime?.convertString(format: Constant.AHHMM)
             return cell
@@ -200,6 +191,6 @@ extension SettingAlarmVC: ReloadDelegate {
     }
 }
 
-protocol ReloadDelegate {
+protocol ReloadDelegate: AnyObject {
     func reload()
 }

@@ -26,8 +26,8 @@ final class FirebaseManager {
             .child(Constant.FIREBASE_CHILD_SUGGEST)
             .observeSingleEvent(of: .value) { snapshot in
             var values: [[String: Any]] = []
-            
-            for snap in snapshot.children.allObjects as! [DataSnapshot] {
+            guard let allObject = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            for snap in allObject {
                 guard let value = snap.value as? [String: Any] else { return }
                 values.append(value)
             }

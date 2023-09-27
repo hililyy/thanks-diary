@@ -93,13 +93,13 @@ final class SettingThemeView: BaseView {
         lightContentView.addSubviews([
             lightView,
             lightLabel,
-            lightButton,
+            lightButton
         ])
         
         darkContentView.addSubviews([
             darkView,
             darkLabel,
-            darkButton,
+            darkButton
         ])
     }
     

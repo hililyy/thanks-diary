@@ -185,7 +185,7 @@ final class CoreDataManager {
             fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", beforeData.date, beforeData.title, beforeData.contents )
             do {
                 let result = try managedContext.fetch(fetchRequest)
-                let objectUpdate = result[0] as! NSManagedObject
+                guard let objectUpdate = result[0] as? NSManagedObject else { return }
                 objectUpdate.setValue(newData.title, forKey: "title")
                 objectUpdate.setValue(newData.contents, forKey: "contents")
                 do {
@@ -203,7 +203,7 @@ final class CoreDataManager {
             fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", beforeData.date, beforeData.contents)
             do {
                 let result = try managedContext.fetch(fetchRequest)
-                let objectUpdate = result[0] as! NSManagedObject
+                guard let objectUpdate = result[0] as? NSManagedObject else { return }
                 objectUpdate.setValue(newData.contents, forKey: "contents")
                 do {
                     try managedContext.save()
@@ -230,7 +230,7 @@ final class CoreDataManager {
             fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", deleteData.date, deleteData.title, deleteData.contents)
             do {
                 let test = try managedContext.fetch(fetchRequest)
-                let objectToDelete = test[0] as! NSManagedObject
+                guard let objectToDelete = test[0] as? NSManagedObject else { return }
                 managedContext.delete(objectToDelete)
                 do {
                     try managedContext.save()
@@ -250,7 +250,7 @@ final class CoreDataManager {
             fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", deleteData.date, deleteData.contents)
             do {
                 let test = try managedContext.fetch(fetchRequest)
-                let objectToDelete = test[0] as! NSManagedObject
+                guard let objectToDelete = test[0] as? NSManagedObject else { return }
                 managedContext.delete(objectToDelete)
                 do {
                     try managedContext.save()
