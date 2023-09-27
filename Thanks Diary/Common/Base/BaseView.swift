@@ -27,29 +27,8 @@ class BaseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     func initUI() {}
     func initTarget() {}
     func initSubviews() {}
     func initConstraints() {}
-    
-    func initKeyboardNotification() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil)
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil)
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification) {}
-    @objc func keyboardWillHide() {}
 }

@@ -121,8 +121,7 @@ final class DetailWriteView: BaseView {
         contentsTextView.text = contentsText
     }
     
-    // 키보드 나타났을 때
-    override func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         buttonStackView.removeAllSubViews()
         buttonStackView.addArrangedSubview(completeButton)
         
@@ -143,8 +142,7 @@ final class DetailWriteView: BaseView {
         }
     }
     
-    // 키보드 사라질 때
-    override func keyboardWillHide() {
+    @objc func keyboardWillHide() {
         buttonStackView.removeAllSubViews()
         buttonStackView.addArrangedSubview(deleteButton)
         completeHandler()
@@ -188,11 +186,25 @@ final class DetailWriteView: BaseView {
     }
     
     override func initTarget() {
-        initKeyboardNotification()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
         
         // 텍스트 필드 외부 터치 시 키보드 닫기 위한 제스처 추가
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
         contentScrollView.addGestureRecognizer(tapGesture)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Constraint
