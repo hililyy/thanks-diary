@@ -45,14 +45,19 @@ final class LaunchVC: BaseVC {
     
     private func initLaunch() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            if let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue),
-               isPassword {
-                let vc = SettingPWVC()
-                vc.homeFlag = true
-                vc.modalPresentationStyle = .currentContext
-                self.present(vc, animated: true)
+            if let isReEntry = UserDefaultManager.instance?.bool(UserDefaultKey.IS_RE_ENTRY_USER.rawValue),
+               isReEntry {
+                if let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue),
+                   isPassword {
+                    let vc = SettingPWVC()
+                    vc.homeFlag = true
+                    vc.modalPresentationStyle = .currentContext
+                    self.present(vc, animated: true)
+                } else {
+                    self.registMainToRoot()
+                }
             } else {
-                self.registMainToRoot()
+                self.registPageToRoot()
             }
         }
     }

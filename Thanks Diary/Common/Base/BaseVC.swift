@@ -18,12 +18,12 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavigation()
-        setToast()
+        initNavigation()
+        initToast()
         checkAppearance()
     }
     
-    private func setNavigation() {
+    private func initNavigation() {
         navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -87,7 +87,7 @@ class BaseVC: UIViewController {
 
 // 토스트 설정
 extension BaseVC: UIGestureRecognizerDelegate {
-    func setToast() {
+    func initToast() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -149,7 +149,8 @@ extension BaseVC: UIGestureRecognizerDelegate {
     }
 }
 
-// 이메일
+// MARK: - Email
+
 extension BaseVC: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)

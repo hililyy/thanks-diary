@@ -29,10 +29,6 @@ final class PageVC: BaseVC {
         }
     }
     
-//    func setMainToRoot() { // 씬에서 루트뷰 변경하게 수정
-//        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(MainNC())
-//    }
-    
     // MARK: - Life Cycle
     
     override func loadView() {
@@ -46,9 +42,10 @@ final class PageVC: BaseVC {
     }
 
     private func initTarget() {
-        pageView.nextButton.addTarget { _ in
+        pageView.nextButton.addTarget { [weak self] _ in
+            guard let self else { return }
             if self.currentIndex == self.pageList.count - 1 {
-                UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_LOGIN.rawValue)
+                UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_RE_ENTRY_USER.rawValue)
                 self.registMainToRoot()
                 return
             }
@@ -92,7 +89,6 @@ final class PageVC: BaseVC {
 }
 
 extension PageVC: UIPageViewControllerDelegate {
-    // 페이지 이동할때 마다 호출
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard completed else { return }
         currentIndex = pageViewController.viewControllers!.first!.view.tag

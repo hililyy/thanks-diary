@@ -8,7 +8,7 @@
 import UIKit
 
 enum UserDefaultKey: String {
-    case IS_LOGIN
+    case IS_RE_ENTRY_USER
     case PASSWORD
     case IS_PASSWORD
     case PUSH_TIME
