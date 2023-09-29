@@ -13,7 +13,7 @@ import MessageUI
 class BaseVC: UIViewController {
 
     private var keyboardHeight: CGFloat = 0
-    public var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

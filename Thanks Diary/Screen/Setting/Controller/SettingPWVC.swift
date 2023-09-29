@@ -53,7 +53,7 @@ final class SettingPWVC: BaseVC {
             self.count += 1
             self.settingPWView.setDotColor(num: self.count)
             
-            if self.count == maxCount {
+            if self.count == self.maxCount {
                 if self.homeFlag {
                     if self.firstPW == UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) {
                         self.registMainToRoot()

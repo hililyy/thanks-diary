@@ -47,7 +47,7 @@ final class SettingAlarmDetailVC: BaseVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                let time = viewModel?.selectedTime ?? Date()
+                let time = self.viewModel?.selectedTime ?? Date()
                 self.dismissVC {
                     UserDefaultManager.instance?.set(time, key: UserDefaultKey.PUSH_TIME.rawValue)
                     LocalNotificationManager.instance?.registNotification(time: time)

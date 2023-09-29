@@ -13,7 +13,7 @@ import SnapKit
 
 class BaseView: UIView {
     
-    public var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
