@@ -43,6 +43,7 @@ final class MainVC: BaseVC {
         Observable.combineLatest(viewModel.allDetailDataRx, viewModel.allSimpleDataRx)
             .subscribe(onNext: { [weak self] detailDatas, simpleDatas in
                 guard let self else { return }
+                
                 let detailData = detailDatas.map({ $0.key })
                 let simpleData = simpleDatas.map({ $0.key })
                 self.viewModel.diaryDates = Set(detailData).union(simpleData)
@@ -100,7 +101,7 @@ final class MainVC: BaseVC {
                 guard let self else { return }
                 
                 self.dismissVC {
-                    self.pushDetailWriteVC()
+                    self.pushDetailWriteVC(beforeData: nil)
                 }
             })
             .disposed(by: disposeBag)
@@ -111,28 +112,12 @@ final class MainVC: BaseVC {
                 guard let self else { return }
                 
                 self.dismissVC {
-                    self.presentSimpleWriteVC()
+                    self.presentSimpleWriteVC(beforeData: nil)
                 }
             })
             .disposed(by: disposeBag)
         
         self.present(vc, animated: false)
-    }
-    
-    private func pushDetailWriteVC() {
-        let vc = DetailWriteVC()
-        vc.viewModel = self.viewModel
-        vc.beforeData = nil
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func presentSimpleWriteVC() {
-        let vc = SimpleWriteVC()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
-        vc.viewModel = self.viewModel
-        vc.beforeData = nil
-        self.present(vc, animated: true)
     }
     
     private func initTable() {
@@ -175,17 +160,9 @@ final class MainVC: BaseVC {
                 guard let self else { return }
                 
                 if diary.type == .detail {
-                    let vc = DetailWriteVC()
-                    vc.viewModel = self.viewModel
-                    vc.beforeData = diary
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.pushDetailWriteVC(beforeData: diary)
                 } else {
-                    let vc = SimpleWriteVC()
-                    vc.modalTransitionStyle = .crossDissolve
-                    vc.modalPresentationStyle = .overFullScreen
-                    vc.viewModel = self.viewModel
-                    vc.beforeData = diary
-                    self.present(vc, animated: true)
+                    self.presentSimpleWriteVC(beforeData: diary)
                 }
             }
             .disposed(by: disposeBag)
@@ -194,6 +171,22 @@ final class MainVC: BaseVC {
     private func moveToday() {
         viewModel.selectedDate.accept(Date())
         mainView.calendar.select(Date())
+    }
+    
+    private func pushDetailWriteVC(beforeData: DiaryModel?) {
+        let vc = DetailWriteVC()
+        vc.viewModel = self.viewModel
+        vc.beforeData = beforeData
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func presentSimpleWriteVC(beforeData: DiaryModel?) {
+        let vc = SimpleWriteVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        vc.viewModel = self.viewModel
+        vc.beforeData = beforeData
+        self.present(vc, animated: true)
     }
 }
 
