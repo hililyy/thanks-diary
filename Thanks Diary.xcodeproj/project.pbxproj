@@ -87,6 +87,7 @@
 		02D7BB6F2AA589DF00419739 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02D7BB6E2AA589DF00419739 /* GoogleService-Info.plist */; };
 		02D7BB732AA6BFDB00419739 /* SettingSuggestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */; };
 		02F50B462A60F9BB006A59D3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F50B452A60F9BB006A59D3 /* MainView.swift */; };
+		2A0034BB2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2A0034BA2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */; };
 		2A0962DA28CF484300063DF3 /* TextData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2A0962D928CF484300063DF3 /* TextData.csv */; };
 		2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D87FE28A540FB00576E56 /* AppDelegate.swift */; };
@@ -250,6 +251,7 @@
 				02087C402AA9C52100921F4D /* SnapKit in Frameworks */,
 				02087C3D2AA9C51200921F4D /* Then in Frameworks */,
 				02087C3A2AA9C50300921F4D /* AcknowList in Frameworks */,
+				2A0034BB2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				02087C502AA9C56E00921F4D /* FirebaseDatabase in Frameworks */,
 				02087C492AA9C54100921F4D /* RxSwift in Frameworks */,
 				02087C432AA9C54100921F4D /* RxBlocking in Frameworks */,
@@ -498,6 +500,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		2A0034B92ACAF8B100B6E703 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2A0962D828CF443E00063DF3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +522,7 @@
 				029392412ABD955B00FB2553 /* .swiftlint.yml */,
 				2A0D87FD28A540FB00576E56 /* Thanks Diary */,
 				02087C542AA9C93A00921F4D /* Thanks Diary.app */,
+				2A0034B92ACAF8B100B6E703 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -719,6 +729,7 @@
 				02087C4D2AA9C56D00921F4D /* FirebaseAuth */,
 				02087C4F2AA9C56E00921F4D /* FirebaseDatabase */,
 				02087C522AA9C5AD00921F4D /* Lottie */,
+				2A0034BA2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport */,
 			);
 			productName = "Thanks Diary";
 			productReference = 02087C542AA9C93A00921F4D /* Thanks Diary.app */;
@@ -1265,6 +1276,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
+		};
+		2A0034BA2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02087C4C2AA9C56D00921F4D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
 /* End XCSwiftPackageProductDependency section */
 
