@@ -54,7 +54,11 @@ final class DetailWriteVC: BaseVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.view.endEditing(true)
+                if self.detailWriteView.isEmptyTextField() {
+                    self.showFillTextFieldToast()
+                } else {
+                    self.view.endEditing(true)
+                }
             })
             .disposed(by: disposeBag)
         
@@ -68,7 +72,11 @@ final class DetailWriteVC: BaseVC {
         
         detailWriteView.completeHandler = { [weak self] in
             guard let self else { return }
-            self.complete()
+            if self.detailWriteView.isEmptyTextField() {
+                self.showFillTextFieldToast()
+            } else {
+                self.complete()
+            }
         }
     }
     
@@ -80,14 +88,10 @@ final class DetailWriteVC: BaseVC {
             date: viewModel?.selectedDate.value.convertString() ?? Date().convertString()
         )
         
-        if detailWriteView.isEmptyTextField() {
-            showFillTextFieldToast()
+        if let beforeData {
+            self.update(beforeData: beforeData, newData: newData)
         } else {
-            if let beforeData {
-                self.update(beforeData: beforeData, newData: newData)
-            } else {
-                self.write(newData)
-            }
+            self.write(newData)
         }
     }
     

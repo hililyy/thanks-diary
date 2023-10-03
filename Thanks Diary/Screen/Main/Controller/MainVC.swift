@@ -172,28 +172,11 @@ final class MainVC: BaseVC {
         viewModel.selectedDate.accept(Date())
         mainView.calendar.select(Date())
     }
-    
-    private func pushDetailWriteVC(beforeData: DiaryModel?) {
-        let vc = DetailWriteVC()
-        vc.viewModel = self.viewModel
-        vc.beforeData = beforeData
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func presentSimpleWriteVC(beforeData: DiaryModel?) {
-        let vc = SimpleWriteVC()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
-        vc.viewModel = self.viewModel
-        vc.beforeData = beforeData
-        self.present(vc, animated: true)
-    }
 }
 
 // MARK: - FSCalendar
 
 extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         viewModel.selectedDate.accept(date)
     }
@@ -208,5 +191,23 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
+    }
+}
+
+extension MainVC {
+    private func pushDetailWriteVC(beforeData: DiaryModel?) {
+        let vc = DetailWriteVC()
+        vc.viewModel = self.viewModel
+        vc.beforeData = beforeData
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func presentSimpleWriteVC(beforeData: DiaryModel?) {
+        let vc = SimpleWriteVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        vc.viewModel = self.viewModel
+        vc.beforeData = beforeData
+        self.present(vc, animated: true)
     }
 }

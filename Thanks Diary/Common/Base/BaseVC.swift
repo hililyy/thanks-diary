@@ -29,10 +29,6 @@ class BaseVC: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     func goAppSetting() {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
         

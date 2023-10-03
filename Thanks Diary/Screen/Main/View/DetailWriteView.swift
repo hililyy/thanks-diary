@@ -72,6 +72,7 @@ final class DetailWriteView: BaseView {
         textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
         textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        textView.becomeFirstResponder()
     }
     
     private let contentsTextView = UITextView().then { textView in
@@ -130,7 +131,10 @@ final class DetailWriteView: BaseView {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         
-        let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.size.height, right: 0.0)
+        let contentInset = UIEdgeInsets(top: 0.0,
+                                        left: 0.0,
+                                        bottom: keyboardFrame.size.height,
+                                        right: 0.0)
         contentScrollView.contentInset = contentInset
         contentScrollView.scrollIndicatorInsets = contentInset
         
@@ -150,12 +154,6 @@ final class DetailWriteView: BaseView {
         let contentInset = UIEdgeInsets.zero
         contentScrollView.contentInset = contentInset
         contentScrollView.scrollIndicatorInsets = contentInset
-    }
-    
-    // 텍스트 필드 외부 터치 시 키보드 닫기
-    @objc private func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        titleTextView.resignFirstResponder()
-        contentsTextView.resignFirstResponder()
     }
     
     var completeHandler: () -> Void = {}
@@ -197,10 +195,6 @@ final class DetailWriteView: BaseView {
             selector: #selector(keyboardWillHide),
             name: UIResponder.keyboardWillHideNotification,
             object: nil)
-        
-        // 텍스트 필드 외부 터치 시 키보드 닫기 위한 제스처 추가
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
-        contentScrollView.addGestureRecognizer(tapGesture)
     }
     
     deinit {
