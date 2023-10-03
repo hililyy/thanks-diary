@@ -38,6 +38,8 @@ final class DetailWriteVC: BaseVC {
             detailWriteView.setTextFieldData(
                 titleText: beforeData.title,
                 contentsText: beforeData.contents)
+        } else {
+            detailWriteView.focusTitleTextViewKeyboard()
         }
     }
     

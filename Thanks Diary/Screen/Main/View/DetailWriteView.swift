@@ -72,7 +72,6 @@ final class DetailWriteView: BaseView {
         textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
         textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
-        textView.becomeFirstResponder()
     }
     
     private let contentsTextView = UITextView().then { textView in
@@ -120,6 +119,10 @@ final class DetailWriteView: BaseView {
     func setTextFieldData(titleText: String, contentsText: String) {
         titleTextView.text = titleText
         contentsTextView.text = contentsText
+    }
+    
+    func focusTitleTextViewKeyboard() {
+        titleTextView.becomeFirstResponder()
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
