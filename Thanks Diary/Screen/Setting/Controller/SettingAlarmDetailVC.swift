@@ -31,15 +31,16 @@ final class SettingAlarmDetailVC: BaseVC {
     // MARK: - Function
     
     private func initTarget() {
-        settingAlarmDetailView.datePickerHandler = { time in
-            self.viewModel?.selectedTime = time
+        settingAlarmDetailView.datePickerHandler = { [weak self] time in
+            guard let self else { return }
+            viewModel?.selectedTime = time
         }
         
         settingAlarmDetailView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.dismissVC()
+                dismissVC()
             })
             .disposed(by: disposeBag)
         
@@ -48,7 +49,7 @@ final class SettingAlarmDetailVC: BaseVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 let time = self.viewModel?.selectedTime ?? Date()
-                self.dismissVC {
+                dismissVC {
                     UserDefaultManager.instance?.set(time, key: UserDefaultKey.PUSH_TIME.rawValue)
                     LocalNotificationManager.instance?.registNotification(time: time)
                     self.viewModel?.selectedTime = time
@@ -61,7 +62,7 @@ final class SettingAlarmDetailVC: BaseVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.dismissVC()
+                dismissVC()
             })
             .disposed(by: disposeBag)
     }

@@ -116,7 +116,7 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.pushFloatingButtonVC()
+                pushFloatingButtonVC()
             })
             .disposed(by: disposeBag)
     }
@@ -126,7 +126,7 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.pushSettingVC()
+                pushSettingVC()
             })
             .disposed(by: disposeBag)
     }
@@ -136,7 +136,7 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.moveToday()
+                moveToday()
             })
             .disposed(by: disposeBag)
     }
@@ -160,13 +160,13 @@ extension MainVC {
                 guard let self else { return }
                 
                 if allData.isEmpty {
-                    self.mainView.setHiddenForEmptyView(isHidden: false)
+                    mainView.setHiddenForEmptyView(isHidden: false)
                     
                     let date = self.viewModel.selectedDate.value
                     let image = date.convertString() == Date().convertString() ? Asset.Image.imgNotToday.image : Asset.Image.imgNotBefore.image
-                    self.mainView.setImageForEmptyView(image: image)
+                    mainView.setImageForEmptyView(image: image)
                 } else {
-                    self.mainView.setHiddenForEmptyView(isHidden: true)
+                    mainView.setHiddenForEmptyView(isHidden: true)
                 }
             })
             .disposed(by: disposeBag)
@@ -174,7 +174,9 @@ extension MainVC {
     
     private func initTableViewCellForRow() {
         viewModel.selectedAllData
-            .bind(to: mainView.diaryTableView.rx.items) { tableView, _, element in
+            .bind(to: mainView.diaryTableView.rx.items) { [weak self] tableView, _, element in
+                guard let self else { return UITableViewCell() }
+                
                 let cellIdentifier = element.type == .detail ? DetailDiaryTVCell.id : SimpleDiaryTVCell.id
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
                 
@@ -195,9 +197,9 @@ extension MainVC {
                 guard let self else { return }
                 
                 if diary.type == .detail {
-                    self.pushDetailWriteVC(beforeData: diary)
+                    pushDetailWriteVC(beforeData: diary)
                 } else {
-                    self.presentSimpleWriteVC(beforeData: diary)
+                    presentSimpleWriteVC(beforeData: diary)
                 }
             }
             .disposed(by: disposeBag)
@@ -217,7 +219,7 @@ extension MainVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                self.dismissVC {
+                dismissVC {
                     self.pushDetailWriteVC(beforeData: nil)
                 }
             })
@@ -228,20 +230,20 @@ extension MainVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                self.dismissVC {
+                dismissVC {
                     self.presentSimpleWriteVC(beforeData: nil)
                 }
             })
             .disposed(by: disposeBag)
         
-        self.present(vc, animated: false)
+        present(vc, animated: false)
     }
     
     private func pushDetailWriteVC(beforeData: DiaryModel?) {
         let vc = DetailWriteVC()
         vc.viewModel = self.viewModel
         vc.beforeData = beforeData
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func presentSimpleWriteVC(beforeData: DiaryModel?) {
@@ -250,11 +252,11 @@ extension MainVC {
         vc.modalPresentationStyle = .overFullScreen
         vc.viewModel = self.viewModel
         vc.beforeData = beforeData
-        self.present(vc, animated: true)
+        present(vc, animated: true)
     }
     
     private func pushSettingVC() {
         let vc = SettingVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

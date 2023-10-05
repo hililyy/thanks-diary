@@ -29,12 +29,13 @@ final class SettingAlarmVC: BaseVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        AuthManager.instance?.getNotiStatus { status in
+        AuthManager.instance?.getNotiStatus { [weak self] status in
+            guard let self else { return }
             if status == .denied {
-                self.setNotification(isOn: false)
+                setNotification(isOn: false)
             } else {
                 guard let isPush = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PUSH.rawValue) else { return }
-                self.switchFlag = isPush
+                switchFlag = isPush
             }
         }
     }
@@ -46,7 +47,7 @@ final class SettingAlarmVC: BaseVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.popVC()
+                popVC()
             })
             .disposed(by: disposeBag)
     }
@@ -63,24 +64,23 @@ final class SettingAlarmVC: BaseVC {
         } else {
             offNotification()
         }
-        
-        self.reload()
+        reload()
     }
     
     private func onNotification() {
         LocalNotificationManager.instance?.registNotification(time: Date())
         UserDefaultManager.instance?.set(Date(), key: UserDefaultKey.PUSH_TIME.rawValue)
         UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_PUSH.rawValue)
-        self.viewModel?.selectedTime = Date()
-        self.switchFlag = true
+        viewModel?.selectedTime = Date()
+        switchFlag = true
     }
     
     private func offNotification() {
         LocalNotificationManager.instance?.cancelRegistedNotification()
         UserDefaultManager.instance?.delete(UserDefaultKey.PUSH_TIME.rawValue)
         UserDefaultManager.instance?.set(false, key: UserDefaultKey.IS_PUSH.rawValue)
-        self.viewModel?.selectedTime = nil
-        self.switchFlag = false
+        viewModel?.selectedTime = nil
+        switchFlag = false
     }
     
     private func showSettingAlert() {
@@ -89,8 +89,9 @@ final class SettingAlarmVC: BaseVC {
             vc.alertView.setText(message: L10n.appSetting1, leftButtonText: L10n.cancel, rightButtonText: L10n.appSetting2)
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
-            vc.rightButtonTapHandler = {
-                self.goAppSetting()
+            vc.rightButtonTapHandler = { [weak self] in
+                guard let self else { return }
+                goAppSetting()
             }
             self.present(vc, animated: true)
         }
@@ -112,30 +113,33 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             cell.settingSwitch.isOn = switchFlag
             
             cell.switchTapHandler = {
-                AuthManager.instance?.getNotiStatus { status in
+                AuthManager.instance?.getNotiStatus { [weak self] status in
+                    guard let self else { return }
                     
                     switch status {
                     case .authorized:
                         guard let isPush = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PUSH.rawValue) else { return }
                         UserDefaultManager.instance?.set(!isPush, key: UserDefaultKey.IS_PUSH.rawValue)
-                        self.switchFlag = !isPush
-                        self.setNotification(isOn: !isPush)
-                        self.reload()
+                        switchFlag = !isPush
+                        setNotification(isOn: !isPush)
+                        reload()
                         
                     case .denied:
-                        self.switchFlag = false
-                        self.showSettingAlert()
-                        self.reload()
+                        switchFlag = false
+                        showSettingAlert()
+                        reload()
                         
                     default:
-                        AuthManager.instance?.requestNotiAuth(completion: { result in
-                            self.switchFlag = result
+                        AuthManager.instance?.requestNotiAuth(completion: { [weak self] result in
+                            guard let self else { return }
+                            switchFlag = result
                             if !result {
-                                self.showSettingAlert()
+                                showSettingAlert()
                             }
-                            self.reload()
-                        }, errorHandler: {
-                            self.showErrorPopup()
+                            reload()
+                        }, errorHandler: { [weak self] in
+                            guard let self else { return }
+                            showErrorPopup()
                         })
                     }
                 }
@@ -165,8 +169,8 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .overCurrentContext
                 vc.delegate = self
-                vc.viewModel = self.viewModel
-                self.present(vc, animated: true)
+                vc.viewModel = viewModel
+                present(vc, animated: true)
             } else {
                 toast(message: L10n.onAlarm,
                       withDuration: 1,

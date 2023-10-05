@@ -35,43 +35,43 @@ final class SimpleWriteVC: BaseVC {
         let newData = DiaryModel(
             type: .simple,
             title: "",
-            contents: self.simpleWriteView.getContentsTextViewText(),
-            date: self.viewModel?.selectedDate.value.convertString() ?? Date().convertString()
+            contents: simpleWriteView.getContentsTextViewText(),
+            date: viewModel?.selectedDate.value.convertString() ?? Date().convertString()
         )
         
-        if self.simpleWriteView.isEmptyTextField() {
-            self.showFillTextFieldToastAndDisEnableCompleteButton()
+        if simpleWriteView.isEmptyTextField() {
+            showFillTextFieldToastAndDisEnableCompleteButton()
         } else {
-            if let beforeData = self.beforeData {
-                self.update(beforeData: beforeData, newData: newData)
+            if let safeBeforeData = beforeData {
+                update(beforeData: safeBeforeData, newData: newData)
             } else {
-                self.write(newData)
+                write(newData)
             }
         }
     }
     
     private func update(beforeData: DiaryModel, newData: DiaryModel) {
-        self.viewModel?.updateData(beforeData: beforeData, newData: newData) { [weak self] result in
+        viewModel?.updateData(beforeData: beforeData, newData: newData) { [weak self] result in
             guard let self else { return }
             if result {
-                self.dismissVC {
+                dismissVC {
                     self.viewModel?.readData()
                 }
             } else {
-                self.showErrorPopup()
+                showErrorPopup()
             }
         }
     }
     
     private func write(_ newData: DiaryModel) {
-        self.viewModel?.createData(newData: newData) { [weak self] result in
+        viewModel?.createData(newData: newData) { [weak self] result in
             guard let self else { return }
             if result {
-                self.dismissVC {
+                dismissVC {
                     self.viewModel?.readData()
                 }
             } else {
-                self.showErrorPopup()
+                showErrorPopup()
             }
         }
     }
@@ -79,22 +79,23 @@ final class SimpleWriteVC: BaseVC {
     private func delete() {
         guard let deleteData = beforeData else { return }
         
-        self.viewModel?.deleteData(deleteData: deleteData) { [weak self] result in
+        viewModel?.deleteData(deleteData: deleteData) { [weak self] result in
             guard let self else { return }
             if result {
-                self.dismissVC {
+                dismissVC {
                     self.viewModel?.readData()
                 }
             } else {
-                self.showErrorPopup()
+                showErrorPopup()
             }
         }
     }
     
     private func showFillTextFieldToastAndDisEnableCompleteButton() {
-        self.simpleWriteView.setCompleteButtonEnable(false)
-        self.toast(message: L10n.inputContents, withDuration: 0.5, delay: 1.5, positionType: .top) {
-            self.simpleWriteView.setCompleteButtonEnable(true)
+        simpleWriteView.setCompleteButtonEnable(false)
+        toast(message: L10n.inputContents, withDuration: 0.5, delay: 1.5, positionType: .top) { [weak self] in
+            guard let self else { return }
+            simpleWriteView.setCompleteButtonEnable(true)
         }
     }
 }
@@ -157,8 +158,9 @@ extension SimpleWriteVC {
     private func initCompleteButtonTarget() {
         simpleWriteView.completeButton.rx.tap
             .asDriver()
-            .drive(onNext: {
-                self.complete()
+            .drive(onNext: {[weak self] result in
+                guard let self else { return }
+                complete()
             })
             .disposed(by: disposeBag)
     }
@@ -166,8 +168,9 @@ extension SimpleWriteVC {
     private func initCancelButtonTarget() {
         simpleWriteView.cancelButton.rx.tap
             .asDriver()
-            .drive(onNext: {
-                self.dismissVC()
+            .drive(onNext: {[weak self] result in
+                guard let self else { return }
+                dismissVC()
             })
             .disposed(by: disposeBag)
     }
@@ -175,8 +178,9 @@ extension SimpleWriteVC {
     private func initDeleteButtonTarget() {
         simpleWriteView.deleteButton.rx.tap
             .asDriver()
-            .drive(onNext: {
-                self.delete()
+            .drive(onNext: {[weak self] result in
+                guard let self else { return }
+                delete()
             })
             .disposed(by: disposeBag)
     }

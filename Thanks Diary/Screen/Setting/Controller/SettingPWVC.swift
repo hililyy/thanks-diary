@@ -49,28 +49,28 @@ final class SettingPWVC: BaseVC {
         settingPWView.numberButtonTapHandler = { [weak self] num in
             guard let self else { return }
             
-            self.firstPW.append("\(num)")
-            self.count += 1
-            self.settingPWView.setDotColor(num: self.count)
+            firstPW.append("\(num)")
+            count += 1
+            settingPWView.setDotColor(num: count)
             
-            if self.count == self.maxCount {
-                if self.homeFlag {
-                    if self.firstPW == UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) {
-                        self.registMainToRoot()
+            if count == maxCount {
+                if homeFlag {
+                    if firstPW == UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) {
+                        registMainToRoot()
                     } else {
-                        self.handleIncorrectPassword()
+                        handleIncorrectPassword()
                     }
                 } else {
-                    if self.reEnterFlag {
-                        if self.firstPW == self.secondPW {
-                            UserDefaultManager.instance?.set(self.firstPW, key: UserDefaultKey.PASSWORD.rawValue)
+                    if reEnterFlag {
+                        if firstPW == secondPW {
+                            UserDefaultManager.instance?.set(firstPW, key: UserDefaultKey.PASSWORD.rawValue)
                             UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_PASSWORD.rawValue)
-                            self.popVC()
+                            popVC()
                         } else {
-                            self.handleIncorrectPassword()
+                            handleIncorrectPassword()
                         }
                     } else {
-                        self.handleReEnterPassword()
+                        handleReEnterPassword()
                     }
                 }
             }
@@ -80,9 +80,9 @@ final class SettingPWVC: BaseVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.count = max(0, self.count - 1)
-                _ = self.firstPW.popLast()
-                self.settingPWView.setDotColor(num: self.count)
+                count = max(0, count - 1)
+                _ = firstPW.popLast()
+                settingPWView.setDotColor(num: count)
             })
             .disposed(by: disposeBag)
         
@@ -90,7 +90,7 @@ final class SettingPWVC: BaseVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.popVC()
+                popVC()
             })
             .disposed(by: disposeBag)
     }

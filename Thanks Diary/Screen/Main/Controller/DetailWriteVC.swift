@@ -39,19 +39,19 @@ final class DetailWriteVC: BaseVC {
         )
         
         if let beforeData {
-            self.update(beforeData: beforeData, newData: newData)
+            update(safeBeforeData: beforeData, newData: newData)
         } else {
-            self.write(newData)
+            write(newData)
         }
     }
     
-    private func update(beforeData: DiaryModel, newData: DiaryModel) {
-        viewModel?.updateData(beforeData: beforeData, newData: newData) { [weak self] result in
+    private func update(safeBeforeData: DiaryModel, newData: DiaryModel) {
+        viewModel?.updateData(beforeData: safeBeforeData, newData: newData) { [weak self] result in
             guard let self else { return }
             if result {
-                self.beforeData = newData
+                beforeData = newData
             } else {
-                self.showErrorPopup()
+                showErrorPopup()
             }
         }
     }
@@ -60,17 +60,18 @@ final class DetailWriteVC: BaseVC {
         viewModel?.createData(newData: newData) { [weak self] result in
             guard let self else { return }
             if result {
-                self.beforeData = newData
+                beforeData = newData
             } else {
-                self.showErrorPopup()
+                showErrorPopup()
             }
         }
     }
     
     private func showFillTextFieldToastAndDisEnableCompleteButton() {
         detailWriteView.setCompleteButtonEnable(isOn: false)
-        toast(message: L10n.toast, withDuration: 0.5, delay: 1.5) {
-            self.detailWriteView.setCompleteButtonEnable(isOn: true)
+        toast(message: L10n.toast, withDuration: 0.5, delay: 1.5) { [weak self] in
+            guard let self else { return }
+            detailWriteView.setCompleteButtonEnable(isOn: true)
         }
     }
 }
@@ -107,7 +108,7 @@ extension DetailWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.popVC()
+                popVC()
             })
             .disposed(by: disposeBag)
     }
@@ -117,10 +118,10 @@ extension DetailWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                if self.detailWriteView.isEmptyTextField() {
-                    self.showFillTextFieldToastAndDisEnableCompleteButton()
+                if detailWriteView.isEmptyTextField() {
+                    showFillTextFieldToastAndDisEnableCompleteButton()
                 } else {
-                    self.view.endEditing(true)
+                    view.endEditing(true)
                 }
             })
             .disposed(by: disposeBag)
@@ -131,7 +132,7 @@ extension DetailWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.presentDeleteAlertVC()
+                presentDeleteAlertVC()
             })
             .disposed(by: disposeBag)
     }
@@ -139,10 +140,10 @@ extension DetailWriteVC {
     private func initCompleteHandler() {
         detailWriteView.completeHandler = { [weak self] in
             guard let self else { return }
-            if self.detailWriteView.isEmptyTextField() {
-                self.showFillTextFieldToastAndDisEnableCompleteButton()
+            if detailWriteView.isEmptyTextField() {
+                showFillTextFieldToastAndDisEnableCompleteButton()
             } else {
-                self.complete()
+                complete()
             }
         }
     }
@@ -159,7 +160,7 @@ extension DetailWriteVC {
         vc.modalPresentationStyle = .overCurrentContext
         vc.rightButtonTapHandler = { [weak self] in
             guard let self else { return }
-            self.viewModel?.deleteData(deleteData: deleteData) { result in
+            viewModel?.deleteData(deleteData: deleteData) { result in
                 self.popVC()
                 if !result {
                     self.showErrorPopup()

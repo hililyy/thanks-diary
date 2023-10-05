@@ -42,10 +42,10 @@ final class PageVC: BaseVC {
             guard let self else { return }
             if self.currentIndex == self.pageList.count - 1 {
                 UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_RE_ENTRY_USER.rawValue)
-                self.registMainToRoot()
-                return
+                registMainToRoot()
+            } else {
+                moveNextPage()
             }
-            self.moveNextPage()
         }
     }
 

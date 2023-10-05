@@ -15,4 +15,5 @@ enum ErrorCase: Error {
     case ERROR_NETWORK
     case AUTHENTICATION
     case APP_UPDATE_REQUIRED
+    case ETC_ERROR
 }

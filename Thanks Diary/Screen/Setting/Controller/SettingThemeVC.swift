@@ -37,8 +37,8 @@ final class SettingThemeVC: BaseVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 UserDefaultManager.instance?.set(ThemeMode.dark.rawValue, key: UserDefaultKey.THEME_MODE.rawValue)
-                self.settingThemeView.setTheme(theme: .dark)
-                self.viewWillAppear(true)
+                settingThemeView.setTheme(theme: .dark)
+                viewWillAppear(true)
             })
             .disposed(by: disposeBag)
         
@@ -47,8 +47,8 @@ final class SettingThemeVC: BaseVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 UserDefaultManager.instance?.set(ThemeMode.light.rawValue, key: UserDefaultKey.THEME_MODE.rawValue)
-                self.settingThemeView.setTheme(theme: .light)
-                self.viewWillAppear(true)
+                settingThemeView.setTheme(theme: .light)
+                viewWillAppear(true)
             })
             .disposed(by: disposeBag)
         
@@ -56,7 +56,7 @@ final class SettingThemeVC: BaseVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                self.popVC()
+                popVC()
             })
             .disposed(by: disposeBag)
     }

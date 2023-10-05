@@ -51,8 +51,9 @@ final class SettingVC: BaseVC {
     private func initTarget() {
         settingView.backButton.rx.tap
             .asDriver()
-            .drive(onNext: {
-                self.popVC()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                popVC()
             })
             .disposed(by: disposeBag)
     }
@@ -76,11 +77,11 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             
             cell.switchTapHandler = { [weak self] in
                 guard let self else { return }
-                self.alarmFlag = !self.alarmFlag
-                UserDefaultManager.instance?.set(self.alarmFlag, key: UserDefaultKey.IS_PASSWORD.rawValue)
-                if self.alarmFlag {
+                alarmFlag = !alarmFlag
+                UserDefaultManager.instance?.set(alarmFlag, key: UserDefaultKey.IS_PASSWORD.rawValue)
+                if alarmFlag {
                     let vc = SettingPWVC()
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    navigationController?.pushViewController(vc, animated: true)
                 } else {
                     UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
                 }
@@ -108,20 +109,20 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case 1: // 알림
             let vc = SettingAlarmVC()
             vc.viewModel = viewModel
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
             
         case 2: // 테마 설정
             let vc = SettingThemeVC()
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
             
         case 3: // 건의하기
             let vc = SettingSuggestVC()
             vc.viewModel = viewModel
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
             
         case 4: // 오픈소스 라이선스
             let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
-                    navigationController?.pushViewController(acknowList, animated: true)
+            navigationController?.pushViewController(acknowList, animated: true)
             
         case 5: // 앱 버전
             LocalNotificationManager.instance?.printRegistedNotification()

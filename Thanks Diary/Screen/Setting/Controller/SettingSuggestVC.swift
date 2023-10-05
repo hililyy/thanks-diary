@@ -34,19 +34,22 @@ final class SettingSuggestVC: BaseVC {
     private func initTarget() {
         settingSuggestView.backButton.rx.tap
             .asDriver()
-            .drive(onNext: {
-                self.popVC()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                popVC()
             })
             .disposed(by: disposeBag)
         
         settingSuggestView.writeButton.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                
                 let vc = SettingSuggestWriteVC()
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .overFullScreen
-                vc.viewModel = self.viewModel
-                self.present(vc, animated: true)
+                vc.viewModel = viewModel
+                present(vc, animated: true)
             })
             .disposed(by: disposeBag)
     }
@@ -55,11 +58,12 @@ final class SettingSuggestVC: BaseVC {
         viewModel?.suggestData
             .bind(to: settingSuggestView.tableView.rx.items(
                 cellIdentifier: SettingSuggestTVCell.id,
-                cellType: SettingSuggestTVCell.self)) { _, item, cell in
+                cellType: SettingSuggestTVCell.self)) {  [weak self] _, item, cell in
+                    guard let self else { return }
                     cell.contentsLabel.text = item.contents
                     cell.statusLabel.text = SuggestType(rawValue: item.status ?? "")?.description
                     cell.setStatusLabelUI(SuggestType(rawValue: item.status ?? "") ?? .waiting)
-                    self.settingSuggestView.loading.stopAnimating()
+                    settingSuggestView.loading.stopAnimating()
                 }
                 .disposed(by: disposeBag)
     }
