@@ -65,10 +65,8 @@ final class CoreDataManager {
             
             return detailData
             
-        } catch let error as NSError {
+        } catch {
             print(ErrorCase.NOT_SAVE_DATA)
-            print("Could not save. \(error), \(error.userInfo)")
-            
             return nil
         }
     }
@@ -76,7 +74,7 @@ final class CoreDataManager {
     func getSimpleDataRx() -> Observable<[String: [DiaryModel]]> {
         return Observable.create { emitter in
             let result = self.getSimpleData()
-            if let result = result {
+            if let result {
                 emitter.onNext(result)
                 emitter.onCompleted()
             } else {

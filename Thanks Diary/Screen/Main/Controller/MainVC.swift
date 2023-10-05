@@ -174,9 +174,7 @@ extension MainVC {
     
     private func initTableViewCellForRow() {
         viewModel.selectedAllData
-            .bind(to: mainView.diaryTableView.rx.items) { [weak self] tableView, _, element in
-                guard let self else { return UITableViewCell() }
-                
+            .bind(to: mainView.diaryTableView.rx.items) { tableView, _, element in
                 let cellIdentifier = element.type == .detail ? DetailDiaryTVCell.id : SimpleDiaryTVCell.id
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
                 
@@ -241,7 +239,7 @@ extension MainVC {
     
     private func pushDetailWriteVC(beforeData: DiaryModel?) {
         let vc = DetailWriteVC()
-        vc.viewModel = self.viewModel
+        vc.viewModel = viewModel
         vc.beforeData = beforeData
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -250,7 +248,7 @@ extension MainVC {
         let vc = SimpleWriteVC()
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overFullScreen
-        vc.viewModel = self.viewModel
+        vc.viewModel = viewModel
         vc.beforeData = beforeData
         present(vc, animated: true)
     }
