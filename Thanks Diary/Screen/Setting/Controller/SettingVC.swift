@@ -24,16 +24,17 @@ final class SettingVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        settingView.tableView.dataSource = self
-        settingView.tableView.delegate = self
-        
-        initTarget()
+        initalize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        changePasswordData()
+    }
+    
+    // MARK: - Function
+
+    private func changePasswordData() {
         if let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue),
             password.isEmpty {
             UserDefaultManager.instance?.set(false, key: UserDefaultKey.IS_PASSWORD.rawValue)
@@ -44,18 +45,6 @@ final class SettingVC: BaseVC {
         }
         
         settingView.tableView.reloadData()
-    }
-    
-    // MARK: - Function
-    
-    private func initTarget() {
-        settingView.backButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self else { return }
-                popVC()
-            })
-            .disposed(by: disposeBag)
     }
 }
 
@@ -77,11 +66,10 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             
             cell.switchTapHandler = { [weak self] in
                 guard let self else { return }
-                alarmFlag = !alarmFlag
+                alarmFlag.toggle()
                 UserDefaultManager.instance?.set(alarmFlag, key: UserDefaultKey.IS_PASSWORD.rawValue)
                 if alarmFlag {
-                    let vc = SettingPWVC()
-                    navigationController?.pushViewController(vc, animated: true)
+                    pushSettingPWVC()
                 } else {
                     UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
                 }
@@ -103,31 +91,73 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0: // 암호
-            break
-            
-        case 1: // 알림
-            let vc = SettingAlarmVC()
-            vc.viewModel = viewModel
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case 2: // 테마 설정
-            let vc = SettingThemeVC()
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case 3: // 건의하기
-            let vc = SettingSuggestVC()
-            vc.viewModel = viewModel
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case 4: // 오픈소스 라이선스
-            let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
-            navigationController?.pushViewController(acknowList, animated: true)
-            
-        case 5: // 앱 버전
+        case 1:
+            pushSettingAlarmVC()
+        case 2:
+            pushSettingThemeVC()
+        case 3:
+            pushSettingSuggestVC()
+        case 4:
+            pushOpenSourceLicenseVC()
+        case 5:
             LocalNotificationManager.instance?.printRegistedNotification()
         default:
             break
         }
+    }
+}
+
+// MARK: - initalize
+
+extension SettingVC {
+    private func initalize() {
+        initDelegate()
+        initTarget()
+    }
+    
+    private func initDelegate() {
+        settingView.tableView.dataSource = self
+        settingView.tableView.delegate = self
+    }
+    
+    private func initTarget() {
+        settingView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                popVC()
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - View Change
+
+extension SettingVC {
+    private func pushSettingPWVC() {
+        let vc = SettingPWVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func pushSettingAlarmVC() {
+        let vc = SettingAlarmVC()
+        vc.viewModel = viewModel
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func pushSettingThemeVC() {
+        let vc = SettingThemeVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func pushSettingSuggestVC() {
+        let vc = SettingSuggestVC()
+        vc.viewModel = viewModel
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func pushOpenSourceLicenseVC() {
+        let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
+        navigationController?.pushViewController(acknowList, animated: true)
     }
 }

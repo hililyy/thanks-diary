@@ -30,69 +30,52 @@ final class SettingPWVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initalize()
-        initTarget()
     }
     
     // MARK: - Function
     
-    private func initalize() {
-        settingPWView.backButton.isHidden = homeFlag
+    private func initNumberButtonTapHandler(_ num: Int) {
+        firstPW.append("\(num)")
+        count += 1
+        settingPWView.setDotColor(num: count)
         
-        if homeFlag {
-            settingPWView.setContentsLabel(text: L10n.passwordContents2)
-        } else {
-            UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
+        if isLastInput() {
+            if homeFlag {
+                handleFromHome()
+            } else {
+                handleFromSetting()
+            }
         }
     }
     
-    private func initTarget() {
-        settingPWView.numberButtonTapHandler = { [weak self] num in
-            guard let self else { return }
-            
-            firstPW.append("\(num)")
-            count += 1
-            settingPWView.setDotColor(num: count)
-            
-            if count == maxCount {
-                if homeFlag {
-                    if firstPW == UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) {
-                        registMainToRoot()
-                    } else {
-                        handleIncorrectPassword()
-                    }
-                } else {
-                    if reEnterFlag {
-                        if firstPW == secondPW {
-                            UserDefaultManager.instance?.set(firstPW, key: UserDefaultKey.PASSWORD.rawValue)
-                            UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_PASSWORD.rawValue)
-                            popVC()
-                        } else {
-                            handleIncorrectPassword()
-                        }
-                    } else {
-                        handleReEnterPassword()
-                    }
-                }
-            }
+    private func isLastInput() -> Bool {
+        return count == maxCount
+    }
+    
+    private func handleFromHome() {
+        if firstPW == UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) {
+            registMainToRoot()
+        } else {
+            handleIncorrectPassword()
         }
-        
-        settingPWView.deleteButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self = self else { return }
-                count = max(0, count - 1)
-                _ = firstPW.popLast()
-                settingPWView.setDotColor(num: count)
-            })
-            .disposed(by: disposeBag)
-        
-        settingPWView.backButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self else { return }
-                popVC()
-            })
-            .disposed(by: disposeBag)
+    }
+    
+    private func handleFromSetting() {
+        if reEnterFlag {
+            handleReEnter()
+        } else {
+            handleReEnterPassword()
+        }
+    }
+    
+    private func handleReEnter() {
+        if firstPW == secondPW {
+            UserDefaultManager.instance?.set(firstPW, key: UserDefaultKey.PASSWORD.rawValue)
+            UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_PASSWORD.rawValue)
+            popVC()
+        } else {
+            handleIncorrectPassword()
+        }
     }
     
     private func handleIncorrectPassword() {
@@ -111,5 +94,59 @@ final class SettingPWVC: BaseVC {
         firstPW = ""
         reEnterFlag = true
         count = 0
+    }
+}
+
+// MARK: - initalize
+
+extension SettingPWVC {
+    private func initalize() {
+        initUI()
+        initTarget()
+    }
+    
+    private func initUI() {
+        settingPWView.backButton.isHidden = homeFlag
+        
+        if homeFlag {
+            settingPWView.setContentsLabel(text: L10n.passwordContents2)
+        } else {
+            UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
+        }
+    }
+    
+    private func initTarget() {
+        initNumberButtonTapHander()
+        initDeleteButtonTarget()
+        initBackButtonTarget()
+    }
+    
+    private func initNumberButtonTapHander() {
+        settingPWView.numberButtonTapHandler = { [weak self] num in
+            guard let self else { return }
+            initNumberButtonTapHandler(num)
+        }
+    }
+    
+    private func initDeleteButtonTarget() {
+        settingPWView.deleteButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                count = max(0, count - 1)
+                _ = firstPW.popLast()
+                settingPWView.setDotColor(num: count)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initBackButtonTarget() {
+        settingPWView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                popVC()
+            })
+            .disposed(by: disposeBag)
     }
 }
