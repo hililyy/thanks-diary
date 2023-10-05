@@ -12,18 +12,17 @@ import RxCocoa
 final class MainViewModel {
     
     var disposeBag = DisposeBag()
-    var allDetailDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:]) // 자세한 일기 전체
-    var allSimpleDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:]) // 간단한 일기 전체
+    var allDetailDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:])
+    var allSimpleDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:])
 
-    // 선택한 날짜의 일기 데이터
     lazy var selectedAllData: Observable<[DiaryModel]> = selectedDate.map { date in
         let detailData = self.allDetailDataRx.value[date.convertString()] ?? []
         let simpleData = self.allSimpleDataRx.value[date.convertString()] ?? []
         return detailData + simpleData
     }
     
-    var selectedDate = BehaviorRelay<Date>(value: Date()) // 선택한 날짜
-    var diaryDates: Set<String> = [] // 일기를 작성한 날짜 Set
+    var selectedDate = BehaviorRelay<Date>(value: Date())
+    var diaryDates: Set<String> = []
     
     init() {
         readData()

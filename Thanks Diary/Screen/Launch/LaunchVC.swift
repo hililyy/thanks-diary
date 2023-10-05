@@ -35,7 +35,7 @@ final class LaunchVC: BaseVC {
         LottieManager.instance?.setLottie(goLottie)
     }
     
-    // 비밀번호 ""으로 설정된 유저 비밀번호 변경(초기화)
+    // 비밀번호 ""으로 설정된 유저 비밀번호 변경(초기화 / 이전버전 앱 오류 해결방안)
     private func initPassword() {
         guard let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) else { return }
         if password.isEmpty {

@@ -54,8 +54,8 @@ final class MainView: BaseView {
         view.backgroundColor = Asset.Color.gray3.color
     }
     
-    private let topView = UIView() // 오늘, 설정 버튼이 들어가는 뷰
-    private let titleView = UIView() // 오늘 날짜 뷰
+    private let todayAndSettingTopView = UIView()
+    private let todayLabelView = UIView()
 
     private let todayLabel = UILabel().then { label in
         label.font = FontFamily.NanumBarunGothic.light.font(size: 20)
@@ -106,19 +106,19 @@ final class MainView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([topView,
+        addSubviews([todayAndSettingTopView,
                      calendar,
                      lineViewX,
-                     titleView,
+                     todayLabelView,
                      diaryTableView,
                      emptyImageView,
                      floatingButton])
-        topView.addSubviews([todayButton, settingButton])
-        titleView.addSubview(todayLabel)
+        todayAndSettingTopView.addSubviews([todayButton, settingButton])
+        todayLabelView.addSubview(todayLabel)
     }
     
     override func initConstraints() {
-        topView.snp.makeConstraints { make in
+        todayAndSettingTopView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.left.equalTo(snp.left)
             make.right.equalTo(snp.right)
@@ -129,15 +129,15 @@ final class MainView: BaseView {
         todayButton.snp.makeConstraints { make in
             make.width.equalTo(45)
             make.height.equalTo(35)
-            make.left.equalTo(topView.snp.left).offset(20)
-            make.bottom.equalTo(topView.snp.bottom)
+            make.left.equalTo(todayAndSettingTopView.snp.left).offset(20)
+            make.bottom.equalTo(todayAndSettingTopView.snp.bottom)
         }
         
         settingButton.snp.makeConstraints { make in
             make.width.equalTo(52)
             make.height.equalTo(52)
-            make.top.equalTo(topView.snp.top)
-            make.right.equalTo(topView.snp.right).offset(-10)
+            make.top.equalTo(todayAndSettingTopView.snp.top)
+            make.right.equalTo(todayAndSettingTopView.snp.right).offset(-10)
         }
         
         calendar.snp.makeConstraints { make in
@@ -150,23 +150,23 @@ final class MainView: BaseView {
         lineViewX.snp.makeConstraints { make in
             make.left.equalTo(snp.left)
             make.right.equalTo(snp.right)
-            make.bottom.equalTo(titleView.snp.top)
+            make.bottom.equalTo(todayLabelView.snp.top)
             make.height.equalTo(1)
         }
         
-        titleView.snp.makeConstraints { make in
+        todayLabelView.snp.makeConstraints { make in
             make.left.equalTo(snp.left)
             make.right.equalTo(snp.right)
             make.height.equalTo(50)
         }
         
         todayLabel.snp.makeConstraints { make in
-            make.left.equalTo(titleView.snp.left).offset(25)
-            make.centerY.equalTo(titleView.snp.centerY)
+            make.left.equalTo(todayLabelView.snp.left).offset(25)
+            make.centerY.equalTo(todayLabelView.snp.centerY)
         }
         
         diaryTableView.snp.makeConstraints { make in
-            make.top.equalTo(titleView.snp.bottom)
+            make.top.equalTo(todayLabelView.snp.bottom)
             make.left.equalTo(snp.left)
             make.right.equalTo(snp.right)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)

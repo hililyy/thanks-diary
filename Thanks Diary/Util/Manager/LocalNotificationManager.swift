@@ -20,7 +20,8 @@ final class LocalNotificationManager {
     
     func printRegistedNotification() {
         UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-            for request in requests { // 로그 라이브러리로 테스트하기, print사용시 에러 나도록 lint 설정, 어디서 몇번째 줄에서 나왔는지 알 수 있음
+            // TODO: 로그 라이브러리로 테스트하기, print사용시 에러 나도록 lint 설정, 어디서 몇번째 줄에서 나왔는지 알 수 있음
+            for request in requests {
                 print("Identifier: \(request.identifier)")
                 print("Title: \(request.content.title)")
                 print("Body: \(request.content.body)")
