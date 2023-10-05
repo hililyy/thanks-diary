@@ -22,62 +22,32 @@ final class SimpleWriteVC: BaseVC {
     
     override func loadView() {
         view = simpleWriteView
-        simpleWriteView.setMaxCount(count: maxCount)
     }
     
     override func viewDidLoad() {
-        simpleWriteView.contentsTextView.delegate = self
-        simpleWriteView.maxCount = maxCount
         initUI()
         initTarget()
     }
     
     // MARK: - Function
     
-    private func initUI() {
-        simpleWriteView.setHiddenForDeleteButton(beforeData == nil)
+    private func complete() {
+        let newData = DiaryModel(
+            type: .simple,
+            title: "",
+            contents: self.simpleWriteView.getContentsTextViewText(),
+            date: self.viewModel?.selectedDate.value.convertString() ?? Date().convertString()
+        )
         
-        if let beforeData {
-            simpleWriteView.setContentsTextView(text: beforeData.contents)
+        if self.simpleWriteView.isEmptyTextField() {
+            self.showFillTextFieldToastAndDisEnableCompleteButton()
+        } else {
+            if let beforeData = self.beforeData {
+                self.update(beforeData: beforeData, newData: newData)
+            } else {
+                self.write(newData)
+            }
         }
-    }
-    
-    private func initTarget() {
-        simpleWriteView.completeButton.rx.tap
-            .asDriver()
-            .drive(onNext: {
-                let newData = DiaryModel(
-                    type: .simple,
-                    title: "",
-                    contents: self.simpleWriteView.getContentsTextViewText(),
-                    date: self.viewModel?.selectedDate.value.convertString() ?? Date().convertString()
-                )
-                
-                if self.simpleWriteView.isEmptyTextField() {
-                    self.showFillTextFieldToast()
-                } else {
-                    if let beforeData = self.beforeData {
-                        self.update(beforeData: beforeData, newData: newData)
-                    } else {
-                        self.write(newData)
-                    }
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        simpleWriteView.cancelButton.rx.tap
-            .asDriver()
-            .drive(onNext: {
-                self.dismissVC()
-            })
-            .disposed(by: disposeBag)
-        
-        simpleWriteView.deleteButton.rx.tap
-            .asDriver()
-            .drive(onNext: {
-                self.deleteDiary()
-            })
-            .disposed(by: disposeBag)
     }
     
     private func update(beforeData: DiaryModel, newData: DiaryModel) {
@@ -106,7 +76,7 @@ final class SimpleWriteVC: BaseVC {
         }
     }
     
-    private func deleteDiary() {
+    private func delete() {
         guard let deleteData = beforeData else { return }
         
         self.viewModel?.deleteData(deleteData: deleteData) { [weak self] result in
@@ -121,7 +91,7 @@ final class SimpleWriteVC: BaseVC {
         }
     }
     
-    private func showFillTextFieldToast() {
+    private func showFillTextFieldToastAndDisEnableCompleteButton() {
         self.simpleWriteView.setCompleteButtonEnable(false)
         self.toast(message: L10n.inputContents, withDuration: 0.5, delay: 1.5, positionType: .top) {
             self.simpleWriteView.setCompleteButtonEnable(true)
@@ -133,14 +103,11 @@ final class SimpleWriteVC: BaseVC {
 
 extension SimpleWriteVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        // 이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
         let newLength = textView.text.count - range.length + text.count
         let koreanMaxCount = maxCount + 1
         
-        // 글자수가 초과 된 경우 or 초과되지 않은 경우
         if newLength > koreanMaxCount {
-            let overflow = newLength - koreanMaxCount // 초과된 글자수
+            let overflow = newLength - koreanMaxCount
             if text.count < overflow { return true }
             let index = text.index(text.endIndex, offsetBy: -overflow)
             let newText = text[..<index]
@@ -160,5 +127,61 @@ extension SimpleWriteVC: UITextViewDelegate {
         if textView.text.count > maxCount {
             textView.text.removeLast()
         }
+    }
+}
+
+// MARK: - initalize
+
+extension SimpleWriteVC {
+    private func initalize() {
+        initDelegate()
+        initUI()
+        initTarget()
+    }
+    
+    private func initUI() {
+        simpleWriteView.maxCount = maxCount
+        simpleWriteView.setHiddenForDeleteButton(beforeData == nil)
+        
+        if let beforeData {
+            simpleWriteView.setContentsTextView(text: beforeData.contents)
+        }
+    }
+    
+    private func initTarget() {
+        initCompleteButtonTarget()
+        initCancelButtonTarget()
+        initDeleteButtonTarget()
+    }
+    
+    private func initCompleteButtonTarget() {
+        simpleWriteView.completeButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.complete()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initCancelButtonTarget() {
+        simpleWriteView.cancelButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.dismissVC()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initDeleteButtonTarget() {
+        simpleWriteView.deleteButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.delete()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initDelegate() {
+        simpleWriteView.contentsTextView.delegate = self
     }
 }

@@ -25,62 +25,10 @@ final class DetailWriteVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        initTarget()
+        initalize()
     }
     
     // MARK: - Function
-    
-    private func configureUI() {
-        detailWriteView.setTopLabelData(date: viewModel?.selectedDate.value)
-        
-        if let beforeData {
-            detailWriteView.setTextFieldData(
-                titleText: beforeData.title,
-                contentsText: beforeData.contents)
-        } else {
-            detailWriteView.focusTitleTextViewKeyboard()
-        }
-    }
-    
-    private func initTarget() {
-        detailWriteView.backButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self else { return }
-                self.popVC()
-            })
-            .disposed(by: disposeBag)
-        
-        detailWriteView.completeButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self else { return }
-                if self.detailWriteView.isEmptyTextField() {
-                    self.showFillTextFieldToast()
-                } else {
-                    self.view.endEditing(true)
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        detailWriteView.deleteButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self else { return }
-                self.presentDeleteAlertVC()
-            })
-            .disposed(by: disposeBag)
-        
-        detailWriteView.completeHandler = { [weak self] in
-            guard let self else { return }
-            if self.detailWriteView.isEmptyTextField() {
-                self.showFillTextFieldToast()
-            } else {
-                self.complete()
-            }
-        }
-    }
     
     private func complete() {
         let newData = DiaryModel(
@@ -94,13 +42,6 @@ final class DetailWriteVC: BaseVC {
             self.update(beforeData: beforeData, newData: newData)
         } else {
             self.write(newData)
-        }
-    }
-    
-    private func showFillTextFieldToast() {
-        detailWriteView.setCompleteButtonEnable(isOn: false)
-        toast(message: L10n.toast, withDuration: 0.5, delay: 1.5) {
-            self.detailWriteView.setCompleteButtonEnable(isOn: true)
         }
     }
     
@@ -126,6 +67,90 @@ final class DetailWriteVC: BaseVC {
         }
     }
     
+    private func showFillTextFieldToastAndDisEnableCompleteButton() {
+        detailWriteView.setCompleteButtonEnable(isOn: false)
+        toast(message: L10n.toast, withDuration: 0.5, delay: 1.5) {
+            self.detailWriteView.setCompleteButtonEnable(isOn: true)
+        }
+    }
+}
+
+// MARK: - initalize
+
+extension DetailWriteVC {
+    private func initalize() {
+        initUI()
+        initTarget()
+    }
+    
+    private func initUI() {
+        detailWriteView.setTopLabelData(date: viewModel?.selectedDate.value)
+        
+        if let beforeData {
+            detailWriteView.setTextFieldData(
+                titleText: beforeData.title,
+                contentsText: beforeData.contents)
+        } else {
+            detailWriteView.focusTitleTextViewKeyboard()
+        }
+    }
+    
+    private func initTarget() {
+        initBackButtonTarget()
+        initCompleteButtonTarget()
+        initDeleteButtonTarget()
+        initCompleteHandler()
+    }
+    
+    private func initBackButtonTarget() {
+        detailWriteView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                self.popVC()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initCompleteButtonTarget() {
+        detailWriteView.completeButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                if self.detailWriteView.isEmptyTextField() {
+                    self.showFillTextFieldToastAndDisEnableCompleteButton()
+                } else {
+                    self.view.endEditing(true)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initDeleteButtonTarget() {
+        detailWriteView.deleteButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                self.presentDeleteAlertVC()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initCompleteHandler() {
+        detailWriteView.completeHandler = { [weak self] in
+            guard let self else { return }
+            if self.detailWriteView.isEmptyTextField() {
+                self.showFillTextFieldToastAndDisEnableCompleteButton()
+            } else {
+                self.complete()
+            }
+        }
+    }
+}
+
+// MARK: - View Change
+
+extension DetailWriteVC {
     private func presentDeleteAlertVC() {
         guard let deleteData = beforeData else { return }
         
