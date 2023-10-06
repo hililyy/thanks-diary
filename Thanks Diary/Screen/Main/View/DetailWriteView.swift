@@ -219,7 +219,7 @@ final class DetailWriteView: BaseView {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        removeNotification()
     }
     
     func removeNotification() {

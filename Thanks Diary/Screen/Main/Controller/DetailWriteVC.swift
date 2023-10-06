@@ -13,7 +13,7 @@ final class DetailWriteVC: BaseVC {
     
     // MARK: - Property
     
-    private let detailWriteView = DetailWriteView()
+    private var detailWriteView = DetailWriteView()
     var viewModel: MainViewModel?
     var beforeData: DiaryModel?
     
@@ -163,13 +163,15 @@ extension DetailWriteVC {
     }
     
     private func initKeyBoardWillShowHandler() {
-        detailWriteView.keyBoardWillShowHandler = {
+        detailWriteView.keyBoardWillShowHandler = { [weak self] in
+            guard let self else { return }
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         }
     }
     
     private func initKeyBoardWillHideHandler() {
-        detailWriteView.keyBoardWillHideHandler = {
+        detailWriteView.keyBoardWillHideHandler = { [weak self] in
+            guard let self else { return }
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         }
     }
