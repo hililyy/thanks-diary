@@ -158,7 +158,7 @@ extension SettingVC {
     }
     
     private func pushOpenSourceLicenseVC() {
-        let acknowList = AcknowListViewController(fileNamed: "Pods-Thanks Diary-acknowledgements")
+        let acknowList = AcknowListViewController(fileNamed: "Package")
         navigationController?.pushViewController(acknowList, animated: true)
     }
 }

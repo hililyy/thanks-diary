@@ -27,6 +27,7 @@
 		020A8C732ACCF73700E855EE /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A8C722ACCF73700E855EE /* Array.swift */; };
 		020A8DED2ACFAD6600E855EE /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A8DEC2ACFAD6600E855EE /* CellIdentifier.swift */; };
 		020A8DEF2ACFADB800E855EE /* ReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A8DEE2ACFADB800E855EE /* ReloadProtocol.swift */; };
+		020A8DF12ACFD11F00E855EE /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 020A8DF02ACFD11F00E855EE /* Package.resolved */; };
 		0229553D2A66867D004BF800 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553C2A66867D004BF800 /* UIControl.swift */; };
 		022955402A669273004BF800 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553F2A669273004BF800 /* BaseView.swift */; };
 		022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955412A669BA0004BF800 /* BaseTVCell.swift */; };
@@ -147,6 +148,7 @@
 		020A8C722ACCF73700E855EE /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		020A8DEC2ACFAD6600E855EE /* CellIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifier.swift; sourceTree = "<group>"; };
 		020A8DEE2ACFADB800E855EE /* ReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadProtocol.swift; sourceTree = "<group>"; };
+		020A8DF02ACFD11F00E855EE /* Package.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Package.resolved; path = "Thanks Diary.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved"; sourceTree = "<group>"; };
 		0229553C2A66867D004BF800 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		0229553F2A669273004BF800 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		022955412A669BA0004BF800 /* BaseTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTVCell.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 		2A0D87F228A540FB00576E56 = {
 			isa = PBXGroup;
 			children = (
+				020A8DF02ACFD11F00E855EE /* Package.resolved */,
 				029392442ABD971700FB2553 /* swiftgen.yml */,
 				029392412ABD955B00FB2553 /* .swiftlint.yml */,
 				2A0D87FD28A540FB00576E56 /* Thanks Diary */,
@@ -810,6 +813,7 @@
 				2A0D881A28ABB83A00576E56 /* dot.json in Resources */,
 				026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */,
 				029392452ABD971700FB2553 /* swiftgen.yml in Resources */,
+				020A8DF12ACFD11F00E855EE /* Package.resolved in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
