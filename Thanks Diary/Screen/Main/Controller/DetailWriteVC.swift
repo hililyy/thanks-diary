@@ -29,6 +29,11 @@ final class DetailWriteVC: BaseVC {
         initalize()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        focusTitleTextViewKeyboard()
+    }
+    
     // MARK: - Function
     
     private func complete() {
@@ -75,6 +80,12 @@ final class DetailWriteVC: BaseVC {
             detailWriteView.setCompleteButtonEnable(isOn: true)
         }
     }
+    
+    private func focusTitleTextViewKeyboard() {
+        if beforeData == nil {
+            detailWriteView.focusTitleTextViewKeyboard()
+        }
+    }
 }
 
 // MARK: - initalize
@@ -92,8 +103,6 @@ extension DetailWriteVC {
             detailWriteView.setTextFieldData(
                 titleText: beforeData.title,
                 contentsText: beforeData.contents)
-        } else {
-            detailWriteView.focusTitleTextViewKeyboard()
         }
     }
     
