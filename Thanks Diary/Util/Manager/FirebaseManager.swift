@@ -29,7 +29,7 @@ final class FirebaseManager {
             guard let allObject = snapshot.children.allObjects as? [DataSnapshot] else { return }
             for snap in allObject {
                 guard let value = snap.value as? [String: Any] else { return }
-                values.append(value)
+                values.insert(value, at: 0)
             }
             
             if let data = CommonUtilManager.instance?.dictionaryToObject(
