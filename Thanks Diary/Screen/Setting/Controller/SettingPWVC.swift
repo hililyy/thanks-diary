@@ -53,7 +53,8 @@ final class SettingPWVC: BaseVC {
     }
     
     private func handleFromHome() {
-        if firstPW == UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) {
+        let oldPassword = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue)
+        if firstPW == oldPassword {
             registMainToRoot()
         } else {
             handleIncorrectPassword()

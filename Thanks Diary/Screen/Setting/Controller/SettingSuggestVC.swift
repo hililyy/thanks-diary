@@ -19,19 +19,31 @@ final class SettingSuggestVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
+        super.loadView()
         view = settingSuggestView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initalize()
         viewModel?.getSuggestDatas()
+    }
+}
+
+// MARK: - initalize
+
+extension SettingSuggestVC {
+    private func initalize() {
         initTarget()
         initTable()
     }
     
-    // MARK: - Function
-    
     private func initTarget() {
+        initBackButtonTarget()
+        initWriteButtonTarget()
+    }
+    
+    private func initBackButtonTarget() {
         settingSuggestView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
@@ -39,17 +51,14 @@ final class SettingSuggestVC: BaseVC {
                 popVC()
             })
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func initWriteButtonTarget() {
         settingSuggestView.writeButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                
-                let vc = SettingSuggestWriteVC()
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .overFullScreen
-                vc.viewModel = viewModel
-                present(vc, animated: true)
+                presentSettingSuggestWriteVC()
             })
             .disposed(by: disposeBag)
     }
@@ -66,5 +75,17 @@ final class SettingSuggestVC: BaseVC {
                     settingSuggestView.loading.stopAnimating()
                 }
                 .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - View Change
+
+extension SettingSuggestVC {
+    private func presentSettingSuggestWriteVC() {
+        let vc = SettingSuggestWriteVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        vc.viewModel = viewModel
+        present(vc, animated: true)
     }
 }

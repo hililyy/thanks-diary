@@ -23,12 +23,17 @@ final class SettingAlarmVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTarget()
-        settingAlarmView.tableView.dataSource = self
-        settingAlarmView.tableView.delegate = self
+        initalize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        changeSwitchStatusByAuthStatus()
+    }
+    
+    // MARK: - Function
+    
+    private func changeSwitchStatusByAuthStatus() {
         AuthManager.instance?.getNotiStatus { [weak self] status in
             guard let self else { return }
             if status == .denied {
@@ -40,21 +45,9 @@ final class SettingAlarmVC: BaseVC {
         }
     }
     
-    // MARK: - Function
-    
-    private func initTarget() {
-        settingAlarmView.backButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self else { return }
-                popVC()
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    private func changeDateToString(date: Date, formatString: String) -> String {
+    private func changeDateToString(date: Date, format: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = formatString
+        dateFormatter.dateFormat = format
         return dateFormatter.string(from: date)
     }
     
@@ -83,17 +76,45 @@ final class SettingAlarmVC: BaseVC {
         switchFlag = false
     }
     
-    private func showSettingAlert() {
-        DispatchQueue.main.async {
-            let vc = AlertVC()
-            vc.alertView.setText(message: L10n.appSetting1, leftButtonText: L10n.cancel, rightButtonText: L10n.appSetting2)
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.rightButtonTapHandler = { [weak self] in
-                guard let self else { return }
-                goAppSetting()
+    private func changeSwitch() {
+        guard let isPush = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PUSH.rawValue) else { return }
+        UserDefaultManager.instance?.set(!isPush, key: UserDefaultKey.IS_PUSH.rawValue)
+        switchFlag = !isPush
+        setNotification(isOn: switchFlag)
+        reload()
+    }
+    
+    private func induceOnSwitch() {
+        switchFlag = false
+        presentSettingAlertVC()
+        reload()
+    }
+    
+    private func requestNotiAuthFromUser() {
+        AuthManager.instance?.requestNotiAuth(completion: { [weak self] result in
+            guard let self else { return }
+            switchFlag = result
+            if !switchFlag {
+                presentSettingAlertVC()
             }
-            self.present(vc, animated: true)
+            reload()
+        }, errorHandler: { [weak self] in
+            guard let self else { return }
+            showErrorPopup()
+        })
+    }
+    
+    private func getNotiStatus() {
+        AuthManager.instance?.getNotiStatus { [weak self] status in
+            guard let self else { return }
+            switch status {
+            case .authorized:
+                changeSwitch()
+            case .denied:
+                induceOnSwitch()
+            default:
+                requestNotiAuthFromUser()
+            }
         }
     }
 }
@@ -111,40 +132,9 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             guard let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
             cell.titleLabel.text = L10n.settingName2
             cell.settingSwitch.isOn = switchFlag
-            
             cell.switchTapHandler = {
-                AuthManager.instance?.getNotiStatus { [weak self] status in
-                    guard let self else { return }
-                    
-                    switch status {
-                    case .authorized:
-                        guard let isPush = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PUSH.rawValue) else { return }
-                        UserDefaultManager.instance?.set(!isPush, key: UserDefaultKey.IS_PUSH.rawValue)
-                        switchFlag = !isPush
-                        setNotification(isOn: !isPush)
-                        reload()
-                        
-                    case .denied:
-                        switchFlag = false
-                        showSettingAlert()
-                        reload()
-                        
-                    default:
-                        AuthManager.instance?.requestNotiAuth(completion: { [weak self] result in
-                            guard let self else { return }
-                            switchFlag = result
-                            if !result {
-                                showSettingAlert()
-                            }
-                            reload()
-                        }, errorHandler: { [weak self] in
-                            guard let self else { return }
-                            showErrorPopup()
-                        })
-                    }
-                }
+                self.getNotiStatus()
             }
-            
             return cell
 
         case 1:
@@ -159,18 +149,9 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            break
-            
-        case 1:
+        if indexPath.row == 1 {
             if switchFlag {
-                let vc = SettingAlarmDetailVC()
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .overCurrentContext
-                vc.delegate = self
-                vc.viewModel = viewModel
-                present(vc, animated: true)
+                presentSettingAlarmDetailVC()
             } else {
                 toast(message: L10n.onAlarm,
                       withDuration: 1,
@@ -178,9 +159,6 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
                       positionType: PositionType.top,
                       completion: {})
             }
-            
-        default:
-            break
         }
     }
 }
@@ -197,4 +175,60 @@ extension SettingAlarmVC: ReloadDelegate {
 
 protocol ReloadDelegate: AnyObject {
     func reload()
+}
+
+// MARK: - initalize
+
+extension SettingAlarmVC {
+    private func initalize() {
+        initTarget()
+        initDelegate()
+    }
+    
+    private func initTarget() {
+        initBackButtonTarget()
+    }
+    
+    private func initBackButtonTarget() {
+        settingAlarmView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                popVC()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initDelegate() {
+        settingAlarmView.tableView.dataSource = self
+        settingAlarmView.tableView.delegate = self
+    }
+}
+
+// MARK: - View Change
+
+extension SettingAlarmVC {
+    private func presentSettingAlarmDetailVC() {
+        let vc = SettingAlarmDetailVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.delegate = self
+        vc.viewModel = viewModel
+        present(vc, animated: true)
+    }
+    
+    private func presentSettingAlertVC() {
+        DispatchQueue.main.async {
+            let vc = AlertVC()
+            vc.alertView.setText(message: L10n.appSetting1,
+                                 leftButtonText: L10n.cancel,
+                                 rightButtonText: L10n.appSetting2)
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.rightButtonTapHandler = {
+                self.goAppSetting()
+            }
+            self.present(vc, animated: true)
+        }
+    }
 }

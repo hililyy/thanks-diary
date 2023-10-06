@@ -24,44 +24,22 @@ final class SettingSuggestWriteVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTarget()
+        initalize()
     }
     
     // MARK: - Function
     
-    private func initTarget() {
-        settingSuggestWriteView.backgroundButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self else { return }
-                dismissVC()
-            })
-            .disposed(by: disposeBag)
+    private func complete() {
+        guard let contents = settingSuggestWriteView.contentsTextView.text else { return }
         
-        settingSuggestWriteView.completeButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self else { return }
-                guard let contents = settingSuggestWriteView.contentsTextView.text else { return }
-                
-                if contents.isEmpty {
-                    showToast()
-                } else {
-                    dismissVC {
-                        self.viewModel?.setSuggestData(contents: contents)
-                        self.viewModel?.getSuggestDatas()
-                    }
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        settingSuggestWriteView.mailButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let self else { return }
-                sendEmail()
-            })
-            .disposed(by: disposeBag)
+        if contents.isEmpty {
+            showToast()
+        } else {
+            dismissVC {
+                self.viewModel?.setSuggestData(contents: contents)
+                self.viewModel?.getSuggestDatas()
+            }
+        }
     }
     
     private func showToast() {
@@ -70,5 +48,49 @@ final class SettingSuggestWriteVC: BaseVC {
             guard let self else { return }
             settingSuggestWriteView.setCompleteButtonEnable(true)
         }
+    }
+}
+
+// MARK: - initalize
+
+extension SettingSuggestWriteVC {
+    private func initalize() {
+        initTarget()
+    }
+    
+    private func initTarget() {
+        initBackgrounButtonTarget()
+        initCompleteButtonTarget()
+        initMailButtonTarget()
+    }
+    
+    private func initBackgrounButtonTarget() {
+        settingSuggestWriteView.backgroundButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                dismissVC()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initCompleteButtonTarget() {
+        settingSuggestWriteView.completeButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                complete()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initMailButtonTarget() {
+        settingSuggestWriteView.mailButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                sendEmail()
+            })
+            .disposed(by: disposeBag)
     }
 }
