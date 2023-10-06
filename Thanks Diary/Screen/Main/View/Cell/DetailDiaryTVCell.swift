@@ -7,9 +7,7 @@
 
 import UIKit
 
-final class DetailDiaryTVCell: BaseTVCell {
-    
-    static let id = "DetailDiaryTVCell"
+final class DetailDiaryTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     

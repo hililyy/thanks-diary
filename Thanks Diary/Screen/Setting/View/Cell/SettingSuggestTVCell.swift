@@ -7,9 +7,7 @@
 
 import UIKit
 
-final class SettingSuggestTVCell: BaseTVCell {
-    
-    static let id = "SettingSuggestTVCell"
+final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
