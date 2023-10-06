@@ -22,7 +22,7 @@ final class SettingPWView: BaseView {
     private let titleLabel = UILabel().then { label in
         label.text = L10n.password
         label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 22)
-        label.textColor = .black
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
     }
     

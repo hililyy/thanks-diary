@@ -65,6 +65,7 @@ final class DetailWriteView: BaseView {
     }
     
     let titleTextView = UITextView().then { textView in
+        textView.backgroundColor = .clear
         textView.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
