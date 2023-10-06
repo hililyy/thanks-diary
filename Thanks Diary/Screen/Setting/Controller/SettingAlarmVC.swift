@@ -166,16 +166,12 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Custom Protocol
 
-extension SettingAlarmVC: ReloadDelegate {
+extension SettingAlarmVC: ReloadProtocol {
     func reload() {
         DispatchQueue.main.async {
             self.settingAlarmView.tableView.reloadData()
         }
     }
-}
-
-protocol ReloadDelegate: AnyObject {
-    func reload()
 }
 
 // MARK: - initalize

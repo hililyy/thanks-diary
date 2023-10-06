@@ -14,7 +14,7 @@ final class SettingAlarmDetailVC: BaseVC {
     
     private let settingAlarmDetailView = SettingAlarmDetailView()
     var viewModel: SettingViewModel?
-    var delegate: ReloadDelegate?
+    var delegate: ReloadProtocol?
     
     // MARK: - Life Cycle
     
