@@ -74,7 +74,7 @@ final class DetailWriteView: BaseView {
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
     
-    private let contentsTextView = UITextView().then { textView in
+    let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
         textView.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         textView.textColor = Asset.Color.gray1.color
@@ -121,11 +121,25 @@ final class DetailWriteView: BaseView {
         contentsTextView.text = contentsText
     }
     
-    func focusTitleTextViewKeyboard() {
+    func focusTitleTextView() {
         titleTextView.becomeFirstResponder()
     }
     
+    func focusTitleTextViewOrContentsTextView() {
+        if titleTextView.text.isEmpty {
+            titleTextView.becomeFirstResponder()
+        } else {
+            contentsTextView.becomeFirstResponder()
+        }
+    }
+    
+    func dropKeyboard() {
+        titleTextView.resignFirstResponder()
+        contentsTextView.resignFirstResponder()
+    }
+    
     @objc func keyboardWillShow(_ notification: Notification) {
+        keyBoardWillShowHandler()
         buttonStackView.removeAllSubViews()
         buttonStackView.addArrangedSubview(completeButton)
         
@@ -150,6 +164,7 @@ final class DetailWriteView: BaseView {
     }
     
     @objc func keyboardWillHide() {
+        keyBoardWillHideHandler()
         buttonStackView.removeAllSubViews()
         buttonStackView.addArrangedSubview(deleteButton)
         completeHandler()
@@ -160,6 +175,8 @@ final class DetailWriteView: BaseView {
     }
     
     var completeHandler: () -> Void = {}
+    var keyBoardWillShowHandler: () -> Void = {}
+    var keyBoardWillHideHandler: () -> Void = {}
     
     // MARK: - UI, Target
     
@@ -201,6 +218,10 @@ final class DetailWriteView: BaseView {
     }
     
     deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func removeNotification() {
         NotificationCenter.default.removeObserver(self)
     }
     

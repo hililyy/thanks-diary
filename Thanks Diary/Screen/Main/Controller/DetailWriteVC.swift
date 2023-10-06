@@ -83,7 +83,7 @@ final class DetailWriteVC: BaseVC {
     
     private func focusTitleTextViewKeyboard() {
         if beforeData == nil {
-            detailWriteView.focusTitleTextViewKeyboard()
+            detailWriteView.focusTitleTextView()
         }
     }
 }
@@ -111,6 +111,8 @@ extension DetailWriteVC {
         initCompleteButtonTarget()
         initDeleteButtonTarget()
         initCompleteHandler()
+        initKeyBoardWillShowHandler()
+        initKeyBoardWillHideHandler()
     }
     
     private func initBackButtonTarget() {
@@ -118,6 +120,7 @@ extension DetailWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                detailWriteView.removeNotification()
                 popVC()
             })
             .disposed(by: disposeBag)
@@ -130,8 +133,9 @@ extension DetailWriteVC {
                 guard let self else { return }
                 if detailWriteView.isEmptyTextField() {
                     showFillTextFieldToastAndDisEnableCompleteButton()
+                    detailWriteView.focusTitleTextViewOrContentsTextView()
                 } else {
-                    view.endEditing(true)
+                    detailWriteView.dropKeyboard()
                 }
             })
             .disposed(by: disposeBag)
@@ -155,6 +159,18 @@ extension DetailWriteVC {
             } else {
                 complete()
             }
+        }
+    }
+    
+    private func initKeyBoardWillShowHandler() {
+        detailWriteView.keyBoardWillShowHandler = {
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        }
+    }
+    
+    private func initKeyBoardWillHideHandler() {
+        detailWriteView.keyBoardWillHideHandler = {
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         }
     }
 }
