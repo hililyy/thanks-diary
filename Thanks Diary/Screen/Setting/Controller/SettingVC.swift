@@ -19,6 +19,7 @@ final class SettingVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
+        super.loadView()
         view = settingView
     }
     

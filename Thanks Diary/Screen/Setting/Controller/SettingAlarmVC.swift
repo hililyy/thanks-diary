@@ -18,6 +18,7 @@ final class SettingAlarmVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
+        super.loadView()
         view = settingAlarmView
     }
     

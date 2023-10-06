@@ -28,6 +28,7 @@ final class PageVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
+        super.loadView()
         view = pageView
     }
     

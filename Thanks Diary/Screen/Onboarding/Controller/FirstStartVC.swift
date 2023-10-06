@@ -16,6 +16,7 @@ final class FirstStartVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
+        super.loadView()
         view = firstStartView
     }
     
