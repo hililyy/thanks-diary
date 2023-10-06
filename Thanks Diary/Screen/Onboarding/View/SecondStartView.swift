@@ -16,7 +16,7 @@ final class SecondStartView: BaseView {
     private let titleLabel = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 25)
         label.text = L10n.startPage2Message1
     }
     
@@ -28,7 +28,7 @@ final class SecondStartView: BaseView {
     private let messageLabel1 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
+        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 18)
         label.text = L10n.startPage2Message2
     }
     
