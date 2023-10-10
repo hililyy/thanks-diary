@@ -140,3 +140,7 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,macos,swift,cocoapods
+
+
+### Add Personal ###
+*.p8
