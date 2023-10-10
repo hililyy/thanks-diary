@@ -8,7 +8,14 @@
 import XCTest
 
 final class ThanksDiaryUITests: XCTestCase {
-
+    
+    let app = XCUIApplication()
+    
+    override func setUp() {
+        continueAfterFailure = false
+        app.launch() // 앱 실행
+    }
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -23,10 +30,12 @@ final class ThanksDiaryUITests: XCTestCase {
     }
 
     func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
+        sleep(5)
+        
+        let button = app.buttons.firstMatch
+        XCTAssertTrue(button.exists)
+        
+        button.tap()
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
