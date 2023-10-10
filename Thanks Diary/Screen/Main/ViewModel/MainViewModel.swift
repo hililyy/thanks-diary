@@ -43,22 +43,19 @@ extension MainViewModel: DiaryRepository {
     }
     
     func createData(newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.instance?.setData(newData: newData) { [weak self] result in
-            guard let self else { return }
+        CoreDataManager.instance?.setData(newData: newData) { result in
             completion(result)
         }
     }
     
     func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.instance?.updateData(beforeData: beforeData, newData: newData) { [weak self] result in
-            guard let self else { return }
+        CoreDataManager.instance?.updateData(beforeData: beforeData, newData: newData) { result in
             completion(result)
         }
     }
     
     func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.instance?.deleteData(deleteData: deleteData) { [weak self] result in
-            guard let self else { return }
+        CoreDataManager.instance?.deleteData(deleteData: deleteData) { result in
             completion(result)
         }
     }
