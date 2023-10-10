@@ -28,6 +28,52 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "02BF3DB32AD52EA2002E5D35"
+               BuildableName = "Thanks DiaryUITests.xctest"
+               BlueprintName = "Thanks DiaryUITests"
+               ReferencedContainer = "container:Thanks Diary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "02BF3DC22AD52EC4002E5D35"
+               BuildableName = "Thanks DiaryTests.xctest"
+               BlueprintName = "Thanks DiaryTests"
+               ReferencedContainer = "container:Thanks Diary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "02BF3DD32AD531F8002E5D35"
+               BuildableName = "ThanksDiaryUITests.xctest"
+               BlueprintName = "ThanksDiaryUITests"
+               ReferencedContainer = "container:Thanks Diary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "02BF3DF32AD532B6002E5D35"
+               BuildableName = "ThanksDiaryTests.xctest"
+               BlueprintName = "ThanksDiaryTests"
+               ReferencedContainer = "container:Thanks Diary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
