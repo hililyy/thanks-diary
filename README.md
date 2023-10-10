@@ -1,7 +1,7 @@
 # 감사일기 📝
 > 다이어리 애플리케이션입니다.</br>
 > 기획부터 디자인, 개발까지 혼자 진행한 프로젝트입니다. 🙏🏻 </br>
-> 다운로드 1800회👆🏻, 업데이트 6000회👆🏻 (23/10/06 기준) </br>
+> 다운로드 1800회👆🏻, 업데이트 6800회👆🏻 (23/10/10 기준) </br>
 > [앱스토어 바로가기✨](https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8F%84-%EA%B0%90%EC%82%AC%EC%9D%BC%EA%B8%B0/id6443505485)
 </br>
 
@@ -18,6 +18,7 @@
   - RxSwift, RxCocoa
   - Firebase(Realtime Database, Analytics)
   - SwiftLint, SwiftGen
+  - Fastlane
   - FSCalendar
   - Lottie
   - Acknowlist
@@ -42,7 +43,13 @@
 
 </br>
 
-## 버전기록 (8회)
+## 버전기록 (9회)
+<details>
+<summary>버전 1.3.1</summary>
+  
+  - 자잘한 오류 / UI 수정
+</details>
+
 <details>
 <summary>버전 1.3.0</summary>
   
