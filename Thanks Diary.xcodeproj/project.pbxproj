@@ -88,6 +88,8 @@
 		029F04F92A4984BB00D82289 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04F82A4984BB00D82289 /* CoreDataManager.swift */; };
 		029F04FD2A4984E800D82289 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04FC2A4984E800D82289 /* MainViewModel.swift */; };
 		02B638D62AB1468100312A34 /* SettingNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B638D52AB1468100312A34 /* SettingNameModel.swift */; };
+		02BF3DAD2AD529FD002E5D35 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BF3DAB2AD529DF002E5D35 /* OSLog.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		02BF3DAF2AD52A2D002E5D35 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF3DAE2AD52A2D002E5D35 /* OSLog.swift */; };
 		02D7BB6F2AA589DF00419739 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02D7BB6E2AA589DF00419739 /* GoogleService-Info.plist */; };
 		02D7BB732AA6BFDB00419739 /* SettingSuggestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */; };
 		02F50B462A60F9BB006A59D3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F50B452A60F9BB006A59D3 /* MainView.swift */; };
@@ -209,6 +211,8 @@
 		029F04F82A4984BB00D82289 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		029F04FC2A4984E800D82289 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		02B638D52AB1468100312A34 /* SettingNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNameModel.swift; sourceTree = "<group>"; };
+		02BF3DAB2AD529DF002E5D35 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
+		02BF3DAE2AD52A2D002E5D35 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		02D7BB6E2AA589DF00419739 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSuggestView.swift; sourceTree = "<group>"; };
 		02F50B452A60F9BB006A59D3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02BF3DAD2AD529FD002E5D35 /* OSLog.framework in Frameworks */,
 				02087C452AA9C54100921F4D /* RxCocoa in Frameworks */,
 				02087C4E2AA9C56D00921F4D /* FirebaseAuth in Frameworks */,
 				02087C372AA9C4F600921F4D /* FSCalendar in Frameworks */,
@@ -372,6 +377,7 @@
 				025EF0642A459E2D00C930F2 /* UIViewController.swift */,
 				027C60C72A81EB82008F607F /* UIScrollView.swift */,
 				020A8C722ACCF73700E855EE /* Array.swift */,
+				02BF3DAE2AD52A2D002E5D35 /* OSLog.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 		2A0034B92ACAF8B100B6E703 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02BF3DAB2AD529DF002E5D35 /* OSLog.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -937,6 +944,7 @@
 				025EF0762A459E4800C930F2 /* PaddingLabel.swift in Sources */,
 				029F04F02A494C3100D82289 /* SecondStartView.swift in Sources */,
 				022955552A6A614B004BF800 /* BaseNC.swift in Sources */,
+				02BF3DAF2AD52A2D002E5D35 /* OSLog.swift in Sources */,
 				020980B22AC13534005B08DF /* Lottie.swift in Sources */,
 				2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */,
 				029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */,
