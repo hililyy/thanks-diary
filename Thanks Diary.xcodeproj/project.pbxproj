@@ -360,14 +360,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		025EF03C2A459BFA00C930F2 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				0229553E2A669265004BF800 /* Base */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		025EF0462A459C9200C930F2 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,7 +588,7 @@
 			children = (
 				2A81234828C2A208000A250E /* DiaryData.xcdatamodeld */,
 				2A81234328C0AD47000A250E /* Thanks Diary.entitlements */,
-				025EF03C2A459BFA00C930F2 /* Common */,
+				025EF06D2A459E4700C930F2 /* Custom */,
 				2A81233D28C095B7000A250E /* Util */,
 				025EF0772A459ED400C930F2 /* Screen */,
 				026E78EE2A6E80E400A09282 /* Support */,
@@ -660,11 +652,11 @@
 		2A81233D28C095B7000A250E /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0229553E2A669265004BF800 /* Base */,
 				025EF0462A459C9200C930F2 /* Constant */,
 				025EF0512A459D0000C930F2 /* Manager */,
 				025EF0602A459DFD00C930F2 /* Extension */,
 				020A8DEB2ACFAD1100E855EE /* Protocol */,
-				025EF06D2A459E4700C930F2 /* Custom */,
 				022955432A669D73004BF800 /* Etc */,
 			);
 			path = Util;
