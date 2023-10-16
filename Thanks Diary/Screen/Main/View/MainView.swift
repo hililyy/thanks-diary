@@ -32,13 +32,13 @@ final class MainView: BaseView {
         calendar.appearance.weekdayTextColor = Asset.Color.gray1.color
         calendar.appearance.titleDefaultColor = Asset.Color.gray1.color // 선택가능한 날짜 색
         calendar.appearance.titlePlaceholderColor = Asset.Color.gray8.color // 선택 불가능한 날짜 색
+        calendar.appearance.todayColor = Asset.Color.grayBlue.color // 오늘 날짜 동그라미 색상
+        calendar.appearance.selectionColor = Asset.Color.gray5.color
         
         calendar.appearance.headerTitleFont = FontFamily.NanumBarunGothic.light.font(size: 19)
         calendar.appearance.weekdayFont = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
         calendar.appearance.titleFont =  FontFamily.NanumBarunGothic.light.font(size: 17)
         calendar.appearance.subtitleFont =  FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
-        calendar.appearance.todayColor = Asset.Color.lightGrayBlue.color // 오늘 날짜 동그라미 색상
-        calendar.appearance.selectionColor = Asset.Color.gray5.color
         
         calendar.appearance.headerDateFormat = L10n.formatDate3
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0

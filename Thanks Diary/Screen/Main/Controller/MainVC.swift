@@ -84,7 +84,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
-        return CGPoint(x: 0, y: -5.15)
+        return CGPoint(x: 0, y: -6)
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {

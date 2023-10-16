@@ -222,6 +222,8 @@
 		027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		027C60DB2A8DBF98008F607F /* SettingThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingThemeView.swift; sourceTree = "<group>"; };
 		027C60DD2A8DBFE0008F607F /* SettingThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingThemeVC.swift; sourceTree = "<group>"; };
+		0290EF112AD64E4B00869C05 /* ThanksDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0290EF122AD64E4B00869C05 /* ThanksDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		029392412ABD955B00FB2553 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		029392442ABD971700FB2553 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		029F04EC2A494C3100D82289 /* FirstStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartView.swift; sourceTree = "<group>"; };
@@ -233,9 +235,7 @@
 		02BF3DAE2AD52A2D002E5D35 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		02BF3DD62AD531F8002E5D35 /* ThanksDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryUITests.swift; sourceTree = "<group>"; };
 		02BF3DD82AD531F8002E5D35 /* ThanksDiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		02BF3DEF2AD5326F002E5D35 /* ThanksDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ThanksDiaryUITests.xctest; path = "/Users/joeun/Documents/iOS/thanks-diary/build/Debug-iphoneos/ThanksDiaryUITests.xctest"; sourceTree = "<absolute>"; };
 		02BF3DF62AD532B6002E5D35 /* ThanksDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryTests.swift; sourceTree = "<group>"; };
-		02BF3DFD2AD532CE002E5D35 /* ThanksDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ThanksDiaryTests.xctest; path = "/Users/joeun/Documents/iOS/thanks-diary/build/Debug-iphoneos/ThanksDiaryTests.xctest"; sourceTree = "<absolute>"; };
 		02D7BB6E2AA589DF00419739 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSuggestView.swift; sourceTree = "<group>"; };
 		02F50B452A60F9BB006A59D3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -580,6 +580,8 @@
 				02087C542AA9C93A00921F4D /* Thanks Diary.app */,
 				02BF3DD52AD531F8002E5D35 /* ThanksDiaryUITests */,
 				02BF3DF52AD532B6002E5D35 /* ThanksDiaryTests */,
+				0290EF112AD64E4B00869C05 /* ThanksDiaryUITests.xctest */,
+				0290EF122AD64E4B00869C05 /* ThanksDiaryTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -773,7 +775,7 @@
 			);
 			name = ThanksDiaryUITests;
 			productName = ThanksDiaryUITests;
-			productReference = 02BF3DEF2AD5326F002E5D35 /* ThanksDiaryUITests.xctest */;
+			productReference = 0290EF112AD64E4B00869C05 /* ThanksDiaryUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		02BF3DF32AD532B6002E5D35 /* ThanksDiaryTests */ = {
@@ -791,7 +793,7 @@
 			);
 			name = ThanksDiaryTests;
 			productName = ThanksDiaryTests;
-			productReference = 02BF3DFD2AD532CE002E5D35 /* ThanksDiaryTests.xctest */;
+			productReference = 0290EF122AD64E4B00869C05 /* ThanksDiaryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		2A0D87FA28A540FB00576E56 /* Thanks Diary */ = {
