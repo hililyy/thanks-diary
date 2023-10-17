@@ -12,7 +12,7 @@ final class SimpleDiaryTVCell: BaseTVCell, CellIdentifier {
     // MARK: - UI components
     
     let dotView = UIView().then { view in
-        view.backgroundColor = Asset.Color.lightGrayBlue.color
+        view.backgroundColor = CommonUtilManager.instance?.getMainColor()
         view.layer.cornerRadius = 3.5
     }
     

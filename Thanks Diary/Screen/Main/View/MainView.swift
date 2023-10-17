@@ -17,7 +17,7 @@ final class MainView: BaseView {
     let todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
-        button.backgroundColor = Asset.Color.lightGrayBlue.color
+        button.backgroundColor = CommonUtilManager.instance?.getMainColor()
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.setTitle(L10n.today, for: .normal)
     }
@@ -32,8 +32,9 @@ final class MainView: BaseView {
         calendar.appearance.weekdayTextColor = Asset.Color.gray1.color
         calendar.appearance.titleDefaultColor = Asset.Color.gray1.color // 선택가능한 날짜 색
         calendar.appearance.titlePlaceholderColor = Asset.Color.gray8.color // 선택 불가능한 날짜 색
-        calendar.appearance.todayColor = Asset.Color.grayBlue.color // 오늘 날짜 동그라미 색상
+        calendar.appearance.todayColor = CommonUtilManager.instance?.getMainColor() // 오늘 날짜 동그라미 색상
         calendar.appearance.selectionColor = Asset.Color.gray5.color
+        calendar.appearance.titleTodayColor = Asset.Color.gray6.color
         
         calendar.appearance.headerTitleFont = FontFamily.NanumBarunGothic.light.font(size: 19)
         calendar.appearance.weekdayFont = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
@@ -72,20 +73,19 @@ final class MainView: BaseView {
         tableView.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
     }
     
-    private let emptyImageView = UIImageView().then { view in
-        view.contentMode = .scaleAspectFit
-    }
+    let emptyView = UIView()
     
     let floatingButton = FloatingButton().then { button in
         button.setButtonImage(Asset.Image.icPencil.image)
-        button.setButtonBackgroundColor(Asset.Color.lightGrayBlue.color)
+        button.setButtonBackgroundColor(CommonUtilManager.instance?.getMainColor())
     }
     
     // MARK: - Functions
     
-    func setImageForEmptyView(image: UIImage?) {
-        guard let image = image else { return }
-        emptyImageView.image = image
+    func setEmptyView(view: UIView) {
+        emptyView.removeAllSubViews()
+        emptyView.addSubview(view)
+        view.setAutoLayout(to: emptyView)
     }
     
     func setTodayLabelText(date: Date) {
@@ -93,8 +93,8 @@ final class MainView: BaseView {
     }
     
     func setHiddenForEmptyView(isHidden: Bool) {
-        emptyImageView.isHidden = isHidden
-        emptyImageView.frame.size.height = isHidden ? 0 : 300
+        emptyView.isHidden = isHidden
+        emptyView.frame.size.height = isHidden ? 0 : 300
     }
     
     // MARK: - UI, Target
@@ -111,7 +111,7 @@ final class MainView: BaseView {
                      lineViewX,
                      todayLabelView,
                      diaryTableView,
-                     emptyImageView,
+                     emptyView,
                      floatingButton])
         todayAndSettingTopView.addSubviews([todayButton, settingButton])
         todayLabelView.addSubview(todayLabel)
@@ -172,7 +172,7 @@ final class MainView: BaseView {
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
         
-        emptyImageView.snp.makeConstraints { make in
+        emptyView.snp.makeConstraints { make in
             make.top.equalTo(diaryTableView.snp.top)
             make.left.equalTo(diaryTableView.snp.left).offset(30)
             make.right.equalTo(diaryTableView.snp.right).offset(-30)

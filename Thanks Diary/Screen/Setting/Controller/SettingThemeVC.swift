@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SettingThemeVC: BaseVC {
     
@@ -56,6 +58,7 @@ extension SettingThemeVC {
         initDarkButtonTarget()
         initLightButtonTarget()
         initBackButtonTarget()
+        initColorButtonTarget()
     }
     
     private func initDarkButtonTarget() {
@@ -86,5 +89,44 @@ extension SettingThemeVC {
                 popVC()
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func initColorButtonTarget() {
+        for button in [settingThemeView.blueButton,
+                       settingThemeView.pinkButton,
+                       settingThemeView.yellowButton,
+                       settingThemeView.greenButton,
+                       settingThemeView.purpleButton] {
+            button.rx.tap
+                .asDriver()
+                .drive(onNext: { [weak self] in
+                    guard let self else { return }
+                    settingThemeView.setColorUI(buttonTag: button.tag)
+                    presentAlertVC(themeNum: button.tag)
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    private func saveThemeColor(num: Int) {
+        UserDefaultManager.instance?.set(num, key: UserDefaultKey.THEME_COLOR.rawValue)
+    }
+}
+
+extension SettingThemeVC {
+    func presentAlertVC(themeNum: Int) {
+        let vc = AlertVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.alertView.setText(message: L10n.restartApp,
+                             leftButtonText: L10n.cancel,
+                             rightButtonText: L10n.exit)
+        vc.rightButtonTapHandler = { [weak self] in
+            guard let self else { return }
+            
+            UserDefaultManager.instance?.set(themeNum, key: UserDefaultKey.THEME_COLOR.rawValue)
+            self.exitApp()
+        }
+        present(vc, animated: true)
     }
 }

@@ -28,7 +28,7 @@ final class DetailWriteView: BaseView {
         button.setTitle(L10n.complete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
-        button.backgroundColor = Asset.Color.lightGrayBlue.color
+        button.backgroundColor = CommonUtilManager.instance?.getMainColor()
         button.layer.cornerRadius = 10
     }
     
@@ -57,11 +57,11 @@ final class DetailWriteView: BaseView {
     }
     
     private let titleUnderLineImageView = UIImageView().then { imageView in
-        imageView.image = Asset.Image.imgUnderline.image
+        imageView.image = CommonUtilManager.instance?.getUnderLineImage()
     }
     
     private let contentsUnderLineImageView = UIImageView().then { imageView in
-        imageView.image = Asset.Image.imgUnderline.image
+        imageView.image = CommonUtilManager.instance?.getUnderLineImage()
     }
     
     let titleTextView = UITextView().then { textView in
@@ -70,7 +70,7 @@ final class DetailWriteView: BaseView {
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
-        textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
+        textView.layer.borderColor = CommonUtilManager.instance?.getMainColor().cgColor
         textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
@@ -81,7 +81,7 @@ final class DetailWriteView: BaseView {
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
-        textView.layer.borderColor = Asset.Color.lightGrayBlue.color.cgColor
+        textView.layer.borderColor = CommonUtilManager.instance?.getMainColor().cgColor
         textView.isScrollEnabled = true
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }

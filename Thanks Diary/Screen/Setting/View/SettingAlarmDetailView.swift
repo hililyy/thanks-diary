@@ -41,7 +41,7 @@ final class SettingAlarmDetailView: BaseView {
     let okButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.ok, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
-        button.backgroundColor = Asset.Color.lightGrayBlue.color
+        button.backgroundColor = CommonUtilManager.instance?.getMainColor()
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)

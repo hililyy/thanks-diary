@@ -5,7 +5,7 @@
 //  Created by 강조은 on 2023/07/22.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 
@@ -26,4 +26,6 @@ final class SettingViewModel {
     func setSuggestData(contents: String) {
         FirebaseManager.instance?.addSuggestData(contents: contents)
     }
+    
+    let colorSubject = PublishSubject<UIColor>()
 }

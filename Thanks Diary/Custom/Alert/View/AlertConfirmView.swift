@@ -34,7 +34,7 @@ final class AlertConfirmView: BaseView {
     let okButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.ok, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
-        button.backgroundColor = Asset.Color.lightGrayBlue.color
+        button.backgroundColor = CommonUtilManager.instance?.getMainColor()
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)

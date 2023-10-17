@@ -14,4 +14,5 @@ enum UserDefaultKey: String {
     case PUSH_TIME
     case IS_PUSH
     case THEME_MODE
+    case THEME_COLOR
 }

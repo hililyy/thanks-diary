@@ -39,14 +39,13 @@ final class MainVC: BaseVC {
     
     private func changeCalendarCircleDataAndTodayLabelText() {
         changeCalenderCircleDatasAndReloadCalendar()
-        changesetTodayLabelText()
+        changeSetTodayLabelText()
     }
     
     private func changeCalenderCircleDatasAndReloadCalendar() {
         Observable.combineLatest(viewModel.allDetailDataRx, viewModel.allSimpleDataRx)
             .subscribe(onNext: { [weak self] detailDatas, simpleDatas in
                 guard let self else { return }
-                
                 let detailData = detailDatas.map({ $0.key })
                 let simpleData = simpleDatas.map({ $0.key })
                 self.viewModel.diaryDates = Set(detailData).union(simpleData)
@@ -56,11 +55,10 @@ final class MainVC: BaseVC {
 
     }
 
-    private func changesetTodayLabelText() {
+    private func changeSetTodayLabelText() {
         viewModel.selectedDate
             .bind(onNext: { [weak self] in
                 guard let self else { return }
-                
                 self.mainView.setTodayLabelText(date: $0)
             })
             .disposed(by: disposeBag)
@@ -159,13 +157,12 @@ extension MainVC {
         viewModel.selectedAllData
             .subscribe(onNext: { [weak self] allData in
                 guard let self else { return }
-                
                 if allData.isEmpty {
                     mainView.setHiddenForEmptyView(isHidden: false)
                     
                     let date = self.viewModel.selectedDate.value
-                    let image = date.convertString() == Date().convertString() ? Asset.Image.imgNotToday.image : Asset.Image.imgNotBefore.image
-                    mainView.setImageForEmptyView(image: image)
+                    let view = date.convertString() == Date().convertString() ? NotTodayView() : NotBeforeView()
+                    mainView.setEmptyView(view: view)
                 } else {
                     mainView.setHiddenForEmptyView(isHidden: true)
                 }
@@ -194,7 +191,6 @@ extension MainVC {
         Observable.zip(mainView.diaryTableView.rx.modelSelected(DiaryModel.self), mainView.diaryTableView.rx.itemSelected)
             .bind { [weak self] diary, _ in
                 guard let self else { return }
-                
                 if diary.type == .detail {
                     pushDetailWriteVC(beforeData: diary)
                 } else {
@@ -217,7 +213,6 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                
                 dismissVC {
                     self.pushDetailWriteVC(beforeData: nil)
                 }
@@ -228,7 +223,6 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                
                 dismissVC {
                     self.presentSimpleWriteVC(beforeData: nil)
                 }

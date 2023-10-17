@@ -52,9 +52,9 @@ final class PageVC: BaseVC {
 
     private func changeDotViewColor() {
         UIView.transition(with: self.pageView.firstDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.pageView.firstDotView.backgroundColor = self.currentIndex == 0 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
-            self.pageView.secondDotView.backgroundColor = self.currentIndex == 1 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
-            self.pageView.thirdDotView.backgroundColor = self.currentIndex == 2 ? Asset.Color.lightGrayBlue.color : Asset.Color.gray3.color
+            self.pageView.firstDotView.backgroundColor = self.currentIndex == 0 ? CommonUtilManager.instance?.getMainColor() : Asset.Color.gray3.color
+            self.pageView.secondDotView.backgroundColor = self.currentIndex == 1 ? CommonUtilManager.instance?.getMainColor() : Asset.Color.gray3.color
+            self.pageView.thirdDotView.backgroundColor = self.currentIndex == 2 ? CommonUtilManager.instance?.getMainColor() : Asset.Color.gray3.color
         })
     }
 

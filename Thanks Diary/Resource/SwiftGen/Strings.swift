@@ -33,6 +33,8 @@ internal enum L10n {
   internal static let cancel = L10n.tr("Localizable", "cancel", fallback: "취소")
   /// 닫기
   internal static let close = L10n.tr("Localizable", "close", fallback: "닫기")
+  /// 색상 설정
+  internal static let colorSet = L10n.tr("Localizable", "color_set", fallback: "색상 설정")
   /// 완료
   internal static let complete = L10n.tr("Localizable", "complete", fallback: "완료")
   /// 내용
@@ -49,6 +51,8 @@ internal enum L10n {
   internal static let error = L10n.tr("Localizable", "error", fallback: "오류가 발생하였습니다.\n\n앱을 다시 실행하거나 관리자에게 문의해주세요.")
   /// 앱 종료
   internal static let exit = L10n.tr("Localizable", "exit", fallback: "앱 종료")
+  /// 앱 종료
+  internal static let exitApp = L10n.tr("Localizable", "exit_app", fallback: "앱 종료")
   /// 로그인을 실패하였습니다.
   internal static let failLogin = L10n.tr("Localizable", "fail_login", fallback: "로그인을 실패하였습니다.")
   /// 회원가입을 실패하였습니다.
@@ -75,6 +79,8 @@ internal enum L10n {
   internal static let nonExistentEmail = L10n.tr("Localizable", "non_existent_email", fallback: "로그인한 이메일이 없습니다.")
   /// 이메일이 존재하지 않습니다.
   internal static let nonExistentUser = L10n.tr("Localizable", "non_existent_user", fallback: "이메일이 존재하지 않습니다.")
+  /// 작성한 일기가 없습니다.
+  internal static let notExistDiary = L10n.tr("Localizable", "not_exist_diary", fallback: "작성한 일기가 없습니다.")
   /// Localizable.strings
   ///   Thanks Diary
   /// 
@@ -98,6 +104,8 @@ internal enum L10n {
   internal static let pushContents = L10n.tr("Localizable", "push_contents", fallback: "오늘의 일기를 작성해볼까요?💌")
   /// 💙감사일기를 작성할 시간이에요💙
   internal static let pushTitle = L10n.tr("Localizable", "push_title", fallback: "💙감사일기를 작성할 시간이에요💙")
+  /// 테마적용을 위해 앱을 종료해주세요.
+  internal static let restartApp = L10n.tr("Localizable", "restart_app", fallback: "테마적용을 위해 앱을 종료해주세요.")
   /// 설정
   internal static let setting = L10n.tr("Localizable", "setting", fallback: "설정")
   /// 알림 설정
@@ -155,6 +163,11 @@ internal enum L10n {
   internal static let toast = L10n.tr("Localizable", "toast", fallback: "제목과 내용을 모두 입력해 주세요.")
   /// 오늘
   internal static let today = L10n.tr("Localizable", "today", fallback: "오늘")
+  /// 감사일기는 매일매일 작성하는게 중요해요!
+  /// 우측 하단 버튼을 통해 일기를 작성해주세요!
+  internal static let todayNotContents = L10n.tr("Localizable", "today_not_contents", fallback: "감사일기는 매일매일 작성하는게 중요해요!\n우측 하단 버튼을 통해 일기를 작성해주세요!")
+  /// 아직 오늘의 일기를 작성하지 않았어요!
+  internal static let todayNotTitle = L10n.tr("Localizable", "today_not_title", fallback: "아직 오늘의 일기를 작성하지 않았어요!")
   /// 오늘의 감사일기
   internal static let todayThanksDiary = L10n.tr("Localizable", "today_thanks_diary", fallback: "오늘의 감사일기")
   /// 대기중

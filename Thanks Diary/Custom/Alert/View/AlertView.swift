@@ -43,7 +43,7 @@ final class AlertView: BaseView {
     let rightButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.delete, for: .normal)
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
-        button.backgroundColor = Asset.Color.lightGrayBlue.color
+        button.backgroundColor = CommonUtilManager.instance?.getMainColor()
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
@@ -70,12 +70,16 @@ final class AlertView: BaseView {
     }
     
     override func initSubviews() {
-        addSubviews([backgroundView, alertView])
+        addSubviews([backgroundView,
+                     alertView])
         backgroundView.addSubview(backButton)
         alertView.addSubview(messageView)
         messageView.addSubview(messageLabel)
-        alertView.addSubviews([buttonView, lineViewX])
-        buttonView.addSubviews([leftButton, rightButton, lineViewY])
+        alertView.addSubviews([buttonView,
+                               lineViewX])
+        buttonView.addSubviews([leftButton,
+                                rightButton,
+                                lineViewY])
     }
     
     override func initConstraints() {
