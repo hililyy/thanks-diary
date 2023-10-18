@@ -26,7 +26,7 @@ final class SettingSwitchTVCell: BaseTVCell, CellIdentifier {
         selectionStyle = .none
         backgroundColor = .clear
         
-        settingSwitch.onTintColor = CommonUtilManager.instance?.getMainColor()
+        settingSwitch.onTintColor = ResourceManager.instance?.getMainColor()
         settingSwitch.addTarget { _ in
             self.switchTapHandler()
         }

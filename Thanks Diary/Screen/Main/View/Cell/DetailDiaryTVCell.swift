@@ -19,7 +19,7 @@ final class DetailDiaryTVCell: BaseTVCell, CellIdentifier {
     
     let borderView = UIView().then { view in
         view.layer.cornerRadius = 10
-        view.layer.borderColor = CommonUtilManager.instance?.getMainColor().cgColor
+        view.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
         view.layer.borderWidth = 2
     }
     

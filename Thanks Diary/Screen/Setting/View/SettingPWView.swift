@@ -167,7 +167,7 @@ final class SettingPWView: BaseView {
     
     func setDotColor(num: Int) {
         let gray = Asset.Color.gray7.color
-        let blue = CommonUtilManager.instance?.getMainColor()
+        let blue = ResourceManager.instance?.getMainColor()
         
         firstDotView.backgroundColor = num > 0 ? blue : gray
         secondDotView.backgroundColor = num > 1 ? blue : gray

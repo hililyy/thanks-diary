@@ -12,7 +12,7 @@ import Then
 final class NotBeforeView: BaseView {
     let contentView = UIView()
     let topLineView = UIView().then { view in
-        view.backgroundColor = CommonUtilManager.instance?.getMainColor()
+        view.backgroundColor = ResourceManager.instance?.getMainColor()
         view.layer.cornerRadius = 2
     }
     
@@ -26,7 +26,7 @@ final class NotBeforeView: BaseView {
     }
     
     let bottomLineView = UIView().then { view in
-        view.backgroundColor = CommonUtilManager.instance?.getMainColor()
+        view.backgroundColor = ResourceManager.instance?.getMainColor()
         view.layer.cornerRadius = 2
     }
     

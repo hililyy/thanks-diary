@@ -17,7 +17,7 @@ final class MainView: BaseView {
     let todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
         button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
-        button.backgroundColor = CommonUtilManager.instance?.getMainColor()
+        button.backgroundColor = ResourceManager.instance?.getMainColor()
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.setTitle(L10n.today, for: .normal)
     }
@@ -32,7 +32,7 @@ final class MainView: BaseView {
         calendar.appearance.weekdayTextColor = Asset.Color.gray1.color
         calendar.appearance.titleDefaultColor = Asset.Color.gray1.color // 선택가능한 날짜 색
         calendar.appearance.titlePlaceholderColor = Asset.Color.gray8.color // 선택 불가능한 날짜 색
-        calendar.appearance.todayColor = CommonUtilManager.instance?.getMainColor() // 오늘 날짜 동그라미 색상
+        calendar.appearance.todayColor = ResourceManager.instance?.getMainColor() // 오늘 날짜 동그라미 색상
         calendar.appearance.selectionColor = Asset.Color.gray5.color
         calendar.appearance.titleTodayColor = Asset.Color.gray6.color
         
@@ -77,7 +77,7 @@ final class MainView: BaseView {
     
     let floatingButton = FloatingButton().then { button in
         button.setButtonImage(Asset.Image.icPencil.image)
-        button.setButtonBackgroundColor(CommonUtilManager.instance?.getMainColor())
+        button.setButtonBackgroundColor(ResourceManager.instance?.getMainColor())
     }
     
     // MARK: - Functions
