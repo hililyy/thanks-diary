@@ -21,11 +21,13 @@ final class LocalNotificationManager {
     func printRegistedNotification() {
         UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
             for request in requests {
-                print("Identifier: \(request.identifier)")
-                print("Title: \(request.content.title)")
-                print("Body: \(request.content.body)")
-                print("Trigger: \(String(describing: request.trigger))")
-                print("-------------------------")
+                Log.debug("""
+                Identifier: \(request.identifier)
+                Identifier: \(request.identifier)
+                Body: \(request.content.body)
+                Trigger: \(String(describing: request.trigger))
+                -------------------------
+                """)
             }
         }
     }

@@ -81,12 +81,11 @@ struct Log {
         }
     }
     
-    static private func log(_ message: Any, _ arguments: [Any], level: Level) {
+    static private func log(_ message: Any, level: Level) {
         #if DEBUG
         if #available(iOS 14.0, *) {
-            let extraMessage: String = arguments.map({ String(describing: $0) }).joined(separator: " ")
             let logger = Logger(subsystem: OSLog.subsystem, category: level.category)
-            let logMessage = "\(message) \(extraMessage)"
+            let logMessage = "\(message)"
             switch level {
             case .debug,
                  .custom:
@@ -99,8 +98,7 @@ struct Log {
                 logger.error("\(logMessage, privacy: .public)")
             }
         } else {
-            let extraMessage: String = arguments.map({ String(describing: $0) }).joined(separator: " ")
-            os_log("%{public}@", log: level.osLog, type: level.osLogType, "\(message) \(extraMessage)")
+            os_log("%{public}@", log: level.osLog, type: level.osLogType, "\(message)")
         }
         #endif
     }
@@ -109,26 +107,26 @@ struct Log {
 extension Log {
     // 개발 중 코드 디버깅 시 사용할 수 있는 유용한 정보
     static func debug(_ message: Any, _ arguments: Any...) {
-        log(message, arguments, level: .debug)
+        log(message, level: .debug)
     }
     
     // 문제 해결시 활용할 수 있는, 도움이 되지만 필수적이지 않은 정보
     static func info(_ message: Any, _ arguments: Any...) {
-        log(message, arguments, level: .info)
+        log(message, level: .info)
     }
 
     // 네트워크 문제 해결에 필수적인 정보
     static func network(_ message: Any, _ arguments: Any...) {
-        log(message, arguments, level: .network)
+        log(message, level: .network)
     }
     
     // 코드 실행 중 나타난 에러
     static func error(_ message: Any, _ arguments: Any...) {
-        log(message, arguments, level: .error)
+        log(message, level: .error)
     }
 
     // 커스텀 디버깅 로그
     static func custom(category: String, _ message: Any, _ arguments: Any...) {
-        log(message, arguments, level: .custom(category: category))
+        log(message, level: .custom(category: category))
     }
 }
