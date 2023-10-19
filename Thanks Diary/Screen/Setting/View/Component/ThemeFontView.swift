@@ -21,7 +21,7 @@ final class ThemeFontView: BaseView {
     
     let fontContentView = UIView().then { view in
         view.layer.borderWidth = 2
-        view.layer.borderColor = Asset.Color.gray8.color.cgColor
+        view.layer.borderColor = Asset.Color.gray5.color.cgColor
         view.layer.cornerRadius = 10
     }
     
