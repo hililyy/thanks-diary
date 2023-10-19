@@ -35,12 +35,24 @@ internal enum FontFamily {
     internal static let ultraLight = FontConvertible(name: "NanumBarunGothicUltraLight", family: "NanumBarunGothic", path: "NanumBarunGothicUltraLight.ttf")
     internal static let all: [FontConvertible] = [regular, bold, light, ultraLight]
   }
+  internal enum OwnglyphBoksoong {
+    internal static let regular = FontConvertible(name: "Ownglyph_Boksoong-Rg", family: "Ownglyph Boksoong", path: "boksung.ttf")
+    internal static let all: [FontConvertible] = [regular]
+  }
+  internal enum OwnglyphAlcomhagom {
+    internal static let regular = FontConvertible(name: "Ownglyph_alcomhagom-Rg", family: "Ownglyph alcomhagom", path: "hagom.ttf")
+    internal static let all: [FontConvertible] = [regular]
+  }
   internal enum OwnglyphHaruNanum {
     internal static let regular = FontConvertible(name: "Ownglyph_haru_nanum-Rg", family: "Ownglyph haru nanum", path: "halunanum.ttf")
     internal static let all: [FontConvertible] = [regular]
   }
   internal enum OwnglyphWiri {
     internal static let regular = FontConvertible(name: "Ownglyph_wiri-Rg", family: "Ownglyph wiri", path: "wiri.ttf")
+    internal static let all: [FontConvertible] = [regular]
+  }
+  internal enum OwnglyphYeonu {
+    internal static let regular = FontConvertible(name: "Ownglyph_yeonu-Rg", family: "Ownglyph yeonu", path: "yeonyu.ttf")
     internal static let all: [FontConvertible] = [regular]
   }
   internal enum Pretendard {
@@ -67,11 +79,7 @@ internal enum FontFamily {
     internal static let _9Black = FontConvertible(name: "S-CoreDream-9Black", family: "S-Core Dream", path: "SCDream9.otf")
     internal static let all: [FontConvertible] = [_1Thin, _2ExtraLight, _3Light, _4Regular, _5Medium, _6Bold, _7ExtraBold, _8Heavy, _9Black]
   }
-  internal enum 온글잎안될과학유니랩장체 {
-    internal static let regular = FontConvertible(name: "Unreal_science_yuni", family: "온글잎 안될과학유니랩장체", path: "UniLab.ttf")
-    internal static let all: [FontConvertible] = [regular]
-  }
-  internal static let allCustomFonts: [FontConvertible] = [KotraHope.all, KotraGothic.all, NanumBarunGothic.all, OwnglyphHaruNanum.all, OwnglyphWiri.all, Pretendard.all, SCoreDream.all, 온글잎안될과학유니랩장체.all].flatMap { $0 }
+  internal static let allCustomFonts: [FontConvertible] = [KotraHope.all, KotraGothic.all, NanumBarunGothic.all, OwnglyphBoksoong.all, OwnglyphAlcomhagom.all, OwnglyphHaruNanum.all, OwnglyphWiri.all, OwnglyphYeonu.all, Pretendard.all, SCoreDream.all].flatMap { $0 }
   internal static func registerAllCustomFonts() {
     allCustomFonts.forEach { $0.register() }
   }
