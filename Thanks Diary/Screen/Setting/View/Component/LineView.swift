@@ -8,7 +8,12 @@
 import UIKit
 
 final class LineView: BaseView {
+    
+    // MARK: - UI components
+    
     let lineView = UIView()
+    
+    // MARK: - UI, Target
     
     convenience init(color: UIColor) {
         self.init()

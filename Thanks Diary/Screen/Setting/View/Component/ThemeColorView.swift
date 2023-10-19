@@ -57,6 +57,8 @@ final class ThemeColorView: BaseView {
         button.tag = 4
     }
     
+    // MARK: - UI, Target
+    
     override func initSubviews() {
         addSubviews([colorTitleLabel,
                      colorStackView

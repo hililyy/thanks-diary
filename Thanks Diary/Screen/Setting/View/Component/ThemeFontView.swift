@@ -31,6 +31,8 @@ final class ThemeFontView: BaseView {
         tableView.register(RadioTVCell.self, forCellReuseIdentifier: RadioTVCell.id)
     }
     
+    // MARK: - UI, Target
+    
     override func initSubviews() {
         addSubviews([fontTitleLabel,
                      fontContentView

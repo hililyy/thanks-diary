@@ -10,6 +10,9 @@ import SnapKit
 import Then
 
 final class ThemeModeView: BaseView {
+    
+    // MARK: - UI components
+    
     private let modeTitleLabel = UILabel().then { label in
         label.initLabelUI(text: L10n.modeSet,
                           color: Asset.Color.blackColor.color,
@@ -58,6 +61,8 @@ final class ThemeModeView: BaseView {
         label.textAlignment = .center
         label.font = ResourceManager.instance?.getFont(size: 15)
     }
+    
+    // MARK: - UI, Target
     
     override func initSubviews() {
         addSubviews([modeTitleLabel,

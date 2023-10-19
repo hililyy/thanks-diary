@@ -10,6 +10,9 @@ import SnapKit
 import Then
 
 final class NavigationView: BaseView {
+    
+    // MARK: - UI components
+    
     let backButton = UIButton(type: .custom).then { button in
         button.setImage(Asset.Image.icBack.image, for: .normal)
     }
@@ -20,9 +23,13 @@ final class NavigationView: BaseView {
         label.textAlignment = .center
     }
     
+    // MARK: - Functions
+    
     func setTitleLabelText(title: String) {
         titleLabel.text = title
     }
+    
+    // MARK: - UI, Target
     
     override func initSubviews() {
         addSubviews([backButton,

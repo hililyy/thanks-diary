@@ -29,6 +29,16 @@ final class RadioTVCell: BaseTVCell, CellIdentifier {
                           font: FontFamily.OwnglyphHaruNanum.regular.font(size: 17))
     }
     
+    // MARK: - Functions
+    
+    func changeButtonUI(isSelected: Bool) {
+        outlineCircle.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
+        if isSelected {
+            inlineCircle.backgroundColor = ResourceManager.instance?.getMainColor()
+        } else {
+            inlineCircle.backgroundColor = .clear
+        }
+    }
     // MARK: - UI, Target
     
     override func initUI() {
@@ -68,17 +78,5 @@ final class RadioTVCell: BaseTVCell, CellIdentifier {
             make.right.equalTo(contentView.snp.right).offset(-10)
             make.bottom.equalTo(contentView.snp.bottom).offset(-12)
         }
-    }
-}
-
-extension RadioTVCell {
-    func changeButtonUI(isSelected: Bool) {
-        outlineCircle.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
-        if isSelected {
-            inlineCircle.backgroundColor = ResourceManager.instance?.getMainColor()
-        } else {
-            inlineCircle.backgroundColor = .clear
-        }
-        
     }
 }
