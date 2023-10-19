@@ -19,14 +19,14 @@ final class NotTodayView: BaseView {
     let titleLabel = UILabel().then { label in
         label.initLabelUI(text: L10n.todayNotTitle,
                           color: Asset.Color.blackColor.color,
-                          font: FontFamily.NanumBarunGothic.light.font(size: 21))
+                          font: ResourceManager.instance?.getFont(size: 21) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 21))
         label.setCharacterSpacing()
     }
     
     let contentsLabel = UILabel().then { label in
         label.initLabelUI(text: L10n.todayNotContents,
                           color: Asset.Color.blackColor.color,
-                          font: FontFamily.NanumBarunGothic.light.font(size: 12))
+                          font: ResourceManager.instance?.getFont(size: 12) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 21))
         label.numberOfLines = 0
         label.setLineSpacing(spacing: 5)
         label.setCharacterSpacing(spacing: 0)

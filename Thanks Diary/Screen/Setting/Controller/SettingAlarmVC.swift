@@ -187,7 +187,7 @@ extension SettingAlarmVC {
     }
     
     private func initBackButtonTarget() {
-        settingAlarmView.backButton.rx.tap
+        settingAlarmView.navigationView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }

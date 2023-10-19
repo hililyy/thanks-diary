@@ -50,3 +50,35 @@ enum PositionType {
     case center
     case bottom
 }
+
+enum FontType: Int, CaseIterable {
+    case nanumBarunGothic
+    case harunanum
+    case uniLab
+    case wiri
+    case pretendard
+    case scoreDream
+    case kotrahope
+    case kotraGothic
+    
+    var description: String {
+        switch self {
+        case .nanumBarunGothic:
+            return "나눔바른고딕"
+        case .harunanum:
+            return "온글잎 하루나눔"
+        case .uniLab:
+            return "온글잎 안될과학유니랩장체"
+        case .wiri:
+            return "온글잎 위리체"
+        case .pretendard:
+            return "프리텐다드"
+        case .scoreDream:
+            return "에스코어드림"
+        case .kotrahope:
+            return "코트라 희망체"
+        case .kotraGothic:
+            return "코트라 고딕체"
+        }
+    }
+}

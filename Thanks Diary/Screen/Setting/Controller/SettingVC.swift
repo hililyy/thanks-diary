@@ -12,7 +12,7 @@ final class SettingVC: BaseVC {
     
     // MARK: - Property
     
-    private let settingView = SettingView()
+    private var settingView = SettingView()
     private var alarmFlag: Bool = false
     let viewModel = SettingViewModel()
     
@@ -26,6 +26,14 @@ final class SettingVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initalize()
+        
+        CommonUtilManager.instance?.themeSubject.subscribe(onNext: { [weak self] _ in
+            guard let self else { return }
+            settingView = SettingView()
+            view = settingView
+            initalize()
+        })
+        .disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,7 +130,7 @@ extension SettingVC {
     }
     
     private func initTarget() {
-        settingView.backButton.rx.tap
+        settingView.navigationView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }

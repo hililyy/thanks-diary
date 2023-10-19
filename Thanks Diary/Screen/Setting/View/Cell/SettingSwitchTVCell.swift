@@ -12,7 +12,7 @@ final class SettingSwitchTVCell: BaseTVCell, CellIdentifier {
     // MARK: - UI components
     
     let titleLabel = UILabel().then { label in
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
+        label.font = ResourceManager.instance?.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
     }
     

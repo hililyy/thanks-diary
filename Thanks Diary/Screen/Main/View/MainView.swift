@@ -16,7 +16,7 @@ final class MainView: BaseView {
     
     let todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
-        button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
+        button.titleLabel?.font = ResourceManager.instance?.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance?.getMainColor()
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.setTitle(L10n.today, for: .normal)
@@ -36,10 +36,10 @@ final class MainView: BaseView {
         calendar.appearance.selectionColor = Asset.Color.gray5.color
         calendar.appearance.titleTodayColor = Asset.Color.gray6.color
         
-        calendar.appearance.headerTitleFont = FontFamily.NanumBarunGothic.light.font(size: 19)
-        calendar.appearance.weekdayFont = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
-        calendar.appearance.titleFont =  FontFamily.NanumBarunGothic.light.font(size: 17)
-        calendar.appearance.subtitleFont =  FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
+        calendar.appearance.headerTitleFont = ResourceManager.instance?.getFont(size: 19)
+        calendar.appearance.weekdayFont = ResourceManager.instance?.getFont(size: 17)
+        calendar.appearance.titleFont = ResourceManager.instance?.getFont(size: 17)
+        calendar.appearance.subtitleFont = ResourceManager.instance?.getFont(size: 17)
         
         calendar.appearance.headerDateFormat = L10n.formatDate3
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
@@ -59,7 +59,7 @@ final class MainView: BaseView {
     private let todayLabelView = UIView()
 
     private let todayLabel = UILabel().then { label in
-        label.font = FontFamily.NanumBarunGothic.light.font(size: 20)
+        label.font = ResourceManager.instance?.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.text = Date().convertString(format: L10n.formatDate2)

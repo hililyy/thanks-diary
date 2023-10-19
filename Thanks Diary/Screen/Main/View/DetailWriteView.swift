@@ -16,7 +16,7 @@ final class DetailWriteView: BaseView {
     }
     
     private let topLabel = UILabel().then { label in
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
+        label.font = ResourceManager.instance?.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
@@ -27,7 +27,7 @@ final class DetailWriteView: BaseView {
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.complete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-        button.titleLabel?.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 15)
+        button.titleLabel?.font = ResourceManager.instance?.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance?.getMainColor()
         button.layer.cornerRadius = 10
     }
@@ -46,13 +46,13 @@ final class DetailWriteView: BaseView {
     
     private let titleLabel = UILabel().then { label in
         label.text = L10n.title
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
+        label.font = ResourceManager.instance?.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
     private let contentsLabel = UILabel().then { label in
         label.text = L10n.contents
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 20)
+        label.font = ResourceManager.instance?.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
@@ -66,7 +66,7 @@ final class DetailWriteView: BaseView {
     
     let titleTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
+        textView.font = ResourceManager.instance?.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
@@ -77,7 +77,7 @@ final class DetailWriteView: BaseView {
     
     let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
+        textView.font = ResourceManager.instance?.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2

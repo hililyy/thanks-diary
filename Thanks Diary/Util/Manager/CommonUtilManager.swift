@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class CommonUtilManager {
     
@@ -19,6 +21,10 @@ final class CommonUtilManager {
         }
         return _instance
     }
+    
+    var themeSubject = PublishSubject<Int>()
+    
+    var tableViewOffset: CGPoint = .zero
     
     var uuid: String {
         guard let uuid = UIDevice.current.identifierForVendor else { return "" }

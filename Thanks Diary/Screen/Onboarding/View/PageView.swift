@@ -38,7 +38,7 @@ final class PageView: BaseView {
     var nextButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 20
         button.backgroundColor = ResourceManager.instance?.getMainColor()
-        button.titleLabel?.font = FontFamily.NanumBarunGothic.light.font(size: 18)
+        button.titleLabel?.font =  ResourceManager.instance?.getFont(size: 18)
         button.setTitle(L10n.next, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
     }

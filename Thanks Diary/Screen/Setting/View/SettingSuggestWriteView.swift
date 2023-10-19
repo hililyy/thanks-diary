@@ -30,7 +30,7 @@ final class SettingSuggestWriteView: BaseView {
     
     let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
+        textView.font = ResourceManager.instance?.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 15
         textView.layer.borderWidth = 1
@@ -42,7 +42,7 @@ final class SettingSuggestWriteView: BaseView {
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.writeComplete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-        button.titleLabel?.font = FontFamily.NanumBarunGothic.light.font(size: 15)
+        button.titleLabel?.font = ResourceManager.instance?.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance?.getMainColor()
         button.layer.cornerRadius = 10
     }

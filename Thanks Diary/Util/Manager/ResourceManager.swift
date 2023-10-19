@@ -38,6 +38,24 @@ final class ResourceManager {
         }
     }
     
+    func getMainDeepColor() -> UIColor {
+        guard let color = UserDefaultManager.instance?.int(UserDefaultKey.THEME_COLOR.rawValue) else { return Asset.Color.lightGrayBlue.color }
+        switch color {
+        case 0:
+            return Asset.Color.grayBlue.color
+        case 1:
+            return Asset.Color.deepPink.color
+        case 2:
+            return Asset.Color.deepYellow.color
+        case 3:
+            return Asset.Color.deepGreen.color
+        case 4:
+            return Asset.Color.deepPurple.color
+        default:
+            return Asset.Color.grayBlue.color
+        }
+    }
+    
     func getDetailWriteImage() -> UIImage {
         guard let color = UserDefaultManager.instance?.int(UserDefaultKey.THEME_COLOR.rawValue) else { return Asset.Image.icDetailWrite.image }
         switch color {
@@ -89,6 +107,63 @@ final class ResourceManager {
             return Asset.Image.imgUnderlineBlue.image
         default:
             return Asset.Image.icSimpleWrite.image
+        }
+    }
+    
+    func getFont(type: FontType, size: CGFloat) -> UIFont {
+        var fontSize = size
+        
+        switch type {
+        case .nanumBarunGothic:
+            return FontFamily.NanumBarunGothic.ultraLight.font(size: fontSize)
+        case .harunanum:
+            fontSize += 3
+            return FontFamily.OwnglyphHaruNanum.regular.font(size: fontSize)
+        case .uniLab:
+            fontSize += 3
+            return FontFamily.온글잎안될과학유니랩장체.regular.font(size: fontSize)
+        case .wiri:
+            fontSize += 3
+            return FontFamily.OwnglyphWiri.regular.font(size: fontSize)
+        case .pretendard:
+            return FontFamily.Pretendard.regular.font(size: fontSize)
+        case .scoreDream:
+            return FontFamily.SCoreDream._4Regular.font(size: fontSize)
+        case .kotrahope:
+            return FontFamily.KotraHope.regular.font(size: fontSize)
+        case .kotraGothic:
+            return FontFamily.KotraGothic.regular.font(size: fontSize)
+        }
+    }
+    
+    func getFont(size: CGFloat) -> UIFont {
+        var fontSize = size
+        
+        guard let savedFont = UserDefaultManager.instance?.int(UserDefaultKey.THEME_FONT.rawValue) else { return FontFamily.NanumBarunGothic.ultraLight.font(size: size) }
+        let fontType = FontType(rawValue: savedFont)
+        
+        switch fontType {
+        case .nanumBarunGothic:
+            return FontFamily.NanumBarunGothic.ultraLight.font(size: fontSize)
+        case .harunanum:
+            fontSize += 3
+            return FontFamily.OwnglyphHaruNanum.regular.font(size: fontSize)
+        case .uniLab:
+            fontSize += 3
+            return FontFamily.온글잎안될과학유니랩장체.regular.font(size: fontSize)
+        case .wiri:
+            fontSize += 3
+            return FontFamily.OwnglyphWiri.regular.font(size: fontSize)
+        case .pretendard:
+            return FontFamily.Pretendard.regular.font(size: fontSize)
+        case .scoreDream:
+            return FontFamily.SCoreDream._4Regular.font(size: fontSize)
+        case .kotrahope:
+            return FontFamily.KotraHope.regular.font(size: fontSize)
+        case .kotraGothic:
+            return FontFamily.KotraGothic.regular.font(size: fontSize)
+        default:
+            return FontFamily.NanumBarunGothic.ultraLight.font(size: fontSize)
         }
     }
 }

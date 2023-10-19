@@ -12,14 +12,14 @@ final class SettingLabelTVCell: BaseTVCell, CellIdentifier {
     // MARK: - UI components
     
     let titleLabel = UILabel().then { label in
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
+        label.font = ResourceManager.instance?.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
     }
     
     let contentsLabel = UILabel().then { label in
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 17)
+        label.font = ResourceManager.instance?.getFont(size: 17)
         label.textColor = Asset.Color.gray2.color
         label.textAlignment = .right
     }

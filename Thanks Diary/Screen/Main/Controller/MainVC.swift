@@ -14,19 +14,15 @@ final class MainVC: BaseVC {
     
     // MARK: - Property
     
-    private let mainView = MainView()
+    private var mainView = MainView()
     private let viewModel = MainViewModel()
     
     // MARK: - Life Cycle
     
-    override func loadView() {
-        super.loadView()
-        view = mainView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initalize()
+        initObservable()
         changeCalendarCircleDataAndTodayLabelText()
     }
     
@@ -94,9 +90,17 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
 
 extension MainVC {
     private func initalize() {
+        initView()
         initDelegate()
         initTable()
         initTarget()
+    }
+    
+    private func initView() {
+        view.removeAllSubViews()
+        mainView = MainView()
+        view.addSubview(mainView)
+        mainView.setAutoLayout(to: view)
     }
     
     private func initDelegate() {
@@ -138,6 +142,15 @@ extension MainVC {
                 moveToday()
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func initObservable() {
+        CommonUtilManager.instance?.themeSubject.subscribe(onNext: { [weak self] _ in
+            guard let self else { return }
+            initalize()
+            changeCalendarCircleDataAndTodayLabelText()
+        })
+        .disposed(by: disposeBag)
     }
 }
 

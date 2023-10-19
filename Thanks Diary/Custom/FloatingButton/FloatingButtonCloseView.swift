@@ -36,7 +36,7 @@ final class FloatingButtonCloseView: BaseView {
     }
     
     var detailLabel = PaddingLabel().then { label in
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 13)
+        label.font = ResourceManager.instance?.getFont(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
@@ -45,7 +45,7 @@ final class FloatingButtonCloseView: BaseView {
     }
     
     var simpleLabel = PaddingLabel().then { label in
-        label.font = FontFamily.NanumBarunGothic.ultraLight.font(size: 13)
+        label.font = ResourceManager.instance?.getFont(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5

@@ -19,7 +19,7 @@ final class NotBeforeView: BaseView {
     let contentsLabel = UILabel().then { label in
         label.initLabelUI(text: L10n.notExistDiary,
                           color: Asset.Color.blackColor.color,
-                          font: FontFamily.NanumBarunGothic.light.font(size: 21))
+                          font: ResourceManager.instance?.getFont(size: 21) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 21))
         label.numberOfLines = 0
         label.setLineSpacing(spacing: 5)
         label.setCharacterSpacing(spacing: 0)

@@ -6,21 +6,14 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 final class SettingView: BaseView {
     
     // MARK: - UI components
     
-    let backButton = UIButton(type: .custom).then { button in
-        button.setImage(Asset.Image.icBack.image, for: .normal)
-    }
-    
-    private let topLabel = UILabel().then { label in
-        label.font =  FontFamily.NanumBarunGothic.ultraLight.font(size: 22)
-        label.textColor = Asset.Color.gray1.color
-        label.text = L10n.setting
-        label.textAlignment = .center
-    }
+    let navigationView = NavigationView()
     
     let tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
@@ -42,33 +35,26 @@ final class SettingView: BaseView {
     
     override func initUI() {
         backgroundColor = Asset.Color.white.color
+        navigationView.setTitleLabelText(title: L10n.setting)
     }
     
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backButton,
-                     topLabel,
+        addSubviews([navigationView,
                      tableView
-        ])
+                    ])
     }
     
     override func initConstraints() {
-        backButton.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(20)
-            make.right.equalTo(topLabel.snp.left).offset(-5)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
-            make.centerY.equalTo(topLabel.snp.centerY)
-        }
-        
-        topLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(25)
-            make.centerX.equalTo(snp.centerX)
+        navigationView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(topLabel.snp.bottom).offset(20)
+            make.top.equalTo(navigationView.snp.bottom).offset(20)
             make.left.equalTo(snp.left).offset(10)
             make.right.equalTo(snp.right).offset(-10)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)

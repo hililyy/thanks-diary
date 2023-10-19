@@ -15,4 +15,5 @@ enum UserDefaultKey: String {
     case IS_PUSH
     case THEME_MODE
     case THEME_COLOR
+    case THEME_FONT
 }
