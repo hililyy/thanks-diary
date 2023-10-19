@@ -57,6 +57,8 @@ internal enum L10n {
   internal static let failLogin = L10n.tr("Localizable", "fail_login", fallback: "로그인을 실패하였습니다.")
   /// 회원가입을 실패하였습니다.
   internal static let failSignup = L10n.tr("Localizable", "fail_signup", fallback: "회원가입을 실패하였습니다.")
+  /// 폰트 설정
+  internal static let fontSet = L10n.tr("Localizable", "font_set", fallback: "폰트 설정")
   /// yyyy년 M월 d일
   internal static let formatDate1 = L10n.tr("Localizable", "format_date1", fallback: "yyyy년 M월 d일")
   /// dd'일' (E)
@@ -71,6 +73,8 @@ internal enum L10n {
   internal static let lightmode = L10n.tr("Localizable", "lightmode", fallback: "라이트 모드")
   /// 비밀번호가 일치하지 않습니다.
   internal static let mismatchPassword = L10n.tr("Localizable", "mismatch_password", fallback: "비밀번호가 일치하지 않습니다.")
+  /// 모드 설정
+  internal static let modeSet = L10n.tr("Localizable", "mode_set", fallback: "모드 설정")
   /// 다음
   internal static let next = L10n.tr("Localizable", "next", fallback: "다음")
   /// 앱 버전 정보를 찾을 수 없습니다.

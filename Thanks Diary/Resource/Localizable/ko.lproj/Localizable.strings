@@ -68,6 +68,8 @@
 "not_exist_diary" = "작성한 일기가 없습니다.";
 "restart_app" = "테마적용을 위해 앱을 종료해주세요.";
 "exit_app" = "앱 종료";
+"mode_set" = "모드 설정";
+"font_set" = "폰트 설정";
 
 "already_signup" = "이미 존재하는 이메일입니다.\n다른 이메일로 변경해 주세요.";
 "wrong_email_forget" = "이메일 형식이 잘못되었습니다.";
