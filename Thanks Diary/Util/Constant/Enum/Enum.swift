@@ -54,8 +54,10 @@ enum PositionType {
 enum FontType: Int, CaseIterable {
     case nanumBarunGothic
     case harunanum
-    case uniLab
+    case hagom
     case wiri
+    case boksung
+    case yeonyu
     case pretendard
     case scoreDream
     case kotrahope
@@ -67,10 +69,14 @@ enum FontType: Int, CaseIterable {
             return "나눔바른고딕"
         case .harunanum:
             return "온글잎 하루나눔"
-        case .uniLab:
-            return "온글잎 안될과학유니랩장체"
+        case .hagom:
+            return "온글잎 하곰체"
         case .wiri:
             return "온글잎 위리체"
+        case .boksung:
+            return "온글잎 복숭씨"
+        case .yeonyu:
+            return "온글잎 연유체"
         case .pretendard:
             return "프리텐다드"
         case .scoreDream:

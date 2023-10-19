@@ -119,12 +119,18 @@ final class ResourceManager {
         case .harunanum:
             fontSize += 3
             return FontFamily.OwnglyphHaruNanum.regular.font(size: fontSize)
-        case .uniLab:
+        case .hagom:
             fontSize += 3
-            return FontFamily.온글잎안될과학유니랩장체.regular.font(size: fontSize)
+            return FontFamily.OwnglyphAlcomhagom.regular.font(size: fontSize)
         case .wiri:
             fontSize += 3
             return FontFamily.OwnglyphWiri.regular.font(size: fontSize)
+        case .boksung:
+            fontSize += 3
+            return FontFamily.OwnglyphBoksoong.regular.font(size: fontSize)
+        case .yeonyu:
+            fontSize += 3
+            return FontFamily.OwnglyphYeonu.regular.font(size: fontSize)
         case .pretendard:
             return FontFamily.Pretendard.regular.font(size: fontSize)
         case .scoreDream:
@@ -148,12 +154,18 @@ final class ResourceManager {
         case .harunanum:
             fontSize += 3
             return FontFamily.OwnglyphHaruNanum.regular.font(size: fontSize)
-        case .uniLab:
+        case .hagom:
             fontSize += 3
-            return FontFamily.온글잎안될과학유니랩장체.regular.font(size: fontSize)
+            return FontFamily.OwnglyphAlcomhagom.regular.font(size: fontSize)
         case .wiri:
             fontSize += 3
             return FontFamily.OwnglyphWiri.regular.font(size: fontSize)
+        case .boksung:
+            fontSize += 3
+            return FontFamily.OwnglyphBoksoong.regular.font(size: fontSize)
+        case .yeonyu:
+            fontSize += 3
+            return FontFamily.OwnglyphYeonu.regular.font(size: fontSize)
         case .pretendard:
             return FontFamily.Pretendard.regular.font(size: fontSize)
         case .scoreDream:

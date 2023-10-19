@@ -46,14 +46,14 @@ final class ThemeModeView: BaseView {
     let darkButton = UIButton(type: .custom)
     
     private let lightLabel = UILabel().then { label in
-        label.textColor = Asset.Color.gray6.color
+        label.textColor = Asset.Color.blackColor.color
         label.text = L10n.lightmode
         label.textAlignment = .center
         label.font = ResourceManager.instance?.getFont(size: 15)
     }
     
     private let darkLabel = UILabel().then { label in
-        label.textColor = Asset.Color.gray6.color
+        label.textColor = Asset.Color.blackColor.color
         label.text = L10n.darkmode
         label.textAlignment = .center
         label.font = ResourceManager.instance?.getFont(size: 15)

@@ -94,13 +94,13 @@ final class SettingThemeView: BaseView {
         }
         
         modeView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).offset(30)
+            make.top.equalTo(contentView.snp.top).offset(20)
             make.left.equalTo(contentView.snp.left).offset(35)
             make.right.equalTo(contentView.snp.right).offset(-35)
         }
         
         lineView.snp.makeConstraints { make in
-            make.top.equalTo(modeView.snp.bottom).offset(40)
+            make.top.equalTo(modeView.snp.bottom).offset(20)
             make.left.equalTo(contentView.snp.left).offset(30)
             make.right.equalTo(contentView.snp.right).offset(-30)
         }
@@ -121,7 +121,6 @@ final class SettingThemeView: BaseView {
             make.top.equalTo(lineView2.snp.bottom).offset(20)
             make.left.equalTo(contentView.snp.left).offset(35)
             make.right.equalTo(contentView.snp.right).offset(-35)
-            make.bottom.equalTo(contentView.snp.bottom)
         }
     }
 }
