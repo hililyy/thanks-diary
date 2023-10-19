@@ -116,6 +116,8 @@ final class ResourceManager {
         switch type {
         case .nanumBarunGothic:
             return FontFamily.NanumBarunGothic.ultraLight.font(size: fontSize)
+        case .nanumBarunPen:
+            return FontFamily.NanumBarunpenOTF.regular.font(size: fontSize)
         case .harunanum:
             fontSize += 3
             return FontFamily.OwnglyphHaruNanum.regular.font(size: fontSize)
@@ -133,12 +135,8 @@ final class ResourceManager {
             return FontFamily.OwnglyphYeonu.regular.font(size: fontSize)
         case .pretendard:
             return FontFamily.Pretendard.regular.font(size: fontSize)
-        case .scoreDream:
-            return FontFamily.SCoreDream._4Regular.font(size: fontSize)
         case .kotrahope:
             return FontFamily.KotraHope.regular.font(size: fontSize)
-        case .kotraGothic:
-            return FontFamily.KotraGothic.regular.font(size: fontSize)
         }
     }
     
@@ -151,6 +149,8 @@ final class ResourceManager {
         switch fontType {
         case .nanumBarunGothic:
             return FontFamily.NanumBarunGothic.ultraLight.font(size: fontSize)
+        case .nanumBarunPen:
+            return FontFamily.NanumBarunpenOTF.regular.font(size: fontSize)
         case .harunanum:
             fontSize += 3
             return FontFamily.OwnglyphHaruNanum.regular.font(size: fontSize)
@@ -168,12 +168,8 @@ final class ResourceManager {
             return FontFamily.OwnglyphYeonu.regular.font(size: fontSize)
         case .pretendard:
             return FontFamily.Pretendard.regular.font(size: fontSize)
-        case .scoreDream:
-            return FontFamily.SCoreDream._4Regular.font(size: fontSize)
         case .kotrahope:
             return FontFamily.KotraHope.regular.font(size: fontSize)
-        case .kotraGothic:
-            return FontFamily.KotraGothic.regular.font(size: fontSize)
         default:
             return FontFamily.NanumBarunGothic.ultraLight.font(size: fontSize)
         }

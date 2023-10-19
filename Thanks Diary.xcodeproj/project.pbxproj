@@ -40,23 +40,6 @@
 		02475DC02ADF6EE70075C206 /* wiri.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DBE2ADF6EE70075C206 /* wiri.ttf */; };
 		02475DC32ADF6F090075C206 /* KOTRAHOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DC22ADF6F090075C206 /* KOTRAHOPE.ttf */; };
 		02475DCD2ADF6F240075C206 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DC42ADF6F230075C206 /* Pretendard-Regular.otf */; };
-		02475DCE2ADF6F240075C206 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DC52ADF6F230075C206 /* Pretendard-SemiBold.otf */; };
-		02475DCF2ADF6F240075C206 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DC62ADF6F230075C206 /* Pretendard-ExtraLight.otf */; };
-		02475DD02ADF6F240075C206 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DC72ADF6F230075C206 /* Pretendard-Bold.otf */; };
-		02475DD12ADF6F240075C206 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DC82ADF6F230075C206 /* Pretendard-Black.otf */; };
-		02475DD22ADF6F240075C206 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DC92ADF6F230075C206 /* Pretendard-ExtraBold.otf */; };
-		02475DD32ADF6F240075C206 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DCA2ADF6F240075C206 /* Pretendard-Medium.otf */; };
-		02475DD42ADF6F240075C206 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DCB2ADF6F240075C206 /* Pretendard-Light.otf */; };
-		02475DD52ADF6F240075C206 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DCC2ADF6F240075C206 /* Pretendard-Thin.otf */; };
-		02475DDF2ADF6F360075C206 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DD62ADF6F360075C206 /* SCDream5.otf */; };
-		02475DE02ADF6F360075C206 /* SCDream8.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DD72ADF6F360075C206 /* SCDream8.otf */; };
-		02475DE12ADF6F360075C206 /* SCDream1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DD82ADF6F360075C206 /* SCDream1.otf */; };
-		02475DE22ADF6F360075C206 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DD92ADF6F360075C206 /* SCDream3.otf */; };
-		02475DE32ADF6F360075C206 /* SCDream6.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DDA2ADF6F360075C206 /* SCDream6.otf */; };
-		02475DE42ADF6F360075C206 /* SCDream4.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DDB2ADF6F360075C206 /* SCDream4.otf */; };
-		02475DE52ADF6F360075C206 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DDC2ADF6F360075C206 /* SCDream7.otf */; };
-		02475DE62ADF6F360075C206 /* SCDream9.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DDD2ADF6F360075C206 /* SCDream9.otf */; };
-		02475DE72ADF6F360075C206 /* SCDream2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02475DDE2ADF6F360075C206 /* SCDream2.otf */; };
 		02475DE92ADF6FBB0075C206 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02475DE82ADF6FBB0075C206 /* ResourceManager.swift */; };
 		02475DEC2ADF827F0075C206 /* ThemeModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02475DEB2ADF827F0075C206 /* ThemeModeView.swift */; };
 		02475DEE2ADF82860075C206 /* ThemeColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02475DED2ADF82860075C206 /* ThemeColorView.swift */; };
@@ -97,9 +80,6 @@
 		026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */; };
 		026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */; };
 		026E9C232A4AAAD400568CFD /* AlertConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */; };
-		026E9C2F2A4AC95500568CFD /* NanumBarunGothicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */; };
-		026E9C302A4AC95900568CFD /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */; };
-		026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */; };
 		027C60C82A81EB82008F607F /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60C72A81EB82008F607F /* UIScrollView.swift */; };
 		027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60CA2A81F78C008F607F /* CommonUtilManager.swift */; };
 		027C60CD2A8213D7008F607F /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */; };
@@ -111,6 +91,7 @@
 		02835D8B2AE0F00100593BA5 /* boksung.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D882AE0F00000593BA5 /* boksung.ttf */; };
 		02835D8C2AE0F00100593BA5 /* hagom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D892AE0F00100593BA5 /* hagom.ttf */; };
 		02835D8D2AE0F00100593BA5 /* yeonyu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D8A2AE0F00100593BA5 /* yeonyu.ttf */; };
+		02835D8F2AE0FE1A00593BA5 /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D8E2AE0FE1A00593BA5 /* NanumBarunpenR.otf */; };
 		0290EF652ADCD22C00869C05 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF642ADCD22C00869C05 /* UIButton.swift */; };
 		0290EF672ADCD25000869C05 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF662ADCD25000869C05 /* UILabel.swift */; };
 		0290EF692ADCD43300869C05 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF682ADCD43300869C05 /* UIStackView.swift */; };
@@ -137,7 +118,6 @@
 		2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D87FE28A540FB00576E56 /* AppDelegate.swift */; };
 		2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D880028A540FB00576E56 /* SceneDelegate.swift */; };
 		2A0D880328A540FB00576E56 /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D880228A540FB00576E56 /* LaunchVC.swift */; };
-		2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D881328ABB3A000576E56 /* KOTRA_GOTHIC.ttf */; };
 		2A0D881828ABB80900576E56 /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D881728ABB80900576E56 /* wave.json */; };
 		2A0D881A28ABB83A00576E56 /* dot.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D881928ABB83A00576E56 /* dot.json */; };
 		2A4F9302290071C200ECFE88 /* ErrorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F9301290071C200ECFE88 /* ErrorCase.swift */; };
@@ -218,23 +198,6 @@
 		02475DBE2ADF6EE70075C206 /* wiri.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wiri.ttf; sourceTree = "<group>"; };
 		02475DC22ADF6F090075C206 /* KOTRAHOPE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KOTRAHOPE.ttf; sourceTree = "<group>"; };
 		02475DC42ADF6F230075C206 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
-		02475DC52ADF6F230075C206 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		02475DC62ADF6F230075C206 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
-		02475DC72ADF6F230075C206 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
-		02475DC82ADF6F230075C206 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
-		02475DC92ADF6F230075C206 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
-		02475DCA2ADF6F240075C206 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
-		02475DCB2ADF6F240075C206 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
-		02475DCC2ADF6F240075C206 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
-		02475DD62ADF6F360075C206 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
-		02475DD72ADF6F360075C206 /* SCDream8.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream8.otf; sourceTree = "<group>"; };
-		02475DD82ADF6F360075C206 /* SCDream1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream1.otf; sourceTree = "<group>"; };
-		02475DD92ADF6F360075C206 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
-		02475DDA2ADF6F360075C206 /* SCDream6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream6.otf; sourceTree = "<group>"; };
-		02475DDB2ADF6F360075C206 /* SCDream4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream4.otf; sourceTree = "<group>"; };
-		02475DDC2ADF6F360075C206 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
-		02475DDD2ADF6F360075C206 /* SCDream9.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream9.otf; sourceTree = "<group>"; };
-		02475DDE2ADF6F360075C206 /* SCDream2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream2.otf; sourceTree = "<group>"; };
 		02475DE82ADF6FBB0075C206 /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		02475DEB2ADF827F0075C206 /* ThemeModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModeView.swift; sourceTree = "<group>"; };
 		02475DED2ADF82860075C206 /* ThemeColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorView.swift; sourceTree = "<group>"; };
@@ -275,9 +238,6 @@
 		026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryProtocol.swift; sourceTree = "<group>"; };
 		026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmView.swift; sourceTree = "<group>"; };
 		026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmVC.swift; sourceTree = "<group>"; };
-		026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicBold.ttf; sourceTree = "<group>"; };
-		026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothic.ttf; sourceTree = "<group>"; };
-		026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicLight.ttf; sourceTree = "<group>"; };
 		027C60C72A81EB82008F607F /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		027C60CA2A81F78C008F607F /* CommonUtilManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtilManager.swift; sourceTree = "<group>"; };
 		027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
@@ -289,6 +249,7 @@
 		02835D882AE0F00000593BA5 /* boksung.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boksung.ttf; sourceTree = "<group>"; };
 		02835D892AE0F00100593BA5 /* hagom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hagom.ttf; sourceTree = "<group>"; };
 		02835D8A2AE0F00100593BA5 /* yeonyu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yeonyu.ttf; sourceTree = "<group>"; };
+		02835D8E2AE0FE1A00593BA5 /* NanumBarunpenR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenR.otf; sourceTree = "<group>"; };
 		0290EF112AD64E4B00869C05 /* ThanksDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290EF122AD64E4B00869C05 /* ThanksDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290EF642ADCD22C00869C05 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -317,7 +278,6 @@
 		2A0D880028A540FB00576E56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2A0D880228A540FB00576E56 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
 		2A0D880C28A540FE00576E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A0D881328ABB3A000576E56 /* KOTRA_GOTHIC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KOTRA_GOTHIC.ttf; sourceTree = "<group>"; };
 		2A0D881728ABB80900576E56 /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
 		2A0D881928ABB83A00576E56 /* dot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dot.json; sourceTree = "<group>"; };
 		2A4F9301290071C200ECFE88 /* ErrorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCase.swift; sourceTree = "<group>"; };
@@ -699,35 +659,15 @@
 		2A0D881228ABB38900576E56 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				026E9C2D2A4AC87E00568CFD /* NanumBarunGothic.ttf */,
-				026E9C2C2A4AC87E00568CFD /* NanumBarunGothicBold.ttf */,
 				02475DBE2ADF6EE70075C206 /* wiri.ttf */,
-				02475DC82ADF6F230075C206 /* Pretendard-Black.otf */,
-				02475DC72ADF6F230075C206 /* Pretendard-Bold.otf */,
 				02835D882AE0F00000593BA5 /* boksung.ttf */,
 				02835D892AE0F00100593BA5 /* hagom.ttf */,
 				02835D8A2AE0F00100593BA5 /* yeonyu.ttf */,
-				02475DC92ADF6F230075C206 /* Pretendard-ExtraBold.otf */,
-				02475DD82ADF6F360075C206 /* SCDream1.otf */,
-				02475DDE2ADF6F360075C206 /* SCDream2.otf */,
-				02475DD92ADF6F360075C206 /* SCDream3.otf */,
-				02475DDB2ADF6F360075C206 /* SCDream4.otf */,
-				02475DD62ADF6F360075C206 /* SCDream5.otf */,
-				02475DDA2ADF6F360075C206 /* SCDream6.otf */,
-				02475DDC2ADF6F360075C206 /* SCDream7.otf */,
-				02475DD72ADF6F360075C206 /* SCDream8.otf */,
-				02475DDD2ADF6F360075C206 /* SCDream9.otf */,
-				02475DC62ADF6F230075C206 /* Pretendard-ExtraLight.otf */,
-				02475DCB2ADF6F240075C206 /* Pretendard-Light.otf */,
-				02475DCA2ADF6F240075C206 /* Pretendard-Medium.otf */,
+				02835D8E2AE0FE1A00593BA5 /* NanumBarunpenR.otf */,
 				02475DC42ADF6F230075C206 /* Pretendard-Regular.otf */,
-				02475DC52ADF6F230075C206 /* Pretendard-SemiBold.otf */,
-				02475DCC2ADF6F240075C206 /* Pretendard-Thin.otf */,
 				02475DBC2ADF6ED40075C206 /* halunanum.ttf */,
 				02475DC22ADF6F090075C206 /* KOTRAHOPE.ttf */,
-				026E9C2E2A4AC87E00568CFD /* NanumBarunGothicLight.ttf */,
 				2A0541DB28D4A84400C04ED8 /* NanumBarunGothicUltraLight.ttf */,
-				2A0D881328ABB3A000576E56 /* KOTRA_GOTHIC.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -1027,47 +967,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A55DC492A6D446A00A13F58 /* Localizable.strings in Resources */,
-				02475DE02ADF6F360075C206 /* SCDream8.otf in Resources */,
 				02835D8C2AE0F00100593BA5 /* hagom.ttf in Resources */,
 				2A81232C28BFBDEA000A250E /* plant.json in Resources */,
-				02475DE42ADF6F360075C206 /* SCDream4.otf in Resources */,
 				2A81232628BFB2BD000A250E /* writing.json in Resources */,
 				02835D8D2AE0F00100593BA5 /* yeonyu.ttf in Resources */,
-				2A0D881428ABB3A400576E56 /* KOTRA_GOTHIC.ttf in Resources */,
-				026E9C2F2A4AC95500568CFD /* NanumBarunGothicLight.ttf in Resources */,
 				02475DC02ADF6EE70075C206 /* wiri.ttf in Resources */,
-				02475DD42ADF6F240075C206 /* Pretendard-Light.otf in Resources */,
 				2A0962DA28CF484300063DF3 /* TextData.csv in Resources */,
 				2A0541DC28D4A84800C04ED8 /* NanumBarunGothicUltraLight.ttf in Resources */,
 				2A81232828BFB83B000A250E /* go.json in Resources */,
-				02475DE32ADF6F360075C206 /* SCDream6.otf in Resources */,
 				029392422ABD956000FB2553 /* .swiftlint.yml in Resources */,
-				02475DD32ADF6F240075C206 /* Pretendard-Medium.otf in Resources */,
-				026E9C302A4AC95900568CFD /* NanumBarunGothicBold.ttf in Resources */,
-				02475DE12ADF6F360075C206 /* SCDream1.otf in Resources */,
-				02475DD22ADF6F240075C206 /* Pretendard-ExtraBold.otf in Resources */,
-				02475DDF2ADF6F360075C206 /* SCDream5.otf in Resources */,
-				02475DCE2ADF6F240075C206 /* Pretendard-SemiBold.otf in Resources */,
-				02475DE52ADF6F360075C206 /* SCDream7.otf in Resources */,
 				2A0D881828ABB80900576E56 /* wave.json in Resources */,
+				02835D8F2AE0FE1A00593BA5 /* NanumBarunpenR.otf in Resources */,
 				02475DCD2ADF6F240075C206 /* Pretendard-Regular.otf in Resources */,
-				02475DE22ADF6F360075C206 /* SCDream3.otf in Resources */,
 				02D7BB6F2AA589DF00419739 /* GoogleService-Info.plist in Resources */,
-				02475DD52ADF6F240075C206 /* Pretendard-Thin.otf in Resources */,
-				02475DD02ADF6F240075C206 /* Pretendard-Bold.otf in Resources */,
 				2A81233028BFBF4D000A250E /* sun.json in Resources */,
 				02475DC32ADF6F090075C206 /* KOTRAHOPE.ttf in Resources */,
 				025EF08D2A45A36000C930F2 /* Launch.storyboard in Resources */,
 				020980A72AC11EC5005B08DF /* Assets.xcassets in Resources */,
-				02475DCF2ADF6F240075C206 /* Pretendard-ExtraLight.otf in Resources */,
 				2A0D881A28ABB83A00576E56 /* dot.json in Resources */,
 				02835D8B2AE0F00100593BA5 /* boksung.ttf in Resources */,
-				026E9C312A4AC95B00568CFD /* NanumBarunGothic.ttf in Resources */,
-				02475DE62ADF6F360075C206 /* SCDream9.otf in Resources */,
 				029392452ABD971700FB2553 /* swiftgen.yml in Resources */,
 				02475DBD2ADF6ED40075C206 /* halunanum.ttf in Resources */,
-				02475DD12ADF6F240075C206 /* Pretendard-Black.otf in Resources */,
-				02475DE72ADF6F360075C206 /* SCDream2.otf in Resources */,
 				020A8DF12ACFD11F00E855EE /* Package.resolved in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1466,7 +1386,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Thanks Diary/Thanks Diary.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68P2WV4DR3;
 				ENABLE_TESTABILITY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1483,7 +1403,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lily.Thanks-Diary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1502,7 +1422,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Thanks Diary/Thanks Diary.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68P2WV4DR3;
 				ENABLE_TESTABILITY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1519,7 +1439,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lily.Thanks-Diary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

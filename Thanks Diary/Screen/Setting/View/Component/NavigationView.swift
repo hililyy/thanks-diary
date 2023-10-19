@@ -36,13 +36,14 @@ final class NavigationView: BaseView {
             make.right.equalTo(titleLabel.snp.left).offset(-5)
             make.width.equalTo(44)
             make.height.equalTo(44)
-            make.centerY.equalTo(snp.centerY)
+            make.centerY.equalTo(titleLabel.snp.centerY)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(snp.top).offset(25)
             make.centerX.equalTo(snp.centerX)
             make.bottom.equalTo(snp.bottom)
+            make.height.equalTo(30)
         }
     }
 }
