@@ -295,8 +295,9 @@ final class DetailWriteView: BaseView {
         }
         
         titleUnderLineImageView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.top)
+            make.top.equalTo(titleLabel.snp.top).offset(15)
             make.left.equalTo(titleLabel.snp.left).offset(-8)
+            make.right.equalTo(titleLabel.snp.right).offset(-12)
             make.bottom.equalTo(titleLabel.snp.bottom)
             make.width.equalTo(55)
         }
@@ -316,8 +317,9 @@ final class DetailWriteView: BaseView {
         }
         
         contentsUnderLineImageView.snp.makeConstraints { make in
-            make.top.equalTo(contentsLabel.snp.top)
+            make.top.equalTo(contentsLabel.snp.top).offset(15)
             make.left.equalTo(contentsLabel.snp.left).offset(-8)
+            make.right.equalTo(contentsLabel.snp.right).offset(-12)
             make.bottom.equalTo(contentsLabel.snp.bottom)
             make.width.equalTo(55)
         }
