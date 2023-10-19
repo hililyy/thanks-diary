@@ -26,8 +26,7 @@ final class SimpleWriteVC: BaseVC {
     }
     
     override func viewDidLoad() {
-        initUI()
-        initTarget()
+        initalize()
     }
     
     // MARK: - Function
