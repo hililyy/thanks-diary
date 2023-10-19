@@ -59,6 +59,10 @@ final class SettingThemeVC: BaseVC {
     private func saveThemeFont(type: Int) {
         UserDefaultManager.instance?.set(type, key: UserDefaultKey.THEME_FONT.rawValue)
     }
+    
+    private func saveTableViewPosition() {
+        CommonUtilManager.instance?.tableViewOffset = settingThemeView.fontView.fontTableView.contentOffset
+    }
 }
 
 // MARK: - initalize
@@ -95,6 +99,7 @@ extension SettingThemeVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 selectDarkTheme()
+                saveTableViewPosition()
             })
             .disposed(by: disposeBag)
     }
@@ -105,6 +110,7 @@ extension SettingThemeVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 selectLightTheme()
+                saveTableViewPosition()
             })
             .disposed(by: disposeBag)
     }
@@ -132,7 +138,7 @@ extension SettingThemeVC {
                     guard let self else { return }
                     settingThemeView.setColorUI(buttonTag: button.tag)
                     saveThemeColor(type: button.tag)
-                    CommonUtilManager.instance?.tableViewOffset = settingThemeView.fontView.fontTableView.contentOffset
+                    saveTableViewPosition()
                     
                     CommonUtilManager.instance?.themeSubject.onNext(button.tag)
                     self.initalize()
@@ -167,7 +173,7 @@ extension SettingThemeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let type = FontType(rawValue: indexPath.row) else { return }
         saveThemeFont(type: type.rawValue)
-        CommonUtilManager.instance?.tableViewOffset = settingThemeView.fontView.fontTableView.contentOffset
+        saveTableViewPosition()
         CommonUtilManager.instance?.themeSubject.onNext(type.rawValue)
         initalize()
     }
