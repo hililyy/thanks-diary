@@ -13,8 +13,11 @@ final class AuthManager {
     
     private static var _instance: AuthManager?
     
-    public static var instance: AuthManager? {
-        return _instance ?? AuthManager()
+    static var instance: AuthManager? {
+        if _instance == nil {
+            _instance = AuthManager()
+        }
+        return _instance
     }
     
     // 콜백 안쓸수 있으면 안쓰는게 좋음
@@ -22,7 +25,6 @@ final class AuthManager {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { success, error in
-            print("success: \(success)")
             completion(success)
             if error != nil {
                 errorHandler()

@@ -13,8 +13,11 @@ final class ResourceManager {
     
     private static var _instance: ResourceManager?
     
-    public static var instance: ResourceManager? {
-        return _instance ?? ResourceManager()
+    static var instance: ResourceManager? {
+        if _instance == nil {
+            _instance = ResourceManager()
+        }
+        return _instance
     }
     
     func getMainColor() -> UIColor {

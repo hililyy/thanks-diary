@@ -14,8 +14,11 @@ final class LocalNotificationManager {
     
     private static var _instance: LocalNotificationManager?
     
-    public static var instance: LocalNotificationManager? {
-        return _instance ?? LocalNotificationManager()
+    static var instance: LocalNotificationManager? {
+        if _instance == nil {
+            _instance = LocalNotificationManager()
+        }
+        return _instance
     }
     
     func printRegistedNotification() {

@@ -13,8 +13,11 @@ final class CommonUtilManager {
     
     private static var _instance: CommonUtilManager?
     
-    public static var instance: CommonUtilManager? {
-        return _instance ?? CommonUtilManager()
+    static var instance: CommonUtilManager? {
+        if _instance == nil {
+            _instance = CommonUtilManager()
+        }
+        return _instance
     }
     
     var uuid: String {
