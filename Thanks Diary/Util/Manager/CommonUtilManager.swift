@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 import RxSwift
 import RxCocoa
 
@@ -46,5 +47,20 @@ final class CommonUtilManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         guard let objects = try? decoder.decode([T].self, from: dictionaries) else { return nil }
         return objects
+    }
+    
+    func presentAppReviewPopup() {
+        let bundleVersionKey = kCFBundleVersionKey as String // "CFBundleVersion"
+        let currentVersion = Bundle.main.object(forInfoDictionaryKey: bundleVersionKey) as? String // build version
+        let lastVersion = UserDefaults.standard.string(forKey: "lastVersion")
+        guard lastVersion == nil || lastVersion != currentVersion else { return }
+        
+        guard let scene = UIApplication
+            .shared
+            .connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+        else { return }
+        
+        SKStoreReviewController.requestReview(in: scene)
     }
 }

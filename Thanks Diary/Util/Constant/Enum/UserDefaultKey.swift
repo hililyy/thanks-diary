@@ -16,4 +16,5 @@ enum UserDefaultKey: String {
     case THEME_MODE
     case THEME_COLOR
     case THEME_FONT
+    case IS_PRESENT_REVIEW_POPUP
 }

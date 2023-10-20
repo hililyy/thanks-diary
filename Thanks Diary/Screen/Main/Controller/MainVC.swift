@@ -29,6 +29,7 @@ final class MainVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.readData()
+        presentAppReviewPopup()
     }
     
     // MARK: - Function
@@ -63,6 +64,16 @@ final class MainVC: BaseVC {
     private func moveToday() {
         viewModel.selectedDate.accept(Date())
         mainView.calendar.select(Date())
+    }
+    
+    private func presentAppReviewPopup() {
+        let diaryCount = viewModel.allDetailDataRx.value.count + viewModel.allSimpleDataRx.value.count
+        let isPresentReviewPopup = UserDefaultManager.instance.isPresentReviewPopup
+        
+        if diaryCount >= 5 && !isPresentReviewPopup {
+            UserDefaultManager.instance.isPresentReviewPopup = true
+            CommonUtilManager.instance?.presentAppReviewPopup()
+        }
     }
 }
 
