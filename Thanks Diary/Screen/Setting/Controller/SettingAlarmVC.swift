@@ -11,7 +11,7 @@ final class SettingAlarmVC: BaseVC {
     
     // MARK: - Property
     
-    let settingAlarmView = SettingAlarmView()
+    let settingAlarmView = SettingView(navigationTitle: L10n.settingAlarm)
     var viewModel: SettingViewModel?
     var switchFlag: Bool = false
     

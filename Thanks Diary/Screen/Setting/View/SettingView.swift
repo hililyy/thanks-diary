@@ -24,19 +24,13 @@ final class SettingView: BaseView {
     
     // MARK: - UI, Target
     
-    let settingTableTitles: [SettingNameModel] = [
-        SettingNameModel(title: L10n.settingName1, contents: "", type: ._switch),
-        SettingNameModel(title: L10n.settingName2, contents: "", type: .more),
-        SettingNameModel(title: L10n.settingName3, contents: "", type: .more),
-        SettingNameModel(title: L10n.settingName4, contents: "", type: .more),
-        SettingNameModel(title: L10n.settingName5, contents: "", type: .more),
-        SettingNameModel(title: L10n.settingName6, contents: CommonUtilManager.instance?.appVersion ?? "", type: .label),
-        SettingNameModel(title: L10n.settingName10, contents: "", type: .more)
-    ]
+    convenience init(navigationTitle: String) {
+        self.init()
+        navigationView.setTitleLabelText(title: navigationTitle)
+    }
     
     override func initUI() {
         backgroundColor = Asset.Color.white.color
-        navigationView.setTitleLabelText(title: L10n.setting)
     }
     
     // MARK: - Constraint

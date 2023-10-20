@@ -12,7 +12,7 @@ final class SettingVC: BaseVC {
     
     // MARK: - Property
     
-    private var settingView = SettingView()
+    private var settingView = SettingView(navigationTitle: L10n.setting)
     private var alarmFlag: Bool = false
     let viewModel = SettingViewModel()
     
@@ -56,7 +56,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = settingView.settingTableTitles[indexPath.row]
+        let data = viewModel.settingTableTitles[indexPath.row]
         
         switch data.type {
         case ._switch:
