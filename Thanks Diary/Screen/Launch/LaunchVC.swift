@@ -44,7 +44,7 @@ final class LaunchVC: BaseVC {
     }
     
     private func initLaunch() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
             if let isReEntry = UserDefaultManager.instance?.bool(UserDefaultKey.IS_RE_ENTRY_USER.rawValue),
                isReEntry {
                 if let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue),
