@@ -39,25 +39,23 @@ final class SettingThemeVC: BaseVC {
     // MARK: - Function
     
     private func selectDarkTheme() {
-        UserDefaultManager.instance?.set(ThemeMode.dark.rawValue,
-                                         key: UserDefaultKey.THEME_MODE.rawValue)
+        UserDefaultManager.instance.themeMode = ThemeMode.dark.rawValue
         settingThemeView.setTheme(theme: .dark)
         viewWillAppear(true)
     }
     
     private func selectLightTheme() {
-        UserDefaultManager.instance?.set(ThemeMode.light.rawValue,
-                                         key: UserDefaultKey.THEME_MODE.rawValue)
+        UserDefaultManager.instance.themeMode = ThemeMode.light.rawValue
         settingThemeView.setTheme(theme: .light)
         viewWillAppear(true)
     }
     
     private func saveThemeColor(type: Int) {
-        UserDefaultManager.instance?.set(type, key: UserDefaultKey.THEME_COLOR.rawValue)
+        UserDefaultManager.instance.themeColor = type
     }
     
     private func saveThemeFont(type: Int) {
-        UserDefaultManager.instance?.set(type, key: UserDefaultKey.THEME_FONT.rawValue)
+        UserDefaultManager.instance.themeFont = type
     }
     
     private func saveTableViewPosition() {
@@ -165,7 +163,7 @@ extension SettingThemeVC: UITableViewDelegate, UITableViewDataSource {
                                        color: Asset.Color.gray1.color,
                                        font: ResourceManager.instance?.getFont(type: type, size: 18) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 20))
         
-        let savedFontType = UserDefaultManager.instance?.int(UserDefaultKey.THEME_FONT.rawValue)
+        let savedFontType = UserDefaultManager.instance.themeFont
         cell.changeButtonUI(isSelected: savedFontType == type.rawValue)
         return cell
     }

@@ -39,7 +39,7 @@ final class SettingAlarmVC: BaseVC {
             if status == .denied {
                 setNotification(isOn: false)
             } else {
-                guard let isPush = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PUSH.rawValue) else { return }
+                let isPush = UserDefaultManager.instance.isPush
                 switchFlag = isPush
             }
         }
@@ -62,23 +62,23 @@ final class SettingAlarmVC: BaseVC {
     
     private func onNotification() {
         LocalNotificationManager.instance?.registNotification(time: Date())
-        UserDefaultManager.instance?.set(Date(), key: UserDefaultKey.PUSH_TIME.rawValue)
-        UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_PUSH.rawValue)
+        UserDefaultManager.instance.pushTime = Date()
+        UserDefaultManager.instance.isPush = true
         viewModel?.selectedTime = Date()
         switchFlag = true
     }
     
     private func offNotification() {
         LocalNotificationManager.instance?.cancelRegistedNotification()
-        UserDefaultManager.instance?.delete(UserDefaultKey.PUSH_TIME.rawValue)
-        UserDefaultManager.instance?.set(false, key: UserDefaultKey.IS_PUSH.rawValue)
+        UserDefaultManager.instance.delete(UserDefaultKey.PUSH_TIME.rawValue)
+        UserDefaultManager.instance.isPush = false
         viewModel?.selectedTime = nil
         switchFlag = false
     }
     
     private func changeSwitch() {
-        guard let isPush = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PUSH.rawValue) else { return }
-        UserDefaultManager.instance?.set(!isPush, key: UserDefaultKey.IS_PUSH.rawValue)
+        let isPush = UserDefaultManager.instance.isPush
+        UserDefaultManager.instance.isPush = !isPush
         switchFlag = !isPush
         setNotification(isOn: switchFlag)
         reload()

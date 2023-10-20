@@ -37,18 +37,19 @@ final class LaunchVC: BaseVC {
     
     // 비밀번호 ""으로 설정된 유저 비밀번호 변경(초기화 / 이전버전 앱 오류 해결방안)
     private func initPassword() {
-        guard let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue) else { return }
+        let password = UserDefaultManager.instance.password
         if password.isEmpty {
-            UserDefaultManager.instance?.set(Constant.INIT_PASSWORD, key: UserDefaultKey.PASSWORD.rawValue)
+            UserDefaultManager.instance.password = Constant.INIT_PASSWORD
         }
     }
     
     private func initLaunch() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-            if let isReEntry = UserDefaultManager.instance?.bool(UserDefaultKey.IS_RE_ENTRY_USER.rawValue),
-               isReEntry {
-                if let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue),
-                   isPassword {
+            let isReEntry = UserDefaultManager.instance.isReEntryUser
+            let isPassword = UserDefaultManager.instance.isPassword
+            
+            if isReEntry {
+                if isPassword {
                     let vc = SettingPWVC()
                     vc.homeFlag = true
                     vc.modalPresentationStyle = .currentContext

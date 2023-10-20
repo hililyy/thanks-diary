@@ -31,7 +31,7 @@ final class SettingAlarmDetailVC: BaseVC {
     
     private func savePushTime() {
         let time = viewModel?.selectedTime ?? Date()
-        UserDefaultManager.instance?.set(time, key: UserDefaultKey.PUSH_TIME.rawValue)
+        UserDefaultManager.instance.pushTime = time
         LocalNotificationManager.instance?.registNotification(time: time)
         self.viewModel?.selectedTime = time
     }

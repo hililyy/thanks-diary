@@ -36,14 +36,13 @@ final class SettingVC: BaseVC {
     // MARK: - Function
 
     private func changePasswordData() {
-        if let password = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue),
-            password.isEmpty {
-            UserDefaultManager.instance?.set(false, key: UserDefaultKey.IS_PASSWORD.rawValue)
+        let password = UserDefaultManager.instance.password
+        if password.isEmpty {
+            UserDefaultManager.instance.isPassword = false
         }
         
-        if let isPassword = UserDefaultManager.instance?.bool(UserDefaultKey.IS_PASSWORD.rawValue) {
-            alarmFlag = isPassword
-        }
+        let isPassword = UserDefaultManager.instance.isPassword
+        alarmFlag = isPassword
         
         settingView.tableView.reloadData()
     }
@@ -68,12 +67,12 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             cell.switchTapHandler = { [weak self] in
                 guard let self else { return }
                 alarmFlag.toggle()
-                UserDefaultManager.instance?.set(alarmFlag, key: UserDefaultKey.IS_PASSWORD.rawValue)
+                UserDefaultManager.instance.isPassword = alarmFlag
                 
                 if alarmFlag {
                     pushSettingPWVC()
                 } else {
-                    UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
+                    UserDefaultManager.instance.password = ""
                 }
             }
             return cell
@@ -180,6 +179,6 @@ extension SettingVC {
     }
     
     private func moveAppEvaluation() {
-        
+        CommonUtilManager.instance?.presentAppReviewPopup()
     }
 }

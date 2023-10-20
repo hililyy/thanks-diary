@@ -49,16 +49,14 @@ final class SettingThemeView: BaseView {
         backgroundColor = Asset.Color.white.color
         navigationView.setTitleLabelText(title: L10n.settingName8)
         
-        if let mode = UserDefaultManager.instance?.string(UserDefaultKey.THEME_MODE.rawValue),
-           let themeMode = ThemeMode(rawValue: mode) {
+        let mode = UserDefaultManager.instance.themeMode
+        if let themeMode = ThemeMode(rawValue: mode) {
             setTheme(theme: themeMode)
         }
         
-        if let color = UserDefaultManager.instance?.int(UserDefaultKey.THEME_COLOR.rawValue) {
-            setColorUI(buttonTag: color)
-        } else {
-            setColorUI(buttonTag: 0)
-        }
+        let color = UserDefaultManager.instance.themeColor
+        setColorUI(buttonTag: color)
+        
     }
     
     // MARK: - Constraint

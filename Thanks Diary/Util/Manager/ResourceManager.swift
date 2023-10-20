@@ -21,7 +21,8 @@ final class ResourceManager {
     }
     
     func getMainColor() -> UIColor {
-        guard let color = UserDefaultManager.instance?.int(UserDefaultKey.THEME_COLOR.rawValue) else { return Asset.Color.lightGrayBlue.color }
+        let color = UserDefaultManager.instance.themeColor
+        
         switch color {
         case 0:
             return Asset.Color.lightGrayBlue.color
@@ -39,7 +40,8 @@ final class ResourceManager {
     }
     
     func getMainDeepColor() -> UIColor {
-        guard let color = UserDefaultManager.instance?.int(UserDefaultKey.THEME_COLOR.rawValue) else { return Asset.Color.lightGrayBlue.color }
+        let color = UserDefaultManager.instance.themeColor
+        
         switch color {
         case 0:
             return Asset.Color.grayBlue.color
@@ -57,7 +59,8 @@ final class ResourceManager {
     }
     
     func getDetailWriteImage() -> UIImage {
-        guard let color = UserDefaultManager.instance?.int(UserDefaultKey.THEME_COLOR.rawValue) else { return Asset.Image.icDetailWrite.image }
+        let color = UserDefaultManager.instance.themeColor
+        
         switch color {
         case 0:
             return Asset.Image.icDetailWrite.image
@@ -75,7 +78,8 @@ final class ResourceManager {
     }
     
     func getSimpleWriteImage() -> UIImage {
-        guard let color = UserDefaultManager.instance?.int(UserDefaultKey.THEME_COLOR.rawValue) else { return Asset.Image.icDetailWrite.image }
+        let color = UserDefaultManager.instance.themeColor
+        
         switch color {
         case 0:
             return Asset.Image.icSimpleWrite.image
@@ -93,7 +97,8 @@ final class ResourceManager {
     }
     
     func getUnderLineImage() -> UIImage {
-        guard let color = UserDefaultManager.instance?.int(UserDefaultKey.THEME_COLOR.rawValue) else { return Asset.Image.icDetailWrite.image }
+        let color = UserDefaultManager.instance.themeColor
+        
         switch color {
         case 0:
             return Asset.Image.imgUnderlineBlue.image
@@ -143,7 +148,7 @@ final class ResourceManager {
     func getFont(size: CGFloat) -> UIFont {
         var fontSize = size
         
-        guard let savedFont = UserDefaultManager.instance?.int(UserDefaultKey.THEME_FONT.rawValue) else { return FontFamily.NanumBarunGothic.ultraLight.font(size: size) }
+        let savedFont = UserDefaultManager.instance.themeFont
         let fontType = FontType(rawValue: savedFont)
         
         switch fontType {

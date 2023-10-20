@@ -53,7 +53,7 @@ final class SettingPWVC: BaseVC {
     }
     
     private func handleFromHome() {
-        let oldPassword = UserDefaultManager.instance?.string(UserDefaultKey.PASSWORD.rawValue)
+        let oldPassword = UserDefaultManager.instance.password
         if firstPW == oldPassword {
             registMainToRoot()
         } else {
@@ -71,8 +71,8 @@ final class SettingPWVC: BaseVC {
     
     private func handleReEnter() {
         if firstPW == secondPW {
-            UserDefaultManager.instance?.set(firstPW, key: UserDefaultKey.PASSWORD.rawValue)
-            UserDefaultManager.instance?.set(true, key: UserDefaultKey.IS_PASSWORD.rawValue)
+            UserDefaultManager.instance.password = firstPW
+            UserDefaultManager.instance.isPassword = true
             popVC()
         } else {
             handleIncorrectPassword()
@@ -112,7 +112,7 @@ extension SettingPWVC {
         if homeFlag {
             settingPWView.setContentsLabel(text: L10n.passwordContents2)
         } else {
-            UserDefaultManager.instance?.set("", key: UserDefaultKey.PASSWORD.rawValue)
+            UserDefaultManager.instance.password = ""
         }
     }
     

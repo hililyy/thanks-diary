@@ -13,7 +13,7 @@ final class SettingViewModel {
     
     var disposeBag = DisposeBag()
     
-    var selectedTime: Date? = UserDefaultManager.instance?.date(UserDefaultKey.PUSH_TIME.rawValue)
+    var selectedTime: Date? = UserDefaultManager.instance.pushTime
     
     var suggestData = BehaviorRelay<[SettingSuggestModel]>(value: [])
     

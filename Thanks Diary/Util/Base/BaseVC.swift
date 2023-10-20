@@ -65,8 +65,9 @@ class BaseVC: UIViewController {
     }
     
     func checkAppearance() {
-        guard let mode = UserDefaultManager.instance?.string(UserDefaultKey.THEME_MODE.rawValue),
-              let modeType = ThemeMode(rawValue: mode) else { return }
+        let mode = UserDefaultManager.instance.themeMode
+        let modeType = ThemeMode(rawValue: mode)
+        
         if modeType == .dark {
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = .dark
