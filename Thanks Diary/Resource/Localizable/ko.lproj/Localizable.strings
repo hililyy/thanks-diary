@@ -56,6 +56,8 @@
 "setting_name7" = "시간 설정";
 "setting_name8" = "테마 선택";
 "setting_name9" = "건의 게시판";
+"setting_name10" = "앱 평가";
+
 "darkmode" = "다크 모드";
 "lightmode" = "라이트 모드";
 "waiting" = "대기중";

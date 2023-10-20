@@ -179,6 +179,6 @@ extension SettingVC {
     }
     
     private func moveAppEvaluation() {
-        CommonUtilManager.instance?.presentAppReviewPopup()
+        CommonUtilManager.instance?.moveAppStoreReview()
     }
 }
