@@ -34,8 +34,6 @@ final class SettingViewModel {
         SettingNameModel(title: L10n.settingName2, contents: "", type: .more),
         SettingNameModel(title: L10n.settingName3, contents: "", type: .more),
         SettingNameModel(title: L10n.settingName4, contents: "", type: .more),
-        SettingNameModel(title: L10n.settingName5, contents: "", type: .more),
-        SettingNameModel(title: L10n.settingName6, contents: CommonUtilManager.instance?.appVersion ?? "", type: .label),
-        SettingNameModel(title: L10n.settingName10, contents: "", type: .more)
+        SettingNameModel(title: L10n.settingName11, contents: "", type: .more)
     ]
 }

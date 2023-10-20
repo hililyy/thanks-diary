@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AcknowList
 
 final class SettingVC: BaseVC {
     
@@ -52,7 +51,7 @@ final class SettingVC: BaseVC {
 
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,11 +98,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case 3:
             pushSettingSuggestVC()
         case 4:
-            pushOpenSourceLicenseVC()
-        case 5:
-            LocalNotificationManager.instance?.printRegistedNotification()
-        case 6:
-            moveAppEvaluation()
+            pushSettingAppVC()
         default:
             break
         }
@@ -173,12 +168,17 @@ extension SettingVC {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func pushOpenSourceLicenseVC() {
-        let acknowList = AcknowListViewController(fileNamed: "Package")
-        navigationController?.pushViewController(acknowList, animated: true)
+    private func pushSettingAppVC() {
+        let vc = SettingAppVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func moveAppEvaluation() {
-        CommonUtilManager.instance?.moveAppStoreReview()
-    }
+//    private func pushOpenSourceLicenseVC() {
+//        let acknowList = AcknowListViewController(fileNamed: "Package")
+//        navigationController?.pushViewController(acknowList, animated: true)
+//    }
+//
+//    private func moveAppEvaluation() {
+//        CommonUtilManager.instance?.moveAppStoreReview()
+//    }
 }

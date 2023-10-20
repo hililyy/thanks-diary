@@ -91,6 +91,7 @@
 		02835D8C2AE0F00100593BA5 /* hagom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D892AE0F00100593BA5 /* hagom.ttf */; };
 		02835D8D2AE0F00100593BA5 /* yeonyu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D8A2AE0F00100593BA5 /* yeonyu.ttf */; };
 		02835D8F2AE0FE1A00593BA5 /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D8E2AE0FE1A00593BA5 /* NanumBarunpenR.otf */; };
+		02835D962AE2654800593BA5 /* SettingAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02835D952AE2654800593BA5 /* SettingAppVC.swift */; };
 		0290EF652ADCD22C00869C05 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF642ADCD22C00869C05 /* UIButton.swift */; };
 		0290EF672ADCD25000869C05 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF662ADCD25000869C05 /* UILabel.swift */; };
 		0290EF692ADCD43300869C05 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF682ADCD43300869C05 /* UIStackView.swift */; };
@@ -248,6 +249,7 @@
 		02835D892AE0F00100593BA5 /* hagom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hagom.ttf; sourceTree = "<group>"; };
 		02835D8A2AE0F00100593BA5 /* yeonyu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yeonyu.ttf; sourceTree = "<group>"; };
 		02835D8E2AE0FE1A00593BA5 /* NanumBarunpenR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenR.otf; sourceTree = "<group>"; };
+		02835D952AE2654800593BA5 /* SettingAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAppVC.swift; sourceTree = "<group>"; };
 		0290EF112AD64E4B00869C05 /* ThanksDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290EF122AD64E4B00869C05 /* ThanksDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290EF642ADCD22C00869C05 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 				027C60DD2A8DBFE0008F607F /* SettingThemeVC.swift */,
 				025E043B2AA6C0CE00C01D24 /* SettingSuggestVC.swift */,
 				025E04402AA7106A00C01D24 /* SettingSuggestWriteVC.swift */,
+				02835D952AE2654800593BA5 /* SettingAppVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1082,6 +1085,7 @@
 				025EF0842A459EEF00C930F2 /* SecondStartVC.swift in Sources */,
 				025EF06B2A459E2E00C930F2 /* String.swift in Sources */,
 				027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */,
+				02835D962AE2654800593BA5 /* SettingAppVC.swift in Sources */,
 				029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */,
 				025EF0592A459D2700C930F2 /* FirebaseManager.swift in Sources */,
 				2A81234E28C4E22C000A250E /* SimpleDiaryTVCell.swift in Sources */,

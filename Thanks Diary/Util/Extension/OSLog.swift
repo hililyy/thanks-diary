@@ -106,27 +106,27 @@ struct Log {
 
 extension Log {
     // 개발 중 코드 디버깅 시 사용할 수 있는 유용한 정보
-    static func debug(_ message: Any, _ arguments: Any...) {
+    static func debug(_ message: Any) {
         log(message, level: .debug)
     }
     
     // 문제 해결시 활용할 수 있는, 도움이 되지만 필수적이지 않은 정보
-    static func info(_ message: Any, _ arguments: Any...) {
+    static func info(_ message: Any) {
         log(message, level: .info)
     }
 
     // 네트워크 문제 해결에 필수적인 정보
-    static func network(_ message: Any, _ arguments: Any...) {
+    static func network(_ message: Any) {
         log(message, level: .network)
     }
     
     // 코드 실행 중 나타난 에러
-    static func error(_ message: Any, _ arguments: Any...) {
+    static func error(_ message: Any) {
         log(message, level: .error)
     }
 
     // 커스텀 디버깅 로그
-    static func custom(category: String, _ message: Any, _ arguments: Any...) {
+    static func custom(category: String, _ message: Any) {
         log(message, level: .custom(category: category))
     }
 }
