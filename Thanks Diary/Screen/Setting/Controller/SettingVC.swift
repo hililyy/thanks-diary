@@ -19,21 +19,13 @@ final class SettingVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
-        super.loadView()
         view = settingView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initalize()
-        
-        CommonUtilManager.instance?.themeSubject.subscribe(onNext: { [weak self] _ in
-            guard let self else { return }
-            settingView = SettingView()
-            view = settingView
-            initalize()
-        })
-        .disposed(by: disposeBag)
+        initObservable()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +53,7 @@ final class SettingVC: BaseVC {
 
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,6 +69,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
                 guard let self else { return }
                 alarmFlag.toggle()
                 UserDefaultManager.instance?.set(alarmFlag, key: UserDefaultKey.IS_PASSWORD.rawValue)
+                
                 if alarmFlag {
                     pushSettingPWVC()
                 } else {
@@ -110,6 +103,8 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             pushOpenSourceLicenseVC()
         case 5:
             LocalNotificationManager.instance?.printRegistedNotification()
+        case 6:
+            moveAppEvaluation()
         default:
             break
         }
@@ -122,6 +117,11 @@ extension SettingVC {
     private func initalize() {
         initDelegate()
         initTarget()
+    }
+    
+    private func initView() {
+        settingView = SettingView()
+        view = settingView
     }
     
     private func initDelegate() {
@@ -137,6 +137,15 @@ extension SettingVC {
                 popVC()
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func initObservable() {
+        CommonUtilManager.instance?.themeSubject.subscribe(onNext: { [weak self] _ in
+            guard let self else { return }
+            initView()
+            initalize()
+        })
+        .disposed(by: disposeBag)
     }
 }
 
@@ -168,5 +177,9 @@ extension SettingVC {
     private func pushOpenSourceLicenseVC() {
         let acknowList = AcknowListViewController(fileNamed: "Package")
         navigationController?.pushViewController(acknowList, animated: true)
+    }
+    
+    private func moveAppEvaluation() {
+        
     }
 }

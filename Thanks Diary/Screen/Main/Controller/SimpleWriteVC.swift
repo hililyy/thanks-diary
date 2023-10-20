@@ -21,7 +21,6 @@ final class SimpleWriteVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
-        super.loadView()
         view = simpleWriteView
     }
     

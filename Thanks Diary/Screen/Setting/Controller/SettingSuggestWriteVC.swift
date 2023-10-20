@@ -19,7 +19,6 @@ final class SettingSuggestWriteVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
-        super.loadView()
         view = settingSuggestWriteView
     }
     

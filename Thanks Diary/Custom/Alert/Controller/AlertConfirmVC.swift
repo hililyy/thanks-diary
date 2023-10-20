@@ -16,7 +16,6 @@ final class AlertConfirmVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
-        super.loadView()
         view = alertConfirmView
     }
     
