@@ -114,7 +114,7 @@ extension SettingVC {
     }
     
     private func initView() {
-        settingView = SettingView()
+        settingView = SettingView(navigationTitle: L10n.setting)
         view = settingView
     }
     
@@ -172,13 +172,4 @@ extension SettingVC {
         let vc = SettingAppVC()
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-//    private func pushOpenSourceLicenseVC() {
-//        let acknowList = AcknowListViewController(fileNamed: "Package")
-//        navigationController?.pushViewController(acknowList, animated: true)
-//    }
-//
-//    private func moveAppEvaluation() {
-//        CommonUtilManager.instance?.moveAppStoreReview()
-//    }
 }
