@@ -16,7 +16,7 @@ final class ThirdStartView: BaseView {
     private var messageLabel = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-        label.font = ResourceManager.instance?.getFont(size: 20)
+        label.font = ResourceManager.instance.getFont(size: 20)
         label.numberOfLines = 0
         label.text = L10n.startPage3Message1
     }

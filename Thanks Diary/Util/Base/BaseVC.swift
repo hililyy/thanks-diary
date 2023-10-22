@@ -107,9 +107,9 @@ class BaseVC<T: BaseView>: UIViewController, UIGestureRecognizerDelegate, MFMail
                                                y: toastLabelY,
                                                width: toastLabelWidth,
                                                height: toastLabelHeight))
-        toastLabel.backgroundColor = ResourceManager.instance?.getMainDeepColor()
+        toastLabel.backgroundColor = ResourceManager.instance.getMainDeepColor()
         toastLabel.textColor = .white
-        toastLabel.font = ResourceManager.instance?.getFont(size: 15)
+        toastLabel.font = ResourceManager.instance.getFont(size: 15)
         toastLabel.textAlignment = .center
         toastLabel.text = message
         toastLabel.alpha = 1.0

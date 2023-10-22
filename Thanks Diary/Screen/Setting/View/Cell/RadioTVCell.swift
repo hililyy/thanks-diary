@@ -16,7 +16,7 @@ final class RadioTVCell: BaseTVCell, CellIdentifier {
     let outlineCircle = UIView().then { view in
         view.layer.cornerRadius = 10
         view.layer.borderWidth = 3
-        view.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
+        view.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
     }
     
     let inlineCircle = UIView().then { view in
@@ -32,9 +32,9 @@ final class RadioTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Functions
     
     func changeButtonUI(isSelected: Bool) {
-        outlineCircle.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
+        outlineCircle.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         if isSelected {
-            inlineCircle.backgroundColor = ResourceManager.instance?.getMainColor()
+            inlineCircle.backgroundColor = ResourceManager.instance.getMainColor()
         } else {
             inlineCircle.backgroundColor = .clear
         }

@@ -16,7 +16,7 @@ final class DetailWriteView: BaseView {
     }
     
     private let topLabel = UILabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 20)
+        label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
@@ -27,8 +27,8 @@ final class DetailWriteView: BaseView {
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.complete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-        button.titleLabel?.font = ResourceManager.instance?.getFont(size: 15)
-        button.backgroundColor = ResourceManager.instance?.getMainColor()
+        button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
+        button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
     }
     
@@ -46,42 +46,42 @@ final class DetailWriteView: BaseView {
     
     private let titleLabel = UILabel().then { label in
         label.text = L10n.title
-        label.font = ResourceManager.instance?.getFont(size: 20)
+        label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
     private let contentsLabel = UILabel().then { label in
         label.text = L10n.contents
-        label.font = ResourceManager.instance?.getFont(size: 20)
+        label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
     }
     
     private let titleUnderLineImageView = UIImageView().then { imageView in
-        imageView.image = ResourceManager.instance?.getUnderLineImage()
+        imageView.image = ResourceManager.instance.getUnderLineImage()
     }
     
     private let contentsUnderLineImageView = UIImageView().then { imageView in
-        imageView.image = ResourceManager.instance?.getUnderLineImage()
+        imageView.image = ResourceManager.instance.getUnderLineImage()
     }
     
     let titleTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = ResourceManager.instance?.getFont(size: 17)
+        textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
-        textView.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
+        textView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
     
     let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = ResourceManager.instance?.getFont(size: 17)
+        textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 20
         textView.layer.borderWidth = 2
-        textView.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
+        textView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         textView.isScrollEnabled = true
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }

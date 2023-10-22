@@ -16,11 +16,11 @@ final class CommonUtilManager {
     
     private static var _instance: CommonUtilManager?
     
-    static var instance: CommonUtilManager? {
+    static var instance: CommonUtilManager {
         if _instance == nil {
             _instance = CommonUtilManager()
         }
-        return _instance
+        return _instance!
     }
     
     var themeSubject = PublishSubject<Int>()

@@ -35,7 +35,7 @@ final class SettingView: BaseView {
     }
     
     func initAllFont() {
-        navigationView.titleLabel.font = ResourceManager.instance?.getFont(size: 22)
+        navigationView.titleLabel.font = ResourceManager.instance.getFont(size: 22)
         tableView.reloadData()
     }
     

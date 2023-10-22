@@ -50,12 +50,12 @@ final class SettingThemeView: BaseView {
     // MARK: - UI, Target
     
     func initAllFont() {
-        navigationView.titleLabel.font = ResourceManager.instance?.getFont(size: 22)
-        modeView.modeTitleLabel.font = ResourceManager.instance?.getFont(size: 15)
-        modeView.lightLabel.font = ResourceManager.instance?.getFont(size: 15)
-        modeView.darkLabel.font = ResourceManager.instance?.getFont(size: 15)
-        colorView.colorTitleLabel.font = ResourceManager.instance?.getFont(size: 15)
-        fontView.fontTitleLabel.font = ResourceManager.instance?.getFont(size: 15)
+        navigationView.titleLabel.font = ResourceManager.instance.getFont(size: 22)
+        modeView.modeTitleLabel.font = ResourceManager.instance.getFont(size: 15)
+        modeView.lightLabel.font = ResourceManager.instance.getFont(size: 15)
+        modeView.darkLabel.font = ResourceManager.instance.getFont(size: 15)
+        colorView.colorTitleLabel.font = ResourceManager.instance.getFont(size: 15)
+        fontView.fontTitleLabel.font = ResourceManager.instance.getFont(size: 15)
     }
     
     override func initUI() {

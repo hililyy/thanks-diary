@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LaunchVC: BaseVC {
+final class LaunchVC: UIViewController {
     
     // MARK: - Property
     
@@ -19,7 +19,7 @@ final class LaunchVC: BaseVC {
         super.viewDidLoad()
         
         initLottie()
-        initPassword()
+        initPasswordIfEmpty()
         initLaunch()
     }
     
@@ -32,11 +32,11 @@ final class LaunchVC: BaseVC {
                                  speed: 3,
                                  mode: .loop)
         
-        LottieManager.instance?.setLottie(goLottie)
+        LottieManager.instance.setLottie(goLottie)
     }
     
     // 비밀번호 ""으로 설정된 유저 비밀번호 변경(초기화 / 이전버전 앱 오류 해결방안)
-    private func initPassword() {
+    private func initPasswordIfEmpty() {
         let password = UserDefaultManager.instance.password
         if password.isEmpty {
             UserDefaultManager.instance.password = Constant.INIT_PASSWORD
@@ -48,18 +48,24 @@ final class LaunchVC: BaseVC {
             let isReEntry = UserDefaultManager.instance.isReEntryUser
             let isPassword = UserDefaultManager.instance.isPassword
             
-            if isReEntry {
-                if isPassword {
-                    let vc = SettingPWVC()
-                    vc.homeFlag = true
-                    vc.modalPresentationStyle = .currentContext
-                    self.present(vc, animated: true)
-                } else {
-                    self.registMainToRoot()
-                }
-            } else {
+            if !isReEntry {
                 self.registPageToRoot()
+                return
             }
+            
+            if !isPassword {
+                self.registMainToRoot()
+                return
+            }
+            
+            self.presentSettingPWVC()
         }
+    }
+    
+    private func presentSettingPWVC() {
+        let vc = SettingPWVC()
+        vc.homeFlag = true
+        vc.modalPresentationStyle = .currentContext
+        self.present(vc, animated: true)
     }
 }

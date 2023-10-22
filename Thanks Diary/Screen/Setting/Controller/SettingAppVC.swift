@@ -28,7 +28,7 @@ extension SettingAppVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
             cell.titleLabel.text = L10n.settingName6
-            cell.contentsLabel.text = CommonUtilManager.instance?.appVersion ?? ""
+            cell.contentsLabel.text = CommonUtilManager.instance.appVersion
             return cell
 
         case 1, 2:
@@ -90,12 +90,12 @@ extension SettingAppVC {
 // MARK: - View Change
 
 extension SettingAppVC {
-        private func printRegistedNotification() {
-            LocalNotificationManager.instance?.printRegistedNotification()
-        }
+    private func printRegistedNotification() {
+        LocalNotificationManager.instance.printRegistedNotification()
+    }
     
     private func moveAppEvaluation() {
-        CommonUtilManager.instance?.moveAppStoreReview()
+        CommonUtilManager.instance.moveAppStoreReview()
     }
     
     private func pushOpenSourceLicenseVC() {

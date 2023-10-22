@@ -14,11 +14,11 @@ final class LottieManager {
     
     private static var _instance: LottieManager?
     
-    static var instance: LottieManager? {
+    static var instance: LottieManager {
         if _instance == nil {
             _instance = LottieManager()
         }
-        return _instance
+        return _instance!
     }
     
     class LottieInfo {

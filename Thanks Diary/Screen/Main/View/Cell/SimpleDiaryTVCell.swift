@@ -12,12 +12,12 @@ final class SimpleDiaryTVCell: BaseTVCell, CellIdentifier {
     // MARK: - UI components
     
     let dotView = UIView().then { view in
-        view.backgroundColor = ResourceManager.instance?.getMainColor()
+        view.backgroundColor = ResourceManager.instance.getMainColor()
         view.layer.cornerRadius = 3.5
     }
     
     let titleLabel = UILabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 17)
+        label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
     }

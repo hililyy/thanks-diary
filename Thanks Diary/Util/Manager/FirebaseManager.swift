@@ -16,11 +16,11 @@ final class FirebaseManager {
     
     private static var _instance: FirebaseManager?
     
-    public static var instance: FirebaseManager? {
+    public static var instance: FirebaseManager {
         if _instance == nil {
             _instance = FirebaseManager()
         }
-        return _instance
+        return _instance!
     }
     
     func getSuggestDatas(completion: @escaping (Result<[SettingSuggestModel], Error>) -> Void) {
@@ -35,7 +35,7 @@ final class FirebaseManager {
                 values.insert(value, at: 0)
             }
             
-            if let data = CommonUtilManager.instance?.dictionaryToObject(
+            if let data = CommonUtilManager.instance.dictionaryToObject(
                 objectType: SettingSuggestModel.self,
                 dictionary: values
             ) {
@@ -62,7 +62,7 @@ final class FirebaseManager {
     
     func addSuggestData(contents: String) {
         let newData = [
-            Constant.FIREBASE_ITEM_UID: CommonUtilManager.instance?.uuid,
+            Constant.FIREBASE_ITEM_UID: CommonUtilManager.instance.uuid,
             Constant.FIREBASE_ITEM_CONTENTS: contents,
             Constant.FIREBASE_ITEM_STATUS: SuggestType.waiting.rawValue
         ]

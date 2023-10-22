@@ -14,7 +14,7 @@ final class ThemeColorView: BaseView {
     let colorTitleLabel = UILabel().then { label in
         label.initLabelUI(text: L10n.colorSet,
                           color: Asset.Color.blackColor.color,
-                          font: ResourceManager.instance?.getFont(size: 15) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 20))
+                          font: ResourceManager.instance.getFont(size: 15))
     }
     
     private lazy var colorStackView = UIStackView(arrangedSubviews: [

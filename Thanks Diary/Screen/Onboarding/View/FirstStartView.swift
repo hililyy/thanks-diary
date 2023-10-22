@@ -18,7 +18,7 @@ final class FirstStartView: BaseView {
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font =  ResourceManager.instance?.getFont(size: 18)
+        label.font =  ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage1Message1
     }
     

@@ -29,7 +29,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     // MARK: - Function
     
     private func changeSwitchStatusByAuthStatus() {
-        AuthManager.instance?.getNotiStatus { [weak self] status in
+        AuthManager.instance.getNotiStatus { [weak self] status in
             guard let self else { return }
             if status == .denied {
                 setNotification(isOn: false)
@@ -56,7 +56,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     }
     
     private func onNotification() {
-        LocalNotificationManager.instance?.registNotification(time: Date())
+        LocalNotificationManager.instance.registNotification(time: Date())
         UserDefaultManager.instance.pushTime = Date()
         UserDefaultManager.instance.isPush = true
         viewModel?.selectedTime = Date()
@@ -64,7 +64,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     }
     
     private func offNotification() {
-        LocalNotificationManager.instance?.cancelRegistedNotification()
+        LocalNotificationManager.instance.cancelRegistedNotification()
         UserDefaultManager.instance.delete(UserDefaultKey.PUSH_TIME.rawValue)
         UserDefaultManager.instance.isPush = false
         viewModel?.selectedTime = nil
@@ -86,7 +86,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     }
     
     private func requestNotiAuthFromUser() {
-        AuthManager.instance?.requestNotiAuth(completion: { [weak self] result in
+        AuthManager.instance.requestNotiAuth(completion: { [weak self] result in
             guard let self else { return }
             switchFlag = result
             if !switchFlag {
@@ -100,7 +100,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     }
     
     private func getNotiStatus() {
-        AuthManager.instance?.getNotiStatus { [weak self] status in
+        AuthManager.instance.getNotiStatus { [weak self] status in
             guard let self else { return }
             switch status {
             case .authorized:

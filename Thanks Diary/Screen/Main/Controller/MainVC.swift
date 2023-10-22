@@ -71,7 +71,7 @@ final class MainVC: BaseVC<MainView> {
         
         if diaryCount >= 5 && !isPresentReviewPopup {
             UserDefaultManager.instance.isPresentReviewPopup = true
-            CommonUtilManager.instance?.presentAppReviewPopup()
+            CommonUtilManager.instance.presentAppReviewPopup()
         }
     }
 }
@@ -154,7 +154,7 @@ extension MainVC {
     }
     
     private func initObservable() {
-        CommonUtilManager.instance?.themeSubject.subscribe(onNext: { [weak self] _ in
+        CommonUtilManager.instance.themeSubject.subscribe(onNext: { [weak self] _ in
             guard let self else { return }
             initView()
             changeCalendarCircleDataAndTodayLabelText()

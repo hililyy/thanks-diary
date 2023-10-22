@@ -31,11 +31,11 @@ final class MainViewModel {
 
 extension MainViewModel: DiaryRepository {
     func readData() {
-        CoreDataManager.instance?.getDetailDataRx()
+        CoreDataManager.instance.getDetailDataRx()
             .bind(to: allDetailDataRx)
             .disposed(by: disposeBag)
         
-        CoreDataManager.instance?.getSimpleDataRx()
+        CoreDataManager.instance.getSimpleDataRx()
             .bind(to: allSimpleDataRx)
             .disposed(by: disposeBag)
         
@@ -43,19 +43,19 @@ extension MainViewModel: DiaryRepository {
     }
     
     func createData(newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.instance?.setData(newData: newData) { result in
+        CoreDataManager.instance.setData(newData: newData) { result in
             completion(result)
         }
     }
     
     func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.instance?.updateData(beforeData: beforeData, newData: newData) { result in
+        CoreDataManager.instance.updateData(beforeData: beforeData, newData: newData) { result in
             completion(result)
         }
     }
     
     func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.instance?.deleteData(deleteData: deleteData) { result in
+        CoreDataManager.instance.deleteData(deleteData: deleteData) { result in
             completion(result)
         }
     }
