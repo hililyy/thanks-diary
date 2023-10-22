@@ -18,7 +18,7 @@ final class NavigationView: BaseView {
     }
     
     let titleLabel = UILabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 22)
+        label.font = ResourceManager.instance.getFont(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
     }

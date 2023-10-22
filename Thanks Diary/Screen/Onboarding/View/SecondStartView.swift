@@ -16,7 +16,7 @@ final class SecondStartView: BaseView {
     private let titleLabel = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-        label.font = ResourceManager.instance?.getFont(size: 25)
+        label.font = ResourceManager.instance.getFont(size: 25)
         label.text = L10n.startPage2Message1
     }
     
@@ -28,28 +28,28 @@ final class SecondStartView: BaseView {
     private let messageLabel1 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.font =  ResourceManager.instance?.getFont(size: 18)
+        label.font =  ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage2Message2
     }
     
     private let messageLabel2 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.font = ResourceManager.instance?.getFont(size: 18)
+        label.font = ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage2Message3
     }
     
     private let messageLabel3 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.font = ResourceManager.instance?.getFont(size: 18)
+        label.font = ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage2Message4
     }
 
     private let messageLabel4 = UILabel().then { label in
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.font = ResourceManager.instance?.getFont(size: 18)
+        label.font = ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage2Message5
     }
     

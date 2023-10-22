@@ -18,18 +18,13 @@ final class SettingThemeVC: BaseVC<SettingThemeView> {
         initalize()
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        attachedView.fontView.fontTableView.setContentOffset(CommonUtilManager.instance?.tableViewOffset ?? .zero, animated: false)
-//    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkAppearance()
     }
     
     deinit {
-        CommonUtilManager.instance?.tableViewOffset = .zero
+        CommonUtilManager.instance.tableViewOffset = .zero
     }
     
     // MARK: - Function
@@ -55,7 +50,7 @@ final class SettingThemeVC: BaseVC<SettingThemeView> {
     }
     
     private func saveTableViewPosition() {
-        CommonUtilManager.instance?.tableViewOffset = attachedView.fontView.fontTableView.contentOffset
+        CommonUtilManager.instance.tableViewOffset = attachedView.fontView.fontTableView.contentOffset
     }
 }
 
@@ -71,7 +66,7 @@ extension SettingThemeVC {
     private func initView() {
         initNavigationTitle()
         attachedView.fontView.fontTableView.reloadData()
-        attachedView.fontView.fontTableView.setContentOffset(CommonUtilManager.instance?.tableViewOffset ?? .zero, animated: false)
+        attachedView.fontView.fontTableView.setContentOffset(CommonUtilManager.instance.tableViewOffset, animated: false)
         attachedView.initAllFont()
     }
     
@@ -134,7 +129,7 @@ extension SettingThemeVC {
                     saveThemeColor(type: button.tag)
                     saveTableViewPosition()
                     
-                    CommonUtilManager.instance?.themeSubject.onNext(button.tag)
+                    CommonUtilManager.instance.themeSubject.onNext(button.tag)
                     
                     initView()
                     
@@ -162,7 +157,7 @@ extension SettingThemeVC: UITableViewDelegate, UITableViewDataSource {
         guard let type = FontType(rawValue: indexPath.row) else { return UITableViewCell() }
         cell.contentsLabel.initLabelUI(text: type.description,
                                        color: Asset.Color.gray1.color,
-                                       font: ResourceManager.instance?.getFont(type: type, size: 18) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 20))
+                                       font: ResourceManager.instance.getFont(type: type, size: 18))
         
         let savedFontType = UserDefaultManager.instance.themeFont
         cell.changeButtonUI(isSelected: savedFontType == type.rawValue)
@@ -173,7 +168,7 @@ extension SettingThemeVC: UITableViewDelegate, UITableViewDataSource {
         guard let type = FontType(rawValue: indexPath.row) else { return }
         saveThemeFont(type: type.rawValue)
         saveTableViewPosition()
-        CommonUtilManager.instance?.themeSubject.onNext(type.rawValue)
+        CommonUtilManager.instance.themeSubject.onNext(type.rawValue)
         initView()
     }
     

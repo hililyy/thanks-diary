@@ -16,8 +16,8 @@ final class MainView: BaseView {
     
     let todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
-        button.titleLabel?.font = ResourceManager.instance?.getFont(size: 15)
-        button.backgroundColor = ResourceManager.instance?.getMainColor()
+        button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
+        button.backgroundColor = ResourceManager.instance.getMainColor()
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.setTitle(L10n.today, for: .normal)
     }
@@ -32,14 +32,14 @@ final class MainView: BaseView {
         calendar.appearance.weekdayTextColor = Asset.Color.gray1.color
         calendar.appearance.titleDefaultColor = Asset.Color.gray1.color // 선택가능한 날짜 색
         calendar.appearance.titlePlaceholderColor = Asset.Color.gray8.color // 선택 불가능한 날짜 색
-        calendar.appearance.todayColor = ResourceManager.instance?.getMainColor() // 오늘 날짜 동그라미 색상
+        calendar.appearance.todayColor = ResourceManager.instance.getMainColor() // 오늘 날짜 동그라미 색상
         calendar.appearance.selectionColor = Asset.Color.gray5.color
         calendar.appearance.titleTodayColor = Asset.Color.gray6.color
         
-        calendar.appearance.headerTitleFont = ResourceManager.instance?.getFont(size: 19)
-        calendar.appearance.weekdayFont = ResourceManager.instance?.getFont(size: 17)
-        calendar.appearance.titleFont = ResourceManager.instance?.getFont(size: 17)
-        calendar.appearance.subtitleFont = ResourceManager.instance?.getFont(size: 17)
+        calendar.appearance.headerTitleFont = ResourceManager.instance.getFont(size: 19)
+        calendar.appearance.weekdayFont = ResourceManager.instance.getFont(size: 17)
+        calendar.appearance.titleFont = ResourceManager.instance.getFont(size: 17)
+        calendar.appearance.subtitleFont = ResourceManager.instance.getFont(size: 17)
         
         calendar.appearance.headerDateFormat = L10n.formatDate3
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
@@ -59,7 +59,7 @@ final class MainView: BaseView {
     private let todayLabelView = UIView()
 
     private let todayLabel = UILabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 20)
+        label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.text = Date().convertString(format: L10n.formatDate2)
@@ -77,7 +77,7 @@ final class MainView: BaseView {
     
     let floatingButton = FloatingButton().then { button in
         button.setButtonImage(Asset.Image.icPencil.image)
-        button.setButtonBackgroundColor(ResourceManager.instance?.getMainColor())
+        button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
     }
     
     // MARK: - Functions
@@ -98,12 +98,12 @@ final class MainView: BaseView {
     }
     
     func initAllFont() {
-        todayButton.titleLabel?.font = ResourceManager.instance?.getFont(size: 15)
-        todayLabel.font = ResourceManager.instance?.getFont(size: 20)
-        calendar.appearance.headerTitleFont = ResourceManager.instance?.getFont(size: 19)
-        calendar.appearance.weekdayFont = ResourceManager.instance?.getFont(size: 17)
-        calendar.appearance.titleFont = ResourceManager.instance?.getFont(size: 17)
-        calendar.appearance.subtitleFont = ResourceManager.instance?.getFont(size: 17)
+        todayButton.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
+        todayLabel.font = ResourceManager.instance.getFont(size: 20)
+        calendar.appearance.headerTitleFont = ResourceManager.instance.getFont(size: 19)
+        calendar.appearance.weekdayFont = ResourceManager.instance.getFont(size: 17)
+        calendar.appearance.titleFont = ResourceManager.instance.getFont(size: 17)
+        calendar.appearance.subtitleFont = ResourceManager.instance.getFont(size: 17)
 
     }
     

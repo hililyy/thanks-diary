@@ -30,11 +30,11 @@ final class SettingSuggestWriteView: BaseView {
     
     let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = ResourceManager.instance?.getFont(size: 17)
+        textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 15
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
+        textView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
         textView.becomeFirstResponder()
     }
@@ -42,8 +42,8 @@ final class SettingSuggestWriteView: BaseView {
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.writeComplete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-        button.titleLabel?.font = ResourceManager.instance?.getFont(size: 15)
-        button.backgroundColor = ResourceManager.instance?.getMainColor()
+        button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
+        button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
     }
     

@@ -28,17 +28,17 @@ final class SimpleWriteView: BaseView {
     
     let contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
-        textView.font = ResourceManager.instance?.getFont(size: 17)
+        textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 15
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
+        textView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
         textView.becomeFirstResponder()
     }
     
     private let textLengthLabel = UILabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 15)
+        label.font = ResourceManager.instance.getFont(size: 15)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .right
     }
@@ -48,19 +48,19 @@ final class SimpleWriteView: BaseView {
     let completeButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.writeComplete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-        button.titleLabel?.font =  ResourceManager.instance?.getFont(size: 15)
-        button.backgroundColor = ResourceManager.instance?.getMainColor()
+        button.titleLabel?.font =  ResourceManager.instance.getFont(size: 15)
+        button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
     }
     
     let cancelButton = UIButton(type: .custom).then { button in
         button.setTitle(L10n.cancel, for: .normal)
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)
-        button.titleLabel?.font = ResourceManager.instance?.getFont(size: 15)
+        button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1.5
-        button.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
+        button.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
     }
     
     // MARK: - Functions

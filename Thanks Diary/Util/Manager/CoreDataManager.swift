@@ -15,11 +15,11 @@ final class CoreDataManager {
     
     private static var _instance: CoreDataManager?
     
-    static var instance: CoreDataManager? {
+    static var instance: CoreDataManager {
         if _instance == nil {
             _instance = CoreDataManager()
         }
-        return _instance
+        return _instance!
     }
     
     func getDetailDataRx() -> Observable<[String: [DiaryModel]]> {

@@ -22,21 +22,21 @@ final class FloatingButtonCloseView: BaseView {
     
     var plusButton = FloatingButton().then { button in
         button.setButtonImage(Asset.Image.icX.image)
-        button.setButtonBackgroundColor(ResourceManager.instance?.getMainColor())
+        button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
     }
     
     var detailButton = FloatingButton().then { button in
-        button.setButtonImage(ResourceManager.instance?.getDetailWriteImage() ?? Asset.Image.icDetailWrite.image)
+        button.setButtonImage(ResourceManager.instance.getDetailWriteImage())
         button.setButtonBackgroundColor(.white)
     }
     
     var simpleButton = FloatingButton().then { button in
-        button.setButtonImage(ResourceManager.instance?.getSimpleWriteImage() ?? Asset.Image.icSimpleWrite.image)
+        button.setButtonImage(ResourceManager.instance.getSimpleWriteImage())
         button.setButtonBackgroundColor(.white)
     }
     
     var detailLabel = PaddingLabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 13)
+        label.font = ResourceManager.instance.getFont(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
@@ -45,7 +45,7 @@ final class FloatingButtonCloseView: BaseView {
     }
     
     var simpleLabel = PaddingLabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 13)
+        label.font = ResourceManager.instance.getFont(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5

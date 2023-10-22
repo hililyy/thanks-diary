@@ -16,7 +16,7 @@ final class ThemeModeView: BaseView {
     let modeTitleLabel = UILabel().then { label in
         label.initLabelUI(text: L10n.modeSet,
                           color: Asset.Color.blackColor.color,
-                          font: ResourceManager.instance?.getFont(size: 15) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 15))
+                          font: ResourceManager.instance.getFont(size: 15))
     }
     
     private lazy var contentsStackView = UIStackView(arrangedSubviews: [
@@ -52,14 +52,14 @@ final class ThemeModeView: BaseView {
         label.textColor = Asset.Color.blackColor.color
         label.text = L10n.lightmode
         label.textAlignment = .center
-        label.font = ResourceManager.instance?.getFont(size: 15)
+        label.font = ResourceManager.instance.getFont(size: 15)
     }
     
     let darkLabel = UILabel().then { label in
         label.textColor = Asset.Color.blackColor.color
         label.text = L10n.darkmode
         label.textAlignment = .center
-        label.font = ResourceManager.instance?.getFont(size: 15)
+        label.font = ResourceManager.instance.getFont(size: 15)
     }
     
     // MARK: - UI, Target

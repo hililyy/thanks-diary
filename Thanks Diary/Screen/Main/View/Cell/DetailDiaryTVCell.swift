@@ -12,14 +12,14 @@ final class DetailDiaryTVCell: BaseTVCell, CellIdentifier {
     // MARK: - UI components
     
     let titleLabel = UILabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 17)
+        label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
     }
     
     let borderView = UIView().then { view in
         view.layer.cornerRadius = 10
-        view.layer.borderColor = ResourceManager.instance?.getMainColor().cgColor
+        view.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         view.layer.borderWidth = 2
     }
     

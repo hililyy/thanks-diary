@@ -12,7 +12,7 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
     // MARK: - UI components
     
     let contentsLabel = UILabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 17)
+        label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -23,7 +23,7 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
     }
     
     let statusLabel = UILabel().then { label in
-        label.font = ResourceManager.instance?.getFont(size: 17)
+        label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray6.color
         label.textAlignment = .center
     }

@@ -11,7 +11,14 @@ final class UserDefaultManager {
     
     private init() {}
     
-    static let instance = UserDefaultManager()
+    private static var _instance: UserDefaultManager?
+    
+    static var instance: UserDefaultManager {
+        if _instance == nil {
+            _instance = UserDefaultManager()
+        }
+        return _instance!
+    }
     
     var isReEntryUser: Bool {
         get {

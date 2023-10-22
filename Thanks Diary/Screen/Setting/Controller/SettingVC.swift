@@ -57,7 +57,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
             cell.settingSwitch.isOn = alarmFlag
-            cell.titleLabel.font = ResourceManager.instance?.getFont(size: 17)
+            cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
             
             cell.switchTapHandler = { [weak self] in
                 guard let self else { return }
@@ -75,14 +75,14 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         case .more:
             guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
-            cell.titleLabel.font = ResourceManager.instance?.getFont(size: 17)
+            cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
             return cell
             
         case .label:
             guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
             cell.contentsLabel.text = data.contents
-            cell.titleLabel.font = ResourceManager.instance?.getFont(size: 17)
+            cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
             return cell
         }
     }
@@ -133,9 +133,8 @@ extension SettingVC {
     }
     
     private func initObservable() {
-        CommonUtilManager.instance?.themeSubject.subscribe(onNext: { [weak self] _ in
+        CommonUtilManager.instance.themeSubject.subscribe(onNext: { [weak self] _ in
             guard let self else { return }
-            Log.debug("Setting")
             attachedView.initAllFont()
         })
         .disposed(by: disposeBag)

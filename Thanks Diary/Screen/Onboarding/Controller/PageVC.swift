@@ -50,9 +50,9 @@ final class PageVC: BaseVC<PageView> {
 
     private func changeDotViewColor() {
         UIView.transition(with: self.attachedView.firstDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.attachedView.firstDotView.backgroundColor = self.currentIndex == 0 ? ResourceManager.instance?.getMainColor() : Asset.Color.gray3.color
-            self.attachedView.secondDotView.backgroundColor = self.currentIndex == 1 ? ResourceManager.instance?.getMainColor() : Asset.Color.gray3.color
-            self.attachedView.thirdDotView.backgroundColor = self.currentIndex == 2 ? ResourceManager.instance?.getMainColor() : Asset.Color.gray3.color
+            self.attachedView.firstDotView.backgroundColor = self.currentIndex == 0 ? ResourceManager.instance.getMainColor() : Asset.Color.gray3.color
+            self.attachedView.secondDotView.backgroundColor = self.currentIndex == 1 ? ResourceManager.instance.getMainColor() : Asset.Color.gray3.color
+            self.attachedView.thirdDotView.backgroundColor = self.currentIndex == 2 ? ResourceManager.instance.getMainColor() : Asset.Color.gray3.color
         })
     }
 

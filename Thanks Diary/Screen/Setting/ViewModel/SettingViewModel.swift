@@ -18,13 +18,13 @@ final class SettingViewModel {
     var suggestData = BehaviorRelay<[SettingSuggestModel]>(value: [])
     
     func getSuggestDatas() {
-        FirebaseManager.instance?.getSuggestDatasRx()
+        FirebaseManager.instance.getSuggestDatasRx()
             .bind(to: suggestData)
             .disposed(by: disposeBag)
     }
     
     func setSuggestData(contents: String) {
-        FirebaseManager.instance?.addSuggestData(contents: contents)
+        FirebaseManager.instance.addSuggestData(contents: contents)
     }
     
     let colorSubject = PublishSubject<UIColor>()
