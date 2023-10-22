@@ -13,7 +13,7 @@ final class ThemeFontView: BaseView {
     
     // MARK: - UI components
     
-    private let fontTitleLabel = UILabel().then { label in
+    let fontTitleLabel = UILabel().then { label in
         label.initLabelUI(text: L10n.fontSet,
                           color: Asset.Color.blackColor.color,
                           font: ResourceManager.instance?.getFont(size: 15) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 15))

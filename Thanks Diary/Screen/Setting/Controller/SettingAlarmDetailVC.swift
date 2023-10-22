@@ -8,19 +8,14 @@
 import UIKit
 import UserNotifications
 
-final class SettingAlarmDetailVC: BaseVC {
+final class SettingAlarmDetailVC: BaseVC<SettingAlarmDetailView> {
     
     // MARK: - Property
     
-    private let settingAlarmDetailView = SettingAlarmDetailView()
     var viewModel: SettingViewModel?
     var delegate: ReloadProtocol?
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = settingAlarmDetailView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +41,7 @@ extension SettingAlarmDetailVC {
     }
     
     private func initUI() {
-        settingAlarmDetailView.setDatepickerDate(date: viewModel?.selectedTime)
+        attachedView.setDatepickerDate(date: viewModel?.selectedTime)
     }
     
     private func initTarget() {
@@ -57,14 +52,14 @@ extension SettingAlarmDetailVC {
     }
     
     private func initDatePickerHandler() {
-        settingAlarmDetailView.datePickerHandler = { [weak self] time in
+        attachedView.datePickerHandler = { [weak self] time in
             guard let self else { return }
             viewModel?.selectedTime = time
         }
     }
     
     private func initBackButtonTarget() {
-        settingAlarmDetailView.backButton.rx.tap
+        attachedView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -74,7 +69,7 @@ extension SettingAlarmDetailVC {
     }
     
     private func initOkButtonTarget() {
-        settingAlarmDetailView.okButton.rx.tap
+        attachedView.okButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -87,7 +82,7 @@ extension SettingAlarmDetailVC {
     }
     
     private func initCancelButtonTarget() {
-        settingAlarmDetailView.cancelButton.rx.tap
+        attachedView.cancelButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }

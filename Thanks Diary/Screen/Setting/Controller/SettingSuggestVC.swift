@@ -9,19 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class SettingSuggestVC: BaseVC {
+final class SettingSuggestVC: BaseVC<SettingSuggestView> {
     
     // MARK: - Property
     
-    let settingSuggestView = SettingSuggestView()
     var viewModel: SettingViewModel?
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = settingSuggestView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initalize()
@@ -43,7 +37,7 @@ extension SettingSuggestVC {
     }
     
     private func initBackButtonTarget() {
-        settingSuggestView.backButton.rx.tap
+        attachedView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -53,7 +47,7 @@ extension SettingSuggestVC {
     }
     
     private func initWriteButtonTarget() {
-        settingSuggestView.writeButton.rx.tap
+        attachedView.writeButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -64,14 +58,14 @@ extension SettingSuggestVC {
     
     private func initTable() {
         viewModel?.suggestData
-            .bind(to: settingSuggestView.tableView.rx.items(
+            .bind(to: attachedView.tableView.rx.items(
                 cellIdentifier: SettingSuggestTVCell.id,
                 cellType: SettingSuggestTVCell.self)) {  [weak self] _, item, cell in
                     guard let self else { return }
                     cell.contentsLabel.text = item.contents
                     cell.statusLabel.text = SuggestType(rawValue: item.status ?? "")?.description
                     cell.setStatusLabelUI(SuggestType(rawValue: item.status ?? "") ?? .waiting)
-                    settingSuggestView.loading.stopAnimating()
+                    attachedView.loading.stopAnimating()
                 }
                 .disposed(by: disposeBag)
     }

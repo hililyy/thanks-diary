@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AlertVC: BaseVC {
+final class AlertVC: BaseVC<AlertView> {
     
     // MARK: - Property
     
@@ -16,10 +16,6 @@ final class AlertVC: BaseVC {
     var rightButtonTapHandler: () -> Void = {}
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = alertView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

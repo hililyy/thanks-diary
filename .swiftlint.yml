@@ -4,3 +4,4 @@ disabled_rules:
   - line_length
   - function_body_length
   - type_body_length
+  - force_cast

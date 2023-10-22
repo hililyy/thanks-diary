@@ -9,11 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class SettingPWVC: BaseVC {
+final class SettingPWVC: BaseVC<SettingPWView> {
     
     // MARK: - Property
     
-    let settingPWView = SettingPWView()
     var count: Int = 0
     var reEnterFlag: Bool = false
     var homeFlag: Bool = false
@@ -22,10 +21,6 @@ final class SettingPWVC: BaseVC {
     var maxCount: Int = 4
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = settingPWView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +32,7 @@ final class SettingPWVC: BaseVC {
     private func initNumberButtonTapHandler(_ num: Int) {
         firstPW.append("\(num)")
         count += 1
-        settingPWView.setDotColor(num: count)
+        attachedView.setDotColor(num: count)
         
         if isLastInput() {
             if homeFlag {
@@ -80,8 +75,8 @@ final class SettingPWVC: BaseVC {
     }
     
     private func handleIncorrectPassword() {
-        settingPWView.setDotColor(num: 0)
-        settingPWView.setContentsLabel(text: L10n.passwordIncorrect, textColor: Asset.Color.red.color)
+        attachedView.setDotColor(num: 0)
+        attachedView.setContentsLabel(text: L10n.passwordIncorrect, textColor: Asset.Color.red.color)
         firstPW = ""
         secondPW = ""
         reEnterFlag = false
@@ -89,8 +84,8 @@ final class SettingPWVC: BaseVC {
     }
     
     private func handleReEnterPassword() {
-        settingPWView.setDotColor(num: 0)
-        settingPWView.setContentsLabel(text: L10n.passwordRetry)
+        attachedView.setDotColor(num: 0)
+        attachedView.setContentsLabel(text: L10n.passwordRetry)
         secondPW = firstPW
         firstPW = ""
         reEnterFlag = true
@@ -107,10 +102,10 @@ extension SettingPWVC {
     }
     
     private func initUI() {
-        settingPWView.backButton.isHidden = homeFlag
+        attachedView.backButton.isHidden = homeFlag
         
         if homeFlag {
-            settingPWView.setContentsLabel(text: L10n.passwordContents2)
+            attachedView.setContentsLabel(text: L10n.passwordContents2)
         } else {
             UserDefaultManager.instance.password = ""
         }
@@ -123,26 +118,26 @@ extension SettingPWVC {
     }
     
     private func initNumberButtonTapHander() {
-        settingPWView.numberButtonTapHandler = { [weak self] num in
+        attachedView.numberButtonTapHandler = { [weak self] num in
             guard let self else { return }
             initNumberButtonTapHandler(num)
         }
     }
     
     private func initDeleteButtonTarget() {
-        settingPWView.deleteButton.rx.tap
+        attachedView.deleteButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 count = max(0, count - 1)
                 _ = firstPW.popLast()
-                settingPWView.setDotColor(num: count)
+                attachedView.setDotColor(num: count)
             })
             .disposed(by: disposeBag)
     }
     
     private func initBackButtonTarget() {
-        settingPWView.backButton.rx.tap
+        attachedView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }

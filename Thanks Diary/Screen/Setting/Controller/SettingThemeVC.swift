@@ -9,11 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class SettingThemeVC: BaseVC {
-    
-    // MARK: - Property
-    
-    private var settingThemeView = SettingThemeView()
+final class SettingThemeVC: BaseVC<SettingThemeView> {
     
     // MARK: - Life Cycle
     
@@ -22,10 +18,10 @@ final class SettingThemeVC: BaseVC {
         initalize()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        settingThemeView.fontView.fontTableView.setContentOffset(CommonUtilManager.instance?.tableViewOffset ?? .zero, animated: false)
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        attachedView.fontView.fontTableView.setContentOffset(CommonUtilManager.instance?.tableViewOffset ?? .zero, animated: false)
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,13 +36,13 @@ final class SettingThemeVC: BaseVC {
     
     private func selectDarkTheme() {
         UserDefaultManager.instance.themeMode = ThemeMode.dark.rawValue
-        settingThemeView.setTheme(theme: .dark)
+        attachedView.setTheme(theme: .dark)
         viewWillAppear(true)
     }
     
     private func selectLightTheme() {
         UserDefaultManager.instance.themeMode = ThemeMode.light.rawValue
-        settingThemeView.setTheme(theme: .light)
+        attachedView.setTheme(theme: .light)
         viewWillAppear(true)
     }
     
@@ -59,7 +55,7 @@ final class SettingThemeVC: BaseVC {
     }
     
     private func saveTableViewPosition() {
-        CommonUtilManager.instance?.tableViewOffset = settingThemeView.fontView.fontTableView.contentOffset
+        CommonUtilManager.instance?.tableViewOffset = attachedView.fontView.fontTableView.contentOffset
     }
 }
 
@@ -67,21 +63,21 @@ final class SettingThemeVC: BaseVC {
 
 extension SettingThemeVC {
     private func initalize() {
-        initView()
+        initNavigationTitle()
         initDelegate()
         initTarget()
     }
     
     private func initView() {
-        view.removeAllSubViews()
-        settingThemeView = SettingThemeView()
-        view.addSubview(settingThemeView)
-        settingThemeView.setAutoLayout(to: view)
+        initNavigationTitle()
+        attachedView.fontView.fontTableView.reloadData()
+        attachedView.fontView.fontTableView.setContentOffset(CommonUtilManager.instance?.tableViewOffset ?? .zero, animated: false)
+        attachedView.initAllFont()
     }
     
     private func initDelegate() {
-        settingThemeView.fontView.fontTableView.delegate = self
-        settingThemeView.fontView.fontTableView.dataSource = self
+        attachedView.fontView.fontTableView.delegate = self
+        attachedView.fontView.fontTableView.dataSource = self
     }
     
     private func initTarget() {
@@ -92,7 +88,7 @@ extension SettingThemeVC {
     }
     
     private func initDarkButtonTarget() {
-        settingThemeView.modeView.darkButton.rx.tap
+        attachedView.modeView.darkButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -103,7 +99,7 @@ extension SettingThemeVC {
     }
     
     private func initLightButtonTarget() {
-        settingThemeView.modeView.lightButton.rx.tap
+        attachedView.modeView.lightButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -114,7 +110,7 @@ extension SettingThemeVC {
     }
     
     private func initBackButtonTarget() {
-        settingThemeView.navigationView.backButton.rx.tap
+        attachedView.navigationView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -124,26 +120,31 @@ extension SettingThemeVC {
     }
     
     private func initColorButtonTarget() {
-        for button in [settingThemeView.colorView.blueButton,
-                       settingThemeView.colorView.pinkButton,
-                       settingThemeView.colorView.yellowButton,
-                       settingThemeView.colorView.greenButton,
-                       settingThemeView.colorView.purpleButton] {
+        for button in [attachedView.colorView.blueButton,
+                       attachedView.colorView.pinkButton,
+                       attachedView.colorView.yellowButton,
+                       attachedView.colorView.greenButton,
+                       attachedView.colorView.purpleButton] {
             
             button.rx.tap
                 .asDriver()
                 .drive(onNext: { [weak self] in
                     guard let self else { return }
-                    settingThemeView.setColorUI(buttonTag: button.tag)
+                    attachedView.setColorUI(buttonTag: button.tag)
                     saveThemeColor(type: button.tag)
                     saveTableViewPosition()
                     
                     CommonUtilManager.instance?.themeSubject.onNext(button.tag)
-                    self.initalize()
+                    
+                    initView()
                     
                 })
                 .disposed(by: disposeBag)
         }
+    }
+    
+    func initNavigationTitle() {
+        attachedView.setNavigationTitle(title: L10n.settingName8)
     }
 }
 
@@ -156,7 +157,7 @@ extension SettingThemeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = settingThemeView.fontView.fontTableView.dequeueReusableCell(withIdentifier: RadioTVCell.id, for: indexPath) as? RadioTVCell else { return UITableViewCell() }
+        guard let cell = attachedView.fontView.fontTableView.dequeueReusableCell(withIdentifier: RadioTVCell.id, for: indexPath) as? RadioTVCell else { return UITableViewCell() }
         
         guard let type = FontType(rawValue: indexPath.row) else { return UITableViewCell() }
         cell.contentsLabel.initLabelUI(text: type.description,
@@ -173,7 +174,7 @@ extension SettingThemeVC: UITableViewDelegate, UITableViewDataSource {
         saveThemeFont(type: type.rawValue)
         saveTableViewPosition()
         CommonUtilManager.instance?.themeSubject.onNext(type.rawValue)
-        initalize()
+        initView()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -7,16 +7,12 @@
 
 import UIKit
 
-final class SecondStartVC: BaseVC {
-    
-    // MARK: - Property
-    
-    private let secondStartView = SecondStartView()
+final class SecondStartVC: BaseVC<SecondStartView> {
     
     // MARK: - Life Cycle
     
     override func loadView() {
-        view = secondStartView
+        view = attachedView
     }
     
     override func viewDidLoad() {
@@ -26,10 +22,10 @@ final class SecondStartVC: BaseVC {
     
     private func initLottie() {
         let writingLottie = LottieManager.LottieInfo(vc: self,
-                                                     lottieView: secondStartView.lottieView,
+                                                     lottieView: attachedView.lottieView,
                                                      name: Files.writingJson.name,
                                                      mode: .playOnce)
         
-        LottieManager.instance?.setLottie(writingLottie)
+        LottieManager.instance.setLottie(writingLottie)
     }
 }

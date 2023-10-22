@@ -7,19 +7,14 @@
 
 import UIKit
 
-final class SettingAlarmVC: BaseVC {
+final class SettingAlarmVC: BaseVC<SettingView> {
     
     // MARK: - Property
     
-    let settingAlarmView = SettingView(navigationTitle: L10n.settingAlarm)
     var viewModel: SettingViewModel?
     var switchFlag: Bool = false
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = settingAlarmView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,7 +124,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
             cell.titleLabel.text = L10n.settingName2
             cell.settingSwitch.isOn = switchFlag
             cell.switchTapHandler = {
@@ -138,7 +133,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case 1:
-            guard let cell = settingAlarmView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
             cell.titleLabel.text = L10n.settingName7
             cell.contentsLabel.text = viewModel?.selectedTime?.convertString(format: Constant.AHHMM)
             return cell
@@ -168,7 +163,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
 extension SettingAlarmVC: ReloadProtocol {
     func reload() {
         DispatchQueue.main.async {
-            self.settingAlarmView.tableView.reloadData()
+            self.attachedView.tableView.reloadData()
         }
     }
 }
@@ -179,6 +174,7 @@ extension SettingAlarmVC {
     private func initalize() {
         initTarget()
         initDelegate()
+        initNavigationTitle()
     }
     
     private func initTarget() {
@@ -186,7 +182,7 @@ extension SettingAlarmVC {
     }
     
     private func initBackButtonTarget() {
-        settingAlarmView.navigationView.backButton.rx.tap
+        attachedView.navigationView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -196,8 +192,12 @@ extension SettingAlarmVC {
     }
     
     private func initDelegate() {
-        settingAlarmView.tableView.dataSource = self
-        settingAlarmView.tableView.delegate = self
+        attachedView.tableView.dataSource = self
+        attachedView.tableView.delegate = self
+    }
+    
+    private func initNavigationTitle() {
+        attachedView.setNavigationTitle(title: L10n.settingAlarm)
     }
 }
 

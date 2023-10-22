@@ -11,7 +11,7 @@ final class ThemeColorView: BaseView {
     
     // MARK: - UI components
     
-    private let colorTitleLabel = UILabel().then { label in
+    let colorTitleLabel = UILabel().then { label in
         label.initLabelUI(text: L10n.colorSet,
                           color: Asset.Color.blackColor.color,
                           font: ResourceManager.instance?.getFont(size: 15) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 20))

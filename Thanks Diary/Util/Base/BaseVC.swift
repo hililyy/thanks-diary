@@ -10,10 +10,16 @@ import RxSwift
 import RxCocoa
 import MessageUI
 
-class BaseVC: UIViewController {
+class BaseVC<T: BaseView>: UIViewController, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate  {
 
     private var keyboardHeight: CGFloat = 0
     var disposeBag = DisposeBag()
+    
+    let attachedView = T()
+    
+    override func loadView() {
+        view = attachedView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,10 +86,7 @@ class BaseVC: UIViewController {
             UIApplication.shared.statusBarStyle = .darkContent
         }
     }
-}
-
-// 토스트 설정
-extension BaseVC: UIGestureRecognizerDelegate {
+    
     func initToast() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -144,11 +147,7 @@ extension BaseVC: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-}
-
-// MARK: - Email
-
-extension BaseVC: MFMailComposeViewControllerDelegate {
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }

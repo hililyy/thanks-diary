@@ -7,17 +7,9 @@
 
 import UIKit
 
-final class FloatingButtonVC: BaseVC {
-    
-    // MARK: - Property
-    
-    let floatingButtonCloseView = FloatingButtonCloseView()
+final class FloatingButtonVC: BaseVC<FloatingButtonCloseView> {
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = floatingButtonCloseView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +29,7 @@ final class FloatingButtonVC: BaseVC {
                        usingSpringWithDamping: 0.7,
                        initialSpringVelocity: 0.7,
                        options: .curveEaseOut) {
-            self.floatingButtonCloseView.setOpenConstraints()
+            self.attachedView.setOpenConstraints()
             self.view.layoutIfNeeded()
         }
     }
@@ -48,7 +40,7 @@ final class FloatingButtonVC: BaseVC {
                        usingSpringWithDamping: 0.7,
                        initialSpringVelocity: 0.7,
                        options: .curveEaseOut) {
-            self.floatingButtonCloseView.setCloseConstraints()
+            self.attachedView.setCloseConstraints()
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.dismissVC(isAnimated: false)
@@ -56,14 +48,14 @@ final class FloatingButtonVC: BaseVC {
     }
     
     private func setTarget() {
-        floatingButtonCloseView.setDetailLabel(label: L10n.detail)
-        floatingButtonCloseView.setSimpleLabel(label: L10n.simple)
+        attachedView.setDetailLabel(label: L10n.detail)
+        attachedView.setSimpleLabel(label: L10n.simple)
         
-        floatingButtonCloseView.backgroundButton.addTarget { _ in
+        attachedView.backgroundButton.addTarget { _ in
             self.updateCloseConstraints()
         }
         
-        floatingButtonCloseView.plusButton.button.addTarget { _ in
+        attachedView.plusButton.button.addTarget { _ in
             self.updateCloseConstraints()
         }
     }

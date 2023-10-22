@@ -9,18 +9,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class DetailWriteVC: BaseVC {
+final class DetailWriteVC: BaseVC<DetailWriteView> {
     
     // MARK: - Property
     
-    private var detailWriteView = DetailWriteView()
     var viewModel: MainViewModel?
     var beforeData: DiaryModel?
     
     // MARK: - Life Cycle
     
     override func loadView() {
-        view = detailWriteView
+        view = attachedView
     }
     
     override func viewDidLoad() {
@@ -38,8 +37,8 @@ final class DetailWriteVC: BaseVC {
     private func complete() {
         let newData = DiaryModel(
             type: .detail,
-            title: detailWriteView.getTitleText(),
-            contents: detailWriteView.getContentsText(),
+            title: attachedView.getTitleText(),
+            contents: attachedView.getContentsText(),
             date: viewModel?.selectedDate.value.convertString() ?? Date().convertString()
         )
         
@@ -73,16 +72,16 @@ final class DetailWriteVC: BaseVC {
     }
     
     private func showFillTextFieldToastAndDisEnableCompleteButton() {
-        detailWriteView.setCompleteButtonEnable(isOn: false)
+        attachedView.setCompleteButtonEnable(isOn: false)
         toast(message: L10n.toast, withDuration: 0.5, delay: 1.5) { [weak self] in
             guard let self else { return }
-            detailWriteView.setCompleteButtonEnable(isOn: true)
+            attachedView.setCompleteButtonEnable(isOn: true)
         }
     }
     
     private func focusTitleTextViewKeyboard() {
         if beforeData == nil {
-            detailWriteView.focusTitleTextView()
+            attachedView.focusTitleTextView()
         }
     }
 }
@@ -96,10 +95,10 @@ extension DetailWriteVC {
     }
     
     private func initUI() {
-        detailWriteView.setTopLabelData(date: viewModel?.selectedDate.value)
+        attachedView.setTopLabelData(date: viewModel?.selectedDate.value)
         
         if let beforeData {
-            detailWriteView.setTextFieldData(
+            attachedView.setTextFieldData(
                 titleText: beforeData.title,
                 contentsText: beforeData.contents)
         }
@@ -115,33 +114,33 @@ extension DetailWriteVC {
     }
     
     private func initBackButtonTarget() {
-        detailWriteView.backButton.rx.tap
+        attachedView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                detailWriteView.removeNotification()
+                attachedView.removeNotification()
                 popVC()
             })
             .disposed(by: disposeBag)
     }
     
     private func initCompleteButtonTarget() {
-        detailWriteView.completeButton.rx.tap
+        attachedView.completeButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-                if detailWriteView.isEmptyTextField() {
+                if attachedView.isEmptyTextField() {
                     showFillTextFieldToastAndDisEnableCompleteButton()
-                    detailWriteView.focusTitleTextViewOrContentsTextView()
+                    attachedView.focusTitleTextViewOrContentsTextView()
                 } else {
-                    detailWriteView.dropKeyboard()
+                    attachedView.dropKeyboard()
                 }
             })
             .disposed(by: disposeBag)
     }
     
     private func initDeleteButtonTarget() {
-        detailWriteView.deleteButton.rx.tap
+        attachedView.deleteButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -151,9 +150,9 @@ extension DetailWriteVC {
     }
     
     private func initCompleteHandler() {
-        detailWriteView.completeHandler = { [weak self] in
+        attachedView.completeHandler = { [weak self] in
             guard let self else { return }
-            if detailWriteView.isEmptyTextField() {
+            if attachedView.isEmptyTextField() {
                 showFillTextFieldToastAndDisEnableCompleteButton()
             } else {
                 complete()
@@ -162,14 +161,14 @@ extension DetailWriteVC {
     }
     
     private func initKeyBoardWillShowHandler() {
-        detailWriteView.keyBoardWillShowHandler = { [weak self] in
+        attachedView.keyBoardWillShowHandler = { [weak self] in
             guard let self else { return }
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         }
     }
     
     private func initKeyBoardWillHideHandler() {
-        detailWriteView.keyBoardWillHideHandler = { [weak self] in
+        attachedView.keyBoardWillHideHandler = { [weak self] in
             guard let self else { return }
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         }

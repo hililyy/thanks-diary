@@ -9,20 +9,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class SimpleWriteVC: BaseVC {
+final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     
     // MARK: - Property
     
-    private let simpleWriteView = SimpleWriteView()
     var viewModel: MainViewModel?
     private let maxCount: Int = 50
     var beforeData: DiaryModel?
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = simpleWriteView
-    }
     
     override func viewDidLoad() {
         initalize()
@@ -34,13 +29,13 @@ final class SimpleWriteVC: BaseVC {
         return DiaryModel(
             type: .simple,
             title: "",
-            contents: simpleWriteView.getContentsTextViewText(),
+            contents: attachedView.getContentsTextViewText(),
             date: viewModel?.selectedDate.value.convertString() ?? Date().convertString()
         )
     }
     
     private func complete() {
-        guard !simpleWriteView.isEmptyTextField() else {
+        guard !attachedView.isEmptyTextField() else {
             showFillTextFieldToastAndDisableCompleteButton()
             return
         }
@@ -95,10 +90,10 @@ final class SimpleWriteVC: BaseVC {
     }
     
     private func showFillTextFieldToastAndDisableCompleteButton() {
-        simpleWriteView.setCompleteButtonEnable(false)
+        attachedView.setCompleteButtonEnable(false)
         toast(message: L10n.inputContents, withDuration: 0.5, delay: 1.5, positionType: .top) { [weak self] in
             guard let self else { return }
-            simpleWriteView.setCompleteButtonEnable(true)
+            attachedView.setCompleteButtonEnable(true)
         }
     }
 }
@@ -144,11 +139,11 @@ extension SimpleWriteVC {
     }
     
     private func initUI() {
-        simpleWriteView.maxCount = maxCount
-        simpleWriteView.setHiddenForDeleteButton(beforeData == nil)
+        attachedView.maxCount = maxCount
+        attachedView.setHiddenForDeleteButton(beforeData == nil)
         
         if let beforeData {
-            simpleWriteView.setContentsTextView(text: beforeData.contents)
+            attachedView.setContentsTextView(text: beforeData.contents)
         }
     }
     
@@ -159,7 +154,7 @@ extension SimpleWriteVC {
     }
     
     private func initCompleteButtonTarget() {
-        simpleWriteView.completeButton.rx.tap
+        attachedView.completeButton.rx.tap
             .asDriver()
             .drive(onNext: {[weak self] _ in
                 guard let self else { return }
@@ -169,7 +164,7 @@ extension SimpleWriteVC {
     }
     
     private func initCancelButtonTarget() {
-        simpleWriteView.cancelButton.rx.tap
+        attachedView.cancelButton.rx.tap
             .asDriver()
             .drive(onNext: {[weak self] _ in
                 guard let self else { return }
@@ -179,7 +174,7 @@ extension SimpleWriteVC {
     }
     
     private func initDeleteButtonTarget() {
-        simpleWriteView.deleteButton.rx.tap
+        attachedView.deleteButton.rx.tap
             .asDriver()
             .drive(onNext: {[weak self] _ in
                 guard let self else { return }
@@ -189,6 +184,6 @@ extension SimpleWriteVC {
     }
     
     private func initDelegate() {
-        simpleWriteView.contentsTextView.delegate = self
+        attachedView.contentsTextView.delegate = self
     }
 }

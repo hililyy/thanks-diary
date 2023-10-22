@@ -7,19 +7,14 @@
 
 import UIKit
 
-final class SettingVC: BaseVC {
+final class SettingVC: BaseVC<SettingView> {
     
     // MARK: - Property
     
-    private var settingView = SettingView(navigationTitle: L10n.setting)
     private var alarmFlag: Bool = false
     let viewModel = SettingViewModel()
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = settingView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +38,7 @@ final class SettingVC: BaseVC {
         let isPassword = UserDefaultManager.instance.isPassword
         alarmFlag = isPassword
         
-        settingView.tableView.reloadData()
+        attachedView.tableView.reloadData()
     }
 }
 
@@ -59,9 +54,10 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
         
         switch data.type {
         case ._switch:
-            guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
             cell.settingSwitch.isOn = alarmFlag
+            cell.titleLabel.font = ResourceManager.instance?.getFont(size: 17)
             
             cell.switchTapHandler = { [weak self] in
                 guard let self else { return }
@@ -77,14 +73,16 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case .more:
-            guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
+            cell.titleLabel.font = ResourceManager.instance?.getFont(size: 17)
             return cell
             
         case .label:
-            guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
             cell.titleLabel.text = data.title
             cell.contentsLabel.text = data.contents
+            cell.titleLabel.font = ResourceManager.instance?.getFont(size: 17)
             return cell
         }
     }
@@ -111,20 +109,21 @@ extension SettingVC {
     private func initalize() {
         initDelegate()
         initTarget()
+        initNavigationTitle()
     }
     
     private func initView() {
-        settingView = SettingView(navigationTitle: L10n.setting)
-        view = settingView
+        attachedView.tableView.reloadData()
+        initNavigationTitle()
     }
     
     private func initDelegate() {
-        settingView.tableView.dataSource = self
-        settingView.tableView.delegate = self
+        attachedView.tableView.dataSource = self
+        attachedView.tableView.delegate = self
     }
     
     private func initTarget() {
-        settingView.navigationView.backButton.rx.tap
+        attachedView.navigationView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -136,10 +135,14 @@ extension SettingVC {
     private func initObservable() {
         CommonUtilManager.instance?.themeSubject.subscribe(onNext: { [weak self] _ in
             guard let self else { return }
-            initView()
-            initalize()
+            Log.debug("Setting")
+            attachedView.initAllFont()
         })
         .disposed(by: disposeBag)
+    }
+    
+    private func initNavigationTitle() {
+        attachedView.setNavigationTitle(title: L10n.setting)
     }
 }
 

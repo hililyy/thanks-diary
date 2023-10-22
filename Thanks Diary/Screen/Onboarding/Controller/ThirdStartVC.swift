@@ -7,17 +7,9 @@
 
 import UIKit
 
-final class ThirdStartVC: BaseVC {
-    
-    // MARK: - Property
-    
-    private let thirdStartView = ThirdStartView()
+final class ThirdStartVC: BaseVC<ThirdStartView> {
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = thirdStartView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +18,10 @@ final class ThirdStartVC: BaseVC {
     
     private func initLottie() {
         let goLottie = LottieManager.LottieInfo(vc: self,
-                                                lottieView: thirdStartView.lottieView,
+                                                lottieView: attachedView.lottieView,
                                                 name: Files.goJson.name,
                                                 mode: .playOnce)
         
-        LottieManager.instance?.setLottie(goLottie)
+        LottieManager.instance.setLottie(goLottie)
     }
 }

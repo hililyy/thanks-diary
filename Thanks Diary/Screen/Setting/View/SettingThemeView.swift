@@ -43,11 +43,23 @@ final class SettingThemeView: BaseView {
         colorView.purpleButton.alpha = buttonTag == 4 ? 1.0 : 0.3
     }
     
+    func setNavigationTitle(title: String) {
+        navigationView.setTitleLabelText(title: title)
+    }
+    
     // MARK: - UI, Target
+    
+    func initAllFont() {
+        navigationView.titleLabel.font = ResourceManager.instance?.getFont(size: 22)
+        modeView.modeTitleLabel.font = ResourceManager.instance?.getFont(size: 15)
+        modeView.lightLabel.font = ResourceManager.instance?.getFont(size: 15)
+        modeView.darkLabel.font = ResourceManager.instance?.getFont(size: 15)
+        colorView.colorTitleLabel.font = ResourceManager.instance?.getFont(size: 15)
+        fontView.fontTitleLabel.font = ResourceManager.instance?.getFont(size: 15)
+    }
     
     override func initUI() {
         backgroundColor = Asset.Color.white.color
-        navigationView.setTitleLabelText(title: L10n.settingName8)
         
         let mode = UserDefaultManager.instance.themeMode
         if let themeMode = ThemeMode(rawValue: mode) {
@@ -56,7 +68,6 @@ final class SettingThemeView: BaseView {
         
         let color = UserDefaultManager.instance.themeColor
         setColorUI(buttonTag: color)
-        
     }
     
     // MARK: - Constraint

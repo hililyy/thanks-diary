@@ -7,19 +7,18 @@
 
 import UIKit
 
-final class PageVC: BaseVC {
+final class PageVC: BaseVC<PageView> {
     
     // MARK: - Property
     
-    private let pageView = PageView()
     private var pageContainer: UIPageViewController!
     private var pageList = [UIViewController]()
     private var currentIndex: Int = 0 {
         didSet {
             changeDotViewColor()
             let title = currentIndex == pageList.count - 1 ? L10n.start : L10n.next
-            UIView.transition(with: self.pageView.nextButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-                self.pageView.nextButton.setTitle(title, for: .normal)
+            UIView.transition(with: self.attachedView.nextButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                self.attachedView.nextButton.setTitle(title, for: .normal)
             })
             
         }
@@ -28,7 +27,7 @@ final class PageVC: BaseVC {
     // MARK: - Life Cycle
     
     override func loadView() {
-        view = pageView
+        view = attachedView
     }
     
     override func viewDidLoad() {
@@ -38,7 +37,7 @@ final class PageVC: BaseVC {
     }
 
     private func initTarget() {
-        pageView.nextButton.addTarget { [weak self] _ in
+        attachedView.nextButton.addTarget { [weak self] _ in
             guard let self else { return }
             if self.currentIndex == self.pageList.count - 1 {
                 UserDefaultManager.instance.isReEntryUser = true
@@ -50,10 +49,10 @@ final class PageVC: BaseVC {
     }
 
     private func changeDotViewColor() {
-        UIView.transition(with: self.pageView.firstDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.pageView.firstDotView.backgroundColor = self.currentIndex == 0 ? ResourceManager.instance?.getMainColor() : Asset.Color.gray3.color
-            self.pageView.secondDotView.backgroundColor = self.currentIndex == 1 ? ResourceManager.instance?.getMainColor() : Asset.Color.gray3.color
-            self.pageView.thirdDotView.backgroundColor = self.currentIndex == 2 ? ResourceManager.instance?.getMainColor() : Asset.Color.gray3.color
+        UIView.transition(with: self.attachedView.firstDotView, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            self.attachedView.firstDotView.backgroundColor = self.currentIndex == 0 ? ResourceManager.instance?.getMainColor() : Asset.Color.gray3.color
+            self.attachedView.secondDotView.backgroundColor = self.currentIndex == 1 ? ResourceManager.instance?.getMainColor() : Asset.Color.gray3.color
+            self.attachedView.thirdDotView.backgroundColor = self.currentIndex == 2 ? ResourceManager.instance?.getMainColor() : Asset.Color.gray3.color
         })
     }
 
@@ -65,9 +64,9 @@ final class PageVC: BaseVC {
         if let firstVC = pageList.first {
             pageContainer.setViewControllers([firstVC], direction: .forward, animated: true)
         }
-        pageContainer.view.frame = pageView.containerView.bounds
-        pageView.containerView.addSubview(pageContainer.view)
-        pageContainer.view.setAutoLayout(to: pageView.containerView)
+        pageContainer.view.frame = attachedView.containerView.bounds
+        attachedView.containerView.addSubview(pageContainer.view)
+        pageContainer.view.setAutoLayout(to: attachedView.containerView)
     }
 
     private func moveNextPage() {

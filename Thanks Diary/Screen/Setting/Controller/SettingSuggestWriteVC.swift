@@ -9,18 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class SettingSuggestWriteVC: BaseVC {
+final class SettingSuggestWriteVC: BaseVC<SettingSuggestWriteView> {
     
     // MARK: - Property
     
-    let settingSuggestWriteView = SettingSuggestWriteView()
     var viewModel: SettingViewModel?
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = settingSuggestWriteView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +25,7 @@ final class SettingSuggestWriteVC: BaseVC {
     // MARK: - Function
     
     private func complete() {
-        guard let contents = settingSuggestWriteView.contentsTextView.text else { return }
+        guard let contents = attachedView.contentsTextView.text else { return }
         
         if contents.isEmpty {
             showToast()
@@ -43,10 +38,10 @@ final class SettingSuggestWriteVC: BaseVC {
     }
     
     private func showToast() {
-        settingSuggestWriteView.setCompleteButtonEnable(false)
+        attachedView.setCompleteButtonEnable(false)
         toast(message: L10n.inputContents, withDuration: 0.5, delay: 1.5, positionType: .top) { [weak self] in
             guard let self else { return }
-            settingSuggestWriteView.setCompleteButtonEnable(true)
+            attachedView.setCompleteButtonEnable(true)
         }
     }
 }
@@ -65,7 +60,7 @@ extension SettingSuggestWriteVC {
     }
     
     private func initBackgrounButtonTarget() {
-        settingSuggestWriteView.backgroundButton.rx.tap
+        attachedView.backgroundButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -75,7 +70,7 @@ extension SettingSuggestWriteVC {
     }
     
     private func initCompleteButtonTarget() {
-        settingSuggestWriteView.completeButton.rx.tap
+        attachedView.completeButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -85,7 +80,7 @@ extension SettingSuggestWriteVC {
     }
     
     private func initMailButtonTarget() {
-        settingSuggestWriteView.mailButton.rx.tap
+        attachedView.mailButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }

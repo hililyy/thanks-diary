@@ -8,17 +8,9 @@
 import UIKit
 import AcknowList
 
-final class SettingAppVC: BaseVC {
-    
-    // MARK: - Property
-    
-    private var settingView = SettingView(navigationTitle: L10n.settingName11)
+final class SettingAppVC: BaseVC<SettingView> {
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = settingView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +26,13 @@ extension SettingAppVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
             cell.titleLabel.text = L10n.settingName6
             cell.contentsLabel.text = CommonUtilManager.instance?.appVersion ?? ""
             return cell
 
         case 1, 2:
-            guard let cell = settingView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
             cell.titleLabel.text = indexPath.row == 1 ? L10n.settingName10 : L10n.settingName5
             return cell
 
@@ -76,7 +68,7 @@ extension SettingAppVC {
     }
     
     private func initBackButtonTarget() {
-        settingView.navigationView.backButton.rx.tap
+        attachedView.navigationView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
@@ -86,8 +78,12 @@ extension SettingAppVC {
     }
     
     private func initDelegate() {
-        settingView.tableView.dataSource = self
-        settingView.tableView.delegate = self
+        attachedView.tableView.dataSource = self
+        attachedView.tableView.delegate = self
+    }
+    
+    private func initNavigationTitle() {
+        attachedView.setNavigationTitle(title: L10n.settingName11)
     }
 }
 

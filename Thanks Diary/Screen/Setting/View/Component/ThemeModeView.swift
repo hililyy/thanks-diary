@@ -13,7 +13,7 @@ final class ThemeModeView: BaseView {
     
     // MARK: - UI components
     
-    private let modeTitleLabel = UILabel().then { label in
+    let modeTitleLabel = UILabel().then { label in
         label.initLabelUI(text: L10n.modeSet,
                           color: Asset.Color.blackColor.color,
                           font: ResourceManager.instance?.getFont(size: 15) ?? FontFamily.NanumBarunGothic.ultraLight.font(size: 15))
@@ -48,14 +48,14 @@ final class ThemeModeView: BaseView {
     let lightButton = UIButton(type: .custom)
     let darkButton = UIButton(type: .custom)
     
-    private let lightLabel = UILabel().then { label in
+    let lightLabel = UILabel().then { label in
         label.textColor = Asset.Color.blackColor.color
         label.text = L10n.lightmode
         label.textAlignment = .center
         label.font = ResourceManager.instance?.getFont(size: 15)
     }
     
-    private let darkLabel = UILabel().then { label in
+    let darkLabel = UILabel().then { label in
         label.textColor = Asset.Color.blackColor.color
         label.text = L10n.darkmode
         label.textAlignment = .center

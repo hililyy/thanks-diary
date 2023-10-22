@@ -24,16 +24,20 @@ final class SettingView: BaseView {
     
     // MARK: - UI, Target
     
-    convenience init(navigationTitle: String) {
-        self.init()
-        navigationView.setTitleLabelText(title: navigationTitle)
-    }
-    
     override func initUI() {
         backgroundColor = Asset.Color.white.color
     }
     
     // MARK: - Constraint
+    
+    func setNavigationTitle(title: String) {
+        navigationView.setTitleLabelText(title: title)
+    }
+    
+    func initAllFont() {
+        navigationView.titleLabel.font = ResourceManager.instance?.getFont(size: 22)
+        tableView.reloadData()
+    }
     
     override func initSubviews() {
         addSubviews([navigationView,

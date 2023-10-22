@@ -97,6 +97,16 @@ final class MainView: BaseView {
         emptyView.frame.size.height = isHidden ? 0 : 300
     }
     
+    func initAllFont() {
+        todayButton.titleLabel?.font = ResourceManager.instance?.getFont(size: 15)
+        todayLabel.font = ResourceManager.instance?.getFont(size: 20)
+        calendar.appearance.headerTitleFont = ResourceManager.instance?.getFont(size: 19)
+        calendar.appearance.weekdayFont = ResourceManager.instance?.getFont(size: 17)
+        calendar.appearance.titleFont = ResourceManager.instance?.getFont(size: 17)
+        calendar.appearance.subtitleFont = ResourceManager.instance?.getFont(size: 17)
+
+    }
+    
     // MARK: - UI, Target
     
     override func initUI() {

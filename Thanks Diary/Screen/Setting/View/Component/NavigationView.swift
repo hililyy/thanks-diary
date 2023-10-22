@@ -17,7 +17,7 @@ final class NavigationView: BaseView {
         button.setImage(Asset.Image.icBack.image, for: .normal)
     }
     
-    private let titleLabel = UILabel().then { label in
+    let titleLabel = UILabel().then { label in
         label.font = ResourceManager.instance?.getFont(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
