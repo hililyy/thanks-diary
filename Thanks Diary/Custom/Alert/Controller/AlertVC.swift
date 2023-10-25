@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class AlertVC: BaseVC<AlertView> {
     
     // MARK: - Property
     
-    let alertView = AlertView()
     var leftButtonTapHandler: () -> Void = {}
     var rightButtonTapHandler: () -> Void = {}
     
@@ -19,23 +20,29 @@ final class AlertVC: BaseVC<AlertView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setTarget()
     }
     
     // MARK: - Function
     
     private func setTarget() {
-        alertView.backButton.addTarget { _ in
-            self.dismissVC()
-        }
+        attachedView.backButton.rx.tap
+            .asDriver()
+            .drive(onNext: {  [weak self] _ in
+                guard let self else { return }
+                
+                dismissVC()
+            })
+            .disposed(by: disposeBag)
         
-        alertView.leftButton.addTarget { _ in
+        attachedView.leftButton.addTarget { _ in
             self.dismissVC {
                 self.leftButtonTapHandler()
             }
         }
         
-        alertView.rightButton.addTarget { _ in
+        attachedView.rightButton.addTarget { _ in
             self.dismissVC {
                 self.rightButtonTapHandler()
             }
