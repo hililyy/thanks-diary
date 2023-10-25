@@ -82,7 +82,6 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             
             cell.titleLabel.text = data.title
             cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
-            
             return cell
             
         case .label:
@@ -91,7 +90,6 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = data.title
             cell.contentsLabel.text = data.contents
             cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
-            
             return cell
         }
     }
