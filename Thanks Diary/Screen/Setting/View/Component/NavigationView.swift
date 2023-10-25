@@ -33,8 +33,7 @@ final class NavigationView: BaseView {
     
     override func initSubviews() {
         addSubviews([backButton,
-                     titleLabel
-        ])
+                     titleLabel])
     }
     
     override func initConstraints() {

@@ -13,6 +13,7 @@ final class PageNC: BaseNavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setViewControllers([PageVC()], animated: true)
     }
 }

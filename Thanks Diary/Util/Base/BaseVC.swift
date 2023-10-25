@@ -23,7 +23,6 @@ class BaseVC<T: BaseView>: UIViewController, UIGestureRecognizerDelegate, MFMail
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initNavigation()
         initToast()
         checkAppearance()

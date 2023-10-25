@@ -56,8 +56,13 @@ final class SettingSuggestWriteView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backgroundView, backgroundButton, containerView])
-        containerView.addSubviews([mailButton, contentsTextView, completeButton])
+        addSubviews([backgroundView, 
+                     backgroundButton,
+                     containerView])
+        
+        containerView.addSubviews([mailButton,
+                                   contentsTextView,
+                                   completeButton])
     }
     
     override func initConstraints() {

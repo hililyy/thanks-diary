@@ -24,11 +24,13 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initalize()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         focusTitleTextViewKeyboard()
     }
     
@@ -43,15 +45,18 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
         )
         
         if let beforeData {
-            update(safeBeforeData: beforeData, newData: newData)
+            update(safeBeforeData: beforeData,
+                   newData: newData)
         } else {
             write(newData)
         }
     }
     
     private func update(safeBeforeData: DiaryModel, newData: DiaryModel) {
-        viewModel?.updateData(beforeData: safeBeforeData, newData: newData) { [weak self] result in
+        viewModel?.updateData(beforeData: safeBeforeData,
+                              newData: newData) { [weak self] result in
             guard let self else { return }
+            
             if result {
                 beforeData = newData
             } else {
@@ -63,6 +68,7 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     private func write(_ newData: DiaryModel) {
         viewModel?.createData(newData: newData) { [weak self] result in
             guard let self else { return }
+            
             if result {
                 beforeData = newData
             } else {
@@ -73,8 +79,10 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     
     private func showFillTextFieldToastAndDisEnableCompleteButton() {
         attachedView.setCompleteButtonEnable(isOn: false)
+        
         toast(message: L10n.toast, withDuration: 0.5, delay: 1.5) { [weak self] in
             guard let self else { return }
+            
             attachedView.setCompleteButtonEnable(isOn: true)
         }
     }
@@ -118,6 +126,7 @@ extension DetailWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 attachedView.removeNotification()
                 popVC()
             })
@@ -129,6 +138,7 @@ extension DetailWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 if attachedView.isEmptyTextField() {
                     showFillTextFieldToastAndDisEnableCompleteButton()
                     attachedView.focusTitleTextViewOrContentsTextView()
@@ -144,6 +154,7 @@ extension DetailWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 presentDeleteAlertVC()
             })
             .disposed(by: disposeBag)
@@ -152,6 +163,7 @@ extension DetailWriteVC {
     private func initCompleteHandler() {
         attachedView.completeHandler = { [weak self] in
             guard let self else { return }
+            
             if attachedView.isEmptyTextField() {
                 showFillTextFieldToastAndDisEnableCompleteButton()
             } else {
@@ -163,14 +175,16 @@ extension DetailWriteVC {
     private func initKeyBoardWillShowHandler() {
         attachedView.keyBoardWillShowHandler = { [weak self] in
             guard let self else { return }
-            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+            
+            navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         }
     }
     
     private func initKeyBoardWillHideHandler() {
         attachedView.keyBoardWillHideHandler = { [weak self] in
             guard let self else { return }
-            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+            
+            navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         }
     }
 }
@@ -186,13 +200,16 @@ extension DetailWriteVC {
         vc.modalPresentationStyle = .overCurrentContext
         vc.rightButtonTapHandler = { [weak self] in
             guard let self else { return }
+            
             viewModel?.deleteData(deleteData: deleteData) { result in
                 self.popVC()
+                
                 if !result {
                     self.showErrorPopup()
                 }
             }
         }
+        
         present(vc, animated: true)
     }
 }

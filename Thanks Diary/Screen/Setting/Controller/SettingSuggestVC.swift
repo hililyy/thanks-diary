@@ -18,6 +18,7 @@ final class SettingSuggestVC: BaseVC<SettingSuggestView> {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initalize()
         viewModel?.getSuggestDatas()
     }
@@ -41,6 +42,7 @@ extension SettingSuggestVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 popVC()
             })
             .disposed(by: disposeBag)
@@ -51,6 +53,7 @@ extension SettingSuggestVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 presentSettingSuggestWriteVC()
             })
             .disposed(by: disposeBag)
@@ -62,6 +65,7 @@ extension SettingSuggestVC {
                 cellIdentifier: SettingSuggestTVCell.id,
                 cellType: SettingSuggestTVCell.self)) {  [weak self] _, item, cell in
                     guard let self else { return }
+                    
                     cell.contentsLabel.text = item.contents
                     cell.statusLabel.text = SuggestType(rawValue: item.status ?? "")?.description
                     cell.setStatusLabelUI(SuggestType(rawValue: item.status ?? "") ?? .waiting)

@@ -38,6 +38,7 @@ final class LaunchVC: UIViewController {
     // 비밀번호 ""으로 설정된 유저 비밀번호 변경(초기화 / 이전버전 앱 오류 해결방안)
     private func initPasswordIfEmpty() {
         let password = UserDefaultManager.instance.password
+        
         if password.isEmpty {
             UserDefaultManager.instance.password = Constant.INIT_PASSWORD
         }

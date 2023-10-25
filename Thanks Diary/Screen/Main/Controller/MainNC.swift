@@ -13,6 +13,7 @@ final class MainNC: BaseNavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setViewControllers([MainVC()], animated: true)
     }
 }

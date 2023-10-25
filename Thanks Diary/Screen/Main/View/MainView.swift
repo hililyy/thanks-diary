@@ -123,6 +123,7 @@ final class MainView: BaseView {
                      diaryTableView,
                      emptyView,
                      floatingButton])
+        
         todayAndSettingTopView.addSubviews([todayButton, settingButton])
         todayLabelView.addSubview(todayLabel)
     }

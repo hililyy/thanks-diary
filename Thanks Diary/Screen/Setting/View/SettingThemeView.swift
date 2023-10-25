@@ -73,20 +73,15 @@ final class SettingThemeView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([
-            navigationView,
-            contentScrollView
-        ])
+        addSubviews([navigationView, contentScrollView])
         
         contentScrollView.addSubview(contentView)
         
-        contentView.addSubviews([
-            modeView,
-            lineView,
-            colorView,
-            lineView2,
-            fontView
-        ])
+        contentView.addSubviews([modeView,
+                                 lineView,
+                                 colorView,
+                                 lineView2,
+                                 fontView])
     }
     
     override func initConstraints() {

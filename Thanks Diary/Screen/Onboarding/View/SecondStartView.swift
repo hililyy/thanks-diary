@@ -53,35 +53,35 @@ final class SecondStartView: BaseView {
         label.text = L10n.startPage2Message5
     }
     
-    private lazy var messageImageStackView1 = UIStackView(arrangedSubviews: [heartImageView1, messageLabel1]).then { stackView in
+    private lazy var messageImageStackView1 = UIStackView().then { stackView in
         stackView.spacing = 5
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
     }
     
-    private lazy var messageImageStackView2 = UIStackView(arrangedSubviews: [heartImageView2, messageLabel2]).then { stackView in
+    private lazy var messageImageStackView2 = UIStackView().then { stackView in
         stackView.spacing = 5
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
     }
     
-    private lazy var messageImageStackView3 = UIStackView(arrangedSubviews: [heartImageView3, messageLabel3]).then { stackView in
+    private lazy var messageImageStackView3 = UIStackView().then { stackView in
         stackView.spacing = 5
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
     }
     
-    private lazy var messageImageStackView4 = UIStackView(arrangedSubviews: [heartImageView4, messageLabel4]).then { stackView in
+    private lazy var messageImageStackView4 = UIStackView().then { stackView in
         stackView.spacing = 5
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
     }
     
-    private lazy var messageStackView = UIStackView(arrangedSubviews: [messageImageStackView1, messageImageStackView2, messageImageStackView3, messageImageStackView4]).then { stackView in
+    private lazy var messageStackView = UIStackView().then { stackView in
         stackView.spacing = 15
         stackView.axis = .vertical
         stackView.distribution = .fill
@@ -97,6 +97,16 @@ final class SecondStartView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
+        messageImageStackView1.addSubviews([heartImageView1, messageLabel1])
+        messageImageStackView2.addSubviews([heartImageView2, messageLabel2])
+        messageImageStackView3.addSubviews([heartImageView3, messageLabel3])
+        messageImageStackView4.addSubviews([heartImageView4, messageLabel4])
+        
+        messageStackView.addSubviews([messageImageStackView1,
+                                      messageImageStackView2,
+                                      messageImageStackView3,
+                                      messageImageStackView4])
+        
         addSubviews([lottieView,
                      titleLabel,
                      messageStackView])

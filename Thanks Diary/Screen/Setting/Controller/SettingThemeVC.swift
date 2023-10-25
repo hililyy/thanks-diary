@@ -15,11 +15,13 @@ final class SettingThemeVC: BaseVC<SettingThemeView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initalize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         checkAppearance()
     }
     
@@ -87,6 +89,7 @@ extension SettingThemeVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 selectDarkTheme()
                 saveTableViewPosition()
             })
@@ -98,6 +101,7 @@ extension SettingThemeVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 selectLightTheme()
                 saveTableViewPosition()
             })
@@ -109,6 +113,7 @@ extension SettingThemeVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 popVC()
             })
             .disposed(by: disposeBag)
@@ -125,6 +130,7 @@ extension SettingThemeVC {
                 .asDriver()
                 .drive(onNext: { [weak self] in
                     guard let self else { return }
+                    
                     attachedView.setColorUI(buttonTag: button.tag)
                     saveThemeColor(type: button.tag)
                     saveTableViewPosition()
@@ -132,7 +138,6 @@ extension SettingThemeVC {
                     CommonUtilManager.instance.themeSubject.onNext(button.tag)
                     
                     initView()
-                    
                 })
                 .disposed(by: disposeBag)
         }
@@ -155,9 +160,11 @@ extension SettingThemeVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = attachedView.fontView.fontTableView.dequeueReusableCell(withIdentifier: RadioTVCell.id, for: indexPath) as? RadioTVCell else { return UITableViewCell() }
         
         guard let type = FontType(rawValue: indexPath.row) else { return UITableViewCell() }
+        
         cell.contentsLabel.initLabelUI(text: type.description,
                                        color: Asset.Color.gray1.color,
-                                       font: ResourceManager.instance.getFont(type: type, size: 18))
+                                       font: ResourceManager.instance.getFont(type: type, 
+                                                                              size: 18))
         
         let savedFontType = UserDefaultManager.instance.themeFont
         cell.changeButtonUI(isSelected: savedFontType == type.rawValue)

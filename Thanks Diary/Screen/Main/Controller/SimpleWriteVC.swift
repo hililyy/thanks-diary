@@ -20,6 +20,8 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         initalize()
     }
     
@@ -41,16 +43,20 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
         }
         
         let newData = getDiaryData()
+        
         if let safeBeforeData = beforeData {
-            update(beforeData: safeBeforeData, newData: newData)
+            update(beforeData: safeBeforeData,
+                   newData: newData)
         } else {
             write(newData)
         }
     }
     
     private func update(beforeData: DiaryModel, newData: DiaryModel) {
-        viewModel?.updateData(beforeData: beforeData, newData: newData) { [weak self] result in
+        viewModel?.updateData(beforeData: beforeData,
+                              newData: newData) { [weak self] result in
             guard let self else { return }
+            
             if result {
                 dismissVC {
                     self.viewModel?.readData()
@@ -64,6 +70,7 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     private func write(_ newData: DiaryModel) {
         viewModel?.createData(newData: newData) { [weak self] result in
             guard let self else { return }
+            
             if result {
                 dismissVC {
                     self.viewModel?.readData()
@@ -79,6 +86,7 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
         
         viewModel?.deleteData(deleteData: deleteData) { [weak self] result in
             guard let self else { return }
+            
             if result {
                 dismissVC {
                     self.viewModel?.readData()
@@ -91,8 +99,12 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     
     private func showFillTextFieldToastAndDisableCompleteButton() {
         attachedView.setCompleteButtonEnable(false)
-        toast(message: L10n.inputContents, withDuration: 0.5, delay: 1.5, positionType: .top) { [weak self] in
+        toast(message: L10n.inputContents,
+              withDuration: 0.5,
+              delay: 1.5,
+              positionType: .top) { [weak self] in
             guard let self else { return }
+            
             attachedView.setCompleteButtonEnable(true)
         }
     }
@@ -111,14 +123,18 @@ extension SimpleWriteVC: UITextViewDelegate {
             let index = text.index(text.endIndex, offsetBy: -overflow)
             let newText = text[..<index]
             
-            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: range.location),
-                  let endPosition = textView.position(from: textView.beginningOfDocument, offset: NSMaxRange(range)),
-                  let textRange = textView.textRange(from: startPosition, to: endPosition) else { return false }
+            guard let startPosition = textView.position(from: textView.beginningOfDocument,
+                                                        offset: range.location),
+                  let endPosition = textView.position(from: textView.beginningOfDocument, 
+                                                      offset: NSMaxRange(range)),
+                  let textRange = textView.textRange(from: startPosition, 
+                                                     to: endPosition) else { return false }
             
             textView.replace(textRange, withText: String(newText))
             
             return false
         }
+        
         return true
     }
     
@@ -158,6 +174,7 @@ extension SimpleWriteVC {
             .asDriver()
             .drive(onNext: {[weak self] _ in
                 guard let self else { return }
+                
                 complete()
             })
             .disposed(by: disposeBag)
@@ -168,6 +185,7 @@ extension SimpleWriteVC {
             .asDriver()
             .drive(onNext: {[weak self] _ in
                 guard let self else { return }
+                
                 dismissVC()
             })
             .disposed(by: disposeBag)
@@ -178,6 +196,7 @@ extension SimpleWriteVC {
             .asDriver()
             .drive(onNext: {[weak self] _ in
                 guard let self else { return }
+                
                 delete()
             })
             .disposed(by: disposeBag)

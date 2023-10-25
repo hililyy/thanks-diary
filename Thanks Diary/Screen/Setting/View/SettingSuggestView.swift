@@ -48,8 +48,7 @@ final class SettingSuggestView: BaseView {
                      writeButton,
                      topLabel,
                      tableView,
-                     loading
-        ])
+                     loading])
     }
     
     override func initConstraints() {

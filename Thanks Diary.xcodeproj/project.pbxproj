@@ -92,6 +92,7 @@
 		02835D8D2AE0F00100593BA5 /* yeonyu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D8A2AE0F00100593BA5 /* yeonyu.ttf */; };
 		02835D8F2AE0FE1A00593BA5 /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D8E2AE0FE1A00593BA5 /* NanumBarunpenR.otf */; };
 		02835D962AE2654800593BA5 /* SettingAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02835D952AE2654800593BA5 /* SettingAppVC.swift */; };
+		0285D4D62AE7C98C005B36DA /* PMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285D4D52AE7C98C005B36DA /* PMain.swift */; };
 		0290EF652ADCD22C00869C05 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF642ADCD22C00869C05 /* UIButton.swift */; };
 		0290EF672ADCD25000869C05 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF662ADCD25000869C05 /* UILabel.swift */; };
 		0290EF692ADCD43300869C05 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF682ADCD43300869C05 /* UIStackView.swift */; };
@@ -109,6 +110,10 @@
 		02BF3DD72AD531F8002E5D35 /* ThanksDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF3DD62AD531F8002E5D35 /* ThanksDiaryUITests.swift */; };
 		02BF3DD92AD531F8002E5D35 /* ThanksDiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF3DD82AD531F8002E5D35 /* ThanksDiaryUITestsLaunchTests.swift */; };
 		02BF3DF72AD532B6002E5D35 /* ThanksDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF3DF62AD532B6002E5D35 /* ThanksDiaryTests.swift */; };
+		02C704052AE6390A00E27B2A /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02C704042AE6390A00E27B2A /* ReSwift */; };
+		02C704082AE63A6E00E27B2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C704072AE63A6E00E27B2A /* AppState.swift */; };
+		02C7040A2AE63A8600E27B2A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C704092AE63A8600E27B2A /* Action.swift */; };
+		02C7040C2AE63AA500E27B2A /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7040B2AE63AA500E27B2A /* Reducer.swift */; };
 		02D7BB6F2AA589DF00419739 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02D7BB6E2AA589DF00419739 /* GoogleService-Info.plist */; };
 		02D7BB732AA6BFDB00419739 /* SettingSuggestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */; };
 		02F50B462A60F9BB006A59D3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F50B452A60F9BB006A59D3 /* MainView.swift */; };
@@ -250,6 +255,7 @@
 		02835D8A2AE0F00100593BA5 /* yeonyu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yeonyu.ttf; sourceTree = "<group>"; };
 		02835D8E2AE0FE1A00593BA5 /* NanumBarunpenR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenR.otf; sourceTree = "<group>"; };
 		02835D952AE2654800593BA5 /* SettingAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAppVC.swift; sourceTree = "<group>"; };
+		0285D4D52AE7C98C005B36DA /* PMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMain.swift; sourceTree = "<group>"; };
 		0290EF112AD64E4B00869C05 /* ThanksDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290EF122AD64E4B00869C05 /* ThanksDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290EF642ADCD22C00869C05 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -269,6 +275,9 @@
 		02BF3DD62AD531F8002E5D35 /* ThanksDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryUITests.swift; sourceTree = "<group>"; };
 		02BF3DD82AD531F8002E5D35 /* ThanksDiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		02BF3DF62AD532B6002E5D35 /* ThanksDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryTests.swift; sourceTree = "<group>"; };
+		02C704072AE63A6E00E27B2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		02C704092AE63A8600E27B2A /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		02C7040B2AE63AA500E27B2A /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		02D7BB6E2AA589DF00419739 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSuggestView.swift; sourceTree = "<group>"; };
 		02F50B452A60F9BB006A59D3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -329,6 +338,7 @@
 				02087C4E2AA9C56D00921F4D /* FirebaseAuth in Frameworks */,
 				02087C372AA9C4F600921F4D /* FSCalendar in Frameworks */,
 				02087C472AA9C54100921F4D /* RxRelay in Frameworks */,
+				02C704052AE6390A00E27B2A /* ReSwift in Frameworks */,
 				02087C402AA9C52100921F4D /* SnapKit in Frameworks */,
 				02087C3D2AA9C51200921F4D /* Then in Frameworks */,
 				02087C3A2AA9C50300921F4D /* AcknowList in Frameworks */,
@@ -583,6 +593,14 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		0285D4D42AE7C980005B36DA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0285D4D52AE7C98C005B36DA /* PMain.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		029F04FB2A4984DA00D82289 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -606,6 +624,16 @@
 				02BF3DF62AD532B6002E5D35 /* ThanksDiaryTests.swift */,
 			);
 			path = ThanksDiaryTests;
+			sourceTree = "<group>";
+		};
+		02C704062AE63A5F00E27B2A /* ReSwift */ = {
+			isa = PBXGroup;
+			children = (
+				02C704072AE63A6E00E27B2A /* AppState.swift */,
+				02C704092AE63A8600E27B2A /* Action.swift */,
+				02C7040B2AE63AA500E27B2A /* Reducer.swift */,
+			);
+			path = ReSwift;
 			sourceTree = "<group>";
 		};
 		02F50B442A60F932006A59D3 /* Controller */ = {
@@ -716,6 +744,7 @@
 		2A81233D28C095B7000A250E /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				02C704062AE63A5F00E27B2A /* ReSwift */,
 				0229553E2A669265004BF800 /* Base */,
 				025EF0462A459C9200C930F2 /* Constant */,
 				025EF0512A459D0000C930F2 /* Manager */,
@@ -759,6 +788,7 @@
 		2A9F34F928AC10D3006CCF7C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				0285D4D42AE7C980005B36DA /* Protocol */,
 				02F50B442A60F932006A59D3 /* Controller */,
 				2A9F350C28AE1BF9006CCF7C /* Model */,
 				2A9F350B28AE1BF2006CCF7C /* View */,
@@ -889,6 +919,7 @@
 				02087C4F2AA9C56E00921F4D /* FirebaseDatabase */,
 				02087C522AA9C5AD00921F4D /* Lottie */,
 				2A0034BA2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				02C704042AE6390A00E27B2A /* ReSwift */,
 			);
 			productName = "Thanks Diary";
 			productReference = 02087C542AA9C93A00921F4D /* Thanks Diary.app */;
@@ -935,6 +966,7 @@
 				02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */,
 				02087C4C2AA9C56D00921F4D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				02C704032AE6390A00E27B2A /* XCRemoteSwiftPackageReference "ReSwift" */,
 			);
 			productRefGroup = 2A0D87F228A540FB00576E56;
 			projectDirPath = "";
@@ -1056,6 +1088,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				025EF0402A459C2F00C930F2 /* AlertView.swift in Sources */,
+				02C7040A2AE63A8600E27B2A /* Action.swift in Sources */,
 				02835D862ADFA39700593BA5 /* RadioTVCell.swift in Sources */,
 				02B638D62AB1468100312A34 /* SettingNameModel.swift in Sources */,
 				2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */,
@@ -1092,6 +1125,8 @@
 				2A9F351728AE63FD006CCF7C /* SettingMoreTVCell.swift in Sources */,
 				020A8DEF2ACFADB800E855EE /* ReloadProtocol.swift in Sources */,
 				025EF06C2A459E2E00C930F2 /* Date.swift in Sources */,
+				02C7040C2AE63AA500E27B2A /* Reducer.swift in Sources */,
+				0285D4D62AE7C98C005B36DA /* PMain.swift in Sources */,
 				022955402A669273004BF800 /* BaseView.swift in Sources */,
 				027C60DE2A8DBFE0008F607F /* SettingThemeVC.swift in Sources */,
 				022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */,
@@ -1148,6 +1183,7 @@
 				2A7241DA28B3EDF70040ADE9 /* DiaryModel.swift in Sources */,
 				2A81234C28C4E221000A250E /* DetailDiaryTVCell.swift in Sources */,
 				2A81233228BFFA0C000A250E /* SettingAlarmVC.swift in Sources */,
+				02C704082AE63A6E00E27B2A /* AppState.swift in Sources */,
 				2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */,
 				025E04412AA7106A00C01D24 /* SettingSuggestWriteVC.swift in Sources */,
 				025EF0502A459CE200C930F2 /* UserDefaultKey.swift in Sources */,
@@ -1549,6 +1585,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		02C704032AE6390A00E27B2A /* XCRemoteSwiftPackageReference "ReSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReSwift/ReSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1606,6 +1650,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
+		};
+		02C704042AE6390A00E27B2A /* ReSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02C704032AE6390A00E27B2A /* XCRemoteSwiftPackageReference "ReSwift" */;
+			productName = ReSwift;
 		};
 		2A0034BA2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;

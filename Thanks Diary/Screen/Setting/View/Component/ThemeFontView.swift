@@ -35,8 +35,7 @@ final class ThemeFontView: BaseView {
     
     override func initSubviews() {
         addSubviews([fontTitleLabel,
-                     fontContentView
-                    ])
+                     fontContentView])
         
         fontContentView.addSubview(fontTableView)
     }

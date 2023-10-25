@@ -55,27 +55,27 @@ final class SettingPWView: BaseView {
         view.layer.cornerRadius = 10
     }
     
-    private lazy var passwordStackView = UIStackView(arrangedSubviews: [passwordFirstStackView, passwordSecondStackView, passwordThirdStackView, passwordFourthStackView]).then { stackView in
+    private lazy var passwordStackView = UIStackView().then { stackView in
         stackView.axis = .vertical
         stackView.spacing = 25
     }
     
-    private lazy var passwordFirstStackView = UIStackView(arrangedSubviews: [oneButton, twoButton, threeButton]).then { stackView in
+    private lazy var passwordFirstStackView = UIStackView().then { stackView in
         stackView.axis = .horizontal
         stackView.spacing = 15
     }
     
-    private lazy var passwordSecondStackView = UIStackView(arrangedSubviews: [fourButton, fiveButton, sixButton]).then { stackView in
+    private lazy var passwordSecondStackView = UIStackView().then { stackView in
         stackView.axis = .horizontal
         stackView.spacing = 15
     }
     
-    private lazy var passwordThirdStackView = UIStackView(arrangedSubviews: [sevenButton, eightButton, nineButton]).then { stackView in
+    private lazy var passwordThirdStackView = UIStackView().then { stackView in
         stackView.axis = .horizontal
         stackView.spacing = 15
     }
     
-    private lazy var passwordFourthStackView = UIStackView(arrangedSubviews: [emptyView, zeroButton, deleteButton]).then { stackView in
+    private lazy var passwordFourthStackView = UIStackView().then { stackView in
         stackView.axis = .horizontal
         stackView.spacing = 15
     }
@@ -184,7 +184,16 @@ final class SettingPWView: BaseView {
     }
     
     override func initTarget() {
-        for button in [oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton] {
+        for button in [oneButton, 
+                       twoButton,
+                       threeButton,
+                       fourButton,
+                       fiveButton,
+                       sixButton,
+                       sevenButton,
+                       eightButton,
+                       nineButton,
+                       zeroButton] {
             button.addTarget { _ in
                 self.numberButtonTapHandler(button.tag)
             }
@@ -194,6 +203,27 @@ final class SettingPWView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
+        passwordStackView.addSubviews([passwordFirstStackView,
+                                       passwordSecondStackView,
+                                       passwordThirdStackView,
+                                       passwordFourthStackView])
+        
+        passwordFirstStackView.addSubviews([oneButton,
+                                            twoButton,
+                                            threeButton])
+        
+        passwordSecondStackView.addSubviews([fourButton,
+                                             fiveButton,
+                                             sixButton])
+        
+        passwordThirdStackView.addSubviews([sevenButton,
+                                            eightButton,
+                                            nineButton])
+        
+        passwordFourthStackView.addSubviews([emptyView,
+                                             zeroButton,
+                                             deleteButton])
+        
         addSubviews([backButton,
                      lockImageView,
                      titleLabel,
@@ -201,12 +231,10 @@ final class SettingPWView: BaseView {
                      dotView,
                      passwordStackView])
         
-        dotView.addSubviews([
-            firstDotView,
-            secondDotView,
-            thirdDotView,
-            fourthDotView
-        ])
+        dotView.addSubviews([firstDotView,
+                             secondDotView,
+                             thirdDotView,
+                             fourthDotView])
     }
     
     override func initConstraints() {

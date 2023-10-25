@@ -34,6 +34,5 @@ final class SettingViewModel {
         SettingNameModel(title: L10n.settingName2, contents: "", type: .more),
         SettingNameModel(title: L10n.settingName3, contents: "", type: .more),
         SettingNameModel(title: L10n.settingName4, contents: "", type: .more),
-        SettingNameModel(title: L10n.settingName11, contents: "", type: .more)
-    ]
+        SettingNameModel(title: L10n.settingName11, contents: "", type: .more)]
 }

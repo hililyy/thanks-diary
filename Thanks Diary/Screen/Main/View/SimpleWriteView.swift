@@ -86,8 +86,7 @@ final class SimpleWriteView: BaseView {
     }
     
     func isEmptyTextField() -> Bool {
-        guard let contents = contentsTextView.text else { return false }
-        return contents.isEmpty
+        return contentsTextView.text.isEmpty
     }
     
     // MARK: - UI, Target

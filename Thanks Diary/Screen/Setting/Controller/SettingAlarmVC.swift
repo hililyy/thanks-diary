@@ -18,11 +18,13 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initalize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         changeSwitchStatusByAuthStatus()
     }
     
@@ -31,11 +33,11 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     private func changeSwitchStatusByAuthStatus() {
         AuthManager.instance.getNotiStatus { [weak self] status in
             guard let self else { return }
+            
             if status == .denied {
                 setNotification(isOn: false)
             } else {
-                let isPush = UserDefaultManager.instance.isPush
-                switchFlag = isPush
+                switchFlag = UserDefaultManager.instance.isPush
             }
         }
     }
@@ -52,6 +54,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
         } else {
             offNotification()
         }
+        
         reload()
     }
     
@@ -88,13 +91,16 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     private func requestNotiAuthFromUser() {
         AuthManager.instance.requestNotiAuth(completion: { [weak self] result in
             guard let self else { return }
+            
             switchFlag = result
             if !switchFlag {
                 presentSettingAlertVC()
             }
+            
             reload()
         }, errorHandler: { [weak self] in
             guard let self else { return }
+            
             showErrorPopup()
         })
     }
@@ -102,6 +108,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     private func getNotiStatus() {
         AuthManager.instance.getNotiStatus { [weak self] status in
             guard let self else { return }
+            
             switch status {
             case .authorized:
                 changeSwitch()
@@ -125,6 +132,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
+            
             cell.titleLabel.text = L10n.settingName2
             cell.settingSwitch.isOn = switchFlag
             cell.switchTapHandler = {
@@ -134,6 +142,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
 
         case 1:
             guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
+            
             cell.titleLabel.text = L10n.settingName7
             cell.contentsLabel.text = viewModel?.selectedTime?.convertString(format: Constant.AHHMM)
             return cell
@@ -144,16 +153,16 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            if switchFlag {
-                presentSettingAlarmDetailVC()
-            } else {
-                toast(message: L10n.onAlarm,
-                      withDuration: 1,
-                      delay: 1,
-                      positionType: PositionType.top,
-                      completion: {})
-            }
+        if indexPath.row != 1 { return }
+        
+        if switchFlag {
+            presentSettingAlarmDetailVC()
+        } else {
+            toast(message: L10n.onAlarm,
+                  withDuration: 1,
+                  delay: 1,
+                  positionType: PositionType.top,
+                  completion: {})
         }
     }
 }
@@ -186,6 +195,7 @@ extension SettingAlarmVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 popVC()
             })
             .disposed(by: disposeBag)

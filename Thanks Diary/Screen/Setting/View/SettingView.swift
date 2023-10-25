@@ -40,9 +40,7 @@ final class SettingView: BaseView {
     }
     
     override func initSubviews() {
-        addSubviews([navigationView,
-                     tableView
-                    ])
+        addSubviews([navigationView, tableView])
     }
     
     override func initConstraints() {

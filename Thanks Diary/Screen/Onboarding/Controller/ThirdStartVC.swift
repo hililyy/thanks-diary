@@ -13,6 +13,7 @@ final class ThirdStartVC: BaseVC<ThirdStartView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initLottie()
     }
     

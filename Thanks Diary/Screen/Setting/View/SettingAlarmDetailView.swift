@@ -80,10 +80,15 @@ final class SettingAlarmDetailView: BaseView {
     
     override func initSubviews() {
         addSubviews([backgroundView, containerView])
+        
         backgroundView.addSubview(backButton)
         containerView.addSubview(datePicker)
+        
         containerView.addSubviews([buttonView, lineViewX])
-        buttonView.addSubviews([cancelButton, okButton, lineViewY])
+        
+        buttonView.addSubviews([cancelButton, 
+                                okButton,
+                                lineViewY])
     }
     
     override func initConstraints() {

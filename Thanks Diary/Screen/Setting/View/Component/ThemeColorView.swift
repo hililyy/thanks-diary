@@ -17,12 +17,7 @@ final class ThemeColorView: BaseView {
                           font: ResourceManager.instance.getFont(size: 15))
     }
     
-    private lazy var colorStackView = UIStackView(arrangedSubviews: [
-        blueButton,
-        pinkButton,
-        yellowButton,
-        greenButton,
-        purpleButton]).then { stackView in
+    private lazy var colorStackView = UIStackView().then { stackView in
             stackView.initStackViewUI(spacing: 30,
                                       axis: .horizontal)
         }
@@ -60,9 +55,14 @@ final class ThemeColorView: BaseView {
     // MARK: - UI, Target
     
     override func initSubviews() {
+        colorStackView.addSubviews([blueButton,
+                                    pinkButton,
+                                    yellowButton,
+                                    greenButton,
+                                    purpleButton])
+        
         addSubviews([colorTitleLabel,
-                     colorStackView
-                    ])
+                     colorStackView])
     }
     
     override func initConstraints() {

@@ -32,7 +32,7 @@ final class DetailWriteView: BaseView {
         button.layer.cornerRadius = 10
     }
     
-    private lazy var buttonStackView = UIStackView(arrangedSubviews: [deleteButton]).then { stackView in
+    private lazy var buttonStackView = UIStackView().then { stackView in
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
@@ -98,19 +98,17 @@ final class DetailWriteView: BaseView {
     
     func isEmptyTextField() -> Bool {
         guard let title = titleTextView.text,
-              let contents = contentsTextView.text else { return false}
+              let contents = contentsTextView.text else { return false }
 
         return title.isEmpty || contents.isEmpty
     }
     
     func getTitleText() -> String {
-        guard let title = titleTextView.text else { return "" }
-        return title
+        return titleTextView.text ?? ""
     }
     
     func getContentsText() -> String {
-        guard let contents = contentsTextView.text else { return "" }
-        return contents
+        return contentsTextView.text ?? ""
     }
     
     func setCompleteButtonEnable(isOn: Bool) {
@@ -188,17 +186,20 @@ final class DetailWriteView: BaseView {
         titleTextView.rx
            .didChange
            .subscribe(onNext: { [weak self] in
+               
                self?.moveScrollPositionByTitleTextView()
            })
            .disposed(by: disposeBag)
     }
     
     private func moveScrollPositionByTitleTextView() {
-        let size = CGSize(width: self.titleTextView.frame.width, height: .infinity)
-        let estimatedSize = self.titleTextView.sizeThatFits(size)
+        let size = CGSize(width: titleTextView.frame.width, 
+                          height: .infinity)
+        let estimatedSize = titleTextView.sizeThatFits(size)
         let isMaxHeight = estimatedSize.height >= 100
         
-        guard isMaxHeight != self.titleTextView.isScrollEnabled else { return }
+        guard isMaxHeight != titleTextView.isScrollEnabled else { return }
+        
         self.titleTextView.isScrollEnabled = isMaxHeight
         self.titleTextView.reloadInputViews()
         self.setNeedsUpdateConstraints()
@@ -229,6 +230,8 @@ final class DetailWriteView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
+        buttonStackView.addArrangedSubview(deleteButton)
+        
         addSubviews([backButton,
                      topLabel,
                      buttonStackView,

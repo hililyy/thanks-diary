@@ -33,11 +33,7 @@ final class RadioTVCell: BaseTVCell, CellIdentifier {
     
     func changeButtonUI(isSelected: Bool) {
         outlineCircle.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
-        if isSelected {
-            inlineCircle.backgroundColor = ResourceManager.instance.getMainColor()
-        } else {
-            inlineCircle.backgroundColor = .clear
-        }
+        inlineCircle.backgroundColor = isSelected ? ResourceManager.instance.getMainColor() : .clear
     }
     // MARK: - UI, Target
     
@@ -47,11 +43,7 @@ final class RadioTVCell: BaseTVCell, CellIdentifier {
     }
     
     override func initSubviews() {
-        contentView.addSubviews([
-            outlineCircle,
-            contentsLabel
-        ])
-        
+        contentView.addSubviews([outlineCircle, contentsLabel])
         outlineCircle.addSubview(inlineCircle)
     }
     

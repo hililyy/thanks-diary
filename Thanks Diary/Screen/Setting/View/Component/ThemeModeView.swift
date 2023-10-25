@@ -19,14 +19,12 @@ final class ThemeModeView: BaseView {
                           font: ResourceManager.instance.getFont(size: 15))
     }
     
-    private lazy var contentsStackView = UIStackView(arrangedSubviews: [
-        lightContentView,
-        darkContentView]).then { stackView in
-            stackView.spacing = 50
-            stackView.axis = .horizontal
-            stackView.distribution = .fill
-            stackView.alignment = .fill
-        }
+    private lazy var contentsStackView = UIStackView().then { stackView in
+        stackView.spacing = 50
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+    }
     
     private let lightContentView = UIView()
     private let darkContentView = UIView()
@@ -65,20 +63,21 @@ final class ThemeModeView: BaseView {
     // MARK: - UI, Target
     
     override func initSubviews() {
+        contentsStackView.addSubviews([lightContentView,
+                                       darkContentView])
+        
         addSubviews([modeTitleLabel,
                      contentsStackView])
         
         lightContentView.addSubviews([
             lightView,
             lightLabel,
-            lightButton
-        ])
+            lightButton])
         
         darkContentView.addSubviews([
             darkView,
             darkLabel,
-            darkButton
-        ])
+            darkButton])
     }
     
     override func initConstraints() {

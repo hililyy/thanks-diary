@@ -19,6 +19,7 @@ final class SettingAlarmDetailVC: BaseVC<SettingAlarmDetailView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initalize()
     }
     
@@ -28,7 +29,7 @@ final class SettingAlarmDetailVC: BaseVC<SettingAlarmDetailView> {
         let time = viewModel?.selectedTime ?? Date()
         UserDefaultManager.instance.pushTime = time
         LocalNotificationManager.instance.registNotification(time: time)
-        self.viewModel?.selectedTime = time
+        viewModel?.selectedTime = time
     }
 }
 
@@ -54,6 +55,7 @@ extension SettingAlarmDetailVC {
     private func initDatePickerHandler() {
         attachedView.datePickerHandler = { [weak self] time in
             guard let self else { return }
+            
             viewModel?.selectedTime = time
         }
     }
@@ -63,6 +65,7 @@ extension SettingAlarmDetailVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 dismissVC()
             })
             .disposed(by: disposeBag)
@@ -73,6 +76,7 @@ extension SettingAlarmDetailVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 dismissVC {
                     self.savePushTime()
                     self.delegate?.reload()
@@ -86,6 +90,7 @@ extension SettingAlarmDetailVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 dismissVC()
             })
             .disposed(by: disposeBag)

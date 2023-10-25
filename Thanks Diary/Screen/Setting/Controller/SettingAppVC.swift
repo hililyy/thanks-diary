@@ -14,6 +14,7 @@ final class SettingAppVC: BaseVC<SettingView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initalize()
     }
 }
@@ -72,6 +73,7 @@ extension SettingAppVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 popVC()
             })
             .disposed(by: disposeBag)

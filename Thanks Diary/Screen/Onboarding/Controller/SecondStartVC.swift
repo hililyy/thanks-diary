@@ -17,6 +17,7 @@ final class SecondStartVC: BaseVC<SecondStartView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initLottie()
     }
     

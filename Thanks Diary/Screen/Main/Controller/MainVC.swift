@@ -20,6 +20,7 @@ final class MainVC: BaseVC<MainView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initalize()
         initObservable()
         changeCalendarCircleDataAndTodayLabelText()
@@ -27,6 +28,7 @@ final class MainVC: BaseVC<MainView> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         viewModel.readData()
         presentAppReviewPopup()
     }
@@ -39,22 +41,25 @@ final class MainVC: BaseVC<MainView> {
     }
     
     private func changeCalenderCircleDatasAndReloadCalendar() {
-        Observable.combineLatest(viewModel.allDetailDataRx, viewModel.allSimpleDataRx)
-            .subscribe(onNext: { [weak self] detailDatas, simpleDatas in
-                guard let self else { return }
-                let detailData = detailDatas.map({ $0.key })
-                let simpleData = simpleDatas.map({ $0.key })
-                self.viewModel.diaryDates = Set(detailData).union(simpleData)
-                self.attachedView.calendar.reloadData()
-            })
-            .disposed(by: disposeBag)
-
+        Observable.combineLatest(viewModel.allDetailDataRx,
+                                 viewModel.allSimpleDataRx)
+        .subscribe(onNext: { [weak self] detailDatas, simpleDatas in
+            guard let self else { return }
+            
+            let detailData = detailDatas.map({ $0.key })
+            let simpleData = simpleDatas.map({ $0.key })
+            
+            self.viewModel.diaryDates = Set(detailData).union(simpleData)
+            self.attachedView.calendar.reloadData()
+        })
+        .disposed(by: disposeBag)
     }
-
+    
     private func changeSetTodayLabelText() {
         viewModel.selectedDate
             .bind(onNext: { [weak self] in
                 guard let self else { return }
+                
                 self.attachedView.setTodayLabelText(date: $0)
             })
             .disposed(by: disposeBag)
@@ -100,7 +105,6 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
 
 extension MainVC {
     private func initalize() {
-//        initView()
         initDelegate()
         initTable()
         initTarget()
@@ -128,6 +132,7 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 pushFloatingButtonVC()
             })
             .disposed(by: disposeBag)
@@ -138,6 +143,7 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 pushSettingVC()
             })
             .disposed(by: disposeBag)
@@ -148,6 +154,7 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 moveToday()
             })
             .disposed(by: disposeBag)
@@ -156,6 +163,7 @@ extension MainVC {
     private func initObservable() {
         CommonUtilManager.instance.themeSubject.subscribe(onNext: { [weak self] _ in
             guard let self else { return }
+            
             initView()
             changeCalendarCircleDataAndTodayLabelText()
         })
@@ -179,11 +187,13 @@ extension MainVC {
         viewModel.selectedAllData
             .subscribe(onNext: { [weak self] allData in
                 guard let self else { return }
+                
                 if allData.isEmpty {
                     attachedView.setHiddenForEmptyView(isHidden: false)
                     
                     let date = self.viewModel.selectedDate.value
                     let view = date.convertString() == Date().convertString() ? NotTodayView() : NotBeforeView()
+                    
                     attachedView.setEmptyView(view: view)
                 } else {
                     attachedView.setHiddenForEmptyView(isHidden: true)
@@ -213,6 +223,7 @@ extension MainVC {
         Observable.zip(attachedView.diaryTableView.rx.modelSelected(DiaryModel.self), attachedView.diaryTableView.rx.itemSelected)
             .bind { [weak self] diary, _ in
                 guard let self else { return }
+                
                 if diary.type == .detail {
                     pushDetailWriteVC(beforeData: diary)
                 } else {
@@ -235,6 +246,7 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 dismissVC {
                     self.pushDetailWriteVC(beforeData: nil)
                 }
@@ -245,6 +257,7 @@ extension MainVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 dismissVC {
                     self.presentSimpleWriteVC(beforeData: nil)
                 }

@@ -19,6 +19,7 @@ final class SettingSuggestWriteVC: BaseVC<SettingSuggestWriteView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initalize()
     }
     
@@ -39,8 +40,12 @@ final class SettingSuggestWriteVC: BaseVC<SettingSuggestWriteView> {
     
     private func showToast() {
         attachedView.setCompleteButtonEnable(false)
-        toast(message: L10n.inputContents, withDuration: 0.5, delay: 1.5, positionType: .top) { [weak self] in
+        toast(message: L10n.inputContents,
+              withDuration: 0.5,
+              delay: 1.5,
+              positionType: .top) { [weak self] in
             guard let self else { return }
+            
             attachedView.setCompleteButtonEnable(true)
         }
     }
@@ -64,6 +69,7 @@ extension SettingSuggestWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 dismissVC()
             })
             .disposed(by: disposeBag)
@@ -74,6 +80,7 @@ extension SettingSuggestWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 complete()
             })
             .disposed(by: disposeBag)
@@ -84,6 +91,7 @@ extension SettingSuggestWriteVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 sendEmail()
             })
             .disposed(by: disposeBag)

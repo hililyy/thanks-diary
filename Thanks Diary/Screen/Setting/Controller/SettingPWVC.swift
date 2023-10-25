@@ -24,6 +24,7 @@ final class SettingPWVC: BaseVC<SettingPWView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initalize()
     }
     
@@ -32,14 +33,15 @@ final class SettingPWVC: BaseVC<SettingPWView> {
     private func initNumberButtonTapHandler(_ num: Int) {
         firstPW.append("\(num)")
         count += 1
+        
         attachedView.setDotColor(num: count)
         
-        if isLastInput() {
-            if homeFlag {
-                handleFromHome()
-            } else {
-                handleFromSetting()
-            }
+        if !isLastInput() { return }
+        
+        if homeFlag {
+            handleFromHome()
+        } else {
+            handleFromSetting()
         }
     }
     
@@ -49,6 +51,7 @@ final class SettingPWVC: BaseVC<SettingPWView> {
     
     private func handleFromHome() {
         let oldPassword = UserDefaultManager.instance.password
+        
         if firstPW == oldPassword {
             registMainToRoot()
         } else {
@@ -76,7 +79,8 @@ final class SettingPWVC: BaseVC<SettingPWView> {
     
     private func handleIncorrectPassword() {
         attachedView.setDotColor(num: 0)
-        attachedView.setContentsLabel(text: L10n.passwordIncorrect, textColor: Asset.Color.red.color)
+        attachedView.setContentsLabel(text: L10n.passwordIncorrect, 
+                                      textColor: Asset.Color.red.color)
         firstPW = ""
         secondPW = ""
         reEnterFlag = false
@@ -120,6 +124,7 @@ extension SettingPWVC {
     private func initNumberButtonTapHander() {
         attachedView.numberButtonTapHandler = { [weak self] num in
             guard let self else { return }
+            
             initNumberButtonTapHandler(num)
         }
     }
@@ -129,6 +134,7 @@ extension SettingPWVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
+                
                 count = max(0, count - 1)
                 _ = firstPW.popLast()
                 attachedView.setDotColor(num: count)
@@ -141,6 +147,7 @@ extension SettingPWVC {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
+                
                 popVC()
             })
             .disposed(by: disposeBag)
