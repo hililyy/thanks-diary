@@ -12,13 +12,10 @@ final class LocalNotificationManager {
     
     private init() {}
     
-    private static var _instance: LocalNotificationManager?
+    private static let _instance = LocalNotificationManager()
     
     static var instance: LocalNotificationManager {
-        if _instance == nil {
-            _instance = LocalNotificationManager()
-        }
-        return _instance!
+        return _instance
     }
     
     func printRegistedNotification() {

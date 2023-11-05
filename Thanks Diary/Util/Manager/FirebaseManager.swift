@@ -14,13 +14,10 @@ final class FirebaseManager {
     
     private init() {}
     
-    private static var _instance: FirebaseManager?
+    private static let _instance = FirebaseManager()
     
-    public static var instance: FirebaseManager {
-        if _instance == nil {
-            _instance = FirebaseManager()
-        }
-        return _instance!
+    static var instance: FirebaseManager {
+        return _instance
     }
     
     func getSuggestDatas(completion: @escaping (Result<[SettingSuggestModel], Error>) -> Void) {
@@ -28,20 +25,20 @@ final class FirebaseManager {
             .reference()
             .child(Constant.FIREBASE_CHILD_SUGGEST)
             .observeSingleEvent(of: .value) { snapshot in
-            var values: [[String: Any]] = []
-            guard let allObject = snapshot.children.allObjects as? [DataSnapshot] else { return }
-            for snap in allObject {
-                guard let value = snap.value as? [String: Any] else { return }
-                values.insert(value, at: 0)
+                var values: [[String: Any]] = []
+                guard let allObject = snapshot.children.allObjects as? [DataSnapshot] else { return }
+                for snap in allObject {
+                    guard let value = snap.value as? [String: Any] else { return }
+                    values.insert(value, at: 0)
+                }
+                
+                if let data = CommonUtilManager.instance.dictionaryToObject(
+                    objectType: SettingSuggestModel.self,
+                    dictionary: values
+                ) {
+                    completion(.success(data))
+                }
             }
-            
-            if let data = CommonUtilManager.instance.dictionaryToObject(
-                objectType: SettingSuggestModel.self,
-                dictionary: values
-            ) {
-                completion(.success(data))
-            }
-        }
     }
     
     func getSuggestDatasRx() -> Observable<[SettingSuggestModel]> {

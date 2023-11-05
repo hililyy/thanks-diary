@@ -11,13 +11,10 @@ final class AuthManager {
     
     private init() {}
     
-    private static var _instance: AuthManager?
+    private static let _instance = AuthManager()
     
     static var instance: AuthManager {
-        if _instance == nil {
-            _instance = AuthManager()
-        }
-        return _instance!
+        return _instance
     }
     
     // 콜백 안쓸수 있으면 안쓰는게 좋음

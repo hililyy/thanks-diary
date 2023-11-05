@@ -12,13 +12,10 @@ final class LottieManager {
     
     private init() {}
     
-    private static var _instance: LottieManager?
+    private static let _instance = LottieManager()
     
     static var instance: LottieManager {
-        if _instance == nil {
-            _instance = LottieManager()
-        }
-        return _instance!
+        return _instance
     }
     
     class LottieInfo {

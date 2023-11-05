@@ -14,15 +14,12 @@ final class CommonUtilManager {
     
     private init() {}
     
-    private static var _instance: CommonUtilManager?
+    private static let _instance = CommonUtilManager()
     
     static var instance: CommonUtilManager {
-        if _instance == nil {
-            _instance = CommonUtilManager()
-        }
-        return _instance!
+        return _instance
     }
-    
+
     var themeSubject = PublishSubject<Int>()
     
     var tableViewOffset: CGPoint = .zero
