@@ -11,11 +11,11 @@ import RxCocoa
 
 final class SettingViewModel {
     
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     var selectedTime: Date? = UserDefaultManager.instance.pushTime
     
-    var suggestData = BehaviorRelay<[SettingSuggestModel]>(value: [])
+    let suggestData = BehaviorRelay<[SettingSuggestModel]>(value: [])
     
     func getSuggestDatas() {
         FirebaseManager.instance.getSuggestDatasRx()

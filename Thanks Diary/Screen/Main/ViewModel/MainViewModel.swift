@@ -11,9 +11,9 @@ import RxCocoa
 
 final class MainViewModel {
     
-    var disposeBag = DisposeBag()
-    var allDetailDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:])
-    var allSimpleDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:])
+    let disposeBag = DisposeBag()
+    let allDetailDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:])
+    let allSimpleDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:])
 
     lazy var selectedAllData: Observable<[DiaryModel]> = selectedDate.map { date in
         let detailData = self.allDetailDataRx.value[date.convertString()] ?? []

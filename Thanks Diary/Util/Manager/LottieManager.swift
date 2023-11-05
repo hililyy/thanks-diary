@@ -49,7 +49,9 @@ final class LottieManager {
         animationView.frame = info.lottieView.bounds
         animationView.center = info.lottieView.center
         animationView.contentMode = .scaleAspectFit
-        animationView.play(fromProgress: 0.0, toProgress: 1.0, loopMode: .loop) {_ in }
+        animationView.play(fromProgress: 0.0,
+                           toProgress: 1.0,
+                           loopMode: .loop) { _ in }
         animationView.loopMode = info.mode
         animationView.animationSpeed = info.speed
     }

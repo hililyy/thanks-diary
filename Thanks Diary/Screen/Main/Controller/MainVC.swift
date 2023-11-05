@@ -22,7 +22,6 @@ final class MainVC: BaseVC<MainView> {
         super.viewDidLoad()
         
         initalize()
-        initObservable()
         changeCalendarCircleDataAndTodayLabelText()
     }
     
@@ -108,6 +107,7 @@ extension MainVC {
         initDelegate()
         initTable()
         initTarget()
+        initObservable()
     }
     
     private func initView() {
@@ -127,6 +127,7 @@ extension MainVC {
         initTodayButtonTarget()
     }
     
+    // TODO - 버튼 함수로 중복 제거
     private func initFloattingButtonTarget() {
         attachedView.floatingButton.button.rx.tap
             .asDriver()

@@ -8,13 +8,7 @@
 import Foundation
 
 struct SettingSuggestModel: Codable {
-    var uid: String?
-    var contents: String?
-    var status: String?
-    
-    init(uid: String, contents: String, status: String) {
-        self.uid = uid
-        self.contents = contents
-        self.status = status
-    }
+    var uid: String
+    var contents: String
+    var status: String
 }

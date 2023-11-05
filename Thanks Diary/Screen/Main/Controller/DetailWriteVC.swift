@@ -18,10 +18,6 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     
     // MARK: - Life Cycle
     
-    override func loadView() {
-        view = attachedView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

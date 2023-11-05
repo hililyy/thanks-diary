@@ -54,7 +54,7 @@ class BaseVC<T: BaseView>: UIViewController, UIGestureRecognizerDelegate, MFMail
     func showErrorPopup() {
         DispatchQueue.main.async {
             let vc = AlertVC()
-            vc.alertView.setText(message: L10n.error,
+            vc.attachedView.setText(message: L10n.error,
                                  leftButtonText: L10n.inquiry,
                                  rightButtonText: L10n.exit)
             vc.modalTransitionStyle = .crossDissolve

@@ -163,7 +163,7 @@ extension SettingThemeVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.contentsLabel.initLabelUI(text: type.description,
                                        color: Asset.Color.gray1.color,
-                                       font: ResourceManager.instance.getFont(type: type, 
+                                       font: ResourceManager.instance.getFont(type: type,
                                                                               size: 18))
         
         let savedFontType = UserDefaultManager.instance.themeFont

@@ -226,7 +226,7 @@ extension SettingAlarmVC {
     private func presentSettingAlertVC() {
         DispatchQueue.main.async {
             let vc = AlertVC()
-            vc.alertView.setText(message: L10n.appSetting1,
+            vc.attachedView.setText(message: L10n.appSetting1,
                                  leftButtonText: L10n.cancel,
                                  rightButtonText: L10n.appSetting2)
             vc.modalTransitionStyle = .crossDissolve

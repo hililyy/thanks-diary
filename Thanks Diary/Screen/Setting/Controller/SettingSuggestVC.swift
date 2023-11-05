@@ -63,12 +63,12 @@ extension SettingSuggestVC {
         viewModel?.suggestData
             .bind(to: attachedView.tableView.rx.items(
                 cellIdentifier: SettingSuggestTVCell.id,
-                cellType: SettingSuggestTVCell.self)) {  [weak self] _, item, cell in
+                cellType: SettingSuggestTVCell.self)) { [weak self] _, item, cell in
                     guard let self else { return }
                     
                     cell.contentsLabel.text = item.contents
-                    cell.statusLabel.text = SuggestType(rawValue: item.status ?? "")?.description
-                    cell.setStatusLabelUI(SuggestType(rawValue: item.status ?? "") ?? .waiting)
+                    cell.statusLabel.text = SuggestType(rawValue: item.status)?.description
+                    cell.setStatusLabelUI(SuggestType(rawValue: item.status) ?? .waiting)
                     attachedView.loading.stopAnimating()
                 }
                 .disposed(by: disposeBag)

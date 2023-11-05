@@ -36,17 +36,13 @@ final class SettingPWVC: BaseVC<SettingPWView> {
         
         attachedView.setDotColor(num: count)
         
-        if !isLastInput() { return }
+        if !(count == maxCount) { return }
         
         if homeFlag {
             handleFromHome()
         } else {
             handleFromSetting()
         }
-    }
-    
-    private func isLastInput() -> Bool {
-        return count == maxCount
     }
     
     private func handleFromHome() {
