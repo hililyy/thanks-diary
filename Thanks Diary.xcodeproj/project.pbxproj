@@ -27,7 +27,6 @@
 		020A8C732ACCF73700E855EE /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A8C722ACCF73700E855EE /* Array.swift */; };
 		020A8DED2ACFAD6600E855EE /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A8DEC2ACFAD6600E855EE /* CellIdentifier.swift */; };
 		020A8DEF2ACFADB800E855EE /* ReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A8DEE2ACFADB800E855EE /* ReloadProtocol.swift */; };
-		020A8DF12ACFD11F00E855EE /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 020A8DF02ACFD11F00E855EE /* Package.resolved */; };
 		0229553D2A66867D004BF800 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553C2A66867D004BF800 /* UIControl.swift */; };
 		022955402A669273004BF800 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553F2A669273004BF800 /* BaseView.swift */; };
 		022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955412A669BA0004BF800 /* BaseTVCell.swift */; };
@@ -110,10 +109,6 @@
 		02BF3DD72AD531F8002E5D35 /* ThanksDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF3DD62AD531F8002E5D35 /* ThanksDiaryUITests.swift */; };
 		02BF3DD92AD531F8002E5D35 /* ThanksDiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF3DD82AD531F8002E5D35 /* ThanksDiaryUITestsLaunchTests.swift */; };
 		02BF3DF72AD532B6002E5D35 /* ThanksDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF3DF62AD532B6002E5D35 /* ThanksDiaryTests.swift */; };
-		02C704052AE6390A00E27B2A /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02C704042AE6390A00E27B2A /* ReSwift */; };
-		02C704082AE63A6E00E27B2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C704072AE63A6E00E27B2A /* AppState.swift */; };
-		02C7040A2AE63A8600E27B2A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C704092AE63A8600E27B2A /* Action.swift */; };
-		02C7040C2AE63AA500E27B2A /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7040B2AE63AA500E27B2A /* Reducer.swift */; };
 		02D7BB6F2AA589DF00419739 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02D7BB6E2AA589DF00419739 /* GoogleService-Info.plist */; };
 		02D7BB732AA6BFDB00419739 /* SettingSuggestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */; };
 		02F50B462A60F9BB006A59D3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F50B452A60F9BB006A59D3 /* MainView.swift */; };
@@ -190,7 +185,6 @@
 		020A8C722ACCF73700E855EE /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		020A8DEC2ACFAD6600E855EE /* CellIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifier.swift; sourceTree = "<group>"; };
 		020A8DEE2ACFADB800E855EE /* ReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadProtocol.swift; sourceTree = "<group>"; };
-		020A8DF02ACFD11F00E855EE /* Package.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Package.resolved; path = "Thanks Diary.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved"; sourceTree = "<group>"; };
 		0229553C2A66867D004BF800 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		0229553F2A669273004BF800 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		022955412A669BA0004BF800 /* BaseTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTVCell.swift; sourceTree = "<group>"; };
@@ -275,9 +269,6 @@
 		02BF3DD62AD531F8002E5D35 /* ThanksDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryUITests.swift; sourceTree = "<group>"; };
 		02BF3DD82AD531F8002E5D35 /* ThanksDiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		02BF3DF62AD532B6002E5D35 /* ThanksDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryTests.swift; sourceTree = "<group>"; };
-		02C704072AE63A6E00E27B2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		02C704092AE63A8600E27B2A /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		02C7040B2AE63AA500E27B2A /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		02D7BB6E2AA589DF00419739 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSuggestView.swift; sourceTree = "<group>"; };
 		02F50B452A60F9BB006A59D3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -338,7 +329,6 @@
 				02087C4E2AA9C56D00921F4D /* FirebaseAuth in Frameworks */,
 				02087C372AA9C4F600921F4D /* FSCalendar in Frameworks */,
 				02087C472AA9C54100921F4D /* RxRelay in Frameworks */,
-				02C704052AE6390A00E27B2A /* ReSwift in Frameworks */,
 				02087C402AA9C52100921F4D /* SnapKit in Frameworks */,
 				02087C3D2AA9C51200921F4D /* Then in Frameworks */,
 				02087C3A2AA9C50300921F4D /* AcknowList in Frameworks */,
@@ -626,16 +616,6 @@
 			path = ThanksDiaryTests;
 			sourceTree = "<group>";
 		};
-		02C704062AE63A5F00E27B2A /* ReSwift */ = {
-			isa = PBXGroup;
-			children = (
-				02C704072AE63A6E00E27B2A /* AppState.swift */,
-				02C704092AE63A8600E27B2A /* Action.swift */,
-				02C7040B2AE63AA500E27B2A /* Reducer.swift */,
-			);
-			path = ReSwift;
-			sourceTree = "<group>";
-		};
 		02F50B442A60F932006A59D3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,7 +638,6 @@
 		2A0D87F228A540FB00576E56 = {
 			isa = PBXGroup;
 			children = (
-				020A8DF02ACFD11F00E855EE /* Package.resolved */,
 				029392442ABD971700FB2553 /* swiftgen.yml */,
 				029392412ABD955B00FB2553 /* .swiftlint.yml */,
 				2A0D87FD28A540FB00576E56 /* Thanks Diary */,
@@ -744,7 +723,6 @@
 		2A81233D28C095B7000A250E /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				02C704062AE63A5F00E27B2A /* ReSwift */,
 				0229553E2A669265004BF800 /* Base */,
 				025EF0462A459C9200C930F2 /* Constant */,
 				025EF0512A459D0000C930F2 /* Manager */,
@@ -919,7 +897,6 @@
 				02087C4F2AA9C56E00921F4D /* FirebaseDatabase */,
 				02087C522AA9C5AD00921F4D /* Lottie */,
 				2A0034BA2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport */,
-				02C704042AE6390A00E27B2A /* ReSwift */,
 			);
 			productName = "Thanks Diary";
 			productReference = 02087C542AA9C93A00921F4D /* Thanks Diary.app */;
@@ -1020,7 +997,6 @@
 				02835D8B2AE0F00100593BA5 /* boksung.ttf in Resources */,
 				029392452ABD971700FB2553 /* swiftgen.yml in Resources */,
 				02475DBD2ADF6ED40075C206 /* halunanum.ttf in Resources */,
-				020A8DF12ACFD11F00E855EE /* Package.resolved in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1088,7 +1064,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				025EF0402A459C2F00C930F2 /* AlertView.swift in Sources */,
-				02C7040A2AE63A8600E27B2A /* Action.swift in Sources */,
 				02835D862ADFA39700593BA5 /* RadioTVCell.swift in Sources */,
 				02B638D62AB1468100312A34 /* SettingNameModel.swift in Sources */,
 				2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */,
@@ -1125,7 +1100,6 @@
 				2A9F351728AE63FD006CCF7C /* SettingMoreTVCell.swift in Sources */,
 				020A8DEF2ACFADB800E855EE /* ReloadProtocol.swift in Sources */,
 				025EF06C2A459E2E00C930F2 /* Date.swift in Sources */,
-				02C7040C2AE63AA500E27B2A /* Reducer.swift in Sources */,
 				0285D4D62AE7C98C005B36DA /* PMain.swift in Sources */,
 				022955402A669273004BF800 /* BaseView.swift in Sources */,
 				027C60DE2A8DBFE0008F607F /* SettingThemeVC.swift in Sources */,
@@ -1183,7 +1157,6 @@
 				2A7241DA28B3EDF70040ADE9 /* DiaryModel.swift in Sources */,
 				2A81234C28C4E221000A250E /* DetailDiaryTVCell.swift in Sources */,
 				2A81233228BFFA0C000A250E /* SettingAlarmVC.swift in Sources */,
-				02C704082AE63A6E00E27B2A /* AppState.swift in Sources */,
 				2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */,
 				025E04412AA7106A00C01D24 /* SettingSuggestWriteVC.swift in Sources */,
 				025EF0502A459CE200C930F2 /* UserDefaultKey.swift in Sources */,
@@ -1650,11 +1623,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
-		};
-		02C704042AE6390A00E27B2A /* ReSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02C704032AE6390A00E27B2A /* XCRemoteSwiftPackageReference "ReSwift" */;
-			productName = ReSwift;
 		};
 		2A0034BA2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
