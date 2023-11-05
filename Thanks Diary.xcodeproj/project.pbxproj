@@ -91,7 +91,6 @@
 		02835D8D2AE0F00100593BA5 /* yeonyu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D8A2AE0F00100593BA5 /* yeonyu.ttf */; };
 		02835D8F2AE0FE1A00593BA5 /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02835D8E2AE0FE1A00593BA5 /* NanumBarunpenR.otf */; };
 		02835D962AE2654800593BA5 /* SettingAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02835D952AE2654800593BA5 /* SettingAppVC.swift */; };
-		0285D4D62AE7C98C005B36DA /* PMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285D4D52AE7C98C005B36DA /* PMain.swift */; };
 		0290EF652ADCD22C00869C05 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF642ADCD22C00869C05 /* UIButton.swift */; };
 		0290EF672ADCD25000869C05 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF662ADCD25000869C05 /* UILabel.swift */; };
 		0290EF692ADCD43300869C05 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0290EF682ADCD43300869C05 /* UIStackView.swift */; };
@@ -249,7 +248,6 @@
 		02835D8A2AE0F00100593BA5 /* yeonyu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yeonyu.ttf; sourceTree = "<group>"; };
 		02835D8E2AE0FE1A00593BA5 /* NanumBarunpenR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenR.otf; sourceTree = "<group>"; };
 		02835D952AE2654800593BA5 /* SettingAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAppVC.swift; sourceTree = "<group>"; };
-		0285D4D52AE7C98C005B36DA /* PMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMain.swift; sourceTree = "<group>"; };
 		0290EF112AD64E4B00869C05 /* ThanksDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290EF122AD64E4B00869C05 /* ThanksDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThanksDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290EF642ADCD22C00869C05 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -583,14 +581,6 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
-		0285D4D42AE7C980005B36DA /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				0285D4D52AE7C98C005B36DA /* PMain.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		029F04FB2A4984DA00D82289 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,7 +756,6 @@
 		2A9F34F928AC10D3006CCF7C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				0285D4D42AE7C980005B36DA /* Protocol */,
 				02F50B442A60F932006A59D3 /* Controller */,
 				2A9F350C28AE1BF9006CCF7C /* Model */,
 				2A9F350B28AE1BF2006CCF7C /* View */,
@@ -1100,7 +1089,6 @@
 				2A9F351728AE63FD006CCF7C /* SettingMoreTVCell.swift in Sources */,
 				020A8DEF2ACFADB800E855EE /* ReloadProtocol.swift in Sources */,
 				025EF06C2A459E2E00C930F2 /* Date.swift in Sources */,
-				0285D4D62AE7C98C005B36DA /* PMain.swift in Sources */,
 				022955402A669273004BF800 /* BaseView.swift in Sources */,
 				027C60DE2A8DBFE0008F607F /* SettingThemeVC.swift in Sources */,
 				022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */,
