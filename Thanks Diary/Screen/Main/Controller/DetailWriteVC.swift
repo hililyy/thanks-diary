@@ -33,44 +33,58 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     // MARK: - Function
     
     private func complete() {
-        let newData = DiaryModel(
+        let newData = getWriteData()
+        Task {
+            if let beforeData {
+                try await update(safeBeforeData: beforeData,
+                                 newData: newData)
+                
+            } else {
+                try await write(newData)
+            }
+        }
+    }
+    
+    private func update(safeBeforeData: DiaryModel, newData: DiaryModel) async throws {
+        do {
+            try await viewModel?.updateData(beforeData: safeBeforeData,
+                                            newData: newData)
+            beforeData = newData
+            
+        } catch {
+            showErrorPopup()
+        }
+    }
+    
+    private func write(_ newData: DiaryModel) async throws {
+        do {
+            try await viewModel?.createData(newData: newData)
+            beforeData = newData
+            
+        } catch {
+            showErrorPopup()
+        }
+    }
+    
+    private func delete() async throws {
+        guard let deleteData = beforeData else { return }
+        
+        do {
+            try await viewModel?.deleteData(deleteData: deleteData)
+            popVC()
+            
+        } catch {
+            showErrorPopup()
+        }
+    }
+    
+    private func getWriteData() -> DiaryModel {
+        return DiaryModel(
             type: .detail,
             title: attachedView.getTitleText(),
             contents: attachedView.getContentsText(),
             date: viewModel?.selectedDate.value.convertString() ?? Date().convertString()
         )
-        
-        if let beforeData {
-            update(safeBeforeData: beforeData,
-                   newData: newData)
-        } else {
-            write(newData)
-        }
-    }
-    
-    private func update(safeBeforeData: DiaryModel, newData: DiaryModel) {
-        viewModel?.updateData(beforeData: safeBeforeData,
-                              newData: newData) { [weak self] result in
-            guard let self else { return }
-            
-            if result {
-                beforeData = newData
-            } else {
-                showErrorPopup()
-            }
-        }
-    }
-    
-    private func write(_ newData: DiaryModel) {
-        viewModel?.createData(newData: newData) { [weak self] result in
-            guard let self else { return }
-            
-            if result {
-                beforeData = newData
-            } else {
-                showErrorPopup()
-            }
-        }
     }
     
     private func showFillTextFieldToastAndDisEnableCompleteButton() {
@@ -189,20 +203,14 @@ extension DetailWriteVC {
 
 extension DetailWriteVC {
     private func presentDeleteAlertVC() {
-        guard let deleteData = beforeData else { return }
-        
         let vc = AlertVC()
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
         vc.rightButtonTapHandler = { [weak self] in
             guard let self else { return }
             
-            viewModel?.deleteData(deleteData: deleteData) { result in
-                self.popVC()
-                
-                if !result {
-                    self.showErrorPopup()
-                }
+            Task {
+                try await self.delete()
             }
         }
         

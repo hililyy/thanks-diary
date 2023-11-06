@@ -37,11 +37,11 @@ final class CoreDataManager {
         var detailData: [String: [DiaryModel]] = [:]
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [:] }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
+        let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DiaryData")
+        
         do {
-            let result = try managedContext.fetch(fetchRequest)
+            let result = try context.fetch(fetchRequest)
             
             for data in result {
                 guard let type = DiaryType(rawValue: data.value(forKey: "type") as? String ?? ""),
@@ -62,7 +62,6 @@ final class CoreDataManager {
                 
                 detailData[date]?.append(diary)
             }
-            
             return detailData
             
         } catch {
@@ -89,12 +88,12 @@ final class CoreDataManager {
         var simpleData: [String: [DiaryModel]] = [:]
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [:] }
-            let managedContext = appDelegate.persistentContainer.viewContext
-
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SimpleDiaryData")
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SimpleDiaryData")
+        
         do {
-            let result = try managedContext.fetch(fetchRequest)
-
+            let result = try context.fetch(fetchRequest)
+            
             for data in result {
                 guard let type = DiaryType(rawValue: data.value(forKey: "type") as? String ?? ""),
                       let contents = data.value(forKey: "contents") as? String,
@@ -113,153 +112,125 @@ final class CoreDataManager {
                 
                 simpleData[date]?.append(diary)
             }
+            return simpleData
+            
         } catch let error as NSError {
             print(ErrorCase.NOT_SAVE_DATA)
             print("Could not save. \(error), \(error.userInfo)")
+            
+            return nil
         }
-        
-        return simpleData
     }
     
-    func setData(newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
+    func setData(newData: DiaryModel) async throws {
+        guard let appDelegate = await UIApplication.shared.delegate as? AppDelegate else { throw ErrorCase.NOT_SAVE_DATA }
+        let context = await appDelegate.persistentContainer.viewContext
         
         switch newData.type {
             
         case .detail:
             let entity = NSEntityDescription.entity(forEntityName: "DiaryData", in: context)
-            if let entity = entity {
-                let managedObject = NSManagedObject(entity: entity, insertInto: context)
-                managedObject.setValue(newData.title, forKey: "title")
-                managedObject.setValue(newData.contents, forKey: "contents")
-                managedObject.setValue(newData.date, forKey: "date")
-                managedObject.setValue("detail", forKey: "type")
-                do {
-                    try context.save()
-                    completion(true)
-                    return
-                } catch {
-                    print(ErrorCase.NOT_SAVE_DATA)
-                    completion(false)
-                    return
-                }
-            } else {
-                completion(false)
-                return
+            
+            guard let entity else { throw ErrorCase.NOT_SAVE_DATA }
+            
+            let managedObject = NSManagedObject(entity: entity, insertInto: context)
+            managedObject.setValue(newData.title, forKey: "title")
+            managedObject.setValue(newData.contents, forKey: "contents")
+            managedObject.setValue(newData.date, forKey: "date")
+            managedObject.setValue("detail", forKey: "type")
+            
+            do {
+                try context.save()
+            } catch {
+                throw ErrorCase.NOT_SAVE_DATA
             }
             
         case .simple:
             let entity = NSEntityDescription.entity(forEntityName: "SimpleDiaryData", in: context)
-            if let entity = entity {
-                let managedObject = NSManagedObject(entity: entity, insertInto: context)
-                managedObject.setValue(newData.contents, forKey: "contents")
-                managedObject.setValue(newData.date, forKey: "date")
-                managedObject.setValue("simple", forKey: "type")
-                do {
-                    try context.save()
-                    completion(true)
-                    return
-                } catch {
-                    print(ErrorCase.NOT_SAVE_DATA)
-                    completion(false)
-                    return
-                }
-            } else {
-                completion(false)
-                return
+            
+            guard let entity else { return }
+            
+            let managedObject = NSManagedObject(entity: entity, insertInto: context)
+            managedObject.setValue(newData.contents, forKey: "contents")
+            managedObject.setValue(newData.date, forKey: "date")
+            managedObject.setValue("simple", forKey: "type")
+            
+            do {
+                try context.save()
+            } catch {
+                throw ErrorCase.NOT_SAVE_DATA
             }
         }
     }
     
-    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
+    func updateData(beforeData: DiaryModel, newData: DiaryModel) async throws {
+        guard let appDelegate = await UIApplication.shared.delegate as? AppDelegate else { throw ErrorCase.NOT_UPDATE_DATA }
+        let context = await appDelegate.persistentContainer.viewContext
         
         switch beforeData.type {
             
         case .detail:
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
-            fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", beforeData.date, beforeData.title, beforeData.contents )
+            fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", beforeData.date, beforeData.title, beforeData.contents)
+            
             do {
-                let result = try managedContext.fetch(fetchRequest)
-                guard let objectUpdate = result[0] as? NSManagedObject else { return }
-                objectUpdate.setValue(newData.title, forKey: "title")
-                objectUpdate.setValue(newData.contents, forKey: "contents")
-                do {
-                    try managedContext.save()
-                    completion(true)
-                } catch {
-                    completion(false)
-                }
+                let result = try context.fetch(fetchRequest)
+                let objectUpdate = result[0] as? NSManagedObject
+                objectUpdate?.setValue(newData.title, forKey: "title")
+                objectUpdate?.setValue(newData.contents, forKey: "contents")
+                try context.save()
+                
             } catch {
-                completion(false)
+                throw ErrorCase.NOT_UPDATE_DATA
             }
             
         case .simple:
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
             fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", beforeData.date, beforeData.contents)
+            
             do {
-                let result = try managedContext.fetch(fetchRequest)
-                guard let objectUpdate = result[0] as? NSManagedObject else { return }
-                objectUpdate.setValue(newData.contents, forKey: "contents")
-                do {
-                    try managedContext.save()
-                    completion(true)
-                } catch {
-                    print(ErrorCase.NOT_SAVE_DATA)
-                    completion(false)
-                }
+                let result = try context.fetch(fetchRequest)
+                let objectUpdate = result[0] as? NSManagedObject
+                objectUpdate?.setValue(newData.contents, forKey: "contents")
+                try context.save()
+                
             } catch {
-                print(ErrorCase.NOT_SAVE_DATA)
-                completion(false)
+                throw ErrorCase.NOT_UPDATE_DATA
             }
         }
     }
     
-    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    func deleteData(deleteData: DiaryModel) async throws {
+        guard let appDelegate = await UIApplication.shared.delegate as? AppDelegate else { throw ErrorCase.NOT_DELETE_DATA }
+        let context = await appDelegate.persistentContainer.viewContext
         
         switch deleteData.type {
         case .detail:
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            let managedContext = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "DiaryData")
             fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", deleteData.date, deleteData.title, deleteData.contents)
+            
             do {
-                let test = try managedContext.fetch(fetchRequest)
-                guard let objectToDelete = test[0] as? NSManagedObject else { return }
-                managedContext.delete(objectToDelete)
-                do {
-                    try managedContext.save()
-                    completion(true)
-                } catch {
-                    print(ErrorCase.NOT_SAVE_DATA)
-                    completion(false)
-                }
+                let test = try context.fetch(fetchRequest)
+                guard let objectToDelete = test[0] as? NSManagedObject else { throw ErrorCase.NOT_DELETE_DATA }
+                context.delete(objectToDelete)
+                try context.save()
+                
             } catch {
-                print(ErrorCase.NOT_SAVE_DATA)
-                completion(false)
+                throw ErrorCase.NOT_DELETE_DATA
             }
             
         case .simple:
-            let managedContext = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "SimpleDiaryData")
             fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", deleteData.date, deleteData.contents)
+            
             do {
-                let test = try managedContext.fetch(fetchRequest)
-                guard let objectToDelete = test[0] as? NSManagedObject else { return }
-                managedContext.delete(objectToDelete)
-                do {
-                    try managedContext.save()
-                    completion(true)
-                } catch {
-                    print(ErrorCase.NOT_SAVE_DATA)
-                    completion(false)
-                }
+                let test = try context.fetch(fetchRequest)
+                guard let objectToDelete = test[0] as? NSManagedObject else { throw ErrorCase.NOT_DELETE_DATA }
+                context.delete(objectToDelete)
+                try context.save()
+                
             } catch {
-                print(ErrorCase.NOT_SAVE_DATA)
-                completion(false)
+                throw ErrorCase.NOT_DELETE_DATA
             }
         }
     }

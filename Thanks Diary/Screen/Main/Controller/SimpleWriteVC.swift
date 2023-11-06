@@ -37,68 +37,63 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     }
     
     private func complete() {
-        guard !attachedView.isEmptyTextField() else {
+        if attachedView.isEmptyTextField() {
             showFillTextFieldToastAndDisableCompleteButton()
             return
         }
         
         let newData = getDiaryData()
         
-        if let safeBeforeData = beforeData {
-            update(beforeData: safeBeforeData,
-                   newData: newData)
-        } else {
-            write(newData)
-        }
-    }
-    
-    private func update(beforeData: DiaryModel, newData: DiaryModel) {
-        viewModel?.updateData(beforeData: beforeData,
-                              newData: newData) { [weak self] result in
-            guard let self else { return }
-            
-            if result {
-                dismissVC {
-                    self.viewModel?.readData()
-                }
+        Task {
+            if let safeBeforeData = beforeData {
+                try await update(beforeData: safeBeforeData,
+                                 newData: newData)
+                
             } else {
-                showErrorPopup()
+                try await write(newData)
             }
         }
     }
     
-    private func write(_ newData: DiaryModel) {
-        viewModel?.createData(newData: newData) { [weak self] result in
-            guard let self else { return }
-            
-            if result {
-                dismissVC {
-                    self.viewModel?.readData()
-                }
-            } else {
-                showErrorPopup()
+    private func update(beforeData: DiaryModel, newData: DiaryModel) async throws {
+        do {
+            try await viewModel?.updateData(beforeData: beforeData,
+                                            newData: newData)
+            dismissVC {
+                self.viewModel?.readData()
             }
+        } catch {
+            showErrorPopup()
         }
     }
     
-    private func delete() {
+    private func write(_ newData: DiaryModel) async throws {
+        do {
+            try await viewModel?.createData(newData: newData)
+            dismissVC {
+                self.viewModel?.readData()
+            }
+        } catch {
+            showErrorPopup()
+        }
+    }
+    
+    private func delete() async throws {
         guard let deleteData = beforeData else { return }
         
-        viewModel?.deleteData(deleteData: deleteData) { [weak self] result in
-            guard let self else { return }
-            
-            if result {
-                dismissVC {
-                    self.viewModel?.readData()
-                }
-            } else {
-                showErrorPopup()
+        do {
+            try await viewModel?.deleteData(deleteData: deleteData)
+            dismissVC {
+                self.viewModel?.readData()
             }
+        } catch {
+            showErrorPopup()
         }
     }
     
     private func showFillTextFieldToastAndDisableCompleteButton() {
         attachedView.setCompleteButtonEnable(false)
+        
         toast(message: L10n.inputContents,
               withDuration: 0.5,
               delay: 1.5,
@@ -172,7 +167,7 @@ extension SimpleWriteVC {
     private func initCompleteButtonTarget() {
         attachedView.completeButton.rx.tap
             .asDriver()
-            .drive(onNext: {[weak self] _ in
+            .drive(onNext: { [weak self] _ in
                 guard let self else { return }
                 
                 complete()
@@ -183,7 +178,7 @@ extension SimpleWriteVC {
     private func initCancelButtonTarget() {
         attachedView.cancelButton.rx.tap
             .asDriver()
-            .drive(onNext: {[weak self] _ in
+            .drive(onNext: { [weak self] _ in
                 guard let self else { return }
                 
                 dismissVC()
@@ -194,10 +189,12 @@ extension SimpleWriteVC {
     private func initDeleteButtonTarget() {
         attachedView.deleteButton.rx.tap
             .asDriver()
-            .drive(onNext: {[weak self] _ in
+            .drive(onNext: { [weak self] _ in
                 guard let self else { return }
                 
-                delete()
+                Task {
+                    try await self.delete()
+                }
             })
             .disposed(by: disposeBag)
     }

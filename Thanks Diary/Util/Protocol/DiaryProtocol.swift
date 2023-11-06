@@ -9,7 +9,7 @@ import Foundation
 
 protocol DiaryRepository {
     func readData()
-    func createData(newData: DiaryModel, completion: @escaping (Bool) -> Void)
-    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void)
-    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void)
+    func createData(newData: DiaryModel) async throws
+    func updateData(beforeData: DiaryModel, newData: DiaryModel) async throws
+    func deleteData(deleteData: DiaryModel) async throws
 }

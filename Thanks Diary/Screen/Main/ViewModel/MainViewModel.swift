@@ -42,21 +42,15 @@ extension MainViewModel: DiaryRepository {
         selectedDate.accept(selectedDate.value)
     }
     
-    func createData(newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.instance.setData(newData: newData) { result in
-            completion(result)
-        }
+    func createData(newData: DiaryModel) async throws {
+        try await CoreDataManager.instance.setData(newData: newData)
     }
     
-    func updateData(beforeData: DiaryModel, newData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.instance.updateData(beforeData: beforeData, newData: newData) { result in
-            completion(result)
-        }
+    func updateData(beforeData: DiaryModel, newData: DiaryModel) async throws {
+        try await CoreDataManager.instance.updateData(beforeData: beforeData, newData: newData)
     }
     
-    func deleteData(deleteData: DiaryModel, completion: @escaping (Bool) -> Void) {
-        CoreDataManager.instance.deleteData(deleteData: deleteData) { result in
-            completion(result)
-        }
+    func deleteData(deleteData: DiaryModel) async throws {
+        try await CoreDataManager.instance.deleteData(deleteData: deleteData)
     }
 }
