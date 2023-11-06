@@ -63,8 +63,8 @@ final class ThemeModeView: BaseView {
     // MARK: - UI, Target
     
     override func initSubviews() {
-        contentsStackView.addSubviews([lightContentView,
-                                       darkContentView])
+        contentsStackView.addArrangedSubviews([lightContentView,
+                                               darkContentView])
         
         addSubviews([modeTitleLabel,
                      contentsStackView])

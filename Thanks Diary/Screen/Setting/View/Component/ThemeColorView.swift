@@ -55,11 +55,11 @@ final class ThemeColorView: BaseView {
     // MARK: - UI, Target
     
     override func initSubviews() {
-        colorStackView.addSubviews([blueButton,
-                                    pinkButton,
-                                    yellowButton,
-                                    greenButton,
-                                    purpleButton])
+        colorStackView.addArrangedSubviews([blueButton,
+                                            pinkButton,
+                                            yellowButton,
+                                            greenButton,
+                                            purpleButton])
         
         addSubviews([colorTitleLabel,
                      colorStackView])

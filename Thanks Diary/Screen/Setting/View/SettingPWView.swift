@@ -203,26 +203,26 @@ final class SettingPWView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        passwordStackView.addSubviews([passwordFirstStackView,
-                                       passwordSecondStackView,
-                                       passwordThirdStackView,
-                                       passwordFourthStackView])
+        passwordStackView.addArrangedSubviews([passwordFirstStackView,
+                                               passwordSecondStackView,
+                                               passwordThirdStackView,
+                                               passwordFourthStackView])
         
-        passwordFirstStackView.addSubviews([oneButton,
-                                            twoButton,
-                                            threeButton])
+        passwordFirstStackView.addArrangedSubviews([oneButton,
+                                                    twoButton,
+                                                    threeButton])
         
-        passwordSecondStackView.addSubviews([fourButton,
-                                             fiveButton,
-                                             sixButton])
+        passwordSecondStackView.addArrangedSubviews([fourButton,
+                                                     fiveButton,
+                                                     sixButton])
         
-        passwordThirdStackView.addSubviews([sevenButton,
-                                            eightButton,
-                                            nineButton])
+        passwordThirdStackView.addArrangedSubviews([sevenButton,
+                                                    eightButton,
+                                                    nineButton])
         
-        passwordFourthStackView.addSubviews([emptyView,
-                                             zeroButton,
-                                             deleteButton])
+        passwordFourthStackView.addArrangedSubviews([emptyView,
+                                                     zeroButton,
+                                                     deleteButton])
         
         addSubviews([backButton,
                      lockImageView,

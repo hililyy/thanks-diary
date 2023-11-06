@@ -102,10 +102,10 @@ final class SecondStartView: BaseView {
         messageImageStackView3.addSubviews([heartImageView3, messageLabel3])
         messageImageStackView4.addSubviews([heartImageView4, messageLabel4])
         
-        messageStackView.addSubviews([messageImageStackView1,
-                                      messageImageStackView2,
-                                      messageImageStackView3,
-                                      messageImageStackView4])
+        messageStackView.addArrangedSubviews([messageImageStackView1,
+                                              messageImageStackView2,
+                                              messageImageStackView3,
+                                              messageImageStackView4])
         
         addSubviews([lottieView,
                      titleLabel,

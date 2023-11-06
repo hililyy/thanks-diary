@@ -52,9 +52,9 @@ final class PageView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        progressStackView.addSubviews([firstDotView,
-                                       secondDotView,
-                                       thirdDotView])
+        progressStackView.addArrangedSubviews([firstDotView,
+                                               secondDotView,
+                                               thirdDotView])
         
         addSubviews([containerView,
                      progressStackView,
