@@ -104,7 +104,12 @@ final class MainView: BaseView {
         calendar.appearance.weekdayFont = ResourceManager.instance.getFont(size: 17)
         calendar.appearance.titleFont = ResourceManager.instance.getFont(size: 17)
         calendar.appearance.subtitleFont = ResourceManager.instance.getFont(size: 17)
-
+    }
+    
+    func initAllColor() {
+        todayButton.backgroundColor = ResourceManager.instance.getMainColor()
+        calendar.appearance.todayColor = ResourceManager.instance.getMainColor()
+        floatingButton.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
     }
     
     // MARK: - UI, Target

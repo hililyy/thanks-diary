@@ -114,6 +114,7 @@ extension MainVC {
         attachedView.diaryTableView.reloadData()
         attachedView.calendar.reloadData()
         attachedView.initAllFont()
+        attachedView.initAllColor()
     }
     
     private func initDelegate() {
@@ -211,8 +212,11 @@ extension MainVC {
                 
                 if let detailCell = cell as? DetailDiaryTVCell {
                     detailCell.titleLabel.text = element.title
+                    detailCell.borderView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
+                    
                 } else if let simpleCell = cell as? SimpleDiaryTVCell {
                     simpleCell.titleLabel.text = element.contents
+                    simpleCell.dotView.backgroundColor = ResourceManager.instance.getMainColor()
                 }
                 
                 return cell
