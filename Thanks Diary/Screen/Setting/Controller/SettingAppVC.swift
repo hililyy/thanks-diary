@@ -62,6 +62,7 @@ extension SettingAppVC {
     private func initalize() {
         initTarget()
         initDelegate()
+        initNavigationTitle()
     }
     
     private func initTarget() {

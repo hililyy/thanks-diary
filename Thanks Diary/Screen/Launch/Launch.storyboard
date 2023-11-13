@@ -74,7 +74,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BiD-sU-4WR"/>
-                        <color key="backgroundColor" name="gray9"/>
+                        <color key="backgroundColor" name="white"/>
                         <constraints>
                             <constraint firstItem="BiD-sU-4WR" firstAttribute="bottom" secondItem="bTF-L5-8gt" secondAttribute="bottom" id="9h8-di-74a"/>
                             <constraint firstItem="bTF-L5-8gt" firstAttribute="top" secondItem="BiD-sU-4WR" secondAttribute="top" id="LUa-CZ-QRZ"/>
@@ -96,7 +96,7 @@
         <namedColor name="blackColor">
             <color red="0.19599999487400055" green="0.19599999487400055" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="gray9">
+        <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
