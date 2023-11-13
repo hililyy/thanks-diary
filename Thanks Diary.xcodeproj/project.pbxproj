@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		02087C372AA9C4F600921F4D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C362AA9C4F600921F4D /* FSCalendar */; };
-		02087C3A2AA9C50300921F4D /* AcknowList in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C392AA9C50300921F4D /* AcknowList */; };
 		02087C3D2AA9C51200921F4D /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C3C2AA9C51200921F4D /* Then */; };
 		02087C402AA9C52100921F4D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C3F2AA9C52100921F4D /* SnapKit */; };
 		02087C432AA9C54100921F4D /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 02087C422AA9C54100921F4D /* RxBlocking */; };
@@ -73,6 +72,8 @@
 		025EF0842A459EEF00C930F2 /* SecondStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF07D2A459EEF00C930F2 /* SecondStartVC.swift */; };
 		025EF0862A459EEF00C930F2 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0802A459EEF00C930F2 /* PageView.swift */; };
 		025EF08D2A45A36000C930F2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF08C2A45A36000C930F2 /* Launch.storyboard */; };
+		026283FC2B01F24F00CEBA11 /* AcknowList in Frameworks */ = {isa = PBXBuildFile; productRef = 026283FB2B01F24F00CEBA11 /* AcknowList */; };
+		026283FE2B01F2C500CEBA11 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 026283FD2B01F2C500CEBA11 /* Package.resolved */; };
 		026E78E92A6E4C0800A09282 /* SettingPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E78E82A6E4C0800A09282 /* SettingPWView.swift */; };
 		026E78EB2A6E772800A09282 /* SettingAlarmDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E78EA2A6E772800A09282 /* SettingAlarmDetailView.swift */; };
 		026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */; };
@@ -231,6 +232,7 @@
 		025EF07D2A459EEF00C930F2 /* SecondStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStartVC.swift; sourceTree = "<group>"; };
 		025EF0802A459EEF00C930F2 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		025EF08C2A45A36000C930F2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		026283FD2B01F2C500CEBA11 /* Package.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Package.resolved; path = "Thanks Diary.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved"; sourceTree = "<group>"; };
 		026E78E82A6E4C0800A09282 /* SettingPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWView.swift; sourceTree = "<group>"; };
 		026E78EA2A6E772800A09282 /* SettingAlarmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmDetailView.swift; sourceTree = "<group>"; };
 		026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryProtocol.swift; sourceTree = "<group>"; };
@@ -326,12 +328,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				02087C452AA9C54100921F4D /* RxCocoa in Frameworks */,
+				026283FC2B01F24F00CEBA11 /* AcknowList in Frameworks */,
 				02087C4E2AA9C56D00921F4D /* FirebaseAuth in Frameworks */,
 				02087C372AA9C4F600921F4D /* FSCalendar in Frameworks */,
 				02087C472AA9C54100921F4D /* RxRelay in Frameworks */,
 				02087C402AA9C52100921F4D /* SnapKit in Frameworks */,
 				02087C3D2AA9C51200921F4D /* Then in Frameworks */,
-				02087C3A2AA9C50300921F4D /* AcknowList in Frameworks */,
 				2A0034BB2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				02087C502AA9C56E00921F4D /* FirebaseDatabase in Frameworks */,
 				02087C492AA9C54100921F4D /* RxSwift in Frameworks */,
@@ -630,6 +632,7 @@
 		2A0D87F228A540FB00576E56 = {
 			isa = PBXGroup;
 			children = (
+				026283FD2B01F2C500CEBA11 /* Package.resolved */,
 				029392442ABD971700FB2553 /* swiftgen.yml */,
 				029392412ABD955B00FB2553 /* .swiftlint.yml */,
 				2A0D87FD28A540FB00576E56 /* Thanks Diary */,
@@ -878,7 +881,6 @@
 			name = "Thanks Diary";
 			packageProductDependencies = (
 				02087C362AA9C4F600921F4D /* FSCalendar */,
-				02087C392AA9C50300921F4D /* AcknowList */,
 				02087C3C2AA9C51200921F4D /* Then */,
 				02087C3F2AA9C52100921F4D /* SnapKit */,
 				02087C422AA9C54100921F4D /* RxBlocking */,
@@ -889,6 +891,7 @@
 				02087C4F2AA9C56E00921F4D /* FirebaseDatabase */,
 				02087C522AA9C5AD00921F4D /* Lottie */,
 				2A0034BA2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				026283FB2B01F24F00CEBA11 /* AcknowList */,
 			);
 			productName = "Thanks Diary";
 			productReference = 02087C542AA9C93A00921F4D /* Thanks Diary.app */;
@@ -929,13 +932,12 @@
 			mainGroup = 2A0D87F228A540FB00576E56;
 			packageReferences = (
 				02087C352AA9C4F600921F4D /* XCRemoteSwiftPackageReference "FSCalendar" */,
-				02087C382AA9C50300921F4D /* XCRemoteSwiftPackageReference "AcknowList" */,
 				02087C3B2AA9C51200921F4D /* XCRemoteSwiftPackageReference "Then" */,
 				02087C3E2AA9C52100921F4D /* XCRemoteSwiftPackageReference "SnapKit" */,
 				02087C412AA9C54100921F4D /* XCRemoteSwiftPackageReference "RxSwift" */,
 				02087C4C2AA9C56D00921F4D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */,
-				02C704032AE6390A00E27B2A /* XCRemoteSwiftPackageReference "ReSwift" */,
+				026283FA2B01F24F00CEBA11 /* XCRemoteSwiftPackageReference "AcknowList" */,
 			);
 			productRefGroup = 2A0D87F228A540FB00576E56;
 			projectDirPath = "";
@@ -979,6 +981,7 @@
 				029392422ABD956000FB2553 /* .swiftlint.yml in Resources */,
 				2A0D881828ABB80900576E56 /* wave.json in Resources */,
 				02835D8F2AE0FE1A00593BA5 /* NanumBarunpenR.otf in Resources */,
+				026283FE2B01F2C500CEBA11 /* Package.resolved in Resources */,
 				02475DCD2ADF6F240075C206 /* Pretendard-Regular.otf in Resources */,
 				02D7BB6F2AA589DF00419739 /* GoogleService-Info.plist in Resources */,
 				2A81233028BFBF4D000A250E /* sun.json in Resources */,
@@ -1502,14 +1505,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		02087C382AA9C50300921F4D /* XCRemoteSwiftPackageReference "AcknowList" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vtourraine/AcknowList";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
 		02087C3B2AA9C51200921F4D /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -1550,12 +1545,12 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		02C704032AE6390A00E27B2A /* XCRemoteSwiftPackageReference "ReSwift" */ = {
+		026283FA2B01F24F00CEBA11 /* XCRemoteSwiftPackageReference "AcknowList" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReSwift/ReSwift";
+			repositoryURL = "https://github.com/vtourraine/AcknowList";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.1.1;
+				minimumVersion = 3.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1565,11 +1560,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02087C352AA9C4F600921F4D /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
-		};
-		02087C392AA9C50300921F4D /* AcknowList */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02087C382AA9C50300921F4D /* XCRemoteSwiftPackageReference "AcknowList" */;
-			productName = AcknowList;
 		};
 		02087C3C2AA9C51200921F4D /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1615,6 +1605,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02087C512AA9C5AD00921F4D /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
+		};
+		026283FB2B01F24F00CEBA11 /* AcknowList */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 026283FA2B01F24F00CEBA11 /* XCRemoteSwiftPackageReference "AcknowList" */;
+			productName = AcknowList;
 		};
 		2A0034BA2ACAF8B100B6E703 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;

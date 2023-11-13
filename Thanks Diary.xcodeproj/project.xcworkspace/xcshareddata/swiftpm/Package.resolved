@@ -127,15 +127,6 @@
       }
     },
     {
-      "identity" : "reswift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ReSwift/ReSwift",
-      "state" : {
-        "revision" : "cb5c3c02f652420ef413dea41e13ac5a76b6c0fd",
-        "version" : "6.1.1"
-      }
-    },
-    {
       "identity" : "rxswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveX/RxSwift",
