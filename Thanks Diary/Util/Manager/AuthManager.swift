@@ -6,6 +6,7 @@
 //
 
 import UserNotifications
+import LocalAuthentication
 
 final class AuthManager {
     
@@ -17,7 +18,8 @@ final class AuthManager {
         return _instance
     }
     
-    // 콜백 안쓸수 있으면 안쓰는게 좋음
+    // MARK: - 알람 권한
+    
     func requestNotiAuth(completion: @escaping (Bool) -> Void, errorHandler: @escaping () -> Void) {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         
@@ -32,6 +34,25 @@ final class AuthManager {
     func getNotiStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
         UNUserNotificationCenter.current().getNotificationSettings { setting in
             completion(setting.authorizationStatus)
+        }
+    }
+    
+    // MARK: - 생체인증 권한
+    
+    private var context = LAContext()
+    
+    func execute(completion: @escaping (Bool) -> Void) {
+        var error: NSError?
+        let canAuth = context.canEvaluatePolicy(.deviceOwnerAuthentication,
+                                                error: &error)
+        if canAuth {
+            let reason = "Log in to your account"
+            context.evaluatePolicy(.deviceOwnerAuthentication,
+                                   localizedReason: reason) { result, _ in
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
         }
     }
 }

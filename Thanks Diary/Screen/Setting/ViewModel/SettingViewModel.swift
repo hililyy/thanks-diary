@@ -30,7 +30,7 @@ final class SettingViewModel {
     let colorSubject = PublishSubject<UIColor>()
     
     let settingTableTitles: [SettingNameModel] = [
-        SettingNameModel(title: L10n.settingName1, contents: "", type: ._switch),
+        SettingNameModel(title: L10n.settingName1, contents: "", type: .more),
         SettingNameModel(title: L10n.settingName2, contents: "", type: .more),
         SettingNameModel(title: L10n.settingName3, contents: "", type: .more),
         SettingNameModel(title: L10n.settingName4, contents: "", type: .more),

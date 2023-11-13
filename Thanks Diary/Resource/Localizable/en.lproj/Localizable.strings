@@ -58,6 +58,8 @@
 "setting_name9" = "건의 게시판";
 "setting_name10" = "앱 평가";
 "setting_name11" = "앱 설정";
+"setting_name12" = "비밀번호 설정";
+"setting_name13" = "생체인증";
 
 "darkmode" = "다크 모드";
 "lightmode" = "라이트 모드";

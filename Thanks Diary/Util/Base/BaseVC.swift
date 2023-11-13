@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import MessageUI
 
-class BaseVC<T: BaseView>: UIViewController, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate  {
+class BaseVC<T: BaseView>: UIViewController, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate {
 
     private var keyboardHeight: CGFloat = 0
     var disposeBag = DisposeBag()

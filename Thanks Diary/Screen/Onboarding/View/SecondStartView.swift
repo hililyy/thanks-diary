@@ -97,10 +97,10 @@ final class SecondStartView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        messageImageStackView1.addSubviews([heartImageView1, messageLabel1])
-        messageImageStackView2.addSubviews([heartImageView2, messageLabel2])
-        messageImageStackView3.addSubviews([heartImageView3, messageLabel3])
-        messageImageStackView4.addSubviews([heartImageView4, messageLabel4])
+        messageImageStackView1.addArrangedSubviews([heartImageView1, messageLabel1])
+        messageImageStackView2.addArrangedSubviews([heartImageView2, messageLabel2])
+        messageImageStackView3.addArrangedSubviews([heartImageView3, messageLabel3])
+        messageImageStackView4.addArrangedSubviews([heartImageView4, messageLabel4])
         
         messageStackView.addArrangedSubviews([messageImageStackView1,
                                               messageImageStackView2,

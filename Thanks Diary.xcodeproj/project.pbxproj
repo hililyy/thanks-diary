@@ -78,6 +78,7 @@
 		026E9C1F2A4A7E2900568CFD /* DiaryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */; };
 		026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */; };
 		026E9C232A4AAAD400568CFD /* AlertConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */; };
+		027815502B01B7CD00E5D551 /* SettingCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0278154F2B01B7CD00E5D551 /* SettingCodeVC.swift */; };
 		027C60C82A81EB82008F607F /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60C72A81EB82008F607F /* UIScrollView.swift */; };
 		027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60CA2A81F78C008F607F /* CommonUtilManager.swift */; };
 		027C60CD2A8213D7008F607F /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */; };
@@ -235,6 +236,7 @@
 		026E9C1E2A4A7E2900568CFD /* DiaryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryProtocol.swift; sourceTree = "<group>"; };
 		026E9C202A4AAA2500568CFD /* AlertConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmView.swift; sourceTree = "<group>"; };
 		026E9C222A4AAAD400568CFD /* AlertConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmVC.swift; sourceTree = "<group>"; };
+		0278154F2B01B7CD00E5D551 /* SettingCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCodeVC.swift; sourceTree = "<group>"; };
 		027C60C72A81EB82008F607F /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		027C60CA2A81F78C008F607F /* CommonUtilManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtilManager.swift; sourceTree = "<group>"; };
 		027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
@@ -700,6 +702,7 @@
 			children = (
 				2A9F351228AE5763006CCF7C /* SettingVC.swift */,
 				2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */,
+				0278154F2B01B7CD00E5D551 /* SettingCodeVC.swift */,
 				2A81233128BFFA0C000A250E /* SettingAlarmVC.swift */,
 				2A81233A28C0067B000A250E /* SettingAlarmDetailVC.swift */,
 				027C60DD2A8DBFE0008F607F /* SettingThemeVC.swift */,
@@ -1112,6 +1115,7 @@
 				025EF0572A459D2700C930F2 /* LottieManager.swift in Sources */,
 				026E9C212A4AAA2500568CFD /* AlertConfirmView.swift in Sources */,
 				02835D822ADF9D9800593BA5 /* NavigationView.swift in Sources */,
+				027815502B01B7CD00E5D551 /* SettingCodeVC.swift in Sources */,
 				025E043F2AA6C78600C01D24 /* SettingSuggestModel.swift in Sources */,
 				025E043C2AA6C0CE00C01D24 /* SettingSuggestVC.swift in Sources */,
 				2ABF8AA52A6C057E006ACBE2 /* SettingViewModel.swift in Sources */,

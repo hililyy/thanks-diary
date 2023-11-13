@@ -29,7 +29,7 @@ final class AlertVC: BaseVC<AlertView> {
     private func setTarget() {
         attachedView.backButton.rx.tap
             .asDriver()
-            .drive(onNext: {  [weak self] _ in
+            .drive(onNext: { [weak self] _ in
                 guard let self else { return }
                 
                 dismissVC()

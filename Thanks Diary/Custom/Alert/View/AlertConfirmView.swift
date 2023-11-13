@@ -48,6 +48,11 @@ final class AlertConfirmView: BaseView {
         view.backgroundColor = Asset.Color.gray3.color
     }
     
+    func setText(message: String, okButtonText: String) {
+        messageLabel.text = message
+        okButton.setTitle(okButtonText, for: .normal)
+    }
+    
     // MARK: - Constraint
     
     override func initSubviews() {

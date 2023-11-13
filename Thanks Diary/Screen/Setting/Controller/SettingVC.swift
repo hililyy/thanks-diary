@@ -54,56 +54,30 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = viewModel.settingTableTitles[indexPath.row]
         
-        switch data.type {
-        case ._switch:
-            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
-            
-            cell.titleLabel.text = data.title
-            cell.settingSwitch.isOn = alarmFlag
-            cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
-            
-            cell.switchTapHandler = { [weak self] in
-                guard let self else { return }
-                
-                alarmFlag.toggle()
-                UserDefaultManager.instance.isPassword = alarmFlag
-                
-                if alarmFlag {
-                    pushSettingPWVC()
-                } else {
-                    UserDefaultManager.instance.password = ""
-                }
-            }
-            
-            return cell
-            
-        case .more:
-            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
-            
-            cell.titleLabel.text = data.title
-            cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
-            return cell
-            
-        case .label:
-            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
-            
-            cell.titleLabel.text = data.title
-            cell.contentsLabel.text = data.contents
-            cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
-            return cell
-        }
+        guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
+        
+        cell.titleLabel.text = data.title
+        cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 0:
+            pushSettingCodeVC()
+            
         case 1:
             pushSettingAlarmVC()
+            
         case 2:
             pushSettingThemeVC()
+            
         case 3:
             pushSettingSuggestVC()
+            
         case 4:
             pushSettingAppVC()
+            
         default:
             break
         }
@@ -157,6 +131,11 @@ extension SettingVC {
 // MARK: - View Change
 
 extension SettingVC {
+    private func pushSettingCodeVC() {
+        let vc = SettingCodeVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func pushSettingPWVC() {
         let vc = SettingPWVC()
         navigationController?.pushViewController(vc, animated: true)

@@ -48,18 +48,33 @@ final class LaunchVC: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
             let isReEntry = UserDefaultManager.instance.isReEntryUser
             let isPassword = UserDefaultManager.instance.isPassword
+            let isBioAuth = UserDefaultManager.instance.isBiometricsAuth
             
             if !isReEntry {
                 self.registPageToRoot()
                 return
             }
             
-            if !isPassword {
+            if !isPassword && !isBioAuth {
                 self.registMainToRoot()
                 return
             }
             
-            self.presentSettingPWVC()
+            if !isBioAuth {
+                self.presentSettingPWVC()
+                return
+            }
+            
+            AuthManager.instance.execute { [weak self] result in
+                guard let self else { return }
+                
+                if result {
+                    self.registMainToRoot()
+                    return
+                } else {
+                    showErrorPopup()
+                }
+            }
         }
     }
     
@@ -68,5 +83,28 @@ final class LaunchVC: UIViewController {
         vc.homeFlag = true
         vc.modalPresentationStyle = .currentContext
         self.present(vc, animated: true)
+    }
+    
+    private func showErrorPopup() {
+        DispatchQueue.main.async {
+            let vc = AlertConfirmVC()
+            vc.attachedView.setText(message: L10n.error,
+                                    okButtonText: L10n.exit)
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.okButtonTapHandler = {
+                self.exitApp()
+            }
+            self.present(vc, animated: true)
+        }
+    }
+    
+    private func exitApp() {
+        DispatchQueue.main.async {
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                exit(0)
+            }
+        }
     }
 }

@@ -97,6 +97,15 @@ final class UserDefaultManager {
             self.set(newValue, key: UserDefaultKey.IS_PRESENT_REVIEW_POPUP.rawValue)
         }
     }
+    
+    var isBiometricsAuth: Bool {
+        get {
+            self.bool(UserDefaultKey.IS_BIOMETRICS_AUTH.rawValue)
+        }
+        set {
+            self.set(newValue, key: UserDefaultKey.IS_BIOMETRICS_AUTH.rawValue)
+        }
+    }
 }
 
 extension UserDefaultManager {
