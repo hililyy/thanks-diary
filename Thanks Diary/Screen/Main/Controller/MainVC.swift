@@ -128,7 +128,6 @@ extension MainVC {
         initTodayButtonTarget()
     }
     
-    // TODO - 버튼 함수로 중복 제거
     private func initFloattingButtonTarget() {
         attachedView.floatingButton.button.rx.tap
             .asDriver()
@@ -206,6 +205,7 @@ extension MainVC {
     
     private func initTableViewCellForRow() {
         viewModel.selectedAllData
+            .filter { !$0.isEmpty } 
             .bind(to: attachedView.diaryTableView.rx.items) { tableView, _, element in
                 let cellIdentifier = element.type == .detail ? DetailDiaryTVCell.id : SimpleDiaryTVCell.id
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
