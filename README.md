@@ -45,7 +45,13 @@
 
 </br>
 
-## 버전기록 (10회)
+## 버전기록 (11회)
+<details>
+<summary>버전 1.5.0</summary>
+  
+  - 화면잠금 생체인증(Face ID, Touch ID) 기능 추가
+</details>
+
 <details>
 <summary>버전 1.4.0</summary>
   
