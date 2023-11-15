@@ -175,7 +175,8 @@ final class CoreDataManager {
             
             do {
                 let result = try context.fetch(fetchRequest)
-                let objectUpdate = result[0] as? NSManagedObject
+                if result.isEmpty { throw ErrorCase.NOT_UPDATE_DATA }
+                let objectUpdate = result.first as? NSManagedObject
                 objectUpdate?.setValue(newData.title, forKey: "title")
                 objectUpdate?.setValue(newData.contents, forKey: "contents")
                 try context.save()
@@ -190,7 +191,8 @@ final class CoreDataManager {
             
             do {
                 let result = try context.fetch(fetchRequest)
-                let objectUpdate = result[0] as? NSManagedObject
+                if result.isEmpty { throw ErrorCase.NOT_UPDATE_DATA }
+                let objectUpdate = result.first as? NSManagedObject
                 objectUpdate?.setValue(newData.contents, forKey: "contents")
                 try context.save()
                 
@@ -210,8 +212,9 @@ final class CoreDataManager {
             fetchRequest.predicate = NSPredicate(format: "date = %@ && title = %@ && contents = %@", deleteData.date, deleteData.title, deleteData.contents)
             
             do {
-                let test = try context.fetch(fetchRequest)
-                guard let objectToDelete = test[0] as? NSManagedObject else { throw ErrorCase.NOT_DELETE_DATA }
+                let result = try context.fetch(fetchRequest)
+                if result.isEmpty { throw ErrorCase.NOT_DELETE_DATA }
+                guard let objectToDelete = result.first as? NSManagedObject else { throw ErrorCase.NOT_DELETE_DATA }
                 context.delete(objectToDelete)
                 try context.save()
                 
@@ -224,8 +227,9 @@ final class CoreDataManager {
             fetchRequest.predicate = NSPredicate(format: "date = %@ && contents = %@", deleteData.date, deleteData.contents)
             
             do {
-                let test = try context.fetch(fetchRequest)
-                guard let objectToDelete = test[0] as? NSManagedObject else { throw ErrorCase.NOT_DELETE_DATA }
+                let result = try context.fetch(fetchRequest)
+                if result.isEmpty { throw ErrorCase.NOT_DELETE_DATA }
+                guard let objectToDelete = result.first as? NSManagedObject else { throw ErrorCase.NOT_DELETE_DATA }
                 context.delete(objectToDelete)
                 try context.save()
                 
