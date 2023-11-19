@@ -205,7 +205,6 @@ extension MainVC {
     
     private func initTableViewCellForRow() {
         viewModel.selectedAllData
-            .filter { !$0.isEmpty } 
             .bind(to: attachedView.diaryTableView.rx.items) { tableView, _, element in
                 let cellIdentifier = element.type == .detail ? DetailDiaryTVCell.id : SimpleDiaryTVCell.id
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
