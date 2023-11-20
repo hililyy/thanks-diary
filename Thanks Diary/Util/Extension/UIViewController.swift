@@ -9,11 +9,13 @@ import UIKit
 
 extension UIViewController {
     func registPageToRoot() {
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(PageNC())
+        let scene = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        scene?.changeRootViewController(PageNC())
     }
     
     func registMainToRoot() {
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(MainNC())
+        let scene = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        scene?.changeRootViewController(MainNC())
     }
     
     func popVC(isAnimated: Bool = true) {
@@ -27,6 +29,6 @@ extension UIViewController {
     }
     
     func dismissToRootVC() {
-        view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        view.window?.rootViewController?.dismiss(animated: true)
     }
 }
