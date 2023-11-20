@@ -19,18 +19,15 @@ final class PageVC: BaseVC<PageView> {
             
             let title = currentIndex == pageList.count - 1 ? L10n.start : L10n.next
             
-            UIView.transition(with: self.attachedView.nextButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            UIView.transition(with: self.attachedView.nextButton,
+                              duration: 0.2,
+                              options: .transitionCrossDissolve) {
                 self.attachedView.nextButton.setTitle(title, for: .normal)
-            })
-            
+            }
         }
     }
     
     // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = attachedView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +54,7 @@ final class PageVC: BaseVC<PageView> {
                           duration: 0.2,
                           options: .transitionCrossDissolve, animations: {
             self.attachedView.firstDotView.backgroundColor = self.currentIndex == 0 ? ResourceManager.instance.getMainColor() : Asset.Color.gray3.color
-            
             self.attachedView.secondDotView.backgroundColor = self.currentIndex == 1 ? ResourceManager.instance.getMainColor() : Asset.Color.gray3.color
-            
             self.attachedView.thirdDotView.backgroundColor = self.currentIndex == 2 ? ResourceManager.instance.getMainColor() : Asset.Color.gray3.color
         })
     }
@@ -100,7 +95,6 @@ extension PageVC: UIPageViewControllerDelegate {
                             didFinishAnimating finished: Bool,
                             previousViewControllers: [UIViewController],
                             transitionCompleted completed: Bool) {
-        guard completed else { return }
         
         currentIndex = pageViewController.viewControllers!.first!.view.tag
     }

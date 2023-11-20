@@ -35,6 +35,7 @@ final class RadioTVCell: BaseTVCell, CellIdentifier {
         outlineCircle.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         inlineCircle.backgroundColor = isSelected ? ResourceManager.instance.getMainColor() : .clear
     }
+    
     // MARK: - UI, Target
     
     override func initUI() {

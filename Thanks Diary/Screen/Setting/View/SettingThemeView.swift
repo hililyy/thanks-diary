@@ -12,21 +12,15 @@ final class SettingThemeView: BaseView {
     // MARK: - UI components
     
     let navigationView = NavigationView()
-    
     let modeView = ThemeModeView()
-    
     let colorView = ThemeColorView()
-    
     let fontView = ThemeFontView()
-    
     private let lineView = LineView(color: Asset.Color.gray5.color)
-    
     private let lineView2 = LineView(color: Asset.Color.gray5.color)
-    
+    private let contentView = UIView()
     private let contentScrollView = UIScrollView().then { scrollView in
         scrollView.showsVerticalScrollIndicator = false
     }
-    private let contentView = UIView()
     
     // MARK: - Functions
     

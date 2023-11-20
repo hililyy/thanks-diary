@@ -37,8 +37,7 @@ final class SettingVC: BaseVC<SettingView> {
             UserDefaultManager.instance.isPassword = false
         }
         
-        let isPassword = UserDefaultManager.instance.isPassword
-        alarmFlag = isPassword
+        alarmFlag = UserDefaultManager.instance.isPassword
         
         attachedView.tableView.reloadData()
     }
@@ -54,7 +53,9 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = viewModel.settingTableTitles[indexPath.row]
         
-        guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, for: indexPath) as? SettingMoreTVCell else { return UITableViewCell() }
+        guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, 
+                                                                    for: indexPath) as? SettingMoreTVCell
+        else { return UITableViewCell() }
         
         cell.titleLabel.text = data.title
         cell.titleLabel.font = ResourceManager.instance.getFont(size: 17)

@@ -46,10 +46,13 @@ extension SettingAppVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             printRegistedNotification()
+            
         case 1:
             moveAppEvaluation()
+            
         case 2:
             pushOpenSourceLicenseVC()
+            
         default:
             break
         }

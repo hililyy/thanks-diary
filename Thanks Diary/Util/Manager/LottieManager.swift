@@ -25,7 +25,11 @@ final class LottieManager {
         let speed: CGFloat
         let mode: LottieLoopMode
         
-        init(vc: UIViewController, lottieView: UIView, name: String, speed: CGFloat, mode: LottieLoopMode) {
+        init(vc: UIViewController, 
+             lottieView: UIView,
+             name: String,
+             speed: CGFloat,
+             mode: LottieLoopMode) {
             self.vc = vc
             self.lottieView = lottieView
             self.name = name
@@ -33,14 +37,23 @@ final class LottieManager {
             self.mode = mode
         }
         
-        convenience init(vc: UIViewController, lottieView: UIView, name: String, mode: LottieLoopMode) {
-            self.init(vc: vc, lottieView: lottieView, name: name, speed: 1, mode: mode)
+        convenience init(vc: UIViewController, 
+                         lottieView: UIView,
+                         name: String,
+                         mode: LottieLoopMode) {
+            self.init(vc: vc, 
+                      lottieView: lottieView,
+                      name: name,
+                      speed: 1,
+                      mode: mode)
         }
     }
     
     func setLottie(_ info: LottieInfo) {
         let animationView: LottieAnimationView = .init(name: info.name)
+        
         info.vc.view.addSubview(animationView)
+        
         animationView.setAutoLayout(to: info.lottieView)
         
         animationView.frame = info.lottieView.bounds

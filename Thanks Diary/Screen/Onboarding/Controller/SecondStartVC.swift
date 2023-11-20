@@ -8,13 +8,7 @@
 import UIKit
 
 final class SecondStartVC: BaseVC<SecondStartView> {
-    
-    // MARK: - Life Cycle
-    
-    override func loadView() {
-        view = attachedView
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

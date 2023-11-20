@@ -69,7 +69,7 @@ final class LaunchVC: UIViewController {
                 guard let self else { return }
                 
                 if result {
-                    self.registMainToRoot()
+                    registMainToRoot()
                     return
                 } else {
                     showErrorPopup()

@@ -26,7 +26,9 @@ final class FirebaseManager {
             .child(Constant.FIREBASE_CHILD_SUGGEST)
             .observeSingleEvent(of: .value) { snapshot in
                 var values: [[String: Any]] = []
+                
                 guard let allObject = snapshot.children.allObjects as? [DataSnapshot] else { return }
+                
                 for snap in allObject {
                     guard let value = snap.value as? [String: Any] else { return }
                     values.insert(value, at: 0)
@@ -45,10 +47,12 @@ final class FirebaseManager {
         return Observable.create { emitter in
             
             self.getSuggestDatas { result in
+                
                 switch result {
                 case .success(let data):
                     emitter.onNext(data)
                     emitter.onCompleted()
+                    
                 case .failure(let err):
                     emitter.onError(err)
                 }
@@ -64,6 +68,10 @@ final class FirebaseManager {
             Constant.FIREBASE_ITEM_STATUS: SuggestType.waiting.rawValue
         ]
         
-        Database.database().reference().child(Constant.FIREBASE_CHILD_SUGGEST).childByAutoId().setValue(newData)
+        Database.database()
+            .reference()
+            .child(Constant.FIREBASE_CHILD_SUGGEST)
+            .childByAutoId()
+            .setValue(newData)
     }
 }

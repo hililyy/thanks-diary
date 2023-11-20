@@ -82,6 +82,7 @@ extension SettingCodeVC: UITableViewDelegate, UITableViewDataSource {
                 if cell.settingSwitch.isOn {
                     AuthManager.instance.execute { [weak self] result in
                         guard let self else { return }
+                        
                         if result {
                             UserDefaultManager.instance.isBiometricsAuth = true
                         } else {

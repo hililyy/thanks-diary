@@ -24,7 +24,8 @@ final class SettingSuggestView: BaseView {
     
     let tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
-        tableView.register(SettingSuggestTVCell.self, forCellReuseIdentifier: SettingSuggestTVCell.id)
+        tableView.register(SettingSuggestTVCell.self, 
+                           forCellReuseIdentifier: SettingSuggestTVCell.id)
     }
     
     let loading = UIActivityIndicatorView().then { activityIndicator in

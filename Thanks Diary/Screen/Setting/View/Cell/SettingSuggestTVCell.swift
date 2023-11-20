@@ -32,8 +32,10 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
         switch type {
         case .waiting:
             statusView.backgroundColor = Asset.Color.gray5.color
+            
         case .progress:
             statusView.backgroundColor = Asset.Color.yellow.color
+            
         case .complete:
             statusView.backgroundColor = Asset.Color.lightGrayBlue.color
         }

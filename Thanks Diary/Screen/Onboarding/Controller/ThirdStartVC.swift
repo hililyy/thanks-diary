@@ -9,8 +9,6 @@ import UIKit
 
 final class ThirdStartVC: BaseVC<ThirdStartView> {
     
-    // MARK: - Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
