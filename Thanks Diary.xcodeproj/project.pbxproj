@@ -26,6 +26,7 @@
 		020A8C732ACCF73700E855EE /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A8C722ACCF73700E855EE /* Array.swift */; };
 		020A8DED2ACFAD6600E855EE /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A8DEC2ACFAD6600E855EE /* CellIdentifier.swift */; };
 		020A8DEF2ACFADB800E855EE /* ReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A8DEE2ACFADB800E855EE /* ReloadProtocol.swift */; };
+		02285D302B0C34620019D5D8 /* PasswordNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02285D2F2B0C34620019D5D8 /* PasswordNumberButton.swift */; };
 		0229553D2A66867D004BF800 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553C2A66867D004BF800 /* UIControl.swift */; };
 		022955402A669273004BF800 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229553F2A669273004BF800 /* BaseView.swift */; };
 		022955422A669BA0004BF800 /* BaseTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022955412A669BA0004BF800 /* BaseTVCell.swift */; };
@@ -186,6 +187,7 @@
 		020A8C722ACCF73700E855EE /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		020A8DEC2ACFAD6600E855EE /* CellIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifier.swift; sourceTree = "<group>"; };
 		020A8DEE2ACFADB800E855EE /* ReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadProtocol.swift; sourceTree = "<group>"; };
+		02285D2F2B0C34620019D5D8 /* PasswordNumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberButton.swift; sourceTree = "<group>"; };
 		0229553C2A66867D004BF800 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		0229553F2A669273004BF800 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		022955412A669BA0004BF800 /* BaseTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTVCell.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				02475DEB2ADF827F0075C206 /* ThemeModeView.swift */,
 				02475DED2ADF82860075C206 /* ThemeColorView.swift */,
 				02475DEF2ADF828F0075C206 /* ThemeFontView.swift */,
+				02285D2F2B0C34620019D5D8 /* PasswordNumberButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1156,6 +1159,7 @@
 				025E04412AA7106A00C01D24 /* SettingSuggestWriteVC.swift in Sources */,
 				025EF0502A459CE200C930F2 /* UserDefaultKey.swift in Sources */,
 				2A9F351928AE6410006CCF7C /* SettingLabelTVCell.swift in Sources */,
+				02285D302B0C34620019D5D8 /* PasswordNumberButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,8 +37,7 @@ final class SettingCodeVC: BaseVC<SettingView> {
             UserDefaultManager.instance.isPassword = false
         }
         
-        let isPassword = UserDefaultManager.instance.isPassword
-        alarmFlag = isPassword
+        alarmFlag = UserDefaultManager.instance.isPassword
         
         attachedView.tableView.reloadData()
     }
@@ -52,7 +51,9 @@ extension SettingCodeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
+        guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id,
+                                                                    for: indexPath) as? SettingSwitchTVCell
+        else { return UITableViewCell() }
         
         switch indexPath.row {
         case 0:
@@ -78,24 +79,30 @@ extension SettingCodeVC: UITableViewDelegate, UITableViewDataSource {
             
             cell.switchTapHandler = { [weak self] in
                 guard let self else { return }
+                
                 UserDefaultManager.instance.isBiometricsAuth = cell.settingSwitch.isOn
                 if cell.settingSwitch.isOn {
-                    AuthManager.instance.execute { [weak self] result in
-                        guard let self else { return }
-                        
-                        if result {
-                            UserDefaultManager.instance.isBiometricsAuth = true
-                        } else {
-                            showErrorPopup()
-                        }
-                    }
+                    bioAuth()
                 }
             }
             
         default:
             break
         }
+        
         return cell
+    }
+    
+    private func bioAuth() {
+        AuthManager.instance.executeBioAuth { [weak self] result in
+            guard let self else { return }
+            
+            if result {
+                UserDefaultManager.instance.isBiometricsAuth = true
+            } else {
+                showErrorPopup()
+            }
+        }
     }
 }
 

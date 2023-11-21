@@ -41,7 +41,7 @@ final class AuthManager {
     
     private var context = LAContext()
     
-    func execute(completion: @escaping (Bool) -> Void) {
+    func executeBioAuth(completion: @escaping (Bool) -> Void) {
         var error: NSError?
         let canAuth = context.canEvaluatePolicy(.deviceOwnerAuthentication,
                                                 error: &error)

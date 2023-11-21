@@ -65,7 +65,7 @@ final class LaunchVC: UIViewController {
                 return
             }
             
-            AuthManager.instance.execute { [weak self] result in
+            AuthManager.instance.executeBioAuth { [weak self] result in
                 guard let self else { return }
                 
                 if result {
