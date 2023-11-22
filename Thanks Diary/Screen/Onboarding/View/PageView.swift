@@ -20,22 +20,22 @@ final class PageView: BaseView {
         stackView.alignment = .fill
     }
     
-    var firstDotView = UIView().then { view in
+    let firstDotView = UIView().then { view in
         view.backgroundColor = ResourceManager.instance.getMainColor()
         view.layer.cornerRadius = 6
     }
     
-    var secondDotView = UIView().then { view in
+    let secondDotView = UIView().then { view in
         view.backgroundColor = Asset.Color.gray3.color
         view.layer.cornerRadius = 6
     }
     
-    var thirdDotView = UIView().then { view in
+    let thirdDotView = UIView().then { view in
         view.backgroundColor = Asset.Color.gray3.color
         view.layer.cornerRadius = 6
     }
     
-    var nextButton = UIButton(type: .custom).then { button in
+    let nextButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 20
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.titleLabel?.font =  ResourceManager.instance.getFont(size: 18)
