@@ -67,7 +67,7 @@ final class SettingPWView: BaseView {
         }
     }()
     
-    let passwordNumberButtons: [PasswordNumberButton] = {
+    private let passwordNumberButtons: [PasswordNumberButton] = {
         return (0...9).map { number in
             let button = PasswordNumberButton(number: number)
             return button

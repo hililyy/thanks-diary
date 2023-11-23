@@ -17,6 +17,12 @@ final class SimpleWriteView: BaseView {
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
+    let backgroundButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .clear
+        return button
+    }()
+    
     private let containerView = UIView().then { view in
         view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
@@ -108,6 +114,7 @@ final class SimpleWriteView: BaseView {
     
     override func initSubviews() {
         addSubviews([backgroundView,
+                     backgroundButton,
                      containerView])
         containerView.addSubviews([deleteButton,
                                    contentsTextView,
@@ -125,6 +132,13 @@ final class SimpleWriteView: BaseView {
             make.bottom.equalTo(snp.bottom)
         }
         
+        backgroundButton.snp.makeConstraints { make in
+            make.top.equalTo(snp.top)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+            make.bottom.equalTo(snp.bottom)
+        }
+        
         containerView.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(15)
             make.centerX.equalTo(snp.centerX)
@@ -133,7 +147,7 @@ final class SimpleWriteView: BaseView {
         }
         
         deleteButton.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top).offset(9)
+            make.top.equalTo(containerView.snp.top).offset(5)
             make.right.equalTo(containerView.snp.right).offset(-9)
             make.width.equalTo(44)
             make.height.equalTo(44)

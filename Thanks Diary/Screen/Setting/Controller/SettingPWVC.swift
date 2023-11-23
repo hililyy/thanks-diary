@@ -36,7 +36,7 @@ final class SettingPWVC: BaseVC<SettingPWView> {
         
         attachedView.setDotColor(num: count)
         
-        if !(count == maxCount) { return }
+        if count != maxCount { return }
         
         if homeFlag {
             handleFromHome()
@@ -129,7 +129,7 @@ extension SettingPWVC {
         attachedView.deleteButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 
                 count = max(0, count - 1)
                 _ = firstPW.popLast()

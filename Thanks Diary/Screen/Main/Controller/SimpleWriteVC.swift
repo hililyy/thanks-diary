@@ -176,6 +176,15 @@ extension SimpleWriteVC {
     }
     
     private func initCancelButtonTarget() {
+        attachedView.backgroundButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self else { return }
+                
+                dismissVC()
+            })
+            .disposed(by: disposeBag)
+        
         attachedView.cancelButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] _ in
