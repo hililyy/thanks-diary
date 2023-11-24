@@ -57,7 +57,7 @@
 "setting_name8" = "테마 선택";
 "setting_name9" = "건의 게시판";
 "setting_name10" = "앱 평가";
-"setting_name11" = "앱 설정";
+"setting_name11" = "앱 정보";
 "setting_name12" = "비밀번호 설정";
 "setting_name13" = "생체인증";
 
@@ -72,6 +72,7 @@
 "today_not_contents" = "감사일기는 매일매일 작성하는게 중요해요!\n우측 하단 버튼을 통해 일기를 작성해주세요!";
 "not_exist_diary" = "작성한 일기가 없습니다.";
 "restart_app" = "테마적용을 위해 앱을 종료해주세요.";
+"exit_app" = "앱 종료";
 "mode_set" = "모드 설정";
 "font_set" = "폰트 설정";
 
