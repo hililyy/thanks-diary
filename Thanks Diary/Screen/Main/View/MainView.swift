@@ -24,6 +24,7 @@ final class MainView: BaseView {
     
     let settingButton = UIButton(type: .custom).then { button in
         button.setImage(Asset.Image.icSetting.image, for: .normal)
+        button.accessibilityIdentifier = "button_main_setting"
     }
     
     let calendar = FSCalendar().then { calendar in
@@ -71,6 +72,7 @@ final class MainView: BaseView {
         tableView.separatorStyle = .none
         tableView.register(DetailDiaryTVCell.self, forCellReuseIdentifier: DetailDiaryTVCell.id)
         tableView.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
+        tableView.accessibilityIdentifier = "tableView_main"
     }
     
     let emptyView = UIView()
@@ -78,6 +80,7 @@ final class MainView: BaseView {
     let floatingButton = FloatingButton().then { button in
         button.setButtonImage(Asset.Image.icPencil.image)
         button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
+        button.button.accessibilityIdentifier = "button_main_floating"
     }
     
     // MARK: - Functions

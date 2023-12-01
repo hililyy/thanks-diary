@@ -1,5 +1,5 @@
 //
-//  FloatingButtonCloseView.swift
+//  FloatingButtonOpendView.swift
 //  Thanks Diary
 //
 //  Created by 강조은 on 2023/05/26.
@@ -8,31 +8,34 @@
 import UIKit
 import SnapKit
 
-final class FloatingButtonCloseView: BaseView {
+final class FloatingButtonOpendView: BaseView {
     
     // MARK: - UI components
     
-    lazy var backgroundView = UIView().then { view in
+    var backgroundView = UIView().then { view in
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
     }
     
-    lazy var backgroundButton = UIButton(type: .custom).then { button in
+    var backgroundButton = UIButton(type: .custom).then { button in
         button.backgroundColor = .clear
     }
     
-    var plusButton = FloatingButton().then { button in
+    var closeButton = FloatingButton().then { button in
         button.setButtonImage(Asset.Image.icX.image)
         button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
+        button.button.accessibilityIdentifier = "button_main_floating_close"
     }
     
     var detailButton = FloatingButton().then { button in
         button.setButtonImage(ResourceManager.instance.getDetailWriteImage())
         button.setButtonBackgroundColor(.white)
+        button.button.accessibilityIdentifier = "button_main_floating_detail"
     }
     
     var simpleButton = FloatingButton().then { button in
         button.setButtonImage(ResourceManager.instance.getSimpleWriteImage())
         button.setButtonBackgroundColor(.white)
+        button.button.accessibilityIdentifier = "button_main_floating_simple"
     }
     
     var detailLabel = PaddingLabel().then { label in
@@ -81,7 +84,7 @@ final class FloatingButtonCloseView: BaseView {
     override func initSubviews() {
         addSubviews([backgroundView,
                      backgroundButton,
-                     plusButton,
+                     closeButton,
                      detailButton,
                      simpleButton,
                      detailLabel,
@@ -91,11 +94,11 @@ final class FloatingButtonCloseView: BaseView {
     
     override func initConstraints() {
         detailButton.snp.makeConstraints { make in
-            detailButtonCenterY = make.centerY.equalTo(plusButton.snp.centerY).constraint
+            detailButtonCenterY = make.centerY.equalTo(closeButton.snp.centerY).constraint
         }
 
         simpleButton.snp.makeConstraints { make in
-            simpleButtonCenterY = make.centerY.equalTo(plusButton.snp.centerY).constraint
+            simpleButtonCenterY = make.centerY.equalTo(closeButton.snp.centerY).constraint
         }
         
         backgroundView.snp.makeConstraints { make in
@@ -112,7 +115,7 @@ final class FloatingButtonCloseView: BaseView {
             make.bottom.equalTo(snp.bottom)
         }
         
-        plusButton.snp.makeConstraints { make in
+        closeButton.snp.makeConstraints { make in
             make.right.equalTo(safeAreaLayoutGuide.snp.right).offset(-40)
             make.bottom.equalTo(snp.bottom).offset(-40)
             make.width.equalTo(52)
@@ -120,13 +123,13 @@ final class FloatingButtonCloseView: BaseView {
         }
         
         detailButton.snp.makeConstraints { make in
-            make.centerX.equalTo(plusButton.snp.centerX)
+            make.centerX.equalTo(closeButton.snp.centerX)
             make.width.equalTo(52)
             make.height.equalTo(52)
         }
         
         simpleButton.snp.makeConstraints { make in
-            make.centerX.equalTo(plusButton.snp.centerX)
+            make.centerX.equalTo(closeButton.snp.centerX)
             make.width.equalTo(52)
             make.height.equalTo(52)
         }

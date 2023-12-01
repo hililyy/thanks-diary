@@ -30,6 +30,7 @@ final class DetailWriteView: BaseView {
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
+        button.accessibilityIdentifier = "button_complete_detail"
     }
     
     private lazy var buttonStackView = UIStackView().then { stackView in
@@ -73,6 +74,7 @@ final class DetailWriteView: BaseView {
         textView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        textView.accessibilityIdentifier = "textView_title_detail"
     }
     
     let contentsTextView = UITextView().then { textView in
@@ -84,6 +86,7 @@ final class DetailWriteView: BaseView {
         textView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         textView.isScrollEnabled = true
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        textView.accessibilityIdentifier = "textView_contents_detail"
     }
     
     // MARK: - Function

@@ -15,6 +15,7 @@ final class DetailDiaryTVCell: BaseTVCell, CellIdentifier {
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
+        label.accessibilityIdentifier = "label_cell_detail_title"
     }
     
     let borderView = UIView().then { view in
@@ -28,6 +29,7 @@ final class DetailDiaryTVCell: BaseTVCell, CellIdentifier {
     override func initUI() {
         selectionStyle = .none
         backgroundColor = .clear
+        accessibilityIdentifier = "DetailDiaryTVCell"
     }
     
     // MARK: - Constraint

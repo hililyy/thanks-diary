@@ -63,8 +63,8 @@
 		025EF06A2A459E2E00C930F2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0642A459E2D00C930F2 /* UIViewController.swift */; };
 		025EF06B2A459E2E00C930F2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0652A459E2E00C930F2 /* String.swift */; };
 		025EF06C2A459E2E00C930F2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0662A459E2E00C930F2 /* Date.swift */; };
-		025EF0732A459E4800C930F2 /* FloatingButtonCloseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF06F2A459E4700C930F2 /* FloatingButtonCloseView.swift */; };
-		025EF0742A459E4800C930F2 /* FloatingButtonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0702A459E4700C930F2 /* FloatingButtonVC.swift */; };
+		025EF0732A459E4800C930F2 /* FloatingButtonOpendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF06F2A459E4700C930F2 /* FloatingButtonOpendView.swift */; };
+		025EF0742A459E4800C930F2 /* FloatingButtonOpendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0702A459E4700C930F2 /* FloatingButtonOpendVC.swift */; };
 		025EF0752A459E4800C930F2 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0712A459E4700C930F2 /* FloatingButton.swift */; };
 		025EF0762A459E4800C930F2 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0722A459E4700C930F2 /* PaddingLabel.swift */; };
 		025EF0812A459EEF00C930F2 /* FirstStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF07A2A459EEF00C930F2 /* FirstStartVC.swift */; };
@@ -224,8 +224,8 @@
 		025EF0642A459E2D00C930F2 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		025EF0652A459E2E00C930F2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		025EF0662A459E2E00C930F2 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		025EF06F2A459E4700C930F2 /* FloatingButtonCloseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButtonCloseView.swift; sourceTree = "<group>"; };
-		025EF0702A459E4700C930F2 /* FloatingButtonVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButtonVC.swift; sourceTree = "<group>"; };
+		025EF06F2A459E4700C930F2 /* FloatingButtonOpendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButtonOpendView.swift; sourceTree = "<group>"; };
+		025EF0702A459E4700C930F2 /* FloatingButtonOpendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButtonOpendVC.swift; sourceTree = "<group>"; };
 		025EF0712A459E4700C930F2 /* FloatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		025EF0722A459E4700C930F2 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		025EF07A2A459EEF00C930F2 /* FirstStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartVC.swift; sourceTree = "<group>"; };
@@ -368,6 +368,30 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		02174ACA2B19862F00F81DE0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				025EF06F2A459E4700C930F2 /* FloatingButtonOpendView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02174ACB2B19863300F81DE0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				025EF0702A459E4700C930F2 /* FloatingButtonOpendVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		02174ACC2B19863700F81DE0 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				025EF0712A459E4700C930F2 /* FloatingButton.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		0229553E2A669265004BF800 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,9 +508,9 @@
 		025EF06E2A459E4700C930F2 /* FloatingButton */ = {
 			isa = PBXGroup;
 			children = (
-				025EF06F2A459E4700C930F2 /* FloatingButtonCloseView.swift */,
-				025EF0702A459E4700C930F2 /* FloatingButtonVC.swift */,
-				025EF0712A459E4700C930F2 /* FloatingButton.swift */,
+				02174ACC2B19863700F81DE0 /* Component */,
+				02174ACB2B19863300F81DE0 /* Controller */,
+				02174ACA2B19862F00F81DE0 /* View */,
 			);
 			path = FloatingButton;
 			sourceTree = "<group>";
@@ -1087,7 +1111,7 @@
 				2A7241CD28B26AAD0040ADE9 /* DetailWriteVC.swift in Sources */,
 				026E9C232A4AAAD400568CFD /* AlertConfirmVC.swift in Sources */,
 				020980AC2AC11F3E005B08DF /* Fonts.swift in Sources */,
-				025EF0732A459E4800C930F2 /* FloatingButtonCloseView.swift in Sources */,
+				025EF0732A459E4800C930F2 /* FloatingButtonOpendView.swift in Sources */,
 				025EF0842A459EEF00C930F2 /* SecondStartVC.swift in Sources */,
 				025EF06B2A459E2E00C930F2 /* String.swift in Sources */,
 				027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */,
@@ -1139,7 +1163,7 @@
 				2A9F350E28AE1C0D006CCF7C /* MainVC.swift in Sources */,
 				2A81235428C5277D000A250E /* SimpleWriteVC.swift in Sources */,
 				025E04432AA7107200C01D24 /* SettingSuggestWriteView.swift in Sources */,
-				025EF0742A459E4800C930F2 /* FloatingButtonVC.swift in Sources */,
+				025EF0742A459E4800C930F2 /* FloatingButtonOpendVC.swift in Sources */,
 				027C60DC2A8DBF98008F607F /* SettingThemeView.swift in Sources */,
 				025EF0672A459E2E00C930F2 /* UITextField.swift in Sources */,
 				022955572A6A6177004BF800 /* PageNC.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  FloatingButton.swift
+//  FloatingButtonOpendVC.swift
 //  Thanks Diary
 //
 //  Created by 강조은 on 2023/05/26.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FloatingButtonVC: BaseVC<FloatingButtonCloseView> {
+final class FloatingButtonOpendVC: BaseVC<FloatingButtonOpendView> {
     
     // MARK: - Life Cycle
     
@@ -55,7 +55,7 @@ final class FloatingButtonVC: BaseVC<FloatingButtonCloseView> {
             self.updateCloseConstraints()
         }
         
-        attachedView.plusButton.button.addTarget { _ in
+        attachedView.closeButton.button.addTarget { _ in
             self.updateCloseConstraints()
         }
     }

@@ -20,6 +20,7 @@ final class SimpleDiaryTVCell: BaseTVCell, CellIdentifier {
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
+        label.accessibilityIdentifier = "label_cell_simple_title"
     }
     
     // MARK: - UI, Target
@@ -27,6 +28,7 @@ final class SimpleDiaryTVCell: BaseTVCell, CellIdentifier {
     override func initUI() {
         selectionStyle = .none
         backgroundColor = .clear
+        accessibilityIdentifier = "SimpleDiaryTVCell"
     }
     
     // MARK: - Constraint

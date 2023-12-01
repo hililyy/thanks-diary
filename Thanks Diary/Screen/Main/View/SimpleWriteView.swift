@@ -41,6 +41,7 @@ final class SimpleWriteView: BaseView {
         textView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
         textView.becomeFirstResponder()
+        textView.accessibilityIdentifier = "textView_contents_simple"
     }
     
     private let textLengthLabel = UILabel().then { label in
@@ -57,6 +58,7 @@ final class SimpleWriteView: BaseView {
         button.titleLabel?.font =  ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
+        button.accessibilityIdentifier = "button_complete_simple"
     }
     
     let cancelButton = UIButton(type: .custom).then { button in

@@ -242,7 +242,7 @@ extension MainVC {
 
 extension MainVC {
     private func pushFloatingButtonVC() {
-        let vc = FloatingButtonVC()
+        let vc = FloatingButtonOpendVC()
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         

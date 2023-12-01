@@ -16,32 +16,151 @@ final class ThanksDiaryUITests: XCTestCase {
         app.launch() // 앱 실행
     }
     
+    override func tearDown() {
+    }
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+ 
+    func test_detail_create() throws {
+        sleep(3) // 런치 화면 로티 지속 시간
+        
+        let writeButton = app.buttons["button_main_floating"]
+        XCTAssertTrue(writeButton.exists)
+        
+        writeButton.tap()
+        
+        let writeDatailButton = app.buttons["button_main_floating_detail"]
+        XCTAssertTrue(writeDatailButton.exists)
+        
+        writeDatailButton.tap()
+        
+        let titleTextView = app.textViews["textView_title_detail"]
+        XCTAssertTrue(titleTextView.exists)
+        
+        titleTextView.tap() // TextView 탭
+        titleTextView.typeText("자세히 작성하기 제목") // 키보드 텍스트 입력
+        
+        let contentsTextView = app.textViews["textView_contents_detail"]
+        XCTAssertTrue(contentsTextView.exists)
+        
+        contentsTextView.tap() // TextView 탭
+        contentsTextView.typeText("자세히 작성하기 내용\n") // 키보드 텍스트 입력
+        
+        let completeButton = app.buttons["button_complete_detail"]
+        XCTAssertTrue(completeButton.exists)
+        
+        completeButton.tap()
+    }
+    
+    func test_simple_create() throws {
+        sleep(3) // 런치 화면 로티 지속 시간
+        
+        let writeButton = app.buttons["button_main_floating"]
+        XCTAssertTrue(writeButton.exists)
+        
+        writeButton.tap()
+        
+        let writeDatailButton = app.buttons["button_main_floating_simple"]
+        XCTAssertTrue(writeDatailButton.exists)
+        
+        writeDatailButton.tap()
+        
+        let contentsTextView = app.textViews["textView_contents_simple"]
+        XCTAssertTrue(contentsTextView.exists)
+        
+        contentsTextView.tap() // TextView 탭
+        contentsTextView.typeText("간단히 작성하기 내용\n") // 키보드 텍스트 입력
+        
+        let completeButton = app.buttons["button_complete_simple"]
+        XCTAssertTrue(completeButton.exists)
+        
+        completeButton.tap()
+    }
+    
+    func test_detail_read() throws {
+        sleep(3) // 런치 화면 로티 지속 시간
+        
+        let tableView = app.tables["tableView_main"]
 
-    func testExample() throws {
-        sleep(5)
+        var detailCell: XCUIElement?
+        var currentIndex = 0
+
+        var mainCellTitleText = ""
+        while detailCell == nil && currentIndex < tableView.cells.count {
+            let cell = tableView.cells.element(boundBy: currentIndex)
+            
+            if cell.identifier == "DetailDiaryTVCell" {
+                detailCell = cell
+            } else {
+                currentIndex += 1
+            }
+        }
+
+        if let detailCell {
+            mainCellTitleText = detailCell.staticTexts["label_cell_detail_title"].label
+            
+            detailCell.tap()
+        } else {
+            print("자세한 일기 셀이 없음")
+        }
         
-        let button = app.buttons.firstMatch
-        XCTAssertTrue(button.exists)
+        let detailTitleText = app.textViews["textView_title_detail"].value as? String ?? ""
         
-        button.tap()
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        if mainCellTitleText == detailTitleText {
+            print("성공")
+        } else {
+            print("실패")
+            print("mainText: \(mainCellTitleText) detailText: \(detailTitleText)")
+        }
+    }
+    
+    func test_simple_read() throws {
+        sleep(3) // 런치 화면 로티 지속 시간
+        
+        let tableView = app.tables["tableView_main"]
+
+        var simpleCell: XCUIElement?
+        var currentIndex = 0
+
+        var mainCellTitleText = ""
+        while simpleCell == nil && currentIndex < tableView.cells.count {
+            let cell = tableView.cells.element(boundBy: currentIndex)
+            
+            if cell.identifier == "SimpleDiaryTVCell" {
+                simpleCell = cell
+            } else {
+                currentIndex += 1
+            }
+        }
+
+        if let simpleCell {
+            mainCellTitleText = simpleCell.staticTexts["label_cell_simple_title"].label
+            
+            simpleCell.tap()
+        } else {
+            print("간단한 일기 셀이 없음")
+        }
+        
+        let detailTitleText = app.textViews["textView_contents_simple"].value as? String ?? ""
+        
+        if mainCellTitleText == detailTitleText {
+            print("성공")
+        } else {
+            print("실패")
+            print("mainText: \(mainCellTitleText) detailText: \(detailTitleText)")
+        }
     }
 
     func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
+        if #available(macOS 10.15,
+                      iOS 13.0,
+                      tvOS 13.0,
+                      watchOS 7.0, *) {
             measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
