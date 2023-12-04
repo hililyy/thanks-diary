@@ -37,7 +37,7 @@ final class SettingPWView: BaseView {
         let stackView = UIStackView()
         stackView.spacing = 45
         stackView.axis = .horizontal
-        stackView.distribution = .fill
+        stackView.distribution = .fillEqually
         stackView.alignment = .fill
         return stackView
     }()
@@ -45,17 +45,15 @@ final class SettingPWView: BaseView {
     private let dotViews: [UIView] = (0..<4).map { _ in
         UIView().then {
             $0.backgroundColor = Asset.Color.gray7.color
-            $0.layer.cornerRadius = 10
-            $0.snp.makeConstraints { make in
-                make.width.equalTo(20)
-                make.height.equalTo(20)
-            }
+            $0.layer.cornerRadius = 8
         }
     }
     
     private lazy var passwordStackView = UIStackView().then { stackView in
         stackView.axis = .vertical
         stackView.spacing = 25
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
     }
     
     private lazy var passwordRowStackViews: [UIStackView] = {
@@ -63,6 +61,8 @@ final class SettingPWView: BaseView {
             let row = UIStackView()
             row.axis = .horizontal
             row.spacing = 15
+            row.distribution = .fillEqually
+            row.alignment = .fill
             return row
         }
     }()
@@ -76,10 +76,7 @@ final class SettingPWView: BaseView {
     
     let deleteButton = PasswordNumberButton(number: -1)
 
-    private let emptyView = UIView(frame: CGRect(x: 0,
-                                                 y: 0,
-                                                 width: 80,
-                                                 height: 80))
+    private let emptyView = UIView()
     
     // MARK: - Functions
     
@@ -170,21 +167,36 @@ final class SettingPWView: BaseView {
         titleLabel.snp.makeConstraints { make in
             make.bottom.equalTo(contentsLabel.snp.top).offset(-5)
             make.centerX.equalTo(snp.centerX)
+            make.height.equalTo(30).priority(999)
         }
         
         contentsLabel.snp.makeConstraints { make in
             make.bottom.equalTo(dotStackView.snp.top).offset(-30)
             make.centerX.equalTo(snp.centerX)
+            make.height.equalTo(30).priority(999)
         }
         
         dotStackView.snp.makeConstraints { make in
             make.bottom.equalTo(passwordStackView.snp.top).offset(-50)
+            make.height.equalTo(16)
             make.centerX.equalToSuperview()
         }
         
         passwordStackView.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-20)
             make.centerX.equalTo(snp.centerX)
+        }
+        
+        for dotView in dotViews {
+            dotView.snp.makeConstraints { make in
+                make.width.equalTo(dotView.snp.height)
+            }
+        }
+        
+        for button in passwordNumberButtons {
+            button.snp.makeConstraints { make in
+                make.width.equalTo(button.snp.height)
+            }
         }
     }
 }

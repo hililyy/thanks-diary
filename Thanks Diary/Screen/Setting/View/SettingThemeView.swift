@@ -126,6 +126,7 @@ final class SettingThemeView: BaseView {
             make.top.equalTo(lineView2.snp.bottom).offset(20)
             make.left.equalTo(contentView.snp.left).offset(35)
             make.right.equalTo(contentView.snp.right).offset(-35)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-20)
         }
     }
 }
