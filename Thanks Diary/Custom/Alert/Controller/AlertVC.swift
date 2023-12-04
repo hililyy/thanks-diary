@@ -21,12 +21,12 @@ final class AlertVC: BaseVC<AlertView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTarget()
+        initTarget()
     }
     
     // MARK: - Function
     
-    private func setTarget() {
+    private func initTarget() {
         attachedView.backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] _ in

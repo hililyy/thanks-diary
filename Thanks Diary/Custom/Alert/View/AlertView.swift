@@ -63,7 +63,9 @@ final class AlertView: BaseView {
     
     // MARK: - Function
     
-    func setText(message: String, leftButtonText: String, rightButtonText: String) {
+    func setText(message: String, 
+                 leftButtonText: String,
+                 rightButtonText: String) {
         messageLabel.text = message
         leftButton.setTitle(leftButtonText, for: .normal)
         rightButton.setTitle(rightButtonText, for: .normal)

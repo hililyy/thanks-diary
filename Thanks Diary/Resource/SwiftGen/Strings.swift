@@ -20,6 +20,8 @@ internal enum L10n {
   /// 
   /// 감사합니다!
   internal static let alertErrorMessage = L10n.tr("Localizable", "alert_error_message", fallback: "* 오류가 발생했습니다 *\n\n\n오류내용을 joun406@gmail.com\n으로 보내주시면 빠르게 수정하겠습니다.\n\n감사합니다!")
+  /// 변경 내용이 저장되지 않았습니다. 수정사항을 저장하지 않고 뒤로 가시겠습니까?
+  internal static let alertWarningNotSave = L10n.tr("Localizable", "alert_warning_not_save", fallback: "변경 내용이 저장되지 않았습니다. 수정사항을 저장하지 않고 뒤로 가시겠습니까?")
   /// 이미 존재하는 이메일입니다.
   /// 다른 이메일로 변경해 주세요.
   internal static let alreadySignup = L10n.tr("Localizable", "already_signup", fallback: "이미 존재하는 이메일입니다.\n다른 이메일로 변경해 주세요.")
@@ -29,6 +31,8 @@ internal enum L10n {
   internal static let appSetting1 = L10n.tr("Localizable", "app_setting_1", fallback: "알림 설정 권한이 거부되었습니다.\n\n설정으로 이동하여 알림을 허용해주세요.")
   /// 설정으로 이동
   internal static let appSetting2 = L10n.tr("Localizable", "app_setting_2", fallback: "설정으로 이동")
+  /// 뒤로가기
+  internal static let back = L10n.tr("Localizable", "back", fallback: "뒤로가기")
   /// 취소
   internal static let cancel = L10n.tr("Localizable", "cancel", fallback: "취소")
   /// 닫기
@@ -77,6 +81,8 @@ internal enum L10n {
   internal static let modeSet = L10n.tr("Localizable", "mode_set", fallback: "모드 설정")
   /// 다음
   internal static let next = L10n.tr("Localizable", "next", fallback: "다음")
+  /// 아니오
+  internal static let no = L10n.tr("Localizable", "no", fallback: "아니오")
   /// 앱 버전 정보를 찾을 수 없습니다.
   internal static let nonExistentAppinfo = L10n.tr("Localizable", "non_existent_appinfo", fallback: "앱 버전 정보를 찾을 수 없습니다.")
   /// 로그인한 이메일이 없습니다.
@@ -173,6 +179,8 @@ internal enum L10n {
   internal static let title = L10n.tr("Localizable", "title", fallback: "제목")
   /// 제목과 내용을 모두 입력해 주세요.
   internal static let toast = L10n.tr("Localizable", "toast", fallback: "제목과 내용을 모두 입력해 주세요.")
+  /// 일기가 저장되었습니다
+  internal static let toastCompleteDiary = L10n.tr("Localizable", "toast_complete_diary", fallback: "일기가 저장되었습니다")
   /// 오늘
   internal static let today = L10n.tr("Localizable", "today", fallback: "오늘")
   /// 감사일기는 매일매일 작성하는게 중요해요!

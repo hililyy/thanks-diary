@@ -8,6 +8,8 @@
 
 "ok" = "확인";
 "cancel" = "취소";
+"no" = "아니오";
+"back" = "뒤로가기";
 "delete" = "삭제";
 "today" = "오늘";
 "complete" = "완료";
@@ -30,6 +32,7 @@
 "simple" = "간단하게";
 "alert_delete" = "글을 삭제 하시겠습니까?";
 "alert_error_message" = "* 오류가 발생했습니다 *\n\n\n오류내용을 joun406@gmail.com\n으로 보내주시면 빠르게 수정하겠습니다.\n\n감사합니다!";
+"alert_warning_not_save" = "변경 내용이 저장되지 않았습니다. 수정사항을 저장하지 않고 뒤로 가시겠습니까?";
 "setting" = "설정";
 "password" = "비밀번호";
 "password_contents_1" = "설정할 비밀번호를 입력해 주세요.";
@@ -38,6 +41,7 @@
 "password_retry" = "비밀번호를 다시 한번 입력해 주세요";
 "setting_alarm" = "알림 설정";
 "toast" = "제목과 내용을 모두 입력해 주세요.";
+"toast_complete_diary" = "일기가 저장되었습니다";
 "input_contents" = "내용을 입력해 주세요.";
 "push_title" = "💙감사일기를 작성할 시간이에요💙";
 "push_contents" = "오늘의 일기를 작성해볼까요?💌";

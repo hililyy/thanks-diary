@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DiaryModel {
+struct DiaryModel: Equatable {
     var type: DiaryType
     var title: String
     var contents: String

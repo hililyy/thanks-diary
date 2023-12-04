@@ -99,7 +99,7 @@ class BaseVC<T: BaseView>: UIViewController, UIGestureRecognizerDelegate, MFMail
         var toastLabelY: CGFloat = 100
         
         if positionType != .top {
-            toastLabelY = view.frame.size.height - toastLabelHeight - 50 - max(keyboardHeight, 0)
+            toastLabelY = view.frame.size.height - toastLabelHeight - 100 - max(keyboardHeight, 0)
         }
         
         let toastLabel = UILabel(frame: CGRect(x: toastLabelX,
@@ -107,7 +107,7 @@ class BaseVC<T: BaseView>: UIViewController, UIGestureRecognizerDelegate, MFMail
                                                width: toastLabelWidth,
                                                height: toastLabelHeight))
         toastLabel.backgroundColor = ResourceManager.instance.getMainDeepColor()
-        toastLabel.textColor = .white
+        toastLabel.textColor = Asset.Color.gray6.color
         toastLabel.font = ResourceManager.instance.getFont(size: 15)
         toastLabel.textAlignment = .center
         toastLabel.text = message
@@ -158,5 +158,27 @@ class BaseVC<T: BaseView>: UIViewController, UIGestureRecognizerDelegate, MFMail
             compseVC.setToRecipients([Constant.EMAIL])
             self.present(compseVC, animated: true, completion: nil)
         }
+    }
+    
+    func showAlert(message: String, 
+                   leftButtonText: String,
+                   rightButtonText: String,
+                   leftButtonHandler: @escaping () -> Void,
+                   rightButtonHandler: @escaping () -> Void) {
+        let vc = AlertVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.attachedView.setText(message: message,
+                                leftButtonText: leftButtonText,
+                                rightButtonText: rightButtonText)
+        vc.leftButtonTapHandler = {
+            leftButtonHandler()
+        }
+        
+        vc.rightButtonTapHandler = {
+            rightButtonHandler()
+        }
+        
+        present(vc, animated: true)
     }
 }

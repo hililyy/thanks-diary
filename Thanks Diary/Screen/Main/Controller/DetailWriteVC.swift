@@ -32,8 +32,9 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     
     // MARK: - Function
     
-    private func complete() {
+    private func complete(handler: @escaping () -> Void) {
         let newData = getWriteData()
+        
         Task {
             if let beforeData {
                 try await update(safeBeforeData: beforeData,
@@ -42,6 +43,8 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
             } else {
                 try await write(newData)
             }
+            
+            handler()
         }
     }
     
@@ -75,6 +78,27 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
             
         } catch {
             showErrorPopup()
+        }
+    }
+    
+    private func save(isBack: Bool) {
+        if attachedView.isEmptyTextField() {
+            showFillTextFieldToastAndDisEnableCompleteButton()
+        } else {
+            complete { [weak self] in
+                guard let self else { return }
+                
+                if isBack {
+                    self.attachedView.removeNotification()
+                    self.popVC()
+                } else {
+                    attachedView.dropKeyboard()
+                    toast(message: L10n.toastCompleteDiary, 
+                          withDuration: 0.5,
+                          delay: 1.5,
+                          positionType: .bottom) {}
+                }
+            }
         }
     }
     
@@ -126,7 +150,6 @@ extension DetailWriteVC {
         initBackButtonTarget()
         initCompleteButtonTarget()
         initDeleteButtonTarget()
-        initCompleteHandler()
         initKeyBoardWillShowHandler()
         initKeyBoardWillHideHandler()
     }
@@ -137,8 +160,12 @@ extension DetailWriteVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                attachedView.removeNotification()
-                popVC()
+                if attachedView.isEmptyTextField() {
+                    showFillTextFieldToastAndDisEnableCompleteButton()
+                    attachedView.focusTitleTextViewOrContentsTextView()
+                } else {
+                    save(isBack: true)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -153,6 +180,7 @@ extension DetailWriteVC {
                     showFillTextFieldToastAndDisEnableCompleteButton()
                     attachedView.focusTitleTextViewOrContentsTextView()
                 } else {
+                    save(isBack: false)
                     attachedView.dropKeyboard()
                 }
             })
@@ -168,18 +196,6 @@ extension DetailWriteVC {
                 presentDeleteAlertVC()
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func initCompleteHandler() {
-        attachedView.completeHandler = { [weak self] in
-            guard let self else { return }
-            
-            if attachedView.isEmptyTextField() {
-                showFillTextFieldToastAndDisEnableCompleteButton()
-            } else {
-                complete()
-            }
-        }
     }
     
     private func initKeyBoardWillShowHandler() {

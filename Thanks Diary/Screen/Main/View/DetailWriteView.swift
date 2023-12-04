@@ -169,14 +169,12 @@ final class DetailWriteView: BaseView {
         keyBoardWillHideHandler()
         buttonStackView.removeAllSubViews()
         buttonStackView.addArrangedSubview(deleteButton)
-        completeHandler()
         
         let contentInset = UIEdgeInsets.zero
         contentScrollView.contentInset = contentInset
         contentScrollView.scrollIndicatorInsets = contentInset
     }
     
-    var completeHandler: () -> Void = {}
     var keyBoardWillShowHandler: () -> Void = {}
     var keyBoardWillHideHandler: () -> Void = {}
     
