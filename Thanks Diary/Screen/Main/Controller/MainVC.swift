@@ -182,6 +182,7 @@ extension MainVC {
         settingTableViewEmptyImageOrData()
         initTableViewCellForRow()
         initTableViewDidSelected()
+        initTableWillDisplay()
     }
     
     private func settingTableViewEmptyImageOrData() {
@@ -235,6 +236,28 @@ extension MainVC {
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func initTableWillDisplay() {
+        attachedView.diaryTableView.rx.willDisplayCell
+            .subscribe(onNext: { (cell, indexPath) in
+                self.animationMoveUpWithFadeIn(cell: cell, indexPath: indexPath.row)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func animationMoveUpWithFadeIn(cell: UITableViewCell, indexPath: Int) {
+        cell.transform = CGAffineTransform(translationX: 0, y: cell.frame.height * 0.3)
+        cell.alpha = 0
+        
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 0.03 * Double(indexPath),
+            options: [.curveEaseInOut],
+            animations: {
+                cell.transform = CGAffineTransform(translationX: 0, y: 0)
+                cell.alpha = 1
+        })
     }
 }
 

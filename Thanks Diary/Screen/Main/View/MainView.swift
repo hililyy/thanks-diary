@@ -96,6 +96,7 @@ final class MainView: BaseView {
     }
     
     func setHiddenForEmptyView(isHidden: Bool) {
+        animationFadeIn(view: emptyView)
         emptyView.isHidden = isHidden
         emptyView.frame.size.height = isHidden ? 0 : 300
     }
@@ -113,6 +114,17 @@ final class MainView: BaseView {
         todayButton.backgroundColor = ResourceManager.instance.getMainColor()
         calendar.appearance.todayColor = ResourceManager.instance.getMainColor()
         floatingButton.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
+    }
+    
+    private func animationFadeIn(view: UIView) {
+        view.alpha = 0
+        
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.03,
+            animations: {
+                view.alpha = 1
+            })
     }
     
     // MARK: - UI, Target
