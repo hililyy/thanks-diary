@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 import RxSwift
 import RxCocoa
 
@@ -23,7 +24,7 @@ final class SimpleWriteView: BaseView {
         return button
     }()
     
-    private let containerView = UIView().then { view in
+    let containerView = UIView().then { view in
         view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
     }
@@ -71,6 +72,9 @@ final class SimpleWriteView: BaseView {
         button.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
     }
     
+    var maxCount: Int = 0
+    private var containerViewBottomConstraint: Constraint?
+    
     // MARK: - Functions
     
     func setContentsTextView(text: String) {
@@ -97,19 +101,36 @@ final class SimpleWriteView: BaseView {
         return contentsTextView.text.isEmpty
     }
     
-    // MARK: - UI, Target
-    
-    var maxCount: Int = 0
-    
     func setMaxCount(count: Int) {
         maxCount = count
     }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size {
+            updateContentsViewBottomConstraint(constant: -(keyboardSize.height))
+        }
+    }
+    
+    func updateContentsViewBottomConstraint(constant: CGFloat) {
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 0.00,
+            options: [.curveEaseInOut],
+            animations: {
+                self.containerViewBottomConstraint?.update(offset: constant)
+                self.layoutIfNeeded()
+        })
+    }
+    
+    // MARK: - UI, Target
     
     override func initTarget() {
         contentsTextView.rx.text
             .map { "\($0?.count ?? 0)/\(self.maxCount)" }
             .bind(to: textLengthLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     // MARK: - Constraint
@@ -144,7 +165,7 @@ final class SimpleWriteView: BaseView {
         containerView.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(15)
             make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY)
+            containerViewBottomConstraint = make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-200).constraint
             make.height.equalTo(220)
         }
         
