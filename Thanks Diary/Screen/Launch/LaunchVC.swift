@@ -65,17 +65,35 @@ final class LaunchVC: UIViewController {
                 return
             }
             
-            AuthManager.instance.executeBioAuth { [weak self] result in
-                guard let self else { return }
-                
-                if result {
-                    registMainToRoot()
-                    return
-                } else {
-                    showErrorPopup()
-                }
+            self.bioAuth()
+        }
+    }
+    
+    private func bioAuth() {
+        AuthManager.instance.executeBioAuth { [weak self] result in
+            guard let self else { return }
+            
+            if result {
+                registMainToRoot()
+                return
+            } else {
+                self.showAlert()
             }
         }
+    }
+    
+    private func showAlert() {
+        let vc = AlertVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.attachedView.setText(message: L10n.alertBioauth,
+                                leftButtonText: L10n.no,
+                                rightButtonText: L10n.retry)
+        vc.rightButtonTapHandler = {
+            self.bioAuth()
+        }
+        
+        present(vc, animated: true)
     }
     
     private func presentSettingPWVC() {

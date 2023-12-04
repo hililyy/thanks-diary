@@ -106,6 +106,8 @@ extension SettingAppVC {
     
     private func pushOpenSourceLicenseVC() {
         let acknowList = AcknowListViewController(fileNamed: "Package")
-        navigationController?.pushViewController(acknowList, animated: true)
+        acknowList.modalTransitionStyle = .coverVertical
+        acknowList.modalPresentationStyle = .popover
+        present(acknowList, animated: true)
     }
 }

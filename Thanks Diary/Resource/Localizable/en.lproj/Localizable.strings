@@ -21,6 +21,7 @@
 "write_complete" = "작성 완료";
 "next" = "다음";
 "start" = "시작하기";
+"retry" = "다시시도";
 "start_page1_message1" = "단순히 일기를 작성하는건\n\n부정적인 감정에 집중하기 쉬워요.\n\n감사일기를 작성하면\n\n긍정적인 감정에 집중할 수 있어요!";
 "start_page2_message1" = "감사일기 작성 방법";
 "start_page2_message2" = "긍정문으로 작성해요";
@@ -64,6 +65,9 @@
 "setting_name11" = "앱 정보";
 "setting_name12" = "비밀번호 설정";
 "setting_name13" = "생체인증";
+
+"alert_bioauth" = "생체인증을 다시 시도하시겠습니까?";
+"alert_password" = "비밀번호 입력";
 
 "darkmode" = "다크 모드";
 "lightmode" = "라이트 모드";

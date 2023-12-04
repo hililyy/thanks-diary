@@ -10,6 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// 생체인증을 다시 시도하시겠습니까?
+  internal static let alertBioauth = L10n.tr("Localizable", "alert_bioauth", fallback: "생체인증을 다시 시도하시겠습니까?")
   /// 글을 삭제 하시겠습니까?
   internal static let alertDelete = L10n.tr("Localizable", "alert_delete", fallback: "글을 삭제 하시겠습니까?")
   /// * 오류가 발생했습니다 *
@@ -20,6 +22,8 @@ internal enum L10n {
   /// 
   /// 감사합니다!
   internal static let alertErrorMessage = L10n.tr("Localizable", "alert_error_message", fallback: "* 오류가 발생했습니다 *\n\n\n오류내용을 joun406@gmail.com\n으로 보내주시면 빠르게 수정하겠습니다.\n\n감사합니다!")
+  /// 비밀번호 입력
+  internal static let alertPassword = L10n.tr("Localizable", "alert_password", fallback: "비밀번호 입력")
   /// 변경 내용이 저장되지 않았습니다. 수정사항을 저장하지 않고 뒤로 가시겠습니까?
   internal static let alertWarningNotSave = L10n.tr("Localizable", "alert_warning_not_save", fallback: "변경 내용이 저장되지 않았습니다. 수정사항을 저장하지 않고 뒤로 가시겠습니까?")
   /// 이미 존재하는 이메일입니다.
@@ -116,6 +120,8 @@ internal enum L10n {
   internal static let pushTitle = L10n.tr("Localizable", "push_title", fallback: "💙감사일기를 작성할 시간이에요💙")
   /// 테마적용을 위해 앱을 종료해주세요.
   internal static let restartApp = L10n.tr("Localizable", "restart_app", fallback: "테마적용을 위해 앱을 종료해주세요.")
+  /// 다시시도
+  internal static let retry = L10n.tr("Localizable", "retry", fallback: "다시시도")
   /// 설정
   internal static let setting = L10n.tr("Localizable", "setting", fallback: "설정")
   /// 알림 설정
