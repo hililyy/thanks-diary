@@ -12,18 +12,33 @@ final class LaunchVC: UIViewController {
     // MARK: - Property
     
     @IBOutlet weak var lottieView: UIView!
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initUI()
         initLottie()
         initPasswordIfEmpty()
         initLaunch()
     }
     
     // MARK: - Function
+    // TODO: 모드에 따른 컬러 미 적용으로 하드코딩 -> 추후 해결책 찾아서 제거
+    private func initUI() {
+        if UserDefaultManager.instance.themeMode == ThemeMode.light.rawValue {
+            view.backgroundColor = .white
+            label1.textColor = .black
+            label2.textColor = .black
+        } else {
+            view.backgroundColor = Asset.Color.gray6.color
+            label1.textColor = .white
+            label2.textColor = .white
+        }
+    }
     
     private func initLottie() {
         let goLottie = LottieManager.LottieInfo(vc: self,

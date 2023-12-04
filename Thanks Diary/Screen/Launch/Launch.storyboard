@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kMz-6i-tLS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kMz-6i-tLS">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -74,7 +74,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BiD-sU-4WR"/>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BiD-sU-4WR" firstAttribute="bottom" secondItem="bTF-L5-8gt" secondAttribute="bottom" id="9h8-di-74a"/>
                             <constraint firstItem="bTF-L5-8gt" firstAttribute="top" secondItem="BiD-sU-4WR" secondAttribute="top" id="LUa-CZ-QRZ"/>
@@ -84,6 +84,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="aNw-YW-JtA"/>
                     <connections>
+                        <outlet property="label1" destination="PcK-7x-ycs" id="Cga-s5-ceR"/>
+                        <outlet property="label2" destination="SWJ-to-td1" id="IMQ-Ec-gqM"/>
                         <outlet property="lottieView" destination="FO2-GS-DGL" id="7v1-Ym-ydQ"/>
                     </connections>
                 </viewController>
@@ -95,9 +97,6 @@
     <resources>
         <namedColor name="blackColor">
             <color red="0.19599999487400055" green="0.19599999487400055" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="white">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
