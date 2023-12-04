@@ -22,6 +22,15 @@ extension UIViewController {
         navigationController?.popViewController(animated: isAnimated)
     }
     
+    func popVC(animated: Bool = true,
+               completion: @escaping () -> Void) {
+        
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        navigationController?.popViewController(animated: animated)
+        CATransaction.commit()
+    }
+    
     func dismissVC(isAnimated: Bool = true, completion: (() -> Void)? = nil) {
         dismiss(animated: isAnimated) {
             completion?()
