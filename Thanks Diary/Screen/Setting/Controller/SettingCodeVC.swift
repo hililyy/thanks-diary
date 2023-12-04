@@ -100,7 +100,16 @@ extension SettingCodeVC: UITableViewDelegate, UITableViewDataSource {
             if result {
                 UserDefaultManager.instance.isBiometricsAuth = true
             } else {
-                showErrorPopup()
+                UserDefaultManager.instance.isBiometricsAuth = false
+                showAlert(message: L10n.alertBioauth,
+                          leftButtonText: L10n.no,
+                          rightButtonText: L10n.retry,
+                          leftButtonHandler: {
+                    self.attachedView.tableView.reloadData()
+                },
+                          rightButtonHandler: {
+                    self.bioAuth()
+                })
             }
         }
     }
