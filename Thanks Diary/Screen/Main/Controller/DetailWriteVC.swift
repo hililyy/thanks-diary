@@ -82,22 +82,18 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     }
     
     private func save(isBack: Bool) {
-        if attachedView.isEmptyTextField() {
-            showFillTextFieldToastAndDisEnableCompleteButton()
-        } else {
-            complete { [weak self] in
-                guard let self else { return }
-                
-                if isBack {
-                    self.attachedView.removeNotification()
-                    self.popVC()
-                } else {
-                    attachedView.dropKeyboard()
-                    toast(message: L10n.toastCompleteDiary, 
-                          withDuration: 0.5,
-                          delay: 1.5,
-                          positionType: .bottom) {}
-                }
+        complete { [weak self] in
+            guard let self else { return }
+            
+            if isBack {
+                attachedView.removeNotification()
+                popVC()
+            } else {
+                attachedView.dropKeyboard()
+                toast(message: L10n.toastCompleteDiary,
+                      withDuration: 0.5,
+                      delay: 1.5,
+                      positionType: .bottom) {}
             }
         }
     }
@@ -160,10 +156,29 @@ extension DetailWriteVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                if attachedView.isEmptyTextField() {
+                let tfType = attachedView.getEmptyTextFieldType()
+                
+                switch tfType {
+                case .allEmpty:
+                    
+                    guard let beforeData else {
+                        attachedView.removeNotification()
+                        popVC()
+                        
+                        return
+                    }
+                    
+                    Task {
+                        try await self.delete()
+                        self.attachedView.removeNotification()
+                        self.popVC()
+                    }
+                    
+                case .eitherEmpty:
                     showFillTextFieldToastAndDisEnableCompleteButton()
                     attachedView.focusTitleTextViewOrContentsTextView()
-                } else {
+                    
+                case .notAllEmpty:
                     save(isBack: true)
                 }
             })
@@ -176,7 +191,9 @@ extension DetailWriteVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                if attachedView.isEmptyTextField() {
+                let tfType = attachedView.getEmptyTextFieldType()
+                
+                if tfType == .eitherEmpty {
                     showFillTextFieldToastAndDisEnableCompleteButton()
                     attachedView.focusTitleTextViewOrContentsTextView()
                 } else {

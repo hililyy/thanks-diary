@@ -99,11 +99,17 @@ final class DetailWriteView: BaseView {
         }
     }
     
-    func isEmptyTextField() -> Bool {
-        guard let title = titleTextView.text,
-              let contents = contentsTextView.text else { return false }
-
-        return title.isEmpty || contents.isEmpty
+    func getEmptyTextFieldType() -> TextFieldEmptyType {
+        let title = titleTextView.text ?? ""
+        let contents = contentsTextView.text ?? ""
+        
+        if title.isEmpty && contents.isEmpty {
+            return .allEmpty
+        } else if title.isEmpty || contents.isEmpty {
+            return .eitherEmpty
+        } else {
+            return .notAllEmpty
+        }
     }
     
     func getTitleText() -> String {
@@ -336,4 +342,10 @@ final class DetailWriteView: BaseView {
             make.height.greaterThanOrEqualTo(250)
         }
     }
+}
+
+enum TextFieldEmptyType {
+    case allEmpty
+    case eitherEmpty
+    case notAllEmpty
 }
