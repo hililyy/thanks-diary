@@ -84,7 +84,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     
     private func induceOnSwitch() {
         switchFlag = false
-        presentSettingAlertVC()
+        presentSettingAlertPopup()
         reload()
     }
     
@@ -94,7 +94,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
             
             switchFlag = result
             if !switchFlag {
-                presentSettingAlertVC()
+                presentSettingAlertPopup()
             }
             
             reload()
@@ -223,18 +223,15 @@ extension SettingAlarmVC {
         present(vc, animated: true)
     }
     
-    private func presentSettingAlertVC() {
+    private func presentSettingAlertPopup() {
         DispatchQueue.main.async {
-            let vc = AlertVC()
-            vc.attachedView.setText(message: L10n.appSetting1,
-                                 leftButtonText: L10n.cancel,
-                                 rightButtonText: L10n.appSetting2)
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.rightButtonTapHandler = {
-                self.goAppSetting()
-            }
-            self.present(vc, animated: true)
+            self.showAlert(message: L10n.appSetting1,
+                      leftButtonText: L10n.cancel,
+                      rightButtonText: L10n.appSetting2,
+                      leftButtonHandler: {},
+                      rightButtonHandler: { [weak self] in
+                self?.goAppSetting()
+            })
         }
     }
 }

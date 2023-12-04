@@ -22,7 +22,6 @@ final class AlertView: BaseView {
     
     private let messageLabel = UILabel().then { label in
         label.font = ResourceManager.instance.getFont(size: 20)
-        label.text = L10n.alertDelete
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -32,7 +31,6 @@ final class AlertView: BaseView {
     private let buttonView = UIView()
     
     let leftButton = UIButton(type: .custom).then { button in
-        button.setTitle(L10n.cancel, for: .normal)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 17)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 10
@@ -41,7 +39,6 @@ final class AlertView: BaseView {
     }
     
     let rightButton = UIButton(type: .custom).then { button in
-        button.setTitle(L10n.delete, for: .normal)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 17)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10

@@ -193,7 +193,7 @@ extension DetailWriteVC {
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                presentDeleteAlertVC()
+                presentDeleteAlertPopup()
             })
             .disposed(by: disposeBag)
     }
@@ -218,18 +218,19 @@ extension DetailWriteVC {
 // MARK: - View Change
 
 extension DetailWriteVC {
-    private func presentDeleteAlertVC() {
-        let vc = AlertVC()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.rightButtonTapHandler = { [weak self] in
-            guard let self else { return }
-            
-            Task {
-                try await self.delete()
-            }
+    private func presentDeleteAlertPopup() {
+        DispatchQueue.main.async {
+            self.showAlert(message: L10n.alertDelete,
+                      leftButtonText: L10n.cancel,
+                      rightButtonText: L10n.delete,
+                      leftButtonHandler: {},
+                      rightButtonHandler: { [weak self] in
+                guard let self else { return }
+                
+                Task {
+                    try await self.delete()
+                }
+            })
         }
-        
-        present(vc, animated: true)
     }
 }
