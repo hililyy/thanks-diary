@@ -181,7 +181,6 @@ extension DetailWriteVC {
                     attachedView.focusTitleTextViewOrContentsTextView()
                 } else {
                     save(isBack: false)
-                    attachedView.dropKeyboard()
                 }
             })
             .disposed(by: disposeBag)
