@@ -64,20 +64,15 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0:
-            pushSettingCodeVC()
+        case 0: pushSettingCodeVC()
             
-        case 1:
-            pushSettingAlarmVC()
+        case 1: pushSettingAlarmVC()
             
-        case 2:
-            pushSettingThemeVC()
+        case 2: pushSettingThemeVC()
             
-        case 3:
-            pushSettingSuggestVC()
+        case 3: pushSettingSuggestVC()
             
-        case 4:
-            pushSettingAppVC()
+        case 4: pushSettingAppVC()
             
         default:
             break

@@ -22,6 +22,7 @@ final class DetailWriteView: BaseView {
     
     let deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Asset.Image.icTrash.image, for: .normal)
+        button.accessibilityIdentifier = "button_delete_detail"
     }
     
     let completeButton = UIButton(type: .custom).then { button in

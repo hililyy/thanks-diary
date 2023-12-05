@@ -31,6 +31,7 @@ final class SimpleWriteView: BaseView {
     
     let deleteButton = UIButton(type: .custom).then { button in
         button.setImage(Asset.Image.icTrash.image, for: .normal)
+        button.accessibilityIdentifier = "button_delete_simple"
     }
     
     let contentsTextView = UITextView().then { textView in

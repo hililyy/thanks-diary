@@ -36,6 +36,7 @@ final class AlertView: BaseView {
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner]
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)
+        button.accessibilityIdentifier = "button_left_alert"
     }
     
     let rightButton = UIButton(type: .custom).then { button in
@@ -44,6 +45,7 @@ final class AlertView: BaseView {
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
+        button.accessibilityIdentifier = "button_left_right"
     }
     
     let backButton = UIButton().then { button in
