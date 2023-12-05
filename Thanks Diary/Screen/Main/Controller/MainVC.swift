@@ -213,10 +213,12 @@ extension MainVC {
                 if let detailCell = cell as? DetailDiaryTVCell {
                     detailCell.titleLabel.text = element.title
                     detailCell.borderView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
+                    detailCell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
                     
                 } else if let simpleCell = cell as? SimpleDiaryTVCell {
                     simpleCell.titleLabel.text = element.contents
                     simpleCell.dotView.backgroundColor = ResourceManager.instance.getMainColor()
+                    simpleCell.titleLabel.font = ResourceManager.instance.getFont(size: 17)
                 }
                 
                 return cell

@@ -17,6 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard nil != (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
+        
+        print(UserDefaultManager.instance.themeMode)
+        if UserDefaultManager.instance.themeMode == ThemeMode.light.rawValue {
+            window.overrideUserInterfaceStyle = .light
+        } else {
+            print("다크으")
+            window.overrideUserInterfaceStyle = .dark
+        }
     }
 }

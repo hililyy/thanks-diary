@@ -15,10 +15,6 @@ Pods/
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
-
-
-
 # Thumbnails
 ._*
 
@@ -138,6 +134,7 @@ iOSInjectionProject/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
+**/xcshareddata/
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,macos,swift,cocoapods
 
