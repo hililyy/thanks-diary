@@ -31,10 +31,10 @@ final class LaunchVC: UIViewController {
     private func initUI() {
         if UserDefaultManager.instance.themeMode == ThemeMode.light.rawValue {
             view.backgroundColor = .white
-            label1.textColor = .black
-            label2.textColor = .black
+            label1.textColor = Asset.Color.customBlack.color
+            label2.textColor = Asset.Color.customBlack.color
         } else {
-            view.backgroundColor = Asset.Color.gray6.color
+            view.backgroundColor = Asset.Color.customBlack.color
             label1.textColor = .white
             label2.textColor = .white
         }
