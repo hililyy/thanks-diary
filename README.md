@@ -1,8 +1,16 @@
 # 감사일기 📝
 > 다이어리 애플리케이션입니다.</br>
 > 기획부터 디자인, 개발까지 혼자 진행한 프로젝트입니다. 🙏🏻 </br>
-> 다운로드 1800회👆🏻, 업데이트 1.1만회👆🏻 (23/11/20 기준) </br>
+> 다운로드 2000회👆🏻, 업데이트 1.2만회👆🏻 (23/12/05 기준) </br>
 > [앱스토어 바로가기✨](https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8F%84-%EA%B0%90%EC%82%AC%EC%9D%BC%EA%B8%B0/id6443505485)
+
+<details>
+<summary>더 보기</summary>
+<img width="1142" alt="image" src="https://github.com/hililyy/thanks-diary/assets/76806444/837fbbee-8428-4cce-9329-e6178f4075f8">
+  <img width="1117" alt="image" src="https://github.com/hililyy/thanks-diary/assets/76806444/9b51e8d8-614d-42f6-94ce-e890918a207d">
+
+</details>
+
 </br>
 
 ## 미리보기
@@ -46,7 +54,16 @@
 
 </br>
 
-## 버전기록 (13회)
+## 버전기록 (14회)
+<details>
+<summary>버전 1.5.3</summary>
+  
+- 건의사항을 반영하여 자세히 작성하기에서 뒤로가기 버튼을 눌러도 일기가 저장되도록 변경
+- 홈 화면 일기 애니메이션 추가
+- 좀 더 편리한 앱 사용을 위해 전체적으로 부분부분 로직 수정
+- 자잘한 오류 수정
+</details>
+
 <details>
 <summary>버전 1.5.2</summary>
   
@@ -129,7 +146,7 @@
 </details>
 
 <details>
-<summary>버전 1.0</summary>
+<summary>버전 1.0.0</summary>
   
   - 일기 CRUD
   - 푸시 알림
