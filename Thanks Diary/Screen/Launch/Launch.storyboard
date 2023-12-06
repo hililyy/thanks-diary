@@ -4,18 +4,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="KOTRA_GOTHIC.ttf">
-            <string>KOTRA_GOTHIC</string>
-        </array>
-        <array key="NanumBarunGothicUltraLight.ttf">
-            <string>NanumBarunGothicUltraLight</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--LaunchVC-->
         <scene sceneID="NHQ-m6-Mdu">
@@ -24,79 +15,13 @@
                     <view key="view" contentMode="scaleToFill" id="Wt9-9i-euy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTF-L5-8gt">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FO2-GS-DGL">
-                                        <rect key="frame" x="0.0" y="183" width="393" height="393"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="FO2-GS-DGL" secondAttribute="height" multiplier="1:1" id="Hjc-J6-OP4"/>
-                                        </constraints>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5D2-ni-Ikg">
-                                        <rect key="frame" x="125" y="331" width="143" height="97"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcK-7x-ycs">
-                                                <rect key="frame" x="44.666666666666657" y="0.0" width="53.666666666666657" height="23"/>
-                                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="20"/>
-                                                <color key="textColor" name="blackColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감사일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWJ-to-td1">
-                                                <rect key="frame" x="0.0" y="23" width="143" height="46"/>
-                                                <fontDescription key="fontDescription" name="NanumBarunGothicUltraLight" family="NanumBarunGothic" pointSize="40"/>
-                                                <color key="textColor" name="blackColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZl-hA-img">
-                                                <rect key="frame" x="46.666666666666657" y="69" width="50" height="28"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="28" id="WMF-Jd-9ny"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="KOTRA_GOTHIC" family="KOTRA_GOTHIC" pointSize="10"/>
-                                                <color key="textColor" name="blackColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="FO2-GS-DGL" firstAttribute="leading" secondItem="bTF-L5-8gt" secondAttribute="leading" id="359-LV-3sj"/>
-                                    <constraint firstItem="5D2-ni-Ikg" firstAttribute="centerX" secondItem="FO2-GS-DGL" secondAttribute="centerX" id="L8L-zm-Qx3"/>
-                                    <constraint firstAttribute="trailing" secondItem="FO2-GS-DGL" secondAttribute="trailing" id="Tvo-XN-F81"/>
-                                    <constraint firstItem="5D2-ni-Ikg" firstAttribute="centerY" secondItem="FO2-GS-DGL" secondAttribute="centerY" id="na7-W8-Xpb"/>
-                                    <constraint firstItem="FO2-GS-DGL" firstAttribute="centerY" secondItem="bTF-L5-8gt" secondAttribute="centerY" id="pxU-If-EAB"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="BiD-sU-4WR"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="BiD-sU-4WR" firstAttribute="bottom" secondItem="bTF-L5-8gt" secondAttribute="bottom" id="9h8-di-74a"/>
-                            <constraint firstItem="bTF-L5-8gt" firstAttribute="top" secondItem="BiD-sU-4WR" secondAttribute="top" id="LUa-CZ-QRZ"/>
-                            <constraint firstItem="bTF-L5-8gt" firstAttribute="leading" secondItem="BiD-sU-4WR" secondAttribute="leading" id="wal-27-092"/>
-                            <constraint firstItem="bTF-L5-8gt" firstAttribute="trailing" secondItem="BiD-sU-4WR" secondAttribute="trailing" id="y7Q-TH-jXM"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aNw-YW-JtA"/>
-                    <connections>
-                        <outlet property="label1" destination="PcK-7x-ycs" id="Cga-s5-ceR"/>
-                        <outlet property="label2" destination="SWJ-to-td1" id="IMQ-Ec-gqM"/>
-                        <outlet property="lottieView" destination="FO2-GS-DGL" id="7v1-Ym-ydQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frw-BO-8M3" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-147" y="26"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="blackColor">
-            <color red="0.19599999487400055" green="0.19599999487400055" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

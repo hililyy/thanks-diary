@@ -6,37 +6,84 @@
 //
 
 import UIKit
+import SnapKit
 
 final class LaunchVC: UIViewController {
     
     // MARK: - Property
     
-    @IBOutlet weak var lottieView: UIView!
-    @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var label2: UILabel!
+    var lottieView = UIView()
     
+    private var subTitleLabel = UILabel().then { label in
+        label.textColor = Asset.Color.gray1.color
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.font =  ResourceManager.instance.getFont(size: 20)
+        label.text = L10n.todayWell
+    }
+    
+    private var titleLabel = UILabel().then { label in
+        label.textColor = Asset.Color.gray1.color
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.font =  ResourceManager.instance.getFont(size: 40)
+        label.text = L10n.thanksDiary
+    }
+    
+    private var titleContentsView = UIView()
+
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initView()
         initUI()
         initLottie()
         initPasswordIfEmpty()
         initLaunch()
     }
     
+    func initView() {
+        view.addSubview(lottieView)
+        view.addSubview(titleContentsView)
+        titleContentsView.addSubview(subTitleLabel)
+        titleContentsView.addSubview(titleLabel)
+        
+        lottieView.snp.makeConstraints { make in
+            make.left.equalTo(view.snp.left)
+            make.right.equalTo(view.snp.right)
+            make.height.equalTo(view.snp.width)
+            make.centerX.equalTo(view.snp.centerX)
+            make.centerY.equalTo(view.snp.centerY)
+        }
+        
+        titleContentsView.snp.makeConstraints { make in
+            make.centerX.equalTo(lottieView.snp.centerX)
+            make.centerY.equalTo(lottieView.snp.centerY).offset(-40)
+        }
+        
+        subTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleContentsView.snp.top)
+            make.centerX.equalTo(titleContentsView.snp.centerX)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(subTitleLabel.snp.bottom)
+            make.centerX.equalTo(titleContentsView.snp.centerX)
+        }
+    }
+    
     // MARK: - Function
     // TODO: 모드에 따른 컬러 미 적용으로 하드코딩 -> 추후 해결책 찾아서 제거
     private func initUI() {
-        if UserDefaultManager.instance.themeMode == ThemeMode.light.rawValue {
-            view.backgroundColor = .white
-            label1.textColor = Asset.Color.customBlack.color
-            label2.textColor = Asset.Color.customBlack.color
-        } else {
+        if UserDefaultManager.instance.themeMode == ThemeMode.dark.rawValue {
             view.backgroundColor = Asset.Color.customBlack.color
-            label1.textColor = .white
-            label2.textColor = .white
+            subTitleLabel.textColor = .white
+            titleLabel.textColor = .white
+        } else {
+            view.backgroundColor = .white
+            subTitleLabel.textColor = Asset.Color.customBlack.color
+            titleLabel.textColor = Asset.Color.customBlack.color
         }
     }
     
@@ -60,7 +107,7 @@ final class LaunchVC: UIViewController {
     }
     
     private func initLaunch() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
             let isReEntry = UserDefaultManager.instance.isReEntryUser
             let isPassword = UserDefaultManager.instance.isPassword
             let isBioAuth = UserDefaultManager.instance.isBiometricsAuth
