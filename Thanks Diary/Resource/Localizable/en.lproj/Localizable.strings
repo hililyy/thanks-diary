@@ -16,6 +16,7 @@
 "close" = "닫기";
 "title" = "제목";
 "contents" = "내용";
+"today_well" = "오늘도";
 "thanks_diary" = "감사일기";
 "today_thanks_diary" = "오늘의 감사일기";
 "write_complete" = "작성 완료";
@@ -34,6 +35,9 @@
 "alert_delete" = "글을 삭제 하시겠습니까?";
 "alert_error_message" = "* 오류가 발생했습니다 *\n\n\n오류내용을 joun406@gmail.com\n으로 보내주시면 빠르게 수정하겠습니다.\n\n감사합니다!";
 "alert_warning_not_save" = "변경 내용이 저장되지 않았습니다. 수정사항을 저장하지 않고 뒤로 가시겠습니까?";
+"search_message" = "검색어를 입력하세요";
+"search_not_result" = "검색 결과가 없습니다.";
+
 "setting" = "설정";
 "password" = "비밀번호";
 "password_contents_1" = "설정할 비밀번호를 입력해 주세요.";

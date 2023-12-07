@@ -13,6 +13,7 @@ final class DetailWriteView: BaseView {
     
     let backButton = UIButton(type: .custom).then { button in
         button.setImage(Asset.Image.icBack.image, for: .normal)
+        button.accessibilityIdentifier = "button_complete_detail"
     }
     
     private let topLabel = UILabel().then { label in
@@ -31,7 +32,7 @@ final class DetailWriteView: BaseView {
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
-        button.accessibilityIdentifier = "button_complete_detail"
+        
     }
     
     private lazy var buttonStackView = UIStackView().then { stackView in

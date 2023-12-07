@@ -123,18 +123,30 @@ extension MainVC {
     }
     
     private func initTarget() {
-        initFloattingButtonTarget()
-        initSettingButtonTarget()
         initTodayButtonTarget()
+        initSearchButtonTarget()
+        initSettingButtonTarget()
+        initFloattingButtonTarget()
     }
     
-    private func initFloattingButtonTarget() {
-        attachedView.floatingButton.button.rx.tap
+    private func initTodayButtonTarget() {
+        attachedView.todayButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                pushFloatingButtonVC()
+                moveToday()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func initSearchButtonTarget() {
+        attachedView.searchButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                
+                pushSearchVC()
             })
             .disposed(by: disposeBag)
     }
@@ -150,13 +162,13 @@ extension MainVC {
             .disposed(by: disposeBag)
     }
     
-    private func initTodayButtonTarget() {
-        attachedView.todayButton.rx.tap
+    private func initFloattingButtonTarget() {
+        attachedView.floatingButton.button.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
                 
-                moveToday()
+                pushFloatingButtonVC()
             })
             .disposed(by: disposeBag)
     }
@@ -266,6 +278,17 @@ extension MainVC {
 // MARK: - View Change
 
 extension MainVC {
+    private func pushSearchVC() {
+        let vc = SearchVC()
+        vc.viewModel = viewModel
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func pushSettingVC() {
+        let vc = SettingVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func pushFloatingButtonVC() {
         let vc = FloatingButtonOpendVC()
         vc.modalPresentationStyle = .overFullScreen
@@ -310,10 +333,5 @@ extension MainVC {
         vc.viewModel = viewModel
         vc.beforeData = beforeData
         present(vc, animated: true)
-    }
-    
-    private func pushSettingVC() {
-        let vc = SettingVC()
-        navigationController?.pushViewController(vc, animated: true)
     }
 }

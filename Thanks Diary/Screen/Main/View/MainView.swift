@@ -14,6 +14,10 @@ final class MainView: BaseView {
     
     // MARK: - UI components
     
+    let searchButton = UIButton(type: .custom).then { button in
+        button.setImage(Asset.Image.icSearch.image, for: .normal)
+    }
+    
     let todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
@@ -94,7 +98,7 @@ final class MainView: BaseView {
     func setTodayLabelText(date: Date) {
         todayLabel.text = date.convertString(format: L10n.formatDate2)
         
-        UIView.animate(withDuration: 0.15, delay: 0.00, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0.0, animations: {
             self.todayLabel.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
         }, completion: { _ in
             UIView.animate(withDuration: 0.15, animations: {
@@ -152,7 +156,7 @@ final class MainView: BaseView {
                      emptyView,
                      floatingButton])
         
-        todayAndSettingTopView.addSubviews([todayButton, settingButton])
+        todayAndSettingTopView.addSubviews([searchButton, todayButton, settingButton])
         todayLabelView.addSubview(todayLabel)
     }
     
@@ -166,17 +170,24 @@ final class MainView: BaseView {
         }
         
         todayButton.snp.makeConstraints { make in
-            make.width.equalTo(45)
-            make.height.equalTo(35)
             make.left.equalTo(todayAndSettingTopView.snp.left).offset(20)
             make.bottom.equalTo(todayAndSettingTopView.snp.bottom)
+            make.width.equalTo(45)
+            make.height.equalTo(35)
+        }
+        
+        searchButton.snp.makeConstraints { make in
+            make.right.equalTo(settingButton.snp.left).offset(-5)
+            make.centerY.equalTo(todayButton.snp.centerY)
+            make.width.equalTo(42)
+            make.height.equalTo(42)
         }
         
         settingButton.snp.makeConstraints { make in
-            make.width.equalTo(52)
-            make.height.equalTo(52)
-            make.top.equalTo(todayAndSettingTopView.snp.top)
             make.right.equalTo(todayAndSettingTopView.snp.right).offset(-10)
+            make.centerY.equalTo(todayButton.snp.centerY)
+            make.width.equalTo(42)
+            make.height.equalTo(42)
         }
         
         calendar.snp.makeConstraints { make in

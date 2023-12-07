@@ -112,8 +112,10 @@ final class SettingAlarmVC: BaseVC<SettingView> {
             switch status {
             case .authorized:
                 changeSwitch()
+                
             case .denied:
                 induceOnSwitch()
+                
             default:
                 requestNotiAuthFromUser()
             }

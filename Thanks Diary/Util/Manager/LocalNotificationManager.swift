@@ -23,7 +23,6 @@ final class LocalNotificationManager {
             for request in requests {
                 Log.debug("""
                 Identifier: \(request.identifier)
-                Identifier: \(request.identifier)
                 Body: \(request.content.body)
                 Trigger: \(String(describing: request.trigger))
                 -------------------------
@@ -40,7 +39,7 @@ final class LocalNotificationManager {
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [Constant.PUSH_IDENTIFIER])
     }
     
-    func registNotification(title: String = "", contents: String = "", time: Date) {
+    func registNotification(time: Date) {
         
         let content = UNMutableNotificationContent()
         content.title = L10n.pushTitle

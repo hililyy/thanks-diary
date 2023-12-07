@@ -122,6 +122,10 @@ internal enum L10n {
   internal static let restartApp = L10n.tr("Localizable", "restart_app", fallback: "테마적용을 위해 앱을 종료해주세요.")
   /// 다시시도
   internal static let retry = L10n.tr("Localizable", "retry", fallback: "다시시도")
+  /// 검색어를 입력하세요
+  internal static let searchMessage = L10n.tr("Localizable", "search_message", fallback: "검색어를 입력하세요")
+  /// 검색 결과가 없습니다.
+  internal static let searchNotResult = L10n.tr("Localizable", "search_not_result", fallback: "검색 결과가 없습니다.")
   /// 설정
   internal static let setting = L10n.tr("Localizable", "setting", fallback: "설정")
   /// 알림 설정
@@ -196,6 +200,8 @@ internal enum L10n {
   internal static let todayNotTitle = L10n.tr("Localizable", "today_not_title", fallback: "아직 오늘의 일기를 작성하지 않았어요!")
   /// 오늘의 감사일기
   internal static let todayThanksDiary = L10n.tr("Localizable", "today_thanks_diary", fallback: "오늘의 감사일기")
+  /// 오늘도
+  internal static let todayWell = L10n.tr("Localizable", "today_well", fallback: "오늘도")
   /// 대기중
   internal static let waiting = L10n.tr("Localizable", "waiting", fallback: "대기중")
   /// 작성 완료

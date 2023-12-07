@@ -40,8 +40,8 @@ final class NavigationView: BaseView {
         backButton.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(20)
             make.right.equalTo(titleLabel.snp.left).offset(-5)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
+            make.width.equalTo(42)
+            make.height.equalTo(42)
             make.centerY.equalTo(titleLabel.snp.centerY)
         }
         

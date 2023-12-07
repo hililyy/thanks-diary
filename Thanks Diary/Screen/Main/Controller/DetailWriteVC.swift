@@ -161,7 +161,7 @@ extension DetailWriteVC {
                 switch tfType {
                 case .allEmpty:
                     
-                    guard let beforeData else {
+                    guard beforeData != nil else {
                         attachedView.removeNotification()
                         popVC()
                         

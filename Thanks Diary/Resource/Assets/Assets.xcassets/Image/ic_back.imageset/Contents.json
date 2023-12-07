@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "eva_arrow-back-outline.png",
+      "filename" : "ic_back.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "eva_arrow-back-outline@2x.png",
+      "filename" : "ic_back@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "eva_arrow-back-outline@3x.png",
+      "filename" : "ic_back@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

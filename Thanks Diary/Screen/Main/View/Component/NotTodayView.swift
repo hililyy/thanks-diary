@@ -10,6 +10,9 @@ import SnapKit
 import Then
 
 final class NotTodayView: BaseView {
+    
+    // MARK: - UI components
+    
     let contentView = UIView()
     let topLineView = UIView().then { view in
         view.backgroundColor = ResourceManager.instance.getMainColor()
@@ -36,6 +39,8 @@ final class NotTodayView: BaseView {
         view.backgroundColor = ResourceManager.instance.getMainColor()
         view.layer.cornerRadius = 2
     }
+    
+    // MARK: - Constraint
     
     override func initSubviews() {
         addSubview(contentView)
