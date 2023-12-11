@@ -66,6 +66,7 @@ final class SearchVC: BaseVC<SearchView> {
                 if title.contains(inputText) {
                     searchModel.correctType = .title
                     resultData.append(searchModel)
+                    
                 } else if contents.contains(inputText) {
                     searchModel.correctType = .contents
                     resultData.append(searchModel)
@@ -144,6 +145,7 @@ final class SearchVC: BaseVC<SearchView> {
                                             title: model.title,
                                             contents: model.contents,
                                             date: model.date)
+                
                 if diaryModel.type == .detail {
                     self.pushDetailWriteVC(beforeData: diaryModel)
                 } else {

@@ -48,8 +48,8 @@ final class MainVC: BaseVC<MainView> {
             let detailData = detailDatas.map({ $0.key })
             let simpleData = simpleDatas.map({ $0.key })
             
-            self.viewModel.diaryDates = Set(detailData).union(simpleData)
-            self.attachedView.calendar.reloadData()
+            viewModel.diaryDates = Set(detailData).union(simpleData)
+            attachedView.calendar.reloadData()
         })
         .disposed(by: disposeBag)
     }
@@ -59,7 +59,7 @@ final class MainVC: BaseVC<MainView> {
             .bind(onNext: { [weak self] in
                 guard let self else { return }
                 
-                self.attachedView.setTodayLabelText(date: $0)
+                attachedView.setTodayLabelText(date: $0)
             })
             .disposed(by: disposeBag)
     }
@@ -254,7 +254,7 @@ extension MainVC {
     
     private func initTableWillDisplay() {
         attachedView.diaryTableView.rx.willDisplayCell
-            .subscribe(onNext: { (cell, indexPath) in
+            .subscribe(onNext: { cell, indexPath in
                 self.animationMoveUpWithFadeIn(cell: cell, indexPath: indexPath.row)
             })
             .disposed(by: disposeBag)
