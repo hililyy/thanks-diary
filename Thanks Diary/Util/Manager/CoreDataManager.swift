@@ -170,7 +170,7 @@ final class CoreDataManager {
             }
             
         case .simple:
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: simpleDiaryModelName)
+            let request = NSFetchRequest<NSManagedObject>(entityName: simpleDiaryModelName)
             request.predicate = NSPredicate(format: "date = %@ && contents = %@", beforeData.date, beforeData.contents)
             
             do {

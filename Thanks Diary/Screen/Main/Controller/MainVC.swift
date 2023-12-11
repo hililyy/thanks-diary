@@ -28,6 +28,7 @@ final class MainVC: BaseVC<MainView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        attachedView.calendar.select(viewModel.selectedDate.value)
         viewModel.readData()
         presentAppReviewPopup()
     }

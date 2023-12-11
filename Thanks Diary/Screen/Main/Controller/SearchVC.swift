@@ -146,6 +146,8 @@ final class SearchVC: BaseVC<SearchView> {
                                             contents: model.contents,
                                             date: model.date)
                 
+                viewModel?.selectedDate.accept(model.date.convertDate() ?? Date())
+                
                 if diaryModel.type == .detail {
                     self.pushDetailWriteVC(beforeData: diaryModel)
                 } else {
