@@ -126,7 +126,7 @@ extension SettingPWVC {
     }
     
     private func initDeleteButtonTarget() {
-        attachedView.deleteButton.rx.tap
+        attachedView.deleteButton.button.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
