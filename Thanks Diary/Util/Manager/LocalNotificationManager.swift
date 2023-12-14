@@ -42,8 +42,8 @@ final class LocalNotificationManager {
     func registNotification(time: Date) {
         
         let content = UNMutableNotificationContent()
-        content.title = L10n.pushTitle
-        content.body = L10n.pushContents
+        content.title = UserDefaultManager.instance.pushMessageTitle
+        content.body = UserDefaultManager.instance.pushMessageContents
             
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current

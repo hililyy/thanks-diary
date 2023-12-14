@@ -110,6 +110,8 @@
 		029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04EE2A494C3100D82289 /* ThirdStartView.swift */; };
 		029F04F92A4984BB00D82289 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04F82A4984BB00D82289 /* CoreDataManager.swift */; };
 		029F04FD2A4984E800D82289 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F04FC2A4984E800D82289 /* MainViewModel.swift */; };
+		02B606C82B2946E2007A14FD /* SettingAlarmMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B606C72B2946E2007A14FD /* SettingAlarmMessageVC.swift */; };
+		02B606CA2B294F26007A14FD /* SettingAlarmMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B606C92B294F26007A14FD /* SettingAlarmMessageView.swift */; };
 		02B638D62AB1468100312A34 /* SettingNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B638D52AB1468100312A34 /* SettingNameModel.swift */; };
 		02BF3DAF2AD52A2D002E5D35 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF3DAE2AD52A2D002E5D35 /* OSLog.swift */; };
 		02BF3DD72AD531F8002E5D35 /* ThanksDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF3DD62AD531F8002E5D35 /* ThanksDiaryUITests.swift */; };
@@ -276,6 +278,8 @@
 		029F04EE2A494C3100D82289 /* ThirdStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdStartView.swift; sourceTree = "<group>"; };
 		029F04F82A4984BB00D82289 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		029F04FC2A4984E800D82289 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		02B606C72B2946E2007A14FD /* SettingAlarmMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmMessageVC.swift; sourceTree = "<group>"; };
+		02B606C92B294F26007A14FD /* SettingAlarmMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmMessageView.swift; sourceTree = "<group>"; };
 		02B638D52AB1468100312A34 /* SettingNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNameModel.swift; sourceTree = "<group>"; };
 		02BF3DAE2AD52A2D002E5D35 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		02BF3DD62AD531F8002E5D35 /* ThanksDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksDiaryUITests.swift; sourceTree = "<group>"; };
@@ -745,6 +749,7 @@
 				0278154F2B01B7CD00E5D551 /* SettingCodeVC.swift */,
 				2A81233128BFFA0C000A250E /* SettingAlarmVC.swift */,
 				2A81233A28C0067B000A250E /* SettingAlarmDetailVC.swift */,
+				02B606C72B2946E2007A14FD /* SettingAlarmMessageVC.swift */,
 				027C60DD2A8DBFE0008F607F /* SettingThemeVC.swift */,
 				025E043B2AA6C0CE00C01D24 /* SettingSuggestVC.swift */,
 				025E04402AA7106A00C01D24 /* SettingSuggestWriteVC.swift */,
@@ -847,6 +852,7 @@
 				2A55DC4F2A6D6F8100A13F58 /* SettingView.swift */,
 				026E78E82A6E4C0800A09282 /* SettingPWView.swift */,
 				026E78EA2A6E772800A09282 /* SettingAlarmDetailView.swift */,
+				02B606C92B294F26007A14FD /* SettingAlarmMessageView.swift */,
 				027C60DB2A8DBF98008F607F /* SettingThemeView.swift */,
 				02D7BB722AA6BFDB00419739 /* SettingSuggestView.swift */,
 				025E04422AA7107200C01D24 /* SettingSuggestWriteView.swift */,
@@ -1129,6 +1135,7 @@
 				025EF06B2A459E2E00C930F2 /* String.swift in Sources */,
 				027C60CB2A81F78C008F607F /* CommonUtilManager.swift in Sources */,
 				02835D962AE2654800593BA5 /* SettingAppVC.swift in Sources */,
+				02B606CA2B294F26007A14FD /* SettingAlarmMessageView.swift in Sources */,
 				029F04EF2A494C3100D82289 /* FirstStartView.swift in Sources */,
 				025EF0592A459D2700C930F2 /* FirebaseManager.swift in Sources */,
 				2A81234E28C4E22C000A250E /* SimpleDiaryTVCell.swift in Sources */,
@@ -1200,6 +1207,7 @@
 				025EF0502A459CE200C930F2 /* UserDefaultKey.swift in Sources */,
 				2A9F351928AE6410006CCF7C /* SettingLabelTVCell.swift in Sources */,
 				02285D302B0C34620019D5D8 /* PasswordNumberButton.swift in Sources */,
+				02B606C82B2946E2007A14FD /* SettingAlarmMessageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

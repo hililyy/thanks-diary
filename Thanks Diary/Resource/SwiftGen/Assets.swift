@@ -74,6 +74,7 @@ internal enum Asset {
     internal static let icTrash = ImageAsset(name: "ic_trash")
     internal static let icWrite = ImageAsset(name: "ic_write")
     internal static let icX = ImageAsset(name: "ic_x")
+    internal static let imgAppIcon = ImageAsset(name: "img_app_icon")
     internal static let imgHeart = ImageAsset(name: "img_heart")
     internal static let imgLock = ImageAsset(name: "img_lock")
     internal static let imgUnderline = ImageAsset(name: "img_underline")

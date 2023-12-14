@@ -171,17 +171,13 @@ final class SettingPWView: BaseView {
         }
         
         contentsLabel.snp.makeConstraints { make in
-//            make.bottom.equalTo(dotStackView.snp.top).offset(-30)
             make.bottom.equalTo(dotStackView.snp.top).offset(-40)
-//            make.bottom.lessThanOrEqualTo(dotStackView.snp.top).offset(-30).priority(.high)
             make.centerX.equalTo(snp.centerX)
             make.height.equalTo(30).priority(999)
         }
         
         dotStackView.snp.makeConstraints { make in
-//            make.bottom.equalTo(passwordStackView.snp.top).offset(-50)
             make.bottom.equalTo(passwordStackView.snp.top).offset(-40)
-//            make.bottom.lessThanOrEqualTo(passwordStackView.snp.top).offset(-30).priority(.high)
             make.height.equalTo(14)
             make.centerX.equalToSuperview()
         }

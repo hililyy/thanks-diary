@@ -47,9 +47,11 @@
 "setting_alarm" = "알림 설정";
 "toast" = "제목과 내용을 모두 입력해 주세요.";
 "toast_complete_diary" = "일기가 저장되었습니다";
+"input_title" = "내용을 입력해 주세요.";
 "input_contents" = "내용을 입력해 주세요.";
-"push_title" = "💙감사일기를 작성할 시간이에요💙";
-"push_contents" = "오늘의 일기를 작성해볼까요?💌";
+"push_title_general" = "💙감사일기를 작성할 시간이에요💙";
+"push_contents_general" = "오늘의 일기를 작성해볼까요?💌";
+"push_warning_message" = "** 문구가 변경되지 않을 경우 스위치를 껏다 켜주세요! **";
 "app_setting_1" = "알림 설정 권한이 거부되었습니다.\n\n설정으로 이동하여 알림을 허용해주세요.";
 "app_setting_2" = "설정으로 이동";
 "error" = "오류가 발생하였습니다.\n\n앱을 다시 실행하거나 관리자에게 문의해주세요.";
@@ -69,6 +71,7 @@
 "setting_name11" = "앱 정보";
 "setting_name12" = "비밀번호 설정";
 "setting_name13" = "생체인증";
+"setting_name14" = "문구 설정";
 
 "alert_bioauth" = "생체인증을 다시 시도하시겠습니까?";
 "alert_password" = "비밀번호 입력";
