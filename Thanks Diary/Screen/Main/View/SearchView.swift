@@ -34,7 +34,7 @@ final class SearchView: BaseView {
     }
     
     override func initUI() {
-        backgroundColor = .white
+        backgroundColor = Asset.Color.white.color
     }
     
     override func initSubviews() {

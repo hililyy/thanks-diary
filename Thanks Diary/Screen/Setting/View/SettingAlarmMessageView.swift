@@ -31,6 +31,7 @@ final class SettingAlarmMessageView: BaseView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         label.text = L10n.pushWarningMessage
+        label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         return label
     }()
@@ -55,12 +56,14 @@ final class SettingAlarmMessageView: BaseView {
     let previewTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.textColor = Asset.Color.gray6.color
         return label
     }()
     
     let previewContentsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.textColor = .black
         return label
     }()
     
@@ -68,6 +71,7 @@ final class SettingAlarmMessageView: BaseView {
         let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 16)
         label.text = L10n.title
+        label.textColor = Asset.Color.gray1.color
         return label
     }()
     
@@ -87,6 +91,7 @@ final class SettingAlarmMessageView: BaseView {
         let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 16)
         label.text = L10n.contents
+        label.textColor = Asset.Color.gray1.color
         return label
     }()
     
@@ -113,7 +118,7 @@ final class SettingAlarmMessageView: BaseView {
     }()
     
     override func initUI() {
-        backgroundColor = .white
+        backgroundColor = Asset.Color.white.color
     }
     
     override func initTarget() {

@@ -15,7 +15,7 @@ final class SearchBar: BaseView {
     let textfield: UITextField = {
         let textField = UITextField()
         textField.placeholder = L10n.searchMessage
-        textField.backgroundColor = Asset.Color.gray10.color
+        textField.backgroundColor = Asset.Color.gray11.color
         textField.textColor = Asset.Color.gray1.color
         textField.layer.cornerRadius = 16
         textField.font = ResourceManager.instance.getFont(size: 15)

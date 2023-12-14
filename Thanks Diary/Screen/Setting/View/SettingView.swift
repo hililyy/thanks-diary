@@ -20,6 +20,8 @@ final class SettingView: BaseView {
         tableView.register(SettingSwitchTVCell.self, forCellReuseIdentifier: SettingSwitchTVCell.id)
         tableView.register(SettingMoreTVCell.self, forCellReuseIdentifier: SettingMoreTVCell.id)
         tableView.register(SettingLabelTVCell.self, forCellReuseIdentifier: SettingLabelTVCell.id)
+        tableView.isScrollEnabled = false
+        tableView.isPagingEnabled = false
     }
     
     // MARK: - UI, Target
