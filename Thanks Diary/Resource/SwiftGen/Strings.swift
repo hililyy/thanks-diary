@@ -120,8 +120,8 @@ internal enum L10n {
   internal static let pushContentsGeneral = L10n.tr("Localizable", "push_contents_general", fallback: "오늘의 일기를 작성해볼까요?💌")
   /// 💙감사일기를 작성할 시간이에요💙
   internal static let pushTitleGeneral = L10n.tr("Localizable", "push_title_general", fallback: "💙감사일기를 작성할 시간이에요💙")
-  /// ** 문구가 변경되지 않을 경우 스위치를 껏다 켜주세요! **
-  internal static let pushWarningMessage = L10n.tr("Localizable", "push_warning_message", fallback: "** 문구가 변경되지 않을 경우 스위치를 껏다 켜주세요! **")
+  /// ** 문구가 변경되지 않을 경우 스위치를 껐다 켜주세요! **
+  internal static let pushWarningMessage = L10n.tr("Localizable", "push_warning_message", fallback: "** 문구가 변경되지 않을 경우 스위치를 껐다 켜주세요! **")
   /// 테마적용을 위해 앱을 종료해주세요.
   internal static let restartApp = L10n.tr("Localizable", "restart_app", fallback: "테마적용을 위해 앱을 종료해주세요.")
   /// 다시시도

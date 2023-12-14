@@ -51,7 +51,7 @@
 "input_contents" = "내용을 입력해 주세요.";
 "push_title_general" = "💙감사일기를 작성할 시간이에요💙";
 "push_contents_general" = "오늘의 일기를 작성해볼까요?💌";
-"push_warning_message" = "** 문구가 변경되지 않을 경우 스위치를 껏다 켜주세요! **";
+"push_warning_message" = "** 문구가 변경되지 않을 경우 스위치를 껐다 켜주세요! **";
 "app_setting_1" = "알림 설정 권한이 거부되었습니다.\n\n설정으로 이동하여 알림을 허용해주세요.";
 "app_setting_2" = "설정으로 이동";
 "error" = "오류가 발생하였습니다.\n\n앱을 다시 실행하거나 관리자에게 문의해주세요.";
