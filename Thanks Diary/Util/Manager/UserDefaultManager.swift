@@ -106,6 +106,24 @@ final class UserDefaultManager {
             self.set(newValue, key: UserDefaultKey.IS_BIOMETRICS_AUTH.rawValue)
         }
     }
+    
+    var pushMessageTitle: String {
+        get {
+            self.string(UserDefaultKey.PUSH_MESSAGE_TITLE.rawValue)
+        }
+        set {
+            self.set(newValue, key: UserDefaultKey.PUSH_MESSAGE_TITLE.rawValue)
+        }
+    }
+    
+    var pushMessageContents: String {
+        get {
+            self.string(UserDefaultKey.PUSH_MESSAGE_CONTENTS.rawValue)
+        }
+        set {
+            self.set(newValue, key: UserDefaultKey.PUSH_MESSAGE_CONTENTS.rawValue)
+        }
+    }
 }
 
 extension UserDefaultManager {

@@ -29,6 +29,11 @@ final class NavigationView: BaseView {
         titleLabel.text = title
     }
     
+    convenience init(title: String) {
+        self.init()
+        titleLabel.text = title
+    }
+    
     // MARK: - UI, Target
     
     override func initSubviews() {

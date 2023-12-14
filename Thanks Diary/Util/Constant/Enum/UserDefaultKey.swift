@@ -18,4 +18,6 @@ enum UserDefaultKey: String {
     case THEME_FONT
     case IS_PRESENT_REVIEW_POPUP
     case IS_BIOMETRICS_AUTH
+    case PUSH_MESSAGE_TITLE
+    case PUSH_MESSAGE_CONTENTS
 }

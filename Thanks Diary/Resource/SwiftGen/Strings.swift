@@ -75,6 +75,8 @@ internal enum L10n {
   internal static let formatDate3 = L10n.tr("Localizable", "format_date3", fallback: "YYYY년 M월")
   /// 내용을 입력해 주세요.
   internal static let inputContents = L10n.tr("Localizable", "input_contents", fallback: "내용을 입력해 주세요.")
+  /// 내용을 입력해 주세요.
+  internal static let inputTitle = L10n.tr("Localizable", "input_title", fallback: "내용을 입력해 주세요.")
   /// 문의하기
   internal static let inquiry = L10n.tr("Localizable", "inquiry", fallback: "문의하기")
   /// 라이트 모드
@@ -115,9 +117,11 @@ internal enum L10n {
   /// 진행중
   internal static let progress = L10n.tr("Localizable", "progress", fallback: "진행중")
   /// 오늘의 일기를 작성해볼까요?💌
-  internal static let pushContents = L10n.tr("Localizable", "push_contents", fallback: "오늘의 일기를 작성해볼까요?💌")
+  internal static let pushContentsGeneral = L10n.tr("Localizable", "push_contents_general", fallback: "오늘의 일기를 작성해볼까요?💌")
   /// 💙감사일기를 작성할 시간이에요💙
-  internal static let pushTitle = L10n.tr("Localizable", "push_title", fallback: "💙감사일기를 작성할 시간이에요💙")
+  internal static let pushTitleGeneral = L10n.tr("Localizable", "push_title_general", fallback: "💙감사일기를 작성할 시간이에요💙")
+  /// ** 문구가 변경되지 않을 경우 스위치를 껏다 켜주세요! **
+  internal static let pushWarningMessage = L10n.tr("Localizable", "push_warning_message", fallback: "** 문구가 변경되지 않을 경우 스위치를 껏다 켜주세요! **")
   /// 테마적용을 위해 앱을 종료해주세요.
   internal static let restartApp = L10n.tr("Localizable", "restart_app", fallback: "테마적용을 위해 앱을 종료해주세요.")
   /// 다시시도
@@ -140,6 +144,8 @@ internal enum L10n {
   internal static let settingName12 = L10n.tr("Localizable", "setting_name12", fallback: "비밀번호 설정")
   /// 생체인증
   internal static let settingName13 = L10n.tr("Localizable", "setting_name13", fallback: "생체인증")
+  /// 문구 설정
+  internal static let settingName14 = L10n.tr("Localizable", "setting_name14", fallback: "문구 설정")
   /// 알림 설정
   internal static let settingName2 = L10n.tr("Localizable", "setting_name2", fallback: "알림 설정")
   /// 테마 설정

@@ -127,13 +127,15 @@ final class SettingAlarmVC: BaseVC<SettingView> {
 
 extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, for: indexPath) as? SettingSwitchTVCell else { return UITableViewCell() }
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingSwitchTVCell.id, 
+                                                                        for: indexPath) as? SettingSwitchTVCell 
+            else { return UITableViewCell() }
             
             cell.titleLabel.text = L10n.settingName2
             cell.settingSwitch.isOn = switchFlag
@@ -143,28 +145,46 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case 1:
-            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, for: indexPath) as? SettingLabelTVCell else { return UITableViewCell() }
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingLabelTVCell.id, 
+                                                                        for: indexPath) as? SettingLabelTVCell
+            else { return UITableViewCell() }
             
             cell.titleLabel.text = L10n.settingName7
             cell.contentsLabel.text = viewModel?.selectedTime?.convertString(format: Constant.AHHMM)
             return cell
-
+            
+        case 2:
+            guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id,
+                                                                        for: indexPath) as? SettingMoreTVCell
+            else { return UITableViewCell() }
+            
+            cell.titleLabel.text = L10n.settingName14
+            
+            return cell
+            
         default:
             return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row != 1 { return }
-        
-        if switchFlag {
-            presentSettingAlarmDetailVC()
-        } else {
-            toast(message: L10n.onAlarm,
-                  withDuration: 1,
-                  delay: 1,
-                  positionType: PositionType.top,
-                  completion: {})
+        switch indexPath.row {
+        case 1:
+            if switchFlag {
+                presentSettingAlarmDetailVC()
+            } else {
+                toast(message: L10n.onAlarm,
+                      withDuration: 1,
+                      delay: 1,
+                      positionType: PositionType.top,
+                      completion: {})
+            }
+            
+        case 2:
+            pushSettingAlarmMessageVC()
+            
+        default:
+            break
         }
     }
 }
@@ -235,5 +255,10 @@ extension SettingAlarmVC {
                 self?.goAppSetting()
             })
         }
+    }
+    
+    private func pushSettingAlarmMessageVC() {
+        let vc = SettingAlarmMessageVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
