@@ -14,7 +14,18 @@ final class MainVC: BaseVC<MainView> {
     
     // MARK: - Property
     
-    private let viewModel = MainViewModel()
+    private let viewModel: MainViewModel
+    
+    // MARK: - Init
+    
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -280,13 +291,14 @@ extension MainVC {
 
 extension MainVC {
     private func pushSearchVC() {
-        let vc = SearchVC()
+        let vc = SearchVC(viewModel: self.viewModel)
         vc.viewModel = viewModel
         navigationController?.pushViewController(vc, animated: true)
     }
     
     private func pushSettingVC() {
-        let vc = SettingVC()
+        let settingViewModel = SettingViewModel()
+        let vc = SettingVC(viewModel: settingViewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -321,16 +333,14 @@ extension MainVC {
     }
     
     private func pushDetailWriteVC(beforeData: DiaryModel?) {
-        let vc = DetailWriteVC()
+        let vc = DetailWriteVC(viewModel: self.viewModel)
         vc.viewModel = viewModel
         vc.beforeData = beforeData
         navigationController?.pushViewController(vc, animated: true)
     }
     
     private func presentSimpleWriteVC(beforeData: DiaryModel?) {
-        let vc = SimpleWriteVC()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
+        let vc = SimpleWriteVC(viewModel: self.viewModel)
         vc.viewModel = viewModel
         vc.beforeData = beforeData
         present(vc, animated: true)

@@ -13,9 +13,22 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     
     // MARK: - Property
     
-    var viewModel: MainViewModel?
+    var viewModel: MainViewModel
     private let maxCount: Int = 50
     var beforeData: DiaryModel?
+    
+    // MARK: - Init
+    
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        modalTransitionStyle = .crossDissolve
+        modalPresentationStyle = .overFullScreen
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -32,7 +45,7 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
             type: .simple,
             title: "",
             contents: attachedView.getContentsTextViewText(),
-            date: viewModel?.selectedDate.value.convertString() ?? Date().convertString()
+            date: viewModel.selectedDate.value.convertString() 
         )
     }
     
@@ -57,10 +70,10 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     
     private func update(beforeData: DiaryModel, newData: DiaryModel) async throws {
         do {
-            try await viewModel?.updateData(beforeData: beforeData,
+            try await viewModel.updateData(beforeData: beforeData,
                                             newData: newData)
             dismissVC {
-                self.viewModel?.readData()
+                self.viewModel.readData()
             }
         } catch {
             showErrorPopup()
@@ -69,9 +82,9 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     
     private func write(_ newData: DiaryModel) async throws {
         do {
-            try await viewModel?.createData(newData: newData)
+            try await viewModel.createData(newData: newData)
             dismissVC {
-                self.viewModel?.readData()
+                self.viewModel.readData()
             }
         } catch {
             showErrorPopup()
@@ -82,9 +95,9 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
         guard let deleteData = beforeData else { return }
         
         do {
-            try await viewModel?.deleteData(deleteData: deleteData)
+            try await viewModel.deleteData(deleteData: deleteData)
             dismissVC {
-                self.viewModel?.readData()
+                self.viewModel.readData()
             }
         } catch {
             showErrorPopup()

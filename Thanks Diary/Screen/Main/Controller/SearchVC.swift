@@ -13,9 +13,20 @@ final class SearchVC: BaseVC<SearchView> {
     
     // MARK: - Property
     
-    var viewModel: MainViewModel?
+    var viewModel: MainViewModel
     private var searchResultData = PublishSubject<[DiarySearchModel]>()
     private var inputText = ""
+    
+    // MARK: - Init
+    
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -28,7 +39,7 @@ final class SearchVC: BaseVC<SearchView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel?.readData()
+        viewModel.readData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,8 +51,8 @@ final class SearchVC: BaseVC<SearchView> {
     private func search(inputText: String) {
         var resultData: [DiarySearchModel] = []
         
-        let detailData = viewModel?.allDetailDataRx.value ?? [:]
-        let simpleData = viewModel?.allSimpleDataRx.value ?? [:]
+        let detailData = viewModel.allDetailDataRx.value 
+        let simpleData = viewModel.allSimpleDataRx.value 
         var allData = detailData
         
         for key in simpleData.keys {
@@ -78,16 +89,14 @@ final class SearchVC: BaseVC<SearchView> {
     }
     
     private func pushDetailWriteVC(beforeData: DiaryModel?) {
-        let vc = DetailWriteVC()
+        let vc = DetailWriteVC(viewModel: self.viewModel)
         vc.viewModel = viewModel
         vc.beforeData = beforeData
         navigationController?.pushViewController(vc, animated: true)
     }
     
     private func presentSimpleWriteVC(beforeData: DiaryModel?) {
-        let vc = SimpleWriteVC()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
+        let vc = SimpleWriteVC(viewModel: self.viewModel)
         vc.viewModel = viewModel
         vc.beforeData = beforeData
         present(vc, animated: true)
@@ -146,7 +155,7 @@ final class SearchVC: BaseVC<SearchView> {
                                             contents: model.contents,
                                             date: model.date)
                 
-                viewModel?.selectedDate.accept(model.date.convertDate() ?? Date())
+                viewModel.selectedDate.accept(model.date.convertDate() ?? Date())
                 
                 if diaryModel.type == .detail {
                     self.pushDetailWriteVC(beforeData: diaryModel)
@@ -195,7 +204,7 @@ extension SearchVC {
     }
     
     private func initObservable() {
-        viewModel?.allSimpleDataRx.subscribe(onNext: { _ in
+        viewModel.allSimpleDataRx.subscribe(onNext: { _ in
             self.search(inputText: self.inputText)
         })
         .disposed(by: disposeBag)

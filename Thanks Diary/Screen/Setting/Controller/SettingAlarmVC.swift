@@ -11,8 +11,19 @@ final class SettingAlarmVC: BaseVC<SettingView> {
     
     // MARK: - Property
     
-    var viewModel: SettingViewModel?
+    var viewModel: SettingViewModel
     var switchFlag: Bool = false
+    
+    // MARK: - Init
+    
+    init(viewModel: SettingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -62,7 +73,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
         LocalNotificationManager.instance.registNotification(time: Date())
         UserDefaultManager.instance.pushTime = Date()
         UserDefaultManager.instance.isPush = true
-        viewModel?.selectedTime = Date()
+        viewModel.selectedTime = Date()
         switchFlag = true
     }
     
@@ -70,7 +81,7 @@ final class SettingAlarmVC: BaseVC<SettingView> {
         LocalNotificationManager.instance.cancelRegistedNotification()
         UserDefaultManager.instance.delete(UserDefaultKey.PUSH_TIME.rawValue)
         UserDefaultManager.instance.isPush = false
-        viewModel?.selectedTime = nil
+        viewModel.selectedTime = nil
         switchFlag = false
     }
     
@@ -150,7 +161,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             else { return UITableViewCell() }
             
             cell.titleLabel.text = L10n.settingName7
-            cell.contentsLabel.text = viewModel?.selectedTime?.convertString(format: Constant.AHHMM)
+            cell.contentsLabel.text = viewModel.selectedTime?.convertString(format: Constant.AHHMM)
             return cell
             
         case 2:
@@ -237,9 +248,7 @@ extension SettingAlarmVC {
 
 extension SettingAlarmVC {
     private func presentSettingAlarmDetailVC() {
-        let vc = SettingAlarmDetailVC()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
+        let vc = SettingAlarmDetailVC(viewModel: self.viewModel)
         vc.delegate = self
         vc.viewModel = viewModel
         present(vc, animated: true)

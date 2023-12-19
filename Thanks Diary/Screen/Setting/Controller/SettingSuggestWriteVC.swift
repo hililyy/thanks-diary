@@ -13,7 +13,20 @@ final class SettingSuggestWriteVC: BaseVC<SettingSuggestWriteView> {
     
     // MARK: - Property
     
-    var viewModel: SettingViewModel?
+    var viewModel: SettingViewModel
+    
+    // MARK: - Init
+    
+    init(viewModel: SettingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        modalTransitionStyle = .crossDissolve
+        modalPresentationStyle = .overFullScreen
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -32,8 +45,8 @@ final class SettingSuggestWriteVC: BaseVC<SettingSuggestWriteView> {
             showToast()
         } else {
             dismissVC {
-                self.viewModel?.setSuggestData(contents: contents)
-                self.viewModel?.getSuggestDatas()
+                self.viewModel.setSuggestData(contents: contents)
+                self.viewModel.getSuggestDatas()
             }
         }
     }

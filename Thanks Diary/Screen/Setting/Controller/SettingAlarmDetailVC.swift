@@ -12,8 +12,21 @@ final class SettingAlarmDetailVC: BaseVC<SettingAlarmDetailView> {
     
     // MARK: - Property
     
-    var viewModel: SettingViewModel?
+    var viewModel: SettingViewModel
     var delegate: ReloadProtocol?
+    
+    // MARK: - Init
+    
+    init(viewModel: SettingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        modalTransitionStyle = .crossDissolve
+        modalPresentationStyle = .overCurrentContext
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -26,10 +39,10 @@ final class SettingAlarmDetailVC: BaseVC<SettingAlarmDetailView> {
     // MARK: - Function
     
     private func savePushTime() {
-        let time = viewModel?.selectedTime ?? Date()
+        let time = viewModel.selectedTime ?? Date()
         UserDefaultManager.instance.pushTime = time
         LocalNotificationManager.instance.registNotification(time: time)
-        viewModel?.selectedTime = time
+        viewModel.selectedTime = time
     }
 }
 
@@ -42,7 +55,7 @@ extension SettingAlarmDetailVC {
     }
     
     private func initUI() {
-        attachedView.setDatepickerDate(date: viewModel?.selectedTime)
+        attachedView.setDatepickerDate(date: viewModel.selectedTime)
     }
     
     private func initTarget() {
@@ -56,7 +69,7 @@ extension SettingAlarmDetailVC {
         attachedView.datePickerHandler = { [weak self] time in
             guard let self else { return }
             
-            viewModel?.selectedTime = time
+            viewModel.selectedTime = time
         }
     }
     

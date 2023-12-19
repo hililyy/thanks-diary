@@ -13,8 +13,19 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     
     // MARK: - Property
     
-    var viewModel: MainViewModel?
+    var viewModel: MainViewModel
     var beforeData: DiaryModel?
+    
+    // MARK: - Init
+    
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -50,7 +61,7 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     
     private func update(safeBeforeData: DiaryModel, newData: DiaryModel) async throws {
         do {
-            try await viewModel?.updateData(beforeData: safeBeforeData,
+            try await viewModel.updateData(beforeData: safeBeforeData,
                                             newData: newData)
             beforeData = newData
             
@@ -61,7 +72,7 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     
     private func write(_ newData: DiaryModel) async throws {
         do {
-            try await viewModel?.createData(newData: newData)
+            try await viewModel.createData(newData: newData)
             beforeData = newData
             
         } catch {
@@ -73,7 +84,7 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
         guard let deleteData = beforeData else { return }
         
         do {
-            try await viewModel?.deleteData(deleteData: deleteData)
+            try await viewModel.deleteData(deleteData: deleteData)
             popVC()
             
         } catch {
@@ -103,7 +114,7 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
             type: .detail,
             title: attachedView.getTitleText(),
             contents: attachedView.getContentsText(),
-            date: viewModel?.selectedDate.value.convertString() ?? Date().convertString()
+            date: viewModel.selectedDate.value.convertString()
         )
     }
     
@@ -133,7 +144,7 @@ extension DetailWriteVC {
     }
     
     private func initUI() {
-        attachedView.setTopLabelData(date: viewModel?.selectedDate.value)
+        attachedView.setTopLabelData(date: viewModel.selectedDate.value)
         
         if let beforeData {
             attachedView.setTextFieldData(

@@ -13,14 +13,26 @@ final class SettingSuggestVC: BaseVC<SettingSuggestView> {
     
     // MARK: - Property
     
-    var viewModel: SettingViewModel?
+    var viewModel: SettingViewModel
+    
+    // MARK: - Init
+    
+    init(viewModel: SettingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initalize()
-        viewModel?.getSuggestDatas()
+        viewModel.getSuggestDatas()
     }
 }
 
@@ -60,7 +72,7 @@ extension SettingSuggestVC {
     }
     
     private func initTable() {
-        viewModel?.suggestData
+        viewModel.suggestData
             .bind(to: attachedView.tableView.rx.items(
                 cellIdentifier: SettingSuggestTVCell.id,
                 cellType: SettingSuggestTVCell.self)) { [weak self] _, item, cell in
@@ -79,9 +91,7 @@ extension SettingSuggestVC {
 
 extension SettingSuggestVC {
     private func presentSettingSuggestWriteVC() {
-        let vc = SettingSuggestWriteVC()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
+        let vc = SettingSuggestWriteVC(viewModel: self.viewModel)
         vc.viewModel = viewModel
         present(vc, animated: true)
     }

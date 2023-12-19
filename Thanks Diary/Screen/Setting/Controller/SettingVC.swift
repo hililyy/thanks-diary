@@ -12,7 +12,18 @@ final class SettingVC: BaseVC<SettingView> {
     // MARK: - Property
     
     private var alarmFlag: Bool = false
-    let viewModel = SettingViewModel()
+    let viewModel: SettingViewModel
+    
+    // MARK: - Init
+    
+    init(viewModel: SettingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -128,7 +139,7 @@ extension SettingVC {
 
 extension SettingVC {
     private func pushSettingCodeVC() {
-        let vc = SettingCodeVC()
+        let vc = SettingCodeVC(viewModel: self.viewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -138,7 +149,7 @@ extension SettingVC {
     }
     
     private func pushSettingAlarmVC() {
-        let vc = SettingAlarmVC()
+        let vc = SettingAlarmVC(viewModel: self.viewModel)
         vc.viewModel = viewModel
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -149,7 +160,7 @@ extension SettingVC {
     }
     
     private func pushSettingSuggestVC() {
-        let vc = SettingSuggestVC()
+        let vc = SettingSuggestVC(viewModel: self.viewModel)
         vc.viewModel = viewModel
         navigationController?.pushViewController(vc, animated: true)
     }
