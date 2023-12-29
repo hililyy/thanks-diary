@@ -11,6 +11,8 @@ final class SettingSuggestView: BaseView {
     
     // MARK: - UI components
     
+    private let topView = UIView()
+    
     let backButton = UIButton(type: .custom).then { button in
         button.setImage(Asset.Image.icBack.image, for: .normal)
     }
@@ -21,6 +23,22 @@ final class SettingSuggestView: BaseView {
         label.text = L10n.settingName9
         label.textAlignment = .center
     }
+    
+    private let noticeView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 219/255, green: 228/255, blue: 255/255, alpha: 0.3)
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    private let noticeLabel = {
+        let label = UILabel()
+        label.text = "감사일기를 사용하면서 불편했거나\n개선했으면 하는 점을 남겨주세요!\n\n** 모든 글은 익명으로 게시되니\n자유로운 의견 작성 부탁드립니다. **"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
     
     let tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
@@ -45,24 +63,35 @@ final class SettingSuggestView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backButton,
-                     writeButton,
-                     topLabel,
+        addSubviews([topView,
+                     noticeView,
                      tableView,
                      loading])
+        noticeView.addSubview(noticeLabel)
+        topView.addSubviews([backButton,
+                             writeButton,
+                             topLabel
+        ])
     }
     
     override func initConstraints() {
+        topView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+            make.bottom.equalTo(noticeView.snp.top)
+        }
+        
         backButton.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(20)
+            make.left.equalTo(topView.snp.left).offset(20)
             make.width.equalTo(44)
             make.height.equalTo(44)
             make.centerY.equalTo(topLabel.snp.centerY)
         }
         
         topLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(25)
-            make.centerX.equalTo(snp.centerX)
+            make.top.equalTo(topView.snp.top).offset(25)
+            make.centerX.equalTo(topView.snp.centerX)
         }
         
         writeButton.snp.makeConstraints { make in
@@ -72,8 +101,21 @@ final class SettingSuggestView: BaseView {
             make.centerY.equalTo(topLabel.snp.centerY)
         }
         
-        tableView.snp.makeConstraints { make in
+        noticeView.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp.bottom).offset(20)
+            make.left.equalTo(snp.left).offset(20)
+            make.right.equalTo(snp.right).offset(-20)
+            make.bottom.equalTo(tableView.snp.top).offset(-20)
+        }
+        
+        noticeLabel.snp.makeConstraints { make in
+            make.top.equalTo(noticeView.snp.top).offset(20)
+            make.left.equalTo(noticeView.snp.left).offset(20)
+            make.right.equalTo(noticeView.snp.right).offset(-20)
+            make.bottom.equalTo(noticeView.snp.bottom).offset(-20)
+        }
+        
+        tableView.snp.makeConstraints { make in
             make.left.equalTo(snp.left).offset(10)
             make.right.equalTo(snp.right).offset(-10)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)

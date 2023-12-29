@@ -32,7 +32,6 @@ final class DetailWriteView: BaseView {
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
-        
     }
     
     private lazy var buttonStackView = UIStackView().then { stackView in
