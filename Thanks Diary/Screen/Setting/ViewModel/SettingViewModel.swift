@@ -24,7 +24,9 @@ final class SettingViewModel {
     }
     
     func setSuggestData(contents: String) {
-        FirebaseManager.instance.addSuggestData(contents: contents)
+        let postId = Int(suggestData.value.first?.postId ?? "") ?? 0
+        FirebaseManager.instance.addSuggestData(contents: contents,
+                                                postId: postId + 1)
     }
     
     let colorSubject = PublishSubject<UIColor>()

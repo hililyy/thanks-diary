@@ -38,7 +38,7 @@ final class CoreDataManager {
         }
     }
     
-    func getDetailData() -> [String: [DiaryModel]]? {
+    private func getDetailData() -> [String: [DiaryModel]]? {
         guard let context = self.context else { return [:] }
         
         let request = NSFetchRequest<NSManagedObject>(entityName: detailDiaryModelName)
@@ -90,7 +90,7 @@ final class CoreDataManager {
         }
     }
     
-    func getSimpleData() -> [String: [DiaryModel]]? {
+    private func getSimpleData() -> [String: [DiaryModel]]? {
         guard let context = self.context else { return [:] }
         
         let request = NSFetchRequest<NSManagedObject>(entityName: simpleDiaryModelName)

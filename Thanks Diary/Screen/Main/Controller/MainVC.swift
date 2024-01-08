@@ -251,7 +251,8 @@ extension MainVC {
     }
     
     private func initTableViewDidSelected() {
-        Observable.zip(attachedView.diaryTableView.rx.modelSelected(DiaryModel.self), attachedView.diaryTableView.rx.itemSelected)
+        Observable.zip(attachedView.diaryTableView.rx.modelSelected(DiaryModel.self), 
+                       attachedView.diaryTableView.rx.itemSelected)
             .bind { [weak self] diary, _ in
                 guard let self else { return }
                 

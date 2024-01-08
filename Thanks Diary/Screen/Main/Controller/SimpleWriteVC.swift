@@ -71,7 +71,7 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     private func update(beforeData: DiaryModel, newData: DiaryModel) async throws {
         do {
             try await viewModel.updateData(beforeData: beforeData,
-                                            newData: newData)
+                                           newData: newData)
             dismissVC {
                 self.viewModel.readData()
             }

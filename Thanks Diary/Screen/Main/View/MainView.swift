@@ -110,7 +110,7 @@ final class MainView: BaseView {
     func setHiddenForEmptyView(isHidden: Bool) {
         animationFadeIn(view: emptyView)
         emptyView.isHidden = isHidden
-        emptyView.frame.size.height = isHidden ? 0 : 300
+//        emptyView.frame.size.height = isHidden ? 0 : 300
     }
     
     func initAllFont() {

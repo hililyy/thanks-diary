@@ -34,7 +34,7 @@ final class SettingSuggestView: BaseView {
     private let noticeLabel = {
         let label = UILabel()
         label.text = "감사일기를 사용하면서 불편했거나\n개선했으면 하는 점을 남겨주세요!\n\n** 모든 글은 익명으로 게시되니\n자유로운 의견 작성 부탁드립니다. **"
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -44,6 +44,8 @@ final class SettingSuggestView: BaseView {
         tableView.backgroundColor = .clear
         tableView.register(SettingSuggestTVCell.self, 
                            forCellReuseIdentifier: SettingSuggestTVCell.id)
+        tableView.register(SettingSuggestReplyTVCell.self,
+                           forCellReuseIdentifier: SettingSuggestReplyTVCell.id)
     }
     
     let loading = UIActivityIndicatorView().then { activityIndicator in
@@ -70,8 +72,7 @@ final class SettingSuggestView: BaseView {
         noticeView.addSubview(noticeLabel)
         topView.addSubviews([backButton,
                              writeButton,
-                             topLabel
-        ])
+                             topLabel])
     }
     
     override func initConstraints() {
@@ -109,10 +110,10 @@ final class SettingSuggestView: BaseView {
         }
         
         noticeLabel.snp.makeConstraints { make in
-            make.top.equalTo(noticeView.snp.top).offset(20)
-            make.left.equalTo(noticeView.snp.left).offset(20)
-            make.right.equalTo(noticeView.snp.right).offset(-20)
-            make.bottom.equalTo(noticeView.snp.bottom).offset(-20)
+            make.top.equalTo(noticeView.snp.top).offset(10)
+            make.left.equalTo(noticeView.snp.left).offset(10)
+            make.right.equalTo(noticeView.snp.right).offset(-10)
+            make.bottom.equalTo(noticeView.snp.bottom).offset(-10)
         }
         
         tableView.snp.makeConstraints { make in

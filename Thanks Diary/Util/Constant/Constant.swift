@@ -16,8 +16,11 @@ final class Constant {
     
     // Firebase
     static let FIREBASE_CHILD_SUGGEST = "suggest"
-    static let FIREBASE_ITEM_UID = "uid"
+    
     static let FIREBASE_ITEM_CONTENTS = "contents"
+    static let FIREBASE_ITEM_CREATEDATE = "createDate"
+    static let FIREBASE_LIKE_COUNT = "likeCount"
+    static let FIREBASE_POST_ID = "postId"
     static let FIREBASE_ITEM_STATUS = "status"
     
     // info.plist

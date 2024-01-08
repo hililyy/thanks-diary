@@ -73,17 +73,31 @@ extension SettingSuggestVC {
     
     private func initTable() {
         viewModel.suggestData
-            .bind(to: attachedView.tableView.rx.items(
-                cellIdentifier: SettingSuggestTVCell.id,
-                cellType: SettingSuggestTVCell.self)) { [weak self] _, item, cell in
-                    guard let self else { return }
+            .bind(to: attachedView.tableView.rx.items) { [weak self] tableView, index, item in
+                guard let self else { return UITableViewCell() }
+                
+                if item.status != "reply" {
+                    guard let suggestCell = tableView.dequeueReusableCell(withIdentifier: SettingSuggestTVCell.id) as? SettingSuggestTVCell else { return UITableViewCell() }
+                    suggestCell.contentsLabel.text = item.contents
+                    suggestCell.statusLabel.text = SuggestType(rawValue: item.status)?.description
+                    suggestCell.setStatusLabelUI(SuggestType(rawValue: item.status) ?? .waiting)
+                    suggestCell.createDateLabel.text = item.createDate
+                    suggestCell.likeLabel.text = "\(item.likeCount)"
                     
-                    cell.contentsLabel.text = item.contents
-                    cell.statusLabel.text = SuggestType(rawValue: item.status)?.description
-                    cell.setStatusLabelUI(SuggestType(rawValue: item.status) ?? .waiting)
                     attachedView.loading.stopAnimating()
+                    
+                    return suggestCell
+                } else {
+                    guard let replyCell = tableView.dequeueReusableCell(withIdentifier: SettingSuggestReplyTVCell.id) as? SettingSuggestReplyTVCell else { return UITableViewCell() }
+                    replyCell.contentsLabel.text = item.contents
+                    replyCell.createDateLabel.text = item.createDate
+                    
+                    attachedView.loading.stopAnimating()
+                    
+                    return replyCell
                 }
-                .disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
