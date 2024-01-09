@@ -67,7 +67,7 @@ final class MainView: BaseView {
         label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
-        label.text = Date().convertString(format: L10n.formatDate2)
+        label.text = Date().toString(didChangeDateFormat: L10n.formatDate2)
     }
     
     let diaryTableView = UITableView().then { tableView in
@@ -96,7 +96,7 @@ final class MainView: BaseView {
     }
     
     func setTodayLabelText(date: Date) {
-        todayLabel.text = date.convertString(format: L10n.formatDate2)
+        todayLabel.text = date.toString(didChangeDateFormat: L10n.formatDate2)
         
         UIView.animate(withDuration: 0.15, delay: 0.0, animations: {
             self.todayLabel.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)

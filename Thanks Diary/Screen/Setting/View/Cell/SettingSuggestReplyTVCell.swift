@@ -28,6 +28,7 @@ final class SettingSuggestReplyTVCell: BaseTVCell, CellIdentifier {
     let createDateLabel: UILabel = {
         let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 12)
+        label.textColor = Asset.Color.gray5.color
         return label
     }()
     
@@ -41,7 +42,7 @@ final class SettingSuggestReplyTVCell: BaseTVCell, CellIdentifier {
     
     override func initUI() {
         selectionStyle = .none
-        backgroundColor = .clear
+        backgroundColor = Asset.Color.gray12.color
     }
     
     // MARK: - Constraint
@@ -55,7 +56,7 @@ final class SettingSuggestReplyTVCell: BaseTVCell, CellIdentifier {
     
     override func initConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(15)
+            make.top.equalTo(snp.top).offset(10)
             make.left.equalTo(replyImageView.snp.right).offset(15)
             make.right.equalTo(snp.right).offset(-15)
             make.bottom.equalTo(contentsLabel.snp.top).offset(-5)
@@ -77,8 +78,8 @@ final class SettingSuggestReplyTVCell: BaseTVCell, CellIdentifier {
         }
         
         createDateLabel.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(15)
-            make.bottom.equalTo(snp.bottom).offset(-15)
+            make.right.equalTo(snp.right).offset(-15)
+            make.bottom.equalTo(snp.bottom).offset(-10)
         }
     }
 }

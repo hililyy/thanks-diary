@@ -100,7 +100,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     }
     
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        return viewModel.diaryDates.contains(date.convertString()) ? Asset.Image.icCircle.image : nil
+        return viewModel.diaryDates.contains(date.toString(didChangeDateFormat: Constant.YYYYMD)) ? Asset.Image.icCircle.image : nil
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
@@ -218,7 +218,7 @@ extension MainVC {
                     attachedView.setHiddenForEmptyView(isHidden: false)
                     
                     let date = self.viewModel.selectedDate.value
-                    let view = date.convertString() == Date().convertString() ? NotTodayView() : NotBeforeView()
+                    let view = date.toString(didChangeDateFormat: Constant.YYYYMD) == Date().toString(didChangeDateFormat: Constant.YYYYMD) ? NotTodayView() : NotBeforeView()
                     
                     attachedView.setEmptyView(view: view)
                 } else {

@@ -18,4 +18,10 @@ extension String {
             return nil
         }
     }
+    
+    func toDate(willChangeDateFormat: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = willChangeDateFormat
+        return formatter.date(from: self) ?? Date()
+    }
 }

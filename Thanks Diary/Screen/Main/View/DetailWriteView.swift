@@ -94,7 +94,7 @@ final class DetailWriteView: BaseView {
     
     func setTopLabelData(date: Date?) {
         if let date {
-            topLabel.text = ("\(date.convertString(format: L10n.formatDate1))  \(L10n.thanksDiary)")
+            topLabel.text = ("\(date.toString(didChangeDateFormat: Constant.YYYYMD))  \(L10n.thanksDiary)")
         } else {
             topLabel.text = L10n.todayThanksDiary
         }

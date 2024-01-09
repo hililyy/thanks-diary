@@ -21,7 +21,7 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
     let createDateLabel: UILabel = {
         let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 12)
-        label.text = "00-00-00"
+        label.textColor = Asset.Color.gray5.color
         return label
     }()
     
@@ -56,14 +56,16 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.addArrangedSubviews([createDateLabel,
-                                       statusView])
+        stackView.addArrangedSubviews([statusView,
+                                       createDateLabel])
         stackView.spacing = 5
         stackView.axis = .horizontal
-        stackView.distribution = .fill
+        stackView.distribution = .equalSpacing
         stackView.alignment = .fill
         return stackView
     }()
+    
+    let emptyView = UIView()
     
     func setStatusLabelUI(_ type: SuggestType) {
         switch type {
@@ -99,22 +101,23 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
     
     override func initConstraints() {
         contentsLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(15)
-            make.left.equalTo(snp.left).offset(20)
+            make.top.equalTo(snp.top).offset(10)
+            make.left.equalTo(snp.left).offset(15)
 //            make.right.equalTo(likeButton.snp.left).offset(-20)
-            make.right.equalTo(snp.right).offset(-20)
+            make.right.equalTo(snp.right).offset(-15)
         }
         
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(contentsLabel.snp.bottom).offset(5)
+            make.top.equalTo(contentsLabel.snp.bottom).offset(10)
             make.left.equalTo(snp.left).offset(15)
-            make.bottom.equalTo(snp.bottom).offset(-15)
+            make.right.equalTo(snp.right).offset(-15)
+            make.bottom.equalTo(snp.bottom).offset(-10)
         }
         
         statusLabel.snp.makeConstraints { make in
             make.top.equalTo(statusView.snp.top).offset(5)
-            make.left.equalTo(statusView.snp.left).offset(5)
-            make.right.equalTo(statusView.snp.right).offset(-5)
+            make.left.equalTo(statusView.snp.left).offset(10)
+            make.right.equalTo(statusView.snp.right).offset(-10)
             make.bottom.equalTo(statusView.snp.bottom).offset(-5)
         }
         

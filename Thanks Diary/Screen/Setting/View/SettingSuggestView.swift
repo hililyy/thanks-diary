@@ -42,7 +42,9 @@ final class SettingSuggestView: BaseView {
     
     let tableView = UITableView().then { tableView in
         tableView.backgroundColor = .clear
-        tableView.register(SettingSuggestTVCell.self, 
+        tableView.separatorColor = .clear
+        tableView.separatorStyle = .none
+        tableView.register(SettingSuggestTVCell.self,
                            forCellReuseIdentifier: SettingSuggestTVCell.id)
         tableView.register(SettingSuggestReplyTVCell.self,
                            forCellReuseIdentifier: SettingSuggestReplyTVCell.id)

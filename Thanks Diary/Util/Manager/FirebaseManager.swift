@@ -60,13 +60,14 @@ final class FirebaseManager {
 //                    suggestDatas.append(suggestData)
 //                }
                 
-                //
                 for data in values {
                     var suggestData = SettingSuggestModel.initData()
                     suggestData.postId = data["postId"] as? String ?? ""
                     suggestData.contents = data["contents"] as? String ?? ""
                     suggestData.status = data["status"] as? String ?? ""
-                    suggestData.createDate = data["createDate"] as? String ?? ""
+                    let date = data["createDate"] as? String ?? ""
+                    
+                    suggestData.createDate = date.toDate(willChangeDateFormat: Constant.utcFormat).toString(didChangeDateFormat: Constant.YYMMDD)
                     suggestData.likeCount = data["likeCount"] as? Int ?? 0
                     
                     suggestDatas.append(suggestData)
@@ -108,7 +109,7 @@ final class FirebaseManager {
     func addSuggestData(contents: String, postId: Int) {
         let newData = [
             Constant.FIREBASE_ITEM_CONTENTS: contents,
-            Constant.FIREBASE_ITEM_CREATEDATE: Date().convertString(format: "yy-MM-dd"),
+            Constant.FIREBASE_ITEM_CREATEDATE: Date().toString(didChangeDateFormat: Constant.utcFormat),
             Constant.FIREBASE_LIKE_COUNT: 0,
             Constant.FIREBASE_POST_ID: postId,
             Constant.FIREBASE_ITEM_STATUS: SuggestType.waiting.rawValue
