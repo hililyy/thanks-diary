@@ -78,7 +78,7 @@ final class DetailWriteView: BaseView {
         textView.accessibilityIdentifier = "textView_title_detail"
     }
     
-    let contentsTextView = UITextView().then { textView in
+    lazy var contentsTextView = UITextView().then { textView in
         textView.backgroundColor = .clear
         textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
@@ -88,13 +88,65 @@ final class DetailWriteView: BaseView {
         textView.isScrollEnabled = true
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         textView.accessibilityIdentifier = "textView_contents_detail"
+        textView.inputAccessoryView = toolView
     }
+    
+    lazy var toolView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Asset.Color.gray7.color
+        view.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0)
+        return view
+    }()
+    
+    let toolNumberButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(Asset.Image.icFormNumber.image, for: .normal)
+        button.tintColor = Asset.Color.gray14.color
+        return button
+    }()
+    
+    let toolDotListButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(Asset.Image.icFormCircle.image, for: .normal)
+        button.tintColor = Asset.Color.gray14.color
+        return button
+    }()
+    
+    let toolDashListButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(Asset.Image.icFormLine.image, for: .normal)
+        button.tintColor = Asset.Color.gray14.color
+        return button
+    }()
+    
+    let toolInlineButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(Asset.Image.icFormInline.image, for: .normal)
+        button.tintColor = Asset.Color.gray14.color
+        return button
+    }()
+    
+    let toolOutlineButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(Asset.Image.icFormOutline.image, for: .normal)
+        button.tintColor = Asset.Color.gray14.color
+        return button
+    }()
+    
+    lazy var toolStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 50
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .fill
+        return stackView
+    }()
     
     // MARK: - Function
     
     func setTopLabelData(date: Date?) {
         if let date {
-            topLabel.text = ("\(date.toString(didChangeDateFormat: Constant.YYYYMD))  \(L10n.thanksDiary)")
+            topLabel.text = ("\(date.toString(didChangeDateFormat: "yyyy년 M월 d일"))  \(L10n.thanksDiary)")
         } else {
             topLabel.text = L10n.todayThanksDiary
         }
@@ -256,6 +308,16 @@ final class DetailWriteView: BaseView {
             contentsLabel,
             contentsTextView
         ])
+        
+        toolStackView.addArrangedSubviews([
+            toolNumberButton,
+            toolDotListButton,
+            toolDashListButton,
+            toolInlineButton,
+            toolOutlineButton
+        ])
+        
+        toolView.addSubview(toolStackView)
     }
     
     override func initConstraints() {
@@ -341,6 +403,24 @@ final class DetailWriteView: BaseView {
             make.centerX.equalTo(contentView.snp.centerX)
             make.bottom.equalTo(contentView.snp.bottom).offset(-30)
             make.height.greaterThanOrEqualTo(250)
+        }
+        
+        toolStackView.snp.makeConstraints { make in
+            make.top.equalTo(toolView.snp.top).offset(10)
+            make.left.equalTo(toolView.snp.left).offset(20)
+            make.right.equalTo(toolView.snp.right).offset(-20)
+            make.bottom.equalTo(toolView.snp.bottom).offset(-10)
+        }
+        
+        [toolNumberButton,
+         toolDotListButton,
+         toolDashListButton,
+         toolInlineButton,
+         toolOutlineButton].forEach { button in
+            button.snp.makeConstraints { make in
+                make.width.equalTo(24)
+                make.height.equalTo(24)
+            }
         }
     }
 }

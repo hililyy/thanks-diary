@@ -82,7 +82,8 @@ final class MainView: BaseView {
     let emptyView = UIView()
     
     let floatingButton = FloatingButton().then { button in
-        button.setButtonImage(Asset.Image.icPencil.image)
+        button.setButtonImage(img: Asset.Image.icPencil.image,
+                              color: Asset.Color.cleanWhite.color)
         button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
         button.button.accessibilityIdentifier = "button_main_floating"
     }
