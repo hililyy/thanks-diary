@@ -19,8 +19,9 @@ final class FloatingButton: BaseView {
         view.isUserInteractionEnabled = false
     }
     
-    func setButtonImage(_ img: UIImage) {
-        imageView.image = img
+    func setButtonImage(img: UIImage, color: UIColor) {
+        imageView.image = img.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = color
         imageView.contentMode = .scaleAspectFit
     }
     

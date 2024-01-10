@@ -55,44 +55,6 @@ final class ResourceManager {
         }
     }
     
-    func getDetailWriteImage() -> UIImage {
-        let color = UserDefaultManager.instance.themeColor
-        
-        switch color {
-        case 0:
-            return Asset.Image.icDetailWrite.image
-        case 1:
-            return Asset.Image.icDetailWritePink.image
-        case 2:
-            return Asset.Image.icDetailWriteYellow.image
-        case 3:
-            return Asset.Image.icDetailWriteGreen.image
-        case 4:
-            return Asset.Image.icDetailWritePurple.image
-        default:
-            return Asset.Image.icDetailWrite.image
-        }
-    }
-    
-    func getSimpleWriteImage() -> UIImage {
-        let color = UserDefaultManager.instance.themeColor
-        
-        switch color {
-        case 0:
-            return Asset.Image.icSimpleWrite.image
-        case 1:
-            return Asset.Image.icSimpleWritePink.image
-        case 2:
-            return Asset.Image.icSimpleWriteYellow.image
-        case 3:
-            return Asset.Image.icSimpleWriteGreen.image
-        case 4:
-            return Asset.Image.icSimpleWritePurple.image
-        default:
-            return Asset.Image.icSimpleWrite.image
-        }
-    }
-    
     func getUnderLineImage() -> UIImage {
         let color = UserDefaultManager.instance.themeColor
         

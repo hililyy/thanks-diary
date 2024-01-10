@@ -21,19 +21,22 @@ final class FloatingButtonOpendView: BaseView {
     }
     
     var closeButton = FloatingButton().then { button in
-        button.setButtonImage(Asset.Image.icX.image)
+        button.setButtonImage(img: Asset.Image.icX.image,
+                              color: Asset.Color.cleanWhite.color)
         button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
         button.button.accessibilityIdentifier = "button_main_floating_close"
     }
     
     var detailButton = FloatingButton().then { button in
-        button.setButtonImage(ResourceManager.instance.getDetailWriteImage())
+        button.setButtonImage(img: Asset.Image.icDetailWrite.image,
+                              color: ResourceManager.instance.getMainColor())
         button.setButtonBackgroundColor(.white)
         button.button.accessibilityIdentifier = "button_main_floating_detail"
     }
     
     var simpleButton = FloatingButton().then { button in
-        button.setButtonImage(ResourceManager.instance.getSimpleWriteImage())
+        button.setButtonImage(img: Asset.Image.icSimpleWrite.image,
+                              color: ResourceManager.instance.getMainColor())
         button.setButtonBackgroundColor(.white)
         button.button.accessibilityIdentifier = "button_main_floating_simple"
     }

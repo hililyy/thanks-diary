@@ -59,6 +59,7 @@ final class PasswordButtonView: UIView {
         if number == -1 {
             let contentImageView = UIImageView()
             contentImageView.image = Asset.Image.icDelete.image
+            contentImageView.tintColor = .red
             contentView.addSubview(contentImageView)
             
             contentImageView.snp.makeConstraints { make in
