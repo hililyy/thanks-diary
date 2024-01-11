@@ -59,7 +59,7 @@
 
 ## 버전기록 (18회)
 <details>
-<summary>버전 1.7.1</summary>
+<summary>버전 1.7.1 (24/01/08)</summary>
     
   </br>
   
@@ -68,7 +68,7 @@
 </details>
 
 <details>
-<summary>버전 1.7.0</summary>
+<summary>버전 1.7.0 (23/12/15)</summary>
     
   </br>
   
@@ -78,7 +78,7 @@
 </details>
 
 <details>
-<summary>버전 1.6.0</summary>
+<summary>버전 1.6.0 (23/12/12)</summary>
     
   </br>
   
@@ -90,7 +90,7 @@
 </details>
 
 <details>
-<summary>버전 1.5.4</summary>
+<summary>버전 1.5.4 (23/12/08)</summary>
     
   </br>
   
@@ -99,7 +99,7 @@
 </details>
 
 <details>
-<summary>버전 1.5.3</summary>
+<summary>버전 1.5.3 (23/12/06)</summary>
     
   </br>
   
@@ -116,7 +116,7 @@
 </details>
 
 <details>
-<summary>버전 1.5.2</summary>
+<summary>버전 1.5.2 (23/11/20)</summary>
     
   </br>
   
@@ -125,7 +125,7 @@
 </details>
 
 <details>
-<summary>버전 1.5.1</summary>
+<summary>버전 1.5.1 (23/11/16)</summary>
     
   </br>
   
@@ -134,7 +134,7 @@
 </details>
 
 <details>
-<summary>버전 1.5.0</summary>
+<summary>버전 1.5.0 (23/11/13)</summary>
     
   </br>
   
@@ -149,7 +149,7 @@
 </details>
 
 <details>
-<summary>버전 1.4.0</summary>
+<summary>버전 1.4.0 (23/10/19)</summary>
     
   </br>
   
@@ -159,7 +159,7 @@
 </details>
 
 <details>
-<summary>버전 1.3.1</summary>
+<summary>버전 1.3.1 (23/10/10)</summary>
     
   </br>
   
@@ -173,7 +173,7 @@
 </details>
 
 <details>
-<summary>버전 1.3.0</summary>
+<summary>버전 1.3.0 (23/10/06)</summary>
     
   </br>
   
@@ -192,7 +192,7 @@
 </details>
 
 <details>
-<summary>버전 1.2.1</summary>
+<summary>버전 1.2.1 (23/08/23)</summary>
     
   </br>
   
@@ -207,7 +207,7 @@
 </details>
 
 <details>
-<summary>버전 1.2.0</summary>
+<summary>버전 1.2.0 (23/08/18)</summary>
   
   </br>
   
@@ -218,7 +218,7 @@
 </details>
 
 <details>
-<summary>버전 1.1.0</summary>
+<summary>버전 1.1.0 (23/08/11)</summary>
     
   </br>
   
@@ -235,7 +235,7 @@
 </details>
 
 <details>
-<summary>버전 1.0.3</summary>
+<summary>버전 1.0.3 (23/06/28)</summary>
   
   </br>
   
@@ -255,7 +255,7 @@
 </details>
 
 <details>
-<summary>버전 1.0.2</summary>
+<summary>버전 1.0.2 (23/06/24)</summary>
   
   </br>
   
@@ -292,7 +292,7 @@
 </details>
 
 <details>
-<summary>버전 1.0.1</summary>
+<summary>버전 1.0.1 (22/10/15)</summary>
   
   </br>
   
@@ -304,7 +304,7 @@
 </details>
 
 <details>
-<summary>버전 1.0.0</summary>
+<summary>버전 1.0.0 (22/09/25)</summary>
   
   </br>
   
