@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseAnalytics
 
 final class DetailWriteVC: BaseVC<DetailWriteView> {
     
@@ -210,6 +211,8 @@ extension DetailWriteVC {
                 } else {
                     save(isBack: false)
                 }
+                
+                Analytics.logEvent("detailWrite", parameters: nil)
             })
             .disposed(by: disposeBag)
     }

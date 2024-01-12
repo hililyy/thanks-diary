@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseAnalytics
 
 final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     
@@ -184,6 +185,7 @@ extension SimpleWriteVC {
                 guard let self else { return }
                 
                 complete()
+                Analytics.logEvent("simpleWrite", parameters: nil)
             })
             .disposed(by: disposeBag)
     }
