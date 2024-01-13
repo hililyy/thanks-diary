@@ -14,7 +14,7 @@ final class SettingSuggestReplyTVCell: BaseTVCell, CellIdentifier {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 11)
-        label.text = "[개발자 답변]"
+        label.text = L10n.suggestReplyDeveloper
         return label
     }()
     

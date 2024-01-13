@@ -87,7 +87,7 @@ final class ThemeColorView: BaseView {
         }
     }
     
-    func initColorButtonSize(_ sender: UIButton) {
+    private func initColorButtonSize(_ sender: UIButton) {
         sender.snp.makeConstraints { make in
             make.width.equalTo(30)
             make.height.equalTo(30)

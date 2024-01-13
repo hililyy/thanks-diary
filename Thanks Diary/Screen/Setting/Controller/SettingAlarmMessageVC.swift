@@ -50,16 +50,20 @@ extension SettingAlarmMessageVC {
     private func initTarget() {
         attachedView.navigationView.backButton.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                
                 self.popVC()
             })
             .disposed(by: disposeBag)
         
         attachedView.completeButton.rx.tap
             .asDriver()
-            .drive(onNext: {
-                var title = self.attachedView.messageTitleTextField.text ?? ""
-                var contents = self.attachedView.messageContentsTextField.text ?? ""
+            .drive(onNext: { [weak self] in
+                guard let self else { return }
+                
+                var title = attachedView.messageTitleTextField.text ?? ""
+                var contents = attachedView.messageContentsTextField.text ?? ""
                 
                 if title.isEmpty {
                     title = L10n.pushTitleGeneral
@@ -71,11 +75,11 @@ extension SettingAlarmMessageVC {
                 
                 UserDefaultManager.instance.pushMessageTitle = title
                 UserDefaultManager.instance.pushMessageContents = contents
-                LocalNotificationManager.instance.removeDeliveredNotification()
-                let time = UserDefaultManager.instance.pushTime
-                LocalNotificationManager.instance.registNotification(time: time)
                 
-                self.popVC()
+                LocalNotificationManager.instance.removeDeliveredNotification()
+                LocalNotificationManager.instance.registNotification(time: UserDefaultManager.instance.pushTime)
+                
+                popVC()
             })
             .disposed(by: disposeBag)
     }

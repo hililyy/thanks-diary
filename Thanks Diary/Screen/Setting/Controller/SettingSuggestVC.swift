@@ -73,9 +73,10 @@ extension SettingSuggestVC {
     
     private func initTable() {
         viewModel.suggestData
-            .bind(to: attachedView.tableView.rx.items) { [weak self] tableView, index, item in
+            .bind(to: attachedView.tableView.rx.items) { [weak self] tableView, _, item in
                 guard let self else { return UITableViewCell() }
                 
+                // 사용자 작성 댓글
                 if item.status != "reply" {
                     guard let suggestCell = tableView.dequeueReusableCell(withIdentifier: SettingSuggestTVCell.id) as? SettingSuggestTVCell else { return UITableViewCell() }
                     suggestCell.contentsLabel.text = item.contents
@@ -87,6 +88,8 @@ extension SettingSuggestVC {
                     attachedView.loading.stopAnimating()
                     
                     return suggestCell
+                    
+                // 개발자 작성 대댓글
                 } else {
                     guard let replyCell = tableView.dequeueReusableCell(withIdentifier: SettingSuggestReplyTVCell.id) as? SettingSuggestReplyTVCell else { return UITableViewCell() }
                     replyCell.contentsLabel.text = item.contents

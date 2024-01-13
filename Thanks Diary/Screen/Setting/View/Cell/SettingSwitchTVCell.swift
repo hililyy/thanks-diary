@@ -27,15 +27,18 @@ final class SettingSwitchTVCell: BaseTVCell, CellIdentifier {
         backgroundColor = .clear
         
         settingSwitch.onTintColor = ResourceManager.instance.getMainColor()
-        settingSwitch.addTarget { _ in
-            self.switchTapHandler()
+        settingSwitch.addTarget { [weak self] _ in
+            guard let self else { return }
+            
+            switchTapHandler()
         }
     }
     
     // MARK: - Constraint
     
     override func initSubviews() {
-        contentView.addSubviews([titleLabel, settingSwitch])
+        contentView.addSubviews([titleLabel,
+                                 settingSwitch])
     }
     
     override func initConstraints() {

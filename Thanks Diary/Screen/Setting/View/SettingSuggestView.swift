@@ -33,7 +33,7 @@ final class SettingSuggestView: BaseView {
     
     private let noticeLabel = {
         let label = UILabel()
-        label.text = "감사일기를 사용하면서 불편했거나\n개선했으면 하는 점을 남겨주세요!\n\n** 모든 글은 익명으로 게시되니\n자유로운 의견 작성 부탁드립니다. **"
+        label.text = L10n.suggestNotice
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textAlignment = .center
         label.numberOfLines = 0

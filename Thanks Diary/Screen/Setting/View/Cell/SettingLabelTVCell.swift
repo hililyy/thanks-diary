@@ -34,7 +34,8 @@ final class SettingLabelTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([titleLabel, contentsLabel])
+        addSubviews([titleLabel,
+                     contentsLabel])
     }
     
     override func initConstraints() {

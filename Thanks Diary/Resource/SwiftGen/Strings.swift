@@ -189,6 +189,14 @@ internal enum L10n {
   /// 감사일기를 작성하고
   /// 나다운 하루를 만들어 보세요!
   internal static let startPage3Message1 = L10n.tr("Localizable", "start_page3_message1", fallback: "감사일기를 작성하고\n나다운 하루를 만들어 보세요!")
+  /// 감사일기를 사용하면서 불편했거나
+  /// 개선했으면 하는 점을 남겨주세요!
+  /// 
+  /// ** 모든 글은 익명으로 게시되니
+  /// 자유로운 의견 작성 부탁드립니다. **
+  internal static let suggestNotice = L10n.tr("Localizable", "suggest_notice", fallback: "감사일기를 사용하면서 불편했거나\n개선했으면 하는 점을 남겨주세요!\n\n** 모든 글은 익명으로 게시되니\n자유로운 의견 작성 부탁드립니다. **")
+  /// [개발자 답변]
+  internal static let suggestReplyDeveloper = L10n.tr("Localizable", "suggest_reply_developer", fallback: "[개발자 답변]")
   /// 감사일기
   internal static let thanksDiary = L10n.tr("Localizable", "thanks_diary", fallback: "감사일기")
   /// 제목
