@@ -417,12 +417,12 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		022955432A669D73004BF800 /* Etc */ = {
+		022955432A669D73004BF800 /* Custom Class */ = {
 			isa = PBXGroup;
 			children = (
 				025EF0722A459E4700C930F2 /* PaddingLabel.swift */,
 			);
-			path = Etc;
+			path = "Custom Class";
 			sourceTree = "<group>";
 		};
 		02475DEA2ADF824C0075C206 /* Component */ = {
@@ -768,7 +768,7 @@
 				025EF0512A459D0000C930F2 /* Manager */,
 				025EF0602A459DFD00C930F2 /* Extension */,
 				020A8DEB2ACFAD1100E855EE /* Protocol */,
-				022955432A669D73004BF800 /* Etc */,
+				022955432A669D73004BF800 /* Custom Class */,
 			);
 			path = Util;
 			sourceTree = "<group>";

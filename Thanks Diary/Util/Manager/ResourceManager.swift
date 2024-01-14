@@ -23,14 +23,19 @@ final class ResourceManager {
         switch color {
         case 0:
             return Asset.Color.lightGrayBlue.color
+            
         case 1:
             return Asset.Color.pink.color
+            
         case 2:
             return Asset.Color.yellow.color
+            
         case 3:
             return Asset.Color.green.color
+            
         case 4:
             return Asset.Color.purple.color
+            
         default:
             return Asset.Color.lightGrayBlue.color
         }
@@ -42,14 +47,19 @@ final class ResourceManager {
         switch color {
         case 0:
             return Asset.Color.grayBlue.color
+            
         case 1:
             return Asset.Color.deepPink.color
+            
         case 2:
             return Asset.Color.deepYellow.color
+            
         case 3:
             return Asset.Color.deepGreen.color
+            
         case 4:
             return Asset.Color.deepPurple.color
+            
         default:
             return Asset.Color.grayBlue.color
         }
@@ -61,14 +71,19 @@ final class ResourceManager {
         switch color {
         case 0:
             return Asset.Image.imgUnderlineBlue.image
+            
         case 1:
             return Asset.Image.imgUnderlinePink.image
+            
         case 2:
             return Asset.Image.imgUnderlineYellow.image
+            
         case 3:
             return Asset.Image.imgUnderlineGreen.image
+            
         case 4:
             return Asset.Image.imgUnderlineBlue.image
+            
         default:
             return Asset.Image.icSimpleWrite.image
         }
@@ -80,25 +95,33 @@ final class ResourceManager {
         switch type {
         case .nanumBarunGothic:
             return FontFamily.NanumBarunGothic.ultraLight.font(size: fontSize)
+            
         case .nanumBarunPen:
             return FontFamily.NanumBarunpenOTF.regular.font(size: fontSize)
+            
         case .harunanum:
             fontSize += 3
             return FontFamily.OwnglyphHaruNanum.regular.font(size: fontSize)
+            
         case .hagom:
             fontSize += 3
             return FontFamily.OwnglyphAlcomhagom.regular.font(size: fontSize)
+            
         case .wiri:
             fontSize += 3
             return FontFamily.OwnglyphWiri.regular.font(size: fontSize)
+            
         case .boksung:
             fontSize += 3
             return FontFamily.OwnglyphBoksoong.regular.font(size: fontSize)
+            
         case .yeonyu:
             fontSize += 3
             return FontFamily.OwnglyphYeonu.regular.font(size: fontSize)
+            
         case .pretendard:
             return FontFamily.Pretendard.regular.font(size: fontSize)
+            
         case .kotrahope:
             return FontFamily.KotraHope.regular.font(size: fontSize)
         }
@@ -113,27 +136,36 @@ final class ResourceManager {
         switch fontType {
         case .nanumBarunGothic:
             return FontFamily.NanumBarunGothic.ultraLight.font(size: fontSize)
+            
         case .nanumBarunPen:
             return FontFamily.NanumBarunpenOTF.regular.font(size: fontSize)
+            
         case .harunanum:
             fontSize += 3
             return FontFamily.OwnglyphHaruNanum.regular.font(size: fontSize)
+            
         case .hagom:
             fontSize += 3
             return FontFamily.OwnglyphAlcomhagom.regular.font(size: fontSize)
+            
         case .wiri:
             fontSize += 3
             return FontFamily.OwnglyphWiri.regular.font(size: fontSize)
+            
         case .boksung:
             fontSize += 3
             return FontFamily.OwnglyphBoksoong.regular.font(size: fontSize)
+            
         case .yeonyu:
             fontSize += 3
             return FontFamily.OwnglyphYeonu.regular.font(size: fontSize)
+            
         case .pretendard:
             return FontFamily.Pretendard.regular.font(size: fontSize)
+            
         case .kotrahope:
             return FontFamily.KotraHope.regular.font(size: fontSize)
+            
         default:
             return FontFamily.NanumBarunGothic.ultraLight.font(size: fontSize)
         }

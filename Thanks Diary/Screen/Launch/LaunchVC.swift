@@ -94,7 +94,7 @@ final class LaunchVC: UIViewController {
                                  speed: 3,
                                  mode: .loop)
         
-        LottieManager.instance.setLottie(goLottie)
+        LottieManager.setLottie(goLottie)
     }
     
     // 비밀번호 ""으로 설정된 유저 비밀번호 변경(초기화 / 이전버전 앱 오류 해결방안)
@@ -139,7 +139,7 @@ final class LaunchVC: UIViewController {
                 registMainToRoot()
                 return
             } else {
-                self.showAlert()
+                showAlert()
             }
         }
     }

@@ -8,15 +8,7 @@
 import UIKit
 import Lottie
 
-final class LottieManager {
-    
-    private init() {}
-    
-    private static let _instance = LottieManager()
-    
-    static var instance: LottieManager {
-        return _instance
-    }
+struct LottieManager {
     
     class LottieInfo {
         let vc: UIViewController
@@ -49,7 +41,7 @@ final class LottieManager {
         }
     }
     
-    func setLottie(_ info: LottieInfo) {
+    static func setLottie(_ info: LottieInfo) {
         let animationView: LottieAnimationView = .init(name: info.name)
         
         info.vc.view.addSubview(animationView)

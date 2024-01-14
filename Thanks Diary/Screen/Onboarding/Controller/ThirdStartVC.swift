@@ -21,6 +21,6 @@ final class ThirdStartVC: BaseVC<ThirdStartView> {
                                                 name: Files.goJson.name,
                                                 mode: .playOnce)
         
-        LottieManager.instance.setLottie(goLottie)
+        LottieManager.setLottie(goLottie)
     }
 }

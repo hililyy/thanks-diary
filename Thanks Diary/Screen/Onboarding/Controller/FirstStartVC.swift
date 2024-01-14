@@ -26,7 +26,7 @@ final class FirstStartVC: BaseVC<FirstStartView> {
                                                    name: Files.plantJson.name,
                                                    mode: .playOnce)
         
-        LottieManager.instance.setLottie(sunLottie)
-        LottieManager.instance.setLottie(plantLottie)
+        LottieManager.setLottie(sunLottie)
+        LottieManager.setLottie(plantLottie)
     }
 }

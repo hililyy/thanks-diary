@@ -21,6 +21,6 @@ final class SecondStartVC: BaseVC<SecondStartView> {
                                                      name: Files.writingJson.name,
                                                      mode: .playOnce)
         
-        LottieManager.instance.setLottie(writingLottie)
+        LottieManager.setLottie(writingLottie)
     }
 }
