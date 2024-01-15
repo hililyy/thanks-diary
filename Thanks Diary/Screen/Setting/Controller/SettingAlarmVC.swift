@@ -161,7 +161,7 @@ extension SettingAlarmVC: UITableViewDelegate, UITableViewDataSource {
             else { return UITableViewCell() }
             
             cell.titleLabel.text = L10n.settingName7
-            cell.contentsLabel.text = viewModel.selectedTime?.toString(didChangeDateFormat: Constant.AHHMM)
+            cell.contentsLabel.text = viewModel.selectedTime?.toString(didChangeDateFormat: DateFormat.AHHMM.rawValue)
             return cell
             
         case 2:

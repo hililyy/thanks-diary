@@ -67,7 +67,7 @@ final class FirebaseManager {
                     suggestData.status = data["status"] as? String ?? ""
                     let date = data["createDate"] as? String ?? ""
                     
-                    suggestData.createDate = date.toDate(willChangeDateFormat: Constant.utcFormat).toString(didChangeDateFormat: Constant.YYMMDD)
+                    suggestData.createDate = date.toDate(willChangeDateFormat: DateFormat.utcFormat.rawValue).toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue)
                     suggestData.likeCount = data["likeCount"] as? Int ?? 0
                     
                     suggestDatas.append(suggestData)
@@ -107,13 +107,11 @@ final class FirebaseManager {
     }
     
     func addSuggestData(contents: String, postId: Int) {
-        let newData = [
-            Constant.FIREBASE_ITEM_CONTENTS: contents,
-            Constant.FIREBASE_ITEM_CREATEDATE: Date().toString(didChangeDateFormat: Constant.utcFormat),
-            Constant.FIREBASE_LIKE_COUNT: 0,
-            Constant.FIREBASE_POST_ID: postId,
-            Constant.FIREBASE_ITEM_STATUS: SuggestType.waiting.rawValue
-        ] as [String: Any]
+        let newData = [Constant.FIREBASE_ITEM_CONTENTS: contents,
+                       Constant.FIREBASE_ITEM_CREATEDATE: Date().toString(didChangeDateFormat: DateFormat.utcFormat.rawValue),
+                       Constant.FIREBASE_LIKE_COUNT: 0,
+                       Constant.FIREBASE_POST_ID: postId,
+                       Constant.FIREBASE_ITEM_STATUS: SuggestType.waiting.rawValue] as [String: Any]
         
         Database.database()
             .reference()

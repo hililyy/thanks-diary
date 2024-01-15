@@ -10,14 +10,14 @@ import Lottie
 
 struct LottieManager {
     
-    class LottieInfo {
+    final class LottieInfo {
         let vc: UIViewController
         let lottieView: UIView
         let name: String
         let speed: CGFloat
         let mode: LottieLoopMode
         
-        init(vc: UIViewController, 
+        init(vc: UIViewController,
              lottieView: UIView,
              name: String,
              speed: CGFloat,
@@ -29,11 +29,11 @@ struct LottieManager {
             self.mode = mode
         }
         
-        convenience init(vc: UIViewController, 
+        convenience init(vc: UIViewController,
                          lottieView: UIView,
                          name: String,
                          mode: LottieLoopMode) {
-            self.init(vc: vc, 
+            self.init(vc: vc,
                       lottieView: lottieView,
                       name: name,
                       speed: 1,

@@ -77,7 +77,7 @@ final class SettingPWVC: BaseVC<SettingPWView> {
         attachedView.setDotColor(num: 0)
         attachedView.setContentsLabel(text: L10n.passwordIncorrect, 
                                       textColor: Asset.Color.red.color)
-        attachedView.shakeContentsLabel()
+        AnimationManager.animationShake(view: attachedView.contentsLabel)
         
         firstPW = ""
         secondPW = ""

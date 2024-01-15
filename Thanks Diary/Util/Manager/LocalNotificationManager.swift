@@ -40,7 +40,6 @@ final class LocalNotificationManager {
     }
     
     func registNotification(time: Date) {
-        
         let content = UNMutableNotificationContent()
         content.title = UserDefaultManager.instance.pushMessageTitle
         content.body = UserDefaultManager.instance.pushMessageContents
@@ -49,7 +48,7 @@ final class LocalNotificationManager {
         dateComponents.calendar = Calendar.current
             
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constant.HHMM
+        dateFormatter.dateFormat = DateFormat.HHMM.rawValue
         
         let timeStr = dateFormatter.string(from: time)
         let hourString = timeStr.prefix(2)

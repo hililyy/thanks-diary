@@ -115,7 +115,7 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
             type: .detail,
             title: attachedView.getTitleText(),
             contents: attachedView.getContentsText(),
-            date: viewModel.selectedDate.value.toString(didChangeDateFormat: Constant.YYYYMD)
+            date: viewModel.selectedDate.value.toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue)
         )
     }
     

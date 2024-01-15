@@ -46,7 +46,7 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
             type: .simple,
             title: "",
             contents: attachedView.getContentsTextViewText(),
-            date: viewModel.selectedDate.value.toString(didChangeDateFormat: Constant.YYYYMD) 
+            date: viewModel.selectedDate.value.toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue) 
         )
     }
     

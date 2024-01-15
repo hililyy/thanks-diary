@@ -77,6 +77,7 @@
 		025EF0842A459EEF00C930F2 /* SecondStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF07D2A459EEF00C930F2 /* SecondStartVC.swift */; };
 		025EF0862A459EEF00C930F2 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0802A459EEF00C930F2 /* PageView.swift */; };
 		025EF08D2A45A36000C930F2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF08C2A45A36000C930F2 /* Launch.storyboard */; };
+		0261C3EE2B5517AE005FEC4D /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0261C3ED2B5517AE005FEC4D /* AnimationManager.swift */; };
 		026283FC2B01F24F00CEBA11 /* AcknowList in Frameworks */ = {isa = PBXBuildFile; productRef = 026283FB2B01F24F00CEBA11 /* AcknowList */; };
 		026283FE2B01F2C500CEBA11 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 026283FD2B01F2C500CEBA11 /* Package.resolved */; };
 		026E78E92A6E4C0800A09282 /* SettingPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E78E82A6E4C0800A09282 /* SettingPWView.swift */; };
@@ -245,6 +246,7 @@
 		025EF07D2A459EEF00C930F2 /* SecondStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStartVC.swift; sourceTree = "<group>"; };
 		025EF0802A459EEF00C930F2 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		025EF08C2A45A36000C930F2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		0261C3ED2B5517AE005FEC4D /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		026283FD2B01F2C500CEBA11 /* Package.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Package.resolved; path = "Thanks Diary.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved"; sourceTree = "<group>"; };
 		026E78E82A6E4C0800A09282 /* SettingPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWView.swift; sourceTree = "<group>"; };
 		026E78EA2A6E772800A09282 /* SettingAlarmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmDetailView.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				027C60CC2A8213D7008F607F /* LocalNotificationManager.swift */,
 				025EF05B2A459DB700C930F2 /* AuthManager.swift */,
 				02475DE82ADF6FBB0075C206 /* ResourceManager.swift */,
+				0261C3ED2B5517AE005FEC4D /* AnimationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1211,6 +1214,7 @@
 				025EF0502A459CE200C930F2 /* UserDefaultKey.swift in Sources */,
 				2A9F351928AE6410006CCF7C /* SettingLabelTVCell.swift in Sources */,
 				02285D302B0C34620019D5D8 /* PasswordNumberButton.swift in Sources */,
+				0261C3EE2B5517AE005FEC4D /* AnimationManager.swift in Sources */,
 				02B606C82B2946E2007A14FD /* SettingAlarmMessageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,7 +22,7 @@ final class SettingAlarmDetailView: BaseView {
     
     let datePicker = UIDatePicker().then { pickerView in
         pickerView.preferredDatePickerStyle = .wheels
-        pickerView.locale = Locale(identifier: Constant.LOCAL_IDENTIFIER)
+        pickerView.locale = Locale(identifier: DateFormat.LOCAL_IDENTIFIER.rawValue)
         pickerView.datePickerMode = .time
         pickerView.date = Date()
     }

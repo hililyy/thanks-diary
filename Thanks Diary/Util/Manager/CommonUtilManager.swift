@@ -21,7 +21,6 @@ final class CommonUtilManager {
     }
 
     var themeSubject = PublishSubject<Int>()
-    
     var tableViewOffset: CGPoint = .zero
     
     var uuid: String {
@@ -36,13 +35,14 @@ final class CommonUtilManager {
         return version
     }
     
-    func dictionaryToObject <T: Decodable> (
-        objectType: T.Type,
-        dictionary: [[String: Any]]) -> [T]? {
-        guard let dictionaries = try? JSONSerialization.data(withJSONObject: dictionary) else { return nil }
+    func dictionaryToObject <T: Decodable> (objectType: T.Type,
+                                            dictionary: [[String: Any]]) -> [T]? {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        guard let objects = try? decoder.decode([T].self, from: dictionaries) else { return nil }
+        
+        guard let dictionaries = try? JSONSerialization.data(withJSONObject: dictionary),
+              let objects = try? decoder.decode([T].self, from: dictionaries) else { return nil }
+        
         return objects
     }
     
@@ -50,27 +50,20 @@ final class CommonUtilManager {
         let bundleVersionKey = kCFBundleVersionKey as String // "CFBundleVersion"
         let currentVersion = Bundle.main.object(forInfoDictionaryKey: bundleVersionKey) as? String // build version
         let lastVersion = UserDefaults.standard.string(forKey: "lastVersion")
-        guard lastVersion == nil || lastVersion != currentVersion else { return }
         
-        guard let scene = UIApplication
-            .shared
-            .connectedScenes
-            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
-        else { return }
+        guard lastVersion == nil || lastVersion != currentVersion else { return }
+        guard let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else { return }
         
         SKStoreReviewController.requestReview(in: scene)
     }
     
     func moveAppStoreReview() {
-        if let appstoreUrl = URL(string: "https://apps.apple.com/app/id6443505485") {
-            var urlComp = URLComponents(url: appstoreUrl, resolvingAgainstBaseURL: false)
-            urlComp?.queryItems = [
-                URLQueryItem(name: "action", value: "write-review")
-            ]
-            guard let reviewUrl = urlComp?.url else {
-                return
-            }
-            UIApplication.shared.open(reviewUrl, options: [:], completionHandler: nil)
-        }
+        guard let appstoreUrl = URL(string: "https://apps.apple.com/app/id6443505485") else { return }
+        
+        var urlComp = URLComponents(url: appstoreUrl, resolvingAgainstBaseURL: false)
+        urlComp?.queryItems = [URLQueryItem(name: "action", value: "write-review")]
+        
+        guard let reviewUrl = urlComp?.url else { return }
+        UIApplication.shared.open(reviewUrl, options: [:], completionHandler: nil)
     }
 }

@@ -50,7 +50,7 @@ final class MainView: BaseView {
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.calendar.headerHeight = 50
         
-        calendar.locale = Locale(identifier: Constant.LOCAL_IDENTIFIER)
+        calendar.locale = Locale(identifier: DateFormat.LOCAL_IDENTIFIER.rawValue)
         calendar.weekdayHeight = 30
         calendar.rowHeight = 40
         calendar.layer.cornerRadius = 10
@@ -97,21 +97,13 @@ final class MainView: BaseView {
     }
     
     func setTodayLabelText(date: Date) {
+        AnimationManager.animationPop(view: todayLabelView)
         todayLabel.text = date.toString(didChangeDateFormat: L10n.formatDate2)
-        
-        UIView.animate(withDuration: 0.15, delay: 0.0, animations: {
-            self.todayLabel.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.15, animations: {
-                self.todayLabel.transform = CGAffineTransform.identity
-            })
-        })
     }
     
     func setHiddenForEmptyView(isHidden: Bool) {
-        animationFadeIn(view: emptyView)
+        AnimationManager.animationFadeIn(view: emptyView)
         emptyView.isHidden = isHidden
-//        emptyView.frame.size.height = isHidden ? 0 : 300
     }
     
     func initAllFont() {
@@ -127,17 +119,6 @@ final class MainView: BaseView {
         todayButton.backgroundColor = ResourceManager.instance.getMainColor()
         calendar.appearance.todayColor = ResourceManager.instance.getMainColor()
         floatingButton.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
-    }
-    
-    private func animationFadeIn(view: UIView) {
-        view.alpha = 0
-        
-        UIView.animate(
-            withDuration: 0.3,
-            delay: 0.03,
-            animations: {
-                view.alpha = 1
-            })
     }
     
     // MARK: - UI, Target

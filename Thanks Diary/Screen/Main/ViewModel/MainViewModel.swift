@@ -16,8 +16,8 @@ final class MainViewModel {
     let allSimpleDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:])
 
     lazy var selectedAllData: Observable<[DiaryModel]> = selectedDate.map { date in
-        let detailData = self.allDetailDataRx.value[date.toString(didChangeDateFormat: Constant.YYYYMD)] ?? []
-        let simpleData = self.allSimpleDataRx.value[date.toString(didChangeDateFormat: Constant.YYYYMD)] ?? []
+        let detailData = self.allDetailDataRx.value[date.toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue)] ?? []
+        let simpleData = self.allSimpleDataRx.value[date.toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue)] ?? []
         return detailData + simpleData
     }
     

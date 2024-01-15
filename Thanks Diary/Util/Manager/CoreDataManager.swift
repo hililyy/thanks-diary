@@ -21,8 +21,8 @@ final class CoreDataManager {
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     lazy var context = appDelegate?.persistentContainer.viewContext
-    let detailDiaryModelName: String = "DiaryData"
-    let simpleDiaryModelName: String = "SimpleDiaryData"
+    let detailDiaryModelName = "DiaryData"
+    let simpleDiaryModelName = "SimpleDiaryData"
     
     func getDetailDataRx() -> Observable<[String: [DiaryModel]]> {
         return Observable.create { emitter in
@@ -39,7 +39,7 @@ final class CoreDataManager {
     }
     
     private func getDetailData() -> [String: [DiaryModel]]? {
-        guard let context = self.context else { return [:] }
+        guard let context = context else { return [:] }
         
         let request = NSFetchRequest<NSManagedObject>(entityName: detailDiaryModelName)
         var detailData: [String: [DiaryModel]] = [:]
@@ -79,6 +79,7 @@ final class CoreDataManager {
     func getSimpleDataRx() -> Observable<[String: [DiaryModel]]> {
         return Observable.create { emitter in
             let result = self.getSimpleData()
+            
             if let result {
                 emitter.onNext(result)
                 emitter.onCompleted()
@@ -134,6 +135,7 @@ final class CoreDataManager {
         case .detail:
             guard let entity = NSEntityDescription.entity(forEntityName: detailDiaryModelName, in: context),
                   let diaryData = NSManagedObject(entity: entity, insertInto: context) as? DiaryData else { return }
+            
             diaryData.title = newData.title
             diaryData.contents = newData.contents
             diaryData.date = newData.date
@@ -142,6 +144,7 @@ final class CoreDataManager {
         case .simple:
             guard let entity = NSEntityDescription.entity(forEntityName: simpleDiaryModelName, in: context),
                   let simpleDiaryData = NSManagedObject(entity: entity, insertInto: context) as? SimpleDiaryData else { return }
+            
             simpleDiaryData.contents = newData.contents
             simpleDiaryData.date = newData.date
             simpleDiaryData.type = newData.type.rawValue
@@ -226,7 +229,7 @@ final class CoreDataManager {
         saveContext(context: context)
     }
     
-    func saveContext(context: NSManagedObjectContext) {
+    private func saveContext(context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
                 try context.save()

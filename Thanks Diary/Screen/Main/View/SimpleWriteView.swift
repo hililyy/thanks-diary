@@ -113,14 +113,10 @@ final class SimpleWriteView: BaseView {
     }
     
     func updateContentsViewBottomConstraint(constant: CGFloat) {
-        UIView.animate(
-            withDuration: 0.4,
-            delay: 0.00,
-            options: [.curveEaseInOut],
-            animations: {
-                self.containerViewBottomConstraint?.update(offset: constant)
-                self.layoutIfNeeded()
-        })
+        AnimationManager.animationCurveEaseInOut {
+            self.containerViewBottomConstraint?.update(offset: constant)
+            self.layoutIfNeeded()
+        }
     }
     
     // MARK: - UI, Target

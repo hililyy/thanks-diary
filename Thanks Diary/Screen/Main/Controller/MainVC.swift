@@ -100,7 +100,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     }
     
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        return viewModel.diaryDates.contains(date.toString(didChangeDateFormat: Constant.YYYYMD)) ? Asset.Image.icCircle.image : nil
+        return viewModel.diaryDates.contains(date.toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue)) ? Asset.Image.icCircle.image : nil
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, imageOffsetFor date: Date) -> CGPoint {
@@ -218,7 +218,7 @@ extension MainVC {
                     attachedView.setHiddenForEmptyView(isHidden: false)
                     
                     let date = self.viewModel.selectedDate.value
-                    let view = date.toString(didChangeDateFormat: Constant.YYYYMD) == Date().toString(didChangeDateFormat: Constant.YYYYMD) ? NotTodayView() : NotBeforeView()
+                    let view = date.toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue) == Date().toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue) ? NotTodayView() : NotBeforeView()
                     
                     attachedView.setEmptyView(view: view)
                 } else {
@@ -267,24 +267,12 @@ extension MainVC {
     
     private func initTableWillDisplay() {
         attachedView.diaryTableView.rx.willDisplayCell
-            .subscribe(onNext: { cell, indexPath in
-                self.animationMoveUpWithFadeIn(cell: cell, indexPath: indexPath.row)
+            .subscribe(onNext: { [weak self] cell, indexPath in
+                guard let self else { return }
+                
+                AnimationManager.animationMoveUpWithFadeIn(cell: cell, indexPath: indexPath.row)
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func animationMoveUpWithFadeIn(cell: UITableViewCell, indexPath: Int) {
-        cell.transform = CGAffineTransform(translationX: 0, y: cell.frame.height * 0.3)
-        cell.alpha = 0
-        
-        UIView.animate(
-            withDuration: 0.4,
-            delay: 0.03 * Double(indexPath),
-            options: [.curveEaseInOut],
-            animations: {
-                cell.transform = CGAffineTransform(translationX: 0, y: 0)
-                cell.alpha = 1
-        })
     }
 }
 
