@@ -14,8 +14,6 @@ final class SearchVC: BaseVC<SearchView> {
     // MARK: - Property
     
     var viewModel: MainViewModel
-    private var searchResultData = PublishSubject<[DiarySearchModel]>()
-    private var inputText = ""
     
     // MARK: - Init
     
@@ -61,8 +59,8 @@ final class SearchVC: BaseVC<SearchView> {
                 allData[key] = []
             }
             
-            let m = simpleData[key] ?? []
-            allData[key]?.append(contentsOf: m)
+            let data = simpleData[key] ?? []
+            allData[key]?.append(contentsOf: data)
         }
         
         for data in allData.values {
@@ -85,7 +83,7 @@ final class SearchVC: BaseVC<SearchView> {
             }
         }
         
-        searchResultData.onNext(resultData)
+        viewModel.searchResultData.onNext(resultData)
     }
     
     private func pushDetailWriteVC(beforeData: DiaryModel?) {
@@ -112,14 +110,14 @@ final class SearchVC: BaseVC<SearchView> {
     }
     
     private func settingTableViewEmptyImageOrData() {
-        searchResultData
+        viewModel.searchResultData
             .subscribe(onNext: { [weak self] resultData in
                 guard let self else { return }
                 
                 let notView = NotBeforeView()
                 notView.contentsLabel.text = L10n.searchNotResult
                 
-                if resultData.isEmpty && !inputText.isEmpty {
+                if resultData.isEmpty && !viewModel.inputText.isEmpty {
                     attachedView.setHiddenForEmptyView(isHidden: false)
                     attachedView.setEmptyView(view: notView)
                 } else {
@@ -130,7 +128,7 @@ final class SearchVC: BaseVC<SearchView> {
     }
     
     private func initTableViewCellForRow() {
-        searchResultData
+        viewModel.searchResultData
             .bind(to: attachedView.searchTableView.rx.items(cellIdentifier: SearchTVCell.id,
                                                             cellType: SearchTVCell.self)) { [weak self] _, element, cell in
                 
@@ -192,21 +190,24 @@ extension SearchVC {
     
     private func initTextFieldTarget() {
         attachedView.searchBar.textfield.rx.text
-             .orEmpty
-             .debounce(.seconds(1), scheduler: MainScheduler.instance)
-             .subscribe(onNext: { [weak self] searchText in
-                 guard let self else { return }
-                 
-                 inputText = searchText
-                 search(inputText: searchText)
-             })
-             .disposed(by: disposeBag)
+            .orEmpty
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] searchText in
+                guard let self else { return }
+                
+                viewModel.inputText = searchText
+                search(inputText: searchText)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func initObservable() {
-        viewModel.allSimpleDataRx.subscribe(onNext: { _ in
-            self.search(inputText: self.inputText)
-        })
-        .disposed(by: disposeBag)
+        viewModel.allSimpleDataRx
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                
+                search(inputText: viewModel.inputText)
+            })
+            .disposed(by: disposeBag)
     }
 }

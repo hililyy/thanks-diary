@@ -15,7 +15,6 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     // MARK: - Property
     
     var viewModel: MainViewModel
-    private let maxCount: Int = 50
     var beforeData: DiaryModel?
     
     // MARK: - Init
@@ -124,7 +123,7 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
 extension SimpleWriteVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let newLength = textView.text.count - range.length + text.count
-        let koreanMaxCount = maxCount + 1
+        let koreanMaxCount = viewModel.simpleWriteTextmaxCount + 1
         
         if newLength > koreanMaxCount {
             let overflow = newLength - koreanMaxCount
@@ -148,7 +147,7 @@ extension SimpleWriteVC: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.count > maxCount {
+        if textView.text.count > viewModel.simpleWriteTextmaxCount {
             textView.text.removeLast()
         }
     }
@@ -164,7 +163,7 @@ extension SimpleWriteVC {
     }
     
     private func initUI() {
-        attachedView.maxCount = maxCount
+        attachedView.maxCount = viewModel.simpleWriteTextmaxCount
         attachedView.setHiddenForDeleteButton(beforeData == nil)
         
         if let beforeData {

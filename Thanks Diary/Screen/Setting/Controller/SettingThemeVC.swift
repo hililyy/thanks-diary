@@ -68,7 +68,8 @@ extension SettingThemeVC {
     private func initView() {
         initNavigationTitle()
         attachedView.fontView.fontTableView.reloadData()
-        attachedView.fontView.fontTableView.setContentOffset(CommonUtilManager.instance.tableViewOffset, animated: false)
+        attachedView.fontView.fontTableView.setContentOffset(CommonUtilManager.instance.tableViewOffset,
+                                                             animated: false)
         attachedView.initAllFont()
     }
     

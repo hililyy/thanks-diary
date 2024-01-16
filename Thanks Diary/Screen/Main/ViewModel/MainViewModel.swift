@@ -24,6 +24,11 @@ final class MainViewModel {
     var selectedDate = BehaviorRelay<Date>(value: Date())
     var diaryDates: Set<String> = []
     
+    let simpleWriteTextmaxCount = 50
+    
+    var searchResultData = PublishSubject<[DiarySearchModel]>()
+    var inputText = ""
+    
     init() {
         readData()
     }

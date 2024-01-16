@@ -11,7 +11,6 @@ final class SettingVC: BaseVC<SettingView> {
     
     // MARK: - Property
     
-    private var alarmFlag: Bool = false
     let viewModel: SettingViewModel
     
     // MARK: - Init
@@ -47,8 +46,6 @@ final class SettingVC: BaseVC<SettingView> {
         if password.isEmpty {
             UserDefaultManager.instance.isPassword = false
         }
-        
-        alarmFlag = UserDefaultManager.instance.isPassword
         
         attachedView.tableView.reloadData()
     }

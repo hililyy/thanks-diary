@@ -142,6 +142,9 @@ final class DetailWriteView: BaseView {
         return stackView
     }()
     
+    var keyBoardWillShowHandler: () -> Void = {}
+    var keyBoardWillHideHandler: () -> Void = {}
+    
     // MARK: - Function
     
     func setTopLabelData(date: Date?) {
@@ -234,9 +237,6 @@ final class DetailWriteView: BaseView {
         contentScrollView.scrollIndicatorInsets = contentInset
     }
     
-    var keyBoardWillShowHandler: () -> Void = {}
-    var keyBoardWillHideHandler: () -> Void = {}
-    
     // MARK: - UI, Target
     
     override func initUI() {
@@ -246,8 +246,9 @@ final class DetailWriteView: BaseView {
         titleTextView.rx
            .didChange
            .subscribe(onNext: { [weak self] in
+               guard let self else { return }
                
-               self?.moveScrollPositionByTitleTextView()
+               moveScrollPositionByTitleTextView()
            })
            .disposed(by: disposeBag)
     }
@@ -260,9 +261,9 @@ final class DetailWriteView: BaseView {
         
         guard isMaxHeight != titleTextView.isScrollEnabled else { return }
         
-        self.titleTextView.isScrollEnabled = isMaxHeight
-        self.titleTextView.reloadInputViews()
-        self.setNeedsUpdateConstraints()
+        titleTextView.isScrollEnabled = isMaxHeight
+        titleTextView.reloadInputViews()
+        setNeedsUpdateConstraints()
     }
     
     override func initTarget() {
