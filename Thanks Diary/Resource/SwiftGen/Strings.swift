@@ -146,6 +146,8 @@ internal enum L10n {
   internal static let settingName13 = L10n.tr("Localizable", "setting_name13", fallback: "생체인증")
   /// 문구 설정
   internal static let settingName14 = L10n.tr("Localizable", "setting_name14", fallback: "문구 설정")
+  /// 언어 설정
+  internal static let settingName15 = L10n.tr("Localizable", "setting_name15", fallback: "언어 설정")
   /// 알림 설정
   internal static let settingName2 = L10n.tr("Localizable", "setting_name2", fallback: "알림 설정")
   /// 테마 설정

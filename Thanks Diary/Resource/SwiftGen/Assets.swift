@@ -58,6 +58,7 @@ internal enum Asset {
   }
   internal enum Image {
     internal static let icBack = ImageAsset(name: "ic_back")
+    internal static let icCheck = ImageAsset(name: "ic_check")
     internal static let icCircle = ImageAsset(name: "ic_circle")
     internal static let icDelete = ImageAsset(name: "ic_delete")
     internal static let icDetailWrite = ImageAsset(name: "ic_detail_write")

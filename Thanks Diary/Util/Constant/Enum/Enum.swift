@@ -105,3 +105,17 @@ enum DateFormat: String {
     case LOCAL_IDENTIFIER = "ko_KR"
     case TIMEZONE_IDENTIFIER = "UTC"
 }
+
+enum LanguageType: Int, CaseIterable {
+    case korea
+    case english
+    
+    var description: String {
+        switch self {
+        case .korea:
+            return "한국어"
+        case .english:
+            return "영어"
+        }
+    }
+}

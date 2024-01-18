@@ -61,7 +61,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = viewModel.settingTableTitles[indexPath.row]
         
-        guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id, 
+        guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingMoreTVCell.id,
                                                                     for: indexPath) as? SettingMoreTVCell
         else { return UITableViewCell() }
         
@@ -78,9 +78,11 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             
         case 2: pushSettingThemeVC()
             
-        case 3: pushSettingSuggestVC()
+        case 3: pushSettingLanguageVC()
             
-        case 4: pushSettingAppVC()
+        case 4: pushSettingSuggestVC()
+            
+        case 5: pushSettingAppVC()
             
         default:
             break
@@ -153,6 +155,11 @@ extension SettingVC {
     
     private func pushSettingThemeVC() {
         let vc = SettingThemeVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func pushSettingLanguageVC() {
+        let vc = SettingLanguageVC()
         navigationController?.pushViewController(vc, animated: true)
     }
     
