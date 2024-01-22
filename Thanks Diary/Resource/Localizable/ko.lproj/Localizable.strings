@@ -72,6 +72,7 @@
 "setting_name12" = "비밀번호 설정";
 "setting_name13" = "생체인증";
 "setting_name14" = "문구 설정";
+"setting_name15" = "언어 설정";
 
 "alert_bioauth" = "생체인증을 다시 시도하시겠습니까?";
 "alert_password" = "비밀번호 입력";

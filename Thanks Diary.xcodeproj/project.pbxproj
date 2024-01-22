@@ -152,6 +152,8 @@
 		2A9F351528AE63ED006CCF7C /* SettingSwitchTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351428AE63ED006CCF7C /* SettingSwitchTVCell.swift */; };
 		2A9F351728AE63FD006CCF7C /* SettingMoreTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351628AE63FD006CCF7C /* SettingMoreTVCell.swift */; };
 		2A9F351928AE6410006CCF7C /* SettingLabelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F351828AE6410006CCF7C /* SettingLabelTVCell.swift */; };
+		2AB4843D2B595E5600117225 /* SettingLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB4843C2B595E5600117225 /* SettingLanguageVC.swift */; };
+		2AB4843F2B595ECD00117225 /* SettingCheckTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB4843E2B595ECD00117225 /* SettingCheckTVCell.swift */; };
 		2ABF8AA52A6C057E006ACBE2 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF8AA42A6C057E006ACBE2 /* SettingViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -325,6 +327,8 @@
 		2A9F351428AE63ED006CCF7C /* SettingSwitchTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchTVCell.swift; sourceTree = "<group>"; };
 		2A9F351628AE63FD006CCF7C /* SettingMoreTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMoreTVCell.swift; sourceTree = "<group>"; };
 		2A9F351828AE6410006CCF7C /* SettingLabelTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLabelTVCell.swift; sourceTree = "<group>"; };
+		2AB4843C2B595E5600117225 /* SettingLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVC.swift; sourceTree = "<group>"; };
+		2AB4843E2B595ECD00117225 /* SettingCheckTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCheckTVCell.swift; sourceTree = "<group>"; };
 		2ABF8AA42A6C057E006ACBE2 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -761,6 +765,7 @@
 				025E043B2AA6C0CE00C01D24 /* SettingSuggestVC.swift */,
 				025E04402AA7106A00C01D24 /* SettingSuggestWriteVC.swift */,
 				02835D952AE2654800593BA5 /* SettingAppVC.swift */,
+				2AB4843C2B595E5600117225 /* SettingLanguageVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -786,6 +791,7 @@
 				2A9F351828AE6410006CCF7C /* SettingLabelTVCell.swift */,
 				025E04482AA9A1EE00C01D24 /* SettingSuggestTVCell.swift */,
 				02A407AD2B4B8CFA007158CB /* SettingSuggestReplyTVCell.swift */,
+				2AB4843E2B595ECD00117225 /* SettingCheckTVCell.swift */,
 				02835D852ADFA39700593BA5 /* RadioTVCell.swift */,
 			);
 			path = Cell;
@@ -1115,6 +1121,7 @@
 				025EF0402A459C2F00C930F2 /* AlertView.swift in Sources */,
 				02835D862ADFA39700593BA5 /* RadioTVCell.swift in Sources */,
 				02B638D62AB1468100312A34 /* SettingNameModel.swift in Sources */,
+				2AB4843F2B595ECD00117225 /* SettingCheckTVCell.swift in Sources */,
 				2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */,
 				02475DF02ADF828F0075C206 /* ThemeFontView.swift in Sources */,
 				025EF0422A459C3B00C930F2 /* AlertVC.swift in Sources */,
@@ -1138,6 +1145,7 @@
 				020A8C732ACCF73700E855EE /* Array.swift in Sources */,
 				0290EF852ADD03EE00869C05 /* NotTodayView.swift in Sources */,
 				2A7241CD28B26AAD0040ADE9 /* DetailWriteVC.swift in Sources */,
+				2AB4843D2B595E5600117225 /* SettingLanguageVC.swift in Sources */,
 				026E9C232A4AAAD400568CFD /* AlertConfirmVC.swift in Sources */,
 				020980AC2AC11F3E005B08DF /* Fonts.swift in Sources */,
 				025EF0732A459E4800C930F2 /* FloatingButtonOpendView.swift in Sources */,
