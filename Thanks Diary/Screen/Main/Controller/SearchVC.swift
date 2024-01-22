@@ -47,10 +47,10 @@ final class SearchVC: BaseVC<SearchView> {
     }
     
     private func search(inputText: String) {
-        var resultData: [DiarySearchModel] = []
+        var resultData: [DiarySearchEntity] = []
         
-        let detailData = viewModel.allDetailDataRx.value 
-        let simpleData = viewModel.allSimpleDataRx.value 
+        let detailData = viewModel.allDetailDataRx.value
+        let simpleData = viewModel.allSimpleDataRx.value
         var allData = detailData
         
         for key in simpleData.keys {
@@ -67,11 +67,11 @@ final class SearchVC: BaseVC<SearchView> {
             for model in data {
                 let title = model.title
                 let contents = model.contents
-                var searchModel = DiarySearchModel(type: model.type,
-                                                   title: model.title,
-                                                   contents: model.contents,
-                                                   date: model.date,
-                                                   correctType: .title)
+                var searchModel = DiarySearchEntity(type: model.type,
+                                                    title: model.title,
+                                                    contents: model.contents,
+                                                    date: model.date,
+                                                    correctType: .title)
                 if title.contains(inputText) {
                     searchModel.correctType = .title
                     resultData.append(searchModel)
@@ -86,16 +86,14 @@ final class SearchVC: BaseVC<SearchView> {
         viewModel.searchResultData.onNext(resultData)
     }
     
-    private func pushDetailWriteVC(beforeData: DiaryModel?) {
+    private func pushDetailWriteVC(beforeData: DiaryEntity?) {
         let vc = DetailWriteVC(viewModel: self.viewModel)
-        vc.viewModel = viewModel
         vc.beforeData = beforeData
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func presentSimpleWriteVC(beforeData: DiaryModel?) {
+    private func presentSimpleWriteVC(beforeData: DiaryEntity?) {
         let vc = SimpleWriteVC(viewModel: self.viewModel)
-        vc.viewModel = viewModel
         vc.beforeData = beforeData
         present(vc, animated: true)
     }
@@ -138,20 +136,20 @@ final class SearchVC: BaseVC<SearchView> {
                                            contentsLabelText: contentsLabelText)
                 cell.dateLabel.text = element.date
             }
-            .disposed(by: disposeBag)
+                                                            .disposed(by: disposeBag)
     }
     
     private func initTableViewDidSelected() {
-        attachedView.searchTableView.rx.modelSelected(DiarySearchModel.self)
+        attachedView.searchTableView.rx.modelSelected(DiarySearchEntity.self)
             .subscribe(onNext: {[weak self] model in
                 guard let self else { return }
                 
                 attachedView.searchBar.textfield.resignFirstResponder()
                 
-                let diaryModel = DiaryModel(type: model.type,
-                                            title: model.title,
-                                            contents: model.contents,
-                                            date: model.date)
+                let diaryModel = DiaryEntity(type: model.type,
+                                             title: model.title,
+                                             contents: model.contents,
+                                             date: model.date)
                 
                 viewModel.selectedDate.accept(model.date.convertDate() ?? Date())
                 

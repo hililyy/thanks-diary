@@ -251,18 +251,18 @@ extension MainVC {
     }
     
     private func initTableViewDidSelected() {
-        Observable.zip(attachedView.diaryTableView.rx.modelSelected(DiaryModel.self), 
+        Observable.zip(attachedView.diaryTableView.rx.modelSelected(DiaryEntity.self),
                        attachedView.diaryTableView.rx.itemSelected)
-            .bind { [weak self] diary, _ in
-                guard let self else { return }
-                
-                if diary.type == .detail {
-                    pushDetailWriteVC(beforeData: diary)
-                } else {
-                    presentSimpleWriteVC(beforeData: diary)
-                }
+        .bind { [weak self] diary, _ in
+            guard let self else { return }
+            
+            if diary.type == .detail {
+                pushDetailWriteVC(beforeData: diary)
+            } else {
+                presentSimpleWriteVC(beforeData: diary)
             }
-            .disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
     }
     
     private func initTableWillDisplay() {
@@ -281,13 +281,11 @@ extension MainVC {
 extension MainVC {
     private func pushSearchVC() {
         let vc = SearchVC(viewModel: self.viewModel)
-        vc.viewModel = viewModel
         navigationController?.pushViewController(vc, animated: true)
     }
     
     private func pushSettingVC() {
-        let settingViewModel = SettingViewModel()
-        let vc = SettingVC(viewModel: settingViewModel)
+        let vc = SettingVC(viewModel: SettingViewModel())
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -321,16 +319,14 @@ extension MainVC {
         present(vc, animated: false)
     }
     
-    private func pushDetailWriteVC(beforeData: DiaryModel?) {
+    private func pushDetailWriteVC(beforeData: DiaryEntity?) {
         let vc = DetailWriteVC(viewModel: self.viewModel)
-        vc.viewModel = viewModel
         vc.beforeData = beforeData
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func presentSimpleWriteVC(beforeData: DiaryModel?) {
+    private func presentSimpleWriteVC(beforeData: DiaryEntity?) {
         let vc = SimpleWriteVC(viewModel: self.viewModel)
-        vc.viewModel = viewModel
         vc.beforeData = beforeData
         present(vc, animated: true)
     }

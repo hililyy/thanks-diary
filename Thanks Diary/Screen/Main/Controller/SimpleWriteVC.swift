@@ -15,7 +15,7 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     // MARK: - Property
     
     var viewModel: MainViewModel
-    var beforeData: DiaryModel?
+    var beforeData: DiaryEntity?
     
     // MARK: - Init
     
@@ -40,8 +40,8 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
     
     // MARK: - Function
     
-    private func getDiaryData() -> DiaryModel {
-        return DiaryModel(
+    private func getDiaryData() -> DiaryEntity {
+        return DiaryEntity(
             type: .simple,
             title: "",
             contents: attachedView.getContentsTextViewText(),
@@ -68,7 +68,7 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
         }
     }
     
-    private func update(beforeData: DiaryModel, newData: DiaryModel) async throws {
+    private func update(beforeData: DiaryEntity, newData: DiaryEntity) async throws {
         do {
             try await viewModel.updateData(beforeData: beforeData,
                                            newData: newData)
@@ -80,7 +80,7 @@ final class SimpleWriteVC: BaseVC<SimpleWriteView> {
         }
     }
     
-    private func write(_ newData: DiaryModel) async throws {
+    private func write(_ newData: DiaryEntity) async throws {
         do {
             try await viewModel.createData(newData: newData)
             dismissVC {
@@ -133,9 +133,9 @@ extension SimpleWriteVC: UITextViewDelegate {
             
             guard let startPosition = textView.position(from: textView.beginningOfDocument,
                                                         offset: range.location),
-                  let endPosition = textView.position(from: textView.beginningOfDocument, 
+                  let endPosition = textView.position(from: textView.beginningOfDocument,
                                                       offset: NSMaxRange(range)),
-                  let textRange = textView.textRange(from: startPosition, 
+                  let textRange = textView.textRange(from: startPosition,
                                                      to: endPosition) else { return false }
             
             textView.replace(textRange, withText: String(newText))

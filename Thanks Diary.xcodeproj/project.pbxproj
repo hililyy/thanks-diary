@@ -78,6 +78,7 @@
 		025EF0862A459EEF00C930F2 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EF0802A459EEF00C930F2 /* PageView.swift */; };
 		025EF08D2A45A36000C930F2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025EF08C2A45A36000C930F2 /* Launch.storyboard */; };
 		0261C3EE2B5517AE005FEC4D /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0261C3ED2B5517AE005FEC4D /* AnimationManager.swift */; };
+		0261C43A2B5A4667005FEC4D /* DiarySearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0261C4392B5A4666005FEC4D /* DiarySearchEntity.swift */; };
 		026283FC2B01F24F00CEBA11 /* AcknowList in Frameworks */ = {isa = PBXBuildFile; productRef = 026283FB2B01F24F00CEBA11 /* AcknowList */; };
 		026283FE2B01F2C500CEBA11 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 026283FD2B01F2C500CEBA11 /* Package.resolved */; };
 		026E78E92A6E4C0800A09282 /* SettingPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E78E82A6E4C0800A09282 /* SettingPWView.swift */; };
@@ -135,7 +136,7 @@
 		2A55DC502A6D6F8100A13F58 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A55DC4F2A6D6F8100A13F58 /* SettingView.swift */; };
 		2A7241CB28B01EC10040ADE9 /* SettingPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */; };
 		2A7241CD28B26AAD0040ADE9 /* DetailWriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */; };
-		2A7241DA28B3EDF70040ADE9 /* DiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D928B3EDF70040ADE9 /* DiaryModel.swift */; };
+		2A7241DA28B3EDF70040ADE9 /* DiaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */; };
 		2A81232628BFB2BD000A250E /* writing.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A81232528BFB2BD000A250E /* writing.json */; };
 		2A81232828BFB83B000A250E /* go.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A81232728BFB83B000A250E /* go.json */; };
 		2A81232C28BFBDEA000A250E /* plant.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A81232B28BFBDEA000A250E /* plant.json */; };
@@ -247,6 +248,7 @@
 		025EF0802A459EEF00C930F2 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		025EF08C2A45A36000C930F2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		0261C3ED2B5517AE005FEC4D /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
+		0261C4392B5A4666005FEC4D /* DiarySearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySearchEntity.swift; sourceTree = "<group>"; };
 		026283FD2B01F2C500CEBA11 /* Package.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Package.resolved; path = "Thanks Diary.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved"; sourceTree = "<group>"; };
 		026E78E82A6E4C0800A09282 /* SettingPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWView.swift; sourceTree = "<group>"; };
 		026E78EA2A6E772800A09282 /* SettingAlarmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmDetailView.swift; sourceTree = "<group>"; };
@@ -306,7 +308,7 @@
 		2A55DC722A85300D00A13F58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A7241CA28B01EC10040ADE9 /* SettingPWVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPWVC.swift; sourceTree = "<group>"; };
 		2A7241CC28B26AAD0040ADE9 /* DetailWriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteVC.swift; sourceTree = "<group>"; };
-		2A7241D928B3EDF70040ADE9 /* DiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryModel.swift; sourceTree = "<group>"; };
+		2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntity.swift; sourceTree = "<group>"; };
 		2A81232528BFB2BD000A250E /* writing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = writing.json; sourceTree = "<group>"; };
 		2A81232728BFB83B000A250E /* go.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = go.json; sourceTree = "<group>"; };
 		2A81232B28BFBDEA000A250E /* plant.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plant.json; sourceTree = "<group>"; };
@@ -846,7 +848,8 @@
 		2A9F350C28AE1BF9006CCF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2A7241D928B3EDF70040ADE9 /* DiaryModel.swift */,
+				2A7241D928B3EDF70040ADE9 /* DiaryEntity.swift */,
+				0261C4392B5A4666005FEC4D /* DiarySearchEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1127,6 +1130,7 @@
 				02174AD42B1F147F00F81DE0 /* SearchTVCell.swift in Sources */,
 				020A8DED2ACFAD6600E855EE /* CellIdentifier.swift in Sources */,
 				025EF0822A459EEF00C930F2 /* ThirdStartVC.swift in Sources */,
+				0261C43A2B5A4667005FEC4D /* DiarySearchEntity.swift in Sources */,
 				2A9F351528AE63ED006CCF7C /* SettingSwitchTVCell.swift in Sources */,
 				029F04FD2A4984E800D82289 /* MainViewModel.swift in Sources */,
 				0229554D2A6A1003004BF800 /* DetailWriteView.swift in Sources */,
@@ -1206,7 +1210,7 @@
 				2A0D87FF28A540FB00576E56 /* AppDelegate.swift in Sources */,
 				02475DEE2ADF82860075C206 /* ThemeColorView.swift in Sources */,
 				029F04F12A494C3100D82289 /* ThirdStartView.swift in Sources */,
-				2A7241DA28B3EDF70040ADE9 /* DiaryModel.swift in Sources */,
+				2A7241DA28B3EDF70040ADE9 /* DiaryEntity.swift in Sources */,
 				2A81234C28C4E221000A250E /* DetailDiaryTVCell.swift in Sources */,
 				2A81233228BFFA0C000A250E /* SettingAlarmVC.swift in Sources */,
 				2A0D880128A540FB00576E56 /* SceneDelegate.swift in Sources */,

@@ -24,7 +24,7 @@ final class CoreDataManager {
     let detailDiaryModelName = "DiaryData"
     let simpleDiaryModelName = "SimpleDiaryData"
     
-    func getDetailDataRx() -> Observable<[String: [DiaryModel]]> {
+    func getDetailDataRx() -> Observable<[String: [DiaryEntity]]> {
         return Observable.create { emitter in
             let result = self.getDetailData()
             if let result {
@@ -38,11 +38,11 @@ final class CoreDataManager {
         }
     }
     
-    private func getDetailData() -> [String: [DiaryModel]]? {
+    private func getDetailData() -> [String: [DiaryEntity]]? {
         guard let context = context else { return [:] }
         
         let request = NSFetchRequest<NSManagedObject>(entityName: detailDiaryModelName)
-        var detailData: [String: [DiaryModel]] = [:]
+        var detailData: [String: [DiaryEntity]] = [:]
         var detailCoredata: [DiaryData] = []
         
         do {
@@ -56,7 +56,7 @@ final class CoreDataManager {
                       let contents = data.contents,
                       let date = data.date else { return [:] }
                 
-                let diary = DiaryModel(
+                let diary = DiaryEntity(
                     type: .detail,
                     title: title,
                     contents: contents,
@@ -76,7 +76,7 @@ final class CoreDataManager {
         }
     }
     
-    func getSimpleDataRx() -> Observable<[String: [DiaryModel]]> {
+    func getSimpleDataRx() -> Observable<[String: [DiaryEntity]]> {
         return Observable.create { emitter in
             let result = self.getSimpleData()
             
@@ -91,11 +91,11 @@ final class CoreDataManager {
         }
     }
     
-    private func getSimpleData() -> [String: [DiaryModel]]? {
+    private func getSimpleData() -> [String: [DiaryEntity]]? {
         guard let context = self.context else { return [:] }
         
         let request = NSFetchRequest<NSManagedObject>(entityName: simpleDiaryModelName)
-        var simpleData: [String: [DiaryModel]] = [:]
+        var simpleData: [String: [DiaryEntity]] = [:]
         var simpleCoreData: [SimpleDiaryData] = []
         
         do {
@@ -108,7 +108,7 @@ final class CoreDataManager {
                 guard let contents = data.contents,
                       let date = data.date else { return [:] }
                 
-                let diary = DiaryModel(
+                let diary = DiaryEntity(
                     type: .simple,
                     title: "",
                     contents: contents,
@@ -128,7 +128,7 @@ final class CoreDataManager {
         }
     }
     
-    func setData(newData: DiaryModel) async throws {
+    func setData(newData: DiaryEntity) async throws {
         guard let context = self.context else { return }
         
         switch newData.type {
@@ -153,7 +153,7 @@ final class CoreDataManager {
         saveContext(context: context)
     }
     
-    func updateData(beforeData: DiaryModel, newData: DiaryModel) async throws {
+    func updateData(beforeData: DiaryEntity, newData: DiaryEntity) async throws {
         guard let context = self.context else { return }
         
         switch beforeData.type {
@@ -191,7 +191,7 @@ final class CoreDataManager {
         saveContext(context: context)
     }
     
-    func deleteData(deleteData: DiaryModel) async throws {
+    func deleteData(deleteData: DiaryEntity) async throws {
         guard let context = self.context else { return }
         
         switch deleteData.type {

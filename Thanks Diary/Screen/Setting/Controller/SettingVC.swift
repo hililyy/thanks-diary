@@ -147,7 +147,6 @@ extension SettingVC {
     
     private func pushSettingAlarmVC() {
         let vc = SettingAlarmVC(viewModel: self.viewModel)
-        vc.viewModel = viewModel
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -158,7 +157,6 @@ extension SettingVC {
     
     private func pushSettingSuggestVC() {
         let vc = SettingSuggestVC(viewModel: self.viewModel)
-        vc.viewModel = viewModel
         navigationController?.pushViewController(vc, animated: true)
     }
     

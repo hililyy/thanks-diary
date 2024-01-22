@@ -109,7 +109,6 @@ extension SettingSuggestVC {
 extension SettingSuggestVC {
     private func presentSettingSuggestWriteVC() {
         let vc = SettingSuggestWriteVC(viewModel: self.viewModel)
-        vc.viewModel = viewModel
         present(vc, animated: true)
     }
 }

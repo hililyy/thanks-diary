@@ -15,7 +15,7 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
     // MARK: - Property
     
     var viewModel: MainViewModel
-    var beforeData: DiaryModel?
+    var beforeData: DiaryEntity?
     
     // MARK: - Init
     
@@ -60,7 +60,7 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
         }
     }
     
-    private func update(safeBeforeData: DiaryModel, newData: DiaryModel) async throws {
+    private func update(safeBeforeData: DiaryEntity, newData: DiaryEntity) async throws {
         do {
             try await viewModel.updateData(beforeData: safeBeforeData,
                                             newData: newData)
@@ -71,7 +71,7 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
         }
     }
     
-    private func write(_ newData: DiaryModel) async throws {
+    private func write(_ newData: DiaryEntity) async throws {
         do {
             try await viewModel.createData(newData: newData)
             beforeData = newData
@@ -110,8 +110,8 @@ final class DetailWriteVC: BaseVC<DetailWriteView> {
         }
     }
     
-    private func getWriteData() -> DiaryModel {
-        return DiaryModel(
+    private func getWriteData() -> DiaryEntity {
+        return DiaryEntity(
             type: .detail,
             title: attachedView.getTitleText(),
             contents: attachedView.getContentsText(),

@@ -12,10 +12,10 @@ import RxCocoa
 final class MainViewModel {
     
     let disposeBag = DisposeBag()
-    let allDetailDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:])
-    let allSimpleDataRx = BehaviorRelay<[String: [DiaryModel]]>(value: [:])
-
-    lazy var selectedAllData: Observable<[DiaryModel]> = selectedDate.map { date in
+    let allDetailDataRx = BehaviorRelay<[String: [DiaryEntity]]>(value: [:])
+    let allSimpleDataRx = BehaviorRelay<[String: [DiaryEntity]]>(value: [:])
+    
+    lazy var selectedAllData: Observable<[DiaryEntity]> = selectedDate.map { date in
         let detailData = self.allDetailDataRx.value[date.toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue)] ?? []
         let simpleData = self.allSimpleDataRx.value[date.toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue)] ?? []
         return detailData + simpleData
@@ -26,7 +26,7 @@ final class MainViewModel {
     
     let simpleWriteTextmaxCount = 50
     
-    var searchResultData = PublishSubject<[DiarySearchModel]>()
+    var searchResultData = PublishSubject<[DiarySearchEntity]>()
     var inputText = ""
     
     init() {
@@ -47,15 +47,15 @@ extension MainViewModel: DiaryRepository {
         selectedDate.accept(selectedDate.value)
     }
     
-    func createData(newData: DiaryModel) async throws {
+    func createData(newData: DiaryEntity) async throws {
         try await CoreDataManager.instance.setData(newData: newData)
     }
     
-    func updateData(beforeData: DiaryModel, newData: DiaryModel) async throws {
+    func updateData(beforeData: DiaryEntity, newData: DiaryEntity) async throws {
         try await CoreDataManager.instance.updateData(beforeData: beforeData, newData: newData)
     }
     
-    func deleteData(deleteData: DiaryModel) async throws {
+    func deleteData(deleteData: DiaryEntity) async throws {
         try await CoreDataManager.instance.deleteData(deleteData: deleteData)
     }
 }
