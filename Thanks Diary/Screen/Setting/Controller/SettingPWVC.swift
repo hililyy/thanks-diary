@@ -75,7 +75,7 @@ final class SettingPWVC: BaseVC<SettingPWView> {
     
     private func handleIncorrectPassword() {
         attachedView.setDotColor(num: 0)
-        attachedView.setContentsLabel(text: L10n.passwordIncorrect, 
+        attachedView.setContentsLabel(text: L10n.passwordIncorrect,
                                       textColor: Asset.Color.red.color)
         AnimationManager.animationShake(view: attachedView.contentsLabel)
         

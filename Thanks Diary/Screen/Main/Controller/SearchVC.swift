@@ -189,7 +189,8 @@ extension SearchVC {
     private func initTextFieldTarget() {
         attachedView.searchBar.textfield.rx.text
             .orEmpty
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(1),
+                      scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] searchText in
                 guard let self else { return }
                 

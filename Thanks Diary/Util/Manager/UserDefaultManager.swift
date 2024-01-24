@@ -124,6 +124,15 @@ final class UserDefaultManager {
             self.set(newValue, key: UserDefaultKey.PUSH_MESSAGE_CONTENTS.rawValue)
         }
     }
+    
+    var language: String {
+        get {
+            self.string(UserDefaultKey.LANGUAGE.rawValue)
+        }
+        set {
+            self.set(newValue, key: UserDefaultKey.LANGUAGE.rawValue)
+        }
+    }
 }
 
 extension UserDefaultManager {

@@ -20,4 +20,5 @@ enum UserDefaultKey: String {
     case IS_BIOMETRICS_AUTH
     case PUSH_MESSAGE_TITLE
     case PUSH_MESSAGE_CONTENTS
+    case LANGUAGE
 }

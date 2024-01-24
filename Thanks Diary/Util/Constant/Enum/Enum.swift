@@ -115,7 +115,16 @@ enum LanguageType: Int, CaseIterable {
         case .korea:
             return "한국어"
         case .english:
-            return "영어"
+            return "English"
+        }
+    }
+    
+    var key: String {
+        switch self {
+        case .korea:
+            return "korea"
+        case .english:
+            return "english"
         }
     }
 }

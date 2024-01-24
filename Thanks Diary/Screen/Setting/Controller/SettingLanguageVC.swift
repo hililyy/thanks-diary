@@ -9,9 +9,6 @@ import UIKit
 
 final class SettingLanguageVC: BaseVC<SettingView> {
     
-//    let languageList = ["한국어", "영어"]
-    var selectedLanguage: LanguageType = .korea
-    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -28,13 +25,17 @@ extension SettingLanguageVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingCheckTVCell.id, for: indexPath) as? SettingCheckTVCell else { return UITableViewCell() }
+        if UserDefaultManager.instance.language == LanguageType(rawValue: indexPath.row)?.key {
+            cell.checkImageView.tintColor = .blue
+        }
         cell.titleLabel.text = LanguageType(rawValue: indexPath.row)?.description
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedLanguage = LanguageType(rawValue: indexPath.row) ?? .korea
-        print(selectedLanguage)
+        let selectedLanguage = LanguageType(rawValue: indexPath.row) ?? .korea
+        UserDefaultManager.instance.language = selectedLanguage.key
+        attachedView.tableView.reloadData()
     }
 }
 
