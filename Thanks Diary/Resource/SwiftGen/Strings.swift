@@ -182,8 +182,8 @@ internal enum L10n {
   internal static let startPage2Message1 = L10n.tr("Localizable", "start_page2_message1", fallback: "감사일기 작성 방법")
   /// 긍정문으로 작성해요
   internal static let startPage2Message2 = L10n.tr("Localizable", "start_page2_message2", fallback: "긍정문으로 작성해요")
-  /// 작은 일에도 감사한일을 찾아보아요
-  internal static let startPage2Message3 = L10n.tr("Localizable", "start_page2_message3", fallback: "작은 일에도 감사한일을 찾아보아요")
+  /// 작은 일에도 감사한 일을 찾아보세요
+  internal static let startPage2Message3 = L10n.tr("Localizable", "start_page2_message3", fallback: "작은 일에도 감사한 일을 찾아보세요")
   /// 매일매일 작성해요
   internal static let startPage2Message4 = L10n.tr("Localizable", "start_page2_message4", fallback: "매일매일 작성해요")
   /// 감사한 일을 항상 생각해요

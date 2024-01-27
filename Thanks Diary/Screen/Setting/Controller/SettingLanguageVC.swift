@@ -25,9 +25,8 @@ extension SettingLanguageVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = attachedView.tableView.dequeueReusableCell(withIdentifier: SettingCheckTVCell.id, for: indexPath) as? SettingCheckTVCell else { return UITableViewCell() }
-        if UserDefaultManager.instance.language == LanguageType(rawValue: indexPath.row)?.key {
-            cell.checkImageView.tintColor = .blue
-        }
+        cell.checkImageView.isHidden = UserDefaultManager.instance.language != LanguageType(rawValue: indexPath.row)?.key
+        
         cell.titleLabel.text = LanguageType(rawValue: indexPath.row)?.description
         return cell
     }
