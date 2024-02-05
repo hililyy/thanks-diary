@@ -65,6 +65,24 @@ internal enum L10n {
   internal static let failLogin = L10n.tr("Localizable", "fail_login", fallback: "로그인을 실패하였습니다.")
   /// 회원가입을 실패하였습니다.
   internal static let failSignup = L10n.tr("Localizable", "fail_signup", fallback: "회원가입을 실패하였습니다.")
+  /// 나눔바른고딕
+  internal static let font1 = L10n.tr("Localizable", "font_1", fallback: "나눔바른고딕")
+  /// 나눔바른펜
+  internal static let font2 = L10n.tr("Localizable", "font_2", fallback: "나눔바른펜")
+  /// 온글잎 하루나눔
+  internal static let font3 = L10n.tr("Localizable", "font_3", fallback: "온글잎 하루나눔")
+  /// 온글잎 하곰체
+  internal static let font4 = L10n.tr("Localizable", "font_4", fallback: "온글잎 하곰체")
+  /// 온글잎 위리체
+  internal static let font5 = L10n.tr("Localizable", "font_5", fallback: "온글잎 위리체")
+  /// 온글잎 복숭씨
+  internal static let font6 = L10n.tr("Localizable", "font_6", fallback: "온글잎 복숭씨")
+  /// 온글잎 연유체
+  internal static let font7 = L10n.tr("Localizable", "font_7", fallback: "온글잎 연유체")
+  /// 프리텐다드
+  internal static let font8 = L10n.tr("Localizable", "font_8", fallback: "프리텐다드")
+  /// 코트라 희망체
+  internal static let font9 = L10n.tr("Localizable", "font_9", fallback: "코트라 희망체")
   /// 폰트 설정
   internal static let fontSet = L10n.tr("Localizable", "font_set", fallback: "폰트 설정")
   /// yyyy년 M월 d일

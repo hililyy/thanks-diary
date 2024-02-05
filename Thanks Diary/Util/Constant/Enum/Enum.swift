@@ -67,31 +67,31 @@ enum FontType: Int, CaseIterable {
     var description: String {
         switch self {
         case .nanumBarunGothic:
-            return "나눔바른고딕"
+            return L10n.font1
             
         case .nanumBarunPen:
-            return "나눔바른펜"
+            return L10n.font2
             
         case .harunanum:
-            return "온글잎 하루나눔"
+            return L10n.font3
             
         case .hagom:
-            return "온글잎 하곰체"
+            return L10n.font4
             
         case .wiri:
-            return "온글잎 위리체"
+            return L10n.font5
             
         case .boksung:
-            return "온글잎 복숭씨"
+            return L10n.font6
             
         case .yeonyu:
-            return "온글잎 연유체"
+            return L10n.font7
             
         case .pretendard:
-            return "프리텐다드"
+            return L10n.font8
             
         case .kotrahope:
-            return "코트라 희망체"
+            return L10n.font9
         }
     }
 }

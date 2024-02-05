@@ -108,3 +108,13 @@
 "format_date1" = "yyyy'year' M'Month' d'day'";
 "format_date2" = "dd'day' (E)";
 "format_date3" = "YYYY'year' M'Month'";
+
+"font_1" = "Nanumbarungothic";
+"font_2" = "Nanumbarunpen";
+"font_3" = "Ownglyph Harunanum";
+"font_4" = "Ownglyph Hagom";
+"font_5" = "Ownglyph Wiri";
+"font_6" = "Ownglyph Boksoong";
+"font_7" = "Ownglyph Yeonu";
+"font_8" = "Pretendard";
+"font_9" = "Kotra Hope";
