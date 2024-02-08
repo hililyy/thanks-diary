@@ -1,13 +1,13 @@
 # 감사일기 (v1.7.1) 📝
 > 하루 감사했던 일을 기록하며 긍정적인 마음가짐을 가질 수 있는 다이어리 애플리케이션입니다.</br>
 > 기획부터 디자인, 개발까지 모두 혼자 진행한 프로젝트입니다.☺️ </br>
-> 다운로드 2200회👆🏻, 업데이트 1.6만회👆🏻 (24/01/08 기준) </br>
+> 다운로드 2300회👆🏻, 업데이트 1.8만회👆🏻 (24/02/07 기준) </br>
 > [앱스토어 바로가기✨](https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8F%84-%EA%B0%90%EC%82%AC%EC%9D%BC%EA%B8%B0/id6443505485)
 
 <details>
 <summary>더 보기</summary>
-<img width="1142" alt="image" src="https://github.com/hililyy/thanks-diary/assets/76806444/898d1285-decd-4f72-bd73-2beef5494f46">
-<img width="1117" alt="image" src="https://github.com/hililyy/thanks-diary/assets/76806444/eb22b653-d12c-43ab-b367-9c0deb66015d">
+<img width="1142" alt="image" src="https://github.com/hililyy/thanks-diary/assets/76806444/552b5e53-86e9-42cb-af19-1a69a0a7bdf2">
+<img width="1117" alt="image" src="https://github.com/hililyy/thanks-diary/assets/76806444/b5bdf66e-d4a5-4f9d-95aa-b8c27e76e7f8">
 
 </details>
 
