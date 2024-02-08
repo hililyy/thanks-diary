@@ -57,6 +57,7 @@ internal enum Asset {
     internal static let yellow = ColorAsset(name: "yellow")
   }
   internal enum Image {
+    internal static let icAll = ImageAsset(name: "ic_all")
     internal static let icBack = ImageAsset(name: "ic_back")
     internal static let icCheck = ImageAsset(name: "ic_check")
     internal static let icCircle = ImageAsset(name: "ic_circle")

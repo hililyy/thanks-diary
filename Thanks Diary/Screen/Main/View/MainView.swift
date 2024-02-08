@@ -14,16 +14,20 @@ final class MainView: BaseView {
     
     // MARK: - UI components
     
-    let searchButton = UIButton(type: .custom).then { button in
-        button.setImage(Asset.Image.icSearch.image, for: .normal)
-    }
-    
     let todayButton = UIButton(type: .custom).then { button in
         button.layer.cornerRadius = 10
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.setTitle(L10n.today, for: .normal)
+    }
+    
+    let allButton = UIButton(type: .custom).then { button in
+        button.setImage(Asset.Image.icAll.image, for: .normal)
+    }
+    
+    let searchButton = UIButton(type: .custom).then { button in
+        button.setImage(Asset.Image.icSearch.image, for: .normal)
     }
     
     let settingButton = UIButton(type: .custom).then { button in
@@ -138,7 +142,7 @@ final class MainView: BaseView {
                      emptyView,
                      floatingButton])
         
-        todayAndSettingTopView.addSubviews([searchButton, todayButton, settingButton])
+        todayAndSettingTopView.addSubviews([allButton, searchButton, todayButton, settingButton])
         todayLabelView.addSubview(todayLabel)
     }
     
@@ -156,6 +160,13 @@ final class MainView: BaseView {
             make.bottom.equalTo(todayAndSettingTopView.snp.bottom)
             make.width.equalTo(45)
             make.height.equalTo(35)
+        }
+        
+        allButton.snp.makeConstraints { make in
+            make.right.equalTo(searchButton.snp.left).offset(-5)
+            make.centerY.equalTo(todayButton.snp.centerY)
+            make.width.equalTo(42)
+            make.height.equalTo(42)
         }
         
         searchButton.snp.makeConstraints { make in
