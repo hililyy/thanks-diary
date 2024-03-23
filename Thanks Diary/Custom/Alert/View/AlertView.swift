@@ -11,54 +11,70 @@ final class AlertView: BaseView {
     
     // MARK: - Property
     
-    private let backgroundView = UIView().then { view in
+    private let backgroundView: UIView = {
+        let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    }
+        return view
+    }()
     
-    private let alertView = UIView().then { view in
+    private let alertView: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
-    }
+        return view
+    }()
     
-    private let messageLabel = UILabel().then { label in
+    private let messageLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
-    }
+        return label
+    }()
     
     private let messageView = UIView()
     private let buttonView = UIView()
     
-    let leftButton = UIButton(type: .custom).then { button in
+    let leftButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 17)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner]
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)
         button.accessibilityIdentifier = "button_left_alert"
-    }
+        return button
+    }()
     
-    let rightButton = UIButton(type: .custom).then { button in
+    let rightButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 17)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
             button.layer.maskedCorners = [.layerMaxXMaxYCorner]
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.accessibilityIdentifier = "button_left_right"
-    }
+        return button
+    }()
     
-    let backButton = UIButton().then { button in
+    let backButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-    }
+        return button
+    }()
     
-    private var lineViewX = UIView().then { view in
+    private var lineViewX: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray3.color
-    }
+        return view
+    }()
     
-    private var lineViewY = UIView().then { view in
+    private var lineViewY: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray3.color
-    }
+        return view
+    }()
     
     // MARK: - Function
     

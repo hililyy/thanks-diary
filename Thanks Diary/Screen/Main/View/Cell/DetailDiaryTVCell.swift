@@ -11,18 +11,22 @@ final class DetailDiaryTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let titleLabel = UILabel().then { label in
+    let titleLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.accessibilityIdentifier = "label_cell_detail_title"
-    }
+        return label
+    }()
     
-    let borderView = UIView().then { view in
+    let borderView: UIView = {
+        let view = UIView()
         view.layer.cornerRadius = 10
         view.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         view.layer.borderWidth = 2
-    }
+        return view
+    }()
     
     // MARK: - UI, Target
     

@@ -11,17 +11,21 @@ final class SimpleDiaryTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let dotView = UIView().then { view in
+    let dotView: UIView = {
+        let view = UIView()
         view.backgroundColor = ResourceManager.instance.getMainColor()
         view.layer.cornerRadius = 3.5
-    }
+        return view
+    }()
     
-    let titleLabel = UILabel().then { label in
+    let titleLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.accessibilityIdentifier = "label_cell_simple_title"
-    }
+        return label
+    }()
     
     // MARK: - UI, Target
     

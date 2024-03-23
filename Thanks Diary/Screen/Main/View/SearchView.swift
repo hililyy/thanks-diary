@@ -15,10 +15,12 @@ final class SearchView: BaseView {
     
     let searchBar = SearchBar()
     
-    let searchTableView = UITableView().then { tableView in
+    let searchTableView: UITableView = {
+        let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.register(SearchTVCell.self, forCellReuseIdentifier: SearchTVCell.id)
-    }
+        return tableView
+    }()
     
     let emptyView = UIView()
     

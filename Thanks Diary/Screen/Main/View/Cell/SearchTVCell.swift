@@ -11,17 +11,21 @@ final class SearchTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let dateLabel = UILabel().then { label in
+    let dateLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 10)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 1
-    }
+        return label
+    }()
     
-    let contentsLabel = UILabel().then { label in
+    let contentsLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 1
-    }
+        return label
+    }()
     
     func setContentsLabelStyle(searchText: String, contentsLabelText: String) {
         contentsLabel.setHighlightText(basicText: contentsLabelText,

@@ -18,9 +18,11 @@ final class SettingThemeView: BaseView {
     private let lineView = LineView(color: Asset.Color.gray5.color)
     private let lineView2 = LineView(color: Asset.Color.gray5.color)
     private let contentView = UIView()
-    private let contentScrollView = UIScrollView().then { scrollView in
+    private let contentScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
-    }
+        return scrollView
+    }()
     
     // MARK: - Functions
     

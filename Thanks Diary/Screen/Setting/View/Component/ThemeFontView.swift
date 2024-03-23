@@ -7,29 +7,34 @@
 
 import UIKit
 import SnapKit
-import Then
 
 final class ThemeFontView: BaseView {
     
     // MARK: - UI components
     
-    let fontTitleLabel = UILabel().then { label in
+    let fontTitleLabel: UILabel = {
+        let label = UILabel()
         label.initLabelUI(text: L10n.fontSet,
                           color: Asset.Color.blackColor.color,
                           font: ResourceManager.instance.getFont(size: 15))
-    }
+        return label
+    }()
     
-    private let fontContentView = UIView().then { view in
+    private let fontContentView: UIView = {
+        let view = UIView()
         view.layer.borderWidth = 2
         view.layer.borderColor = Asset.Color.gray5.color.cgColor
         view.layer.cornerRadius = 10
-    }
+        return view
+    }()
     
-    let fontTableView = UITableView().then { tableView in
+    let fontTableView: UITableView = {
+        let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.register(RadioTVCell.self, forCellReuseIdentifier: RadioTVCell.id)
-    }
+        return tableView
+    }()
     
     // MARK: - UI, Target
     

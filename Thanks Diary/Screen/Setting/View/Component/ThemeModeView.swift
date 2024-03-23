@@ -7,58 +7,69 @@
 
 import UIKit
 import SnapKit
-import Then
 
 final class ThemeModeView: BaseView {
     
     // MARK: - UI components
     
-    let modeTitleLabel = UILabel().then { label in
+    let modeTitleLabel: UILabel = {
+        let label = UILabel()
         label.initLabelUI(text: L10n.modeSet,
                           color: Asset.Color.blackColor.color,
                           font: ResourceManager.instance.getFont(size: 15))
-    }
+        return label
+    }()
     
-    private lazy var contentsStackView = UIStackView().then { stackView in
+    private lazy var contentsStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.spacing = 50
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
     private let lightContentView = UIView()
     private let darkContentView = UIView()
     
-    let lightView = UIView().then { view in
+    let lightView: UIView = {
+        let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 20
         view.layer.borderWidth = 2
         view.layer.borderColor = Asset.Color.gray2.color.cgColor
-    }
+        return view
+    }()
     
-    let darkView = UIView().then { view in
+    let darkView: UIView = {
+        let view = UIView()
         view.backgroundColor = .black
         view.layer.cornerRadius = 20
         view.layer.borderWidth = 2
         view.layer.borderColor = Asset.Color.gray2.color.cgColor
-    }
+        return view
+    }()
     
     let lightButton = UIButton(type: .custom)
     let darkButton = UIButton(type: .custom)
     
-    let lightLabel = UILabel().then { label in
+    let lightLabel: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.blackColor.color
         label.text = L10n.lightmode
         label.textAlignment = .center
         label.font = ResourceManager.instance.getFont(size: 15)
-    }
+        return label
+    }()
     
-    let darkLabel = UILabel().then { label in
+    let darkLabel: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.blackColor.color
         label.text = L10n.darkmode
         label.textAlignment = .center
         label.font = ResourceManager.instance.getFont(size: 15)
-    }
+        return label
+    }()
     
     // MARK: - UI, Target
     

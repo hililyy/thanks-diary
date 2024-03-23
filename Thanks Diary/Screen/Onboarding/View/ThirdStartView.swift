@@ -13,13 +13,15 @@ final class ThirdStartView: BaseView {
     
     var lottieView = UIView()
     
-    private var messageLabel = UILabel().then { label in
+    private var messageLabel: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.font = ResourceManager.instance.getFont(size: 20)
         label.numberOfLines = 0
         label.text = L10n.startPage3Message1
-    }
+        return label
+    }()
     
     // MARK: - UI, Target
     

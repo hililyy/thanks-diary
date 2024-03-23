@@ -7,21 +7,24 @@
 
 import UIKit
 import SnapKit
-import Then
 
 final class NavigationView: BaseView {
     
     // MARK: - UI components
     
-    let backButton = UIButton(type: .custom).then { button in
+    let backButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icBack.image, for: .normal)
-    }
+        return button
+    }()
     
-    let titleLabel = UILabel().then { label in
+    let titleLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-    }
+        return label
+    }()
     
     // MARK: - Functions
     

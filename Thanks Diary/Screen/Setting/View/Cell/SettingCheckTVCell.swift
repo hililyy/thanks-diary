@@ -11,14 +11,18 @@ final class SettingCheckTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let titleLabel = UILabel().then { label in
+    let titleLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
-    }
+        return label
+    }()
     
-    let checkImageView = UIImageView().then { imageView in
+    let checkImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.image = Asset.Image.icCheck.image
-    }
+        return imageView
+    }()
     
     // MARK: - UI, Target
     

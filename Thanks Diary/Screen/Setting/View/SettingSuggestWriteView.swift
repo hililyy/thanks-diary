@@ -11,24 +11,33 @@ final class SettingSuggestWriteView: BaseView {
     
     // MARK: - UI components
     
-    private let backgroundView = UIView().then { view in
+    private let backgroundView: UIView = {
+        let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    }
+        return view
+    }()
     
-    lazy var backgroundButton = UIButton(type: .custom).then { button in
+    lazy var backgroundButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-    }
+        return button
+    }()
     
-    private let containerView = UIView().then { view in
+    private let containerView: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
-    }
+        return view
+    }()
     
-    let mailButton = UIButton(type: .custom).then { button in
+    let mailButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icMail.image, for: .normal)
-    }
+        return button
+    }()
     
-    let contentsTextView = UITextView().then { textView in
+    let contentsTextView: UITextView = {
+        let textView = UITextView()
         textView.backgroundColor = .clear
         textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
@@ -37,15 +46,18 @@ final class SettingSuggestWriteView: BaseView {
         textView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
         textView.becomeFirstResponder()
-    }
+        return textView
+    }()
     
-    let completeButton = UIButton(type: .custom).then { button in
+    let completeButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setTitle(L10n.writeComplete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
-    }
+        return button
+    }()
     
     // MARK: - Functions
     

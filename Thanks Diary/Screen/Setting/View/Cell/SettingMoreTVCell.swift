@@ -11,14 +11,18 @@ final class SettingMoreTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let titleLabel = UILabel().then { label in
+    let titleLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
-    }
+        return label
+    }()
     
-    let moreImageView = UIImageView().then { imageView in
+    let moreImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.image = Asset.Image.icMore.image
-    }
+        return imageView
+    }()
     
     // MARK: - UI, Target
     

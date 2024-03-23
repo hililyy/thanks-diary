@@ -13,80 +13,100 @@ final class SecondStartView: BaseView {
     
     let lottieView = UIView()
     
-    private let titleLabel = UILabel().then { label in
+    private let titleLabel: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.font = ResourceManager.instance.getFont(size: 25)
         label.text = L10n.startPage2Message1
-    }
+        return label
+    }()
     
     private let heartImageView1 = UIImageView(image: Asset.Image.imgHeart.image)
     private let heartImageView2 = UIImageView(image: Asset.Image.imgHeart.image)
     private let heartImageView3 = UIImageView(image: Asset.Image.imgHeart.image)
     private let heartImageView4 = UIImageView(image: Asset.Image.imgHeart.image)
     
-    private let messageLabel1 = UILabel().then { label in
+    private let messageLabel1: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font =  ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage2Message2
-    }
+        return label
+    }()
     
-    private let messageLabel2 = UILabel().then { label in
+    private let messageLabel2: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage2Message3
-    }
+        return label
+    }()
     
-    private let messageLabel3 = UILabel().then { label in
+    private let messageLabel3: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage2Message4
-    }
+        return label
+    }()
 
-    private let messageLabel4 = UILabel().then { label in
+    private let messageLabel4: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.font = ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage2Message5
-    }
+        return label
+    }()
     
-    private lazy var messageImageStackView1 = UIStackView().then { stackView in
+    private lazy var messageImageStackView1: UIStackView = {
+        let stackView = UIStackView()
         stackView.spacing = 5
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
-    private lazy var messageImageStackView2 = UIStackView().then { stackView in
+    private lazy var messageImageStackView2: UIStackView = {
+        let stackView = UIStackView()
         stackView.spacing = 5
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
-    private lazy var messageImageStackView3 = UIStackView().then { stackView in
+    private lazy var messageImageStackView3: UIStackView = {
+        let stackView = UIStackView()
         stackView.spacing = 5
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
-    private lazy var messageImageStackView4 = UIStackView().then { stackView in
+    private lazy var messageImageStackView4: UIStackView = {
+        let stackView = UIStackView()
         stackView.spacing = 5
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
-    private lazy var messageStackView = UIStackView().then { stackView in
+    private lazy var messageStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.spacing = 15
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
     // MARK: - UI, Target
     

@@ -18,12 +18,14 @@ final class SettingSuggestReplyTVCell: BaseTVCell, CellIdentifier {
         return label
     }()
     
-    let contentsLabel = UILabel().then { label in
+    let contentsLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 15)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
-    }
+        return label
+    }()
     
     let createDateLabel: UILabel = {
         let label = UILabel()

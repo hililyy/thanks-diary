@@ -11,13 +11,18 @@ final class FloatingButton: BaseView {
     
     // MARK: - Property
     
-    var button = UIButton(type: .custom).then { button in
+    var button: UIButton = {
+        let button = UIButton(type: .custom)
         button.layer.cornerRadius = 26
-    }
-    var imageView = UIImageView().then { view in
+        return button
+    }()
+    
+    var imageView: UIImageView = {
+        let view = UIImageView()
         view.layer.cornerRadius = 26
         view.isUserInteractionEnabled = false
-    }
+        return view
+    }()
     
     func setButtonImage(img: UIImage, color: UIColor) {
         imageView.image = img.withRenderingMode(.alwaysTemplate)

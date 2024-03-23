@@ -11,46 +11,60 @@ final class ThemeColorView: BaseView {
     
     // MARK: - UI components
     
-    let colorTitleLabel = UILabel().then { label in
+    let colorTitleLabel: UILabel = {
+        let label = UILabel()
         label.initLabelUI(text: L10n.colorSet,
                           color: Asset.Color.blackColor.color,
                           font: ResourceManager.instance.getFont(size: 15))
-    }
+        return label
+    }()
     
-    private lazy var colorStackView = UIStackView().then { stackView in
+    private lazy var colorStackView: UIStackView = {
+        let stackView = UIStackView()
             stackView.initStackViewUI(spacing: 30,
                                       axis: .horizontal)
-        }
+        return stackView
+    }()
     
-    let blueButton = UIButton().then { button in
+    let blueButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = Asset.Color.grayBlue.color
         button.layer.cornerRadius = 15
         button.tag = 0
-    }
+        return button
+    }()
     
-    let pinkButton = UIButton().then { button in
+    let pinkButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = Asset.Color.pink.color
         button.layer.cornerRadius = 15
         button.tag = 1
-    }
+        return button
+    }()
     
-    let yellowButton = UIButton().then { button in
+    let yellowButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = Asset.Color.yellow.color
         button.layer.cornerRadius = 15
         button.tag = 2
-    }
+        return button
+    }()
     
-    let greenButton = UIButton().then { button in
+    let greenButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = Asset.Color.green.color
         button.layer.cornerRadius = 15
         button.tag = 3
-    }
+        return button
+    }()
     
-    let purpleButton = UIButton().then { button in
+    let purpleButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = Asset.Color.purple.color
         button.layer.cornerRadius = 15
         button.tag = 4
-    }
+        return button
+    }()
     
     // MARK: - UI, Target
     

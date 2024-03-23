@@ -11,62 +11,83 @@ final class DetailWriteView: BaseView {
     
     // MARK: - UI component
     
-    let backButton = UIButton(type: .custom).then { button in
+    let backButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icBack.image, for: .normal)
         button.accessibilityIdentifier = "button_complete_detail"
-    }
+        return button
+    }()
     
-    private let topLabel = UILabel().then { label in
+    private let topLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
-    }
+        return label
+    }()
     
-    let deleteButton = UIButton(type: .custom).then { button in
+    let deleteButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icTrash.image, for: .normal)
         button.accessibilityIdentifier = "button_delete_detail"
-    }
+        return button
+    }()
     
-    let completeButton = UIButton(type: .custom).then { button in
+    let completeButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setTitle(L10n.complete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
-    }
+        return button
+    }()
     
-    private lazy var buttonStackView = UIStackView().then { stackView in
+    private lazy var buttonStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
-    private let contentScrollView = UIScrollView().then { scrollView in
+    private let contentScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
-    }
+        return scrollView
+    }()
     
     private let contentView = UIView()
     
-    private let titleLabel = UILabel().then { label in
+    private let titleLabel: UILabel = {
+        let label = UILabel()
         label.text = L10n.title
         label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
-    }
+        return label
+    }()
     
-    private let contentsLabel = UILabel().then { label in
+    private let contentsLabel: UILabel = {
+        let label = UILabel()
         label.text = L10n.contents
         label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
-    }
+        return label
+    }()
     
-    private let titleUnderLineImageView = UIImageView().then { imageView in
+    private let titleUnderLineImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.image = ResourceManager.instance.getUnderLineImage()
-    }
+        return imageView
+    }()
     
-    private let contentsUnderLineImageView = UIImageView().then { imageView in
+    private let contentsUnderLineImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.image = ResourceManager.instance.getUnderLineImage()
-    }
+        return imageView
+    }()
     
-    let titleTextView = UITextView().then { textView in
+    let titleTextView: UITextView = {
+        let textView = UITextView()
         textView.backgroundColor = .clear
         textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
@@ -76,9 +97,11 @@ final class DetailWriteView: BaseView {
         textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         textView.accessibilityIdentifier = "textView_title_detail"
-    }
+        return textView
+    }()
     
-    lazy var contentsTextView = UITextView().then { textView in
+    lazy var contentsTextView: UITextView = {
+        let textView = UITextView()
         textView.backgroundColor = .clear
         textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
@@ -89,7 +112,8 @@ final class DetailWriteView: BaseView {
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         textView.accessibilityIdentifier = "textView_contents_detail"
         textView.inputAccessoryView = toolView
-    }
+        return textView
+    }()
     
     lazy var toolView: UIView = {
         let view = UIView()

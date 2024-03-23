@@ -14,13 +14,15 @@ final class FirstStartView: BaseView {
     var lottieView = UIView()
     var lottieView2 = UIView()
     
-    private var messageLabel = UILabel().then { label in
+    private var messageLabel: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font =  ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage1Message1
-    }
+        return label
+    }()
     
     // MARK: - UI, Target
     

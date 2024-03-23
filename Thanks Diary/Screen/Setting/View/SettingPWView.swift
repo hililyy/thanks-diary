@@ -11,27 +11,35 @@ final class SettingPWView: BaseView {
     
     // MARK: - UI components
     
-    let backButton = UIButton(type: .custom).then { button in
+    let backButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icBack.image, for: .normal)
-    }
+        return button
+    }()
     
-    private let lockImageView = UIImageView().then { imageView in
+    private let lockImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.image = Asset.Image.imgLock.image
-    }
+        return imageView
+    }()
     
-    private let titleLabel = UILabel().then { label in
+    private let titleLabel: UILabel = {
+        let label = UILabel()
         label.text = L10n.password
         label.font = ResourceManager.instance.getFont(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-    }
+        return label
+    }()
     
-    let contentsLabel = UILabel().then { label in
+    let contentsLabel: UILabel = {
+        let label = UILabel()
         label.text = L10n.passwordContents1
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-    }
+        return label
+    }()
     
     private lazy var dotStackView: UIStackView = {
         let stackView = UIStackView()
@@ -43,18 +51,20 @@ final class SettingPWView: BaseView {
     }()
     
     private let dotViews: [UIView] = (0..<4).map { _ in
-        UIView().then {
-            $0.backgroundColor = Asset.Color.gray7.color
-            $0.layer.cornerRadius = 7
-        }
+        let view = UIView()
+        view.backgroundColor = Asset.Color.gray7.color
+        view.layer.cornerRadius = 7
+        return view
     }
     
-    private lazy var passwordStackView = UIStackView().then { stackView in
+    private lazy var passwordStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 25
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
     private lazy var passwordRowStackViews: [UIStackView] = {
         return (0..<4).map { _ in

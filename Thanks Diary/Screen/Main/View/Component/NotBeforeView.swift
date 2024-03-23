@@ -7,31 +7,36 @@
 
 import UIKit
 import SnapKit
-import Then
 
 final class NotBeforeView: BaseView {
     
     // MARK: - UI components
     
     let contentView = UIView()
-    let topLineView = UIView().then { view in
+    let topLineView: UIView = {
+        let view = UIView()
         view.backgroundColor = ResourceManager.instance.getMainColor()
         view.layer.cornerRadius = 2
-    }
+        return view
+    }()
     
-    let contentsLabel = UILabel().then { label in
+    let contentsLabel: UILabel = {
+        let label = UILabel()
         label.initLabelUI(text: L10n.notExistDiary,
                           color: Asset.Color.blackColor.color,
                           font: ResourceManager.instance.getFont(size: 21))
         label.numberOfLines = 0
         label.setLineSpacing(spacing: 5)
         label.setCharacterSpacing(spacing: 0)
-    }
+        return label
+    }()
     
-    let bottomLineView = UIView().then { view in
+    let bottomLineView: UIView = {
+        let view = UIView()
         view.backgroundColor = ResourceManager.instance.getMainColor()
         view.layer.cornerRadius = 2
-    }
+        return view
+    }()
     
     // MARK: - Constraint
     

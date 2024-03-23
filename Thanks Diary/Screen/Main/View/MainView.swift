@@ -14,28 +14,37 @@ final class MainView: BaseView {
     
     // MARK: - UI components
     
-    let todayButton = UIButton(type: .custom).then { button in
+    let todayButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.layer.cornerRadius = 10
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.setTitle(L10n.today, for: .normal)
-    }
+        return button
+    }()
     
-    let allButton = UIButton(type: .custom).then { button in
+    let allButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icAll.image, for: .normal)
-    }
+        return button
+    }()
     
-    let searchButton = UIButton(type: .custom).then { button in
+    let searchButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icSearch.image, for: .normal)
-    }
+        return button
+    }()
     
-    let settingButton = UIButton(type: .custom).then { button in
+    let settingButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icSetting.image, for: .normal)
         button.accessibilityIdentifier = "button_main_setting"
-    }
+        return button
+    }()
     
-    let calendar = FSCalendar().then { calendar in
+    let calendar: FSCalendar = {
+        let calendar = FSCalendar()
         calendar.backgroundColor = Asset.Color.gray4.color
         calendar.appearance.headerTitleColor = Asset.Color.gray1.color
         calendar.appearance.weekdayTextColor = Asset.Color.gray1.color
@@ -58,39 +67,48 @@ final class MainView: BaseView {
         calendar.weekdayHeight = 30
         calendar.rowHeight = 40
         calendar.layer.cornerRadius = 10
-    }
+        return calendar
+    }()
     
-    private let lineViewX = UIView().then { view in
+    private let lineViewX: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray3.color
-    }
+        return view
+    }()
     
     private let todayAndSettingTopView = UIView()
     private let todayLabelView = UIView()
 
-    private let todayLabel = UILabel().then { label in
+    private let todayLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.text = Date().toString(didChangeDateFormat: L10n.formatDate2)
-    }
+        return label
+    }()
     
-    let diaryTableView = UITableView().then { tableView in
+    let diaryTableView: UITableView = {
+        let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.separatorStyle = .none
         tableView.register(DetailDiaryTVCell.self, forCellReuseIdentifier: DetailDiaryTVCell.id)
         tableView.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
         tableView.accessibilityIdentifier = "tableView_main"
-    }
+        return tableView
+    }()
     
     let emptyView = UIView()
     
-    let floatingButton = FloatingButton().then { button in
+    let floatingButton: FloatingButton = {
+        let button = FloatingButton()
         button.setButtonImage(img: Asset.Image.icPencil.image,
                               color: Asset.Color.cleanWhite.color)
         button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
         button.button.accessibilityIdentifier = "button_main_floating"
-    }
+        return button
+    }()
     
     // MARK: - Functions
     

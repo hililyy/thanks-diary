@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import Then
 
 final class SettingView: BaseView {
     
@@ -15,7 +14,8 @@ final class SettingView: BaseView {
     
     let navigationView = NavigationView()
     
-    let tableView = UITableView().then { tableView in
+    let tableView: UITableView = {
+        let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.register(SettingSwitchTVCell.self, forCellReuseIdentifier: SettingSwitchTVCell.id)
         tableView.register(SettingMoreTVCell.self, forCellReuseIdentifier: SettingMoreTVCell.id)
@@ -24,7 +24,8 @@ final class SettingView: BaseView {
         
         tableView.isScrollEnabled = false
         tableView.isPagingEnabled = false
-    }
+        return tableView
+    }()
     
     // MARK: - UI, Target
     

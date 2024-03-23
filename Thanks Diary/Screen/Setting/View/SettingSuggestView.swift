@@ -13,16 +13,20 @@ final class SettingSuggestView: BaseView {
     
     private let topView = UIView()
     
-    let backButton = UIButton(type: .custom).then { button in
+    let backButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icBack.image, for: .normal)
-    }
+        return button
+    }()
     
-    private let topLabel = UILabel().then { label in
+    private let topLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.text = L10n.settingName9
         label.textAlignment = .center
-    }
+        return label
+    }()
     
     private let noticeView = {
         let view = UIView()
@@ -31,7 +35,7 @@ final class SettingSuggestView: BaseView {
         return view
     }()
     
-    private let noticeLabel = {
+    private let noticeLabel: UILabel = {
         let label = UILabel()
         label.text = L10n.suggestNotice
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -40,7 +44,8 @@ final class SettingSuggestView: BaseView {
         return label
     }()
     
-    let tableView = UITableView().then { tableView in
+    let tableView: UITableView = {
+        let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.separatorStyle = .none
@@ -48,15 +53,20 @@ final class SettingSuggestView: BaseView {
                            forCellReuseIdentifier: SettingSuggestTVCell.id)
         tableView.register(SettingSuggestReplyTVCell.self,
                            forCellReuseIdentifier: SettingSuggestReplyTVCell.id)
-    }
+        return tableView
+    }()
     
-    let loading = UIActivityIndicatorView().then { activityIndicator in
+    let loading: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
         activityIndicator.startAnimating()
-    }
+        return activityIndicator
+    }()
     
-    let writeButton = UIButton().then { button in
+    let writeButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icWrite.image, for: .normal)
-    }
+        return button
+    }()
     
     // MARK: - UI, Target
     

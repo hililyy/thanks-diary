@@ -11,42 +11,54 @@ final class AlertConfirmView: BaseView {
     
     // MARK: - Property
     
-    private let backgroundView = UIView().then { view in
+    private let backgroundView: UIView = {
+        let view = UIView()
         view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-    }
+        return view
+    }()
     
-    private let alertView = UIView().then { view in
+    private let alertView: UIView = {
+        let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
-    }
+        return view
+    }()
     
-    private let messageLabel = UILabel().then { label in
+    private let messageLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 16)
         label.text = L10n.alertErrorMessage
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
-    }
+        return label
+    }()
     
     private let messageView = UIView()
     private let buttonView = UIView()
     
-    let okButton = UIButton(type: .custom).then { button in
+    let okButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setTitle(L10n.ok, for: .normal)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 17)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
         button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)
-    }
+        return button
+    }()
     
-    private let backButton = UIButton().then { button in
+    private let backButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-    }
+        return button
+    }()
     
-    private let lineViewX = UIView().then { view in
+    private let lineViewX: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray3.color
-    }
+        return view
+    }()
     
     func setText(message: String, okButtonText: String) {
         messageLabel.text = message

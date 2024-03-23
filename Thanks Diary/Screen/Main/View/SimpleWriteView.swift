@@ -14,9 +14,11 @@ final class SimpleWriteView: BaseView {
     
     // MARK: - UI components
     
-    private let backgroundView = UIView().then { view in
+    private let backgroundView: UIView = {
+        let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    }
+        return view
+    }()
     
     let backgroundButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -24,18 +26,22 @@ final class SimpleWriteView: BaseView {
         return button
     }()
     
-    let containerView = UIView().then { view in
+    let containerView: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
-    }
+        return view
+    }()
     
-    let deleteButton = UIButton(type: .custom).then { button in
+    let deleteButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icTrash.image, for: .normal)
         button.accessibilityIdentifier = "button_delete_simple"
-    }
+        return button
+    }()
     
-    let contentsTextView = UITextView().then { textView in
-        textView.backgroundColor = .clear
+    let contentsTextView: UITextView = {
+        let textView = UITextView()
         textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 15
@@ -44,26 +50,32 @@ final class SimpleWriteView: BaseView {
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
         textView.becomeFirstResponder()
         textView.accessibilityIdentifier = "textView_contents_simple"
-    }
+        return textView
+    }()
     
-    private let textLengthLabel = UILabel().then { label in
+    private let textLengthLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 15)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .right
-    }
+        return label
+    }()
     
     private let buttonView = UIView()
     
-    let completeButton = UIButton(type: .custom).then { button in
+    let completeButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setTitle(L10n.writeComplete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font =  ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
         button.accessibilityIdentifier = "button_complete_simple"
-    }
+        return button
+    }()
     
-    let cancelButton = UIButton(type: .custom).then { button in
+    let cancelButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setTitle(L10n.cancel, for: .normal)
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
@@ -71,7 +83,8 @@ final class SimpleWriteView: BaseView {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1.5
         button.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
-    }
+        return button
+    }()
     
     var maxCount: Int = 0
     private var containerViewBottomConstraint: Constraint?

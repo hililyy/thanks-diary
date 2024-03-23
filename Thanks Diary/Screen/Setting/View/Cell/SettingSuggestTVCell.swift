@@ -11,12 +11,14 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let contentsLabel = UILabel().then { label in
+    let contentsLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 15)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
-    }
+        return label
+    }()
     
     let createDateLabel: UILabel = {
         let label = UILabel()
@@ -25,9 +27,11 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
         return label
     }()
     
-    let statusView = UIView().then { view in
+    let statusView: UIView = {
+        let view = UIView()
         view.layer.cornerRadius = 10
-    }
+        return view
+    }()
     
     let likeButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -48,11 +52,13 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
         return label
     }()
     
-    let statusLabel = UILabel().then { label in
+    let statusLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 12)
         label.textColor = Asset.Color.gray6.color
         label.textAlignment = .center
-    }
+        return label
+    }()
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()

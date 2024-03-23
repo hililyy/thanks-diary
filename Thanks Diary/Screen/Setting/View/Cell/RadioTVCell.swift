@@ -7,27 +7,32 @@
 
 import UIKit
 import SnapKit
-import Then
 
 final class RadioTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let outlineCircle = UIView().then { view in
+    let outlineCircle: UIView = {
+        let view = UIView()
         view.layer.cornerRadius = 10
         view.layer.borderWidth = 3
         view.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
-    }
+        return view
+    }()
     
-    let inlineCircle = UIView().then { view in
+    let inlineCircle: UIView = {
+        let view = UIView()
         view.backgroundColor = .clear
         view.layer.cornerRadius = 5
-    }
+        return view
+    }()
     
-    let contentsLabel = UILabel().then { label in
+    let contentsLabel: UILabel = {
+        let label = UILabel()
         label.initLabelUI(color: .black,
                           font: FontFamily.OwnglyphHaruNanum.regular.font(size: 17))
-    }
+        return label
+    }()
     
     // MARK: - Functions
     

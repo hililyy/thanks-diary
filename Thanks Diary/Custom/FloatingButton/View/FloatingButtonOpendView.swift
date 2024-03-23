@@ -12,52 +12,66 @@ final class FloatingButtonOpendView: BaseView {
     
     // MARK: - UI components
     
-    var backgroundView = UIView().then { view in
+    var backgroundView: UIView = {
+        let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
-    }
+        return view
+    }()
     
-    var backgroundButton = UIButton(type: .custom).then { button in
+    var backgroundButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-    }
+        return button
+    }()
     
-    var closeButton = FloatingButton().then { button in
+    var closeButton: FloatingButton = {
+        let button = FloatingButton()
         button.setButtonImage(img: Asset.Image.icX.image,
                               color: Asset.Color.cleanWhite.color)
         button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
         button.button.accessibilityIdentifier = "button_main_floating_close"
-    }
+        return button
+    }()
     
-    var detailButton = FloatingButton().then { button in
+    var detailButton: FloatingButton = {
+        let button = FloatingButton()
         button.setButtonImage(img: Asset.Image.icDetailWrite.image,
                               color: ResourceManager.instance.getMainColor())
         button.setButtonBackgroundColor(.white)
         button.button.accessibilityIdentifier = "button_main_floating_detail"
-    }
+        return button
+    }()
     
-    var simpleButton = FloatingButton().then { button in
+    var simpleButton: FloatingButton = {
+        let button = FloatingButton()
         button.setButtonImage(img: Asset.Image.icSimpleWrite.image,
                               color: ResourceManager.instance.getMainColor())
         button.setButtonBackgroundColor(.white)
         button.button.accessibilityIdentifier = "button_main_floating_simple"
-    }
+        return button
+    }()
     
-    var detailLabel = PaddingLabel().then { label in
+    var detailLabel: PaddingLabel = {
+        let label = PaddingLabel()
         label.font = ResourceManager.instance.getFont(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
         label.textAlignment = .right
         label.textColor = .black
-    }
+        return label
+    }()
     
-    var simpleLabel = PaddingLabel().then { label in
+    var simpleLabel: PaddingLabel = {
+        let label = PaddingLabel()
         label.font = ResourceManager.instance.getFont(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
         label.textAlignment = .right
         label.textColor = .black
-    }
+        return label
+    }()
     
     // MARK: - Functions
     

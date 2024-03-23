@@ -13,35 +13,45 @@ final class PageView: BaseView {
     
     lazy var containerView = UIView()
     
-    private lazy var progressStackView = UIStackView().then { stackView in
+    private let progressStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.spacing = 8
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
-    let firstDotView = UIView().then { view in
+    let firstDotView: UIView = {
+       let view = UIView()
         view.backgroundColor = ResourceManager.instance.getMainColor()
         view.layer.cornerRadius = 6
-    }
+        return view
+    }()
     
-    let secondDotView = UIView().then { view in
+    let secondDotView: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray3.color
         view.layer.cornerRadius = 6
-    }
+        return view
+    }()
     
-    let thirdDotView = UIView().then { view in
+    let thirdDotView: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray3.color
         view.layer.cornerRadius = 6
-    }
+        return view
+    }()
     
-    let nextButton = UIButton(type: .custom).then { button in
+    let nextButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.layer.cornerRadius = 20
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.titleLabel?.font =  ResourceManager.instance.getFont(size: 18)
         button.setTitle(L10n.next, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
-    }
+        return button
+    }()
     
     // MARK: - UI, Target
     

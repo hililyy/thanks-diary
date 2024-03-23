@@ -14,21 +14,25 @@ final class LaunchVC: UIViewController {
     
     var lottieView = UIView()
     
-    private var subTitleLabel = UILabel().then { label in
+    private var subTitleLabel: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 1
         label.font =  ResourceManager.instance.getFont(size: 20)
         label.text = L10n.todayWell
-    }
+        return label
+    }()
     
-    private var titleLabel = UILabel().then { label in
+    private var titleLabel: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 1
         label.font =  ResourceManager.instance.getFont(size: 40)
         label.text = L10n.thanksDiary
-    }
+        return label
+    }()
     
     private var titleContentsView = UIView()
 
