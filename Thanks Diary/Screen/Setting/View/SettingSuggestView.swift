@@ -13,16 +13,20 @@ final class SettingSuggestView: BaseView {
     
     private let topView = UIView()
     
-    let backButton = UIButton(type: .custom).then { button in
+    let backButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icBack.image, for: .normal)
-    }
+        return button
+    }()
     
-    private let topLabel = UILabel().then { label in
+    private let topLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.text = L10n.settingName9
         label.textAlignment = .center
-    }
+        return label
+    }()
     
     private let noticeView = {
         let view = UIView()
@@ -31,7 +35,7 @@ final class SettingSuggestView: BaseView {
         return view
     }()
     
-    private let noticeLabel = {
+    private let noticeLabel: UILabel = {
         let label = UILabel()
         label.text = L10n.suggestNotice
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -40,7 +44,8 @@ final class SettingSuggestView: BaseView {
         return label
     }()
     
-    let tableView = UITableView().then { tableView in
+    let tableView: UITableView = {
+        let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.separatorStyle = .none
@@ -48,15 +53,20 @@ final class SettingSuggestView: BaseView {
                            forCellReuseIdentifier: SettingSuggestTVCell.id)
         tableView.register(SettingSuggestReplyTVCell.self,
                            forCellReuseIdentifier: SettingSuggestReplyTVCell.id)
-    }
+        return tableView
+    }()
     
-    let loading = UIActivityIndicatorView().then { activityIndicator in
+    let loading: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
         activityIndicator.startAnimating()
-    }
+        return activityIndicator
+    }()
     
-    let writeButton = UIButton().then { button in
+    let writeButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icWrite.image, for: .normal)
-    }
+        return button
+    }()
     
     // MARK: - UI, Target
     
@@ -67,68 +77,64 @@ final class SettingSuggestView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([topView,
-                     noticeView,
-                     tableView,
-                     loading])
+        addSubviews([
+            topView,
+            noticeView,
+            tableView,
+            loading
+        ])
+        
         noticeView.addSubview(noticeLabel)
-        topView.addSubviews([backButton,
-                             writeButton,
-                             topLabel])
+        
+        topView.addSubviews([
+            backButton,
+            writeButton,
+            topLabel
+        ])
     }
     
     override func initConstraints() {
         topView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(noticeView.snp.top)
         }
         
         backButton.snp.makeConstraints { make in
-            make.left.equalTo(topView.snp.left).offset(20)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
-            make.centerY.equalTo(topLabel.snp.centerY)
+            make.leading.equalToSuperview().inset(20)
+            make.size.equalTo(44)
+            make.centerY.equalTo(topLabel)
         }
         
         topLabel.snp.makeConstraints { make in
-            make.top.equalTo(topView.snp.top).offset(25)
-            make.centerX.equalTo(topView.snp.centerX)
+            make.top.equalToSuperview().inset(25)
+            make.centerX.equalToSuperview()
         }
         
         writeButton.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-20)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
-            make.centerY.equalTo(topLabel.snp.centerY)
+            make.trailing.equalToSuperview().inset(20)
+            make.size.equalTo(44)
+            make.centerY.equalTo(topLabel)
         }
         
         noticeView.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp.bottom).offset(20)
-            make.left.equalTo(snp.left).offset(20)
-            make.right.equalTo(snp.right).offset(-20)
+            make.horizontalEdges.equalToSuperview().inset(20)
             make.bottom.equalTo(tableView.snp.top).offset(-20)
         }
         
         noticeLabel.snp.makeConstraints { make in
-            make.top.equalTo(noticeView.snp.top).offset(10)
-            make.left.equalTo(noticeView.snp.left).offset(10)
-            make.right.equalTo(noticeView.snp.right).offset(-10)
-            make.bottom.equalTo(noticeView.snp.bottom).offset(-10)
+            make.edges.equalToSuperview().inset(10)
         }
         
         tableView.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(10)
-            make.right.equalTo(snp.right).offset(-10)
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.bottom.equalTo(safeAreaLayoutGuide)
         }
         
         loading.snp.makeConstraints { make in
-            make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY)
-            make.width.equalTo(100)
-            make.height.equalTo(100)
+            make.center.equalToSuperview()
+            make.size.equalTo(100)
         }
     }
 }

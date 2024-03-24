@@ -14,9 +14,11 @@ final class SimpleWriteView: BaseView {
     
     // MARK: - UI components
     
-    private let backgroundView = UIView().then { view in
+    private let backgroundView: UIView = {
+        let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    }
+        return view
+    }()
     
     let backgroundButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -24,18 +26,22 @@ final class SimpleWriteView: BaseView {
         return button
     }()
     
-    let containerView = UIView().then { view in
+    let containerView: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
-    }
+        return view
+    }()
     
-    let deleteButton = UIButton(type: .custom).then { button in
+    let deleteButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icTrash.image, for: .normal)
         button.accessibilityIdentifier = "button_delete_simple"
-    }
+        return button
+    }()
     
-    let contentsTextView = UITextView().then { textView in
-        textView.backgroundColor = .clear
+    let contentsTextView: UITextView = {
+        let textView = UITextView()
         textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
         textView.layer.cornerRadius = 15
@@ -44,26 +50,32 @@ final class SimpleWriteView: BaseView {
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
         textView.becomeFirstResponder()
         textView.accessibilityIdentifier = "textView_contents_simple"
-    }
+        return textView
+    }()
     
-    private let textLengthLabel = UILabel().then { label in
+    private let textLengthLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 15)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .right
-    }
+        return label
+    }()
     
     private let buttonView = UIView()
     
-    let completeButton = UIButton(type: .custom).then { button in
+    let completeButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setTitle(L10n.writeComplete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font =  ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
         button.accessibilityIdentifier = "button_complete_simple"
-    }
+        return button
+    }()
     
-    let cancelButton = UIButton(type: .custom).then { button in
+    let cancelButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setTitle(L10n.cancel, for: .normal)
         button.setTitleColor(Asset.Color.gray1.color, for: .normal)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
@@ -71,7 +83,8 @@ final class SimpleWriteView: BaseView {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1.5
         button.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
-    }
+        return button
+    }()
     
     var maxCount: Int = 0
     private var containerViewBottomConstraint: Constraint?
@@ -136,79 +149,75 @@ final class SimpleWriteView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backgroundView,
-                     backgroundButton,
-                     containerView])
-        containerView.addSubviews([deleteButton,
-                                   contentsTextView,
-                                   textLengthLabel,
-                                   buttonView])
-        buttonView.addSubviews([completeButton,
-                                cancelButton])
+        addSubviews([
+            backgroundView,
+            backgroundButton,
+            containerView
+        ])
+        
+        containerView.addSubviews([
+            deleteButton,
+            contentsTextView,
+            textLengthLabel,
+            buttonView
+        ])
+        
+        buttonView.addSubviews([
+            completeButton,
+            cancelButton
+        ])
     }
     
     override func initConstraints() {
         backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         backgroundButton.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.top.equalToSuperview()
         }
         
         containerView.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(15)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(15)
+            make.centerX.equalToSuperview()
             containerViewBottomConstraint = make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-200).constraint
             make.height.equalTo(220)
         }
         
         deleteButton.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top).offset(5)
-            make.right.equalTo(containerView.snp.right).offset(-9)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
+            make.top.equalToSuperview().inset(5)
+            make.trailing.equalToSuperview().inset(9)
+            make.size.equalTo(44)
         }
         
         contentsTextView.snp.makeConstraints { make in
-            make.left.equalTo(containerView.snp.left).offset(18)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(18)
+            make.centerX.equalToSuperview()
             make.height.equalTo(70)
         }
         
         textLengthLabel.snp.makeConstraints { make in
             make.top.equalTo(contentsTextView.snp.bottom).offset(5)
-            make.right.equalTo(contentsTextView.snp.right)
+            make.trailing.equalTo(contentsTextView)
             make.bottom.equalTo(buttonView.snp.top).offset(-10)
         }
         
         buttonView.snp.makeConstraints { make in
-            make.left.equalTo(contentsTextView.snp.left)
-            make.bottom.equalTo(containerView.snp.bottom).offset(-25)
-            make.centerX.equalTo(containerView.snp.centerX)
+            make.leading.equalTo(contentsTextView)
+            make.bottom.equalToSuperview().inset(25)
+            make.centerX.equalToSuperview()
         }
         
         cancelButton.snp.makeConstraints { make in
-            make.top.equalTo(buttonView.snp.top)
-            make.left.equalTo(buttonView.snp.left)
-            make.right.equalTo(completeButton.snp.left).offset(-10)
-            make.bottom.equalTo(buttonView.snp.bottom)
-            make.width.equalTo(completeButton.snp.width)
+            make.verticalEdges.leading.equalToSuperview()
+            make.trailing.equalTo(completeButton.snp.leading).offset(-10)
+            make.width.equalTo(completeButton)
             make.height.equalTo(45)
         }
         
         completeButton.snp.makeConstraints { make in
-            make.top.equalTo(buttonView.snp.top)
-            make.right.equalTo(buttonView.snp.right)
-            make.bottom.equalTo(buttonView.snp.bottom)
-            make.width.equalTo(cancelButton.snp.width)
-            make.height.equalTo(cancelButton.snp.height)
+            make.verticalEdges.trailing.equalToSuperview()
+            make.size.equalTo(cancelButton)
         }
     }
 }

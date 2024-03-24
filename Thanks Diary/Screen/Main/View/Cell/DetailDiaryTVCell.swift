@@ -11,18 +11,22 @@ final class DetailDiaryTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let titleLabel = UILabel().then { label in
+    let titleLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.accessibilityIdentifier = "label_cell_detail_title"
-    }
+        return label
+    }()
     
-    let borderView = UIView().then { view in
+    let borderView: UIView = {
+        let view = UIView()
         view.layer.cornerRadius = 10
         view.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         view.layer.borderWidth = 2
-    }
+        return view
+    }()
     
     // MARK: - UI, Target
     
@@ -41,17 +45,14 @@ final class DetailDiaryTVCell: BaseTVCell, CellIdentifier {
     
     override func initConstraints() {
         borderView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(5)
-            make.left.equalTo(snp.left).offset(15)
-            make.right.equalTo(snp.right).offset(-15)
-            make.centerY.equalTo(snp.centerY)
+            make.top.equalToSuperview().inset(5)
+            make.horizontalEdges.equalToSuperview().inset(15)
+            make.centerY.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(borderView.snp.top).offset(15)
-            make.left.equalTo(borderView.snp.left).offset(20)
-            make.right.equalTo(borderView.snp.right).offset(-20)
-            make.bottom.equalTo(borderView.snp.bottom).offset(-15)
+            make.verticalEdges.equalToSuperview().inset(15)
+            make.horizontalEdges.equalToSuperview().inset(20)
             make.height.lessThanOrEqualTo(100)
         }
     }

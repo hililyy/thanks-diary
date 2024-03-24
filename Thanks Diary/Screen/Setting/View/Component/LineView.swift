@@ -11,7 +11,7 @@ final class LineView: BaseView {
     
     // MARK: - UI components
     
-    let lineView = UIView()
+    private let lineView = UIView()
     
     // MARK: - UI, Target
     
@@ -26,10 +26,7 @@ final class LineView: BaseView {
     
     override func initConstraints() {
         lineView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
             make.height.equalTo(1)
         }
     }

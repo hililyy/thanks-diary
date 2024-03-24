@@ -14,28 +14,37 @@ final class MainView: BaseView {
     
     // MARK: - UI components
     
-    let todayButton = UIButton(type: .custom).then { button in
+    let todayButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.layer.cornerRadius = 10
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.setTitle(L10n.today, for: .normal)
-    }
+        return button
+    }()
     
-    let allButton = UIButton(type: .custom).then { button in
+    let allButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icAll.image, for: .normal)
-    }
+        return button
+    }()
     
-    let searchButton = UIButton(type: .custom).then { button in
+    let searchButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icSearch.image, for: .normal)
-    }
+        return button
+    }()
     
-    let settingButton = UIButton(type: .custom).then { button in
+    let settingButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icSetting.image, for: .normal)
         button.accessibilityIdentifier = "button_main_setting"
-    }
+        return button
+    }()
     
-    let calendar = FSCalendar().then { calendar in
+    let calendar: FSCalendar = {
+        let calendar = FSCalendar()
         calendar.backgroundColor = Asset.Color.gray4.color
         calendar.appearance.headerTitleColor = Asset.Color.gray1.color
         calendar.appearance.weekdayTextColor = Asset.Color.gray1.color
@@ -58,39 +67,48 @@ final class MainView: BaseView {
         calendar.weekdayHeight = 30
         calendar.rowHeight = 40
         calendar.layer.cornerRadius = 10
-    }
+        return calendar
+    }()
     
-    private let lineViewX = UIView().then { view in
+    private let lineViewX: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray3.color
-    }
+        return view
+    }()
     
     private let todayAndSettingTopView = UIView()
     private let todayLabelView = UIView()
 
-    private let todayLabel = UILabel().then { label in
+    private let todayLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 20)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .left
         label.text = Date().toString(didChangeDateFormat: L10n.formatDate2)
-    }
+        return label
+    }()
     
-    let diaryTableView = UITableView().then { tableView in
+    let diaryTableView: UITableView = {
+        let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.separatorStyle = .none
         tableView.register(DetailDiaryTVCell.self, forCellReuseIdentifier: DetailDiaryTVCell.id)
         tableView.register(SimpleDiaryTVCell.self, forCellReuseIdentifier: SimpleDiaryTVCell.id)
         tableView.accessibilityIdentifier = "tableView_main"
-    }
+        return tableView
+    }()
     
     let emptyView = UIView()
     
-    let floatingButton = FloatingButton().then { button in
+    let floatingButton: FloatingButton = {
+        let button = FloatingButton()
         button.setButtonImage(img: Asset.Image.icPencil.image,
                               color: Asset.Color.cleanWhite.color)
         button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
         button.button.accessibilityIdentifier = "button_main_floating"
-    }
+        return button
+    }()
     
     // MARK: - Functions
     
@@ -134,99 +152,95 @@ final class MainView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([todayAndSettingTopView,
-                     calendar,
-                     lineViewX,
-                     todayLabelView,
-                     diaryTableView,
-                     emptyView,
-                     floatingButton])
+        addSubviews([
+            todayAndSettingTopView,
+            calendar,
+            lineViewX,
+            todayLabelView,
+            diaryTableView,
+            emptyView,
+            floatingButton
+        ])
         
-        todayAndSettingTopView.addSubviews([allButton, searchButton, todayButton, settingButton])
+        todayAndSettingTopView.addSubviews([
+            allButton,
+            searchButton,
+            todayButton,
+            settingButton
+        ])
+        
         todayLabelView.addSubview(todayLabel)
     }
     
     override func initConstraints() {
         todayAndSettingTopView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(calendar.snp.top).offset(-10)
             make.height.equalTo(52)
         }
         
         todayButton.snp.makeConstraints { make in
-            make.left.equalTo(todayAndSettingTopView.snp.left).offset(20)
-            make.bottom.equalTo(todayAndSettingTopView.snp.bottom)
+            make.leading.equalTo(todayAndSettingTopView).offset(20)
+            make.bottom.equalTo(todayAndSettingTopView)
             make.width.equalTo(45)
             make.height.equalTo(35)
         }
         
         allButton.snp.makeConstraints { make in
-            make.right.equalTo(searchButton.snp.left).offset(-5)
-            make.centerY.equalTo(todayButton.snp.centerY)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
+            make.trailing.equalTo(searchButton.snp.leading).offset(-5)
+            make.centerY.equalTo(todayButton)
+            make.size.equalTo(42)
         }
         
         searchButton.snp.makeConstraints { make in
-            make.right.equalTo(settingButton.snp.left).offset(-5)
-            make.centerY.equalTo(todayButton.snp.centerY)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
+            make.trailing.equalTo(settingButton.snp.leading).offset(-5)
+            make.centerY.equalTo(todayButton)
+            make.size.equalTo(42)
         }
         
         settingButton.snp.makeConstraints { make in
-            make.right.equalTo(todayAndSettingTopView.snp.right).offset(-10)
-            make.centerY.equalTo(todayButton.snp.centerY)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
+            make.trailing.equalTo(todayAndSettingTopView).offset(-10)
+            make.centerY.equalTo(todayButton)
+            make.size.equalTo(42)
         }
         
         calendar.snp.makeConstraints { make in
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(lineViewX.snp.top).offset(-15)
             make.height.equalTo(320)
         }
         
         lineViewX.snp.makeConstraints { make in
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(todayLabelView.snp.top)
             make.height.equalTo(1)
         }
         
         todayLabelView.snp.makeConstraints { make in
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(50)
         }
         
         todayLabel.snp.makeConstraints { make in
-            make.left.equalTo(todayLabelView.snp.left).offset(25)
-            make.centerY.equalTo(todayLabelView.snp.centerY)
+            make.leading.equalTo(todayLabelView).offset(25)
+            make.centerY.equalTo(todayLabelView)
         }
         
         diaryTableView.snp.makeConstraints { make in
             make.top.equalTo(todayLabelView.snp.bottom)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
         
         emptyView.snp.makeConstraints { make in
-            make.top.equalTo(diaryTableView.snp.top)
-            make.left.equalTo(diaryTableView.snp.left).offset(30)
-            make.right.equalTo(diaryTableView.snp.right).offset(-30)
-            make.bottom.equalTo(diaryTableView.snp.bottom)
+            make.verticalEdges.equalTo(diaryTableView)
+            make.horizontalEdges.equalTo(diaryTableView).inset(30)
         }
         
         floatingButton.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-40)
-            make.bottom.equalTo(snp.bottom).offset(-40)
-            make.width.equalTo(52)
-            make.height.equalTo(52)
+            make.trailing.bottom.equalToSuperview().inset(40)
+            make.size.equalTo(52)
         }
     }
 }

@@ -7,21 +7,24 @@
 
 import UIKit
 import SnapKit
-import Then
 
 final class NavigationView: BaseView {
     
     // MARK: - UI components
     
-    let backButton = UIButton(type: .custom).then { button in
+    let backButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icBack.image, for: .normal)
-    }
+        return button
+    }()
     
-    let titleLabel = UILabel().then { label in
+    let titleLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-    }
+        return label
+    }()
     
     // MARK: - Functions
     
@@ -37,23 +40,23 @@ final class NavigationView: BaseView {
     // MARK: - UI, Target
     
     override func initSubviews() {
-        addSubviews([backButton,
-                     titleLabel])
+        addSubviews([
+            backButton,
+            titleLabel
+        ])
     }
     
     override func initConstraints() {
         backButton.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(20)
-            make.right.equalTo(titleLabel.snp.left).offset(-5)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
-            make.centerY.equalTo(titleLabel.snp.centerY)
+            make.leading.equalToSuperview().inset(20)
+            make.trailing.equalTo(titleLabel.snp.leading).offset(-5)
+            make.size.equalTo(42)
+            make.centerY.equalTo(titleLabel)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(25)
-            make.centerX.equalTo(snp.centerX)
-            make.bottom.equalTo(snp.bottom)
+            make.top.equalToSuperview().inset(25)
+            make.bottom.centerX.equalToSuperview()
             make.height.equalTo(30)
         }
     }

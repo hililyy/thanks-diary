@@ -11,18 +11,22 @@ final class SettingLabelTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let titleLabel = UILabel().then { label in
+    let titleLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
-    }
+        return label
+    }()
     
-    let contentsLabel = UILabel().then { label in
+    let contentsLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray2.color
         label.textAlignment = .right
-    }
+        return label
+    }()
     
     // MARK: - UI, Target
     
@@ -34,21 +38,22 @@ final class SettingLabelTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([titleLabel,
-                     contentsLabel])
+        addSubviews([
+            titleLabel,
+            contentsLabel
+        ])
     }
     
     override func initConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(20)
-            make.left.equalTo(snp.left).offset(15)
-            make.right.equalTo(contentsLabel.snp.left).offset(-10)
-            make.bottom.equalTo(snp.bottom).offset(-20)
+            make.verticalEdges.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(15)
+            make.trailing.equalTo(contentsLabel.snp.leading).offset(-10)
         }
         
         contentsLabel.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-10)
-            make.centerY.equalTo(titleLabel.snp.centerY)
+            make.trailing.equalToSuperview().inset(10)
+            make.centerY.equalTo(titleLabel)
         }
     }
 }

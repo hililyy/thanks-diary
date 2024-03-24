@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import Then
 
 final class SettingView: BaseView {
     
@@ -15,7 +14,8 @@ final class SettingView: BaseView {
     
     let navigationView = NavigationView()
     
-    let tableView = UITableView().then { tableView in
+    let tableView: UITableView = {
+        let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.register(SettingSwitchTVCell.self, forCellReuseIdentifier: SettingSwitchTVCell.id)
         tableView.register(SettingMoreTVCell.self, forCellReuseIdentifier: SettingMoreTVCell.id)
@@ -24,7 +24,8 @@ final class SettingView: BaseView {
         
         tableView.isScrollEnabled = false
         tableView.isPagingEnabled = false
-    }
+        return tableView
+    }()
     
     // MARK: - UI, Target
     
@@ -49,16 +50,14 @@ final class SettingView: BaseView {
     
     override func initConstraints() {
         navigationView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
         }
         
         tableView.snp.makeConstraints { make in
             make.top.equalTo(navigationView.snp.bottom).offset(20)
-            make.left.equalTo(snp.left).offset(10)
-            make.right.equalTo(snp.right).offset(-10)
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
 }

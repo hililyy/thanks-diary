@@ -11,27 +11,35 @@ final class SettingPWView: BaseView {
     
     // MARK: - UI components
     
-    let backButton = UIButton(type: .custom).then { button in
+    let backButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icBack.image, for: .normal)
-    }
+        return button
+    }()
     
-    private let lockImageView = UIImageView().then { imageView in
+    private let lockImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.image = Asset.Image.imgLock.image
-    }
+        return imageView
+    }()
     
-    private let titleLabel = UILabel().then { label in
+    private let titleLabel: UILabel = {
+        let label = UILabel()
         label.text = L10n.password
         label.font = ResourceManager.instance.getFont(size: 22)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-    }
+        return label
+    }()
     
-    let contentsLabel = UILabel().then { label in
+    let contentsLabel: UILabel = {
+        let label = UILabel()
         label.text = L10n.passwordContents1
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
-    }
+        return label
+    }()
     
     private lazy var dotStackView: UIStackView = {
         let stackView = UIStackView()
@@ -43,18 +51,20 @@ final class SettingPWView: BaseView {
     }()
     
     private let dotViews: [UIView] = (0..<4).map { _ in
-        UIView().then {
-            $0.backgroundColor = Asset.Color.gray7.color
-            $0.layer.cornerRadius = 7
-        }
+        let view = UIView()
+        view.backgroundColor = Asset.Color.gray7.color
+        view.layer.cornerRadius = 7
+        return view
     }
     
-    private lazy var passwordStackView = UIStackView().then { stackView in
+    private lazy var passwordStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 25
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
-    }
+        return stackView
+    }()
     
     private lazy var passwordRowStackViews: [UIStackView] = {
         return (0..<4).map { _ in
@@ -125,65 +135,77 @@ final class SettingPWView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        passwordStackView.addArrangedSubviews([passwordRowStackViews[0],
-                                               passwordRowStackViews[1],
-                                               passwordRowStackViews[2],
-                                               passwordRowStackViews[3]])
+        passwordStackView.addArrangedSubviews([
+            passwordRowStackViews[0],
+            passwordRowStackViews[1],
+            passwordRowStackViews[2],
+            passwordRowStackViews[3]
+        ])
         
-        passwordRowStackViews[0].addArrangedSubviews([passwordNumberButtonViews[1],
-                                                      passwordNumberButtonViews[2],
-                                                      passwordNumberButtonViews[3]])
+        passwordRowStackViews[0].addArrangedSubviews([
+            passwordNumberButtonViews[1],
+            passwordNumberButtonViews[2],
+            passwordNumberButtonViews[3]
+        ])
         
-        passwordRowStackViews[1].addArrangedSubviews([passwordNumberButtonViews[4],
-                                                      passwordNumberButtonViews[5],
-                                                      passwordNumberButtonViews[6]])
+        passwordRowStackViews[1].addArrangedSubviews([
+            passwordNumberButtonViews[4],
+            passwordNumberButtonViews[5],
+            passwordNumberButtonViews[6]
+        ])
         
-        passwordRowStackViews[2].addArrangedSubviews([passwordNumberButtonViews[7],
-                                                      passwordNumberButtonViews[8],
-                                                      passwordNumberButtonViews[9]])
+        passwordRowStackViews[2].addArrangedSubviews([
+            passwordNumberButtonViews[7],
+            passwordNumberButtonViews[8],
+            passwordNumberButtonViews[9]
+        ])
         
-        passwordRowStackViews[3].addArrangedSubviews([emptyView,
-                                                      passwordNumberButtonViews[0],
-                                                      deleteButton])
+        passwordRowStackViews[3].addArrangedSubviews([
+            emptyView,
+            passwordNumberButtonViews[0],
+            deleteButton
+        ])
         
-        addSubviews([backButton,
-                     lockImageView,
-                     titleLabel,
-                     contentsLabel,
-                     dotStackView,
-                     passwordStackView])
+        addSubviews([
+            backButton,
+            lockImageView,
+            titleLabel,
+            contentsLabel,
+            dotStackView,
+            passwordStackView
+        ])
         
-        dotStackView.addArrangedSubviews([dotViews[0],
-                                          dotViews[1],
-                                          dotViews[2],
-                                          dotViews[3]])
+        dotStackView.addArrangedSubviews([
+            dotViews[0],
+            dotViews[1],
+            dotViews[2],
+            dotViews[3]
+        ])
     }
     
     override func initConstraints() {
         backButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(25)
-            make.left.equalTo(snp.left).offset(20)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
+            make.top.equalTo(safeAreaLayoutGuide).offset(25)
+            make.leading.equalToSuperview().inset(20)
+            make.size.equalTo(44)
         }
         
         lockImageView.snp.makeConstraints { make in
             make.top.equalTo(backButton.snp.bottom)
-            make.centerX.equalTo(snp.centerX)
+            make.centerX.equalToSuperview()
             make.bottom.equalTo(titleLabel.snp.top).offset(-30)
-            make.width.equalTo(60)
-            make.height.equalTo(60)
+            make.size.equalTo(60)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.bottom.equalTo(contentsLabel.snp.top).offset(-5)
-            make.centerX.equalTo(snp.centerX)
+            make.centerX.equalToSuperview()
             make.height.equalTo(30).priority(999)
         }
         
         contentsLabel.snp.makeConstraints { make in
             make.bottom.equalTo(dotStackView.snp.top).offset(-40)
-            make.centerX.equalTo(snp.centerX)
+            make.centerX.equalToSuperview()
             make.height.equalTo(30).priority(999)
         }
         
@@ -194,17 +216,17 @@ final class SettingPWView: BaseView {
         }
         
         passwordStackView.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-40)
-            make.centerX.equalTo(snp.centerX)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-40)
+            make.centerX.equalToSuperview()
         }
         
-        for dotView in dotViews {
+        dotViews.forEach { dotView in
             dotView.snp.makeConstraints { make in
                 make.width.equalTo(dotView.snp.height)
             }
         }
         
-        for button in passwordNumberButtonViews {
+        passwordNumberButtonViews.forEach { button in
             button.snp.makeConstraints { make in
                 make.width.equalTo(button.snp.height)
             }

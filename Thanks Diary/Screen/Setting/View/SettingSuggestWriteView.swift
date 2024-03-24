@@ -11,24 +11,33 @@ final class SettingSuggestWriteView: BaseView {
     
     // MARK: - UI components
     
-    private let backgroundView = UIView().then { view in
+    private let backgroundView: UIView = {
+        let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    }
+        return view
+    }()
     
-    lazy var backgroundButton = UIButton(type: .custom).then { button in
+    lazy var backgroundButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-    }
+        return button
+    }()
     
-    private let containerView = UIView().then { view in
+    private let containerView: UIView = {
+        let view = UIView()
         view.backgroundColor = Asset.Color.gray4.color
         view.layer.cornerRadius = 10
-    }
+        return view
+    }()
     
-    let mailButton = UIButton(type: .custom).then { button in
+    let mailButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setImage(Asset.Image.icMail.image, for: .normal)
-    }
+        return button
+    }()
     
-    let contentsTextView = UITextView().then { textView in
+    let contentsTextView: UITextView = {
+        let textView = UITextView()
         textView.backgroundColor = .clear
         textView.font = ResourceManager.instance.getFont(size: 17)
         textView.textColor = Asset.Color.gray1.color
@@ -37,15 +46,18 @@ final class SettingSuggestWriteView: BaseView {
         textView.layer.borderColor = ResourceManager.instance.getMainColor().cgColor
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 0)
         textView.becomeFirstResponder()
-    }
+        return textView
+    }()
     
-    let completeButton = UIButton(type: .custom).then { button in
+    let completeButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.setTitle(L10n.writeComplete, for: .normal)
         button.setTitleColor(Asset.Color.gray6.color, for: .normal)
         button.titleLabel?.font = ResourceManager.instance.getFont(size: 15)
         button.backgroundColor = ResourceManager.instance.getMainColor()
         button.layer.cornerRadius = 10
-    }
+        return button
+    }()
     
     // MARK: - Functions
     
@@ -56,55 +68,50 @@ final class SettingSuggestWriteView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backgroundView, 
-                     backgroundButton,
-                     containerView])
+        addSubviews([
+            backgroundView,
+            backgroundButton,
+            containerView
+        ])
         
-        containerView.addSubviews([mailButton,
-                                   contentsTextView,
-                                   completeButton])
+        containerView.addSubviews([
+            mailButton,
+            contentsTextView,
+            completeButton
+        ])
     }
     
     override func initConstraints() {
         backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         backgroundButton.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         containerView.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(15)
-            make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY)
+            make.leading.equalToSuperview().inset(15)
+            make.center.equalToSuperview()
             make.height.equalTo(220)
         }
         
         mailButton.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top).offset(9)
-            make.right.equalTo(containerView.snp.right).offset(-9)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
+            make.top.trailing.equalToSuperview().inset(9)
+            make.size.equalTo(44)
         }
         
         contentsTextView.snp.makeConstraints { make in
-            make.left.equalTo(containerView.snp.left).offset(18)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(18)
+            make.centerX.equalToSuperview()
             make.height.equalTo(70)
         }
         
         completeButton.snp.makeConstraints { make in
             make.top.equalTo(contentsTextView.snp.bottom).offset(20)
-            make.left.equalTo(contentsTextView.snp.left)
-            make.bottom.equalTo(containerView.snp.bottom).offset(-25)
-            make.centerX.equalTo(containerView.snp.centerX)
+            make.leading.equalTo(contentsTextView)
+            make.bottom.equalToSuperview().inset(25)
+            make.centerX.equalToSuperview()
             make.height.equalTo(45)
         }
     }

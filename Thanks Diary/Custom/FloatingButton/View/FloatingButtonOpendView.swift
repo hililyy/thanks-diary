@@ -12,52 +12,66 @@ final class FloatingButtonOpendView: BaseView {
     
     // MARK: - UI components
     
-    var backgroundView = UIView().then { view in
+    var backgroundView: UIView = {
+        let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
-    }
+        return view
+    }()
     
-    var backgroundButton = UIButton(type: .custom).then { button in
+    var backgroundButton: UIButton = {
+        let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-    }
+        return button
+    }()
     
-    var closeButton = FloatingButton().then { button in
+    var closeButton: FloatingButton = {
+        let button = FloatingButton()
         button.setButtonImage(img: Asset.Image.icX.image,
                               color: Asset.Color.cleanWhite.color)
         button.setButtonBackgroundColor(ResourceManager.instance.getMainColor())
         button.button.accessibilityIdentifier = "button_main_floating_close"
-    }
+        return button
+    }()
     
-    var detailButton = FloatingButton().then { button in
+    var detailButton: FloatingButton = {
+        let button = FloatingButton()
         button.setButtonImage(img: Asset.Image.icDetailWrite.image,
                               color: ResourceManager.instance.getMainColor())
         button.setButtonBackgroundColor(.white)
         button.button.accessibilityIdentifier = "button_main_floating_detail"
-    }
+        return button
+    }()
     
-    var simpleButton = FloatingButton().then { button in
+    var simpleButton: FloatingButton = {
+        let button = FloatingButton()
         button.setButtonImage(img: Asset.Image.icSimpleWrite.image,
                               color: ResourceManager.instance.getMainColor())
         button.setButtonBackgroundColor(.white)
         button.button.accessibilityIdentifier = "button_main_floating_simple"
-    }
+        return button
+    }()
     
-    var detailLabel = PaddingLabel().then { label in
+    var detailLabel: PaddingLabel = {
+        let label = PaddingLabel()
         label.font = ResourceManager.instance.getFont(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
         label.textAlignment = .right
         label.textColor = .black
-    }
+        return label
+    }()
     
-    var simpleLabel = PaddingLabel().then { label in
+    var simpleLabel: PaddingLabel = {
+        let label = PaddingLabel()
         label.font = ResourceManager.instance.getFont(size: 13)
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
         label.textAlignment = .right
         label.textColor = .black
-    }
+        return label
+    }()
     
     // MARK: - Functions
     
@@ -85,14 +99,15 @@ final class FloatingButtonOpendView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backgroundView,
-                     backgroundButton,
-                     closeButton,
-                     detailButton,
-                     simpleButton,
-                     detailLabel,
-                     simpleLabel
-                    ])
+        addSubviews([
+            backgroundView,
+            backgroundButton,
+            closeButton,
+            detailButton,
+            simpleButton,
+            detailLabel,
+            simpleLabel
+        ])
     }
     
     override func initConstraints() {
@@ -105,46 +120,36 @@ final class FloatingButtonOpendView: BaseView {
         }
         
         backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         backgroundButton.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         closeButton.snp.makeConstraints { make in
-            make.right.equalTo(safeAreaLayoutGuide.snp.right).offset(-40)
-            make.bottom.equalTo(snp.bottom).offset(-40)
-            make.width.equalTo(52)
-            make.height.equalTo(52)
+            make.trailing.bottom.equalToSuperview().inset(40)
+            make.size.equalTo(52)
         }
         
         detailButton.snp.makeConstraints { make in
-            make.centerX.equalTo(closeButton.snp.centerX)
-            make.width.equalTo(52)
-            make.height.equalTo(52)
+            make.centerX.equalTo(closeButton)
+            make.size.equalTo(52)
         }
         
         simpleButton.snp.makeConstraints { make in
-            make.centerX.equalTo(closeButton.snp.centerX)
-            make.width.equalTo(52)
-            make.height.equalTo(52)
+            make.centerX.equalTo(closeButton)
+            make.size.equalTo(52)
         }
         
         detailLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(detailButton.snp.centerY)
-            make.right.equalTo(detailButton.snp.left).offset(-10)
+            make.centerY.equalTo(detailButton)
+            make.trailing.equalTo(detailButton.snp.leading).offset(-10)
         }
         
         simpleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(simpleButton.snp.centerY)
-            make.right.equalTo(simpleButton.snp.left).offset(-10)
+            make.centerY.equalTo(simpleButton)
+            make.trailing.equalTo(simpleButton.snp.leading).offset(-10)
         }
     }
 }

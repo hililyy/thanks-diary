@@ -11,14 +11,18 @@ final class SettingCheckTVCell: BaseTVCell, CellIdentifier {
     
     // MARK: - UI components
     
-    let titleLabel = UILabel().then { label in
+    let titleLabel: UILabel = {
+        let label = UILabel()
         label.font = ResourceManager.instance.getFont(size: 17)
         label.textColor = Asset.Color.gray1.color
-    }
+        return label
+    }()
     
-    let checkImageView = UIImageView().then { imageView in
+    let checkImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.image = Asset.Image.icCheck.image
-    }
+        return imageView
+    }()
     
     // MARK: - UI, Target
     
@@ -30,22 +34,22 @@ final class SettingCheckTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([titleLabel,
-                     checkImageView])
+        addSubviews([
+            titleLabel,
+            checkImageView
+        ])
     }
     
     override func initConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(20)
-            make.left.equalTo(snp.left).offset(15)
-            make.bottom.equalTo(snp.bottom).offset(-20)
+            make.verticalEdges.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(15)
         }
         
         checkImageView.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-10)
-            make.centerY.equalTo(titleLabel.snp.centerY)
-            make.width.equalTo(24)
-            make.height.equalTo(24)
+            make.trailing.equalToSuperview().inset(10)
+            make.centerY.equalTo(titleLabel)
+            make.size.equalTo(24)
         }
     }
 }

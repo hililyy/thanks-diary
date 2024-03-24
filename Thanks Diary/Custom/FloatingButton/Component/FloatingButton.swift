@@ -11,13 +11,18 @@ final class FloatingButton: BaseView {
     
     // MARK: - Property
     
-    var button = UIButton(type: .custom).then { button in
+    var button: UIButton = {
+        let button = UIButton(type: .custom)
         button.layer.cornerRadius = 26
-    }
-    var imageView = UIImageView().then { view in
+        return button
+    }()
+    
+    var imageView: UIImageView = {
+        let view = UIImageView()
         view.layer.cornerRadius = 26
         view.isUserInteractionEnabled = false
-    }
+        return view
+    }()
     
     func setButtonImage(img: UIImage, color: UIColor) {
         imageView.image = img.withRenderingMode(.alwaysTemplate)
@@ -43,17 +48,11 @@ final class FloatingButton: BaseView {
     
     override func initConstraints() {
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(10)
-            make.left.equalTo(snp.left).offset(10)
-            make.right.equalTo(snp.right).offset(-10)
-            make.bottom.equalTo(snp.bottom).offset(-10)
+            make.edges.equalToSuperview().inset(10)
         }
         
         button.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
     }
 }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Then
 import SnapKit
 
 class BaseTVCell: UITableViewCell {

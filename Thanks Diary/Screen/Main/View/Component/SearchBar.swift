@@ -46,25 +46,23 @@ final class SearchBar: BaseView {
     
     override func initConstraints() {
         backButton.snp.makeConstraints { make in
-            make.left.equalTo(20)
-            make.centerY.equalTo(textfield.snp.centerY)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
+            make.leading.equalToSuperview().inset(20)
+            make.centerY.equalTo(textfield)
+            make.size.equalTo(42)
         }
         
         textfield.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(15)
-            make.left.equalTo(backButton.snp.right).offset(10)
-            make.right.equalTo(searchButton.snp.left).offset(-10)
-            make.bottom.equalTo(snp.bottom).offset(-5)
+            make.top.equalTo(safeAreaLayoutGuide).offset(15)
+            make.leading.equalTo(backButton.snp.trailing).offset(10)
+            make.trailing.equalTo(searchButton.snp.leading).offset(-10)
+            make.bottom.equalToSuperview().inset(5)
             make.height.equalTo(40)
         }
         
         searchButton.snp.makeConstraints { make in
-            make.right.equalTo(-20)
-            make.centerY.equalTo(textfield.snp.centerY)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
+            make.trailing.equalToSuperview().inset(20)
+            make.centerY.equalTo(textfield)
+            make.size.equalTo(42)
         }
     }
 }

@@ -14,13 +14,15 @@ final class FirstStartView: BaseView {
     var lottieView = UIView()
     var lottieView2 = UIView()
     
-    private var messageLabel = UILabel().then { label in
+    private var messageLabel: UILabel = {
+        let label = UILabel()
         label.textColor = Asset.Color.gray1.color
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font =  ResourceManager.instance.getFont(size: 18)
         label.text = L10n.startPage1Message1
-    }
+        return label
+    }()
     
     // MARK: - UI, Target
     
@@ -31,31 +33,30 @@ final class FirstStartView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([lottieView,
-                     lottieView2,
-                     messageLabel])
+        addSubviews([
+            lottieView,
+            lottieView2,
+            messageLabel
+        ])
     }
     
     override func initConstraints() {
         lottieView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(75)
+            make.centerX.equalToSuperview()
             make.height.equalTo(170)
-            make.top.equalTo(snp.top).offset(20)
-            make.left.equalTo(snp.left).offset(75)
-            make.centerX.equalTo(snp.centerX)
         }
         
         lottieView2.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(75)
+            make.centerX.equalToSuperview()
             make.height.equalTo(150)
-            make.bottom.equalTo(snp.bottom).offset(-20)
-            make.left.equalTo(snp.left).offset(75)
-            make.centerX.equalTo(snp.centerX)
         }
         
         messageLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.center.horizontalEdges.equalToSuperview()
         }
     }
 }
