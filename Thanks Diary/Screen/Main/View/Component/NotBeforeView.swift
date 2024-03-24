@@ -42,35 +42,33 @@ final class NotBeforeView: BaseView {
     
     override func initSubviews() {
         addSubview(contentView)
-        contentView.addSubviews([topLineView,
-                                 bottomLineView,
-                                 contentsLabel])
+        
+        contentView.addSubviews([
+            topLineView,
+            bottomLineView,
+            contentsLabel
+        ])
     }
     
     override func initConstraints() {
         contentView.snp.makeConstraints { make in
             make.width.equalTo(330)
             make.height.equalTo(160)
-            make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY)
+            make.center.equalToSuperview()
         }
         
         topLineView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top)
-            make.left.equalTo(contentView.snp.left)
-            make.right.equalTo(contentView.snp.right)
+            make.top.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(2)
         }
         
         contentsLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(contentView.snp.centerX)
-            make.centerY.equalTo(contentView.snp.centerY)
+            make.center.equalToSuperview()
         }
         
         bottomLineView.snp.makeConstraints { make in
-            make.left.equalTo(contentView.snp.left)
-            make.right.equalTo(contentView.snp.right)
-            make.bottom.equalTo(contentView.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
             make.height.equalTo(2)
         }
     }

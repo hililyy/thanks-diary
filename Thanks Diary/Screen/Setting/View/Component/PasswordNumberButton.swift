@@ -42,18 +42,17 @@ final class PasswordButtonView: UIView {
     
     private func initConstraints() {
         contentView.snp.makeConstraints { make in
-            make.edges.equalTo(snp.edges).priority(.high)
+            make.edges.equalToSuperview().priority(.high)
         }
         
         button.snp.makeConstraints { make in
-            make.edges.equalTo(snp.edges)
+            make.edges.equalToSuperview()
         }
     }
     
     private func setupContentView(number: Int) {
         snp.makeConstraints { make in
-            make.width.equalTo(60).priority(.high)
-            make.height.equalTo(60).priority(.high)
+            make.size.equalTo(60).priority(.high)
         }
         
         if number == -1 {
@@ -63,10 +62,8 @@ final class PasswordButtonView: UIView {
             contentView.addSubview(contentImageView)
             
             contentImageView.snp.makeConstraints { make in
-                make.centerX.equalTo(contentView.snp.centerX)
-                make.centerY.equalTo(contentView.snp.centerY)
-                make.width.equalTo(32)
-                make.height.equalTo(32)
+                make.center.equalToSuperview()
+                make.size.equalTo(32)
             }
         } else {
             let contentLabel = UILabel()
@@ -77,7 +74,7 @@ final class PasswordButtonView: UIView {
             contentView.addSubview(contentLabel)
             
             contentLabel.snp.makeConstraints { make in
-                make.edges.equalTo(contentView.snp.edges)
+                make.edges.equalToSuperview()
             }
         }
     }

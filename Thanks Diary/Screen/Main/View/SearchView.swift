@@ -40,30 +40,29 @@ final class SearchView: BaseView {
     }
     
     override func initSubviews() {
-        addSubviews([searchBar, 
-                     emptyView,
-                     searchTableView])
+        addSubviews([
+            searchBar,
+            emptyView,
+            searchTableView
+        ])
     }
     
     override func initConstraints() {
         searchBar.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
         }
         
         emptyView.snp.makeConstraints { make in
-            make.top.equalTo(searchTableView.snp.top).offset(50)
-            make.left.equalTo(searchTableView.snp.left).offset(30)
-            make.right.equalTo(searchTableView.snp.right).inset(30)
+            make.top.equalTo(searchTableView).offset(50)
+            make.horizontalEdges.equalTo(searchTableView).inset(30)
             make.height.equalTo(300)
         }
         
         searchTableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(20)
-            make.left.equalTo(snp.left).offset(10)
-            make.right.equalTo(snp.right).offset(-10)
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
 }

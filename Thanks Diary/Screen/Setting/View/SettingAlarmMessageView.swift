@@ -134,14 +134,16 @@ final class SettingAlarmMessageView: BaseView {
     }
     
     override func initSubviews() {
-        addSubviews([navigationView,
-                     previewContentsView,
-                     warningLabel,
-                     titleTextFieldLabel,
-                     messageTitleTextField,
-                     contentsTextFieldLabel,
-                     messageContentsTextField,
-                     completeButton])
+        addSubviews([
+            navigationView,
+            previewContentsView,
+            warningLabel,
+            titleTextFieldLabel,
+            messageTitleTextField,
+            contentsTextFieldLabel,
+            messageContentsTextField,
+            completeButton
+        ])
         
         previewContentsView.addSubviews([
             previewAppIconImageView,
@@ -155,64 +157,61 @@ final class SettingAlarmMessageView: BaseView {
     
     override func initConstraints() {
         navigationView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
         }
         
         previewContentsView.snp.makeConstraints { make in
             make.top.equalTo(navigationView.snp.bottom).offset(40)
-            make.left.equalTo(snp.left).offset(45)
+            make.leading.equalToSuperview().inset(45)
             make.bottom.equalTo(warningLabel.snp.top).offset(-20)
-            make.centerX.equalTo(snp.centerX)
+            make.centerX.equalToSuperview()
             make.height.equalTo(70)
         }
         
         previewAppIconImageView.snp.makeConstraints { make in
-            make.left.equalTo(10)
-            make.centerY.equalTo(previewContentsView.snp.centerY)
-            make.width.equalTo(40)
-            make.height.equalTo(40)
+            make.leading.equalToSuperview().inset(10)
+            make.centerY.equalToSuperview()
+            make.size.equalTo(40)
         }
         
         previewLabelStackView.snp.makeConstraints { make in
-            make.left.equalTo(previewAppIconImageView.snp.right).offset(10)
-            make.right.equalTo(previewContentsView.snp.right)
-            make.centerY.equalTo(previewContentsView.snp.centerY)
+            make.leading.equalTo(previewAppIconImageView.snp.trailing).offset(10)
+            make.trailing.centerY.equalToSuperview()
         }
         
         warningLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(snp.centerX)
+            make.centerX.equalToSuperview()
             make.bottom.equalTo(titleTextFieldLabel.snp.top).offset(-40)
         }
         
         titleTextFieldLabel.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(24)
+            make.leading.equalToSuperview().inset(24)
             make.bottom.equalTo(messageTitleTextField.snp.top).offset(-10)
         }
         
         messageTitleTextField.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(24)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(24)
+            make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
         
         contentsTextFieldLabel.snp.makeConstraints { make in
             make.top.equalTo(messageTitleTextField.snp.bottom).offset(10)
-            make.left.equalTo(snp.left).offset(24)
+            make.leading.equalToSuperview().inset(24)
             make.bottom.equalTo(messageContentsTextField.snp.top).offset(-10)
         }
         
         messageContentsTextField.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(24)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(24)
+            make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
         
         completeButton.snp.makeConstraints { make in
             make.top.equalTo(messageContentsTextField.snp.bottom).offset(40)
-            make.left.equalTo(snp.left).offset(24)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(24)
+            make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
     }

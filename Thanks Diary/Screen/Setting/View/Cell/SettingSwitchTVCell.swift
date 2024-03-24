@@ -39,22 +39,21 @@ final class SettingSwitchTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Constraint
     
     override func initSubviews() {
-        contentView.addSubviews([titleLabel,
-                                 settingSwitch])
+        contentView.addSubviews([
+            titleLabel,
+            settingSwitch
+        ])
     }
     
     override func initConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).offset(20)
-            make.left.equalTo(contentView.snp.left).offset(15)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-20)
+            make.verticalEdges.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(15)
         }
         
         settingSwitch.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(20)
-            make.right.equalTo(snp.right).offset(-20)
-            make.bottom.equalTo(snp.bottom).offset(-20)
-            make.centerY.equalTo(titleLabel.snp.centerY)
+            make.verticalEdges.trailing.equalToSuperview().inset(20)
+            make.centerY.equalTo(titleLabel)
         }
     }
 }

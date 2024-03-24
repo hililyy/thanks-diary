@@ -50,16 +50,14 @@ final class SettingView: BaseView {
     
     override func initConstraints() {
         navigationView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
         }
         
         tableView.snp.makeConstraints { make in
             make.top.equalTo(navigationView.snp.bottom).offset(20)
-            make.left.equalTo(snp.left).offset(10)
-            make.right.equalTo(snp.right).offset(-10)
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
 }

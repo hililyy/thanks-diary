@@ -117,58 +117,66 @@ final class SecondStartView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        messageImageStackView1.addArrangedSubviews([heartImageView1, messageLabel1])
-        messageImageStackView2.addArrangedSubviews([heartImageView2, messageLabel2])
-        messageImageStackView3.addArrangedSubviews([heartImageView3, messageLabel3])
-        messageImageStackView4.addArrangedSubviews([heartImageView4, messageLabel4])
+        messageImageStackView1.addArrangedSubviews([
+            heartImageView1,
+            messageLabel1
+        ])
         
-        messageStackView.addArrangedSubviews([messageImageStackView1,
-                                              messageImageStackView2,
-                                              messageImageStackView3,
-                                              messageImageStackView4])
+        messageImageStackView2.addArrangedSubviews([
+            heartImageView2,
+            messageLabel2
+        ])
         
-        addSubviews([lottieView,
-                     titleLabel,
-                     messageStackView])
+        messageImageStackView3.addArrangedSubviews([
+            heartImageView3,
+            messageLabel3
+        ])
+        
+        messageImageStackView4.addArrangedSubviews([
+            heartImageView4,
+            messageLabel4
+        ])
+        
+        messageStackView.addArrangedSubviews([
+            messageImageStackView1,
+            messageImageStackView2,
+            messageImageStackView3,
+            messageImageStackView4
+        ])
+        
+        addSubviews([
+            lottieView,
+            titleLabel,
+            messageStackView
+        ])
     }
     
     override func initConstraints() {
-        heartImageView1.snp.makeConstraints { make in
-            make.width.equalTo(21)
-            make.height.equalTo(21)
-        }
-        
-        heartImageView2.snp.makeConstraints { make in
-            make.width.equalTo(21)
-            make.height.equalTo(21)
-        }
-        
-        heartImageView3.snp.makeConstraints { make in
-            make.width.equalTo(21)
-            make.height.equalTo(21)
-        }
-        
-        heartImageView4.snp.makeConstraints { make in
-            make.width.equalTo(21)
-            make.height.equalTo(21)
+        [heartImageView1,
+         heartImageView2,
+         heartImageView3,
+         heartImageView4].forEach { view in
+            view.snp.makeConstraints { make in
+                make.size.equalTo(21)
+            }
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(snp.centerX)
+            make.centerX.equalToSuperview()
             make.bottom.equalTo(messageStackView.snp.top).offset(-100)
         }
         
         messageStackView.snp.makeConstraints { make in
-            make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY).offset(-50)
-            make.left.equalTo(snp.left).offset(40)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().inset(50)
+            make.leading.equalToSuperview().inset(40)
         }
         
         lottieView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(50)
+            make.leading.equalToSuperview().inset(65)
+            make.centerX.equalToSuperview()
             make.height.equalTo(130)
-            make.bottom.equalTo(snp.bottom).offset(-50)
-            make.left.equalTo(snp.left).offset(65)
-            make.centerX.equalTo(snp.centerX)
         }
     }
 }

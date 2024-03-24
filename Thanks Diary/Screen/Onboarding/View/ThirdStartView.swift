@@ -32,22 +32,23 @@ final class ThirdStartView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([lottieView, messageLabel])
+        addSubviews([
+            lottieView,
+            messageLabel
+        ])
     }
     
     override func initConstraints() {
         messageLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(snp.centerX)
+            make.centerX.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(lottieView.snp.top).offset(-50)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
         }
         
         lottieView.snp.makeConstraints { make in
             make.height.equalTo(180)
-            make.bottom.equalTo(snp.bottom).offset(-150)
-            make.left.equalTo(snp.left).offset(75)
-            make.centerX.equalTo(snp.centerX)
+            make.bottom.equalToSuperview().inset(150)
+            make.leading.equalToSuperview().inset(75)
+            make.centerX.equalToSuperview()
         }
     }
 }

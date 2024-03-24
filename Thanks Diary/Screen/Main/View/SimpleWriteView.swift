@@ -149,79 +149,75 @@ final class SimpleWriteView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backgroundView,
-                     backgroundButton,
-                     containerView])
-        containerView.addSubviews([deleteButton,
-                                   contentsTextView,
-                                   textLengthLabel,
-                                   buttonView])
-        buttonView.addSubviews([completeButton,
-                                cancelButton])
+        addSubviews([
+            backgroundView,
+            backgroundButton,
+            containerView
+        ])
+        
+        containerView.addSubviews([
+            deleteButton,
+            contentsTextView,
+            textLengthLabel,
+            buttonView
+        ])
+        
+        buttonView.addSubviews([
+            completeButton,
+            cancelButton
+        ])
     }
     
     override func initConstraints() {
         backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         backgroundButton.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.top.equalToSuperview()
         }
         
         containerView.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(15)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(15)
+            make.centerX.equalToSuperview()
             containerViewBottomConstraint = make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-200).constraint
             make.height.equalTo(220)
         }
         
         deleteButton.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top).offset(5)
-            make.right.equalTo(containerView.snp.right).offset(-9)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
+            make.top.equalToSuperview().inset(5)
+            make.trailing.equalToSuperview().inset(9)
+            make.size.equalTo(44)
         }
         
         contentsTextView.snp.makeConstraints { make in
-            make.left.equalTo(containerView.snp.left).offset(18)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(18)
+            make.centerX.equalToSuperview()
             make.height.equalTo(70)
         }
         
         textLengthLabel.snp.makeConstraints { make in
             make.top.equalTo(contentsTextView.snp.bottom).offset(5)
-            make.right.equalTo(contentsTextView.snp.right)
+            make.trailing.equalTo(contentsTextView)
             make.bottom.equalTo(buttonView.snp.top).offset(-10)
         }
         
         buttonView.snp.makeConstraints { make in
-            make.left.equalTo(contentsTextView.snp.left)
-            make.bottom.equalTo(containerView.snp.bottom).offset(-25)
-            make.centerX.equalTo(containerView.snp.centerX)
+            make.leading.equalTo(contentsTextView)
+            make.bottom.equalToSuperview().inset(25)
+            make.centerX.equalToSuperview()
         }
         
         cancelButton.snp.makeConstraints { make in
-            make.top.equalTo(buttonView.snp.top)
-            make.left.equalTo(buttonView.snp.left)
-            make.right.equalTo(completeButton.snp.left).offset(-10)
-            make.bottom.equalTo(buttonView.snp.bottom)
-            make.width.equalTo(completeButton.snp.width)
+            make.verticalEdges.leading.equalToSuperview()
+            make.trailing.equalTo(completeButton.snp.leading).offset(-10)
+            make.width.equalTo(completeButton)
             make.height.equalTo(45)
         }
         
         completeButton.snp.makeConstraints { make in
-            make.top.equalTo(buttonView.snp.top)
-            make.right.equalTo(buttonView.snp.right)
-            make.bottom.equalTo(buttonView.snp.bottom)
-            make.width.equalTo(cancelButton.snp.width)
-            make.height.equalTo(cancelButton.snp.height)
+            make.verticalEdges.trailing.equalToSuperview()
+            make.size.equalTo(cancelButton)
         }
     }
 }

@@ -51,41 +51,39 @@ final class NotTodayView: BaseView {
     
     override func initSubviews() {
         addSubview(contentView)
-        contentView.addSubviews([topLineView,
-                                 bottomLineView,
-                                 titleLabel,
-                                 contentsLabel])
+        
+        contentView.addSubviews([
+            topLineView,
+            bottomLineView,
+            titleLabel,
+            contentsLabel
+        ])
     }
     
     override func initConstraints() {
         contentView.snp.makeConstraints { make in
             make.width.equalTo(330)
             make.height.equalTo(160)
-            make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY)
+            make.center.equalToSuperview()
         }
         
         topLineView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top)
-            make.left.equalTo(contentView.snp.left)
-            make.right.equalTo(contentView.snp.right)
+            make.top.horizontalEdges.equalToSuperview()
             make.height.equalTo(2)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(topLineView.snp.bottom).offset(30)
-            make.centerX.equalTo(contentView.snp.centerX)
+            make.centerX.equalToSuperview()
         }
         
         contentsLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(30)
-            make.centerX.equalTo(contentView.snp.centerX)
+            make.centerX.equalToSuperview()
         }
         
         bottomLineView.snp.makeConstraints { make in
-            make.left.equalTo(contentView.snp.left)
-            make.right.equalTo(contentView.snp.right)
-            make.bottom.equalTo(contentView.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
             make.height.equalTo(2)
         }
     }

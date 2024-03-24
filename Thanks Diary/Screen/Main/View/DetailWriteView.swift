@@ -317,11 +317,12 @@ final class DetailWriteView: BaseView {
     override func initSubviews() {
         buttonStackView.addArrangedSubview(deleteButton)
         
-        addSubviews([backButton,
-                     topLabel,
-                     buttonStackView,
-                     contentScrollView
-                    ])
+        addSubviews([
+            backButton,
+            topLabel,
+            buttonStackView,
+            contentScrollView
+        ])
         
         contentScrollView.addSubview(contentView)
         
@@ -347,11 +348,10 @@ final class DetailWriteView: BaseView {
     
     override func initConstraints() {
         backButton.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(20)
-            make.right.equalTo(topLabel.snp.left).offset(-5)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
-            make.centerY.equalTo(topLabel.snp.centerY)
+            make.leading.equalToSuperview().inset(20)
+            make.trailing.equalTo(topLabel.snp.leading).offset(-5)
+            make.size.equalTo(44)
+            make.centerY.equalTo(topLabel)
         }
         
         topLabel.snp.makeConstraints { make in
@@ -359,8 +359,8 @@ final class DetailWriteView: BaseView {
         }
         
         buttonStackView.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-20)
-            make.centerY.equalTo(topLabel.snp.centerY)
+            make.trailing.equalToSuperview().inset(20)
+            make.centerY.equalTo(topLabel)
         }
         
         completeButton.snp.makeConstraints { make in
@@ -375,66 +375,61 @@ final class DetailWriteView: BaseView {
         
         contentScrollView.snp.makeConstraints { make in
             make.top.equalTo(backButton.snp.bottom).offset(10)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
         
         contentView.snp.makeConstraints { make in
-            make.edges.equalTo(contentScrollView)
-            make.width.equalTo(contentScrollView)
-            make.height.equalTo(contentScrollView.snp.height).priority(.high)
+            make.edges.width.equalToSuperview()
+            make.height.equalToSuperview().priority(.high)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).offset(10)
-            make.left.equalTo(contentView.snp.left).offset(35)
+            make.top.equalToSuperview().inset(10)
+            make.leading.equalToSuperview().inset(35)
             make.height.equalTo(35)
         }
         
         titleUnderLineImageView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.top).offset(15)
-            make.left.equalTo(titleLabel.snp.left).offset(-8)
-            make.right.equalTo(titleLabel.snp.right).offset(-12)
-            make.bottom.equalTo(titleLabel.snp.bottom)
+            make.top.equalTo(titleLabel).offset(15)
+            make.leading.equalTo(titleLabel).offset(-8)
+            make.trailing.equalTo(titleLabel).offset(-12)
+            make.bottom.equalTo(titleLabel)
             make.width.equalTo(55)
         }
         
         titleTextView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
-            make.left.equalTo(titleLabel.snp.left)
-            make.centerX.equalTo(contentView.snp.centerX)
+            make.leading.equalTo(titleLabel)
+            make.centerX.equalToSuperview()
             make.bottom.equalTo(contentsLabel.snp.top).offset(-15)
             make.height.greaterThanOrEqualTo(44)
             make.height.lessThanOrEqualTo(100)
         }
         
         contentsLabel.snp.makeConstraints { make in
-            make.left.equalTo(contentView.snp.left).offset(35)
+            make.leading.equalTo(contentView).offset(35)
             make.height.equalTo(35)
         }
         
         contentsUnderLineImageView.snp.makeConstraints { make in
-            make.top.equalTo(contentsLabel.snp.top).offset(15)
-            make.left.equalTo(contentsLabel.snp.left).offset(-8)
-            make.right.equalTo(contentsLabel.snp.right).offset(-12)
-            make.bottom.equalTo(contentsLabel.snp.bottom)
+            make.top.equalTo(contentsLabel).offset(15)
+            make.leading.equalTo(contentsLabel).offset(-8)
+            make.trailing.equalTo(contentsLabel).offset(-12)
+            make.bottom.equalTo(contentsLabel)
             make.width.equalTo(55)
         }
         
         contentsTextView.snp.makeConstraints { make in
             make.top.equalTo(contentsLabel.snp.bottom).offset(3)
-            make.left.equalTo(contentsLabel.snp.left)
-            make.centerX.equalTo(contentView.snp.centerX)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-30)
+            make.leading.equalTo(contentsLabel)
+            make.centerX.equalTo(contentView)
+            make.bottom.equalTo(contentView).offset(-30)
             make.height.greaterThanOrEqualTo(250)
         }
         
         toolStackView.snp.makeConstraints { make in
-            make.top.equalTo(toolView.snp.top).offset(10)
-            make.left.equalTo(toolView.snp.left).offset(20)
-            make.right.equalTo(toolView.snp.right).offset(-20)
-            make.bottom.equalTo(toolView.snp.bottom).offset(-10)
+            make.edges.equalTo(toolView).inset(10)
         }
         
         [toolNumberButton,
@@ -443,8 +438,7 @@ final class DetailWriteView: BaseView {
          toolInlineButton,
          toolOutlineButton].forEach { button in
             button.snp.makeConstraints { make in
-                make.width.equalTo(24)
-                make.height.equalTo(24)
+                make.size.equalTo(24)
             }
         }
     }

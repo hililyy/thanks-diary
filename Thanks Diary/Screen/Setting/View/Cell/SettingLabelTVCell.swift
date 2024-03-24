@@ -38,21 +38,22 @@ final class SettingLabelTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([titleLabel,
-                     contentsLabel])
+        addSubviews([
+            titleLabel,
+            contentsLabel
+        ])
     }
     
     override func initConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(20)
-            make.left.equalTo(snp.left).offset(15)
-            make.right.equalTo(contentsLabel.snp.left).offset(-10)
-            make.bottom.equalTo(snp.bottom).offset(-20)
+            make.verticalEdges.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(15)
+            make.trailing.equalTo(contentsLabel.snp.leading).offset(-10)
         }
         
         contentsLabel.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-10)
-            make.centerY.equalTo(titleLabel.snp.centerY)
+            make.trailing.equalToSuperview().inset(10)
+            make.centerY.equalTo(titleLabel)
         }
     }
 }

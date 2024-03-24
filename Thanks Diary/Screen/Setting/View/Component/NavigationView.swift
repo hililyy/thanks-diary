@@ -40,23 +40,23 @@ final class NavigationView: BaseView {
     // MARK: - UI, Target
     
     override func initSubviews() {
-        addSubviews([backButton,
-                     titleLabel])
+        addSubviews([
+            backButton,
+            titleLabel
+        ])
     }
     
     override func initConstraints() {
         backButton.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(20)
-            make.right.equalTo(titleLabel.snp.left).offset(-5)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
-            make.centerY.equalTo(titleLabel.snp.centerY)
+            make.leading.equalToSuperview().inset(20)
+            make.trailing.equalTo(titleLabel.snp.leading).offset(-5)
+            make.size.equalTo(42)
+            make.centerY.equalTo(titleLabel)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(25)
-            make.centerX.equalTo(snp.centerX)
-            make.bottom.equalTo(snp.bottom)
+            make.top.equalToSuperview().inset(25)
+            make.bottom.centerX.equalToSuperview()
             make.height.equalTo(30)
         }
     }

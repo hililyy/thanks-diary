@@ -50,38 +50,38 @@ final class SettingSuggestReplyTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([titleLabel,
-                     replyImageView,
-                     contentsLabel,
-                     createDateLabel])
+        addSubviews([
+            titleLabel,
+            replyImageView,
+            contentsLabel,
+            createDateLabel
+        ])
     }
     
     override func initConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(10)
-            make.left.equalTo(replyImageView.snp.right).offset(15)
-            make.right.equalTo(snp.right).offset(-15)
+            make.top.equalToSuperview().inset(10)
+            make.leading.equalTo(replyImageView.snp.trailing).offset(15)
+            make.trailing.equalToSuperview().inset(15)
             make.bottom.equalTo(contentsLabel.snp.top).offset(-5)
         }
         
         replyImageView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(15)
-            make.left.equalTo(snp.left).offset(15)
-            make.right.equalTo(contentsLabel.snp.left).offset(-15)
-            make.width.equalTo(24)
-            make.height.equalTo(24)
+            make.top.leading.equalToSuperview().inset(15)
+            make.trailing.equalTo(contentsLabel.snp.leading).offset(-15)
+            make.size.equalTo(24)
         }
         
         contentsLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
-            make.left.equalTo(replyImageView.snp.right).offset(15)
-            make.right.equalTo(snp.right).offset(-15)
+            make.leading.equalTo(replyImageView.snp.trailing).offset(15)
+            make.trailing.equalToSuperview().inset(15)
             make.bottom.equalTo(createDateLabel.snp.top).offset(-10)
         }
         
         createDateLabel.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-15)
-            make.bottom.equalTo(snp.bottom).offset(-10)
+            make.trailing.equalToSuperview().inset(15)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
 }

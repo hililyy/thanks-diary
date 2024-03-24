@@ -45,17 +45,14 @@ final class DetailDiaryTVCell: BaseTVCell, CellIdentifier {
     
     override func initConstraints() {
         borderView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(5)
-            make.left.equalTo(snp.left).offset(15)
-            make.right.equalTo(snp.right).offset(-15)
-            make.centerY.equalTo(snp.centerY)
+            make.top.equalToSuperview().inset(5)
+            make.horizontalEdges.equalToSuperview().inset(15)
+            make.centerY.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(borderView.snp.top).offset(15)
-            make.left.equalTo(borderView.snp.left).offset(20)
-            make.right.equalTo(borderView.snp.right).offset(-20)
-            make.bottom.equalTo(borderView.snp.bottom).offset(-15)
+            make.verticalEdges.equalToSuperview().inset(15)
+            make.horizontalEdges.equalToSuperview().inset(20)
             make.height.lessThanOrEqualTo(100)
         }
     }

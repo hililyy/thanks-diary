@@ -99,14 +99,15 @@ final class FloatingButtonOpendView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backgroundView,
-                     backgroundButton,
-                     closeButton,
-                     detailButton,
-                     simpleButton,
-                     detailLabel,
-                     simpleLabel
-                    ])
+        addSubviews([
+            backgroundView,
+            backgroundButton,
+            closeButton,
+            detailButton,
+            simpleButton,
+            detailLabel,
+            simpleLabel
+        ])
     }
     
     override func initConstraints() {
@@ -119,46 +120,36 @@ final class FloatingButtonOpendView: BaseView {
         }
         
         backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         backgroundButton.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         closeButton.snp.makeConstraints { make in
-            make.right.equalTo(safeAreaLayoutGuide.snp.right).offset(-40)
-            make.bottom.equalTo(snp.bottom).offset(-40)
-            make.width.equalTo(52)
-            make.height.equalTo(52)
+            make.trailing.bottom.equalToSuperview().inset(40)
+            make.size.equalTo(52)
         }
         
         detailButton.snp.makeConstraints { make in
-            make.centerX.equalTo(closeButton.snp.centerX)
-            make.width.equalTo(52)
-            make.height.equalTo(52)
+            make.centerX.equalTo(closeButton)
+            make.size.equalTo(52)
         }
         
         simpleButton.snp.makeConstraints { make in
-            make.centerX.equalTo(closeButton.snp.centerX)
-            make.width.equalTo(52)
-            make.height.equalTo(52)
+            make.centerX.equalTo(closeButton)
+            make.size.equalTo(52)
         }
         
         detailLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(detailButton.snp.centerY)
-            make.right.equalTo(detailButton.snp.left).offset(-10)
+            make.centerY.equalTo(detailButton)
+            make.trailing.equalTo(detailButton.snp.leading).offset(-10)
         }
         
         simpleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(simpleButton.snp.centerY)
-            make.right.equalTo(simpleButton.snp.left).offset(-10)
+            make.centerY.equalTo(simpleButton)
+            make.trailing.equalTo(simpleButton.snp.leading).offset(-10)
         }
     }
 }

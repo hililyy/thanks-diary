@@ -68,8 +68,17 @@ final class AlertConfirmView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backgroundView, alertView])
-        alertView.addSubviews([messageView, buttonView, lineViewX])
+        addSubviews([
+            backgroundView,
+            alertView
+        ])
+        
+        alertView.addSubviews([
+            messageView,
+            buttonView,
+            lineViewX
+        ])
+        
         backgroundView.addSubview(backButton)
         messageView.addSubview(messageLabel)
         buttonView.addSubview(okButton)
@@ -77,57 +86,42 @@ final class AlertConfirmView: BaseView {
     
     override func initConstraints() {
         backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         backButton.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         alertView.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(30)
-            make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY)
+            make.leading.equalToSuperview().inset(30)
+            make.center.equalToSuperview()
             make.height.equalTo(220)
         }
         
         messageView.snp.makeConstraints { make in
-            make.top.equalTo(alertView.snp.top)
-            make.left.equalTo(alertView.snp.left)
-            make.right.equalTo(alertView.snp.right)
+            make.top.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(lineViewX.snp.top)
         }
         
         messageLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(messageView.snp.centerX)
-            make.centerY.equalTo(messageView.snp.centerY).offset(10)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().inset(10)
         }
         
         lineViewX.snp.makeConstraints { make in
             make.top.equalTo(messageView.snp.bottom)
-            make.left.equalTo(alertView.snp.left)
-            make.right.equalTo(alertView.snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(buttonView.snp.top)
             make.height.equalTo(1)
         }
         
         buttonView.snp.makeConstraints { make in
-            make.left.equalTo(alertView.snp.left)
-            make.right.equalTo(alertView.snp.right)
-            make.bottom.equalTo(alertView.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
         
         okButton.snp.makeConstraints { make in
-            make.top.equalTo(buttonView.snp.top)
-            make.left.equalTo(buttonView.snp.left)
-            make.right.equalTo(buttonView.snp.right)
-            make.bottom.equalTo(buttonView.snp.bottom)
+            make.edges.equalToSuperview()
             make.height.equalTo(55)
         }
     }

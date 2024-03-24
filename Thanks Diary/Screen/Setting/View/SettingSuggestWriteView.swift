@@ -68,55 +68,50 @@ final class SettingSuggestWriteView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([backgroundView, 
-                     backgroundButton,
-                     containerView])
+        addSubviews([
+            backgroundView,
+            backgroundButton,
+            containerView
+        ])
         
-        containerView.addSubviews([mailButton,
-                                   contentsTextView,
-                                   completeButton])
+        containerView.addSubviews([
+            mailButton,
+            contentsTextView,
+            completeButton
+        ])
     }
     
     override func initConstraints() {
         backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         backgroundButton.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
         
         containerView.snp.makeConstraints { make in
-            make.left.equalTo(snp.left).offset(15)
-            make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY)
+            make.leading.equalToSuperview().inset(15)
+            make.center.equalToSuperview()
             make.height.equalTo(220)
         }
         
         mailButton.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top).offset(9)
-            make.right.equalTo(containerView.snp.right).offset(-9)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
+            make.top.trailing.equalToSuperview().inset(9)
+            make.size.equalTo(44)
         }
         
         contentsTextView.snp.makeConstraints { make in
-            make.left.equalTo(containerView.snp.left).offset(18)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(18)
+            make.centerX.equalToSuperview()
             make.height.equalTo(70)
         }
         
         completeButton.snp.makeConstraints { make in
             make.top.equalTo(contentsTextView.snp.bottom).offset(20)
-            make.left.equalTo(contentsTextView.snp.left)
-            make.bottom.equalTo(containerView.snp.bottom).offset(-25)
-            make.centerX.equalTo(containerView.snp.centerX)
+            make.leading.equalTo(contentsTextView)
+            make.bottom.equalToSuperview().inset(25)
+            make.centerX.equalToSuperview()
             make.height.equalTo(45)
         }
     }

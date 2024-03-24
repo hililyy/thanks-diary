@@ -38,22 +38,24 @@ final class SimpleDiaryTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([dotView, titleLabel])
+        addSubviews([
+            dotView,
+            titleLabel
+        ])
     }
     
     override func initConstraints() {
         dotView.snp.makeConstraints { make in
-            make.width.equalTo(7)
-            make.height.equalTo(7)
-            make.left.equalTo(snp.left).offset(20)
-            make.centerY.equalTo(snp.centerY)
+            make.size.equalTo(7)
+            make.leading.equalToSuperview().inset(20)
+            make.centerY.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(15)
-            make.left.equalTo(dotView.snp.right).offset(7)
-            make.right.equalTo(snp.right).offset(-20)
-            make.bottom.equalTo(snp.bottom).offset(-5)
+            make.top.equalToSuperview().inset(15)
+            make.leading.equalTo(dotView.snp.trailing).offset(7)
+            make.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(5)
         }
     }
 }

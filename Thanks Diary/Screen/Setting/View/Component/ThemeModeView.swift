@@ -74,69 +74,63 @@ final class ThemeModeView: BaseView {
     // MARK: - UI, Target
     
     override func initSubviews() {
-        contentsStackView.addArrangedSubviews([lightContentView,
-                                               darkContentView])
+        contentsStackView.addArrangedSubviews([
+            lightContentView,
+            darkContentView
+        ])
         
-        addSubviews([modeTitleLabel,
-                     contentsStackView])
+        addSubviews([
+            modeTitleLabel,
+            contentsStackView
+        ])
         
         lightContentView.addSubviews([
             lightView,
             lightLabel,
-            lightButton])
+            lightButton
+        ])
         
         darkContentView.addSubviews([
             darkView,
             darkLabel,
-            darkButton])
+            darkButton
+        ])
     }
     
     override func initConstraints() {
         modeTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
+            make.top.leading.equalToSuperview()
             make.height.equalTo(25)
         }
         
         contentsStackView.snp.makeConstraints { make in
             make.top.equalTo(modeTitleLabel.snp.bottom).offset(25)
-            make.centerX.equalTo(snp.centerX)
-            make.bottom.equalTo(snp.bottom)
+            make.bottom.centerX.equalToSuperview()
         }
 
         lightView.snp.makeConstraints { make in
-            make.top.equalTo(lightContentView.snp.top)
-            make.left.equalTo(lightContentView.snp.left)
-            make.right.equalTo(lightContentView.snp.right)
+            make.top.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(lightLabel.snp.top).offset(-20)
-            make.width.equalTo(106)
-            make.height.equalTo(106)
+            make.size.equalTo(106)
         }
 
         lightLabel.snp.makeConstraints { make in
-            make.left.equalTo(lightContentView.snp.left)
-            make.right.equalTo(lightContentView.snp.right)
-            make.bottom.equalTo(lightContentView.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
             make.height.equalTo(30)
         }
         
         lightButton.snp.makeConstraints { make in
-            make.edges.equalTo(lightContentView)
+            make.edges.equalToSuperview()
         }
         
         darkView.snp.makeConstraints { make in
-            make.top.equalTo(darkContentView.snp.top)
-            make.left.equalTo(darkContentView.snp.left)
-            make.right.equalTo(darkContentView.snp.right)
+            make.top.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(darkLabel.snp.top).offset(-20)
-            make.width.equalTo(lightView.snp.width)
-            make.height.equalTo(lightView.snp.width)
+            make.size.equalTo(lightView)
         }
 
         darkLabel.snp.makeConstraints { make in
-            make.left.equalTo(darkContentView.snp.left)
-            make.right.equalTo(darkContentView.snp.right)
-            make.bottom.equalTo(darkContentView.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(darkContentView)
             make.height.equalTo(30)
         }
         

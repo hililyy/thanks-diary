@@ -48,32 +48,35 @@ final class LaunchVC: UIViewController {
     }
     
     func initView() {
-        view.addSubview(lottieView)
-        view.addSubview(titleContentsView)
-        titleContentsView.addSubview(subTitleLabel)
-        titleContentsView.addSubview(titleLabel)
+        view.addSubviews([
+            lottieView,
+            titleContentsView
+        ])
+        
+        titleContentsView.addSubviews([
+            subTitleLabel,
+            titleLabel
+        ])
         
         lottieView.snp.makeConstraints { make in
-            make.left.equalTo(view.snp.left)
-            make.right.equalTo(view.snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(view.snp.width)
-            make.centerX.equalTo(view.snp.centerX)
-            make.centerY.equalTo(view.snp.centerY)
+            make.center.equalToSuperview()
         }
         
         titleContentsView.snp.makeConstraints { make in
-            make.centerX.equalTo(lottieView.snp.centerX)
-            make.centerY.equalTo(lottieView.snp.centerY).offset(-40)
+            make.centerX.equalTo(lottieView)
+            make.centerY.equalTo(lottieView).offset(-40)
         }
         
         subTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleContentsView.snp.top)
-            make.centerX.equalTo(titleContentsView.snp.centerX)
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(subTitleLabel.snp.bottom)
-            make.centerX.equalTo(titleContentsView.snp.centerX)
+            make.centerX.equalToSuperview()
         }
     }
     

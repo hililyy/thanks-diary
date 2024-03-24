@@ -96,56 +96,29 @@ final class SettingSuggestTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([contentsLabel,
-                     stackView,
-//                     likeImageView,
-//                     likeLabel,
-//                     likeButton
-                    ])
+        addSubviews([
+            contentsLabel,
+            stackView
+        ])
+        
         statusView.addSubview(statusLabel)
     }
     
     override func initConstraints() {
         contentsLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(10)
-            make.left.equalTo(snp.left).offset(15)
-//            make.right.equalTo(likeButton.snp.left).offset(-20)
-            make.right.equalTo(snp.right).offset(-15)
+            make.top.equalToSuperview().inset(10)
+            make.horizontalEdges.equalToSuperview().inset(15)
         }
         
         stackView.snp.makeConstraints { make in
             make.top.equalTo(contentsLabel.snp.bottom).offset(10)
-            make.left.equalTo(snp.left).offset(15)
-            make.right.equalTo(snp.right).offset(-15)
-            make.bottom.equalTo(snp.bottom).offset(-10)
+            make.horizontalEdges.equalToSuperview().inset(15)
+            make.bottom.equalToSuperview().inset(10)
         }
         
         statusLabel.snp.makeConstraints { make in
-            make.top.equalTo(statusView.snp.top).offset(5)
-            make.left.equalTo(statusView.snp.left).offset(10)
-            make.right.equalTo(statusView.snp.right).offset(-10)
-            make.bottom.equalTo(statusView.snp.bottom).offset(-5)
+            make.verticalEdges.equalToSuperview().inset(5)
+            make.horizontalEdges.equalToSuperview().inset(10)
         }
-        
-//        likeImageView.snp.makeConstraints { make in
-//            make.top.equalTo(likeButton.snp.top)
-//            make.bottom.equalTo(likeLabel.snp.top)
-//            make.centerX.equalTo(likeButton.snp.centerX)
-//            make.width.equalTo(24)
-//            make.height.equalTo(24)
-//        }
-//        
-//        likeLabel.snp.makeConstraints { make in
-//            make.left.equalTo(likeButton.snp.left)
-//            make.right.equalTo(likeButton.snp.right)
-//            make.bottom.equalTo(likeButton.snp.bottom)
-//            
-//        }
-//        
-//        likeButton.snp.makeConstraints { make in
-//            make.top.equalTo(snp.top).offset(10)
-//            make.right.equalTo(snp.right).offset(-10)
-//            make.width.equalTo(20)
-//        }
     }
 }

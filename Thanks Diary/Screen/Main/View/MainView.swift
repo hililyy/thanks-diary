@@ -152,99 +152,95 @@ final class MainView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([todayAndSettingTopView,
-                     calendar,
-                     lineViewX,
-                     todayLabelView,
-                     diaryTableView,
-                     emptyView,
-                     floatingButton])
+        addSubviews([
+            todayAndSettingTopView,
+            calendar,
+            lineViewX,
+            todayLabelView,
+            diaryTableView,
+            emptyView,
+            floatingButton
+        ])
         
-        todayAndSettingTopView.addSubviews([allButton, searchButton, todayButton, settingButton])
+        todayAndSettingTopView.addSubviews([
+            allButton,
+            searchButton,
+            todayButton,
+            settingButton
+        ])
+        
         todayLabelView.addSubview(todayLabel)
     }
     
     override func initConstraints() {
         todayAndSettingTopView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(calendar.snp.top).offset(-10)
             make.height.equalTo(52)
         }
         
         todayButton.snp.makeConstraints { make in
-            make.left.equalTo(todayAndSettingTopView.snp.left).offset(20)
-            make.bottom.equalTo(todayAndSettingTopView.snp.bottom)
+            make.leading.equalTo(todayAndSettingTopView).offset(20)
+            make.bottom.equalTo(todayAndSettingTopView)
             make.width.equalTo(45)
             make.height.equalTo(35)
         }
         
         allButton.snp.makeConstraints { make in
-            make.right.equalTo(searchButton.snp.left).offset(-5)
-            make.centerY.equalTo(todayButton.snp.centerY)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
+            make.trailing.equalTo(searchButton.snp.leading).offset(-5)
+            make.centerY.equalTo(todayButton)
+            make.size.equalTo(42)
         }
         
         searchButton.snp.makeConstraints { make in
-            make.right.equalTo(settingButton.snp.left).offset(-5)
-            make.centerY.equalTo(todayButton.snp.centerY)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
+            make.trailing.equalTo(settingButton.snp.leading).offset(-5)
+            make.centerY.equalTo(todayButton)
+            make.size.equalTo(42)
         }
         
         settingButton.snp.makeConstraints { make in
-            make.right.equalTo(todayAndSettingTopView.snp.right).offset(-10)
-            make.centerY.equalTo(todayButton.snp.centerY)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
+            make.trailing.equalTo(todayAndSettingTopView).offset(-10)
+            make.centerY.equalTo(todayButton)
+            make.size.equalTo(42)
         }
         
         calendar.snp.makeConstraints { make in
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(lineViewX.snp.top).offset(-15)
             make.height.equalTo(320)
         }
         
         lineViewX.snp.makeConstraints { make in
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(todayLabelView.snp.top)
             make.height.equalTo(1)
         }
         
         todayLabelView.snp.makeConstraints { make in
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(50)
         }
         
         todayLabel.snp.makeConstraints { make in
-            make.left.equalTo(todayLabelView.snp.left).offset(25)
-            make.centerY.equalTo(todayLabelView.snp.centerY)
+            make.leading.equalTo(todayLabelView).offset(25)
+            make.centerY.equalTo(todayLabelView)
         }
         
         diaryTableView.snp.makeConstraints { make in
             make.top.equalTo(todayLabelView.snp.bottom)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
         
         emptyView.snp.makeConstraints { make in
-            make.top.equalTo(diaryTableView.snp.top)
-            make.left.equalTo(diaryTableView.snp.left).offset(30)
-            make.right.equalTo(diaryTableView.snp.right).offset(-30)
-            make.bottom.equalTo(diaryTableView.snp.bottom)
+            make.verticalEdges.equalTo(diaryTableView)
+            make.horizontalEdges.equalTo(diaryTableView).inset(30)
         }
         
         floatingButton.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-40)
-            make.bottom.equalTo(snp.bottom).offset(-40)
-            make.width.equalTo(52)
-            make.height.equalTo(52)
+            make.trailing.bottom.equalToSuperview().inset(40)
+            make.size.equalTo(52)
         }
     }
 }

@@ -62,49 +62,45 @@ final class PageView: BaseView {
     // MARK: - Constraint
     
     override func initSubviews() {
-        progressStackView.addArrangedSubviews([firstDotView,
-                                               secondDotView,
-                                               thirdDotView])
+        progressStackView.addArrangedSubviews([
+            firstDotView,
+            secondDotView,
+            thirdDotView
+        ])
         
-        addSubviews([containerView,
-                     progressStackView,
-                     nextButton])
+        addSubviews([
+            containerView,
+            progressStackView,
+            nextButton
+        ])
     }
-
+    
     override func initConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalTo(progressStackView.snp.bottom)
-            make.left.equalTo(snp.left)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(nextButton.snp.top)
-            make.right.equalTo(snp.right)
-            make.width.equalTo(snp.width)
+            make.width.equalToSuperview()
         }
         
         progressStackView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(50)
-            make.centerX.equalTo(snp.centerX)
+            make.top.equalTo(safeAreaLayoutGuide).offset(50)
+            make.centerX.equalToSuperview()
         }
         
         nextButton.snp.makeConstraints { make in
-            make.left.equalTo(safeAreaLayoutGuide.snp.left).offset(30)
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-15)
-            make.centerX.equalTo(snp.centerX)
+            make.leading.equalToSuperview().inset(30)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-15)
+            make.centerX.equalToSuperview()
             make.height.equalTo(54)
         }
         
-        firstDotView.snp.makeConstraints { make in
-            make.width.equalTo(12)
-            make.height.equalTo(12)
-        }
-        
-        secondDotView.snp.makeConstraints { make in
-            make.width.equalTo(12)
-            make.height.equalTo(12)
-        }
-        
-        thirdDotView.snp.makeConstraints { make in
-            make.width.equalTo(12)
-            make.height.equalTo(12)
+        [firstDotView,
+         secondDotView,
+         thirdDotView].forEach { view in
+            view.snp.makeConstraints { make in
+                make.size.equalTo(12)
+            }
         }
     }
 }

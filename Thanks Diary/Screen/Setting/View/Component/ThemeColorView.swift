@@ -69,42 +69,44 @@ final class ThemeColorView: BaseView {
     // MARK: - UI, Target
     
     override func initSubviews() {
-        colorStackView.addArrangedSubviews([blueButton,
-                                            pinkButton,
-                                            yellowButton,
-                                            greenButton,
-                                            purpleButton])
+        colorStackView.addArrangedSubviews([
+            blueButton,
+            pinkButton,
+            yellowButton,
+            greenButton,
+            purpleButton
+        ])
         
-        addSubviews([colorTitleLabel,
-                     colorStackView])
+        addSubviews([
+            colorTitleLabel,
+            colorStackView
+        ])
     }
     
     override func initConstraints() {
         colorTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
+            make.top.leading.equalToSuperview()
             make.height.equalTo(25)
         }
         
         colorStackView.snp.makeConstraints { make in
             make.top.equalTo(colorTitleLabel.snp.bottom).offset(25)
-            make.centerX.equalTo(snp.centerX)
-            make.bottom.equalTo(snp.bottom)
+            make.bottom.centerX.equalToSuperview()
         }
         
-        for button in [blueButton,
-                       pinkButton,
-                       yellowButton,
-                       greenButton,
-                       purpleButton] {
+        [blueButton,
+         pinkButton,
+         yellowButton,
+         greenButton,
+         purpleButton].forEach { button in
             initColorButtonSize(button)
+            
         }
     }
     
     private func initColorButtonSize(_ sender: UIButton) {
         sender.snp.makeConstraints { make in
-            make.width.equalTo(30)
-            make.height.equalTo(30)
+            make.size.equalTo(30)
         }
     }
 }

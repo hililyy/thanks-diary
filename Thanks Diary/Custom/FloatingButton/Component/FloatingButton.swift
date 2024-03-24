@@ -48,17 +48,11 @@ final class FloatingButton: BaseView {
     
     override func initConstraints() {
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(10)
-            make.left.equalTo(snp.left).offset(10)
-            make.right.equalTo(snp.right).offset(-10)
-            make.bottom.equalTo(snp.bottom).offset(-10)
+            make.edges.equalToSuperview().inset(10)
         }
         
         button.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-            make.bottom.equalTo(snp.bottom)
+            make.edges.equalToSuperview()
         }
     }
 }

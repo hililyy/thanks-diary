@@ -49,7 +49,11 @@ final class RadioTVCell: BaseTVCell, CellIdentifier {
     }
     
     override func initSubviews() {
-        contentView.addSubviews([outlineCircle, contentsLabel])
+        contentView.addSubviews([
+            outlineCircle,
+            contentsLabel
+        ])
+        
         outlineCircle.addSubview(inlineCircle)
     }
     
@@ -57,24 +61,20 @@ final class RadioTVCell: BaseTVCell, CellIdentifier {
     
     override func initConstraints() {
         outlineCircle.snp.makeConstraints { make in
-            make.left.equalTo(contentView.snp.left).offset(10)
-            make.centerY.equalTo(contentView.snp.centerY)
-            make.width.equalTo(20)
-            make.height.equalTo(20)
+            make.leading.equalToSuperview().inset(10)
+            make.centerY.equalToSuperview()
+            make.size.equalTo(20)
         }
         
         inlineCircle.snp.makeConstraints { make in
-            make.width.equalTo(10)
-            make.height.equalTo(10)
-            make.centerX.equalTo(outlineCircle)
-            make.centerY.equalTo(outlineCircle)
+            make.size.equalTo(10)
+            make.center.equalTo(outlineCircle)
         }
         
         contentsLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).offset(12)
-            make.left.equalTo(outlineCircle.snp.right).offset(10)
-            make.right.equalTo(contentView.snp.right).offset(-10)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-12)
+            make.verticalEdges.equalToSuperview().inset(12)
+            make.leading.equalTo(outlineCircle.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().inset(10)
         }
     }
 }
