@@ -38,7 +38,7 @@ final class SimpleDiaryTVCell: BaseTVCell, CellIdentifier {
     // MARK: - Constraint
     
     override func initSubviews() {
-        addSubviews([
+        contentView.addSubviews([
             dotView,
             titleLabel
         ])
@@ -48,7 +48,7 @@ final class SimpleDiaryTVCell: BaseTVCell, CellIdentifier {
         dotView.snp.makeConstraints { make in
             make.size.equalTo(7)
             make.leading.equalToSuperview().inset(20)
-            make.centerY.equalToSuperview()
+            make.centerY.equalTo(titleLabel)
         }
         
         titleLabel.snp.makeConstraints { make in

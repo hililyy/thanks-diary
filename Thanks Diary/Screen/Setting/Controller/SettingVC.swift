@@ -55,7 +55,7 @@ final class SettingVC: BaseVC<SettingView> {
 
 extension SettingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,11 +78,9 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource {
             
         case 2: pushSettingThemeVC()
             
-        case 3: pushSettingLanguageVC()
+        case 3: pushSettingSuggestVC()
             
-        case 4: pushSettingSuggestVC()
-            
-        case 5: pushSettingAppVC()
+        case 4: pushSettingAppVC()
             
         default:
             break
@@ -154,11 +152,6 @@ extension SettingVC {
     
     private func pushSettingThemeVC() {
         let vc = SettingThemeVC()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func pushSettingLanguageVC() {
-        let vc = SettingLanguageVC()
         navigationController?.pushViewController(vc, animated: true)
     }
     
