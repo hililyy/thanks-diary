@@ -21,7 +21,7 @@
 ## 개발정보
 - 사용언어: Swift  
 - 라이브러리 및 프레임워크
-  - SnapKit, Then(Code Base)
+  - SnapKit(Code Base)
   - RxSwift, RxCocoa
   - Coredata
   - Firebase(Realtime Database, Analytics)
