@@ -1,0 +1,120 @@
+/* 
+  Localizable.strings
+  Thanks Diary
+
+  Created by 강조은 on 2023/07/23.
+  
+*/
+
+"ok" = "Yes";
+"cancel" = "Cancel";
+"no" = "No";
+"back" = "Go Back";
+"delete" = "Delete";
+"today" = "Today";
+"complete" = "Complete";
+"close" = "Close";
+"title" = "Title";
+"contents" = "Contents";
+"thanks_diary" = "Thanks Diary";
+"today_well" = "Today as well";
+"today_thanks_diary" = "Today's thanks diary";
+"write_complete" = "Complte";
+"next" = "Next";
+"start" = "Start";
+"retry" = "Retry";
+"start_page1_message1" = "Simply keeping a diary is \n\nIt's easy to focus on negative emotions.\n\nIf you write an audit day\n\nYou can focus on positive emotions!";
+"start_page2_message1" = "How to write an audit diary";
+"start_page2_message2" = "Write it in a positive note";
+"start_page2_message3" = "Look for things you're thankful for even the smallest things";
+"start_page2_message4" = "Write it every day";
+"start_page2_message5" = "Always think of something you're thankful for";
+"start_page3_message1" = "Write a thank you diary and\nMake your day like me!";
+"detail" = "Detail";
+"simple" = "Simple";
+"alert_delete" = "Are you sure you want to delete the text?";
+"alert_error_message" = "* Error occurred *\n\n\nIf you send the error to joun406@gmail.com,\n we will correct it quickly.\n\nThank you!";
+"alert_warning_not_save" = "Your changes have not been saved. Are you sure you want to go back without saving your changes?";
+"search_message" = "Please enter your search term";
+"search_not_result" = "No search results.";
+
+"setting" = "Setting";
+"password" = "Password";
+"password_contents_1" = "Please enter the password you want to set.";
+"password_contents_2" = "Please enter your password.";
+"password_incorrect" = "Password doesn't match";
+"password_retry" = "Please enter your password again";
+"setting_alarm" = "Notification settings";
+"toast" = "Please enter both the title and content.";
+"toast_complete_diary" = "Your diary has been saved";
+"input_title" = "Please enter your content.";
+"input_contents" = "Please enter content";
+"push_tetele_general" = "💙 Time to write the audit day 💙";
+"push_contents_general" = "Shall I write today's diary? 💌";
+"push_warning_message" = "If the ** statement does not change, please switch off and on! **";
+"app_setting_1" = "Notification settings permission denied. Please go to\n\nSettings to allow notifications.";
+"app_setting_2" = "Go to Settings";
+"error" = "Error occurred.\n\nPlease re-run the app or contact your administrator.";
+"inquiry" = "ask";
+"exit" = "End App";
+"on_alarm" = "The notification setting must be turned on to enable the time setting.";
+"setting_name1" = "set password";
+"setting_name2" = "Notification settings";
+"setting_name3" = "Tematic Settings";
+"setting_name4" = "Board of suggestions";
+"setting_name5" = "Open Source License";
+"setting_name6" = "App version";
+"setting_name7" = "setting time";
+"setting_name8" = "Choose Theme";
+"setting_name9" = "Board of suggestions";
+"setting_name10" = "App Evaluation";
+"setting_name11" = "App information";
+"setting_name12" = "set password";
+"setting_name13" = "biometrics";
+"setting_name14" = "Punctuation Settings";
+"setting_name15" = "language settings";
+
+"alert_bioauth" = "Do you want to retry biometric authentication?";
+"alert_password" = "Enter password";
+
+"darkmode" = "dark mode";
+"lightmode" = "light mode";
+"waiting" = "waiting";
+"progress" = "In Progress";
+"complete" = "Done";
+"non_existent_appinfo" = "App version information not found.";
+"color_set" = "color settings";
+"today_not_title" = "I haven't written my diary yet!";
+"today_not_contents" = "It's important to keep a thank you diary every day!\n Please keep a diary through the bottom right button!";
+"not_exist_diary" = "No diary has been created.";
+"restart_app" = "Please exit the app for theme application.";
+"exit_app" = "End App";
+"mode_set" = "Set Mode";
+"font_set" = "font settings";
+
+"suggest_notice" = "Please leave a note that you were uncomfortable using the audit date or that you would like to improve it!\n\n** All posts will be posted anonymously, so please feel free to comment.**";
+"suggest_reply_developer" = "[Developer Answer]";
+
+"already_signup" = "This email already exists.\nPlease change it to another email.";
+"wrong_email_forget" = "The email format is invalid.";
+"short_password" = "Please enter a password of at least 6 characters.";
+"fail_signup" = "Membership failed.";
+"wrong_email_format" = "The email format is invalid.";
+"mismatch_password" = "The password does not match.";
+"non_existent_user" = "Email does not exist.";
+"fail_login" = "Login failed.";
+"non_existent_email" = "No email logged in";
+
+"format_date1" = "yyyy'year' M'Month' d'day'";
+"format_date2" = "dd'day' (E)";
+"format_date3" = "YYYY'year' M'Month'";
+
+"font_1" = "Nanumbarungothic";
+"font_2" = "Nanumbarunpen";
+"font_3" = "Ownglyph Harunanum";
+"font_4" = "Ownglyph Hagom";
+"font_5" = "Ownglyph Wiri";
+"font_6" = "Ownglyph Boksoong";
+"font_7" = "Ownglyph Yeonu";
+"font_8" = "Pretendard";
+"font_9" = "Kotra Hope";

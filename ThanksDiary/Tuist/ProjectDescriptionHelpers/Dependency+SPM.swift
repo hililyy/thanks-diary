@@ -33,13 +33,13 @@ public enum ThirdPartyModule: CaseIterable {
         case .RxSwift:
             .remote(url: "https://github.com/ReactiveX/RxSwift", requirement: .upToNextMajor(from: "6.6.0"))
         case .Firebase:
-                .remote(url: "https://github.com/firebase/firebase-ios-sdk.git", requirement: .upToNextMinor(from: "10.0.0"))
+                .remote(url: "https://github.com/firebase/firebase-ios-sdk.git", requirement: .upToNextMinor(from: "10.24.0"))
         case .Lottie:
-                .remote(url: "https://github.com/airbnb/lottie-ios", requirement: .upToNextMajor(from:"4.0.1"))
+                .remote(url: "https://github.com/airbnb/lottie-ios", requirement: .upToNextMajor(from:"4.4.2"))
         case .SnapKit:
-                .remote(url: "https://github.com/SnapKit/SnapKit.git", requirement: .upToNextMinor(from: "5.0.0"))
+                .remote(url: "https://github.com/SnapKit/SnapKit.git", requirement: .upToNextMinor(from: "5.7.1"))
         case .AcknowList:
-                .remote(url: "https://github.com/vtourraine/AcknowList.git", requirement: .upToNextMinor(from: "3.0.1"))
+                .remote(url: "https://github.com/vtourraine/AcknowList.git", requirement: .upToNextMinor(from: "3.1.0"))
         case .FSCalendar:
                 .remote(url: "https://github.com/WenchaoD/FSCalendar.git", requirement: .upToNextMinor(from: "2.8.4"))
         }
