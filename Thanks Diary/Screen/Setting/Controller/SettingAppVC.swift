@@ -7,6 +7,7 @@
 
 import UIKit
 import AcknowList
+import FirebaseAnalytics
 
 final class SettingAppVC: BaseVC<SettingView> {
     
@@ -14,6 +15,8 @@ final class SettingAppVC: BaseVC<SettingView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("settingApp", parameters: nil)
         
         initalize()
     }

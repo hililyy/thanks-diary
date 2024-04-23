@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseAnalytics
 
 final class SettingSuggestWriteVC: BaseVC<SettingSuggestWriteView> {
     
@@ -32,6 +33,8 @@ final class SettingSuggestWriteVC: BaseVC<SettingSuggestWriteView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("settingWrite", parameters: nil)
         
         initalize()
     }

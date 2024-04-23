@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseAnalytics
 
 final class SettingSuggestVC: BaseVC<SettingSuggestView> {
     
@@ -30,6 +31,8 @@ final class SettingSuggestVC: BaseVC<SettingSuggestView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("settingSuggest", parameters: nil)
         
         initalize()
         viewModel.getSuggestDatas()

@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseAnalytics
 
 final class SettingThemeVC: BaseVC<SettingThemeView> {
     
@@ -15,6 +16,8 @@ final class SettingThemeVC: BaseVC<SettingThemeView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("settingTheme", parameters: nil)
         
         initalize()
     }

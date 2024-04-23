@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseAnalytics
 
 final class SettingPWVC: BaseVC<SettingPWView> {
     
@@ -24,6 +25,8 @@ final class SettingPWVC: BaseVC<SettingPWView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("settingPW", parameters: nil)
         
         initalize()
     }

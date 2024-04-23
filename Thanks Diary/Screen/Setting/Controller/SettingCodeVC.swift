@@ -7,6 +7,7 @@
 
 import UIKit
 import LocalAuthentication
+import FirebaseAnalytics
 
 final class SettingCodeVC: BaseVC<SettingView> {
     
@@ -30,6 +31,8 @@ final class SettingCodeVC: BaseVC<SettingView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("settingCode", parameters: nil)
         
         initalize()
     }

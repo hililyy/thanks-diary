@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 final class SettingAlarmMessageVC: BaseVC<SettingAlarmMessageView> {
     
@@ -13,6 +14,8 @@ final class SettingAlarmMessageVC: BaseVC<SettingAlarmMessageView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("settingAlarm", parameters: nil)
         
         initalize()
     }

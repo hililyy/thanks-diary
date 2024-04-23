@@ -9,6 +9,7 @@ import UIKit
 import FSCalendar
 import RxSwift
 import RxCocoa
+import FirebaseAnalytics
 
 final class MainVC: BaseVC<MainView> {
     
@@ -31,6 +32,8 @@ final class MainVC: BaseVC<MainView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("main", parameters: nil)
         
         initalize()
         changeCalendarCircleDataAndTodayLabelText()
@@ -320,12 +323,16 @@ extension MainVC {
     }
     
     private func pushDetailWriteVC(beforeData: DiaryEntity?) {
+        Analytics.logEvent("tapDetailButton", parameters: ["type": "detail"])
+        
         let vc = DetailWriteVC(viewModel: self.viewModel)
         vc.beforeData = beforeData
         navigationController?.pushViewController(vc, animated: true)
     }
     
     private func presentSimpleWriteVC(beforeData: DiaryEntity?) {
+        Analytics.logEvent("tapSimpleButton", parameters: ["type": "simple"])
+        
         let vc = SimpleWriteVC(viewModel: self.viewModel)
         vc.beforeData = beforeData
         present(vc, animated: true)

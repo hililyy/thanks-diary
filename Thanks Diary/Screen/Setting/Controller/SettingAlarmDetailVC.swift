@@ -7,6 +7,7 @@
 
 import UIKit
 import UserNotifications
+import FirebaseAnalytics
 
 final class SettingAlarmDetailVC: BaseVC<SettingAlarmDetailView> {
     
@@ -33,6 +34,7 @@ final class SettingAlarmDetailVC: BaseVC<SettingAlarmDetailView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Analytics.logEvent("settingAlarmDetail", parameters: nil)
         initalize()
     }
     

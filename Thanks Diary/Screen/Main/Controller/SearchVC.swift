@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseAnalytics
 
 final class SearchVC: BaseVC<SearchView> {
     
@@ -30,6 +31,8 @@ final class SearchVC: BaseVC<SearchView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("search", parameters: nil)
         
         initalize()
     }

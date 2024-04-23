@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 final class SettingVC: BaseVC<SettingView> {
     
@@ -31,6 +32,8 @@ final class SettingVC: BaseVC<SettingView> {
         
         initalize()
         initObservable()
+        
+        Analytics.logEvent("setting", parameters: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAnalytics
 
 final class LaunchVC: UIViewController {
     
@@ -36,6 +37,9 @@ final class LaunchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Analytics.logEvent("launch", parameters: nil)
+        
         initView()
         initUI()
         initLottie()
