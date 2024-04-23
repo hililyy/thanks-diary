@@ -66,8 +66,12 @@ final class FirebaseManager {
                     suggestData.contents = data["contents"] as? String ?? ""
                     suggestData.status = data["status"] as? String ?? ""
                     let date = data["createDate"] as? String ?? ""
+                    if date.contains(":") {
+                        suggestData.createDate = date.toDate(willChangeDateFormat: DateFormat.utcFormat.rawValue).toString(didChangeDateFormat: DateFormat.YYMMDD.rawValue)
+                    } else {
+                        suggestData.createDate = date
+                    }
                     
-                    suggestData.createDate = date.toDate(willChangeDateFormat: DateFormat.utcFormat.rawValue).toString(didChangeDateFormat: DateFormat.YYYYMD.rawValue)
                     suggestData.likeCount = data["likeCount"] as? Int ?? 0
                     
                     suggestDatas.append(suggestData)
