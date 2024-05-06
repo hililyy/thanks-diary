@@ -12,7 +12,10 @@ let project = Project.makeModule(
     moduleType: Module.ThanksDiary,
     resources: .default,
     dependencies: [
-        Module.Presentation.project
+        Module.Presentation.project,
+        .firebaseDatabase,
+        .firebaseAnalytics,
+        .firebaseCrashlytics,
     ],
     package: ThirdPartyModule.allCases.map(\.lib)
 )
